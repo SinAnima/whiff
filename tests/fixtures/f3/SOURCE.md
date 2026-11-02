@@ -1,5 +1,8 @@
 # Fixtures for `f3` (F3 (Future-proof File Format))
 
+Files made for whiff's tests, CC0-1.0: Saltmere Harbour tide readings. Regenerate with `scripts/fixtures/f3.sh`.
+
 | File | Origin | Licence |
 |---|---|---|
-| `layout-minimal.f3` | Built byte by byte from F3's `format/File.fbs` (commit bd92506): a footer with two row groups (50 and 70 rows) and the postscript, no data or schema. A stand-in until `scripts/fixtures/f3.sh` runs the reference writer, which replaces it. | CC0-1.0 |
+| `readings.f3` | F3 reference writer (`fff-poc`, commit bd92506), one row group | CC0-1.0 |
+| `readings-groups.f3` | F3 reference writer (`fff-poc`, commit bd92506), row groups of 100 rows | CC0-1.0 |

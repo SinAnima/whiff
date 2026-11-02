@@ -28,7 +28,7 @@ static META: ExtractorMeta = ExtractorMeta {
     priority: 0,
     formats: &[FormatSpec {
         id: "gguf",
-        name: "GGUF / GGML model",
+        name: "GGUF model",
         family: "columnar",
         mimes: &[],
         extensions: &["gguf"],
