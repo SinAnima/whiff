@@ -16,7 +16,7 @@ import json
 import subprocess
 import sys
 
-ORDER = ["Text", "Web", "Document", "Personal", "Data", "Code", "Image", "Media", "Font", "Archive", "Package",
+ORDER = ["Text", "Web", "Document", "Personal", "Data", "Scientific", "Code", "Image", "Media", "Font", "Archive", "Package",
          "Executable", "Security", "Database", "Platform", "Disk", "Forensics", "Geospatial", "Fallback"]
 
 TITLES = {
@@ -26,6 +26,7 @@ TITLES = {
     "Disk": "Disk images and file systems",
     "Forensics": "Forensic artefacts",
     "Fallback": "Generic binaries",
+    "Scientific": "Scientific and medical data",
 }
 
 

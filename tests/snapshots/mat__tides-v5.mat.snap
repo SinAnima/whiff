@@ -1,0 +1,125 @@
+---
+source: src/formats/science/arrays.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-v5.mat",
+    "stem": "tides-v5",
+    "extension": "mat"
+  },
+  "identification": {
+    "format": "mat",
+    "name": "MATLAB MAT v5",
+    "mime": "application/x-matlab-data",
+    "family": "sci",
+    "confidence": 0.92,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "mat",
+        "confidence": 0.92
+      },
+      {
+        "format": "unity_yaml",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "science.arrays"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1672
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1672,
+    "entropy": 6.63,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "ed40325bccdb3883fee3352fbcfbac66ca6c324955ac74d4d378d7fdb245cefd",
+    "blake3": "25210747320e7a584b4fcb248e5eecc3df25a045ebcac60a710408a9dacd120d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "mat": {
+      "header": "MATLAB 5.0 MAT-file Platform: posix, Created on: Mon Nov  2 04:59:33 2026",
+      "platform": "posix",
+      "created_on": "Mon Nov  2 04:59:33 2026",
+      "byte_order": "little-endian",
+      "variable_count": 4,
+      "variables": {
+        "height": "double 3x48",
+        "station": "char 1x4",
+        "count": "int32 1x1",
+        "meta": "struct 1x1 (fields: units, gauge)"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.arrays",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

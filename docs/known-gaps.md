@@ -283,3 +283,50 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 - **F3:** the committed fixture is built from the published layout
   (`File.fbs`) until `scripts/fixtures/f3.sh` replaces it with the
   reference writer's files.
+
+## Scientific files (unreleased, feature `science`)
+
+- **Raw data:** array values are never read, so there are no statistics
+  of the data, no checks of chunk checksums and no decompression of
+  data blocks; attribute and header values are read.
+- **HDF5:** objects past the per-file limits, huge fractal-heap objects
+  and filtered heaps are not read (counted in a warning); external and
+  virtual dataset sources are not opened; HDF4 / HDF-EOS2 files
+  are not read.
+- **Formats read from their metadata only:** CRAM records (container
+  headers, nothing decompressed but the header), GRIB data sections,
+  ROOT objects (keys and classes, not trees or histograms), Zarr chunks,
+  ASDF blocks (sizes and compression), OME-TIFF from the first page's
+  OME-XML (BigTIFF descriptions are not read).
+- **Statistics files:** value labels and missing-value definitions are
+  skipped, not reported; SAS7BDAT compressed meta subheaders and column
+  formats and labels are not read; R `qs` objects and native streams
+  written on big-endian machines are not decoded (native streams are
+  read as little-endian).
+- **MATLAB:** v4 matrices give classes and sizes; v5 cells and structs
+  give their size and field names, not their contents; MAT 7.3 is read
+  as HDF5.
+- **Chemistry:** formulas count the atoms listed (implicit hydrogens are
+  not added); PDB and mmCIF give header records and counts, not
+  secondary structure or sequences.
+- **Tool outputs:** Gaussian, ORCA, SPICE, LTspice, IBIS, Liberty, LEF,
+  DEF and ENVI are read line by line from their keywords; CP2K, VASP,
+  GAMESS and NWChem outputs, Spectre and HSPICE binary waveforms and
+  GDSII / OASIS layouts are not read.
+
+## Medical files (unreleased, feature `science`)
+
+- **Privacy:** DICOM patient, physician, institution and accession
+  attributes are reported by name only unless privacy is off; HL7 patient
+  segments and FHIR Patient / Practitioner / RelatedPerson / Person
+  resources are counted, never shown. Free-text attributes (study and
+  series descriptions) are reported as written.
+- **DICOM:** pixel data is not decoded (its size is reported);
+  attributes inside sequences, private tags and DICOMDIR records are not
+  listed; files without the `DICM` preamble are not claimed.
+- **Volumes:** gzip-compressed NIfTI (`.nii.gz`) is described as the gzip
+  file's member; MINC, MGH / MGZ and PAR / REC are not read; NRRD and MetaImage
+  report their header fields, not the data files they name.
+- **Messages:** HL7 v2 is read from the MSH segment and segment counts
+  (no field parsing past MSH); HL7 v3 / CDA documents are read as XML;
+  FHIR XML resources are read as XML.

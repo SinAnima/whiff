@@ -1,0 +1,4 @@
+track name=kelp_genes description="Saltmere kelp genes"
+kelp_chr1	10	200	KLP0	0	+
+kelp_chr1	250	420	KLP1	0	+
+kelp_chr1	500	590	KLP2	0	+

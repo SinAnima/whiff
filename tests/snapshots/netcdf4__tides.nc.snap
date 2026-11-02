@@ -1,0 +1,219 @@
+---
+source: src/formats/science/hdf5.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.nc",
+    "stem": "tides",
+    "extension": "nc"
+  },
+  "identification": {
+    "format": "netcdf4",
+    "name": "NetCDF-4",
+    "mime": "application/x-netcdf",
+    "family": "sci",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "netcdf4",
+        "confidence": 0.99
+      },
+      {
+        "format": "h5ad",
+        "confidence": 0.92
+      },
+      {
+        "format": "hdf5",
+        "confidence": 0.92
+      },
+      {
+        "format": "loom",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "science.hdf5"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 18054
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 18054,
+    "entropy": 2.078,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "78bee2e5deb4bc6f2311b7f5687477bc9e31ed4fc5ca07ab24f8adb2d6badf24",
+    "blake3": "a6fc4995aecac2b36ef0bc52557f8f8de0e08e04ffdae1ab2fa269f41c57c8f1"
+  },
+  "content": {
+    "title": "Saltmere tide heights"
+  },
+  "metadata": {},
+  "format": {
+    "netcdf4": {
+      "layout": "netcdf4",
+      "superblock_version": 2,
+      "groups": 1,
+      "datasets": 4,
+      "root_attributes": {
+        "title": "Saltmere tide heights",
+        "institution": "Saltmere Harbour Office",
+        "Conventions": "CF-1.8",
+        "history": "2025-09-01 written for whiff's tests",
+        "_NCProperties": "version=2,netcdf=4.10.1,hdf5=2.2.0"
+      },
+      "dataset_list": [
+        {
+          "path": "/height",
+          "shape": "48+x3",
+          "type": "float32",
+          "layout": "chunked",
+          "chunks": "1x3",
+          "filters": [
+            "shuffle",
+            "deflate"
+          ]
+        },
+        {
+          "path": "/lat",
+          "shape": "3",
+          "type": "float32",
+          "layout": "contiguous"
+        },
+        {
+          "path": "/station",
+          "shape": "3",
+          "type": "float32",
+          "layout": "contiguous"
+        },
+        {
+          "path": "/time",
+          "shape": "48+",
+          "type": "float64",
+          "layout": "chunked",
+          "chunks": "512"
+        }
+      ],
+      "types": {
+        "float32": 3,
+        "float64": 1
+      },
+      "filters": [
+        "deflate",
+        "shuffle"
+      ],
+      "netcdf_version": "4.10.1",
+      "hdf5_version": "2.2.0",
+      "dimensions": {
+        "station": 3,
+        "time": 48
+      },
+      "unlimited_dimensions": [
+        "time"
+      ],
+      "variable_count": 3,
+      "variables": {
+        "height": {
+          "type": "float",
+          "dimensions": [
+            "time",
+            "station"
+          ],
+          "units": "m",
+          "standard_name": "sea_surface_height",
+          "long_name": "tide height above chart datum"
+        },
+        "lat": {
+          "type": "float",
+          "dimensions": [
+            "station"
+          ],
+          "units": "degrees_north"
+        },
+        "time": {
+          "type": "double",
+          "dimensions": [
+            "time"
+          ],
+          "units": "hours since 2025-09-01 00:00:00",
+          "standard_name": "time"
+        }
+      },
+      "global_attributes": {
+        "title": "Saltmere tide heights",
+        "institution": "Saltmere Harbour Office",
+        "Conventions": "CF-1.8",
+        "history": "2025-09-01 written for whiff's tests"
+      },
+      "conventions": "CF-1.8"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.hdf5",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

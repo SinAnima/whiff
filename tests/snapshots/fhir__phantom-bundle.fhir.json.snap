@@ -1,0 +1,133 @@
+---
+source: src/formats/medical/clinical.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "phantom-bundle.fhir.json",
+    "stem": "phantom-bundle.fhir",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "fhir",
+    "name": "FHIR resource",
+    "mime": "application/fhir+json",
+    "family": "medical",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "fhir",
+        "confidence": 0.97
+      },
+      {
+        "format": "json",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "medical.clinical"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 727
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 727,
+    "entropy": 3.665,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 727,
+      "chars": 727,
+      "words": 62,
+      "lines": 39,
+      "max_line_length": 40,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "f329ff459caa1250fa61c7cb35ede816d2ebd4c4ab9dd4c9c211b32e43055056",
+    "blake3": "14baf624d2d8c6e8345ecb39f2acac32abe469601a24ff963b46ece27082c96b"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "fhir": {
+      "resource_type": "Bundle",
+      "bundle_type": "collection",
+      "entries": 2,
+      "personal_resources": 1,
+      "resource_types": {
+        "Observation": 1,
+        "Patient": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "medical.clinical",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -102,7 +102,7 @@ impl Extractor for Records {
         let (mut records, mut bytes, mut largest) = (0u64, 0u64, 0u64);
         let mut feats = BTreeMap::new();
         let mut kind = None;
-        while at + 12 <= total && records < MAX_RECORDS {
+        while at.checked_add(12).is_some_and(|e| e <= total) && records < MAX_RECORDS {
             if records % 4096 == 0 {
                 cx.checkpoint()?;
             }
@@ -111,10 +111,10 @@ impl Extractor for Records {
                 cx.warn(format!("bad record header at offset {at}"));
                 break;
             };
-            if at + 16 + len > total {
+            let Some(end) = at.checked_add(16).and_then(|e| e.checked_add(len)).filter(|&e| e <= total) else {
                 cx.warn("last record truncated");
                 break;
-            }
+            };
             if usize::try_from(records).is_ok_and(|r| r < SAMPLE)
                 && let Ok(n) = usize::try_from(len)
                 && n <= MAX_SAMPLE
@@ -133,7 +133,7 @@ impl Extractor for Records {
             records += 1;
             bytes = bytes.saturating_add(len);
             largest = largest.max(len);
-            at += 16 + len;
+            at = end;
         }
         cx.format_set("records", records);
         cx.format_set("record_bytes", bytes);

@@ -1,0 +1,125 @@
+---
+source: src/formats/science/textfmt.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy.lef",
+    "stem": "buoy",
+    "extension": "lef"
+  },
+  "identification": {
+    "format": "lef",
+    "name": "LEF library",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "science.tooltext"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 246
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 246,
+    "entropy": 4.647,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 246,
+      "chars": 246,
+      "words": 46,
+      "lines": 17,
+      "max_line_length": 25,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "d08119fbcf20b8a54637eac9f93dae5c393a29fbfa4d66cbbe33e6d96393f1ea",
+    "blake3": "8d7dc08506df86de8899a9959a5bde7c5ded948985c039c9164e82f172c198c1"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "lef": {
+      "version": "5.8",
+      "database_units_per_micron": 1000,
+      "layers": [
+        "metal1"
+      ],
+      "macro_count": 2,
+      "macros": [
+        "INVX1",
+        "NAND2X1"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.tooltext",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

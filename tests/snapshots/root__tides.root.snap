@@ -1,0 +1,117 @@
+---
+source: src/formats/science/grib.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.root",
+    "stem": "tides",
+    "extension": "root"
+  },
+  "identification": {
+    "format": "root",
+    "name": "ROOT (CERN)",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "science.fields"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 14181
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 14181,
+    "entropy": 4.317,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "04408d6306dee1f5e9a990b4e271a394fd50e0047349d0607fb8215b7d12f94e",
+    "blake3": "093e1cc4ff12f8ac8bdb0c5b159e005f6cd2ac62cdff95c1a88fce0cb2a1760b"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "root": {
+      "root_version": "6.24/00",
+      "compression": "zlib level 1",
+      "created": "2026-11-02T04:59:33",
+      "modified": "2026-11-02T04:59:33",
+      "key_count": 2,
+      "keys": {
+        "readings": "ROOT::RNTuple: readings",
+        "hist": "TH1D"
+      },
+      "classes": {
+        "ROOT::RNTuple": 1,
+        "TH1D": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.fields",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

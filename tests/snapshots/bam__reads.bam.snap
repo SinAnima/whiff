@@ -1,0 +1,131 @@
+---
+source: src/formats/science/genomics.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "reads.bam",
+    "stem": "reads",
+    "extension": "bam"
+  },
+  "identification": {
+    "format": "bam",
+    "name": "BAM alignments",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "bam",
+        "confidence": 0.99
+      },
+      {
+        "format": "gzip",
+        "confidence": 0.72
+      }
+    ],
+    "extractor": "science.genomics"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 886
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 886,
+    "entropy": 7.567,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "4c5dacd4e13d1627a38b2e8e88415883cf0e031ec2060f24ca12d626f31f9510",
+    "blake3": "927a0f2f81834730b06f097ccaf6cd2cd943ed243b554edc1a5f84e1ca3ea390"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "bam": {
+      "sam_version": "1.6",
+      "sort_order": "coordinate",
+      "references": 2,
+      "reference_names": [
+        "kelp_chr1",
+        "kelp_chr2"
+      ],
+      "reference_length": 1800,
+      "read_groups": 1,
+      "platforms": [
+        "ILLUMINA"
+      ],
+      "programs": [
+        "craft_science.py 1"
+      ],
+      "records": 30,
+      "unmapped": 0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.genomics",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

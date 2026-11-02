@@ -9,3 +9,9 @@
 *.pending-snap
 lcov.info
 /scripts/fixtures/office_gen/target/
+
+# Scratch output of the fixture scripts (also covered by /target): the F3
+# reference implementation clone and build, and what its reader printed.
+# The fixtures themselves (tests/fixtures/f3/) are committed.
+/target/f3src/
+expected.jsonl

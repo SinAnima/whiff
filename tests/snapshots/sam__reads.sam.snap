@@ -1,0 +1,132 @@
+---
+source: src/formats/science/genomics.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "reads.sam",
+    "stem": "reads",
+    "extension": "sam"
+  },
+  "identification": {
+    "format": "sam",
+    "name": "SAM alignments",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "science.genomics"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4618
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4618,
+    "entropy": 3.789,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 4618,
+      "chars": 4618,
+      "words": 379,
+      "lines": 35,
+      "max_line_length": 201,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "c7725ada9e785179910caa448384c0c972af6c21b989065c4d2409f6dd806e94",
+    "blake3": "9abe37b96bdcadc9c110238f5e20566bc2b344a28e85310bd9a6fa561b2caf1b"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "sam": {
+      "sam_version": "1.6",
+      "sort_order": "coordinate",
+      "references": 2,
+      "reference_names": [
+        "kelp_chr1",
+        "kelp_chr2"
+      ],
+      "reference_length": 1800,
+      "read_groups": 1,
+      "platforms": [
+        "ILLUMINA"
+      ],
+      "programs": [
+        "craft_science.py 1"
+      ],
+      "records": 30,
+      "unmapped": 0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.genomics",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

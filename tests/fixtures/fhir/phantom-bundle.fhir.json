@@ -1,0 +1,39 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "phantom",
+        "name": [
+          {
+            "family": "Phantom",
+            "given": [
+              "Water"
+            ]
+          }
+        ],
+        "gender": "other",
+        "birthDate": "2000-01-01"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "tide1",
+        "status": "final",
+        "code": {
+          "text": "Tide height"
+        },
+        "subject": {
+          "reference": "Patient/phantom"
+        },
+        "valueQuantity": {
+          "value": 2.41,
+          "unit": "m"
+        }
+      }
+    }
+  ]
+}

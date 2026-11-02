@@ -46,7 +46,7 @@ common = [
     "dep:toml",
 ]
 geo = []
-science = []
+science = ["common"]
 data = ["common"]
 cad = []
 forensics = ["common"]

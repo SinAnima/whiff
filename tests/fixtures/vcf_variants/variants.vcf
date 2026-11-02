@@ -1,0 +1,12 @@
+##fileformat=VCFv4.3
+##source=craft_science.py
+##reference=saltmere-kelp.fa
+##contig=<ID=kelp_chr1,length=800>
+##contig=<ID=kelp_chr2,length=1000>
+##INFO=<ID=DP,Number=1,Type=Integer,Description="Read depth">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	kelp-A	kelp-B
+kelp_chr1	11	.	C	A	50	PASS	DP=30	GT	0/1	1/1
+kelp_chr1	120	.	G	A	50	PASS	DP=30	GT	0/1	1/1
+kelp_chr1	333	.	A	C	50	PASS	DP=30	GT	0/1	1/1
+kelp_chr1	480	.	T	A	50	PASS	DP=30	GT	0/1	1/1

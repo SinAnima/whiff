@@ -1,0 +1,139 @@
+---
+source: src/formats/science/chem.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide-peptide.pdb",
+    "stem": "tide-peptide",
+    "extension": "pdb"
+  },
+  "identification": {
+    "format": "pdb",
+    "name": "PDB structure",
+    "mime": "chemical/x-pdb",
+    "family": "sci",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "encoding": "us-ascii",
+    "extractor": "science.chem"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 905
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 905,
+    "entropy": 3.527,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 905,
+      "chars": 905,
+      "words": 127,
+      "lines": 15,
+      "max_line_length": 78,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "c978c934f5c0e7ec836d3aa5311cc8a7788995aaf44056233df9403a32142d76",
+    "blake3": "f27bb47adfa12cf1ceea46035b154fbabca7ad9b7a0d45048e665e187ad032aa"
+  },
+  "content": {
+    "title": "A MADE-UP KELP PEPTIDE FOR WHIFF'S TESTS"
+  },
+  "metadata": {},
+  "format": {
+    "pdb": {
+      "classification": "STRUCTURAL PROTEIN",
+      "deposition_date": "01-SEP-25",
+      "id_code": "9XYZ",
+      "compound": "TIDE PEPTIDE",
+      "organism": "SALTMERE KELP",
+      "method": "THEORETICAL MODEL",
+      "unit_cell": "10.000   10.000   10.000  90.00  90.00  90.00",
+      "space_group": "P 1",
+      "title": "A MADE-UP KELP PEPTIDE FOR WHIFF'S TESTS",
+      "authors": "SALTMERE HARBOUR LAB",
+      "models": 1,
+      "atoms": 6,
+      "hetero_atoms": 1,
+      "chains": [
+        "A"
+      ],
+      "residues": 3,
+      "elements": {
+        "C": 3,
+        "N": 2,
+        "O": 2
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.chem",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

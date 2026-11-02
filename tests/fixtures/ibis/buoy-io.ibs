@@ -1,0 +1,15 @@
+[IBIS Ver]   7.1
+[File Name]  buoy-io.ibs
+[File Rev]   1.0
+[Date]       September 1, 2025
+[Source]     Saltmere Harbour electronics bench (made up)
+[Component]  BUOY-IO
+[Manufacturer] Saltmere Harbour
+[Pin]  signal_name  model_name
+1      DATA         io_model
+2      CLK          in_model
+[Model]  io_model
+Model_type  I/O
+[Model]  in_model
+Model_type  Input
+[End]

@@ -1,0 +1,139 @@
+---
+source: src/formats/science/textfmt.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy-filter.asc",
+    "stem": "buoy-filter",
+    "extension": "asc"
+  },
+  "identification": {
+    "format": "ltspice",
+    "name": "LTspice schematic",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ltspice",
+        "confidence": 0.97
+      },
+      {
+        "format": "openpgp",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "science.tooltext"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 235
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 235,
+    "entropy": 4.918,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 235,
+      "chars": 235,
+      "words": 48,
+      "lines": 12,
+      "max_line_length": 27,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "7c6fde8a964181275dca9e64fec93790b457405204d392c4948150bfa92a91b5",
+    "blake3": "53084eaad049e7c33848213a2682afc799707ac8390e036ef9340f2c41ccf5ee"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ltspice": {
+      "version": "4",
+      "symbols": {
+        "cap": 1,
+        "res": 1,
+        "voltage": 1
+      },
+      "instances": [
+        "R1",
+        "C1",
+        "V1"
+      ],
+      "directives": [
+        ".tran 5m"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.tooltext",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

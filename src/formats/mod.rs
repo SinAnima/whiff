@@ -54,10 +54,14 @@ pub(crate) mod font;
 pub(crate) mod forensic;
 #[cfg(feature = "common")]
 pub(crate) mod image;
+#[cfg(feature = "science")]
+pub(crate) mod medical;
 #[cfg(feature = "common")]
 pub(crate) mod package;
 #[cfg(feature = "common")]
 pub(crate) mod playlist;
+#[cfg(feature = "science")]
+pub(crate) mod science;
 #[cfg(feature = "common")]
 pub(crate) mod score;
 #[cfg(feature = "common")]

@@ -1,0 +1,126 @@
+---
+source: src/formats/science/instruments.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy.vhdr",
+    "stem": "buoy",
+    "extension": "vhdr"
+  },
+  "identification": {
+    "format": "vhdr",
+    "name": "BrainVision header",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "science.instruments"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 359
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 359,
+    "entropy": 5.273,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 359,
+      "chars": 359,
+      "words": 32,
+      "lines": 18,
+      "max_line_length": 50,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "aaa9b63b230d638fa5011730cd3c41af99f2b929c2103ced56967df5deaf3fdd",
+    "blake3": "7659f6c0968816f034a61429b9950c20df5af764ee8112b7d324610044be7446"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "vhdr": {
+      "data_file": "buoy.eeg",
+      "marker_file": "buoy.vmrk",
+      "data_format": "BINARY",
+      "orientation": "MULTIPLEXED",
+      "channel_count": 2,
+      "sampling_rate_hz": 1000.0,
+      "binary_format": "IEEE_FLOAT_32",
+      "channels": {
+        "Ch1: tilt": "deg",
+        "Ch2: pressure": "hPa"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.instruments",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

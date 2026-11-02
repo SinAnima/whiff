@@ -1,0 +1,131 @@
+---
+source: src/formats/science/zarr.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-v2-group.zattrs",
+    "stem": "tides-v2-group",
+    "extension": "zattrs"
+  },
+  "identification": {
+    "format": "zarr",
+    "name": "Zarr",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "zarr",
+        "confidence": 0.99
+      },
+      {
+        "format": "json",
+        "confidence": 0.55
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "science.zarr"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 38
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 38,
+    "entropy": 3.838,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 38,
+      "chars": 38,
+      "words": 6,
+      "lines": 2,
+      "max_line_length": 34,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "4eeba2a32984b78245620dd9c821c2cfcda19510ffb61daefa2798c95f3492ed",
+    "blake3": "b907f0b18368aa84facc453b5a54da54cd3d13499e41b9d794601d63b5411777"
+  },
+  "content": {
+    "title": "Saltmere tide heights"
+  },
+  "metadata": {},
+  "format": {
+    "zarr": {
+      "node": "attributes",
+      "attributes": {
+        "title": "Saltmere tide heights"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.zarr",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

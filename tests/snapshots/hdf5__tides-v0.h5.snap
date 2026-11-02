@@ -1,0 +1,291 @@
+---
+source: src/formats/science/hdf5.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-v0.h5",
+    "stem": "tides-v0",
+    "extension": "h5"
+  },
+  "identification": {
+    "format": "hdf5",
+    "name": "HDF5",
+    "mime": "application/x-hdf5",
+    "family": "sci",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "hdf5",
+        "confidence": 0.97
+      },
+      {
+        "format": "h5ad",
+        "confidence": 0.92
+      },
+      {
+        "format": "loom",
+        "confidence": 0.92
+      },
+      {
+        "format": "netcdf4",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "science.hdf5"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 105142
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 105142,
+    "entropy": 5.726,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "d6cb3e5a22649b41312fd802ddc6b2d074783bc9ebe1740761aedd096f4969b9",
+    "blake3": "572a9ce630c1c4b4526dcf038f5369d2ddf68002b62c82c14db8769c731d8938"
+  },
+  "content": {
+    "title": "Saltmere tide gauges"
+  },
+  "metadata": {},
+  "format": {
+    "hdf5": {
+      "superblock_version": 0,
+      "groups": 3,
+      "datasets": 14,
+      "root_attributes": {
+        "title": "Saltmere tide gauges",
+        "institution": "Saltmere Harbour Office",
+        "version": 3
+      },
+      "dataset_list": [
+        {
+          "path": "/calibration",
+          "shape": "2x3",
+          "type": "int64",
+          "layout": "contiguous"
+        },
+        {
+          "path": "/gauges/G00",
+          "shape": "24x60",
+          "type": "float32",
+          "layout": "chunked",
+          "chunks": "6x60",
+          "filters": [
+            "shuffle",
+            "deflate"
+          ]
+        },
+        {
+          "path": "/gauges/G01",
+          "shape": "24x60",
+          "type": "float32",
+          "layout": "chunked",
+          "chunks": "6x60",
+          "filters": [
+            "shuffle",
+            "deflate"
+          ]
+        },
+        {
+          "path": "/gauges/G02",
+          "shape": "24x60",
+          "type": "float32",
+          "layout": "chunked",
+          "chunks": "6x60",
+          "filters": [
+            "shuffle",
+            "deflate"
+          ]
+        },
+        {
+          "path": "/gauges/G03",
+          "shape": "24x60",
+          "type": "float32",
+          "layout": "chunked",
+          "chunks": "6x60",
+          "filters": [
+            "shuffle",
+            "deflate"
+          ]
+        },
+        {
+          "path": "/gauges/G04",
+          "shape": "24x60",
+          "type": "float32",
+          "layout": "chunked",
+          "chunks": "6x60",
+          "filters": [
+            "shuffle",
+            "deflate"
+          ]
+        },
+        {
+          "path": "/gauges/G05",
+          "shape": "24x60",
+          "type": "float32",
+          "layout": "chunked",
+          "chunks": "6x60",
+          "filters": [
+            "shuffle",
+            "deflate"
+          ]
+        },
+        {
+          "path": "/gauges/G06",
+          "shape": "24x60",
+          "type": "float32",
+          "layout": "chunked",
+          "chunks": "6x60",
+          "filters": [
+            "shuffle",
+            "deflate"
+          ]
+        },
+        {
+          "path": "/gauges/G07",
+          "shape": "24x60",
+          "type": "float32",
+          "layout": "chunked",
+          "chunks": "6x60",
+          "filters": [
+            "shuffle",
+            "deflate"
+          ]
+        },
+        {
+          "path": "/gauges/G08",
+          "shape": "24x60",
+          "type": "float32",
+          "layout": "chunked",
+          "chunks": "6x60",
+          "filters": [
+            "shuffle",
+            "deflate"
+          ]
+        },
+        {
+          "path": "/gauges/G09",
+          "shape": "24x60",
+          "type": "float32",
+          "layout": "chunked",
+          "chunks": "6x60",
+          "filters": [
+            "shuffle",
+            "deflate"
+          ]
+        },
+        {
+          "path": "/gauges/G10",
+          "shape": "24x60",
+          "type": "float32",
+          "layout": "chunked",
+          "chunks": "6x60",
+          "filters": [
+            "shuffle",
+            "deflate"
+          ]
+        },
+        {
+          "path": "/gauges/G11",
+          "shape": "24x60",
+          "type": "float32",
+          "layout": "chunked",
+          "chunks": "6x60",
+          "filters": [
+            "shuffle",
+            "deflate"
+          ]
+        },
+        {
+          "path": "/stations",
+          "shape": "3",
+          "type": "string[4]",
+          "layout": "contiguous"
+        }
+      ],
+      "group_list": [
+        "/empty",
+        "/gauges"
+      ],
+      "types": {
+        "float32": 12,
+        "int64": 1,
+        "string[4]": 1
+      },
+      "filters": [
+        "deflate",
+        "shuffle"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.hdf5",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

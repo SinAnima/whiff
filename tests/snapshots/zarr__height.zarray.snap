@@ -1,0 +1,139 @@
+---
+source: src/formats/science/zarr.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "height.zarray",
+    "stem": "height",
+    "extension": "zarray"
+  },
+  "identification": {
+    "format": "zarr",
+    "name": "Zarr",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "zarr",
+        "confidence": 0.99
+      },
+      {
+        "format": "json",
+        "confidence": 0.55
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "science.zarr"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 307
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 307,
+    "entropy": 4.321,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 307,
+      "chars": 307,
+      "words": 37,
+      "lines": 22,
+      "max_line_length": 29,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "e54468fffa16fde8cb7a15373ff9cd01ac7f69915e76a023861a314867d77dfc",
+    "blake3": "ee108cc37909e01d5a8731ec7850b15a7f145e7ea01d251c80740eb926949937"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "zarr": {
+      "zarr_format": 2,
+      "node": "array",
+      "shape": [
+        48,
+        3
+      ],
+      "chunks": [
+        24,
+        3
+      ],
+      "order": "C",
+      "fill_value": 0.0,
+      "data_type": "<f4",
+      "compressor": "blosc"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.zarr",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

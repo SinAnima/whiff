@@ -1,0 +1,129 @@
+---
+source: src/formats/science/chem.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-compounds.sdf",
+    "stem": "harbour-compounds",
+    "extension": "sdf"
+  },
+  "identification": {
+    "format": "sdf",
+    "name": "SDF structures",
+    "mime": "chemical/x-mdl-sdfile",
+    "family": "sci",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "science.chem"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1658
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1658,
+    "entropy": 2.792,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1658,
+      "chars": 1658,
+      "words": 377,
+      "lines": 56,
+      "max_line_length": 69,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 6
+    }
+  },
+  "integrity": {
+    "sha256": "ed33ffc96d253365fae658a180a98f0c92ea775f2a73e89df9a7dd7ec0db81c5",
+    "blake3": "c4b650e9d3487a0db65cf872e30944caec6b3c60223c62d3077080d9442bcb9d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "sdf": {
+      "molecules": 3,
+      "names": [
+        "glycine",
+        "taurine",
+        "urea"
+      ],
+      "atom_formulas": [
+        "C2NO2",
+        "C2NO3S",
+        "CN2O"
+      ],
+      "data_fields": [
+        "source"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.chem",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

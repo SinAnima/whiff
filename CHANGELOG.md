@@ -6,7 +6,8 @@ keep the schema version.
 
 ## Unreleased
 
-Fonts, columnar data and machine-learning models (Stage 7, first two parts).
+Fonts, columnar data and machine-learning models, scientific and medical
+files (Stage 7, first three parts).
 
 - **Fonts** (`common`), all in-house (WOFF2 through the existing Brotli
   decoder; no read-fonts / skrifa / allsorts):
@@ -67,6 +68,41 @@ Fonts, columnar data and machine-learning models (Stage 7, first two parts).
     version), SavedModel (tags, TensorFlow version, signatures, graph ops)
     and Core ML (model type, typed inputs and outputs, author, licence,
     layers).
+- **Scientific files** (feature `science`, which now includes `common`),
+  all in-house (no hdf5 / netcdf / fitsrs / noodles / dicom crates);
+  large files are read through the source, raw data is never decoded:
+  - HDF5 (superblocks 0–3, v1 and v2 object headers, symbol-table,
+    compact and dense groups, datasets with their shapes, types, layouts,
+    chunks and filters, attributes) and the layouts built on it:
+    NetCDF-4, AnnData `.h5ad`, Loom, MATLAB 7.3, Keras, HDF-EOS5 and
+    NeXus; NetCDF classic (CDF-1, CDF-2, CDF-5) with dimensions,
+    variables and CF attributes; FITS (every HDU, observation keywords,
+    WCS, `CHECKSUM` / `DATASUM` verified); ASDF (tree, ndarrays, blocks);
+    Zarr v2 and v3 metadata; GRIB 1 and 2 (messages, centres, parameters,
+    reference times); ROOT (version, compression, keys and classes);
+  - arrays and statistics: NumPy NPY and NPZ, MATLAB MAT v4 (both byte
+    orders, sparse sizes) and v5 (compressed variables, structs, function
+    workspaces); SPSS SAV / ZSAV (long variable names) and portable POR,
+    Stata DTA (formats 113–119), SAS XPORT v5 and v8, SAS7BDAT (rows,
+    columns, names, dates, host), R RDS and RData (XDR, ASCII and native
+    streams; data frames, vectors, lists, S4 objects, environments,
+    closures and byte code, ALTREP sequences and wrappers);
+  - genomics: FASTA, FASTQ, SAM, BAM, CRAM, VCF (`vcf_variants`), BCF,
+    BED and GFF / GTF; chemistry: PDB, mmCIF, MDL MOL and SDF, Tripos
+    MOL2, XYZ; instruments: mzML and mzXML mass spectrometry, EDF / EDF+,
+    BDF / BDF+, BrainVision headers, NI TDMS (both byte orders), VCD
+    waveforms, sigrok sessions, OME-TIFF microscopy images;
+  - tool outputs and electronics: Gaussian and ORCA outputs, SPICE
+    netlists, LTspice schematics, Touchstone, IBIS, Liberty, LEF, DEF,
+    ENVI raster headers.
+- **Medical files** (feature `science`): DICOM (meta header, transfer
+  syntax, SOP class, modality, equipment, study and series, image
+  geometry; deflated, big-endian and mislabelled implicit-VR datasets),
+  NIfTI-1 and NIfTI-2 (single file and pairs), Analyze 7.5, NRRD,
+  MetaImage, HL7 v2 messages and FHIR JSON. Patient-identifying DICOM
+  attributes are listed by name, their values withheld unless privacy is
+  off; HL7 patient segments and FHIR personal resources are counted,
+  never shown.
 - **Plugin API:** `plugin::flatbuf` (FlatBuffers tables without a schema)
   and `plugin::protowire` (protobuf fields without a schema), shared by the
   columnar readers and the `.bfbs` extractor; raw Snappy and LZ4 block
@@ -85,6 +121,14 @@ Fonts, columnar data and machine-learning models (Stage 7, first two parts).
   `columnar_oracle.py` compares reports with those libraries over
   generated files and the models found in /Applications and Homebrew.
   `scripts/fixtures/f3.sh` builds F3's reference writer for its fixtures.
+  `scripts/fixtures/science.sh` makes the science and medical fixtures
+  with each format's own tools (h5py, netCDF4, astropy, asdf, zarr,
+  samtools, bcftools, eccodes, NumPy, SciPy, pyreadstat, uproot, gemmi,
+  RDKit, pyEDFlib, npTDMS, pyvcd, sigrok-cli, scikit-rf, tifffile,
+  pydicom, nibabel, pynrrd, fhir.resources; R and haven);
+  `science_oracle.py`, `science2_oracle.py` and `science_oracle.R` compare
+  the reports with those libraries and with R over generated files and
+  the test data the libraries ship.
 
 ## 0.6.0 — 2026-10-31
 

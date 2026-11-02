@@ -1,0 +1,132 @@
+---
+source: src/formats/science/textfmt.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "water-opt.log",
+    "stem": "water-opt",
+    "extension": "log"
+  },
+  "identification": {
+    "format": "gaussian",
+    "name": "Gaussian / ORCA / CP2K outputs",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "gaussian",
+        "confidence": 0.97
+      },
+      {
+        "format": "log",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "science.tooltext"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 669
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 669,
+    "entropy": 4.417,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 669,
+      "chars": 669,
+      "words": 65,
+      "lines": 18,
+      "max_line_length": 63,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "d024e3cb5098133b00bfbb61088a553b3dd635468fc54879013708a506cfb7a8",
+    "blake3": "c996615bc6a79bb3c57f8df1df3e5c76ba6395926cc9e8e51ef5def7c737c8d1"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "gaussian": {
+      "program": "Gaussian 16: ES64L-G16RevC.01",
+      "route": "#p opt b3lyp/6-31g(d)",
+      "charge_multiplicity": "0 / 1",
+      "optimisation_completed": true,
+      "normal_termination": true,
+      "scf_cycles_reported": 1,
+      "final_energy_hartree": -76.4089534
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.tooltext",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

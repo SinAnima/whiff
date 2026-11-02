@@ -275,7 +275,7 @@ fn stream(cx: &mut Context<'_>, src: &mut dyn Source) -> Result<(), ExtractError
     let mut at = 0u64;
     let (mut batches, mut dictionaries, mut rows, mut codec) = (0u64, 0u64, 0u64, None);
     let mut have_schema = false;
-    while at + 8 <= len {
+    while at.checked_add(8).is_some_and(|e| e <= len) {
         if batches % 1024 == 0 {
             cx.checkpoint()?;
         }
@@ -303,7 +303,10 @@ fn stream(cx: &mut Context<'_>, src: &mut dyn Source) -> Result<(), ExtractError
             _ => {}
         }
         // Metadata is padded to 8 bytes; the body follows.
-        at = after.next_multiple_of(8).saturating_add(body);
+        match after.checked_next_multiple_of(8).and_then(|a| a.checked_add(body)) {
+            Some(next) if next > at => at = next,
+            _ => break,
+        }
         if usize::try_from(batches).is_ok_and(|b| b >= MAX_BATCHES) {
             break;
         }

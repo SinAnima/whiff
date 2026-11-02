@@ -1,0 +1,140 @@
+---
+source: src/formats/science/stats.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.sas7bdat",
+    "stem": "tides",
+    "extension": "sas7bdat"
+  },
+  "identification": {
+    "format": "sas7bdat",
+    "name": "SAS dataset",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "science.stats"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 16384
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-11-02T04:59:34Z",
+        "source": "sas7bdat.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2026-11-02T04:59:34Z",
+        "source": "sas7bdat.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-11-02T04:59:34Z",
+    "latest": "2026-11-02T04:59:34Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 16384,
+    "entropy": 0.225,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "1ef77958bf5736625907abcedcd4256e24186e42f18812d49d935dbcf11795a8",
+    "blake3": "54a58535285e0606ff0d3a68e949a3b801c0bbcedff8425d40ed3f2d41ac2d3a"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "sas7bdat": {
+      "format": "64-bit",
+      "byte_order": "little-endian",
+      "platform": "unix",
+      "encoding": "UTF-8",
+      "dataset": "DATASET",
+      "file_type": "DATA",
+      "created": "2026-11-02T04:59:34Z",
+      "modified": "2026-11-02T04:59:34Z",
+      "header_bytes": 8192,
+      "page_size": 4096,
+      "pages": 2,
+      "release": "9.0101M0",
+      "host": "9.0401M6Linux",
+      "rows": 3,
+      "column_count": 3,
+      "columns": [
+        "gauge",
+        "height_m",
+        "ok"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.stats",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

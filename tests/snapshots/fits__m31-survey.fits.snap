@@ -1,0 +1,161 @@
+---
+source: src/formats/science/fits.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "m31-survey.fits",
+    "stem": "m31-survey",
+    "extension": "fits"
+  },
+  "identification": {
+    "format": "fits",
+    "name": "FITS",
+    "mime": "application/fits",
+    "family": "sci",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "science.fits"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 25920
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "captured",
+        "value": "2025-09-01T22:14:05",
+        "source": "fits.DATE-OBS",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 25920,
+    "entropy": 5.62,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "da4cb5ef5060e661953bd3b3b8c7e3e3f61f57c7faff408c89ebbe6090b71f7d",
+    "blake3": "2494dc19db010a5e3b21760a0ffca19d7b34611ecc82e19534604f1832e79deb"
+  },
+  "content": {
+    "title": "M31",
+    "authors": [
+      "Harbour Astronomy Club"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "fits": {
+      "telescope": "Saltmere Harbour Wall Survey",
+      "instrument": "SHW-CAM1",
+      "object": "M31",
+      "observer": "Harbour Astronomy Club",
+      "date_obs": "2025-09-01T22:14:05",
+      "exposure_s": 30.0,
+      "filter": "V",
+      "radesys": "ICRS",
+      "hdus": 2,
+      "hdu_list": [
+        {
+          "index": 0,
+          "type": "primary",
+          "dimensions": "64x64",
+          "data_type": "float32",
+          "checksum": "valid",
+          "datasum": "valid",
+          "wcs": {
+            "ctype": [
+              "RA---TAN",
+              "DEC--TAN"
+            ],
+            "crval": [
+              10.6847,
+              41.269
+            ],
+            "radesys": "ICRS"
+          }
+        },
+        {
+          "index": 1,
+          "type": "binary table",
+          "name": "CATALOG",
+          "rows": 3,
+          "columns": {
+            "star": "10A",
+            "ra": "D [deg]",
+            "mag": "E"
+          },
+          "checksum": "valid",
+          "datasum": "valid"
+        }
+      ],
+      "checksums_verified": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.fits",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,219 @@
+---
+source: src/formats/science/hdf5.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "kelp-atlas.loom",
+    "stem": "kelp-atlas",
+    "extension": "loom"
+  },
+  "identification": {
+    "format": "loom",
+    "name": "Loom",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "loom",
+        "confidence": 0.99
+      },
+      {
+        "format": "h5ad",
+        "confidence": 0.92
+      },
+      {
+        "format": "hdf5",
+        "confidence": 0.92
+      },
+      {
+        "format": "netcdf4",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "science.hdf5"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 24618
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 24618,
+    "entropy": 1.488,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "ad9bf00d3e253981abeb2a68b4fb17ebcbd59ac65be69d2dbace562ad3c373bc",
+    "blake3": "e82f49642236d1e043b59e8877c749da39087e38c2da6d7ac93b0b2804320852"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "loom": {
+      "layout": "loom",
+      "superblock_version": 0,
+      "groups": 7,
+      "datasets": 7,
+      "root_attributes": {
+        "last_modified": "20261102T041032.593808Z"
+      },
+      "dataset_list": [
+        {
+          "path": "/attrs/CreationDate",
+          "shape": "scalar",
+          "type": "vlen string",
+          "layout": "contiguous"
+        },
+        {
+          "path": "/attrs/LOOM_SPEC_VERSION",
+          "shape": "scalar",
+          "type": "vlen string",
+          "layout": "contiguous"
+        },
+        {
+          "path": "/attrs/title",
+          "shape": "scalar",
+          "type": "vlen string",
+          "layout": "contiguous"
+        },
+        {
+          "path": "/col_attrs/CellID",
+          "shape": "40",
+          "type": "vlen string",
+          "layout": "chunked",
+          "chunks": "40",
+          "filters": [
+            "deflate"
+          ]
+        },
+        {
+          "path": "/col_attrs/Tissue",
+          "shape": "40",
+          "type": "vlen string",
+          "layout": "chunked",
+          "chunks": "40",
+          "filters": [
+            "deflate"
+          ]
+        },
+        {
+          "path": "/matrix",
+          "shape": "25x40+",
+          "type": "float32",
+          "layout": "chunked",
+          "chunks": "25x40",
+          "filters": [
+            "deflate"
+          ]
+        },
+        {
+          "path": "/row_attrs/Gene",
+          "shape": "25",
+          "type": "vlen string",
+          "layout": "chunked",
+          "chunks": "25",
+          "filters": [
+            "deflate"
+          ]
+        }
+      ],
+      "group_list": [
+        "/attrs",
+        "/col_attrs",
+        "/col_graphs",
+        "/layers",
+        "/row_attrs",
+        "/row_graphs"
+      ],
+      "types": {
+        "float32": 1,
+        "vlen string": 6
+      },
+      "filters": [
+        "deflate"
+      ],
+      "rows": 25,
+      "columns": 40,
+      "matrix_type": "float32",
+      "row_attributes": [
+        "Gene"
+      ],
+      "column_attributes": [
+        "CellID",
+        "Tissue"
+      ],
+      "global_attributes": [
+        "CreationDate",
+        "LOOM_SPEC_VERSION",
+        "title"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.hdf5",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

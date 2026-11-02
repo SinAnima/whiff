@@ -1,0 +1,120 @@
+---
+source: src/formats/science/textfmt.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy-antenna.s2p",
+    "stem": "buoy-antenna",
+    "extension": "s2p"
+  },
+  "identification": {
+    "format": "touchstone",
+    "name": "Touchstone network data",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "science.tooltext"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 303
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 303,
+    "entropy": 3.727,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 303,
+      "chars": 303,
+      "words": 66,
+      "lines": 8,
+      "max_line_length": 53,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "1ed465129a9b65e6b1118ff7b489891114fc16113bdc0bbb877ef6dff8a943e4",
+    "blake3": "0631037d4d13d3df91000e26bf90cff8eff2fec05fdd406ef619ea2d728575c1"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "touchstone": {
+      "ports": 2,
+      "options": "GHz S RI R 50.0",
+      "frequency_points": 5,
+      "frequency_min": 1.0,
+      "frequency_max": 3.0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.tooltext",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

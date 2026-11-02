@@ -127,7 +127,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1008 formats** in total: tier 1 = 139, tier 2 = 122, tier 3 = 747.
-* Formats with an extractor in this build: **496** of 1008.
+* Formats with an extractor in this build: **528** of 1008.
 * Formats by family status: crate = 183, mixed = 365, impl = 460.
 * Formats by target stage: S1 = 170, S1/S6 = 101, S2 = 91, S3 = 48, S3/S8 = 1, S4 = 68, S5 = 66, S6 = 90, S6/S8 = 17, S7 = 139, S8 = 217.
 * By feature: `common` = 818, `cad` = 45, `forensics` = 38, `science` = 36, `geo` = 34, `data` = 20, `games` = 17.
@@ -261,10 +261,10 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 120 | PCAP | `pcap` `cap` `dmp` | application/vnd.tcpdump.pcap | 1 | `forensic` | `forensics` | `forensic.capture` | impl | S6 | — |
 | 121 | Windows shortcut | `lnk` | application/x-ms-shortcut | 1 | `forensic` | `forensics` | `forensic.shell` | impl | S6 | — |
 | 122 | Apache Parquet | `parquet` `pq` | application/vnd.apache.parquet | 1 | `columnar` | `data` | `columnar.parquet` | impl: Parquet footer | S7 | — |
-| 123 | HDF5 | `h5` `hdf5` `he5` | application/x-hdf5 | 1 | `sci` | `science` | — | hdf5-reader | S7 | — |
-| 124 | MATLAB MAT | `mat` | application/x-matlab-data | 1 | `sci` | `science` | — | hdf5-reader | S7 | v5 header text, v7.3 -&gt; HDF5 |
-| 125 | NumPy NPY / NPZ | `npy` `npz` | application/x-npy | 1 | `sci` | `science` | — | hdf5-reader | S7 | — |
-| 126 | DICOM | `dcm` `dicom` `(no` `ext)` | application/dicom | 1 | `medical` | `science` | — | dicom-object, nifti | S7 | — |
+| 123 | HDF5 | `h5` `hdf5` `he5` | application/x-hdf5 | 1 | `sci` | `science` | `science.hdf5` | hdf5-reader | S7 | — |
+| 124 | MATLAB MAT | `mat` | application/x-matlab-data | 1 | `sci` | `science` | `science.hdf5` | hdf5-reader | S7 | v5 header text, v7.3 -&gt; HDF5 |
+| 125 | NumPy NPY / NPZ | `npy` `npz` | application/x-npy | 1 | `sci` | `science` | `science.arrays` | hdf5-reader | S7 | — |
+| 126 | DICOM | `dcm` `dicom` `(no` `ext)` | application/dicom | 1 | `medical` | `science` | `medical.dicom` | dicom-object, nifti | S7 | — |
 | 127 | GeoJSON | `geojson` | application/geo+json | 1 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
 | 128 | KML / KMZ | `kml` `kmz` | application/vnd.google-earth.kml+xml | 1 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
 | 129 | GPX | `gpx` | application/gpx+xml | 1 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
@@ -383,9 +383,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 242 | PCAPNG | `pcapng` | application/x-pcapng | 2 | `forensic` | `forensics` | `forensic.capture` | impl | S6/S8 | — |
 | 243 | macOS app bundle Info.plist | `plist` | — | 2 | `apple` | `common` | `apple.plist` | plist | S6 | — |
 | 244 | Apache Arrow IPC / Feather | `arrow` `feather` `ipc` `arrows` | application/vnd.apache.arrow.file | 2 | `columnar` | `data` | `columnar.arrow` | impl: Parquet footer | S7 | — |
-| 245 | NetCDF (3 / 4) | `nc` `nc4` `cdf` | application/x-netcdf | 2 | `sci` | `science` | — | hdf5-reader | S7 | NetCDF4 = HDF5 + CF |
-| 246 | ASDF (Advanced Scientific Data Format) | `asdf` | application/asdf | 2 | `sci` | `science` | — | hdf5-reader | S7 | ASDF / YAML versions, software, tags, tree keys, binary blocks (count, compression) |
-| 247 | AnnData (h5ad) | `h5ad` | — | 2 | `sci` | `science` | — | hdf5-reader | S7 | obs / var counts, layers, obsm / uns keys (HDF5 layout) |
+| 245 | NetCDF (3 / 4) | `nc` `nc4` `cdf` | application/x-netcdf | 2 | `sci` | `science` | `science.netcdf` | hdf5-reader | S7 | NetCDF4 = HDF5 + CF |
+| 246 | ASDF (Advanced Scientific Data Format) | `asdf` | application/asdf | 2 | `sci` | `science` | `science.asdf` | hdf5-reader | S7 | ASDF / YAML versions, software, tags, tree keys, binary blocks (count, compression) |
+| 247 | AnnData (h5ad) | `h5ad` | — | 2 | `sci` | `science` | `science.hdf5` | hdf5-reader | S7 | obs / var counts, layers, obsm / uns keys (HDF5 layout) |
 | 248 | ESRI Shapefile | `shp` `shx` `dbf` `prj` `cpg` | application/vnd.shp | 2 | `geo` | `geo` | — | geojson, shapefile | S7 | sidecar files grouped |
 | 249 | GeoTIFF / COG | `tif` `tiff` | image/tiff; application=geotiff | 2 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
 | 250 | GeoPackage | `gpkg` | application/geopackage+sqlite3 | 2 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
@@ -1003,34 +1003,34 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 862 | Keras / TensorFlow SavedModel / TFLite | `keras` `h5` `pb` `tflite` | — | 3 | `columnar` | `data` | `columnar.tensorflow` | impl: Parquet footer | S7 | -&gt; sci (HDF5) / protobuf / flatbuffer |
 | 863 | Core ML / MLX / NumPy-weights | `mlmodel` `mlpackage` `npz` | — | 3 | `columnar` | `data` | `columnar.coreml` | impl: Parquet footer | S7 | — |
 | 864 | LanceDB / Chroma vector stores | `lance` `sqlite3` | — | 3 | `columnar` | `data` | `columnar.store` | impl: Parquet footer | S7 | collections, embedding dims |
-| 865 | FITS | `fits` `fit` `fts` | application/fits | 3 | `sci` | `science` | — | hdf5-reader | S7 | — |
-| 866 | Zarr | `zarr` `.zarray` `.zattrs` `zarr.json` | — | 3 | `sci` | `science` | — | hdf5-reader | S7 | — |
-| 867 | GRIB 1/2 | `grb` `grib` `grb2` `grib2` | application/x-grib | 3 | `sci` | `science` | — | hdf5-reader | S7 | — |
+| 865 | FITS | `fits` `fit` `fts` | application/fits | 3 | `sci` | `science` | `science.fits` | hdf5-reader | S7 | — |
+| 866 | Zarr | `zarr` `.zarray` `.zattrs` `zarr.json` | — | 3 | `sci` | `science` | `science.zarr` | hdf5-reader | S7 | — |
+| 867 | GRIB 1/2 | `grb` `grib` `grb2` `grib2` | application/x-grib | 3 | `sci` | `science` | `science.fields` | hdf5-reader | S7 | — |
 | 868 | HDF4 / HDF-EOS | `hdf` `hdf4` `he4` | — | 3 | `sci` | `science` | — | hdf5-reader | S8 | header |
-| 869 | SPSS data | `sav` `zsav` `por` | application/x-spss-sav | 3 | `sci` | `science` | — | hdf5-reader | S7 | — |
-| 870 | Stata data | `dta` | application/x-stata-dta | 3 | `sci` | `science` | — | hdf5-reader | S7 | — |
-| 871 | SAS dataset / transport | `sas7bdat` `xpt` | application/x-sas | 3 | `sci` | `science` | — | hdf5-reader | S7 | — |
-| 872 | R data | `rds` `rdata` `rda` | — | 3 | `sci` | `science` | — | hdf5-reader | S7 | serialization version, object type |
+| 869 | SPSS data | `sav` `zsav` `por` | application/x-spss-sav | 3 | `sci` | `science` | `science.stats` | hdf5-reader | S7 | — |
+| 870 | Stata data | `dta` | application/x-stata-dta | 3 | `sci` | `science` | `science.stats` | hdf5-reader | S7 | — |
+| 871 | SAS dataset / transport | `sas7bdat` `xpt` | application/x-sas | 3 | `sci` | `science` | `science.stats` | hdf5-reader | S7 | — |
+| 872 | R data | `rds` `rdata` `rda` | — | 3 | `sci` | `science` | `science.stats` | hdf5-reader | S7 | serialization version, object type |
 | 873 | Excel-free stats: JMP / Minitab | `jmp` `mtw` | — | 3 | `sci` | `science` | — | hdf5-reader | S7 | — |
-| 874 | ROOT (CERN) | `root` | — | 3 | `sci` | `science` | — | hdf5-reader | S7 | keys/trees |
-| 875 | PDB / mmCIF / MOL / SDF chemistry | `pdb` `cif` `mmcif` `mol` `sdf` `mol2` `xyz` | chemical/x-pdb | 3 | `sci` | `science` | — | hdf5-reader | S7 | title, compound, atom counts, formula |
-| 876 | FASTA / FASTQ / SAM / BAM / VCF / BED / GFF genomics | `fa` `fasta` `fq` `fastq` `sam` `bam` `cram` `vcf` `bcf` `bed` `gff` `gtf` | text/x-fasta | 3 | `sci` | `science` | — | hdf5-reader | S7 | sequence count, lengths, read count, reference, samples |
-| 877 | Loom | `loom` | — | 3 | `sci` | `science` | — | hdf5-reader | S7 | matrix shape, row / column attributes, layers (HDF5 layout) |
-| 878 | mzML / mzXML mass spectrometry | `mzml` `mzxml` | — | 3 | `sci` | `science` | — | hdf5-reader | S7 | instrument, spectra count |
-| 879 | EDF / BDF / BrainVision (EEG) | `edf` `bdf` `vhdr` | — | 3 | `sci` | `science` | — | hdf5-reader | S7 | channels, sampling rate, duration (patient REDACTED) |
-| 880 | Gaussian / ORCA / CP2K outputs | `log` `out` | — | 3 | `sci` | `science` | — | hdf5-reader | S7 | — |
-| 881 | SPICE / Touchstone / LTspice | `cir` `sp` `s2p` `asc` | — | 3 | `sci` | `science` | — | hdf5-reader | S7 | — |
-| 882 | Origin / Igor / LabVIEW / TDMS | `opj` `ibw` `pxp` `tdms` `vi` | — | 3 | `sci` | `science` | — | hdf5-reader | S7 | — |
-| 883 | ENVI / ERDAS / PCIDSK rasters | `hdr` `img` `pix` | — | 3 | `sci` | `science` | — | hdf5-reader | S7 | -&gt; geo |
+| 874 | ROOT (CERN) | `root` | — | 3 | `sci` | `science` | `science.fields` | hdf5-reader | S7 | keys/trees |
+| 875 | PDB / mmCIF / MOL / SDF chemistry | `pdb` `cif` `mmcif` `mol` `sdf` `mol2` `xyz` | chemical/x-pdb | 3 | `sci` | `science` | `science.chem` | hdf5-reader | S7 | title, compound, atom counts, formula |
+| 876 | FASTA / FASTQ / SAM / BAM / VCF / BED / GFF genomics | `fa` `fasta` `fq` `fastq` `sam` `bam` `cram` `vcf` `bcf` `bed` `gff` `gtf` | text/x-fasta | 3 | `sci` | `science` | `science.genomics` | hdf5-reader | S7 | sequence count, lengths, read count, reference, samples |
+| 877 | Loom | `loom` | — | 3 | `sci` | `science` | `science.hdf5` | hdf5-reader | S7 | matrix shape, row / column attributes, layers (HDF5 layout) |
+| 878 | mzML / mzXML mass spectrometry | `mzml` `mzxml` | — | 3 | `sci` | `science` | `science.instruments` | hdf5-reader | S7 | instrument, spectra count |
+| 879 | EDF / BDF / BrainVision (EEG) | `edf` `bdf` `vhdr` | — | 3 | `sci` | `science` | `science.instruments` | hdf5-reader | S7 | channels, sampling rate, duration (patient REDACTED) |
+| 880 | Gaussian / ORCA / CP2K outputs | `log` `out` | — | 3 | `sci` | `science` | `science.tooltext` | hdf5-reader | S7 | — |
+| 881 | SPICE / Touchstone / LTspice | `cir` `sp` `s2p` `asc` | — | 3 | `sci` | `science` | `science.tooltext` | hdf5-reader | S7 | — |
+| 882 | Origin / Igor / LabVIEW / TDMS | `opj` `ibw` `pxp` `tdms` `vi` | — | 3 | `sci` | `science` | `science.instruments` | hdf5-reader | S7 | — |
+| 883 | ENVI / ERDAS / PCIDSK rasters | `hdr` `img` `pix` | — | 3 | `sci` | `science` | `science.tooltext` | hdf5-reader | S7 | -&gt; geo |
 | 884 | Wolfram / Maple / Mathcad files | `mx` `mw` `xmcd` | — | 3 | `sci` | `science` | — | hdf5-reader | S7 | — |
-| 885 | Bruker / Varian NMR / microscopy (CZI, ND2, LIF, OME-TIFF) | `czi` `nd2` `lif` `ome.tif` | — | 3 | `sci` | `science` | — | hdf5-reader | S7 | instrument, channels, dims |
-| 886 | VCD waveform | `vcd` `fst` | — | 3 | `sci` | `science` | — | hdf5-reader | S7 | timescale, signals, end time, scope tree |
-| 887 | Sigrok session | `sr` | — | 3 | `sci` | `science` | — | hdf5-reader | S7 | channels, samplerate |
-| 888 | IBIS / Liberty / LEF/DEF | `ibs` `lib` `lef` `def` | — | 3 | `sci` | `science` | — | hdf5-reader | S7 | component/cell names |
-| 889 | NIfTI-1 / NIfTI-2 | `nii` `nii.gz` | application/x-nifti | 3 | `medical` | `science` | — | dicom-object, nifti | S7 | — |
-| 890 | Analyze 7.5 | `hdr` `img` | — | 3 | `medical` | `science` | — | dicom-object, nifti | S7 | — |
-| 891 | MINC / NRRD / MetaImage | `mnc` `nrrd` `nhdr` `mha` `mhd` | — | 3 | `medical` | `science` | — | dicom-object, nifti | S7 | — |
-| 892 | HL7 v2 message / FHIR JSON | `hl7` `fhir.json` | — | 3 | `medical` | `science` | — | dicom-object, nifti | S7 | message type, segments (PHI REDACTED) |
+| 885 | Bruker / Varian NMR / microscopy (CZI, ND2, LIF, OME-TIFF) | `czi` `nd2` `lif` `ome.tif` | — | 3 | `sci` | `science` | `science.ome` | hdf5-reader | S7 | instrument, channels, dims |
+| 886 | VCD waveform | `vcd` `fst` | — | 3 | `sci` | `science` | `science.instruments` | hdf5-reader | S7 | timescale, signals, end time, scope tree |
+| 887 | Sigrok session | `sr` | — | 3 | `sci` | `science` | `science.instruments` | hdf5-reader | S7 | channels, samplerate |
+| 888 | IBIS / Liberty / LEF/DEF | `ibs` `lib` `lef` `def` | — | 3 | `sci` | `science` | `science.tooltext` | hdf5-reader | S7 | component/cell names |
+| 889 | NIfTI-1 / NIfTI-2 | `nii` `nii.gz` | application/x-nifti | 3 | `medical` | `science` | `medical.volumes` | dicom-object, nifti | S7 | — |
+| 890 | Analyze 7.5 | `hdr` `img` | — | 3 | `medical` | `science` | `medical.volumes` | dicom-object, nifti | S7 | — |
+| 891 | MINC / NRRD / MetaImage | `mnc` `nrrd` `nhdr` `mha` `mhd` | — | 3 | `medical` | `science` | `medical.volumes` | dicom-object, nifti | S7 | — |
+| 892 | HL7 v2 message / FHIR JSON | `hl7` `fhir.json` | — | 3 | `medical` | `science` | `medical.clinical` | dicom-object, nifti | S7 | message type, segments (PHI REDACTED) |
 | 893 | SCP-ECG / aECG | `scp` | — | 3 | `medical` | `science` | — | dicom-object, nifti | S7 | — |
 | 894 | FlatGeobuf | `fgb` | application/vnd.flatgeobuf | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
 | 895 | GeoParquet | `parquet` | — | 3 | `geo` | `geo` | `columnar.parquet` | geojson, shapefile | S7 | — |

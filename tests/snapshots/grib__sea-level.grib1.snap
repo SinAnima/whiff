@@ -1,0 +1,126 @@
+---
+source: src/formats/science/grib.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "sea-level.grib1",
+    "stem": "sea-level",
+    "extension": "grib1"
+  },
+  "identification": {
+    "format": "grib",
+    "name": "GRIB 1/2",
+    "mime": "application/x-grib",
+    "family": "sci",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "science.fields"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 108
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T06:00:00Z",
+        "source": "grib.reference_time",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T06:00:00Z",
+    "latest": "2025-09-01T06:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 108,
+    "entropy": 3.737,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "65bdac1b0e342687d7769d002ea5754d1974b1d4582f1b5cab0443da2aef33e6",
+    "blake3": "cd01b0842c6c5e706ef62b6fa74cb62fa29a87d25d2888a931773a7c57c17300"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "grib": {
+      "messages": 1,
+      "editions": [
+        1
+      ],
+      "centres": [
+        "ECMWF"
+      ],
+      "parameters": {
+        "2 metre temperature": 1
+      },
+      "first_reference_time": "2025-09-01T06:00:00Z",
+      "last_reference_time": "2025-09-01T06:00:00Z"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.fields",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

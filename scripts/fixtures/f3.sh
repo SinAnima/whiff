@@ -10,7 +10,7 @@
 # file back with `FileReaderV2` and prints the rows, row groups and column
 # names as JSON lines (the oracle for scripts/fixtures/columnar_oracle.py).
 #
-#     scripts/fixtures/f3.sh
+#     scripts/fixtures/f3.sh            (F3_JOBS=1 if the build is still killed)
 
 set -euo pipefail
 root=$(cd "$(dirname "$0")/../.." && pwd)
@@ -75,9 +75,15 @@ fn main() {
 EOF
 
 mkdir -p "$root/tests/fixtures/f3"
-podman run --rm -v "$src:/f3" -v "$root/tests/fixtures/f3:/out" -w /f3 docker.io/library/rust:1.85-bookworm sh -euc '
+# A debug build without debug info, two jobs at a time: F3's dependencies
+# (Wasmtime, Arrow, Vortex) exhaust an 8 GiB podman VM when built in
+# parallel with optimisation (rustc is killed). The build output stays in
+# $src/target, so a rerun resumes.
+podman run --rm -v "$src:/f3" -v "$root/tests/fixtures/f3:/out" -w /f3 \
+    -e CARGO_BUILD_JOBS="${F3_JOBS:-2}" -e CARGO_PROFILE_DEV_DEBUG=0 \
+    docker.io/library/rust:1.85-bookworm sh -euc '
 apt-get update -qq >/dev/null && apt-get install -y -qq clang cmake protobuf-compiler >/dev/null
-cargo run -q --release -p fff-poc --example whiff_fixtures -- /out
+cargo run -q -p fff-poc --example whiff_fixtures -- /out
 ' | tee "$root/target/f3src/expected.jsonl"
 
 # The reference writer's files replace the layout-built stand-in.

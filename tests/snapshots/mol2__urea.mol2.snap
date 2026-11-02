@@ -1,0 +1,120 @@
+---
+source: src/formats/science/chem.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "urea.mol2",
+    "stem": "urea",
+    "extension": "mol2"
+  },
+  "identification": {
+    "format": "mol2",
+    "name": "Tripos MOL2",
+    "mime": "chemical/x-mol2",
+    "family": "sci",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "science.chem"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 460
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 460,
+    "entropy": 3.178,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 460,
+      "chars": 460,
+      "words": 59,
+      "lines": 15,
+      "max_line_length": 76,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "47e79168101ba8185bd97aef19280a5af81f1120f3caa864e58077263f0525ff",
+    "blake3": "f696bf61e4763914589fbe63ded58a335e8e970b1e4cb6a8b32dd8c960eed0f5"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "mol2": {
+      "molecule_type": "SMALL",
+      "molecules": 1,
+      "molecule_list": [
+        "urea (4 atoms, 3 bonds)"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.chem",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,134 @@
+---
+source: src/formats/science/genomics.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "genes.gff3",
+    "stem": "genes",
+    "extension": "gff3"
+  },
+  "identification": {
+    "format": "gff",
+    "name": "GFF / GTF features",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "science.genomics"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 365
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 365,
+    "entropy": 4.849,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 365,
+      "chars": 365,
+      "words": 60,
+      "lines": 8,
+      "max_line_length": 93,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "e0c5235a147f43f4bb44f17d60d850b0573fba83e0d1061eb7cee0e954f2dae1",
+    "blake3": "9a51649bd59110a0b30b9d50f333c6166f50a961e982eeec1a9dc7a10d82bd94"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "gff": {
+      "gff_version": "3",
+      "records": 6,
+      "sequence_regions": 1,
+      "seqids": [
+        "kelp_chr1"
+      ],
+      "feature_types": {
+        "exon": 2,
+        "gene": 2,
+        "mRNA": 2
+      },
+      "sources": [
+        "craft"
+      ],
+      "attribute_keys": [
+        "ID",
+        "Name",
+        "Parent"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.genomics",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

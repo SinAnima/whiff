@@ -1,0 +1,128 @@
+---
+source: src/formats/science/instruments.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy-sensors.bdf",
+    "stem": "buoy-sensors",
+    "extension": "bdf"
+  },
+  "identification": {
+    "format": "bdf_eeg",
+    "name": "BioSemi BDF",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.92,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "science.instruments"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2764
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "captured",
+        "value": "2025-09-01T06:00:00",
+        "source": "edf.startdate",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2764,
+    "entropy": 3.5,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 10.0
+    }
+  },
+  "integrity": {
+    "sha256": "090d23b0fab90a4c64cf783c41d7a2e5ec7c08f423ffee695b254a3e40723275",
+    "blake3": "c08c1420eb6969020c08f46b75c4b6c047b9a5d645bf86f29801bf9fa73f8355"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "bdf_eeg": {
+      "type": "BDF+ (C)",
+      "patient_field_present": true,
+      "recording": "Startdate 01-SEP-2025 X X buoy_logger Saltmere buoy B7",
+      "start": "2025-09-01T06:00:00",
+      "records": 10,
+      "record_duration_s": 1.0,
+      "duration_s": 10.0,
+      "signal_count": 3,
+      "signals": {
+        "tilt": "10 Hz [deg]",
+        "pressure": "10 Hz [hPa]",
+        "BDF Annotations": "38 Hz"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.instruments",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

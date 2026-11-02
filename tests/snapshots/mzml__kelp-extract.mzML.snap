@@ -1,0 +1,152 @@
+---
+source: src/formats/science/instruments.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "kelp-extract.mzML",
+    "stem": "kelp-extract",
+    "extension": "mzML"
+  },
+  "identification": {
+    "format": "mzml",
+    "name": "mzML mass spectrometry",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "mzml",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "science.instruments"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2305
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "captured",
+        "value": "2025-09-01T06:00:00+00:00",
+        "source": "mzml.run.startTimeStamp",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T06:00:00Z",
+    "latest": "2025-09-01T06:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2305,
+    "entropy": 4.99,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 2305,
+      "chars": 2305,
+      "words": 136,
+      "lines": 8,
+      "max_line_length": 1450,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "abed0429f191a47a6cb622fefad69478026b896524b5a61d5c952ee065cb1e1f",
+    "blake3": "591fc374dcc1d018f62d6f9cef3c19539f0e2aa17f30c583ff7f2689b7ece533"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "mzml": {
+      "mzml_version": "1.1.0",
+      "run": "kelp_run",
+      "start_time": "2025-09-01T06:00:00Z",
+      "spectra": 6,
+      "instrument": [
+        "LTQ Orbitrap"
+      ],
+      "file_content": [
+        "MS1 spectrum"
+      ],
+      "software": [
+        "craft 1.0"
+      ],
+      "ms_levels": {
+        "MS1": 3,
+        "MS2": 3
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.instruments",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

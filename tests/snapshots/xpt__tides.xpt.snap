@@ -1,0 +1,120 @@
+---
+source: src/formats/science/stats.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.xpt",
+    "stem": "tides",
+    "extension": "xpt"
+  },
+  "identification": {
+    "format": "xpt",
+    "name": "SAS dataset / transport",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "science.stats"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1280
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1280,
+    "entropy": 3.654,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "cb17b213c01ba493573d8d47b5127bfc37a1fa89e282f4a6a538c23d94edde4c",
+    "blake3": "fb6548316f542fe058a1e6379b9edd7aa68eb987bf4f128b323187db3557c604"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "xpt": {
+      "sas_version": "6.06",
+      "host": "bsd4.2",
+      "created": "02NOV26:04:59:33",
+      "xport_version": 8,
+      "members": [
+        {
+          "name": "TIDES",
+          "label": "Saltmere tides",
+          "variable_count": 3,
+          "variables": {
+            "gauge": "Gauge identifier",
+            "height_m": "Tide height (m)",
+            "ok": "Reading accepted"
+          }
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.stats",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

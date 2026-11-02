@@ -120,7 +120,8 @@ Untrusted input is bounded: reads, decompression and time are budgeted per file,
 | `cli` | yes | the `whiff` binary |
 | `forensics` | no | disk images: partition tables, file systems, VM disks, evidence files, firmware; forensic artefacts: packet captures, event logs, registry hives, shortcuts, jump lists, Prefetch, dumps, `$MFT`, login records, journals, IDS alerts and rules, HAR, crash reports, Zeek logs (includes `common`) |
 | `data` | no | columnar data and models: Parquet, GeoParquet, Arrow, Feather, ORC, Lance, Vortex, F3, Delta Lake, Iceberg, TFRecord, R fst / qs, safetensors, GGUF, ONNX, PyTorch, Keras, TensorFlow Lite, SavedModel, Core ML (includes `common`; unreleased) |
-| `geo`, `science`, `cad`, `games` | no | specialist collections (GIS, scientific and medical, CAD and 3D, games); reserved, empty in 0.6 |
+| `science` | no | scientific and medical files: HDF5 (NetCDF-4, AnnData, Loom, MATLAB 7.3), NetCDF, FITS, ASDF, Zarr, GRIB, ROOT, NumPy, MATLAB, SPSS, Stata, SAS, R data, genomics (FASTA, FASTQ, SAM / BAM / CRAM, VCF / BCF, BED, GFF), chemistry (PDB, mmCIF, MOL / SDF), instruments (mzML, EDF, TDMS, VCD, OME-TIFF), simulation and EDA text formats, DICOM, NIfTI, NRRD, HL7, FHIR (includes `common`; unreleased) |
+| `geo`, `cad`, `games` | no | specialist collections (GIS, CAD and 3D, games); reserved, empty in 0.6 |
 | `full` | no | all collections |
 
 The minimum supported Rust version is 1.89.
