@@ -43,10 +43,10 @@ expression: report
   },
   "content": {
     "extent": {
-      "west": 4.094712350788786,
-      "south": 52.34899999395049,
-      "east": 4.133297704627991,
-      "north": 52.36099999394775,
+      "west": 4.0947124,
+      "south": 52.349,
+      "east": 4.1332977,
+      "north": 52.361,
       "source": "fgb.envelope"
     }
   },

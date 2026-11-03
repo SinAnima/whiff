@@ -43,10 +43,10 @@ expression: report
   },
   "content": {
     "extent": {
-      "west": 4.095000000000001,
-      "south": 52.349000000000004,
+      "west": 4.095,
+      "south": 52.349,
       "east": 4.133,
-      "north": 52.361000000000004,
+      "north": 52.361,
       "source": "osm.nodes"
     }
   },

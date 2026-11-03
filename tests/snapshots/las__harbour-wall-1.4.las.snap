@@ -65,10 +65,10 @@ expression: report
   },
   "content": {
     "extent": {
-      "west": 4.394795794005754,
-      "south": 52.351039002113126,
-      "east": 4.3959702619236944,
-      "north": 52.351321273107196,
+      "west": 4.3947958,
+      "south": 52.351039,
+      "east": 4.3959703,
+      "north": 52.3513213,
       "source": "las.header"
     }
   },

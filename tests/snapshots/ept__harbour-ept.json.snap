@@ -64,10 +64,10 @@ expression: report
   },
   "content": {
     "extent": {
-      "west": 4.39479137776536,
-      "south": 52.351038076572586,
-      "east": 4.395974056614879,
-      "north": 52.35132157657242,
+      "west": 4.3947914,
+      "south": 52.3510381,
+      "east": 4.3959741,
+      "north": 52.3513216,
       "source": "ept.bounds"
     }
   },

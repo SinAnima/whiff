@@ -43,10 +43,10 @@ expression: report
   },
   "content": {
     "extent": {
-      "west": 4.129847030632031,
-      "south": 52.346884647136136,
-      "east": 4.142154614387686,
-      "north": 52.353115334820735,
+      "west": 4.129847,
+      "south": 52.3468846,
+      "east": 4.1421546,
+      "north": 52.3531153,
       "source": "gdbtable.extent"
     }
   },

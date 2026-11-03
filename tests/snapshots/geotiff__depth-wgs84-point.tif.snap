@@ -60,7 +60,7 @@ expression: report
     "extent": {
       "west": 4.09,
       "south": 52.335,
-      "east": 4.1499999999999995,
+      "east": 4.15,
       "north": 52.365,
       "source": "geotiff"
     }

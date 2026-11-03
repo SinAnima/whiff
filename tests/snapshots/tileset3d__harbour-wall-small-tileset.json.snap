@@ -63,10 +63,10 @@ expression: report
   },
   "content": {
     "extent": {
-      "west": 4.394771517062337,
-      "south": 52.35096819982082,
-      "east": 4.395994560873234,
-      "north": 52.351391667775765,
+      "west": 4.3947715,
+      "south": 52.3509682,
+      "east": 4.3959946,
+      "north": 52.3513917,
       "source": "tileset.box"
     }
   },

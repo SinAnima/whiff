@@ -65,10 +65,10 @@ expression: report
   "content": {
     "title": "saltmere_utm",
     "extent": {
-      "west": 4.094662244292654,
-      "south": 52.346884647136136,
-      "east": 4.14234938061106,
-      "north": 52.36099999394775,
+      "west": 4.0946622,
+      "south": 52.3468846,
+      "east": 4.1423494,
+      "north": 52.361,
       "source": "geojson"
     }
   },

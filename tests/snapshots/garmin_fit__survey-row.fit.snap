@@ -69,10 +69,10 @@ expression: report
   },
   "content": {
     "extent": {
-      "west": 4.095000000670552,
-      "south": 52.34959996305406,
-      "east": 4.131100019440055,
-      "north": 52.36100002191961,
+      "west": 4.095,
+      "south": 52.3496,
+      "east": 4.1311,
+      "north": 52.361,
       "source": "fit.record"
     }
   },

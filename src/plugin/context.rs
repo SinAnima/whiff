@@ -520,8 +520,9 @@ impl ContentWriter<'_> {
         }
         self
     }
-    /// Area covered, as a WGS84 box (west, south, east, north in degrees).
-    /// Ignored unless the box is finite and within the globe.
+    /// Area covered, as a WGS84 box (west, south, east, north in degrees),
+    /// rounded to 1e-7 degrees. Ignored unless the box is finite and within
+    /// the globe.
     pub fn extent(&mut self, west: f64, south: f64, east: f64, north: f64) -> &mut Self {
         let lon = -180.0..=180.0;
         let lat = -90.0..=90.0;
@@ -531,6 +532,10 @@ impl ContentWriter<'_> {
             && lat.contains(&north)
             && south <= north;
         if self.c.extent.is_none() && valid {
+            // To 1e-7 degrees (about 1 cm): reprojected values differ in
+            // their last bits between platforms' maths libraries.
+            let r = |v: f64| (v * 1e7).round() / 1e7;
+            let (west, south, east, north) = (r(west), r(south), r(east), r(north));
             self.c.extent = Some(Extent { west, south, east, north, source: self.prov.source.clone() });
             self.prov.record("content.extent");
         }

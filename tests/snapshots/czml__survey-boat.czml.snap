@@ -65,7 +65,7 @@ expression: report
     "title": "Survey boat",
     "extent": {
       "west": 4.095,
-      "south": 52.349599999999995,
+      "south": 52.3496,
       "east": 4.1311,
       "north": 52.361,
       "source": "czml"
