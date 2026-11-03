@@ -1,0 +1,189 @@
+---
+source: src/formats/geo/raster.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "depth-cog-overviews.tif",
+    "stem": "depth-cog-overviews",
+    "extension": "tif"
+  },
+  "identification": {
+    "format": "geotiff",
+    "name": "GeoTIFF / COG",
+    "mime": "image/tiff; application=geotiff",
+    "family": "geo",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "geotiff",
+        "confidence": 0.97
+      },
+      {
+        "format": "tiff",
+        "confidence": 0.81
+      }
+    ],
+    "extractor": "geo.raster"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3931
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 3931,
+    "entropy": 7.373,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48,
+      "bit_depth": 16
+    }
+  },
+  "integrity": {
+    "sha256": "aed7bf1317018e7786588fe2fb19e57aafb07af8cb9c9d357e408df589304b99",
+    "blake3": "f95afc78da4aecea66c7c6a7a1ef54184123c6cdd17e041799d52f696fbbd805"
+  },
+  "content": {
+    "extent": {
+      "west": 4.394734789840099,
+      "south": 52.34897484700664,
+      "east": 4.418562646039172,
+      "north": 52.36003969064253,
+      "source": "geotiff"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "geotiff": {
+      "bigtiff": false,
+      "byte_order": "little-endian",
+      "width": 64,
+      "height": 48,
+      "bands": 1,
+      "data_type": "int16",
+      "compression": "lzw",
+      "interleave": "pixel",
+      "tiled": true,
+      "block_size": [
+        32,
+        32
+      ],
+      "overviews": [
+        "32x24",
+        "16x12"
+      ],
+      "geokey_version": "1.1.0",
+      "geokeys": {
+        "GTModelType": 1,
+        "GTRasterType": 1,
+        "GTCitation": "WGS 84 / UTM zone 31N",
+        "GeogCitation": "WGS 84",
+        "GeogAngularUnits": 9102,
+        "ProjectedCSType": 32631,
+        "ProjLinearUnits": 9001
+      },
+      "model_type": "projected",
+      "raster_type": "PixelIsArea",
+      "geotransform": [
+        595000.0,
+        25.0,
+        0.0,
+        5802000.0,
+        0.0,
+        -25.0
+      ],
+      "bbox": [
+        595000.0,
+        5800800.0,
+        596600.0,
+        5802000.0
+      ],
+      "crs": {
+        "name": "WGS 84 / UTM zone 31N",
+        "epsg": 32631
+      },
+      "pixel_size": [
+        25.0,
+        25.0
+      ],
+      "nodata": "-9999",
+      "cog": {
+        "LAYOUT": "IFDS_BEFORE_DATA",
+        "BLOCK_ORDER": "ROW_MAJOR",
+        "BLOCK_LEADER": "SIZE_AS_UINT4",
+        "BLOCK_TRAILER": "LAST_4_BYTES_REPEATED",
+        "KNOWN_INCOMPATIBLE_EDITION": "NO",
+        " \u0000\u0012\u0000\u0000\u0001\u0003\u0000\u0001\u0000\u0000\u0000@\u0000\u0000\u0000\u0001\u0001\u0003\u0000\u0001\u0000\u0000\u00000\u0000\u0000\u0000\u0002\u0001\u0003\u0000\u0001\u0000\u0000\u0000\u0010\u0000\u0000\u0000…": "\u0001\u0003\u0000\u0001\u0000\u0000\u0000\u0001\u0000\u0000\u0000B\u0001\u0003\u0000\u0001\u0000\u0000\u0000 \u0000\u0000\u0000C\u0001\u0003\u0000\u0001\u0000",
+        "ifds_before_data": true,
+        "conforms": true
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.raster",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

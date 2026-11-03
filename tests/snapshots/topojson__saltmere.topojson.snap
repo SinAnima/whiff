@@ -1,0 +1,147 @@
+---
+source: src/formats/geo/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere.topojson",
+    "stem": "saltmere",
+    "extension": "topojson"
+  },
+  "identification": {
+    "format": "topojson",
+    "name": "TopoJSON",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "topojson",
+        "confidence": 0.99
+      },
+      {
+        "format": "json",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1040
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1040,
+    "entropy": 4.939,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1040,
+      "chars": 1040,
+      "words": 9,
+      "lines": 0,
+      "max_line_length": 1040,
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "d84bb2f5cbc5862d983bb4d2382a39edb0f2ff0267ba320a0de08b186703944a",
+    "blake3": "6d7d3ea977ca69e491b9679c9645e577546e1ff884ec87daf5609d6f59c8ef34"
+  },
+  "content": {
+    "extent": {
+      "west": 4.095,
+      "south": 52.347,
+      "east": 4.142,
+      "north": 52.361,
+      "source": "topojson"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "topojson": {
+      "objects": {
+        "data": 6
+      },
+      "geometry_types": {
+        "LineString": 1,
+        "Point": 4,
+        "Polygon": 1
+      },
+      "arcs": 2,
+      "bbox": [
+        4.095,
+        52.347,
+        4.142,
+        52.361
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

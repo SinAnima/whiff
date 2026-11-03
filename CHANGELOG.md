@@ -7,7 +7,7 @@ keep the schema version.
 ## Unreleased
 
 Fonts, columnar data and machine-learning models, scientific and medical
-files (Stage 7, first three parts).
+files, geodata (Stage 7, first four parts).
 
 - **Fonts** (`common`), all in-house (WOFF2 through the existing Brotli
   decoder; no read-fonts / skrifa / allsorts):
@@ -103,6 +103,40 @@ files (Stage 7, first three parts).
   attributes are listed by name, their values withheld unless privacy is
   off; HL7 patient segments and FHIR personal resources are counted,
   never shown.
+- **Geodata** (feature `geo`, which now includes `common`), all in-house
+  (no gdal / geo / shapefile / las / proj crates); every format gives its
+  bounds and CRS where it has them, and the extent in WGS84 (geographic
+  CRSs, Web Mercator and UTM are reprojected in-house):
+  - vector data: GeoJSON (and the 2008 `crs` member), GeoJSON text
+    sequences, TopoJSON, KML and KMZ (linked documents followed), GPX,
+    GML 2 / 3 and CityGML (EPSG axis order for URN and URL references),
+    GeoRSS, Geocaching LOC, OpenStreetMap XML, PBF and change files,
+    shapefiles and their indexes, File Geodatabase tables, FlatGeobuf,
+    MapInfo TAB / MIF, WKT / EWKT, WKB / EWKB, CSV with latitude /
+    longitude or WKT columns, S-57 charts (ISO 8211; object classes,
+    scale, agency, bounds); GeoPackage and MBTiles now have their own
+    format IDs (sniffed from the SQLite application ID) and give their
+    extent;
+  - tracks: Garmin FIT (sessions, records), Garmin TCX, IGC flight logs,
+    NMEA 0183 logs: fixes, distance, elevation and time span; device
+    serial numbers and pilots' names only with privacy off;
+  - rasters: GeoTIFF and Cloud Optimized GeoTIFF (GeoKeys, geotransform,
+    overviews, masks, GDAL no-data and metadata, the COG layout checked
+    as GDAL's validator does), Esri ASCII grids, world files, `.prj`
+    files, DTED; TIFFs with GeoTIFF tags anywhere are redirected to it;
+  - point clouds: LAS 1.0–1.4, LAZ, COPC (the info record), E57 (scans,
+    points, bounds; sensor serial numbers only with privacy off), Entwine
+    `ept.json`;
+  - tiles: PMTiles v3 (header and metadata), Mapbox vector tiles, 3D Tiles
+    tilesets and `b3dm` / `i3dm` / `pnts` / `cmpt` payloads;
+  - map documents: Mapbox / MapLibre styles, OGC SLD, ArcGIS layer files,
+    QGIS projects (`.qgs`, `.qgz`), CZML.
+- **Report:** `content.extent`, the WGS84 box a file covers (additive; the
+  schema stays `whiff/1`).
+- **Reclassified fixtures:** the GeoPackage and MBTiles files formerly
+  under `sqlite`, and the GeoJSON and TopoJSON files formerly under
+  `json`, are now identified as `geopackage`, `mbtiles`, `geojson` and
+  `topojson`.
 - **Plugin API:** `plugin::flatbuf` (FlatBuffers tables without a schema)
   and `plugin::protowire` (protobuf fields without a schema), shared by the
   columnar readers and the `.bfbs` extractor; raw Snappy and LZ4 block
@@ -128,7 +162,12 @@ files (Stage 7, first three parts).
   pydicom, nibabel, pynrrd, fhir.resources; R and haven);
   `science_oracle.py`, `science2_oracle.py` and `science_oracle.R` compare
   the reports with those libraries and with R over generated files and
-  the test data the libraries ship.
+  the test data the libraries ship. `scripts/fixtures/geo.sh` makes the
+  geo fixtures with GDAL / OGR, osmium, laspy, PDAL, pye57, fit-tool,
+  aerofiles, pynmea2, topojson, czml3 and py3dtiles (two S-57 cells are
+  public-domain NOAA charts); `geo_oracle.py` compares the reports with
+  OGR, gdalinfo and GDAL's COG validator, osmium, laspy, pye57,
+  fit-tool, aerofiles and shapely over a generated corpus.
 
 ## 0.6.0 — 2026-10-31
 

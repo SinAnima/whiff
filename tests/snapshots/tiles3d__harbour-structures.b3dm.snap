@@ -1,0 +1,115 @@
+---
+source: src/formats/geo/tiles.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-structures.b3dm",
+    "stem": "harbour-structures",
+    "extension": "b3dm"
+  },
+  "identification": {
+    "format": "tiles3d",
+    "name": "OGC 3D Tiles / I3S",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "geo.tiles"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 312
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 312,
+    "entropy": 5.149,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "f6d3665dde4319ddd375822abf2e313103e684bfcba02e5be4872ce4800bd307",
+    "blake3": "2805e449028960ce6c9764140ba2b1464c5e7ab963360a01c7cf7ca07d75ff8b"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "tiles3d": {
+      "tile_format": "b3dm",
+      "version": 1,
+      "batch_length": 2,
+      "feature_table": [
+        "RTC_CENTER"
+      ],
+      "batch_properties": [
+        "name",
+        "height_m"
+      ],
+      "gltf": "glTF 2 binary, 148 bytes"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.tiles",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

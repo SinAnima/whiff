@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="osmium/saltmere">
+  <node id="1" version="1" timestamp="2025-09-01T06:00:01Z" uid="42" user="harbourmaster" changeset="1" lat="52.361" lon="4.095">
+    <tag k="seamark:type" v="buoy_safe_water"/>
+    <tag k="name" v="Outer Fairway"/>
+  </node>
+  <node id="2" version="1" timestamp="2025-09-01T06:00:02Z" uid="42" user="harbourmaster" changeset="1" lat="52.356" lon="4.1105">
+    <tag k="seamark:type" v="buoy_port"/>
+    <tag k="name" v="Channel Red 1"/>
+  </node>
+  <node id="3" version="1" timestamp="2025-09-01T06:00:03Z" uid="42" user="harbourmaster" changeset="1" lat="52.3575" lon="4.113">
+    <tag k="seamark:type" v="buoy_starboard"/>
+    <tag k="name" v="Channel Green 1"/>
+  </node>
+  <node id="4" version="2" timestamp="2025-09-01T07:00:00Z" uid="42" user="harbourmaster" changeset="1" lat="52.3502" lon="4.124">
+    <tag k="seamark:type" v="buoy_isolated_danger"/>
+    <tag k="name" v="Kelp Bank"/>
+  </node>
+  <node id="11" version="1" timestamp="2025-09-01T06:01:00Z" uid="42" user="harbourmaster" changeset="1" lat="52.361" lon="4.095"/>
+  <node id="12" version="1" timestamp="2025-09-01T06:01:00Z" uid="42" user="harbourmaster" changeset="1" lat="52.3567" lon="4.1118"/>
+  <node id="13" version="1" timestamp="2025-09-01T06:01:00Z" uid="42" user="harbourmaster" changeset="1" lat="52.352" lon="4.126"/>
+  <node id="14" version="1" timestamp="2025-09-01T06:01:00Z" uid="42" user="harbourmaster" changeset="1" lat="52.349" lon="4.133"/>
+  <way id="100" version="1" timestamp="2025-09-01T06:02:00Z" uid="42" user="harbourmaster" changeset="1">
+    <nd ref="11"/>
+    <nd ref="12"/>
+    <nd ref="13"/>
+    <nd ref="14"/>
+    <tag k="name" v="Dredged channel"/>
+    <tag k="waterway" v="fairway"/>
+  </way>
+  <relation id="200" version="1" timestamp="2025-09-01T06:03:00Z" uid="42" user="harbourmaster" changeset="1">
+    <member type="way" ref="100" role=""/>
+    <tag k="type" v="route"/>
+    <tag k="route" v="ferry"/>
+  </relation>
+</osm>

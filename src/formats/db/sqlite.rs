@@ -19,7 +19,7 @@ use serde_json::{Map, Value, json};
 
 use super::apps;
 use super::schema::{Table, create_table};
-use crate::plugin::{Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Source};
+use crate::plugin::{Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Probe, Sniff, Source};
 
 /// Extractor for SQLite databases, WAL files and journals.
 pub struct Sqlite;
@@ -36,11 +36,27 @@ static META: ExtractorMeta = ExtractorMeta {
             name: "SQLite database",
             family: "db",
             mimes: &["application/vnd.sqlite3", "application/x-sqlite3"],
-            extensions: &[
-                "sqlite", "sqlite3", "db", "db3", "s3db", "sl3", "gpkg", "mbtiles", "lrcat", "anki2", "anki21",
-            ],
+            extensions: &["sqlite", "sqlite3", "db", "db3", "s3db", "sl3", "lrcat", "anki2", "anki21"],
             magic: &[Magic::prefix(b"SQLite format 3\0")],
             parent: None,
+        },
+        FormatSpec {
+            id: "geopackage",
+            name: "GeoPackage",
+            family: "geo",
+            mimes: &["application/geopackage+sqlite3"],
+            extensions: &["gpkg"],
+            magic: &[],
+            parent: Some("sqlite"),
+        },
+        FormatSpec {
+            id: "mbtiles",
+            name: "MBTiles tileset",
+            family: "geo",
+            mimes: &[],
+            extensions: &["mbtiles"],
+            magic: &[],
+            parent: Some("sqlite"),
         },
         FormatSpec {
             id: "sqlite_wal",
@@ -473,6 +489,20 @@ fn version_name(v: u64) -> String {
 impl Extractor for Sqlite {
     fn meta(&self) -> &'static ExtractorMeta {
         &META
+    }
+
+    fn sniff(&self, probe: &Probe<'_>) -> Option<Sniff> {
+        // The application ID: GeoPackage (`GPKG`, `GP10`, `GP11`), MBTiles (`MPBX`).
+        let h = probe.head;
+        if !h.starts_with(b"SQLite format 3\0") {
+            return None;
+        }
+        let format = match (h.get(68..72)?, probe.extension) {
+            (b"GPKG" | b"GP10" | b"GP11", _) | (_, Some("gpkg")) => "geopackage",
+            (b"MPBX", _) | (_, Some("mbtiles")) => "mbtiles",
+            _ => return None,
+        };
+        Some(Sniff { format, confidence: 0.97 })
     }
 
     fn extract(&self, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {

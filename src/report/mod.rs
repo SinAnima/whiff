@@ -650,6 +650,22 @@ pub struct Location {
     pub source: String,
 }
 
+/// A geographic extent: a WGS84 bounding box.
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
+#[serde(default)]
+pub struct Extent {
+    /// Western longitude, decimal degrees.
+    pub west: f64,
+    /// Southern latitude, decimal degrees.
+    pub south: f64,
+    /// Eastern longitude, decimal degrees.
+    pub east: f64,
+    /// Northern latitude, decimal degrees.
+    pub north: f64,
+    /// Where it came from.
+    pub source: String,
+}
+
 /// `content` section: the LLM-facing view.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
@@ -687,6 +703,9 @@ pub struct Content {
     /// Location the content refers to (e.g. photo GPS).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub location: Option<Location>,
+    /// Area the content covers (e.g. a map's bounding box), in WGS84.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub extent: Option<Extent>,
 }
 
 /// Outcome of one extractor, decoder or analyzer run.

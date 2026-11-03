@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss" xmlns:gml="http://www.opengis.net/gml">
+  <title>Saltmere notices</title>
+  <id>urn:saltmere:notices</id>
+  <updated>2025-09-01T06:00:00Z</updated>
+  <entry><title>Outer Fairway</title><id>urn:saltmere:buoy:0</id><updated>2025-09-01T06:00:00Z</updated>
+    <georss:where><gml:Point><gml:pos>52.361 4.095</gml:pos></gml:Point></georss:where></entry>
+  <entry><title>Channel Red 1</title><id>urn:saltmere:buoy:1</id><updated>2025-09-01T06:00:00Z</updated>
+    <georss:where><gml:Point><gml:pos>52.356 4.1105</gml:pos></gml:Point></georss:where></entry>
+  <entry><title>Channel Green 1</title><id>urn:saltmere:buoy:2</id><updated>2025-09-01T06:00:00Z</updated>
+    <georss:where><gml:Point><gml:pos>52.3575 4.113</gml:pos></gml:Point></georss:where></entry>
+  <entry><title>Kelp Bank</title><id>urn:saltmere:buoy:3</id><updated>2025-09-01T06:00:00Z</updated>
+    <georss:where><gml:Point><gml:pos>52.3502 4.124</gml:pos></gml:Point></georss:where></entry>
+</feed>

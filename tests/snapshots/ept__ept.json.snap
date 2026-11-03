@@ -1,0 +1,157 @@
+---
+source: src/formats/geo/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "ept.json",
+    "stem": "ept",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "ept",
+    "name": "COPC / EPT point cloud index",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ept",
+        "confidence": 0.97
+      },
+      {
+        "format": "json",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 802
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 802,
+    "entropy": 4.144,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 802,
+      "chars": 802,
+      "words": 84,
+      "lines": 54,
+      "max_line_length": 26,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "929b160438f3eac5fc57fc7d93f68cc7686bec5bae0cc2dcdf415e8b35644a3e",
+    "blake3": "378b38ae946f8a9d37acd5cd36edf7fae9d3408efa917b1e0f11b208458880a1"
+  },
+  "content": {
+    "extent": {
+      "west": 4.39479137776536,
+      "south": 52.351038076572586,
+      "east": 4.395974056614879,
+      "north": 52.35132157657242,
+      "source": "ept.bounds"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "ept": {
+      "points": 400,
+      "version": "1.1.0",
+      "data_type": "laszip",
+      "hierarchy_type": "json",
+      "span": 128,
+      "dimensions": [
+        "X",
+        "Y",
+        "Z",
+        "Intensity"
+      ],
+      "bbox": [
+        595000.0,
+        5801000.0,
+        595080.0,
+        5801030.0
+      ],
+      "z_range": [
+        2.0,
+        8.0
+      ],
+      "crs": {
+        "epsg": 32631
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

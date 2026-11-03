@@ -1,0 +1,27 @@
+{
+  "type": "CIMLayerDocument",
+  "version": "3.1.0",
+  "build": 41833,
+  "layers": [
+    "CIMPATH=map/harbour.json",
+    "CIMPATH=map/basin.json",
+    "CIMPATH=map/relief.json"
+  ],
+  "layerDefinitions": [
+    {
+      "type": "CIMGroupLayer",
+      "name": "Harbour",
+      "uRI": "CIMPATH=map/harbour.json"
+    },
+    {
+      "type": "CIMFeatureLayer",
+      "name": "Basin",
+      "uRI": "CIMPATH=map/basin.json"
+    },
+    {
+      "type": "CIMRasterLayer",
+      "name": "Relief",
+      "uRI": "CIMPATH=map/relief.json"
+    }
+  ]
+}

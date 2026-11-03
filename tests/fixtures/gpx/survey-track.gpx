@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<gpx version="1.1" creator="GDAL 3.10.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.topografix.com/GPX/1/1" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+<metadata>
+<bounds minlat="52.349599999999995" minlon="4.095000000000000" maxlat="52.360999999999997" maxlon="4.131100000000000"/>                                         
+</metadata>
+<trk>
+  <name>Morning survey</name>
+  <trkseg>
+    <trkpt lat="52.361" lon="4.095">
+        <ele>1.5</ele>
+    </trkpt>
+    <trkpt lat="52.3604" lon="4.0969">
+        <ele>1.7</ele>
+    </trkpt>
+    <trkpt lat="52.3598" lon="4.0988">
+        <ele>1.9</ele>
+    </trkpt>
+    <trkpt lat="52.3592" lon="4.1007">
+        <ele>1.5</ele>
+    </trkpt>
+    <trkpt lat="52.3586" lon="4.1026">
+        <ele>1.7</ele>
+    </trkpt>
+    <trkpt lat="52.358" lon="4.1045">
+        <ele>1.9</ele>
+    </trkpt>
+    <trkpt lat="52.3574" lon="4.1064">
+        <ele>1.5</ele>
+    </trkpt>
+    <trkpt lat="52.3568" lon="4.1083">
+        <ele>1.7</ele>
+    </trkpt>
+    <trkpt lat="52.3562" lon="4.1102">
+        <ele>1.9</ele>
+    </trkpt>
+    <trkpt lat="52.3556" lon="4.1121">
+        <ele>1.5</ele>
+    </trkpt>
+    <trkpt lat="52.355" lon="4.114">
+        <ele>1.7</ele>
+    </trkpt>
+    <trkpt lat="52.3544" lon="4.1159">
+        <ele>1.9</ele>
+    </trkpt>
+    <trkpt lat="52.3538" lon="4.1178">
+        <ele>1.5</ele>
+    </trkpt>
+    <trkpt lat="52.3532" lon="4.1197">
+        <ele>1.7</ele>
+    </trkpt>
+    <trkpt lat="52.3526" lon="4.1216">
+        <ele>1.9</ele>
+    </trkpt>
+    <trkpt lat="52.352" lon="4.1235">
+        <ele>1.5</ele>
+    </trkpt>
+    <trkpt lat="52.3514" lon="4.1254">
+        <ele>1.7</ele>
+    </trkpt>
+    <trkpt lat="52.3508" lon="4.1273">
+        <ele>1.9</ele>
+    </trkpt>
+    <trkpt lat="52.3502" lon="4.1292">
+        <ele>1.5</ele>
+    </trkpt>
+    <trkpt lat="52.3496" lon="4.1311">
+        <ele>1.7</ele>
+    </trkpt>
+  </trkseg>
+</trk>
+</gpx>

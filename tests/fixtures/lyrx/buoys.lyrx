@@ -1,0 +1,15 @@
+{
+  "type": "CIMLayerDocument",
+  "version": "3.1.0",
+  "build": 41833,
+  "layers": [
+    "CIMPATH=map/buoys.json"
+  ],
+  "layerDefinitions": [
+    {
+      "type": "CIMFeatureLayer",
+      "name": "Buoys",
+      "uRI": "CIMPATH=map/buoys.json"
+    }
+  ]
+}

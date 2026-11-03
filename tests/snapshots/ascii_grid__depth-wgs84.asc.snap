@@ -1,0 +1,144 @@
+---
+source: src/formats/geo/text.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "depth-wgs84.asc",
+    "stem": "depth-wgs84",
+    "extension": "asc"
+  },
+  "identification": {
+    "format": "ascii_grid",
+    "name": "ESRI ASCII / Grid / ArcInfo coverage",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ascii_grid",
+        "confidence": 0.97
+      },
+      {
+        "format": "openpgp",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.text"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 9598
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 9598,
+    "entropy": 2.756,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 9598,
+      "chars": 9598,
+      "words": 1214,
+      "lines": 37,
+      "max_line_length": 320,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "image": {
+      "width": 40,
+      "height": 30
+    }
+  },
+  "integrity": {
+    "sha256": "25e9afbc7407eb8b3f42ee42f4b29060ef4afb441ac1a987da7a4e2f2bf2933c",
+    "blake3": "8acc6c8202356311e26a4fd0f765016f3ac129297f7e6ca3577af088d32a241a"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ascii_grid": {
+      "columns": 40.0,
+      "rows": 30.0,
+      "cell_size": [
+        0.0015,
+        0.001
+      ],
+      "registration": "corner",
+      "nodata": -9999.0,
+      "header_lines": 7,
+      "bbox": [
+        4.09,
+        52.335,
+        4.15,
+        52.365
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.text",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

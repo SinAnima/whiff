@@ -1,0 +1,151 @@
+---
+source: src/formats/geo/text.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoys-latlon.csv",
+    "stem": "buoys-latlon",
+    "extension": "csv"
+  },
+  "identification": {
+    "format": "csv_geo",
+    "name": "CSV with coordinates (WKT/lat-lon columns)",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "csv_geo",
+        "confidence": 0.95
+      },
+      {
+        "format": "csv",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.text"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 205
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 205,
+    "entropy": 4.883,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 205,
+      "chars": 205,
+      "words": 11,
+      "lines": 5,
+      "max_line_length": 43,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "8afee5500006cc0ac3a8736f984b772e00987cde836d34c36aae369fc6d3aa1e",
+    "blake3": "fcc3c4c5c7aedcba547efc0ca486d861430ca3dca4e2d2601cdfcba55c2637c4"
+  },
+  "content": {
+    "extent": {
+      "west": 4.095,
+      "south": 52.3502,
+      "east": 4.124,
+      "north": 52.361,
+      "source": "csv.latlon"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "csv_geo": {
+      "columns": [
+        "name",
+        "kind",
+        "latitude",
+        "longitude",
+        "depth_m"
+      ],
+      "coordinate_columns": [
+        "latitude",
+        "longitude"
+      ],
+      "rows": 4,
+      "bbox": [
+        4.095,
+        52.3502,
+        4.124,
+        52.361
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.text",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

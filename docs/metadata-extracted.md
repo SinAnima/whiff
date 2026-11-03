@@ -127,9 +127,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1008 formats** in total: tier 1 = 139, tier 2 = 122, tier 3 = 747.
-* Formats with an extractor in this build: **528** of 1008.
+* Formats with an extractor in this build: **559** of 1008.
 * Formats by family status: crate = 183, mixed = 365, impl = 460.
-* Formats by target stage: S1 = 170, S1/S6 = 101, S2 = 91, S3 = 48, S3/S8 = 1, S4 = 68, S5 = 66, S6 = 90, S6/S8 = 17, S7 = 139, S8 = 217.
+* Formats by target stage: S1 = 170, S1/S6 = 101, S2 = 91, S3 = 48, S3/S8 = 1, S4 = 68, S5 = 66, S6 = 90, S6/S8 = 17, S7 = 140, S8 = 216.
 * By feature: `common` = 818, `cad` = 45, `forensics` = 38, `science` = 36, `geo` = 34, `data` = 20, `games` = 17.
 * By category: Code 167, Data 157, Image 95, Media 88, Document 71, Archive 47, Scientific 36, Executable 34, Geospatial 34, Text 32, Package 30, 3D 28, Web 27, Forensics 24, Database 21, Security 20, CAD 17, Game 17, Personal 16, Disk 14, Platform 11, Font 10, Fallback 8, Block 4.
 
@@ -265,9 +265,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 124 | MATLAB MAT | `mat` | application/x-matlab-data | 1 | `sci` | `science` | `science.hdf5` | hdf5-reader | S7 | v5 header text, v7.3 -&gt; HDF5 |
 | 125 | NumPy NPY / NPZ | `npy` `npz` | application/x-npy | 1 | `sci` | `science` | `science.arrays` | hdf5-reader | S7 | — |
 | 126 | DICOM | `dcm` `dicom` `(no` `ext)` | application/dicom | 1 | `medical` | `science` | `medical.dicom` | dicom-object, nifti | S7 | — |
-| 127 | GeoJSON | `geojson` | application/geo+json | 1 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
-| 128 | KML / KMZ | `kml` `kmz` | application/vnd.google-earth.kml+xml | 1 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
-| 129 | GPX | `gpx` | application/gpx+xml | 1 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
+| 127 | GeoJSON | `geojson` | application/geo+json | 1 | `geo` | `geo` | `geo.json` | geojson, shapefile | S7 | — |
+| 128 | KML / KMZ | `kml` `kmz` | application/vnd.google-earth.kml+xml | 1 | `geo` | `geo` | `geo.xml` | geojson, shapefile | S7 | — |
+| 129 | GPX | `gpx` | application/gpx+xml | 1 | `geo` | `geo` | `geo.xml` | geojson, shapefile | S7 | — |
 | 130 | glTF / GLB | `gltf` `glb` | model/gltf+json | 1 | `3d` | `cad` | — | gltf, tobj | S7 | — |
 | 131 | Wavefront OBJ / MTL | `obj` `mtl` | model/obj | 1 | `3d` | `cad` | — | gltf, tobj | S7 | — |
 | 132 | STL | `stl` | model/stl | 1 | `3d` | `cad` | — | gltf, tobj | S7 | — |
@@ -386,9 +386,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 245 | NetCDF (3 / 4) | `nc` `nc4` `cdf` | application/x-netcdf | 2 | `sci` | `science` | `science.netcdf` | hdf5-reader | S7 | NetCDF4 = HDF5 + CF |
 | 246 | ASDF (Advanced Scientific Data Format) | `asdf` | application/asdf | 2 | `sci` | `science` | `science.asdf` | hdf5-reader | S7 | ASDF / YAML versions, software, tags, tree keys, binary blocks (count, compression) |
 | 247 | AnnData (h5ad) | `h5ad` | — | 2 | `sci` | `science` | `science.hdf5` | hdf5-reader | S7 | obs / var counts, layers, obsm / uns keys (HDF5 layout) |
-| 248 | ESRI Shapefile | `shp` `shx` `dbf` `prj` `cpg` | application/vnd.shp | 2 | `geo` | `geo` | — | geojson, shapefile | S7 | sidecar files grouped |
-| 249 | GeoTIFF / COG | `tif` `tiff` | image/tiff; application=geotiff | 2 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
-| 250 | GeoPackage | `gpkg` | application/geopackage+sqlite3 | 2 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
+| 248 | ESRI Shapefile | `shp` `shx` `dbf` `prj` `cpg` | application/vnd.shp | 2 | `geo` | `geo` | `geo.shape` | geojson, shapefile | S7 | sidecar files grouped |
+| 249 | GeoTIFF / COG | `tif` `tiff` | image/tiff; application=geotiff | 2 | `geo` | `geo` | `geo.raster` | geojson, shapefile | S7 | — |
+| 250 | GeoPackage | `gpkg` | application/geopackage+sqlite3 | 2 | `geo` | `geo` | `db.sqlite` | geojson, shapefile | S7 | — |
 | 251 | FBX | `fbx` | application/vnd.autodesk.fbx | 2 | `3d` | `cad` | — | gltf, tobj | S7 | — |
 | 252 | STEP | `step` `stp` `p21` | model/step | 2 | `cad` | `cad` | — | dxf | S7 | — |
 | 253 | IFC (BIM) | `ifc` `ifczip` `ifcxml` | application/x-step | 2 | `cad` | `cad` | — | dxf | S7 | — |
@@ -1032,34 +1032,34 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 891 | MINC / NRRD / MetaImage | `mnc` `nrrd` `nhdr` `mha` `mhd` | — | 3 | `medical` | `science` | `medical.volumes` | dicom-object, nifti | S7 | — |
 | 892 | HL7 v2 message / FHIR JSON | `hl7` `fhir.json` | — | 3 | `medical` | `science` | `medical.clinical` | dicom-object, nifti | S7 | message type, segments (PHI REDACTED) |
 | 893 | SCP-ECG / aECG | `scp` | — | 3 | `medical` | `science` | — | dicom-object, nifti | S7 | — |
-| 894 | FlatGeobuf | `fgb` | application/vnd.flatgeobuf | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
+| 894 | FlatGeobuf | `fgb` | application/vnd.flatgeobuf | 3 | `geo` | `geo` | `geo.vector` | geojson, shapefile | S7 | — |
 | 895 | GeoParquet | `parquet` | — | 3 | `geo` | `geo` | `columnar.parquet` | geojson, shapefile | S7 | — |
-| 896 | LAS / LAZ point cloud | `las` `laz` | application/vnd.las | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
-| 897 | E57 point cloud | `e57` | model/e57 | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
-| 898 | OpenStreetMap PBF / XML | `osm.pbf` `osm` | application/x-osm+xml | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
-| 899 | MBTiles / PMTiles | `mbtiles` `pmtiles` | application/vnd.mapbox-vector-tile | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | tileset name, bounds, zoom range, format |
-| 900 | Mapbox Vector Tile | `mvt` `pbf` | application/vnd.mapbox-vector-tile | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | layers, feature counts |
-| 901 | TopoJSON | `topojson` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
-| 902 | WKT / WKB / EWKB | `wkt` `wkb` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | geometry type, SRID |
-| 903 | GML / CityGML | `gml` | application/gml+xml | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
-| 904 | MapInfo TAB / MIF | `tab` `mif` `mid` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
-| 905 | Esri File Geodatabase / Personal GDB | `gdb` `mdb` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S8 | header / table list |
-| 906 | DTED / SRTM HGT / ASC grid | `dt0` `dt1` `dt2` `hgt` `asc` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | tile extent, resolution |
-| 907 | Garmin FIT | `fit` | application/vnd.ant.fit | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | sport, start time, distance, device (GPS track bbox) |
-| 908 | TCX / IGC / NMEA logs | `tcx` `igc` `nmea` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
-| 909 | GeoJSON-seq / NDGeoJSON | `geojsons` `geojsonl` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
-| 910 | CSV with coordinates (WKT/lat-lon columns) | `csv` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | -&gt; data.csv + geo detection |
-| 911 | ESRI ASCII / Grid / ArcInfo coverage | `adf` `e00` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
-| 912 | QGIS / ArcGIS project | `qgs` `qgz` `aprx` `mxd` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | layers, CRS |
-| 913 | COPC / EPT point cloud index | `copc.laz` `ept.json` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
-| 914 | S-57 / S-101 nautical charts | `000` `s57` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
+| 896 | LAS / LAZ point cloud | `las` `laz` | application/vnd.las | 3 | `geo` | `geo` | `geo.points` | geojson, shapefile | S7 | — |
+| 897 | E57 point cloud | `e57` | model/e57 | 3 | `geo` | `geo` | `geo.points` | geojson, shapefile | S7 | — |
+| 898 | OpenStreetMap PBF / XML | `osm.pbf` `osm` | application/x-osm+xml | 3 | `geo` | `geo` | `geo.xml` | geojson, shapefile | S7 | — |
+| 899 | MBTiles / PMTiles | `mbtiles` `pmtiles` | application/vnd.mapbox-vector-tile | 3 | `geo` | `geo` | `geo.tiles` | geojson, shapefile | S7 | tileset name, bounds, zoom range, format |
+| 900 | Mapbox Vector Tile | `mvt` `pbf` | application/vnd.mapbox-vector-tile | 3 | `geo` | `geo` | `geo.tiles` | geojson, shapefile | S7 | layers, feature counts |
+| 901 | TopoJSON | `topojson` | — | 3 | `geo` | `geo` | `geo.json` | geojson, shapefile | S7 | — |
+| 902 | WKT / WKB / EWKB | `wkt` `wkb` | — | 3 | `geo` | `geo` | `geo.text` | geojson, shapefile | S7 | geometry type, SRID |
+| 903 | GML / CityGML | `gml` | application/gml+xml | 3 | `geo` | `geo` | `geo.xml` | geojson, shapefile | S7 | — |
+| 904 | MapInfo TAB / MIF | `tab` `mif` `mid` | — | 3 | `geo` | `geo` | `geo.text` | geojson, shapefile | S7 | — |
+| 905 | Esri File Geodatabase / Personal GDB | `gdb` `mdb` | — | 3 | `geo` | `geo` | `geo.shape` | geojson, shapefile | S7 | header / table list |
+| 906 | DTED / SRTM HGT / ASC grid | `dt0` `dt1` `dt2` `hgt` `asc` | — | 3 | `geo` | `geo` | `geo.raster` | geojson, shapefile | S7 | tile extent, resolution |
+| 907 | Garmin FIT | `fit` | application/vnd.ant.fit | 3 | `geo` | `geo` | `geo.tracks` | geojson, shapefile | S7 | sport, start time, distance, device (GPS track bbox) |
+| 908 | TCX / IGC / NMEA logs | `tcx` `igc` `nmea` | — | 3 | `geo` | `geo` | `geo.tracks` | geojson, shapefile | S7 | — |
+| 909 | GeoJSON-seq / NDGeoJSON | `geojsons` `geojsonl` | — | 3 | `geo` | `geo` | `geo.json` | geojson, shapefile | S7 | — |
+| 910 | CSV with coordinates (WKT/lat-lon columns) | `csv` | — | 3 | `geo` | `geo` | `geo.text` | geojson, shapefile | S7 | -&gt; data.csv + geo detection |
+| 911 | ESRI ASCII / Grid / ArcInfo coverage | `adf` `e00` | — | 3 | `geo` | `geo` | `geo.text` | geojson, shapefile | S7 | — |
+| 912 | QGIS / ArcGIS project | `qgs` `qgz` `aprx` `mxd` | — | 3 | `geo` | `geo` | `geo.xml` | geojson, shapefile | S7 | layers, CRS |
+| 913 | COPC / EPT point cloud index | `copc.laz` `ept.json` | — | 3 | `geo` | `geo` | `geo.json` | geojson, shapefile | S7 | — |
+| 914 | S-57 / S-101 nautical charts | `000` `s57` | — | 3 | `geo` | `geo` | `geo.vector` | geojson, shapefile | S7 | — |
 | 915 | NetCDF-CF / Zarr geodata | `nc` `zarr` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | -&gt; sci |
-| 916 | OGC 3D Tiles / I3S | `b3dm` `i3dm` `pnts` `slpk` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
-| 917 | CZML / world file / .prj | `czml` `tfw` `jgw` `pgw` `wld` `prj` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | CRS WKT, affine transform |
+| 916 | OGC 3D Tiles / I3S | `b3dm` `i3dm` `pnts` `slpk` | — | 3 | `geo` | `geo` | `geo.tiles` | geojson, shapefile | S7 | — |
+| 917 | CZML / world file / .prj | `czml` `tfw` `jgw` `pgw` `wld` `prj` | — | 3 | `geo` | `geo` | `geo.text` | geojson, shapefile | S7 | CRS WKT, affine transform |
 | 918 | MrSID / ECW rasters | `sid` `ecw` `jp2` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S8 | header: size, bands, CRS |
-| 919 | OSM change / diff | `osc` `osc.gz` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | create/modify/delete counts |
-| 920 | Map styles (Mapbox style JSON / SLD / lyrx) | `style.json` `sld` `lyrx` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | layers, sources |
-| 921 | Geocaching LOC / GeoRSS | `loc` `georss` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | — |
+| 919 | OSM change / diff | `osc` `osc.gz` | — | 3 | `geo` | `geo` | `geo.xml` | geojson, shapefile | S7 | create/modify/delete counts |
+| 920 | Map styles (Mapbox style JSON / SLD / lyrx) | `style.json` `sld` `lyrx` | — | 3 | `geo` | `geo` | `geo.json` | geojson, shapefile | S7 | layers, sources |
+| 921 | Geocaching LOC / GeoRSS | `loc` `georss` | — | 3 | `geo` | `geo` | `geo.xml` | geojson, shapefile | S7 | — |
 | 922 | PLY | `ply` | model/ply | 3 | `3d` | `cad` | — | gltf, tobj | S7 | — |
 | 923 | Collada DAE | `dae` | model/vnd.collada+xml | 3 | `3d` | `cad` | — | gltf, tobj | S7 | — |
 | 924 | Blender | `blend` | application/x-blender | 3 | `3d` | `cad` | — | gltf, tobj | S7 | — |

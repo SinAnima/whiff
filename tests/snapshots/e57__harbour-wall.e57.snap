@@ -1,0 +1,136 @@
+---
+source: src/formats/geo/points.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-wall.e57",
+    "stem": "harbour-wall",
+    "extension": "e57"
+  },
+  "identification": {
+    "format": "e57",
+    "name": "E57 point cloud",
+    "mime": "model/e57",
+    "family": "geo",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "geo.points"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 8192
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 8192,
+    "entropy": 6.947,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "6d7452678339d19a45b1096b18fed2048995aed7da10ac7c16becdb1707e977f",
+    "blake3": "ae45db791475f2804e3c841155c8310c95e8e5dcecaf2f78da98f39c9106f22c"
+  },
+  "content": {
+    "title": "Harbour wall scan"
+  },
+  "metadata": {},
+  "format": {
+    "e57": {
+      "e57_version": "1.0",
+      "guid": "{3c4ccf5e-a26e-4a51-a67d-302798816e5f}",
+      "version_major": "1",
+      "e57_library_version": "pye57-0.4.19",
+      "scans": 1,
+      "points": 400,
+      "images": 0,
+      "scan_list": [
+        {
+          "name": "Harbour wall scan",
+          "description": "pye57 v0.4.19",
+          "points": 400,
+          "bounds": [
+            0.2987394,
+            0.0983023,
+            79.7416932,
+            29.9717627
+          ]
+        }
+      ],
+      "bbox": [
+        0.2987394,
+        0.0983023,
+        79.7416932,
+        29.9717627
+      ],
+      "z_range": [
+        2.026,
+        7.983
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.points",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

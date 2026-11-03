@@ -1,0 +1,127 @@
+---
+source: src/formats/geo/tiles.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-12-small.pbf",
+    "stem": "saltmere-12-small",
+    "extension": "pbf"
+  },
+  "identification": {
+    "format": "mvt",
+    "name": "Mapbox Vector Tile",
+    "mime": "application/vnd.mapbox-vector-tile",
+    "family": "geo",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "mvt",
+        "confidence": 0.95
+      },
+      {
+        "format": "osm_pbf",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "geo.tiles"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 157
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 157,
+    "entropy": 5.399,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "738164c00e6f5b769730922b206c252fb63dab44a53a233f3a47039697794d37",
+    "blake3": "9a67450c8752ba5aa2b7f0446bcfc6d4c75bb997a2edd8024bd8d1659302b717"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "mvt": {
+      "layers": {
+        "saltmere": {
+          "features": 2,
+          "keys": 3,
+          "extent": 4096,
+          "version": 2
+        }
+      },
+      "features": 2,
+      "geometry_types": {
+        "linestring": 1,
+        "polygon": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.tiles",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

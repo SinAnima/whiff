@@ -1,0 +1,33 @@
+Version 300
+Charset "Neutral"
+Delimiter ","
+CoordSys Earth Projection 1, 104
+Columns 3
+  name Char(254)
+  kind Char(254)
+  depth_m Float
+Data
+
+Point 4.095 52.361
+    Symbol (35,0,12)
+Point 4.1105 52.356
+    Symbol (35,0,12)
+Point 4.113 52.3575
+    Symbol (35,0,12)
+Point 4.124 52.3502
+    Symbol (35,0,12)
+Pline 4
+4.095 52.361
+4.1118 52.3567
+4.126 52.352
+4.133 52.349
+    Pen (1,2,0)
+Region 1
+  5
+4.13 52.347
+4.142 52.347
+4.142 52.353
+4.13 52.353
+4.13 52.347
+    Pen (1,2,0)
+    Brush (1,0,16777215)

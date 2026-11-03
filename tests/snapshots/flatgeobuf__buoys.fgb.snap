@@ -1,0 +1,135 @@
+---
+source: src/formats/geo/vector.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoys.fgb",
+    "stem": "buoys",
+    "extension": "fgb"
+  },
+  "identification": {
+    "format": "flatgeobuf",
+    "name": "FlatGeobuf",
+    "mime": "application/vnd.flatgeobuf",
+    "family": "geo",
+    "confidence": 0.93,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "geo.vector"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1432
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1432,
+    "entropy": 5.372,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "effe28ed1d6145b32580a0b7134913320f37d07d9ac760630ee98b27322859f5",
+    "blake3": "d06fe2db4b6dab20b90b13991cdb7a34429bf2925da15eebd79600cd87932e5d"
+  },
+  "content": {
+    "title": "Saltmere buoys",
+    "description": "Navigation buoys",
+    "extent": {
+      "west": 4.095,
+      "south": 52.3502,
+      "east": 4.124,
+      "north": 52.361,
+      "source": "fgb.envelope"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "flatgeobuf": {
+      "version": "3.0.1",
+      "name": "buoys",
+      "title": "Saltmere buoys",
+      "geometry_type": "Point",
+      "features": 4,
+      "index_node_size": 16,
+      "columns": [
+        "name (string)",
+        "kind (string)",
+        "depth_m (double)"
+      ],
+      "bbox": [
+        4.095,
+        52.3502,
+        4.124,
+        52.361
+      ],
+      "crs": {
+        "name": "WGS 84",
+        "epsg": 4326
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.vector",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

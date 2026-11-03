@@ -1,0 +1,149 @@
+---
+source: src/formats/geo/xml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-gml2.gml",
+    "stem": "saltmere-gml2",
+    "extension": "gml"
+  },
+  "identification": {
+    "format": "gml",
+    "name": "GML / CityGML",
+    "mime": "application/gml+xml",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "gml",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.xml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3251
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 3251,
+    "entropy": 5.107,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 3251,
+      "chars": 3251,
+      "words": 92,
+      "lines": 62,
+      "max_line_length": 379,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "e49e09212d60495b8d37a048d1b84a455779d75bcfd8bc314760c23d36c76c6e",
+    "blake3": "3847e868ff8ac01ee5ecba2a62d11afaa65f709bc36b2baac66fe603c7429a3d"
+  },
+  "content": {
+    "extent": {
+      "west": 4.094662244292658,
+      "south": 52.346884647136136,
+      "east": 4.142349380611059,
+      "north": 52.36099999394777,
+      "source": "gml.pos"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "gml": {
+      "root": "FeatureCollection",
+      "feature_members": 6,
+      "geometry_types": {
+        "LineString": 1,
+        "Point": 4,
+        "Polygon": 1
+      },
+      "bbox": [
+        574565.0151984,
+        5800234.6639983,
+        577789.9953372,
+        5801755.1520954
+      ],
+      "crs": {
+        "epsg": 32631
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.xml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,110 @@
+---
+source: src/formats/geo/tiles.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.cmpt",
+    "stem": "harbour",
+    "extension": "cmpt"
+  },
+  "identification": {
+    "format": "tiles3d",
+    "name": "OGC 3D Tiles / I3S",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "geo.tiles"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 464
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 464,
+    "entropy": 5.29,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "7bcb5e978037c400c7db5b306186b8a9f4e384b8ff315bc3119e09607bd4d3bf",
+    "blake3": "f392819d272dbcb7d17816361ee121a4a7908d748a7fd2a04311464968d15fa4"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "tiles3d": {
+      "tile_format": "cmpt",
+      "version": 1,
+      "inner_tiles": {
+        "b3dm": 1,
+        "pnts": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.tiles",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

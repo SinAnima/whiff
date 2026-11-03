@@ -52,6 +52,8 @@ pub(crate) mod exec;
 pub(crate) mod font;
 #[cfg(feature = "forensics")]
 pub(crate) mod forensic;
+#[cfg(feature = "geo")]
+pub(crate) mod geo;
 #[cfg(feature = "common")]
 pub(crate) mod image;
 #[cfg(feature = "science")]

@@ -1,0 +1,11 @@
+<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
+<qgis projectname="Saltmere harbour" version="3.40.0-Bratislava">
+  <homePath path=""/>
+  <title>Saltmere harbour</title>
+  <projectCrs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:32631</authid><description>WGS 84 / UTM zone 31N</description></spatialrefsys></projectCrs>
+  <projectlayers>
+    <maplayer type="vector" geometry="Point"><id>buoys_1</id><datasource>./buoys.gpkg</datasource><layername>buoys</layername><provider encoding="UTF-8">ogr</provider></maplayer>
+    <maplayer type="vector" geometry="Line"><id>channel_1</id><datasource>./channel.gpkg</datasource><layername>channel</layername><provider encoding="UTF-8">ogr</provider></maplayer>
+    <maplayer type="raster" geometry=""><id>relief_1</id><datasource>./relief.gpkg</datasource><layername>relief</layername><provider encoding="UTF-8">gdal</provider></maplayer>
+  </projectlayers>
+</qgis>

@@ -1,0 +1,147 @@
+---
+source: src/formats/geo/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "survey-boat.czml",
+    "stem": "survey-boat",
+    "extension": "czml"
+  },
+  "identification": {
+    "format": "czml",
+    "name": "CZML",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "czml",
+        "confidence": 0.99
+      },
+      {
+        "format": "json",
+        "confidence": 0.55
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 742
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 742,
+    "entropy": 4.215,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 742,
+      "chars": 742,
+      "words": 3,
+      "lines": 0,
+      "max_line_length": 742,
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "6a42042b40cd52cf994154db93417f84bd59649600e4e4ca1fc284596fd901b5",
+    "blake3": "9be28aed3e46bcd9e7cc9acbca1cf69bb3bb7fcb4500c89d67d62e935c291964"
+  },
+  "content": {
+    "title": "Survey boat",
+    "extent": {
+      "west": 4.095,
+      "south": 52.349599999999995,
+      "east": 4.1311,
+      "north": 52.361,
+      "source": "czml"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "czml": {
+      "packets": 2,
+      "name": "Survey boat",
+      "version": "1.0",
+      "graphics": {},
+      "bbox": [
+        4.095,
+        52.3496,
+        4.1311,
+        52.361
+      ],
+      "z_range": [
+        1.5,
+        1.9
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

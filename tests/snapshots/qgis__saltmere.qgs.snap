@@ -1,0 +1,147 @@
+---
+source: src/formats/geo/xml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere.qgs",
+    "stem": "saltmere",
+    "extension": "qgs"
+  },
+  "identification": {
+    "format": "qgis",
+    "name": "QGIS / ArcGIS project",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "qgis",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.32
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.xml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 920
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 920,
+    "entropy": 5.055,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 920,
+      "chars": 920,
+      "words": 35,
+      "lines": 11,
+      "max_line_length": 183,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "af47118321d1b02a9bb4e47856043e3a7569396182c1cbcf81f2313224ceca94",
+    "blake3": "17a41073b0b125512943f34a9359160ab9feabbc82acd44f3c88323b64cdb341"
+  },
+  "content": {
+    "title": "Saltmere harbour"
+  },
+  "metadata": {},
+  "format": {
+    "qgis": {
+      "projectname": "Saltmere harbour",
+      "title": "Saltmere harbour",
+      "qgis_version": "3.40.0-Bratislava",
+      "crs": {
+        "epsg": 32631
+      },
+      "layer_count": 3,
+      "layer_types": {
+        "raster": 1,
+        "vector": 2
+      },
+      "providers": {
+        "gdal": 1,
+        "ogr": 2
+      },
+      "layers": [
+        "buoys",
+        "channel",
+        "relief"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.xml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

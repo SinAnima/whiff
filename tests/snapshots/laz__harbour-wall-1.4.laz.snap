@@ -1,0 +1,174 @@
+---
+source: src/formats/geo/points.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-wall-1.4.laz",
+    "stem": "harbour-wall-1.4",
+    "extension": "laz"
+  },
+  "identification": {
+    "format": "laz",
+    "name": "LAZ point cloud",
+    "mime": "application/vnd.laszip",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "laz",
+        "confidence": 0.99
+      },
+      {
+        "format": "copc",
+        "confidence": 0.76
+      },
+      {
+        "format": "las",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "geo.points"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4785
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01",
+        "source": "las.header",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4785,
+    "entropy": 7.338,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "dc532f3e3abe27d56ce5a73d6cc66142b887610893a1bac5eeff0a1256e5b3b0",
+    "blake3": "71a984cbd30c30582dbdb9356d5767b5d785d463474abae3cf88dca477e718b4"
+  },
+  "content": {
+    "extent": {
+      "west": 4.394795794005754,
+      "south": 52.351039002113126,
+      "east": 4.3959702619236944,
+      "north": 52.351321273107196,
+      "source": "las.header"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "laz": {
+      "las_version": "1.4",
+      "system_identifier": "Saltmere wall scan",
+      "generating_software": "laspy 2.7",
+      "creation_date": "2025-09-01",
+      "point_format": 6,
+      "point_record_length": 30,
+      "compressed": true,
+      "crs_encoding": "wkt",
+      "points": 400,
+      "points_by_return": [
+        400
+      ],
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "offset": [
+        595000.0,
+        5801000.0,
+        0.0
+      ],
+      "vlrs": [
+        "LASF_Projection/2112 (OGC Transformation Record)",
+        "laszip encoded/22204 (http://laszip.org)"
+      ],
+      "bbox": [
+        595000.299,
+        5801000.098,
+        595079.742,
+        5801029.972
+      ],
+      "z_range": [
+        2.026,
+        7.983
+      ],
+      "crs": {
+        "name": "WGS 84 / UTM zone 31N",
+        "epsg": 32631
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.points",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

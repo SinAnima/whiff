@@ -1,0 +1,155 @@
+---
+source: src/formats/geo/xml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-gml32.gml",
+    "stem": "saltmere-gml32",
+    "extension": "gml"
+  },
+  "identification": {
+    "format": "gml",
+    "name": "GML / CityGML",
+    "mime": "application/gml+xml",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "gml",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.xml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4385
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4385,
+    "entropy": 4.968,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 4385,
+      "chars": 4385,
+      "words": 134,
+      "lines": 64,
+      "max_line_length": 290,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "d4330ec978b03faa890c88b25c03a00febe67dd6d9fcec5185712ee33bfad6d6",
+    "blake3": "b50bffbdfe6e399cb8fc9f8f3c9ee4fa682ac0d470f784b983c134393c6716f4"
+  },
+  "content": {
+    "extent": {
+      "west": 4.095,
+      "south": 52.347,
+      "east": 4.142,
+      "north": 52.361,
+      "source": "gml.pos"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "gml": {
+      "root": "FeatureCollection",
+      "feature_members": 6,
+      "geometry_types": {
+        "LineString": 1,
+        "Point": 4,
+        "Polygon": 1
+      },
+      "declared_envelope": [
+        4.095,
+        52.347,
+        4.142,
+        52.361
+      ],
+      "bbox": [
+        4.095,
+        52.347,
+        4.142,
+        52.361
+      ],
+      "crs": {
+        "epsg": 4326
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.xml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

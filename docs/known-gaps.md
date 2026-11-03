@@ -330,3 +330,32 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 - **Messages:** HL7 v2 is read from the MSH segment and segment counts
   (no field parsing past MSH); HL7 v3 / CDA documents are read as XML;
   FHIR XML resources are read as XML.
+
+## Geodata (unreleased, feature `geo`)
+
+- **Not read:** MrSID and ECW rasters (proprietary; no writer to make
+  fixtures with), SRTM `.hgt` tiles (fixed sizes above the fixture
+  limit), Esri I3S scene layer packages (`.slpk`), ArcGIS Pro projects
+  (`.aprx`) and map documents (`.mxd`), ArcInfo export (`.e00`) and
+  binary grids (`.adf`), S-101 (ISO 8211 like S-57, not yet told apart),
+  personal geodatabases (read as Access databases), GeoJP2 / GMLJP2 boxes
+  in JPEG 2000. NetCDF-CF and Zarr geodata are read by the science
+  extractors.
+- **Extents:** reprojection to WGS84 covers geographic CRSs, Web
+  Mercator and UTM (WGS 84, ETRS89, NAD83); other projected CRSs keep
+  their native bounds only. Files whose CRS lives beside them
+  (shapefiles, ASCII grids, world files, MapInfo, E57 without coordinate
+  metadata) give native bounds and no extent.
+- **Bounds:** shapefile, File Geodatabase, LAS, FlatGeobuf and PMTiles
+  bounds come from their headers; vector tiles have no geographic bounds
+  without their tile address; 3D Tiles bounds come from the root's
+  `region` or ECEF `box`.
+- **Contents:** feature attributes are listed by name, not summarised;
+  geometries are counted and bounded, not validated; LAZ points, raster
+  pixels, vector tile geometries and OSM tags beyond the top keys are not
+  decoded; GeoPackage tiles and extensions are not described beyond
+  `gpkg_contents`.
+- **Privacy:** OSM contributors are counted, not named; FIT and E57
+  serial numbers and IGC pilots appear only with privacy off; track
+  positions are reported as bounds, not as points.
+

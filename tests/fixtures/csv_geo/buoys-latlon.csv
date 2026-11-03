@@ -1,0 +1,5 @@
+name,kind,latitude,longitude,depth_m
+Outer Fairway,safe_water,52.361,4.095,14.2
+Channel Red 1,port,52.356,4.1105,9.8
+Channel Green 1,starboard,52.3575,4.113,9.6
+Kelp Bank,isolated_danger,52.3502,4.124,3.1

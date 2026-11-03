@@ -1,0 +1,131 @@
+---
+source: src/formats/geo/text.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy-srid.ewkb",
+    "stem": "buoy-srid",
+    "extension": "ewkb"
+  },
+  "identification": {
+    "format": "wkb",
+    "name": "WKB geometry",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "geo.text"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 33
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 33,
+    "entropy": 4.067,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "5523252dfc81e124ac21d5fbdf898f6ca0cfd7acafa5f4909ef948ba9a70e6ec",
+    "blake3": "dc0ff63c40ea545c6bc9ae2003d6f729ec7a959a06733a7a2665a3b0df090053"
+  },
+  "content": {
+    "extent": {
+      "west": 4.095,
+      "south": 52.361,
+      "east": 4.095,
+      "north": 52.361,
+      "source": "wkb"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "wkb": {
+      "byte_order": "little-endian",
+      "geometries": 1,
+      "geometry_types": {
+        "Point Z": 1
+      },
+      "srid": 4326,
+      "bbox": [
+        4.095,
+        52.361,
+        4.095,
+        52.361
+      ],
+      "z_range": [
+        14.2,
+        14.2
+      ],
+      "crs": {
+        "epsg": 4326
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.text",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

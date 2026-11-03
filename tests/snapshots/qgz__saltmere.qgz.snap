@@ -1,0 +1,134 @@
+---
+source: src/formats/geo/xml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere.qgz",
+    "stem": "saltmere",
+    "extension": "qgz"
+  },
+  "identification": {
+    "format": "qgz",
+    "name": "QGIS project archive",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "qgz",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "geo.xml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 468
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 468,
+    "entropy": 7.057,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "49f7a32ddddb913f367d1cb9f6916feef44865135ac9041e82b7440ea1a0c19a",
+    "blake3": "ec7ff7e6cfe623290a6028301491f4b8610920a038f60a8dc6669c85e602d604"
+  },
+  "content": {
+    "title": "Saltmere harbour"
+  },
+  "metadata": {},
+  "format": {
+    "qgz": {
+      "document": "saltmere.qgs",
+      "entries": 1,
+      "projectname": "Saltmere harbour",
+      "title": "Saltmere harbour",
+      "qgis_version": "3.40.0-Bratislava",
+      "crs": {
+        "epsg": 32631
+      },
+      "layer_count": 1,
+      "layer_types": {
+        "vector": 1
+      },
+      "providers": {
+        "ogr": 1
+      },
+      "layers": [
+        "buoys"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.xml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

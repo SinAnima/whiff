@@ -1,0 +1,144 @@
+---
+source: src/formats/geo/xml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "kelp-bank.loc",
+    "stem": "kelp-bank",
+    "extension": "loc"
+  },
+  "identification": {
+    "format": "loc",
+    "name": "Geocaching LOC / GeoRSS",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "loc",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.xml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 221
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 221,
+    "entropy": 5.192,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 221,
+      "chars": 221,
+      "words": 14,
+      "lines": 4,
+      "max_line_length": 128,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "b8d1ef85872c34c123de235d1ca2d0e314c4abed5ee3b826e25a79d68f1b05d3",
+    "blake3": "1c06cf6d4c92ea571112d888c59ec88da0dc1b62443e19d12e5e0136e0637320"
+  },
+  "content": {
+    "extent": {
+      "west": 4.124,
+      "south": 52.3502,
+      "east": 4.124,
+      "north": 52.3502,
+      "source": "loc.coord"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "loc": {
+      "source": "Saltmere Geocaching",
+      "waypoints": 1,
+      "waypoint_ids": [
+        "GCSM00"
+      ],
+      "bbox": [
+        4.124,
+        52.3502,
+        4.124,
+        52.3502
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.xml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

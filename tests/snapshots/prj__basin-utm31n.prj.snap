@@ -1,0 +1,120 @@
+---
+source: src/formats/geo/text.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "basin-utm31n.prj",
+    "stem": "basin-utm31n",
+    "extension": "prj"
+  },
+  "identification": {
+    "format": "prj",
+    "name": "Projection file",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "geo.text"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 400
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 400,
+    "entropy": 5.35,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 400,
+      "chars": 400,
+      "words": 1,
+      "lines": 0,
+      "max_line_length": 400,
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "0bca38f3b0c76147278cd2be9e583eeeca2f15ffb9c69e10dfb4f1e1e80e8fc9",
+    "blake3": "09dc8a8c274cab21ff70552e92cdf72dcd5d3c79cb03c42eefe49d73c16375e8"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "prj": {
+      "wkt_kind": "PROJCS",
+      "crs": {
+        "name": "WGS_1984_UTM_Zone_31N",
+        "epsg": 32631
+      },
+      "projection": "Transverse_Mercator"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.text",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

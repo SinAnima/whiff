@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="saltmere" id="saltmere">
+	<SimpleField name="kind" type="string"></SimpleField>
+	<SimpleField name="depth_m" type="float"></SimpleField>
+</Schema>
+<Folder><name>saltmere</name>
+  <Placemark id="saltmere.1">
+	<name>Outer Fairway</name>
+	<ExtendedData><SchemaData schemaUrl="#saltmere">
+		<SimpleData name="kind">safe_water</SimpleData>
+		<SimpleData name="depth_m">14.2</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>4.095,52.361</coordinates></Point>
+  </Placemark>
+  <Placemark id="saltmere.2">
+	<name>Channel Red 1</name>
+	<ExtendedData><SchemaData schemaUrl="#saltmere">
+		<SimpleData name="kind">port</SimpleData>
+		<SimpleData name="depth_m">9.8</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>4.1105,52.356</coordinates></Point>
+  </Placemark>
+  <Placemark id="saltmere.3">
+	<name>Channel Green 1</name>
+	<ExtendedData><SchemaData schemaUrl="#saltmere">
+		<SimpleData name="kind">starboard</SimpleData>
+		<SimpleData name="depth_m">9.6</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>4.113,52.3575</coordinates></Point>
+  </Placemark>
+  <Placemark id="saltmere.4">
+	<name>Kelp Bank</name>
+	<ExtendedData><SchemaData schemaUrl="#saltmere">
+		<SimpleData name="kind">isolated_danger</SimpleData>
+		<SimpleData name="depth_m">3.1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>4.124,52.3502</coordinates></Point>
+  </Placemark>
+  <Placemark id="saltmere.5">
+	<name>Dredged channel</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#saltmere">
+		<SimpleData name="kind">channel</SimpleData>
+		<SimpleData name="depth_m">9.5</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>4.095,52.361 4.1118,52.3567 4.126,52.352 4.133,52.349</coordinates></LineString>
+  </Placemark>
+  <Placemark id="saltmere.6">
+	<name>Inner basin</name>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#saltmere">
+		<SimpleData name="kind">basin</SimpleData>
+		<SimpleData name="depth_m">6</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><outerBoundaryIs><LinearRing><coordinates>4.13,52.347 4.142,52.347 4.142,52.353 4.13,52.353 4.13,52.347</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+</Folder>
+</Document></kml>

@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "saltmere_utm",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::32631" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Outer Fairway", "kind": "safe_water", "depth_m": 14.2 }, "geometry": { "type": "Point", "coordinates": [ 574565.01519842678681, 5801755.152095388621092 ] } },
+{ "type": "Feature", "properties": { "name": "Channel Red 1", "kind": "port", "depth_m": 9.8 }, "geometry": { "type": "Point", "coordinates": [ 575629.004616670077667, 5801215.118370993062854 ] } },
+{ "type": "Feature", "properties": { "name": "Channel Green 1", "kind": "starboard", "depth_m": 9.6 }, "geometry": { "type": "Point", "coordinates": [ 575796.691555161960423, 5801384.570966384373605 ] } },
+{ "type": "Feature", "properties": { "name": "Kelp Bank", "kind": "isolated_danger", "depth_m": 3.1 }, "geometry": { "type": "Point", "coordinates": [ 576558.39460198674351, 5800584.215528002008796 ] } },
+{ "type": "Feature", "properties": { "name": "Dredged channel", "kind": "channel", "depth_m": 9.5 }, "geometry": { "type": "LineString", "coordinates": [ [ 574565.01519842678681, 5801755.152095388621092 ], [ 575716.340009927283973, 5801294.33504528272897 ], [ 576691.49947327550035, 5800786.536833375692368 ], [ 577173.476464180042967, 5800460.30730991717428 ] ] } },
+{ "type": "Feature", "properties": { "name": "Inner basin", "kind": "basin", "depth_m": 6.0 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 576972.614269435871392, 5800234.663998289033771 ], [ 577789.995337225147523, 5800247.496509580872953 ], [ 577779.462573217460886, 5800914.839883745647967 ], [ 576962.192200445686467, 5800902.008073669858277 ], [ 576972.614269435871392, 5800234.663998289033771 ] ] ] } }
+]
+}

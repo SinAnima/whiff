@@ -1,0 +1,157 @@
+---
+source: src/formats/geo/tracks.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "survey-boat.nmea",
+    "stem": "survey-boat",
+    "extension": "nmea"
+  },
+  "identification": {
+    "format": "nmea",
+    "name": "NMEA 0183 log",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "geo.tracks"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2785
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "captured",
+        "value": "2025-09-01T06:00:00+00:00",
+        "source": "nmea.RMC",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T06:00:00Z",
+    "latest": "2025-09-01T06:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2785,
+    "entropy": 3.888,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 2785,
+      "chars": 2785,
+      "words": 41,
+      "lines": 41,
+      "max_line_length": 68,
+      "line_endings": "crlf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "6ef236e8d812dd11bff86c122acd2dfcfde5b89c94e9f7fdebf1a2566d9935bc",
+    "blake3": "f82f2cb83a50e9551a3da3f95c85f1e7de2ce52377221dd83557d078ddda9f83"
+  },
+  "content": {
+    "extent": {
+      "west": 4.095,
+      "south": 52.3496,
+      "east": 4.1311,
+      "north": 52.361,
+      "source": "nmea"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "nmea": {
+      "sentences": 41,
+      "sentence_types": {
+        "GGA": 20,
+        "GSA": 1,
+        "RMC": 20
+      },
+      "talkers": {
+        "GN": 1,
+        "GP": 40
+      },
+      "fixes": 40,
+      "distance_km": 2.76,
+      "bbox": [
+        4.095,
+        52.3496,
+        4.1311,
+        52.361
+      ],
+      "z_range": [
+        1.5,
+        1.9
+      ],
+      "start": "2025-09-01T06:00:00Z",
+      "end": "2025-09-01T06:06:20Z"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.tracks",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

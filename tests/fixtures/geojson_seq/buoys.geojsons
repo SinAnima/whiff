@@ -1,0 +1,4 @@
+{ "type": "Feature", "properties": { "name": "Outer Fairway", "kind": "safe_water", "depth_m": 14.2 }, "geometry": { "type": "Point", "coordinates": [ 4.095, 52.361 ] } }
+{ "type": "Feature", "properties": { "name": "Channel Red 1", "kind": "port", "depth_m": 9.8 }, "geometry": { "type": "Point", "coordinates": [ 4.1105, 52.356 ] } }
+{ "type": "Feature", "properties": { "name": "Channel Green 1", "kind": "starboard", "depth_m": 9.6 }, "geometry": { "type": "Point", "coordinates": [ 4.113, 52.3575 ] } }
+{ "type": "Feature", "properties": { "name": "Kelp Bank", "kind": "isolated_danger", "depth_m": 3.1 }, "geometry": { "type": "Point", "coordinates": [ 4.124, 52.3502 ] } }

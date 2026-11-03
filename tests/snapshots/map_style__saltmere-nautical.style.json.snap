@@ -1,0 +1,151 @@
+---
+source: src/formats/geo/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-nautical.style.json",
+    "stem": "saltmere-nautical.style",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "map_style",
+    "name": "Map styles (Mapbox style JSON / SLD / lyrx)",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "map_style",
+        "confidence": 0.97
+      },
+      {
+        "format": "json",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 876
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 876,
+    "entropy": 4.262,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 876,
+      "chars": 876,
+      "words": 77,
+      "lines": 46,
+      "max_line_length": 70,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "7a1b776c85c2f5b348477d3457ca1b3fbabd47f6b23ea3ffec1f0d1cf83dd38c",
+    "blake3": "11a42d28db163c2b604e61e4b1c0f1c01fc5c30c673ca09ca33a32431be1baca"
+  },
+  "content": {
+    "title": "Saltmere nautical",
+    "location": {
+      "lat": 52.356,
+      "lon": 4.115,
+      "source": "style.center"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "map_style": {
+      "name": "Saltmere nautical",
+      "style_version": 8,
+      "sources": {
+        "raster-dem": 1,
+        "vector": 1
+      },
+      "layer_count": 4,
+      "layer_types": {
+        "background": 1,
+        "fill": 1,
+        "line": 1,
+        "symbol": 1
+      },
+      "center": [
+        4.115,
+        52.356
+      ],
+      "zoom": 13.0,
+      "glyphs": "https://tiles.example.org/fonts/{fontstack}/{range}.pbf"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

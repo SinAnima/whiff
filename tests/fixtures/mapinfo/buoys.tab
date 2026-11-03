@@ -1,0 +1,10 @@
+!table
+!version 300
+!charset Neutral
+
+Definition Table
+  Type NATIVE Charset "Neutral"
+  Fields 3
+    name Char (254) ;
+    kind Char (254) ;
+    depth_m Float ;

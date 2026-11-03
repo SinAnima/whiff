@@ -45,7 +45,7 @@ common = [
     "dep:sqlparser",
     "dep:toml",
 ]
-geo = []
+geo = ["common"]
 science = ["common"]
 data = ["common"]
 cad = []

@@ -1,0 +1,142 @@
+---
+source: src/formats/geo/vector.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "US5OR2XF.000",
+    "stem": "US5OR2XF",
+    "extension": "000"
+  },
+  "identification": {
+    "format": "s57",
+    "name": "S-57 / S-101 nautical charts",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "geo.vector"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2750
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2750,
+    "entropy": 5.659,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "896b5087e01d92644ca192e5ed854e8237ae99b2909218b48a45e3179fb94282",
+    "blake3": "bd74c889708b71fd6c3cade1ae947be1273dfcdfd8431ed9c700b8d23348767b"
+  },
+  "content": {
+    "title": "US5OR2XF.000",
+    "extent": {
+      "west": -123.9,
+      "south": 45.6,
+      "east": -123.825,
+      "north": 45.675,
+      "source": "s57.SG2D"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "s57": {
+      "dataset_name": "US5OR2XF.000",
+      "edition": "1",
+      "update": "0",
+      "update_date": "2024-06-04",
+      "issue_date": "2024-06-04",
+      "s57_edition": "03.1",
+      "producing_agency": 20482,
+      "compilation_scale": "1:22000",
+      "horizontal_datum": 2,
+      "records": 10,
+      "feature_records": 6,
+      "vector_records": 2,
+      "object_classes": {
+        "LNDARE": 1,
+        "MAGVAR": 1,
+        "M_COVR": 1,
+        "M_NPUB": 1,
+        "M_NSYS": 1,
+        "M_QUAL": 1
+      },
+      "bbox": [
+        -123.9,
+        45.6,
+        -123.825,
+        45.675
+      ],
+      "crs": {
+        "epsg": 4326
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.vector",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

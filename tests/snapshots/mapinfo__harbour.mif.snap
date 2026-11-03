@@ -1,0 +1,144 @@
+---
+source: src/formats/geo/text.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.mif",
+    "stem": "harbour",
+    "extension": "mif"
+  },
+  "identification": {
+    "format": "mapinfo",
+    "name": "MapInfo TAB / MIF",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "geo.text"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 500
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 500,
+    "entropy": 4.772,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 500,
+      "chars": 500,
+      "words": 69,
+      "lines": 33,
+      "max_line_length": 32,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "201ba7e348ebaf7a99982bc8e66080c8c1506e95add39abf82f83eef762510ca",
+    "blake3": "fe52b98ded3b8ba5ada6b2ffa09e5a2d19d4611c9d5c637090659fb71104ac03"
+  },
+  "content": {
+    "extent": {
+      "west": 4.095,
+      "south": 52.347,
+      "east": 4.142,
+      "north": 52.361,
+      "source": "mif"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "mapinfo": {
+      "kind": "MIF",
+      "version": "300",
+      "charset": "Neutral",
+      "coordsys": "Earth Projection 1, 104",
+      "fields": [
+        "name (Char(254))",
+        "kind (Char(254))",
+        "depth_m (Float)"
+      ],
+      "objects": {
+        "pline": 1,
+        "point": 4,
+        "region": 1
+      },
+      "bbox": [
+        4.095,
+        52.347,
+        4.142,
+        52.361
+      ],
+      "crs": {}
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.text",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

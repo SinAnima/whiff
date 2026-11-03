@@ -1,0 +1,153 @@
+---
+source: src/formats/geo/xml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-libkml.kml",
+    "stem": "saltmere-libkml",
+    "extension": "kml"
+  },
+  "identification": {
+    "format": "kml",
+    "name": "KML / KMZ",
+    "mime": "application/vnd.google-earth.kml+xml",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "kml",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.xml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3293
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 3293,
+    "entropy": 4.348,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 3293,
+      "chars": 3293,
+      "words": 149,
+      "lines": 107,
+      "max_line_length": 64,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "e8e64e435dff93844a5bd211d96596975793fc3e78f36d66225215d86eb56ade",
+    "blake3": "5f99c626392425f6629f213681b7abf2e06e04c67dec2e91548a413ff1f275d9"
+  },
+  "content": {
+    "title": "saltmere",
+    "extent": {
+      "west": 4.095,
+      "south": 52.347,
+      "east": 4.142,
+      "north": 52.361,
+      "source": "kml.coordinates"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "kml": {
+      "name": "saltmere",
+      "placemarks": 6,
+      "folders": 0,
+      "styles": 0,
+      "geometry_types": {
+        "LineString": 1,
+        "Point": 4,
+        "Polygon": 1
+      },
+      "bbox": [
+        4.095,
+        52.347,
+        4.142,
+        52.361
+      ],
+      "z_range": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.xml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

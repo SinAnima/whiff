@@ -1,0 +1,55 @@
+{
+  "bounds": [
+    594990,
+    5800990,
+    -10,
+    595090,
+    5801090,
+    90
+  ],
+  "boundsConforming": [
+    595000,
+    5801000,
+    2,
+    595080,
+    5801030,
+    8
+  ],
+  "dataType": "laszip",
+  "hierarchyType": "json",
+  "points": 400,
+  "span": 128,
+  "version": "1.1.0",
+  "srs": {
+    "authority": "EPSG",
+    "horizontal": "32631"
+  },
+  "schema": [
+    {
+      "name": "X",
+      "type": "signed",
+      "size": 4,
+      "scale": 0.001,
+      "offset": 595040
+    },
+    {
+      "name": "Y",
+      "type": "signed",
+      "size": 4,
+      "scale": 0.001,
+      "offset": 5801040
+    },
+    {
+      "name": "Z",
+      "type": "signed",
+      "size": 4,
+      "scale": 0.001,
+      "offset": 40
+    },
+    {
+      "name": "Intensity",
+      "type": "unsigned",
+      "size": 2
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+---
+source: src/formats/geo/shape.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "basin-utm-a00000009.gdbtable",
+    "stem": "basin-utm-a00000009",
+    "extension": "gdbtable"
+  },
+  "identification": {
+    "format": "filegdb_table",
+    "name": "Esri File Geodatabase / Personal GDB",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "geo.shape"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1190
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1190,
+    "entropy": 4.579,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "1fe654ae643e485e21bdf5d979c1a6999f11d613c9590fef26836016135159d8",
+    "blake3": "697b2cf95344b48917a914224689a921456d9d7a5508ea7b5d0deb9f11f1963d"
+  },
+  "content": {
+    "extent": {
+      "west": 4.129847030632031,
+      "south": 52.346884647136136,
+      "east": 4.142154614387686,
+      "north": 52.353115334820735,
+      "source": "gdbtable.extent"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "filegdb_table": {
+      "rows": 1,
+      "table_version": "Pro 3.2+ (64-bit object IDs)",
+      "geometry_type": "polygon",
+      "field_count": 5,
+      "fields": [
+        "SHAPE (geometry)",
+        "OBJECTID (objectid)",
+        "name (string)",
+        "kind (string)",
+        "depth_m (float64)"
+      ],
+      "crs": {
+        "name": "WGS_1984_UTM_Zone_31N",
+        "epsg": 32631
+      },
+      "bbox": [
+        576962.1922004,
+        5800234.6639983,
+        577789.9953372,
+        5800914.8398837
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.shape",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

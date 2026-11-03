@@ -1,0 +1,183 @@
+---
+source: src/formats/geo/raster.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "depth-wgs84-point.tif",
+    "stem": "depth-wgs84-point",
+    "extension": "tif"
+  },
+  "identification": {
+    "format": "geotiff",
+    "name": "GeoTIFF / COG",
+    "mime": "image/tiff; application=geotiff",
+    "family": "geo",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "geotiff",
+        "confidence": 0.97
+      },
+      {
+        "format": "tiff",
+        "confidence": 0.81
+      }
+    ],
+    "extractor": "geo.raster"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 6844
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 6844,
+    "entropy": 2.37,
+    "entropy_scope": "file",
+    "image": {
+      "width": 40,
+      "height": 30,
+      "bit_depth": 32
+    }
+  },
+  "integrity": {
+    "sha256": "c101c0191ccc0289d48190e2a2213779c0cf34db0500596bb67bf62083ad8a8e",
+    "blake3": "d435aa939317efeef49a781e59c42d6a730b764f8363d1e31f0062ff55f52077"
+  },
+  "content": {
+    "extent": {
+      "west": 4.09,
+      "south": 52.335,
+      "east": 4.1499999999999995,
+      "north": 52.365,
+      "source": "geotiff"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "geotiff": {
+      "bigtiff": true,
+      "byte_order": "little-endian",
+      "width": 40,
+      "height": 30,
+      "bands": 1,
+      "data_type": "float32",
+      "compression": "none",
+      "interleave": "pixel",
+      "tiled": true,
+      "block_size": [
+        16,
+        16
+      ],
+      "overviews": [],
+      "geokey_version": "1.1.0",
+      "geokeys": {
+        "GTModelType": 2,
+        "GTRasterType": 2,
+        "GeographicType": 4326,
+        "GeogCitation": "WGS 84",
+        "GeogAngularUnits": 9102,
+        "key 2057": 6378137.0,
+        "key 2059": 298.257223563
+      },
+      "model_type": "geographic",
+      "raster_type": "PixelIsPoint",
+      "geotransform": [
+        4.09,
+        0.0015,
+        0.0,
+        52.365,
+        0.0,
+        -0.001
+      ],
+      "bbox": [
+        4.09,
+        52.335,
+        4.15,
+        52.365
+      ],
+      "crs": {
+        "name": "WGS 84",
+        "epsg": 4326
+      },
+      "pixel_size": [
+        0.0015,
+        0.001
+      ],
+      "nodata": "-9999",
+      "gdal_metadata": {
+        "SURVEY": "Saltmere 2025"
+      },
+      "cog": {
+        "ifds_before_data": true,
+        "conforms": true
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.raster",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

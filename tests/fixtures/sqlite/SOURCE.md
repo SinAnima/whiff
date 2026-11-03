@@ -10,6 +10,4 @@ Every file here was made for whiff's tests and is released under CC0-1.0, for a 
 | `places.sqlite` | sqlite3: Firefox places tables | CC0-1.0 |
 | `collection.anki2` | sqlite3: Anki collection tables | CC0-1.0 |
 | `HarbourLog.sqlite` | sqlite3: Core Data tables (Z_PRIMARYKEY, Z_METADATA) | CC0-1.0 |
-| `saltmere-buoys.gpkg` | ogr2ogr -f GPKG (GDAL 3.10) | CC0-1.0 |
 | `saltmere-buoys.sl3` | ogr2ogr -f SQLite -dsco SPATIALITE=YES | CC0-1.0 |
-| `saltmere-chart.mbtiles` | gdal_translate -of MBTILES | CC0-1.0 |
