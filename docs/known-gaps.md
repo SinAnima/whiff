@@ -359,3 +359,32 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   serial numbers and IGC pilots appear only with privacy off; track
   positions are reported as bounds, not as points.
 
+## 3D and CAD (unreleased, feature `cad`)
+
+- **Not read:** AutoCAD DWG and Alembic (no free writer in the fixture
+  toolchain), Maya, Cinema 4D, Houdini, Modo, SketchUp, SolidWorks,
+  Inventor, Creo, CATIA, NX, Fusion 360, Revit, JT, PRC / U3D, DWF / DWFx,
+  Parasolid and ACIS (proprietary), Substance and MaterialX, PCD / PTS
+  point clouds, Gaussian splats, MikuMikuDance and Valve models, Altium,
+  Eagle and FreeCAD documents. Unreal and Unity assets belong to the games
+  collection.
+- **Geometry:** meshes are counted and bounded, not validated or
+  decoded beyond what the counts need; glTF bounds are mesh space (node
+  transforms not applied); FBX, X3D and Blender report objects and
+  blocks, not triangles; Draco reports its header (connectivity is not
+  decoded); USDC reports its sections (the compressed token table is not
+  decoded).
+- **Drawings:** DXF text goes to the text pipeline as written (MTEXT
+  formatting stripped, fields not evaluated); `$LASTSAVEDBY` appears only
+  with privacy off; DGN v7 element ranges are not converted to master
+  units; DGN v8 (an OLE container) is not read.
+- **Product data:** STEP and IFC are read from their clear text (no
+  geometry, no unit conversion); IFC names come from the spatial
+  structure, not property sets; IGES reports its global section and the
+  directory's entity types.
+- **Electronics:** Gerber bounds are those of the coordinates (aperture
+  sizes not added); OASIS reports its START and END records (cells inside
+  CBLOCKs are not decompressed).
+- **Privacy:** C3D subject names appear only with privacy off; FBX
+  document paths are dropped.
+

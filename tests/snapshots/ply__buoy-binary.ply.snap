@@ -1,0 +1,143 @@
+---
+source: src/formats/cad/mesh.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy-binary.ply",
+    "stem": "buoy-binary",
+    "extension": "ply"
+  },
+  "identification": {
+    "format": "ply",
+    "name": "PLY",
+    "mime": "model/ply",
+    "family": "3d",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "cad.mesh"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2998
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2998,
+    "entropy": 4.141,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "7f7ae315a1ea6101049f63acb5896dc19b4ff78fd4a51bc96cad7c24a0679d43",
+    "blake3": "023f28ce1b47b7d2e508def4cf707f1381962a06a33966649e05ae103b57c682"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ply": {
+      "encoding": "binary_little_endian",
+      "comments": [
+        "https://github.com/mikedh/trimesh"
+      ],
+      "elements": {
+        "vertex": {
+          "count": 76,
+          "properties": [
+            "x",
+            "y",
+            "z"
+          ]
+        },
+        "face": {
+          "count": 144,
+          "properties": [
+            "vertex_indices"
+          ]
+        }
+      },
+      "vertices": 76,
+      "faces": 144,
+      "bounds": {
+        "min": [
+          -0.6,
+          -0.6,
+          0.0
+        ],
+        "max": [
+          0.6,
+          0.6,
+          2.2
+        ],
+        "size": [
+          1.2,
+          1.2,
+          2.2
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.mesh",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

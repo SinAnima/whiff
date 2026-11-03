@@ -1,0 +1,145 @@
+---
+source: src/formats/cad/scene.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pier-light.ies",
+    "stem": "pier-light",
+    "extension": "ies"
+  },
+  "identification": {
+    "format": "ies",
+    "name": "IES photometric",
+    "mime": "application/octet-stream",
+    "family": "3d",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "cad.scene"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 245
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 245,
+    "entropy": 5.035,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 245,
+      "chars": 245,
+      "words": 40,
+      "lines": 13,
+      "max_line_length": 33,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "04d80a60e7bffba83f75c2266c295efaeef0bb2937569fdb090b40bb5a369e1f",
+    "blake3": "7ed8fcaf738b5977f706b71607c1d8042dd8fc4085972c7fdc84f255ff38415c"
+  },
+  "content": {
+    "title": "Pier Light"
+  },
+  "metadata": {},
+  "format": {
+    "ies": {
+      "standard": "IESNA:LM-63-2002",
+      "manufacturer": "Saltmere Lantern Works",
+      "luminaire": "Pier Light",
+      "lamp": "LED module",
+      "test": "SALT-2025-001",
+      "issue_date": "2025-09-01",
+      "keywords": {
+        "TEST": "SALT-2025-001",
+        "TESTLAB": "Saltmere Harbour bench",
+        "ISSUEDATE": "2025-09-01",
+        "MANUFAC": "Saltmere Lantern Works",
+        "LUMINAIRE": "Pier Light",
+        "LAMP": "LED module"
+      },
+      "tilt": "NONE",
+      "lamps": 1.0,
+      "lumens_per_lamp": 3200.0,
+      "vertical_angles": 3.0,
+      "horizontal_angles": 1.0,
+      "photometric_type": "C",
+      "dimensions": [
+        0.3,
+        0.3,
+        0.4
+      ],
+      "dimension_unit": "meters",
+      "input_watts": 40.0,
+      "max_candela": 900.0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.scene",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

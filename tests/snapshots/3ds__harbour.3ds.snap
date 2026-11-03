@@ -1,0 +1,132 @@
+---
+source: src/formats/cad/scene.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.3ds",
+    "stem": "harbour",
+    "extension": "3ds"
+  },
+  "identification": {
+    "format": "3ds",
+    "name": "Autodesk 3DS / MAX",
+    "mime": "application/octet-stream",
+    "family": "3d",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "extractor": "cad.scene"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3118
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 3118,
+    "entropy": 4.454,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "30188fa549994c940e12158627d125b07fa635efa49452c2f5480f21217c41bf",
+    "blake3": "d9a32818717d7e191f8b5e80d1310749f3775d799001688bcdd297b97ed1a577"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "3ds": {
+      "objects": [
+        "buoy_buoy_0",
+        "pier_pier_1"
+      ],
+      "vertices": 83,
+      "faces": 156,
+      "materials": [
+        "DefaultMaterial_0"
+      ],
+      "cameras": 0,
+      "lights": 0,
+      "bounds": {
+        "min": [
+          -0.6,
+          -1.25,
+          0.0
+        ],
+        "max": [
+          12.0,
+          1.25,
+          2.2
+        ],
+        "size": [
+          12.6,
+          2.5,
+          2.2
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.scene",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

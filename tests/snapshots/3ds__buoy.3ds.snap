@@ -1,0 +1,131 @@
+---
+source: src/formats/cad/scene.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy.3ds",
+    "stem": "buoy",
+    "extension": "3ds"
+  },
+  "identification": {
+    "format": "3ds",
+    "name": "Autodesk 3DS / MAX",
+    "mime": "application/octet-stream",
+    "family": "3d",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "extractor": "cad.scene"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2746
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2746,
+    "entropy": 4.534,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "e61fe73c642ee0465336c9a79aa55b1910c03d5ff6672e8989ddabc341ddeb87",
+    "blake3": "962d6033fbe0e4dfbb30aecc532d7d5c59c7df2314ffb5dfea7d8a40cc87806f"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "3ds": {
+      "objects": [
+        "Saltmere_Saltmere_0"
+      ],
+      "vertices": 75,
+      "faces": 144,
+      "materials": [
+        "DefaultMaterial_0"
+      ],
+      "cameras": 0,
+      "lights": 0,
+      "bounds": {
+        "min": [
+          -0.6,
+          -0.6,
+          0.0
+        ],
+        "max": [
+          0.6,
+          0.6,
+          2.2
+        ],
+        "size": [
+          1.2,
+          1.2,
+          2.2
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.scene",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

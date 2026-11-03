@@ -1,0 +1,130 @@
+---
+source: src/formats/cad/scene.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-buoy.blend",
+    "stem": "saltmere-buoy",
+    "extension": "blend"
+  },
+  "identification": {
+    "format": "blend",
+    "name": "Blender",
+    "mime": "application/x-blender",
+    "family": "3d",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "blend",
+        "confidence": 0.99
+      },
+      {
+        "format": "zstd",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "cad.scene"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 85675
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 85675,
+    "entropy": 7.988,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "57eecf748be2e52b5d325ab1a623d9e07a699b1e75612b2fff47cb41d4c2bc64",
+    "blake3": "c8dbf822206a9d5142f1994714ab900f3104bca07e55ea35a8199f3099fdeeeb"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "blend": {
+      "compression": "zstd",
+      "blender_version": "4.3",
+      "pointer_size": 8,
+      "byte_order": "little-endian",
+      "blocks": 980,
+      "data_blocks": {
+        "cameras": 1,
+        "lights": 1,
+        "materials": 1,
+        "meshes": 1,
+        "objects": 3,
+        "scenes": 1,
+        "screens": 11,
+        "window_managers": 1,
+        "workspaces": 11
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.scene",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

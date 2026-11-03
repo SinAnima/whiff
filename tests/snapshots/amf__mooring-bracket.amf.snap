@@ -1,0 +1,145 @@
+---
+source: src/formats/cad/mesh.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "mooring-bracket.amf",
+    "stem": "mooring-bracket",
+    "extension": "amf"
+  },
+  "identification": {
+    "format": "amf",
+    "name": "Additive Manufacturing File",
+    "mime": "application/x-amf",
+    "family": "3d",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "amf",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "cad.mesh"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 166050
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 166050,
+    "entropy": 4.639,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 166050,
+      "chars": 166050,
+      "words": 6,
+      "lines": 1,
+      "max_line_length": 166008,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "918249c2a36c0fe635b5940bf0e04526308af7e49179549d87391ec01f133152",
+    "blake3": "8aaf8f4e218b261ccc3b4945b9792c58a27cedb8183b577cb6493da56cad772d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "amf": {
+      "objects": 1,
+      "vertices": 1036,
+      "triangles": 1028,
+      "bounds": {
+        "min": [
+          -20.0,
+          -10.0,
+          -3.0
+        ],
+        "max": [
+          20.0,
+          10.0,
+          3.0
+        ],
+        "size": [
+          40.0,
+          20.0,
+          6.0
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.mesh",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

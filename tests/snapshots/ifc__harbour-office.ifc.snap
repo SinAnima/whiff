@@ -1,0 +1,190 @@
+---
+source: src/formats/cad/step.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-office.ifc",
+    "stem": "harbour-office",
+    "extension": "ifc"
+  },
+  "identification": {
+    "format": "ifc",
+    "name": "IFC (BIM)",
+    "mime": "application/x-step",
+    "family": "cad",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ifc",
+        "confidence": 0.99
+      },
+      {
+        "format": "step",
+        "confidence": 0.92
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "cad.step"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2199
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-11-03T18:13:18+00:00",
+        "source": "p21.FILE_NAME.time_stamp",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-11-03T18:13:18Z",
+    "latest": "2026-11-03T18:13:18Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2199,
+    "entropy": 5.622,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 2199,
+      "chars": 2199,
+      "words": 50,
+      "lines": 40,
+      "max_line_length": 124,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "b7e904565d009c55163bf0c7b23f2362e292ae34e6e7cb0a5136d7dad499c6e6",
+    "blake3": "7e46b6592f196d6e1cc416c523402ba2ad6787fecd3065298d608fbedc279898"
+  },
+  "content": {
+    "title": "Saltmere harbour office",
+    "description": "ViewDefinition[DesignTransferView]"
+  },
+  "metadata": {},
+  "format": {
+    "ifc": {
+      "description": [
+        "ViewDefinition[DesignTransferView]"
+      ],
+      "implementation_level": "2;1",
+      "file_name": {
+        "name": "/dev/null",
+        "time_stamp": "2026-11-03T18:13:18+00:00",
+        "preprocessor": "IfcOpenShell 0.9.0.post1",
+        "originating_system": "IfcOpenShell 0.9.0.post1",
+        "authorization": "Nobody"
+      },
+      "protocol": "IFC",
+      "schemas": [
+        "IFC4"
+      ],
+      "entities": 31,
+      "entity_types": 18,
+      "top_entity_types": {
+        "IFCAPPLICATION": 1,
+        "IFCAXIS2PLACEMENT3D": 1,
+        "IFCBUILDING": 1,
+        "IFCBUILDINGSTOREY": 1,
+        "IFCCARTESIANPOINT": 1,
+        "IFCDIRECTION": 2,
+        "IFCGEOMETRICREPRESENTATIONCONTEXT": 1,
+        "IFCORGANIZATION": 1,
+        "IFCOWNERHISTORY": 9,
+        "IFCPERSON": 1,
+        "IFCPERSONANDORGANIZATION": 1,
+        "IFCPROJECT": 1,
+        "IFCRELAGGREGATES": 3,
+        "IFCRELCONTAINEDINSPATIALSTRUCTURE": 1,
+        "IFCSITE": 1,
+        "IFCSIUNIT": 3,
+        "IFCUNITASSIGNMENT": 1,
+        "IFCWALL": 1
+      },
+      "applications": [
+        "Saltmere fixtures"
+      ],
+      "buildings": [
+        "Harbour office"
+      ],
+      "project": [
+        "Saltmere harbour office"
+      ],
+      "sites": [
+        "Saltmere quay"
+      ],
+      "storeys": [
+        "Ground floor"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.step",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

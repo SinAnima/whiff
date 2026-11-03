@@ -1,0 +1,136 @@
+---
+source: src/formats/cad/scene.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy.usdz",
+    "stem": "buoy",
+    "extension": "usdz"
+  },
+  "identification": {
+    "format": "usdz",
+    "name": "USDZ package",
+    "mime": "model/vnd.usdz+zip",
+    "family": "3d",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "usdz",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "cad.scene"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 626
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 626,
+    "entropy": 4.783,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "61d73a7d91e0d7bce122a877e55bc1decbfea8dc4088d5b0577862c57739e26a",
+    "blake3": "03f10992cfd81b3550650d449fae8818d93ec2968e9b74a6f735a0e320151af0"
+  },
+  "content": {
+    "description": "Buoy, Saltmere Harbour"
+  },
+  "metadata": {},
+  "format": {
+    "usdz": {
+      "entries": 1,
+      "layers": [
+        "buoy.usda"
+      ],
+      "images": 0,
+      "root_layer": "buoy.usda",
+      "usda_version": "1.0",
+      "layer_metadata": {
+        "defaultPrim": "Harbour",
+        "doc": "Buoy, Saltmere Harbour",
+        "metersPerUnit": "1",
+        "upAxis": "Z"
+      },
+      "prims": 4,
+      "prim_types": {
+        "Cube": 1,
+        "Cylinder": 1,
+        "Mesh": 1,
+        "Xform": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.scene",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

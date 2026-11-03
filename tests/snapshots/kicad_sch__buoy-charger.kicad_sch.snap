@@ -1,0 +1,143 @@
+---
+source: src/formats/cad/eda.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy-charger.kicad_sch",
+    "stem": "buoy-charger",
+    "extension": "kicad_sch"
+  },
+  "identification": {
+    "format": "kicad_sch",
+    "name": "KiCad schematic",
+    "mime": "application/octet-stream",
+    "family": "cad",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "cad.eda"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 260
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01",
+        "source": "kicad.title_block.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 260,
+    "entropy": 4.588,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 260,
+      "chars": 260,
+      "words": 28,
+      "lines": 15,
+      "max_line_length": 49,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "a537a4d2949386d3dfdbff23bd72b311f3d5453d5a51f74dab45fdf0e528bc8c",
+    "blake3": "0075e4e5bac5f7981a933cf248ef23ba7a6ae895594d0e57fe61025b3f18a492"
+  },
+  "content": {
+    "title": "Saltmere buoy charger"
+  },
+  "metadata": {},
+  "format": {
+    "kicad_sch": {
+      "version": "20211014",
+      "generator": "kiutils",
+      "paper": "A4",
+      "title_block": {
+        "title": "Saltmere buoy charger",
+        "date": "2025-09-01",
+        "rev": "1",
+        "company": "Saltmere Harbour"
+      },
+      "library_symbols": 0,
+      "elements": {
+        "generator": 1,
+        "lib_symbols": 1,
+        "paper": 1,
+        "sheet_instances": 1,
+        "title_block": 1,
+        "version": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.eda",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

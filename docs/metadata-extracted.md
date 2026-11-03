@@ -127,7 +127,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1008 formats** in total: tier 1 = 139, tier 2 = 122, tier 3 = 747.
-* Formats with an extractor in this build: **559** of 1008.
+* Formats with an extractor in this build: **589** of 1008.
 * Formats by family status: crate = 183, mixed = 365, impl = 460.
 * Formats by target stage: S1 = 170, S1/S6 = 101, S2 = 91, S3 = 48, S3/S8 = 1, S4 = 68, S5 = 66, S6 = 90, S6/S8 = 17, S7 = 140, S8 = 216.
 * By feature: `common` = 818, `cad` = 45, `forensics` = 38, `science` = 36, `geo` = 34, `data` = 20, `games` = 17.
@@ -268,10 +268,10 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 127 | GeoJSON | `geojson` | application/geo+json | 1 | `geo` | `geo` | `geo.json` | geojson, shapefile | S7 | — |
 | 128 | KML / KMZ | `kml` `kmz` | application/vnd.google-earth.kml+xml | 1 | `geo` | `geo` | `geo.xml` | geojson, shapefile | S7 | — |
 | 129 | GPX | `gpx` | application/gpx+xml | 1 | `geo` | `geo` | `geo.xml` | geojson, shapefile | S7 | — |
-| 130 | glTF / GLB | `gltf` `glb` | model/gltf+json | 1 | `3d` | `cad` | — | gltf, tobj | S7 | — |
-| 131 | Wavefront OBJ / MTL | `obj` `mtl` | model/obj | 1 | `3d` | `cad` | — | gltf, tobj | S7 | — |
-| 132 | STL | `stl` | model/stl | 1 | `3d` | `cad` | — | gltf, tobj | S7 | — |
-| 133 | AutoCAD DXF | `dxf` | image/vnd.dxf | 1 | `cad` | `cad` | — | dxf | S7 | — |
+| 130 | glTF / GLB | `gltf` `glb` | model/gltf+json | 1 | `3d` | `cad` | `cad.gltf` | gltf, tobj | S7 | — |
+| 131 | Wavefront OBJ / MTL | `obj` `mtl` | model/obj | 1 | `3d` | `cad` | `cad.mesh` | gltf, tobj | S7 | — |
+| 132 | STL | `stl` | model/stl | 1 | `3d` | `cad` | `cad.mesh` | gltf, tobj | S7 | — |
+| 133 | AutoCAD DXF | `dxf` | image/vnd.dxf | 1 | `cad` | `cad` | `cad.drawing` | dxf | S7 | — |
 | 134 | AutoCAD DWG | `dwg` | image/vnd.dwg | 1 | `cad` | `cad` | — | dxf | S7 | — |
 | 135 | TrueType font | `ttf` | font/ttf | 1 | `font` | `common` | `font.sfnt` | impl: sfnt tables | S7 | — |
 | 136 | OpenType font | `otf` | font/otf | 1 | `font` | `common` | `font.sfnt` | impl: sfnt tables | S7 | — |
@@ -389,9 +389,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 248 | ESRI Shapefile | `shp` `shx` `dbf` `prj` `cpg` | application/vnd.shp | 2 | `geo` | `geo` | `geo.shape` | geojson, shapefile | S7 | sidecar files grouped |
 | 249 | GeoTIFF / COG | `tif` `tiff` | image/tiff; application=geotiff | 2 | `geo` | `geo` | `geo.raster` | geojson, shapefile | S7 | — |
 | 250 | GeoPackage | `gpkg` | application/geopackage+sqlite3 | 2 | `geo` | `geo` | `db.sqlite` | geojson, shapefile | S7 | — |
-| 251 | FBX | `fbx` | application/vnd.autodesk.fbx | 2 | `3d` | `cad` | — | gltf, tobj | S7 | — |
-| 252 | STEP | `step` `stp` `p21` | model/step | 2 | `cad` | `cad` | — | dxf | S7 | — |
-| 253 | IFC (BIM) | `ifc` `ifczip` `ifcxml` | application/x-step | 2 | `cad` | `cad` | — | dxf | S7 | — |
+| 251 | FBX | `fbx` | application/vnd.autodesk.fbx | 2 | `3d` | `cad` | `cad.scene` | gltf, tobj | S7 | — |
+| 252 | STEP | `step` `stp` `p21` | model/step | 2 | `cad` | `cad` | `cad.step` | dxf | S7 | — |
+| 253 | IFC (BIM) | `ifc` `ifczip` `ifcxml` | application/x-step | 2 | `cad` | `cad` | `cad.step` | dxf | S7 | — |
 | 254 | TrueType / OpenType collection | `ttc` `otc` | font/collection | 2 | `font` | `common` | `font.sfnt` | impl: sfnt tables | S7 | — |
 | 255 | reStructuredText | `rst` `rest` | text/x-rst | 2 | `text.lightmarkup` | `common` | — | impl | S8 | — |
 | 256 | AsciiDoc | `adoc` `asciidoc` `asc` | text/asciidoc | 2 | `text.lightmarkup` | `common` | — | impl | S8 | document header attributes |
@@ -1060,43 +1060,43 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 919 | OSM change / diff | `osc` `osc.gz` | — | 3 | `geo` | `geo` | `geo.xml` | geojson, shapefile | S7 | create/modify/delete counts |
 | 920 | Map styles (Mapbox style JSON / SLD / lyrx) | `style.json` `sld` `lyrx` | — | 3 | `geo` | `geo` | `geo.json` | geojson, shapefile | S7 | layers, sources |
 | 921 | Geocaching LOC / GeoRSS | `loc` `georss` | — | 3 | `geo` | `geo` | `geo.xml` | geojson, shapefile | S7 | — |
-| 922 | PLY | `ply` | model/ply | 3 | `3d` | `cad` | — | gltf, tobj | S7 | — |
-| 923 | Collada DAE | `dae` | model/vnd.collada+xml | 3 | `3d` | `cad` | — | gltf, tobj | S7 | — |
-| 924 | Blender | `blend` | application/x-blender | 3 | `3d` | `cad` | — | gltf, tobj | S7 | — |
-| 925 | USD / USDZ / USDA / USDC | `usd` `usda` `usdc` `usdz` | model/vnd.usdz+zip | 3 | `3d` | `cad` | — | gltf, tobj | S7 | — |
-| 926 | 3D Manufacturing Format | `3mf` | model/3mf | 3 | `3d` | `cad` | — | gltf, tobj | S7 | — |
-| 927 | Autodesk 3DS / MAX | `3ds` `max` | — | 3 | `3d` | `cad` | — | gltf, tobj | S7 | chunks; MAX = OLE summary |
-| 928 | X3D / VRML | `x3d` `wrl` `vrml` | model/x3d+xml | 3 | `3d` | `cad` | — | gltf, tobj | S7 | — |
+| 922 | PLY | `ply` | model/ply | 3 | `3d` | `cad` | `cad.mesh` | gltf, tobj | S7 | — |
+| 923 | Collada DAE | `dae` | model/vnd.collada+xml | 3 | `3d` | `cad` | `cad.mesh` | gltf, tobj | S7 | — |
+| 924 | Blender | `blend` | application/x-blender | 3 | `3d` | `cad` | `cad.scene` | gltf, tobj | S7 | — |
+| 925 | USD / USDZ / USDA / USDC | `usd` `usda` `usdc` `usdz` | model/vnd.usdz+zip | 3 | `3d` | `cad` | `cad.scene` | gltf, tobj | S7 | — |
+| 926 | 3D Manufacturing Format | `3mf` | model/3mf | 3 | `3d` | `cad` | `cad.mesh` | gltf, tobj | S7 | — |
+| 927 | Autodesk 3DS / MAX | `3ds` `max` | — | 3 | `3d` | `cad` | `cad.scene` | gltf, tobj | S7 | chunks; MAX = OLE summary |
+| 928 | X3D / VRML | `x3d` `wrl` `vrml` | model/x3d+xml | 3 | `3d` | `cad` | `cad.mesh` | gltf, tobj | S7 | — |
 | 929 | Alembic | `abc` | — | 3 | `3d` | `cad` | — | gltf, tobj | S7 | — |
-| 930 | MagicaVoxel / Qubicle | `vox` `qb` | — | 3 | `3d` | `cad` | — | gltf, tobj | S7 | — |
+| 930 | MagicaVoxel / Qubicle | `vox` `qb` | — | 3 | `3d` | `cad` | `cad.scene` | gltf, tobj | S7 | — |
 | 931 | Point cloud PCD / XYZ / PTS | `pcd` `xyz` `pts` | — | 3 | `3d` | `cad` | — | gltf, tobj | S7 | — |
-| 932 | OFF / AMF / Stanford | `off` `amf` | application/x-amf | 3 | `3d` | `cad` | — | gltf, tobj | S7 | — |
+| 932 | OFF / AMF / Stanford | `off` `amf` | application/x-amf | 3 | `3d` | `cad` | `cad.mesh` | gltf, tobj | S7 | — |
 | 933 | Maya / Cinema 4D / Houdini / Modo | `ma` `mb` `c4d` `hip` `lxo` | — | 3 | `3d` | `cad` | — | gltf, tobj | S7 | ma (text): requires, scene info |
 | 934 | SketchUp | `skp` | — | 3 | `3d` | `cad` | — | gltf, tobj | S7 | version, thumbnail |
 | 935 | Unreal / Unity scene & package | `umap` `uasset` `unity` | — | 3 | `3d` | `cad` | — | gltf, tobj | S7 | -&gt; game |
 | 936 | MikuMikuDance / Valve models | `pmx` `pmd` `mdl` `smd` | — | 3 | `3d` | `cad` | — | gltf, tobj | S7 | — |
 | 937 | Gaussian splat | `splat` `ksplat` `spz` | — | 3 | `3d` | `cad` | — | gltf, tobj | S7 | point count |
-| 938 | 3D printing G-code | `gcode` `gco` `nc` | text/x-gcode | 3 | `3d` | `cad` | — | gltf, tobj | S7 | slicer, print time, filament, layer count |
-| 939 | Draco compressed mesh | `drc` | — | 3 | `3d` | `cad` | — | gltf, tobj | S7 | points, faces, attributes |
-| 940 | OpenVDB volume | `vdb` | — | 3 | `3d` | `cad` | — | gltf, tobj | S7 | grids, voxel counts, bbox |
+| 938 | 3D printing G-code | `gcode` `gco` `nc` | text/x-gcode | 3 | `3d` | `cad` | `cad.gcode` | gltf, tobj | S7 | slicer, print time, filament, layer count |
+| 939 | Draco compressed mesh | `drc` | — | 3 | `3d` | `cad` | `cad.mesh` | gltf, tobj | S7 | points, faces, attributes |
+| 940 | OpenVDB volume | `vdb` | — | 3 | `3d` | `cad` | `cad.scene` | gltf, tobj | S7 | grids, voxel counts, bbox |
 | 941 | Houdini bgeo / Substance / MaterialX | `bgeo` `sbsar` `sbs` `mtlx` | — | 3 | `3d` | `cad` | — | gltf, tobj | S7 | — |
-| 942 | LDraw brick models | `ldr` `mpd` | — | 3 | `3d` | `cad` | — | gltf, tobj | S7 | parts count, author |
-| 943 | VRM avatar | `vrm` | — | 3 | `3d` | `cad` | — | gltf, tobj | S7 | glTF + VRM meta: title, author, licence, allowed usage (rights) |
-| 944 | Motion capture BVH / C3D | `bvh` `c3d` | — | 3 | `3d` | `cad` | — | gltf, tobj | S7 | joints, frames, frame rate |
-| 945 | IES photometric | `ies` `ldt` | — | 3 | `3d` | `cad` | — | gltf, tobj | S7 | manufacturer, luminaire, lumens |
-| 946 | IGES | `igs` `iges` | model/iges | 3 | `cad` | `cad` | — | dxf | S7 | — |
+| 942 | LDraw brick models | `ldr` `mpd` | — | 3 | `3d` | `cad` | `cad.scene` | gltf, tobj | S7 | parts count, author |
+| 943 | VRM avatar | `vrm` | — | 3 | `3d` | `cad` | `cad.gltf` | gltf, tobj | S7 | glTF + VRM meta: title, author, licence, allowed usage (rights) |
+| 944 | Motion capture BVH / C3D | `bvh` `c3d` | — | 3 | `3d` | `cad` | `cad.scene` | gltf, tobj | S7 | joints, frames, frame rate |
+| 945 | IES photometric | `ies` `ldt` | — | 3 | `3d` | `cad` | `cad.scene` | gltf, tobj | S7 | manufacturer, luminaire, lumens |
+| 946 | IGES | `igs` `iges` | model/iges | 3 | `cad` | `cad` | `cad.step` | dxf | S7 | — |
 | 947 | Parasolid / ACIS | `x_t` `x_b` `sat` `sab` | — | 3 | `cad` | `cad` | — | dxf | S8 | header |
 | 948 | SolidWorks / Inventor / Creo / CATIA / NX | `sldprt` `sldasm` `ipt` `iam` `prt` `asm` `catpart` `catproduct` | — | 3 | `cad` | `cad` | — | dxf | S7 | OLE/zip summary info, version |
 | 949 | Fusion 360 / Onshape exports | `f3d` `f3z` | — | 3 | `cad` | `cad` | — | dxf | S7 | — |
 | 950 | Revit | `rvt` `rfa` | — | 3 | `cad` | `cad` | — | dxf | S7 | OLE BasicFileInfo stream: version, path |
-| 951 | MicroStation DGN | `dgn` | — | 3 | `cad` | `cad` | — | dxf | S7 | — |
-| 952 | Gerber / Excellon PCB | `gbr` `ger` `gtl` `gbl` `drl` `xln` | — | 3 | `cad` | `cad` | — | dxf | S7 | — |
-| 953 | KiCad / Eagle / Altium | `kicad_pcb` `kicad_sch` `brd` `sch` `pcbdoc` `schdoc` | — | 3 | `cad` | `cad` | — | dxf | S7 | title block, nets, components count |
-| 954 | OpenSCAD / FreeCAD | `scad` `fcstd` | — | 3 | `cad` | `cad` | — | dxf | S7 | — |
+| 951 | MicroStation DGN | `dgn` | — | 3 | `cad` | `cad` | `cad.drawing` | dxf | S7 | — |
+| 952 | Gerber / Excellon PCB | `gbr` `ger` `gtl` `gbl` `drl` `xln` | — | 3 | `cad` | `cad` | `cad.eda` | dxf | S7 | — |
+| 953 | KiCad / Eagle / Altium | `kicad_pcb` `kicad_sch` `brd` `sch` `pcbdoc` `schdoc` | — | 3 | `cad` | `cad` | `cad.eda` | dxf | S7 | title block, nets, components count |
+| 954 | OpenSCAD / FreeCAD | `scad` `fcstd` | — | 3 | `cad` | `cad` | `cad.eda` | dxf | S7 | — |
 | 955 | JT / 3D PDF (PRC/U3D) | `jt` `prc` `u3d` | — | 3 | `cad` | `cad` | — | dxf | S7 | — |
 | 956 | DWF / DWFx | `dwf` `dwfx` | — | 3 | `cad` | `cad` | — | dxf | S7 | — |
-| 957 | CNC / ISO G-code | `nc` `tap` `ngc` | — | 3 | `cad` | `cad` | — | dxf | S7 | — |
-| 958 | GDSII / OASIS chip layout | `gds` `gds2` `oas` | — | 3 | `cad` | `cad` | — | dxf | S7 | library name, structures, units, dates |
+| 957 | CNC / ISO G-code | `nc` `tap` `ngc` | — | 3 | `cad` | `cad` | `cad.gcode` | dxf | S7 | — |
+| 958 | GDSII / OASIS chip layout | `gds` `gds2` `oas` | — | 3 | `cad` | `cad` | `cad.eda` | dxf | S7 | library name, structures, units, dates |
 | 959 | PostScript Type 1 | `pfb` `pfa` `afm` `pfm` | application/x-font-type1 | 3 | `font` | `common` | `font.type1` | impl: sfnt tables | S7 | — |
 | 960 | Bitmap fonts BDF / PCF / FNT | `bdf` `pcf` `fon` `fnt` | — | 3 | `font` | `common` | `font.bitmap` | impl: sfnt tables | S7 | — |
 | 961 | EOT embedded OpenType | `eot` | application/vnd.ms-fontobject | 3 | `font` | `common` | `font.sfnt` | impl: sfnt tables | S7 | — |

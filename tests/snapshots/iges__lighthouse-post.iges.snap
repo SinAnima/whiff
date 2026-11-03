@@ -1,0 +1,169 @@
+---
+source: src/formats/cad/step.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "lighthouse-post.iges",
+    "stem": "lighthouse-post",
+    "extension": "iges"
+  },
+  "identification": {
+    "format": "iges",
+    "name": "IGES",
+    "mime": "model/iges",
+    "family": "cad",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "cad.step"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 13608
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-11-03T18:13:18",
+        "source": "iges.global.created",
+        "tz_known": false
+      },
+      {
+        "field": "modified",
+        "value": "2026-11-03T18:13:18",
+        "source": "iges.global.modified",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 13608,
+    "entropy": 2.023,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 13608,
+      "chars": 13608,
+      "words": 878,
+      "lines": 168,
+      "max_line_length": 80,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "4ca07f5c4aa75773a95b485d93238db5597146b30f6a40fd3b8a3a227de799e9",
+    "blake3": "cb49668eaa43e4c79fabf80d80dc868341bdbc25e2861362e7acab9f431da5a9"
+  },
+  "content": {
+    "authors": [
+      "root"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "iges": {
+      "global": {
+        "sender": "Open CASCADE IGES processor 7.9",
+        "file_name": "Filename.iges",
+        "system": "Open CASCADE 7.9",
+        "preprocessor": "Open CASCADE IGES processor 7.9",
+        "unit_name": "MM",
+        "author": "root",
+        "drafting_standard": "0",
+        "iges_version": "5.3",
+        "created": "2026-11-03T18:13:18",
+        "modified": "2026-11-03T18:13:18"
+      },
+      "entities": 53,
+      "entity_types": {
+        "associativity_instance": 1,
+        "circular_arc": 4,
+        "cylindrical_surface": 2,
+        "direction": 10,
+        "edge_list": 1,
+        "face": 5,
+        "line": 10,
+        "loop": 6,
+        "manifold_solid_brep": 1,
+        "plane_surface": 3,
+        "point": 5,
+        "shell": 1,
+        "transformation_matrix": 3,
+        "vertex_list": 1
+      },
+      "lines": {
+        "D": 106,
+        "G": 4,
+        "P": 56,
+        "S": 1,
+        "T": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.step",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

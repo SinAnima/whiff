@@ -1,0 +1,207 @@
+---
+source: src/formats/cad/step.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "mooring-bracket.step",
+    "stem": "mooring-bracket",
+    "extension": "step"
+  },
+  "identification": {
+    "format": "step",
+    "name": "STEP",
+    "mime": "model/step",
+    "family": "cad",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "step",
+        "confidence": 0.99
+      },
+      {
+        "format": "touchstone",
+        "confidence": 0.97
+      },
+      {
+        "format": "ifc",
+        "confidence": 0.92
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "cad.step"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 24997
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-11-03T18:13:18",
+        "source": "p21.FILE_NAME.time_stamp",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 24997,
+    "entropy": 5.129,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 24997,
+      "chars": 24997,
+      "words": 1947,
+      "lines": 644,
+      "max_line_length": 72,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "cca6bc80b5f09470e9804351f2f3de7fbbc35eab8af6de082d75b801b1f2246d",
+    "blake3": "0c0ea5c3e3195809e06dd1de3f67e3749b079e1176d46f6c8bba53c56bde52d0"
+  },
+  "content": {
+    "title": "Open CASCADE STEP translator 7.9 1",
+    "description": "Open CASCADE Model",
+    "authors": [
+      "Author"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "step": {
+      "description": [
+        "Open CASCADE Model"
+      ],
+      "implementation_level": "2;1",
+      "file_name": {
+        "name": "Open CASCADE Shape Model",
+        "time_stamp": "2026-11-03T18:13:18",
+        "authors": [
+          "Author"
+        ],
+        "organizations": [
+          "Open CASCADE"
+        ],
+        "preprocessor": "Open CASCADE STEP processor 7.9",
+        "originating_system": "Open CASCADE 7.9",
+        "authorization": "Unknown"
+      },
+      "protocol": "AP214",
+      "schemas": [
+        "AUTOMOTIVE_DESIGN { 1 0 10303 214 1 1 1 1 }"
+      ],
+      "entities": 534,
+      "entity_types": 36,
+      "top_entity_types": {
+        "ADVANCED_BREP_SHAPE_REPRESENTATION": 1,
+        "ADVANCED_FACE": 8,
+        "APPLICATION_CONTEXT": 1,
+        "APPLICATION_PROTOCOL_DEFINITION": 1,
+        "AXIS2_PLACEMENT_3D": 13,
+        "BOUNDED_CURVE": 4,
+        "CARTESIAN_POINT": 99,
+        "CIRCLE": 4,
+        "CLOSED_SHELL": 1,
+        "CYLINDRICAL_SURFACE": 2,
+        "DEFINITIONAL_REPRESENTATION": 36,
+        "DIRECTION": 72,
+        "EDGE_CURVE": 18,
+        "EDGE_LOOP": 12,
+        "FACE_BOUND": 12,
+        "GEOMETRIC_REPRESENTATION_CONTEXT": 37,
+        "LENGTH_UNIT": 1,
+        "LINE": 46,
+        "MANIFOLD_SOLID_BREP": 1,
+        "NAMED_UNIT": 2,
+        "ORIENTED_EDGE": 36,
+        "PCURVE": 36,
+        "PLANE": 6,
+        "PRODUCT": 1,
+        "PRODUCT_CONTEXT": 1,
+        "PRODUCT_DEFINITION": 1,
+        "PRODUCT_DEFINITION_CONTEXT": 1,
+        "PRODUCT_DEFINITION_FORMATION": 1,
+        "PRODUCT_DEFINITION_SHAPE": 1,
+        "PRODUCT_RELATED_PRODUCT_CATEGORY": 1,
+        "SEAM_CURVE": 2,
+        "SHAPE_DEFINITION_REPRESENTATION": 1,
+        "SURFACE_CURVE": 16,
+        "UNCERTAINTY_MEASURE_WITH_UNIT": 1,
+        "VECTOR": 46,
+        "VERTEX_POINT": 12
+      },
+      "products": [
+        "Open CASCADE STEP translator 7.9 1"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.step",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

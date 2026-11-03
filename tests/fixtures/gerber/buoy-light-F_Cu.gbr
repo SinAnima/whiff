@@ -1,0 +1,31 @@
+G04 Created with the python gerber_writer 0.4.3.3*
+G04 #@! TF.CreationDate,2026-11-03T18:13:18.830512*
+G04 #@! TF.FileFunction,Copper,L1,Top*
+G04 #@! TF.FilePolarity,Positive*
+%MOMM*%
+%FSLAX36Y36*%
+G75*
+G04 #@! TA.AperFunction,ComponentPad*
+G04 #@! TAShape,Circle,1.2*
+%ADD10C,1.2*%
+G04 #@! TD*
+G04 #@! TA.AperFunction,SMDPad,CuDef*
+G04 #@! TAShape,Rectangle,1.0,0.6,0*
+%ADD11R,1.0X0.6*%
+G04 #@! TD*
+G04 #@! TA.AperFunction,Conductor*
+G04 #@! TAShape,Circle,0.25*
+%ADD12C,0.25*%
+G04 #@! TD*
+%LPD*%
+D10*
+X2000000Y3000000D03*
+X6000000Y3000000D03*
+X10000000Y3000000D03*
+D11*
+X14000000Y3000000D03*
+D12*
+X2000000Y3000000D02*
+G01*
+X10000000Y3000000D01*
+M02*

@@ -122,7 +122,8 @@ Untrusted input is bounded: reads, decompression and time are budgeted per file,
 | `data` | no | columnar data and models: Parquet, GeoParquet, Arrow, Feather, ORC, Lance, Vortex, F3, Delta Lake, Iceberg, TFRecord, R fst / qs, safetensors, GGUF, ONNX, PyTorch, Keras, TensorFlow Lite, SavedModel, Core ML (includes `common`; unreleased) |
 | `science` | no | scientific and medical files: HDF5 (NetCDF-4, AnnData, Loom, MATLAB 7.3), NetCDF, FITS, ASDF, Zarr, GRIB, ROOT, NumPy, MATLAB, SPSS, Stata, SAS, R data, genomics (FASTA, FASTQ, SAM / BAM / CRAM, VCF / BCF, BED, GFF), chemistry (PDB, mmCIF, MOL / SDF), instruments (mzML, EDF, TDMS, VCD, OME-TIFF), simulation and EDA text formats, DICOM, NIfTI, NRRD, HL7, FHIR (includes `common`; unreleased) |
 | `geo` | no | geodata: GeoJSON, TopoJSON, KML / KMZ, GPX, GML, shapefiles, File Geodatabase tables, FlatGeobuf, MapInfo, OpenStreetMap, S-57, WKT / WKB, GeoTIFF / COG, DTED, ASCII grids, LAS / LAZ / COPC, E57, PMTiles, vector and 3D tiles, FIT, TCX, IGC, NMEA, map styles and QGIS projects (includes `common`; unreleased) |
-| `cad`, `games` | no | specialist collections (CAD and 3D, games); reserved, empty in 0.6 |
+| `cad` | no | 3D and CAD: glTF / GLB, VRM, OBJ, STL, PLY, OFF, AMF, 3MF, COLLADA, X3D, VRML, Draco, FBX, Blender, USD, 3DS, MagicaVoxel, OpenVDB, LDraw, BVH, C3D, IES, EULUMDAT, G-code, DXF, DGN, STEP, IFC, IGES, Gerber, Excellon, KiCad, GDSII, OASIS, OpenSCAD (includes `common`; unreleased) |
+| `games` | no | games; reserved, empty in 0.6 |
 | `full` | no | all collections |
 
 The minimum supported Rust version is 1.89.

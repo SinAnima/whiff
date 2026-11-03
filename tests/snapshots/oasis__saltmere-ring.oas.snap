@@ -1,0 +1,108 @@
+---
+source: src/formats/cad/eda.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-ring.oas",
+    "stem": "saltmere-ring",
+    "extension": "oas"
+  },
+  "identification": {
+    "format": "oasis",
+    "name": "OASIS chip layout",
+    "mime": "application/octet-stream",
+    "family": "cad",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "cad.eda"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 495
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 495,
+    "entropy": 3.786,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "4d26b2d593629db0c016234fcac7cb2d2b9c48aeedbff60113dcf884de098ea5",
+    "blake3": "ed7728a47cd6b3c37bf21ab8eb630fdf977b9ec9c5267afb670ddfb3986f6eda"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "oasis": {
+      "oasis_version": "1.0",
+      "db_units_per_micron": 1000.0,
+      "table_offsets_at_end": true,
+      "validation": "none"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.eda",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

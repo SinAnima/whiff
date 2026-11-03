@@ -7,7 +7,7 @@ keep the schema version.
 ## Unreleased
 
 Fonts, columnar data and machine-learning models, scientific and medical
-files, geodata (Stage 7, first four parts).
+files, geodata, 3D and CAD (Stage 7).
 
 - **Fonts** (`common`), all in-house (WOFF2 through the existing Brotli
   decoder; no read-fonts / skrifa / allsorts):
@@ -131,6 +131,31 @@ files, geodata (Stage 7, first four parts).
     tilesets and `b3dm` / `i3dm` / `pnts` / `cmpt` payloads;
   - map documents: Mapbox / MapLibre styles, OGC SLD, ArcGIS layer files,
     QGIS projects (`.qgs`, `.qgz`), CZML.
+- **3D and CAD** (feature `cad`, which now includes `common`), all
+  in-house (no gltf / tobj / stl_io / fbxcel / dxf / step crates):
+  - meshes: Wavefront OBJ and MTL, STL (ASCII and binary), PLY (ASCII and
+    binary), OFF, AMF, 3MF, COLLADA, X3D, VRML, Draco: vertices,
+    triangles, objects, materials, metadata and bounds;
+  - scenes and assets: glTF and GLB (asset, counts, vertices, triangles,
+    bounds, embedded and external resources, extensions), VRM avatars
+    (title, authors, licence and usage permissions into `rights`), FBX
+    (binary and ASCII: creator, applications, axes, objects), Blender
+    (plain, gzip, zstd; data blocks), USD (USDA, USDC, USDZ), 3DS,
+    MagicaVoxel, OpenVDB, LDraw;
+  - capture and lighting: BVH and C3D motion capture, IES LM-63 and
+    EULUMDAT photometry;
+  - manufacturing: 3D-printing G-code (slicer, settings, print time,
+    layers, temperatures) and CNC programs (tools, spindle, feeds,
+    extents);
+  - CAD: DXF (ASCII and binary: release, units, extents, layers, blocks,
+    entities; its text into the text pipeline), DGN v7, STEP (header,
+    application protocol, entities, products), IFC and IFC-ZIP (project,
+    site, building, storeys, application), IGES (global section,
+    entities);
+  - electronics: Gerber X2, Excellon, KiCad boards and schematics, GDSII,
+    OASIS; OpenSCAD sources.
+- **Plugin API:** `plugin::xmlwalk`, the XML event walker the geo and CAD
+  extractors share.
 - **Report:** `content.extent`, the WGS84 box a file covers (additive; the
   schema stays `whiff/1`).
 - **Reclassified fixtures:** the GeoPackage and MBTiles files formerly
@@ -168,6 +193,12 @@ files, geodata (Stage 7, first four parts).
   public-domain NOAA charts); `geo_oracle.py` compares the reports with
   OGR, gdalinfo and GDAL's COG validator, osmium, laspy, pye57,
   fit-tool, aerofiles and shapely over a generated corpus.
+  `scripts/fixtures/cad.sh` makes the 3D and CAD fixtures with trimesh,
+  assimp, Blender, usd-core, PrusaSlicer, cadquery / OpenCASCADE, ezdxf,
+  ifcopenshell, gerber-writer, kiutils, KLayout and others;
+  `cad_oracle.py` compares the reports with trimesh, assimp, ezdxf,
+  OpenCASCADE, ifcopenshell, usd-core, KLayout, c3d, py-vox-io and
+  OpenVDB.
 
 ## 0.6.0 — 2026-10-31
 

@@ -1,0 +1,116 @@
+---
+source: src/formats/cad/scene.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy.vox",
+    "stem": "buoy",
+    "extension": "vox"
+  },
+  "identification": {
+    "format": "vox",
+    "name": "MagicaVoxel / Qubicle",
+    "mime": "application/octet-stream",
+    "family": "3d",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "cad.scene"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 652
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 652,
+    "entropy": 3.211,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "c9599b8d8cfddde2467cc71eb41f72a5f613316a329e0e84e2e822c2d88e341d",
+    "blake3": "753c81d2b42eaa77a35dfddff45c289f7aca3f5ea400abd6ec55c0f55dee14ca"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "vox": {
+      "vox_version": 150,
+      "models": 1,
+      "model_sizes": [
+        "12x8x8"
+      ],
+      "voxels": 144,
+      "custom_palette": false,
+      "chunks": {
+        "PACK": 1,
+        "SIZE": 1,
+        "XYZI": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.scene",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

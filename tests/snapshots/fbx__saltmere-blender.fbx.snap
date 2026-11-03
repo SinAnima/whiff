@@ -1,0 +1,155 @@
+---
+source: src/formats/cad/scene.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-blender.fbx",
+    "stem": "saltmere-blender",
+    "extension": "fbx"
+  },
+  "identification": {
+    "format": "fbx",
+    "name": "FBX",
+    "mime": "application/vnd.autodesk.fbx",
+    "family": "3d",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "cad.scene"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 30380
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-11-03T18:13:54",
+        "source": "fbx.CreationTimeStamp",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 30380,
+    "entropy": 4.767,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "95f30200d05ec36f4123abfeb6041a77ef8f8f129e27cee041ce4b645abec765",
+    "blake3": "5bc476a8ca55130002b90b6d4271d51377bc9c4bcb3cdb18a2ef6238ece5c5b3"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "fbx": {
+      "encoding": "binary",
+      "fbx_version": "7.4",
+      "created": "2026-11-03T18:13:54",
+      "creator": "Blender (stable FBX IO) - 4.3.2 - 5.12.5",
+      "up_axis": 1,
+      "front_axis": 2,
+      "unit_scale_cm": 1.0,
+      "original_up_axis": -1,
+      "objects": {
+        "Geometry:Mesh": 2,
+        "Material": 1,
+        "Model:Camera": 1,
+        "Model:Light": 1,
+        "Model:Mesh": 2,
+        "NodeAttribute:Camera": 1,
+        "NodeAttribute:Light": 1
+      },
+      "vertices": 72,
+      "embedded_media": 0,
+      "application": {
+        "LastSaved|ApplicationName": "Blender (stable FBX IO)",
+        "LastSaved|ApplicationVendor": "Blender Foundation",
+        "LastSaved|ApplicationVersion": "4.3.2",
+        "LastSaved|DateTime_GMT": "01/01/1970 00:00:00.000",
+        "Original|ApplicationName": "Blender (stable FBX IO)",
+        "Original|ApplicationNativeFile": "",
+        "Original|ApplicationVendor": "Blender Foundation",
+        "Original|ApplicationVersion": "4.3.2",
+        "Original|DateTime_GMT": "01/01/1970 00:00:00.000"
+      },
+      "top_level_nodes": [
+        "FBXHeaderExtension",
+        "FileId",
+        "CreationTime",
+        "Creator",
+        "GlobalSettings",
+        "Documents",
+        "References",
+        "Definitions",
+        "Objects",
+        "Connections",
+        "Takes"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.scene",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

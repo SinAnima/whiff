@@ -33,7 +33,7 @@ pub use crate::container::codec::{Codec, End};
 pub use crate::container::zip::{
     Zip, ZipEntry, first_stored as zip_first_stored, method_name as zip_method_name, names as zip_names,
 };
-pub use crate::container::{asf, codec, der, flatbuf, mp4, oleps, proplist, protowire, volume};
+pub use crate::container::{asf, codec, der, flatbuf, mp4, oleps, proplist, protowire, volume, xmlwalk};
 pub use crate::engine::{Options, Privacy, Profile};
 pub use crate::meta::latin1_or_utf8;
 pub use crate::text::decode::decode as decode_text;

@@ -1,0 +1,128 @@
+---
+source: src/formats/cad/eda.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bracket.scad",
+    "stem": "bracket",
+    "extension": "scad"
+  },
+  "identification": {
+    "format": "openscad",
+    "name": "OpenSCAD / FreeCAD",
+    "mime": "application/octet-stream",
+    "family": "cad",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "cad.eda"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 223
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 223,
+    "entropy": 4.852,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 223,
+      "chars": 223,
+      "words": 40,
+      "lines": 7,
+      "max_line_length": 89,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "5b7ce88333be3a3a413441536e3c394d5d626145065f6ed710c4af60e56b0f63",
+    "blake3": "dec7bbc201a6adb001ca4fbf5a20b9b0ce835d3573130b7fc4b0cb3086589ab8"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "openscad": {
+      "header_comment": "Saltmere mooring bracket",
+      "modules": [],
+      "functions": [
+        "hole_x"
+      ],
+      "dependencies": [
+        "use bolts.scad"
+      ],
+      "operations": {
+        "cube": 1,
+        "cylinder": 1,
+        "difference": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.eda",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

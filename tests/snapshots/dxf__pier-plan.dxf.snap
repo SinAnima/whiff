@@ -1,0 +1,170 @@
+---
+source: src/formats/cad/drawing.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pier-plan.dxf",
+    "stem": "pier-plan",
+    "extension": "dxf"
+  },
+  "identification": {
+    "format": "dxf",
+    "name": "AutoCAD DXF",
+    "mime": "image/vnd.dxf",
+    "family": "cad",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "cad.drawing"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 55830
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T06:00:00",
+        "source": "dxf.$TDCREATE",
+        "tz_known": false
+      },
+      {
+        "field": "modified",
+        "value": "2026-11-04T06:13:18",
+        "source": "dxf.$TDUPDATE",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 55830,
+    "entropy": 4.422,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 55830,
+      "chars": 55830,
+      "words": 13316,
+      "lines": 13156,
+      "max_line_length": 56,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 84
+    }
+  },
+  "integrity": {
+    "sha256": "be4a50e7479ff4d1b2405e3c0a22614151ddd82b6ac35b89e14bc743002dc808",
+    "blake3": "51d376e3e5c33dccf0811a55f51a86193923ba0b7ab56949f3d200ecb3a422ba"
+  },
+  "content": {
+    "excerpt": "Saltmere pier Mooring bollards every 5 m"
+  },
+  "metadata": {},
+  "format": {
+    "dxf": {
+      "encoding": "ascii",
+      "header": {
+        "acadver": "AC1032",
+        "acadmaintver": "4",
+        "dwgcodepage": "ANSI_1252",
+        "created": "2025-09-01T06:00:00",
+        "updated": "2026-11-04T06:13:18",
+        "measurement": "1",
+        "units": "meters",
+        "fingerprintguid": "{18E3DD8E-CFBE-4682-8FD3-A73178A282B7}",
+        "versionguid": "{E5048314-817E-47A3-A090-CE2897E0CDD8}",
+        "projectname": "",
+        "release": "2018"
+      },
+      "layer_count": 4,
+      "layers": [
+        "0",
+        "Defpoints",
+        "PIER",
+        "LABELS"
+      ],
+      "blocks": [
+        "_ARCHTICK",
+        "_CLOSEDFILLED",
+        "_CLOSEDBLANK",
+        "BOLLARD"
+      ],
+      "entities": {
+        "INSERT": 3,
+        "LWPOLYLINE": 1,
+        "MTEXT": 1,
+        "TEXT": 1
+      },
+      "layouts": [
+        "",
+        "Layout1",
+        "Model"
+      ],
+      "text_entities": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.drawing",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,113 @@
+---
+source: src/formats/cad/scene.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.usdc",
+    "stem": "harbour",
+    "extension": "usdc"
+  },
+  "identification": {
+    "format": "usdc",
+    "name": "USD crate file",
+    "mime": "application/octet-stream",
+    "family": "3d",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "cad.scene"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1139
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1139,
+    "entropy": 4.0,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "d6523beb457731f985f9de3742944d7419792230da1a5dbd6618192284f6f94a",
+    "blake3": "14345256931c4e9ba4812fe18b9c54068403feffcc23b1f65e1c84fbc1972e4c"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "usdc": {
+      "crate_version": "0.8.0",
+      "sections": {
+        "TOKENS": 279,
+        "STRINGS": 12,
+        "FIELDS": 183,
+        "FIELDSETS": 54,
+        "PATHS": 87,
+        "SPECS": 68
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.scene",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

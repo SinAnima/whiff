@@ -21,4 +21,5 @@ pub mod oleps;
 pub mod proplist;
 pub mod protowire;
 pub mod volume;
+pub mod xmlwalk;
 pub mod zip;

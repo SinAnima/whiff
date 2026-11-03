@@ -1,0 +1,137 @@
+---
+source: src/formats/cad/mesh.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pier-ascii.stl",
+    "stem": "pier-ascii",
+    "extension": "stl"
+  },
+  "identification": {
+    "format": "stl",
+    "name": "STL",
+    "mime": "model/stl",
+    "family": "3d",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "cad.mesh"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1685
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1685,
+    "entropy": 4.194,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1685,
+      "chars": 1685,
+      "words": 254,
+      "lines": 87,
+      "max_line_length": 36,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "aa6f2739a0c8593159890f323dbee19c0ed29e2539487eb0df08211f778fd124",
+    "blake3": "9ef1afae333f83eefe76c449ba8c8704e09f3bcbc6845e9a245b72fec9a929bf"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "stl": {
+      "encoding": "ascii",
+      "triangles": 12,
+      "solids": [
+        ""
+      ],
+      "bounds": {
+        "min": [
+          0.0,
+          -1.25,
+          0.9
+        ],
+        "max": [
+          12.0,
+          1.25,
+          1.5
+        ],
+        "size": [
+          12.0,
+          2.5,
+          0.6
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.mesh",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

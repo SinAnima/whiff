@@ -17,7 +17,7 @@ import subprocess
 import sys
 
 ORDER = ["Text", "Web", "Document", "Personal", "Data", "Scientific", "Code", "Image", "Media", "Font", "Archive", "Package",
-         "Executable", "Security", "Database", "Platform", "Disk", "Forensics", "Geospatial", "Fallback"]
+         "Executable", "Security", "Database", "Platform", "Disk", "Forensics", "Geospatial", "3D", "CAD", "Fallback"]
 
 TITLES = {
     "Personal": "E-mail, calendars and contacts",
@@ -26,6 +26,8 @@ TITLES = {
     "Disk": "Disk images and file systems",
     "Forensics": "Forensic artefacts",
     "Fallback": "Generic binaries",
+    "3D": "3D models and scenes",
+    "CAD": "CAD, engineering and electronics",
     "Scientific": "Scientific and medical data",
 }
 

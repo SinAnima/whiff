@@ -1,0 +1,139 @@
+---
+source: src/formats/cad/scene.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-assimp.fbx",
+    "stem": "harbour-assimp",
+    "extension": "fbx"
+  },
+  "identification": {
+    "format": "fbx",
+    "name": "FBX",
+    "mime": "application/vnd.autodesk.fbx",
+    "family": "3d",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "cad.scene"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 30112
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-11-03T18:13:15",
+        "source": "fbx.CreationTimeStamp",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 30112,
+    "entropy": 3.767,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "4a6e60fc247b92b2169cf8675cfbe82b60cc3932c048f77fb7085326b825784e",
+    "blake3": "738030bb18e8f3d39c9a71ffec4f07ce6907c399c73855518e08c5669c8381af"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "fbx": {
+      "encoding": "binary",
+      "fbx_version": "7.5",
+      "created": "2026-11-03T18:13:15",
+      "creator": "Open Asset Import Library (Assimp) 5.4.0",
+      "up_axis": 1,
+      "front_axis": 2,
+      "unit_scale_cm": 1.0,
+      "original_up_axis": 1,
+      "objects": {
+        "Geometry:Mesh": 2,
+        "Material": 1,
+        "Model:Mesh": 2
+      },
+      "vertices": 468,
+      "embedded_media": 0,
+      "top_level_nodes": [
+        "FBXHeaderExtension",
+        "FileId",
+        "CreationTime",
+        "Creator",
+        "GlobalSettings",
+        "Documents",
+        "References",
+        "Definitions",
+        "Objects",
+        "Connections"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.scene",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

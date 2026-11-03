@@ -28,6 +28,8 @@ pub(crate) mod audio;
 pub(crate) mod binary;
 #[cfg(feature = "common")]
 pub(crate) mod bytecode;
+#[cfg(feature = "cad")]
+pub(crate) mod cad;
 #[cfg(feature = "common")]
 pub(crate) mod code;
 #[cfg(feature = "data")]

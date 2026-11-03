@@ -15,3 +15,6 @@ lcov.info
 # The fixtures themselves (tests/fixtures/f3/) are committed.
 /target/f3src/
 expected.jsonl
+
+# Python byte code from importing the oracle scripts
+scripts/fixtures/__pycache__/

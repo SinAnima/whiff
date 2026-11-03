@@ -1,0 +1,154 @@
+---
+source: src/formats/cad/mesh.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pier-ascii.ply",
+    "stem": "pier-ascii",
+    "extension": "ply"
+  },
+  "identification": {
+    "format": "ply",
+    "name": "PLY",
+    "mime": "model/ply",
+    "family": "3d",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "cad.mesh"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 565
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 565,
+    "entropy": 4.199,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 565,
+      "chars": 565,
+      "words": 99,
+      "lines": 30,
+      "max_line_length": 41,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "5af0b505bd80e96fa9695888deb251f05e87e4de4980e5972cc0a7d1193d997a",
+    "blake3": "58977b8812a12232736eba661b13fd125ac0691361d5332083c0c47adc0276e8"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ply": {
+      "encoding": "ascii",
+      "comments": [
+        "https://github.com/mikedh/trimesh"
+      ],
+      "elements": {
+        "vertex": {
+          "count": 8,
+          "properties": [
+            "x",
+            "y",
+            "z"
+          ]
+        },
+        "face": {
+          "count": 12,
+          "properties": [
+            "vertex_indices"
+          ]
+        }
+      },
+      "vertices": 8,
+      "faces": 12,
+      "bounds": {
+        "min": [
+          0.0,
+          -1.25,
+          0.9
+        ],
+        "max": [
+          12.0,
+          1.25,
+          1.5
+        ],
+        "size": [
+          12.0,
+          2.5,
+          0.6
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.mesh",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
