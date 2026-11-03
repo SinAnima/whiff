@@ -1,0 +1,145 @@
+---
+source: src/formats/cad/scene.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.mpd",
+    "stem": "harbour",
+    "extension": "mpd"
+  },
+  "identification": {
+    "format": "ldraw",
+    "name": "LDraw brick models",
+    "mime": "application/octet-stream",
+    "family": "3d",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "ldraw",
+        "confidence": 0.97
+      },
+      {
+        "format": "mpd",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "cad.scene"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 380
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 380,
+    "entropy": 4.261,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 380,
+      "chars": 380,
+      "words": 102,
+      "lines": 14,
+      "max_line_length": 43,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "3945f913a1395909f77532cab623f60f5ea69785444a8dc3d85625828d5cf597",
+    "blake3": "f303735e079c6e3801a715ecb6459fc8262bf9700690f0f1a7869f3f9acfb577"
+  },
+  "content": {
+    "title": "Saltmere harbour",
+    "authors": [
+      "Saltmere Harbour Office"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "ldraw": {
+      "name": "lighthouse.ldr",
+      "title": "Saltmere harbour",
+      "files": [
+        "harbour.ldr",
+        "lighthouse.ldr"
+      ],
+      "part_references": 5,
+      "distinct_parts": 3,
+      "top_parts": {
+        "3001.dat": 2,
+        "3062b.dat": 2,
+        "lighthouse.ldr": 1
+      },
+      "colours": 3,
+      "primitives": {}
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.scene",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

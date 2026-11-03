@@ -1,0 +1,146 @@
+---
+source: src/formats/geo/xml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-harbour.kmz",
+    "stem": "saltmere-harbour",
+    "extension": "kmz"
+  },
+  "identification": {
+    "format": "kmz",
+    "name": "KMZ archive",
+    "mime": "application/vnd.google-earth.kmz",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "kmz",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "geo.xml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1132
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1132,
+    "entropy": 7.001,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "5eddeef4c65921e803e1009c6de5bab2f4c4ebe1bf2afe3956a954781de71c82",
+    "blake3": "e1ba59a0b357572cf9b3a641001d7f8a6ca215b2bbd23436af0e3006b59eae69"
+  },
+  "content": {
+    "title": "saltmere",
+    "extent": {
+      "west": 4.095,
+      "south": 52.347,
+      "east": 4.142,
+      "north": 52.361,
+      "source": "kml.coordinates"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "kmz": {
+      "document": "doc.kml",
+      "entries": 3,
+      "documents": 2,
+      "name": "saltmere",
+      "placemarks": 6,
+      "folders": 0,
+      "styles": 0,
+      "network_links": 1,
+      "geometry_types": {
+        "LineString": 1,
+        "Point": 4,
+        "Polygon": 1
+      },
+      "bbox": [
+        4.095,
+        52.347,
+        4.142,
+        52.361
+      ],
+      "z_range": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.xml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

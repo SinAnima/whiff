@@ -1,0 +1,242 @@
+SplineFontDB: 3.2
+FontName: SaltmereSerif-Italic
+FullName: Saltmere Serif Italic
+FamilyName: Saltmere Serif
+Weight: Book
+Copyright: Saltmere Harbour Type
+Version: 1.002
+ItalicAngle: -12
+UnderlinePosition: 0
+UnderlineWidth: 0
+Ascent: 800
+Descent: 200
+InvalidEm: 0
+sfntRevision: 0x00010083
+LayerCount: 2
+Layer: 0 0 "Back" 1
+Layer: 1 0 "Fore" 0
+XUID: [1021 282 1320591204 7210608]
+StyleMap: 0x0001
+FSType: 8
+OS2Version: 3
+OS2_WeightWidthSlopeOnly: 0
+OS2_UseTypoMetrics: 0
+CreationTime: 1756707120
+ModificationTime: 1759343460
+PfmFamily: 81
+TTFWeight: 400
+TTFWidth: 5
+LineGap: 0
+VLineGap: 0
+Panose: 0 0 0 0 0 0 0 0 0 0
+OS2TypoAscent: 800
+OS2TypoAOffset: 0
+OS2TypoDescent: -200
+OS2TypoDOffset: 0
+OS2TypoLinegap: 0
+OS2WinAscent: 800
+OS2WinAOffset: 0
+OS2WinDescent: 200
+OS2WinDOffset: 0
+HheadAscent: 800
+HheadAOffset: 0
+HheadDescent: -200
+HheadDOffset: 0
+OS2SubXSize: 0
+OS2SubYSize: 0
+OS2SubXOff: 0
+OS2SubYOff: 0
+OS2SupXSize: 0
+OS2SupYSize: 0
+OS2SupXOff: 0
+OS2SupYOff: 0
+OS2StrikeYSize: 0
+OS2StrikeYPos: 0
+OS2Vendor: 'SHTY'
+OS2CodePages: 00000000.00000000
+OS2UnicodeRanges: 00000281.00000000.00000000.00000000
+Lookup: 4 0 1 "'liga' Standard Ligatures lookup 0" { "'liga' Standard Ligatures lookup 0 subtable"  } ['liga' ('DFLT' <'dflt' > 'cyrl' <'dflt' > 'latn' <'dflt' > ) ]
+Lookup: 1 0 0 "'onum' Oldstyle Figures lookup 1" { "'onum' Oldstyle Figures lookup 1 subtable" ("oldstyle") } ['onum' ('DFLT' <'dflt' > 'cyrl' <'dflt' > 'latn' <'dflt' > ) ]
+Lookup: 258 0 0 "'kern' Horizontal Kerning lookup 0" { "'kern' Horizontal Kerning lookup 0 subtable"  } ['kern' ('DFLT' <'dflt' > 'cyrl' <'dflt' > 'latn' <'dflt' > ) ]
+DEI: 91125
+LangName: 1033 "Copyright 2025 Saltmere Harbour Type" "" "" "1.002;SHT;SaltmereSerif-Italic" "" "Version 1.002" "" "" "Saltmere Harbour Type" "Ada Example" "A harbour signage face for tide boards and berth numbers." "https://example.org/type" "https://example.org/type/ada" "This font is dedicated to the public domain under CC0 1.0 Universal." "https://creativecommons.org/publicdomain/zero/1.0/"
+Encoding: UnicodeBmp
+UnicodeInterp: none
+NameList: AGL For New Fonts
+DisplaySize: -48
+AntiAlias: 1
+FitToEm: 0
+BeginChars: 65538 11
+
+StartChar: .notdef
+Encoding: 65536 -1 0
+Width: 500
+GlyphClass: 1
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+50 0 m 1
+ 450 0 l 1
+ 450 700 l 1
+ 50 700 l 1
+ 50 0 l 1
+EndSplineSet
+EndChar
+
+StartChar: space
+Encoding: 32 32 1
+Width: 500
+GlyphClass: 1
+Flags: W
+LayerCount: 2
+EndChar
+
+StartChar: A
+Encoding: 65 65 2
+Width: 500
+GlyphClass: 1
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+52 0 m 1
+ 452 0 l 1
+ 452 700 l 1
+ 52 700 l 1
+ 52 0 l 1
+EndSplineSet
+Kerns2: 3 -40 "'kern' Horizontal Kerning lookup 0 subtable"
+EndChar
+
+StartChar: B
+Encoding: 66 66 3
+Width: 500
+GlyphClass: 1
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+53 0 m 1
+ 453 0 l 1
+ 453 700 l 1
+ 53 700 l 1
+ 53 0 l 1
+EndSplineSet
+EndChar
+
+StartChar: f
+Encoding: 102 102 4
+Width: 500
+GlyphClass: 1
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+54 0 m 1
+ 454 0 l 1
+ 454 700 l 1
+ 54 700 l 1
+ 54 0 l 1
+EndSplineSet
+EndChar
+
+StartChar: i
+Encoding: 105 105 5
+Width: 500
+GlyphClass: 1
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+55 0 m 1
+ 455 0 l 1
+ 455 700 l 1
+ 55 700 l 1
+ 55 0 l 1
+EndSplineSet
+EndChar
+
+StartChar: f_i
+Encoding: 65537 -1 6
+Width: 500
+GlyphClass: 1
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+56 0 m 1
+ 456 0 l 1
+ 456 700 l 1
+ 56 700 l 1
+ 56 0 l 1
+EndSplineSet
+Ligature2: "'liga' Standard Ligatures lookup 0 subtable" f i
+EndChar
+
+StartChar: one
+Encoding: 49 49 7
+Width: 500
+GlyphClass: 1
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+57 0 m 1
+ 457 0 l 1
+ 457 700 l 1
+ 57 700 l 1
+ 57 0 l 1
+EndSplineSet
+Substitution2: "'onum' Oldstyle Figures lookup 1 subtable" one
+EndChar
+
+StartChar: Alpha
+Encoding: 913 913 8
+Width: 500
+GlyphClass: 1
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+58 0 m 1
+ 458 0 l 1
+ 458 700 l 1
+ 58 700 l 1
+ 58 0 l 1
+EndSplineSet
+EndChar
+
+StartChar: uni0414
+Encoding: 1044 1044 9
+Width: 500
+GlyphClass: 1
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+59 0 m 1
+ 459 0 l 1
+ 459 700 l 1
+ 59 700 l 1
+ 59 0 l 1
+EndSplineSet
+EndChar
+
+StartChar: uni05D0
+Encoding: 1488 1488 10
+Width: 500
+GlyphClass: 1
+Flags: W
+LayerCount: 2
+Fore
+SplineSet
+60 0 m 1
+ 460 0 l 1
+ 460 700 l 1
+ 60 700 l 1
+ 60 0 l 1
+EndSplineSet
+EndChar
+EndChars
+EndSplineFont

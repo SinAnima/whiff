@@ -1,0 +1,141 @@
+---
+source: src/formats/geo/text.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "depth-utm31n.asc",
+    "stem": "depth-utm31n",
+    "extension": "asc"
+  },
+  "identification": {
+    "format": "ascii_grid",
+    "name": "ESRI ASCII / Grid / ArcInfo coverage",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ascii_grid",
+        "confidence": 0.97
+      },
+      {
+        "format": "openpgp",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.text"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 10435
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 10435,
+    "entropy": 2.893,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 10435,
+      "chars": 10435,
+      "words": 3084,
+      "lines": 54,
+      "max_line_length": 236,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "image": {
+      "width": 64,
+      "height": 48
+    }
+  },
+  "integrity": {
+    "sha256": "997f1889c710ad6a8ab2d73408f0a3d770c7247e4aeaf9993c9359d501f6bd68",
+    "blake3": "b869bdf59c03f665eddb2df965dfc4bf6cf613a5b9bfacbebe1b8eb97ce54941"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ascii_grid": {
+      "columns": 64.0,
+      "rows": 48.0,
+      "cell_size": 25.0,
+      "registration": "corner",
+      "nodata": -9999.0,
+      "header_lines": 6,
+      "bbox": [
+        595000.0,
+        5800800.0,
+        596600.0,
+        5802000.0
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.text",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

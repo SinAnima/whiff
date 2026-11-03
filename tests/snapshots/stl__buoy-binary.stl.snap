@@ -1,0 +1,123 @@
+---
+source: src/formats/cad/mesh.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy-binary.stl",
+    "stem": "buoy-binary",
+    "extension": "stl"
+  },
+  "identification": {
+    "format": "stl",
+    "name": "STL",
+    "mime": "model/stl",
+    "family": "3d",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "cad.mesh"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 7284
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 7284,
+    "entropy": 4.349,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "4678faba7a26b396448ec8d94c9987857be1d31388e65a248f73a7bf26f9c39b",
+    "blake3": "ff7f8604331b1ba89f176db903b982a893815c59d9d5c10c6b6248e6ecdb0203"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "stl": {
+      "encoding": "binary",
+      "triangles": 144,
+      "bounds": {
+        "min": [
+          -0.6,
+          -0.6,
+          0.0
+        ],
+        "max": [
+          0.6,
+          0.6,
+          2.2
+        ],
+        "size": [
+          1.2,
+          1.2,
+          2.2
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.mesh",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

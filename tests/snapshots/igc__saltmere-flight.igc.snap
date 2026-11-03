@@ -1,0 +1,164 @@
+---
+source: src/formats/geo/tracks.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-flight.igc",
+    "stem": "saltmere-flight",
+    "extension": "igc"
+  },
+  "identification": {
+    "format": "igc",
+    "name": "TCX / IGC / NMEA logs",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "geo.tracks"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1067
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "captured",
+        "value": "2025-09-01T06:00:00+00:00",
+        "source": "igc.B",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T06:00:00Z",
+    "latest": "2025-09-01T06:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1067,
+    "entropy": 4.599,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1067,
+      "chars": 1067,
+      "words": 37,
+      "lines": 34,
+      "max_line_length": 35,
+      "line_endings": "crlf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "c23cc31c77860247be85136ba91c937052a1d9345de53af3b0dfe90a16f5decc",
+    "blake3": "976ca3d39950122633a4f652a98a45e6d5638bf5578cc5aca8c2a38062f67840"
+  },
+  "content": {
+    "extent": {
+      "west": 4.095,
+      "south": 52.3496,
+      "east": 4.1311,
+      "north": 52.361,
+      "source": "igc.B"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "igc": {
+      "logger": "XSMSAL",
+      "glider_type": "Kestrel 19",
+      "glider_id": "D-SALT",
+      "datum": "WGS-1984",
+      "firmware": "1.0",
+      "recorder": "Saltmere logger",
+      "competition_id": "SM",
+      "date": "2025-09-01",
+      "pressure_altitude_range": [
+        315.0,
+        319.0
+      ],
+      "gnss_altitude_range": [
+        325.0,
+        329.0
+      ],
+      "security_record": false,
+      "fixes": 20,
+      "distance_km": 2.76,
+      "bbox": [
+        4.095,
+        52.3496,
+        4.1311,
+        52.361
+      ],
+      "z_range": [
+        325.0,
+        329.0
+      ],
+      "start": "2025-09-01T06:00:00Z",
+      "end": "2025-09-01T06:06:20Z"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.tracks",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

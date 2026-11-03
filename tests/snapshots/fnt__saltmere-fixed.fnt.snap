@@ -1,0 +1,122 @@
+---
+source: src/formats/font/bitmap.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-fixed.fnt",
+    "stem": "saltmere-fixed",
+    "extension": "fnt"
+  },
+  "identification": {
+    "format": "fnt",
+    "name": "Windows bitmap font",
+    "mime": "application/octet-stream",
+    "family": "font",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "font.bitmap"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1481
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "Copyright 2025 Saltmere Harbour Type, CC0-1.0"
+  },
+  "physical": {
+    "size_bytes": 1481,
+    "entropy": 3.523,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "b7e0c30a6d95869dc92cf3c49f41425d7dd70ea63fd86285661c48300312def7",
+    "blake3": "db302bcf4841b735d62582289174559d4fa08761b2376aad69c2fe533d5b222e"
+  },
+  "content": {
+    "title": "Saltmere Fixed"
+  },
+  "metadata": {},
+  "format": {
+    "fnt": {
+      "font_version": "2.0",
+      "copyright": "Copyright 2025 Saltmere Harbour Type, CC0-1.0",
+      "points": 6,
+      "resolution": "120x120",
+      "weight_class": 500,
+      "italic": false,
+      "charset": "ANSI",
+      "pixel_height": 10,
+      "pixel_width": 6,
+      "monospace": true,
+      "face": "Saltmere Fixed",
+      "first_char": 32,
+      "last_char": 126,
+      "glyph_count": 95
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "font.bitmap",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

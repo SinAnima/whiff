@@ -1,0 +1,139 @@
+---
+source: src/formats/font/bitmap.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-fixed.fon",
+    "stem": "saltmere-fixed",
+    "extension": "fon"
+  },
+  "identification": {
+    "format": "fon",
+    "name": "Windows font library",
+    "mime": "application/octet-stream",
+    "family": "font",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "fon",
+        "confidence": 0.99
+      },
+      {
+        "format": "dos_exe",
+        "confidence": 0.8
+      }
+    ],
+    "extractor": "font.bitmap"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1968
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "Copyright 2025 Saltmere Harbour Type, CC0-1.0"
+  },
+  "physical": {
+    "size_bytes": 1968,
+    "entropy": 4.07,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "e3c73a618825708d67d70e0d6ebadd737bc072a9113bfa13aa323036cdc1693c",
+    "blake3": "c520b0a52610e3cba650b2edca0aef0b07d5daecaf6886bb7e37a7285f39e1cf"
+  },
+  "content": {
+    "title": "Saltmere Fixed"
+  },
+  "metadata": {},
+  "format": {
+    "fon": {
+      "description": "FONTRES 100,120,120 : Saltmere Fixed 6 (8514 res)",
+      "fonts": 1,
+      "font_version": "2.0",
+      "copyright": "Copyright 2025 Saltmere Harbour Type, CC0-1.0",
+      "points": 6,
+      "resolution": "120x120",
+      "weight_class": 500,
+      "italic": false,
+      "charset": "ANSI",
+      "pixel_height": 10,
+      "pixel_width": 6,
+      "monospace": true,
+      "face": "Saltmere Fixed",
+      "faces": [
+        {
+          "face": "Saltmere Fixed",
+          "points": 6,
+          "pixel_height": 10,
+          "weight_class": 500
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "font.bitmap",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

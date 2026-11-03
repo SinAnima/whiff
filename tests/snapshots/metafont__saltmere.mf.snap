@@ -1,0 +1,124 @@
+---
+source: src/formats/font/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere.mf",
+    "stem": "saltmere",
+    "extension": "mf"
+  },
+  "identification": {
+    "format": "metafont",
+    "name": "Metafont source",
+    "mime": "application/octet-stream",
+    "family": "font",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "font.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 430
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "Copyright 2025 Saltmere Harbour Type"
+  },
+  "physical": {
+    "size_bytes": 430,
+    "entropy": 5.181,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 430,
+      "chars": 430,
+      "words": 46,
+      "lines": 11,
+      "max_line_length": 89,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "06f1fd62d6bd7156acc57b44b235d7500bf3aa38f3ede2aa7abe9e742a501769",
+    "blake3": "e911040cbe3fdecf13eb39a1e88116401f231f7dfdefce128e273d3792950879"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "metafont": {
+      "identifier": "SALTMERE",
+      "coding_scheme": "ASCII digits",
+      "design_size": "10pt#",
+      "characters": 2,
+      "inputs": [
+        "saltmere-base"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "font.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -5,8 +5,8 @@ use crate::engine::Options;
 use crate::error::ExtractError;
 use crate::io::Budget;
 use crate::report::{
-    Content, ContentDate, DateField, Heading, ImagePhysical, Language, License, Location, Map, Physical, Report,
-    Rights, Risk, Security, Temporal,
+    Content, ContentDate, DateField, Extent, Heading, ImagePhysical, Language, License, Location, Map, Physical,
+    Report, Rights, Risk, Security, Temporal,
 };
 
 /// Compressed-data framing understood by [`Context::inflate`].
@@ -517,6 +517,27 @@ impl ContentWriter<'_> {
         if self.c.location.is_none() && lat.is_finite() && lon.is_finite() {
             self.c.location = Some(Location { lat, lon, alt_m, source: self.prov.source.clone() });
             self.prov.record("content.location");
+        }
+        self
+    }
+    /// Area covered, as a WGS84 box (west, south, east, north in degrees),
+    /// rounded to 1e-7 degrees. Ignored unless the box is finite and within
+    /// the globe.
+    pub fn extent(&mut self, west: f64, south: f64, east: f64, north: f64) -> &mut Self {
+        let lon = -180.0..=180.0;
+        let lat = -90.0..=90.0;
+        let valid = lon.contains(&west)
+            && lon.contains(&east)
+            && lat.contains(&south)
+            && lat.contains(&north)
+            && south <= north;
+        if self.c.extent.is_none() && valid {
+            // To 1e-7 degrees (about 1 cm): reprojected values differ in
+            // their last bits between platforms' maths libraries.
+            let r = |v: f64| (v * 1e7).round() / 1e7;
+            let (west, south, east, north) = (r(west), r(south), r(east), r(north));
+            self.c.extent = Some(Extent { west, south, east, north, source: self.prov.source.clone() });
+            self.prov.record("content.extent");
         }
         self
     }

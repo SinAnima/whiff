@@ -1,0 +1,152 @@
+---
+source: src/formats/medical/dicom.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "phantom-ct.dcm",
+    "stem": "phantom-ct",
+    "extension": "dcm"
+  },
+  "identification": {
+    "format": "dicom",
+    "name": "DICOM",
+    "mime": "application/dicom",
+    "family": "medical",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "medical.dicom"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1362
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "captured",
+        "value": "2025-09-01T06:12:00",
+        "source": "dicom.StudyDate",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1362,
+    "entropy": 5.711,
+    "entropy_scope": "file",
+    "image": {
+      "width": 16,
+      "height": 16,
+      "bit_depth": 16,
+      "color_space": "MONOCHROME2"
+    }
+  },
+  "integrity": {
+    "sha256": "7695230c58e374a3d95067e46a264e9ba21227ab3a0b0f16e5e0b4da3fcb271b",
+    "blake3": "0db87c1a887b9ee448d1702bc4a632bd420bb8a57ac4d98217d281f655559da5"
+  },
+  "content": {
+    "title": "Water phantom calibration"
+  },
+  "metadata": {},
+  "format": {
+    "dicom": {
+      "implementation_uid": "1.2.826.0.1.3680043.8.498.0",
+      "implementation": "PYDICOM 3.0.2",
+      "transfer_syntax": "Explicit VR Little Endian",
+      "elements_read": 29,
+      "sop_class_uid": "1.2.840.10008.5.1.4.1.1.2",
+      "sop_class": "CT Image Storage",
+      "study_date": "20250901",
+      "series_date": "20250901",
+      "study_time": "061200",
+      "modality": "CT",
+      "manufacturer": "Saltmere Imaging",
+      "study_description": "Water phantom calibration",
+      "series_description": "Axial 5mm",
+      "model": "Tide CT 1",
+      "body_part": "PHANTOM",
+      "slice_thickness_mm": 5,
+      "samples_per_pixel": 1,
+      "photometric": "MONOCHROME2",
+      "rows": 16,
+      "columns": 16,
+      "pixel_spacing_mm": "0.5\\0.5",
+      "bits_allocated": 16,
+      "bits_stored": 16,
+      "pixel_data_bytes": 512,
+      "identifying_attributes": [
+        "institution",
+        "patient_name",
+        "patient_id",
+        "patient_birth_date",
+        "patient_sex"
+      ],
+      "identifying_values": "withheld (privacy)"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "medical.dicom",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

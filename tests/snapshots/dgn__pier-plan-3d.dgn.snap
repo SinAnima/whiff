@@ -1,0 +1,116 @@
+---
+source: src/formats/cad/drawing.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pier-plan-3d.dgn",
+    "stem": "pier-plan-3d",
+    "extension": "dgn"
+  },
+  "identification": {
+    "format": "dgn",
+    "name": "MicroStation DGN",
+    "mime": "application/octet-stream",
+    "family": "cad",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "cad.drawing"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2240
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2240,
+    "entropy": 2.676,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "cf1f3867b11a16672b553d583aec0e66d65b7f595d750b8a32b79a31180f1789",
+    "blake3": "5ce18699855aace9554c084fdb8402a6d0da6d23267481c0a22ee1daa8d8ee70"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "dgn": {
+      "dimension": "3D",
+      "elements": 5,
+      "element_types": {
+        "design_header": 1,
+        "digitizer_setup": 1,
+        "level_symbology": 1,
+        "line": 1,
+        "line_string": 1
+      },
+      "levels": [
+        0
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.drawing",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

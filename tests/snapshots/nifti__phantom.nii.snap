@@ -1,0 +1,125 @@
+---
+source: src/formats/medical/volumes.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "phantom.nii",
+    "stem": "phantom",
+    "extension": "nii"
+  },
+  "identification": {
+    "format": "nifti",
+    "name": "NIfTI-1 / NIfTI-2",
+    "mime": "application/octet-stream",
+    "family": "medical",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "medical.volumes"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1376
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1376,
+    "entropy": 6.412,
+    "entropy_scope": "file",
+    "image": {
+      "width": 8,
+      "height": 8
+    }
+  },
+  "integrity": {
+    "sha256": "ff7b02264d30498a0f5a0b314b95fc9e47c50b1f8e1890fab7fa59c289d95a71",
+    "blake3": "48d9f571f9a7ee50f438f115adcd1655f85e0289eadeb74c6b80fefeaa2a52f0"
+  },
+  "content": {
+    "description": "Saltmere phantom (made up)"
+  },
+  "metadata": {},
+  "format": {
+    "nifti": {
+      "byte_order": "little-endian",
+      "nifti_version": 1,
+      "storage": "single file",
+      "dimensions": 3,
+      "shape": "8x8x4",
+      "datatype": "float32",
+      "voxel_size": [
+        2.0,
+        2.0,
+        3.0
+      ],
+      "spatial_unit": "mm",
+      "qform": "unknown",
+      "sform": "aligned",
+      "description": "Saltmere phantom (made up)"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "medical.volumes",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

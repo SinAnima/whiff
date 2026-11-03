@@ -1,0 +1,147 @@
+---
+source: src/formats/geo/xml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoys-waypoints.gpx",
+    "stem": "buoys-waypoints",
+    "extension": "gpx"
+  },
+  "identification": {
+    "format": "gpx",
+    "name": "GPX",
+    "mime": "application/gpx+xml",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "gpx",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.xml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 717
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 717,
+    "entropy": 5.083,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 717,
+      "chars": 717,
+      "words": 44,
+      "lines": 18,
+      "max_line_length": 234,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "0126d313b409ad8abe5a9f0933d8f548d387c52368d0db2fe693eb786f57c0d5",
+    "blake3": "51927d387df198fb450b524cccc66be1073c1c173d60e26ccfd3bf84447b65f3"
+  },
+  "content": {
+    "extent": {
+      "west": 4.095,
+      "south": 52.3502,
+      "east": 4.124,
+      "north": 52.361,
+      "source": "gpx"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "gpx": {
+      "creator": "GDAL 3.10.3",
+      "gpx_version": "1.1",
+      "waypoints": 4,
+      "routes": 0,
+      "tracks": 0,
+      "track_segments": 0,
+      "fixes": 4,
+      "distance_km": 0.0,
+      "bbox": [
+        4.095,
+        52.3502,
+        4.124,
+        52.361
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.xml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

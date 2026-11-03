@@ -4,6 +4,202 @@ All notable changes to whiff are recorded here. The report format is
 versioned separately (`whiff.schema`, currently `whiff/1`); additive changes
 keep the schema version.
 
+## Unreleased
+
+Fonts, columnar data and machine-learning models, scientific and medical
+files, geodata, 3D and CAD (Stage 7).
+
+- **Fonts** (`common`), all in-house (WOFF2 through the existing Brotli
+  decoder; no read-fonts / skrifa / allsorts):
+  - TrueType and OpenType fonts, collections (`.ttc`, `.otc`), WOFF,
+    WOFF2 (collections too), Embedded OpenType (header, root URLs, the
+    font inside when it is not MicroType Express compressed) and Mac
+    `dfont` resource files, each described from its sfnt tables: family,
+    subfamily, typographic names, full and PostScript names, version,
+    unique ID, manufacturer, designer, URLs, copyright, licence and
+    licence URL (SIL OFL recognised), revision, units per em, creation
+    and modification dates, glyph count, vendor ID, weight and width
+    class, italic / bold / oblique, monospace, italic angle, x-height and
+    cap height, the `fsType` embedding permission (into
+    `rights.embedding`), Unicode coverage (code points and their scripts),
+    variable axes and named instances, colour and bitmap glyph formats
+    (COLR, CPAL palettes, SVG, sbix, CBDT), OpenType features and scripts,
+    hinting and digital signatures; collections list their members. Fonts
+    larger than the parse limit are read table by table;
+  - PostScript Type 1 (PFB, PFA): the font dictionary and, from the
+    decrypted `eexec` part, the glyph and subroutine counts; AFM metrics;
+    PFM (Windows printer metrics);
+  - bitmap fonts: BDF and PCF (XLFD name and properties, glyph and
+    encoded character counts), Windows FNT and FON libraries (every
+    face's size, weight and character set), PC Screen Font 1 and 2 (glyph
+    count, cell size, Unicode table);
+  - font sources: FontForge `.sfd`, Glyphs 2 and 3, UFO `fontinfo.plist`
+    and Metafont `.mf` (names, version, designer, licence, embedding,
+    dates, masters, instances, axes, glyph count, features).
+- **Columnar data and models** (feature `data`, which now includes
+  `common`), all in-house (no parquet / arrow / orc-rust / apache-avro
+  crates); files are read from their footers and headers through the
+  source, never loaded whole:
+  - Apache Parquet (a Thrift compact reader): writer, rows, row groups, the
+    schema as a type tree, codecs, encodings, sizes, column statistics
+    (min, max and nulls across row groups; strings redacted like other
+    sample values), key-value metadata (pandas index, Spark, Arrow) and
+    encrypted footers; GeoParquet files also give their geometry columns
+    (encoding, geometry types, CRS, bounding box);
+  - Apache Arrow IPC files (Feather 2) and streams, Feather 1: schema,
+    dictionaries, record batches, rows, body compression; ORC: version,
+    writer, compression (zlib, Snappy, LZ4, Zstandard footers), stripes,
+    rows, schema, column statistics, user metadata; Lance v2 data files
+    (schema, rows), Vortex (version), F3 (version, checksums, Arrow schema,
+    rows, row groups, embedded WebAssembly decoders);
+  - Delta Lake commits (operation, engine, protocol, schema, partitions,
+    files and rows added) and Iceberg table metadata (schema, partitioning,
+    properties, snapshots); TFRecord (records, `tf.train.Example`
+    features); R `fst` tables (columns, types, rows) and `qs` / `qs2`
+    headers; pandas DataFrame pickles;
+  - models, never their weights: safetensors (tensors, dtypes, parameters,
+    metadata), GGUF (architecture, name, licence, context length,
+    quantisation, hyper-parameters, vocabulary, tensor types), ONNX
+    (producer, opsets, operator histogram, inputs and outputs, parameters;
+    walked through the source, so inline weights are skipped), PyTorch
+    checkpoints (ZIP and legacy: storages, storage types, TorchScript, the
+    pickle's globals with `unsafe_deserialization` as for pickles), Keras
+    archives, TensorFlow Lite (operators, tensors, signatures, runtime
+    version), SavedModel (tags, TensorFlow version, signatures, graph ops)
+    and Core ML (model type, typed inputs and outputs, author, licence,
+    layers).
+- **Scientific files** (feature `science`, which now includes `common`),
+  all in-house (no hdf5 / netcdf / fitsrs / noodles / dicom crates);
+  large files are read through the source, raw data is never decoded:
+  - HDF5 (superblocks 0–3, v1 and v2 object headers, symbol-table,
+    compact and dense groups, datasets with their shapes, types, layouts,
+    chunks and filters, attributes) and the layouts built on it:
+    NetCDF-4, AnnData `.h5ad`, Loom, MATLAB 7.3, Keras, HDF-EOS5 and
+    NeXus; NetCDF classic (CDF-1, CDF-2, CDF-5) with dimensions,
+    variables and CF attributes; FITS (every HDU, observation keywords,
+    WCS, `CHECKSUM` / `DATASUM` verified); ASDF (tree, ndarrays, blocks);
+    Zarr v2 and v3 metadata; GRIB 1 and 2 (messages, centres, parameters,
+    reference times); ROOT (version, compression, keys and classes);
+  - arrays and statistics: NumPy NPY and NPZ, MATLAB MAT v4 (both byte
+    orders, sparse sizes) and v5 (compressed variables, structs, function
+    workspaces); SPSS SAV / ZSAV (long variable names) and portable POR,
+    Stata DTA (formats 113–119), SAS XPORT v5 and v8, SAS7BDAT (rows,
+    columns, names, dates, host), R RDS and RData (XDR, ASCII and native
+    streams; data frames, vectors, lists, S4 objects, environments,
+    closures and byte code, ALTREP sequences and wrappers);
+  - genomics: FASTA, FASTQ, SAM, BAM, CRAM, VCF (`vcf_variants`), BCF,
+    BED and GFF / GTF; chemistry: PDB, mmCIF, MDL MOL and SDF, Tripos
+    MOL2, XYZ; instruments: mzML and mzXML mass spectrometry, EDF / EDF+,
+    BDF / BDF+, BrainVision headers, NI TDMS (both byte orders), VCD
+    waveforms, sigrok sessions, OME-TIFF microscopy images;
+  - tool outputs and electronics: Gaussian and ORCA outputs, SPICE
+    netlists, LTspice schematics, Touchstone, IBIS, Liberty, LEF, DEF,
+    ENVI raster headers.
+- **Medical files** (feature `science`): DICOM (meta header, transfer
+  syntax, SOP class, modality, equipment, study and series, image
+  geometry; deflated, big-endian and mislabelled implicit-VR datasets),
+  NIfTI-1 and NIfTI-2 (single file and pairs), Analyze 7.5, NRRD,
+  MetaImage, HL7 v2 messages and FHIR JSON. Patient-identifying DICOM
+  attributes are listed by name, their values withheld unless privacy is
+  off; HL7 patient segments and FHIR personal resources are counted,
+  never shown.
+- **Geodata** (feature `geo`, which now includes `common`), all in-house
+  (no gdal / geo / shapefile / las / proj crates); every format gives its
+  bounds and CRS where it has them, and the extent in WGS84 (geographic
+  CRSs, Web Mercator and UTM are reprojected in-house):
+  - vector data: GeoJSON (and the 2008 `crs` member), GeoJSON text
+    sequences, TopoJSON, KML and KMZ (linked documents followed), GPX,
+    GML 2 / 3 and CityGML (EPSG axis order for URN and URL references),
+    GeoRSS, Geocaching LOC, OpenStreetMap XML, PBF and change files,
+    shapefiles and their indexes, File Geodatabase tables, FlatGeobuf,
+    MapInfo TAB / MIF, WKT / EWKT, WKB / EWKB, CSV with latitude /
+    longitude or WKT columns, S-57 charts (ISO 8211; object classes,
+    scale, agency, bounds); GeoPackage and MBTiles now have their own
+    format IDs (sniffed from the SQLite application ID) and give their
+    extent;
+  - tracks: Garmin FIT (sessions, records), Garmin TCX, IGC flight logs,
+    NMEA 0183 logs: fixes, distance, elevation and time span; device
+    serial numbers and pilots' names only with privacy off;
+  - rasters: GeoTIFF and Cloud Optimized GeoTIFF (GeoKeys, geotransform,
+    overviews, masks, GDAL no-data and metadata, the COG layout checked
+    as GDAL's validator does), Esri ASCII grids, world files, `.prj`
+    files, DTED; TIFFs with GeoTIFF tags anywhere are redirected to it;
+  - point clouds: LAS 1.0–1.4, LAZ, COPC (the info record), E57 (scans,
+    points, bounds; sensor serial numbers only with privacy off), Entwine
+    `ept.json`;
+  - tiles: PMTiles v3 (header and metadata), Mapbox vector tiles, 3D Tiles
+    tilesets and `b3dm` / `i3dm` / `pnts` / `cmpt` payloads;
+  - map documents: Mapbox / MapLibre styles, OGC SLD, ArcGIS layer files,
+    QGIS projects (`.qgs`, `.qgz`), CZML.
+- **3D and CAD** (feature `cad`, which now includes `common`), all
+  in-house (no gltf / tobj / stl_io / fbxcel / dxf / step crates):
+  - meshes: Wavefront OBJ and MTL, STL (ASCII and binary), PLY (ASCII and
+    binary), OFF, AMF, 3MF, COLLADA, X3D, VRML, Draco: vertices,
+    triangles, objects, materials, metadata and bounds;
+  - scenes and assets: glTF and GLB (asset, counts, vertices, triangles,
+    bounds, embedded and external resources, extensions), VRM avatars
+    (title, authors, licence and usage permissions into `rights`), FBX
+    (binary and ASCII: creator, applications, axes, objects), Blender
+    (plain, gzip, zstd; data blocks), USD (USDA, USDC, USDZ), 3DS,
+    MagicaVoxel, OpenVDB, LDraw;
+  - capture and lighting: BVH and C3D motion capture, IES LM-63 and
+    EULUMDAT photometry;
+  - manufacturing: 3D-printing G-code (slicer, settings, print time,
+    layers, temperatures) and CNC programs (tools, spindle, feeds,
+    extents);
+  - CAD: DXF (ASCII and binary: release, units, extents, layers, blocks,
+    entities; its text into the text pipeline), DGN v7, STEP (header,
+    application protocol, entities, products), IFC and IFC-ZIP (project,
+    site, building, storeys, application), IGES (global section,
+    entities);
+  - electronics: Gerber X2, Excellon, KiCad boards and schematics, GDSII,
+    OASIS; OpenSCAD sources.
+- **Plugin API:** `plugin::xmlwalk`, the XML event walker the geo and CAD
+  extractors share.
+- **Report:** `content.extent`, the WGS84 box a file covers (additive; the
+  schema stays `whiff/1`).
+- **Reclassified fixtures:** the GeoPackage and MBTiles files formerly
+  under `sqlite`, and the GeoJSON and TopoJSON files formerly under
+  `json`, are now identified as `geopackage`, `mbtiles`, `geojson` and
+  `topojson`.
+- **Plugin API:** `plugin::flatbuf` (FlatBuffers tables without a schema)
+  and `plugin::protowire` (protobuf fields without a schema), shared by the
+  columnar readers and the `.bfbs` extractor; raw Snappy and LZ4 block
+  codecs (`Codec::SnappyBlock`, `Codec::Lz4Block`).
+- **Licences:** the SIL Open Font License (1.0 and 1.1) and the Ubuntu
+  Font Licence are recognised in licence texts.
+- **Developer tools:** `scripts/fixtures/fonts.sh` makes the font fixtures
+  in a podman container (fontTools FontBuilder, ufoLib2 and glyphsLib,
+  FontForge, bdftopcf, bdf2psf, mkeot); `font_oracle.py` compares the
+  reports with fontTools, pcf2bdf, psfgettable, wrestool and FontForge
+  over macOS system and application fonts and Debian font packages.
+  `scripts/fixtures/columnar.sh` makes the columnar and model fixtures
+  with each format's own library (pyarrow, geopandas, pylance,
+  vortex-data, deltalake, pyiceberg, tfrecord, safetensors, gguf, onnx,
+  torch, Keras / TensorFlow, coremltools; R fst, qs and qs2), and
+  `columnar_oracle.py` compares reports with those libraries over
+  generated files and the models found in /Applications and Homebrew.
+  `scripts/fixtures/f3.sh` builds F3's reference writer for its fixtures.
+  `scripts/fixtures/science.sh` makes the science and medical fixtures
+  with each format's own tools (h5py, netCDF4, astropy, asdf, zarr,
+  samtools, bcftools, eccodes, NumPy, SciPy, pyreadstat, uproot, gemmi,
+  RDKit, pyEDFlib, npTDMS, pyvcd, sigrok-cli, scikit-rf, tifffile,
+  pydicom, nibabel, pynrrd, fhir.resources; R and haven);
+  `science_oracle.py`, `science2_oracle.py` and `science_oracle.R` compare
+  the reports with those libraries and with R over generated files and
+  the test data the libraries ship. `scripts/fixtures/geo.sh` makes the
+  geo fixtures with GDAL / OGR, osmium, laspy, PDAL, pye57, fit-tool,
+  aerofiles, pynmea2, topojson, czml3 and py3dtiles (two S-57 cells are
+  public-domain NOAA charts); `geo_oracle.py` compares the reports with
+  OGR, gdalinfo and GDAL's COG validator, osmium, laspy, pye57,
+  fit-tool, aerofiles and shapely over a generated corpus.
+  `scripts/fixtures/cad.sh` makes the 3D and CAD fixtures with trimesh,
+  assimp, Blender, usd-core, PrusaSlicer, cadquery / OpenCASCADE, ezdxf,
+  ifcopenshell, gerber-writer, kiutils, KLayout and others;
+  `cad_oracle.py` compares the reports with trimesh, assimp, ezdxf,
+  OpenCASCADE, ifcopenshell, usd-core, KLayout, c3d, py-vox-io and
+  OpenVDB.
+
 ## 0.6.0 — 2026-10-31
 
 Executables, bytecode, crypto, databases, forensic artefacts, Apple formats

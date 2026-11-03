@@ -27,15 +27,27 @@ static META: ExtractorMeta = ExtractorMeta {
     version: 1,
     cost: Cost::Scan,
     priority: 0,
-    formats: &[FormatSpec {
-        id: "pickle",
-        name: "Python pickle",
-        family: "data.binser",
-        mimes: &["application/x-python-pickle"],
-        extensions: &["pkl", "pickle", "pckl", "joblib"],
-        magic: &[],
-        parent: None,
-    }],
+    formats: &[
+        FormatSpec {
+            id: "pickle",
+            name: "Python pickle",
+            family: "data.binser",
+            mimes: &["application/x-python-pickle"],
+            extensions: &["pkl", "pickle", "pckl", "joblib"],
+            magic: &[],
+            parent: None,
+        },
+        // Redirected to from `pickle` when the globals show a pandas object.
+        FormatSpec {
+            id: "pandas_pickle",
+            name: "pandas DataFrame pickle",
+            family: "columnar",
+            mimes: &[],
+            extensions: &[],
+            magic: &[],
+            parent: Some("pickle"),
+        },
+    ],
 };
 
 /// Opcodes walked.
@@ -82,8 +94,10 @@ const UNSAFE_NAMES: [&str; 14] = [
 ];
 
 /// What a pickle holds, from a global it imports.
-const KINDS: [(&str, &str); 9] = [
+const KINDS: [(&str, &str); 11] = [
     ("pandas.core.frame.DataFrame", "pandas_dataframe"),
+    ("pandas.DataFrame", "pandas_dataframe"),
+    ("pandas.Series", "pandas_series"),
     ("pandas.core.series.Series", "pandas_series"),
     ("torch._utils._rebuild_tensor_v2", "pytorch_tensors"),
     ("torch._utils._rebuild_parameter", "pytorch_tensors"),
@@ -94,10 +108,24 @@ const KINDS: [(&str, &str); 9] = [
     ("numpy._core.multiarray._reconstruct", "numpy_array"),
 ];
 
-fn is_unsafe(global: &str) -> bool {
+pub(crate) fn is_unsafe(global: &str) -> bool {
     let module = global.rsplit_once('.').map_or(global, |(m, _)| m);
     UNSAFE_NAMES.contains(&global)
         || UNSAFE_MODULES.iter().any(|m| module == *m || module.starts_with(&format!("{m}.")))
+}
+
+/// The protocol and the globals (in order, without repeats) of the
+/// pickles in `data`, for formats that wrap pickles (PyTorch checkpoints).
+#[cfg(feature = "data")]
+pub(crate) fn imports(data: &[u8]) -> (Option<u8>, Vec<String>) {
+    let f = walk(data, &mut Walk::default());
+    let mut globals = Vec::new();
+    for g in f.globals {
+        if !globals.contains(&g) {
+            globals.push(g);
+        }
+    }
+    (f.protocol, globals)
 }
 
 /// What the walk found.
@@ -292,7 +320,14 @@ impl Extractor for Pickle {
             && h.get(1).is_some_and(|p| (2..=5).contains(p))
             && (h.get(1).is_some_and(|&p| p < 4) || h.get(2) == Some(&0x95));
         if binary && ends {
-            return Some(Sniff { format: "pickle", confidence: 0.85 });
+            // pandas objects name their class among the first globals.
+            let has = |n: &[u8]| h.windows(n.len()).any(|w| w == n);
+            let pandas = has(b"pandas") && (has(b"DataFrame") || has(b"Series"));
+            return Some(if pandas {
+                Sniff { format: "pandas_pickle", confidence: 0.9 }
+            } else {
+                Sniff { format: "pickle", confidence: 0.85 }
+            });
         }
         let named = probe.extension.is_some_and(|e| ["pkl", "pickle", "pckl", "joblib"].contains(&e));
         let text = matches!(h.first(), Some(b'(' | b'c' | b']' | b'}' | b'I' | b'S' | b'V' | b'N'));
@@ -305,6 +340,18 @@ impl Extractor for Pickle {
         let f = walk(&data, &mut w);
         if f.ops == 0 || (f.pickles == 0 && !cut) && f.error == Some("unknown opcode") {
             return Err(ExtractError::malformed("not a pickle"));
+        }
+        // A pandas object: report it as such (the engine runs this extractor
+        // again under `pandas_pickle`; nothing is written on this pass).
+        let pandas = f.globals.iter().any(|g| {
+            g.starts_with("pandas.core.frame.")
+                || g.starts_with("pandas.core.series.")
+                || g == "pandas.DataFrame"
+                || g == "pandas.Series"
+        });
+        if pandas && cx.format_id() == "pickle" {
+            cx.redirect("pandas_pickle");
+            return Ok(());
         }
         cx.format_set("protocol", f.protocol.unwrap_or(0));
         if f.pickles != 1 {
@@ -382,5 +429,5 @@ mod tests {
         assert!(is_unsafe("subprocess.Popen") && is_unsafe("builtins.eval") && !is_unsafe("os2.x"));
     }
 
-    crate::fixture_tests!("pickle");
+    crate::fixture_tests!("pickle", "pandas_pickle");
 }

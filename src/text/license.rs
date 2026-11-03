@@ -7,6 +7,9 @@ use regex::Regex;
 /// Phrases that identify a licence text, checked in order (most specific
 /// first). All phrases of a row must occur (case-insensitive).
 const TEXTS: &[(&str, &[&str])] = &[
+    ("OFL-1.1", &["sil open font license", "1.1"]),
+    ("OFL-1.0", &["sil open font license"]),
+    ("UFL-1.0", &["ubuntu font licen"]),
     ("AGPL-3.0", &["gnu affero general public license", "version 3"]),
     ("LGPL-3.0", &["gnu lesser general public license", "version 3"]),
     ("LGPL-2.1", &["gnu lesser general public license", "version 2.1"]),

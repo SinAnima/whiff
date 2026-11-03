@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<mzXML xmlns="http://sashimi.sourceforge.net/schema_revision/mzXML_3.2">
+<msRun scanCount="2" startTime="PT0S" endTime="PT60S">
+<msInstrument><msManufacturer category="msManufacturer" value="Thermo Scientific"/><msModel category="msModel" value="LTQ Orbitrap"/></msInstrument>
+<scan num="1" msLevel="1" peaksCount="0" retentionTime="PT0S"></scan>
+<scan num="2" msLevel="2" peaksCount="0" retentionTime="PT30S"></scan>
+</msRun></mzXML>

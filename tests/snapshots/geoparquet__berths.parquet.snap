@@ -1,0 +1,180 @@
+---
+source: src/formats/columnar/parquet.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "berths.parquet",
+    "stem": "berths",
+    "extension": "parquet"
+  },
+  "identification": {
+    "format": "geoparquet",
+    "name": "GeoParquet",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "geoparquet",
+        "confidence": 0.99
+      },
+      {
+        "format": "parquet",
+        "confidence": 0.81
+      }
+    ],
+    "extractor": "columnar.parquet"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 8392
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 8392,
+    "entropy": 6.1,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "083f1990e57b6da64cf8a3c8335f029b2e88093c2b5b1eb07bb4544295e244e8",
+    "blake3": "8016ed597b0091dadb51f4c90c622b7efe5b759e37e6dee10699b4321ff9ce80"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "geoparquet": {
+      "footer_bytes": 8010,
+      "format_version": 2,
+      "created_by": "parquet-cpp-arrow version 26.0.0",
+      "rows": 3,
+      "row_groups": 1,
+      "column_count": 3,
+      "columns": {
+        "berth": "int64",
+        "name": "string",
+        "geometry": "binary"
+      },
+      "leaf_columns": 3,
+      "codecs": [
+        "snappy"
+      ],
+      "encodings": [
+        "plain",
+        "rle",
+        "rle_dictionary"
+      ],
+      "compressed_bytes": 370,
+      "uncompressed_bytes": 375,
+      "statistics": {
+        "berth": {
+          "min": 4,
+          "max": 12,
+          "nulls": 0
+        },
+        "name": {
+          "min": "Gate 12",
+          "max": "Pier 4",
+          "nulls": 0
+        }
+      },
+      "pandas_version": "3.1.0",
+      "pandas_index": [
+        {
+          "kind": "range",
+          "name": null,
+          "start": 0,
+          "stop": 3,
+          "step": 1
+        }
+      ],
+      "geo_version": "1.1.0",
+      "primary_column": "geometry",
+      "geometry_columns": {
+        "geometry": {
+          "encoding": "WKB",
+          "geometry_types": [
+            "Point"
+          ],
+          "bbox": [
+            -1.5021,
+            50.7123,
+            -1.4998,
+            50.714
+          ],
+          "crs": "EPSG:4326"
+        }
+      },
+      "metadata_keys": [
+        "pandas",
+        "geo",
+        "ARROW:schema"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "columnar.parquet",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

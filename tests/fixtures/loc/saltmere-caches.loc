@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<loc version="1.0" src="Saltmere Geocaching">
+<waypoint><name id="GCSM00"><![CDATA[Outer Fairway cache]]></name><coord lat="52.361" lon="4.095"/><type>Geocache</type></waypoint>
+<waypoint><name id="GCSM01"><![CDATA[Channel Red 1 cache]]></name><coord lat="52.356" lon="4.1105"/><type>Geocache</type></waypoint>
+<waypoint><name id="GCSM02"><![CDATA[Channel Green 1 cache]]></name><coord lat="52.3575" lon="4.113"/><type>Geocache</type></waypoint>
+<waypoint><name id="GCSM03"><![CDATA[Kelp Bank cache]]></name><coord lat="52.3502" lon="4.124"/><type>Geocache</type></waypoint>
+</loc>

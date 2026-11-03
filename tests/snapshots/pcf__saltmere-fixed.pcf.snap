@@ -1,0 +1,133 @@
+---
+source: src/formats/font/bitmap.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-fixed.pcf",
+    "stem": "saltmere-fixed",
+    "extension": "pcf"
+  },
+  "identification": {
+    "format": "pcf",
+    "name": "PCF bitmap font",
+    "mime": "application/x-font-pcf",
+    "family": "font",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "font.bitmap"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 7704
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "Copyright 2025 Saltmere Harbour Type, CC0-1.0"
+  },
+  "physical": {
+    "size_bytes": 7704,
+    "entropy": 3.451,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "a1a7c78a6aae85171e8478d441e9435ebd7a21db10a0678cab9f2ddf1fe95507",
+    "blake3": "2b9cc4ce0103ab330dadfb61361d1aa36997a3ae363651d93468d8f0d480a381"
+  },
+  "content": {
+    "title": "Saltmere Fixed Medium"
+  },
+  "metadata": {},
+  "format": {
+    "pcf": {
+      "table_count": 9,
+      "font": "-SHTY-Saltmere Fixed-Medium-R-Normal--10-100-75-75-C-60-ISO10646-1",
+      "glyph_count": 95,
+      "encoded_characters": 95,
+      "properties": {
+        "foundry": "SHTY",
+        "family_name": "Saltmere Fixed",
+        "weight_name": "Medium",
+        "slant": "R",
+        "setwidth_name": "Normal",
+        "pixel_size": 10,
+        "point_size": 100,
+        "resolution_x": 75,
+        "resolution_y": 75,
+        "spacing": "C",
+        "average_width": 60,
+        "charset_registry": "ISO10646",
+        "charset_encoding": "1",
+        "copyright": "Copyright 2025 Saltmere Harbour Type, CC0-1.0",
+        "font": "-SHTY-Saltmere Fixed-Medium-R-Normal--10-100-75-75-C-60-ISO10646-1",
+        "weight": 10,
+        "resolution": 103,
+        "x_height": 0,
+        "quad_width": 6
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "font.bitmap",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

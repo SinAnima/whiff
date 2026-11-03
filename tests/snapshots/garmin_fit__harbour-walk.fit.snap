@@ -1,0 +1,171 @@
+---
+source: src/formats/geo/tracks.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-walk.fit",
+    "stem": "harbour-walk",
+    "extension": "fit"
+  },
+  "identification": {
+    "format": "garmin_fit",
+    "name": "Garmin FIT",
+    "mime": "application/vnd.ant.fit",
+    "family": "geo",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "garmin_fit",
+        "confidence": 0.81
+      },
+      {
+        "format": "fit",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "geo.tracks"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 189
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T06:00:00Z",
+        "source": "fit.file_id.time_created",
+        "tz_known": true
+      },
+      {
+        "field": "captured",
+        "value": "2025-09-01T06:00:00+00:00",
+        "source": "fit.record.timestamp",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T06:00:00Z",
+    "latest": "2025-09-01T06:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 189,
+    "entropy": 5.176,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "3acf43e2cd8403493f3ef20ab24aa19433f21393b77c8584a18cdce42cd1f82c",
+    "blake3": "3cee2bdc18575e97883abd0b645a7ecda9d60d45da609e0ddeb67b3feee0fe3e"
+  },
+  "content": {
+    "extent": {
+      "west": 4.095,
+      "south": 52.358,
+      "east": 4.1045,
+      "north": 52.361,
+      "source": "fit.record"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "garmin_fit": {
+      "protocol_version": "2.0",
+      "profile_version": "212.18",
+      "file_type": "activity",
+      "manufacturer": "development",
+      "product": 7,
+      "time_created": "2025-09-01T06:00:00Z",
+      "sessions": [
+        {
+          "sport": "walking",
+          "start": "2025-09-01T06:00:00Z",
+          "elapsed_s": 120.0,
+          "distance_km": 0.96
+        }
+      ],
+      "messages": {
+        "file_id": 1,
+        "record": 6,
+        "session": 1
+      },
+      "fixes": 6,
+      "distance_km": 0.726,
+      "bbox": [
+        4.095,
+        52.358,
+        4.1045,
+        52.361
+      ],
+      "z_range": [
+        1.6,
+        2.0
+      ],
+      "start": "2025-09-01T06:00:00Z",
+      "end": "2025-09-01T06:01:40Z"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.tracks",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

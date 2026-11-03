@@ -1,0 +1,109 @@
+---
+source: src/formats/font/bitmap.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-fixed.psf",
+    "stem": "saltmere-fixed",
+    "extension": "psf"
+  },
+  "identification": {
+    "format": "psf",
+    "name": "PC Screen Font",
+    "mime": "application/octet-stream",
+    "family": "font",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "font.bitmap"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3309
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 3309,
+    "entropy": 6.516,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "e33c39dfa98a943f515c0437656102bdbc90114466c5a6774d8b8d1780d271c7",
+    "blake3": "579d90c2f3e65eac1af7bb78b02bd5ac34b2ab39dd943996f8f23c83772827b7"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "psf": {
+      "psf_version": 2,
+      "glyph_count": 256,
+      "height": 10,
+      "width": 6,
+      "codepoints": 231
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "font.bitmap",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

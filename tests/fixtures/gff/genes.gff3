@@ -1,0 +1,8 @@
+##gff-version 3
+##sequence-region kelp_chr1 1 600
+kelp_chr1	craft	gene	11	200	.	+	.	ID=gene0;Name=KLP0
+kelp_chr1	craft	mRNA	11	200	.	+	.	ID=mrna0;Parent=gene0
+kelp_chr1	craft	exon	11	200	.	+	.	Parent=mrna0
+kelp_chr1	craft	gene	251	420	.	+	.	ID=gene1;Name=KLP1
+kelp_chr1	craft	mRNA	251	420	.	+	.	ID=mrna1;Parent=gene1
+kelp_chr1	craft	exon	251	420	.	+	.	Parent=mrna1

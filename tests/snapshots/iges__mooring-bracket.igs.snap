@@ -1,0 +1,169 @@
+---
+source: src/formats/cad/step.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "mooring-bracket.igs",
+    "stem": "mooring-bracket",
+    "extension": "igs"
+  },
+  "identification": {
+    "format": "iges",
+    "name": "IGES",
+    "mime": "model/iges",
+    "family": "cad",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "cad.step"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 22275
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-11-03T18:13:18",
+        "source": "iges.global.created",
+        "tz_known": false
+      },
+      {
+        "field": "modified",
+        "value": "2026-11-03T18:13:18",
+        "source": "iges.global.modified",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 22275,
+    "entropy": 2.093,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 22275,
+      "chars": 22275,
+      "words": 1432,
+      "lines": 275,
+      "max_line_length": 80,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "3d1a26fa8805ea381d7dd24302a0977ba66f144832fd76b7cc7793b9c9b7f702",
+    "blake3": "b22e0f7960e7c4a99e6ec69159b8598631befea6305ed878d3df99d309004586"
+  },
+  "content": {
+    "authors": [
+      "root"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "iges": {
+      "global": {
+        "sender": "Open CASCADE IGES processor 7.9",
+        "file_name": "Filename.iges",
+        "system": "Open CASCADE 7.9",
+        "preprocessor": "Open CASCADE IGES processor 7.9",
+        "unit_name": "MM",
+        "author": "root",
+        "drafting_standard": "0",
+        "iges_version": "5.3",
+        "created": "2026-11-03T18:13:18",
+        "modified": "2026-11-03T18:13:18"
+      },
+      "entities": 87,
+      "entity_types": {
+        "associativity_instance": 1,
+        "circular_arc": 4,
+        "cylindrical_surface": 2,
+        "direction": 16,
+        "edge_list": 1,
+        "face": 8,
+        "line": 22,
+        "loop": 12,
+        "manifold_solid_brep": 1,
+        "plane_surface": 6,
+        "point": 8,
+        "shell": 1,
+        "transformation_matrix": 4,
+        "vertex_list": 1
+      },
+      "lines": {
+        "D": 174,
+        "G": 4,
+        "P": 95,
+        "S": 1,
+        "T": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.step",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

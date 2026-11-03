@@ -1,0 +1,154 @@
+---
+source: src/formats/cad/mesh.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy-trimesh.obj",
+    "stem": "buoy-trimesh",
+    "extension": "obj"
+  },
+  "identification": {
+    "format": "obj",
+    "name": "Wavefront OBJ / MTL",
+    "mime": "model/obj",
+    "family": "3d",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "obj",
+        "confidence": 0.97
+      },
+      {
+        "format": "coff",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "cad.mesh"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4284
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4284,
+    "entropy": 3.519,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 4284,
+      "chars": 4284,
+      "words": 885,
+      "lines": 224,
+      "max_line_length": 36,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "2086295c41ed3454ff2e1b2687f916fcfd02b42d5b70366bc06243ad2a18963c",
+    "blake3": "38f3b3d6eca30c2d557a8788b86e32af6ce4fce44b816b4eb587650e2cb356c7"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "obj": {
+      "comment": "https://github.com/mikedh/trimesh",
+      "vertices": 76,
+      "texture_coordinates": 0,
+      "normals": 0,
+      "faces": 144,
+      "triangles": 144,
+      "objects": [
+        "Saltmere buoy"
+      ],
+      "groups": [],
+      "materials": [],
+      "material_libraries": [],
+      "bounds": {
+        "min": [
+          -0.6,
+          -0.6,
+          0.0
+        ],
+        "max": [
+          0.6,
+          0.6,
+          2.2
+        ],
+        "size": [
+          1.2,
+          1.2,
+          2.2
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.mesh",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

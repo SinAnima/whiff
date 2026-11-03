@@ -1,0 +1,195 @@
+---
+source: src/formats/font/sfnt.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-serif-italic.otf",
+    "stem": "saltmere-serif-italic",
+    "extension": "otf"
+  },
+  "identification": {
+    "format": "otf",
+    "name": "OpenType font",
+    "mime": "font/otf",
+    "family": "font",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "font.sfnt"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2600
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T06:12:00Z",
+        "source": "head.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2025-10-01T18:31:00Z",
+        "source": "head.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T06:12:00Z",
+    "latest": "2025-10-01T18:31:00Z"
+  },
+  "security": {},
+  "rights": {
+    "copyright": "Copyright 2025 Saltmere Harbour Type",
+    "license": {
+      "name": "CC0-1.0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "embedding": "editable"
+  },
+  "physical": {
+    "size_bytes": 2600,
+    "entropy": 4.772,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "410457ffa193653e2fa345e9e18e8074b3483bfa7713c30d22242f9178ddb3af",
+    "blake3": "68cf0bfb5f748daace922dafdd56dd623307fc610b94e9adbd8e09f6e4de5d25"
+  },
+  "content": {
+    "title": "Saltmere Serif Italic",
+    "description": "A harbour signage face for tide boards and berth numbers.",
+    "authors": [
+      "Ada Example"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "otf": {
+      "outlines": "cff",
+      "table_count": 11,
+      "tables": [
+        "CFF",
+        "GPOS",
+        "GSUB",
+        "OS/2",
+        "cmap",
+        "head",
+        "hhea",
+        "hmtx",
+        "maxp",
+        "name",
+        "post"
+      ],
+      "family": "Saltmere Serif",
+      "subfamily": "Italic",
+      "full_name": "Saltmere Serif Italic",
+      "postscript_name": "SaltmereSerif-Italic",
+      "version": "Version 1.002",
+      "unique_id": "1.002;SHT;SaltmereSerif-Italic",
+      "manufacturer": "Saltmere Harbour Type",
+      "designer": "Ada Example",
+      "vendor_url": "https://example.org/type",
+      "designer_url": "https://example.org/type/ada",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "copyright": "Copyright 2025 Saltmere Harbour Type",
+      "license": "This font is dedicated to the public domain under CC0 1.0 Universal.",
+      "font_revision": 1.002,
+      "units_per_em": 1000,
+      "created": "2025-09-01T06:12:00Z",
+      "modified": "2025-10-01T18:31:00Z",
+      "glyph_count": 11,
+      "vendor_id": "SHTY",
+      "weight_class": 400,
+      "weight": "regular",
+      "width_class": 5,
+      "width": "normal",
+      "fs_type": 8,
+      "embedding": "editable",
+      "italic": true,
+      "bold": false,
+      "italic_angle": -12.0,
+      "monospace": false,
+      "codepoints": 9,
+      "unicode_scripts": {
+        "Latin": 4,
+        "Common": 2,
+        "Cyrillic": 1,
+        "Greek": 1,
+        "Hebrew": 1
+      },
+      "features": [
+        "kern",
+        "liga",
+        "onum"
+      ],
+      "layout_scripts": [
+        "DFLT",
+        "cyrl",
+        "latn"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "font.sfnt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

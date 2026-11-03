@@ -1,0 +1,139 @@
+---
+source: src/formats/columnar/ml/tensorflow.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide-net.keras",
+    "stem": "tide-net",
+    "extension": "keras"
+  },
+  "identification": {
+    "format": "keras",
+    "name": "Keras model",
+    "mime": "application/octet-stream",
+    "family": "columnar",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "keras",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "columnar.tensorflow"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 15253
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-10-31T21:52:21",
+        "source": "keras.date_saved",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 15253,
+    "entropy": 2.038,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "2144280ff13db46c2dc5bd66d017d08c195b7c7ad1a9537608420f4d147eff63",
+    "blake3": "14f281cf3fa6d446bdf30becd82a1feb6598328a2ef2ea4dd1487d6049c6d0df"
+  },
+  "content": {
+    "title": "tide_net"
+  },
+  "metadata": {},
+  "format": {
+    "keras": {
+      "keras_version": "3.15.1",
+      "date_saved": "2026-10-31@21:52:21",
+      "model_class": "Sequential",
+      "model_name": "tide_net",
+      "layer_count": 3,
+      "layer_classes": {
+        "Dense": 2,
+        "InputLayer": 1
+      },
+      "layers": [
+        "levels",
+        "dense",
+        "tide"
+      ],
+      "weights_file": "model.weights.h5"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "columnar.tensorflow",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,129 @@
+---
+source: src/formats/columnar/ml/coreml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "TideHead.mlmodel",
+    "stem": "TideHead",
+    "extension": "mlmodel"
+  },
+  "identification": {
+    "format": "mlmodel",
+    "name": "Core ML model",
+    "mime": "application/octet-stream",
+    "family": "columnar",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "columnar.coreml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 204
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "license": {
+      "name": "CC0-1.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 204,
+    "entropy": 5.875,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "c788604787e6a153b5959fa1d43f08216ec0c49ec48284d53bbf5a57425e7823",
+    "blake3": "a8b36f0fca3280d14210420777cb96b4ce8519716844b6a96d2f620b2fd2d321"
+  },
+  "content": {
+    "description": "Tide head as a Core ML neural network.",
+    "authors": [
+      "Saltmere Harbour"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "mlmodel": {
+      "specification_version": 1,
+      "model_type": "neural_network",
+      "inputs": {
+        "levels": "multiarray<float64>[4]"
+      },
+      "outputs": {
+        "tide": "multiarray<float64>[2]"
+      },
+      "short_description": "Tide head as a Core ML neural network.",
+      "model_version": "1.2",
+      "author": "Saltmere Harbour",
+      "license": "CC0-1.0",
+      "layers": 1,
+      "layer_kinds": {
+        "inner_product": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "columnar.coreml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

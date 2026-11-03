@@ -66,6 +66,13 @@ pub enum Codec {
     Lzw,
     /// Snappy framing format.
     Snappy,
+    /// One raw Snappy block (Parquet, ORC, Arrow pages).
+    SnappyBlock,
+    /// One raw LZ4 block of at most `max` bytes (ORC, Parquet `LZ4_RAW`).
+    Lz4Block {
+        /// The block's largest output.
+        max: usize,
+    },
 }
 
 /// How decoding ended.
@@ -216,6 +223,8 @@ pub fn decode(input: &[u8], codec: Codec, max: usize, budget: &Budget) -> Result
         Codec::Brotli => brotli(input, &mut sink),
         Codec::Lzw => lzw::decode(input, &mut sink),
         Codec::Snappy => snappy::decode(input, &mut sink),
+        Codec::SnappyBlock => snappy::raw(input, &mut sink),
+        Codec::Lz4Block { max } => lz4::block(input, 0, max, &mut sink).map(|()| input.len()),
     };
     let (end, consumed) = match result {
         Ok(consumed) => (End::Complete, consumed),

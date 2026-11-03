@@ -1,0 +1,347 @@
+---
+source: src/formats/science/hdf5.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "kelp-atlas.h5ad",
+    "stem": "kelp-atlas",
+    "extension": "h5ad"
+  },
+  "identification": {
+    "format": "h5ad",
+    "name": "AnnData (h5ad)",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "h5ad",
+        "confidence": 0.99
+      },
+      {
+        "format": "hdf5",
+        "confidence": 0.92
+      },
+      {
+        "format": "loom",
+        "confidence": 0.92
+      },
+      {
+        "format": "netcdf4",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "science.hdf5"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 66952
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 66952,
+    "entropy": 1.546,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "7551893e48e7f04104626142f942283086b972909df3cac7d0af093068d892a3",
+    "blake3": "36de5cccfd4f0531486bb157104618e5c4ca1fe76b41ff2ec60066e8c5bcbe19"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "h5ad": {
+      "layout": "h5ad",
+      "superblock_version": 0,
+      "groups": 15,
+      "datasets": 17,
+      "root_attributes": {
+        "encoding-type": "anndata",
+        "encoding-version": "0.1.0"
+      },
+      "dataset_list": [
+        {
+          "path": "/X/data",
+          "shape": "200+",
+          "type": "float32",
+          "layout": "chunked",
+          "chunks": "200",
+          "filters": [
+            "deflate"
+          ]
+        },
+        {
+          "path": "/X/indices",
+          "shape": "200+",
+          "type": "int32",
+          "layout": "chunked",
+          "chunks": "200",
+          "filters": [
+            "deflate"
+          ]
+        },
+        {
+          "path": "/X/indptr",
+          "shape": "41+",
+          "type": "int32",
+          "layout": "chunked",
+          "chunks": "41",
+          "filters": [
+            "deflate"
+          ]
+        },
+        {
+          "path": "/layers/raw/data",
+          "shape": "200+",
+          "type": "float32",
+          "layout": "chunked",
+          "chunks": "200",
+          "filters": [
+            "deflate"
+          ]
+        },
+        {
+          "path": "/layers/raw/indices",
+          "shape": "200+",
+          "type": "int32",
+          "layout": "chunked",
+          "chunks": "200",
+          "filters": [
+            "deflate"
+          ]
+        },
+        {
+          "path": "/layers/raw/indptr",
+          "shape": "41+",
+          "type": "int32",
+          "layout": "chunked",
+          "chunks": "41",
+          "filters": [
+            "deflate"
+          ]
+        },
+        {
+          "path": "/obs/_index/mask",
+          "shape": "40",
+          "type": "enum<int8>",
+          "layout": "chunked",
+          "chunks": "40",
+          "filters": [
+            "deflate"
+          ]
+        },
+        {
+          "path": "/obs/_index/values",
+          "shape": "40",
+          "type": "vlen string",
+          "layout": "chunked",
+          "chunks": "40",
+          "filters": [
+            "deflate"
+          ]
+        },
+        {
+          "path": "/obs/cell_type/categories",
+          "shape": "3",
+          "type": "vlen string",
+          "layout": "chunked",
+          "chunks": "3",
+          "filters": [
+            "deflate"
+          ]
+        },
+        {
+          "path": "/obs/cell_type/codes",
+          "shape": "40",
+          "type": "int8",
+          "layout": "chunked",
+          "chunks": "40",
+          "filters": [
+            "deflate"
+          ]
+        },
+        {
+          "path": "/obs/n_counts",
+          "shape": "40",
+          "type": "int64",
+          "layout": "chunked",
+          "chunks": "40",
+          "filters": [
+            "deflate"
+          ]
+        },
+        {
+          "path": "/obsm/X_pca",
+          "shape": "40x5",
+          "type": "float32",
+          "layout": "chunked",
+          "chunks": "40x5",
+          "filters": [
+            "deflate"
+          ]
+        },
+        {
+          "path": "/uns/study",
+          "shape": "scalar",
+          "type": "vlen string",
+          "layout": "contiguous"
+        },
+        {
+          "path": "/var/_index/mask",
+          "shape": "25",
+          "type": "enum<int8>",
+          "layout": "chunked",
+          "chunks": "25",
+          "filters": [
+            "deflate"
+          ]
+        },
+        {
+          "path": "/var/_index/values",
+          "shape": "25",
+          "type": "vlen string",
+          "layout": "chunked",
+          "chunks": "25",
+          "filters": [
+            "deflate"
+          ]
+        },
+        {
+          "path": "/var/gene_symbol/mask",
+          "shape": "25",
+          "type": "enum<int8>",
+          "layout": "chunked",
+          "chunks": "25",
+          "filters": [
+            "deflate"
+          ]
+        },
+        {
+          "path": "/var/gene_symbol/values",
+          "shape": "25",
+          "type": "vlen string",
+          "layout": "chunked",
+          "chunks": "25",
+          "filters": [
+            "deflate"
+          ]
+        }
+      ],
+      "group_list": [
+        "/X",
+        "/layers",
+        "/layers/raw",
+        "/obs",
+        "/obs/_index",
+        "/obs/cell_type",
+        "/obsm",
+        "/obsp",
+        "/uns",
+        "/var",
+        "/var/_index",
+        "/var/gene_symbol",
+        "/varm",
+        "/varp"
+      ],
+      "types": {
+        "enum<int8>": 3,
+        "float32": 3,
+        "int32": 4,
+        "int64": 1,
+        "int8": 1,
+        "vlen string": 5
+      },
+      "filters": [
+        "deflate"
+      ],
+      "anndata_encoding": "0.1.0",
+      "x_encoding": "csr_matrix",
+      "x_type": "float32",
+      "x_stored_values": 200,
+      "observations": 40,
+      "variables": 25,
+      "obs_columns": [
+        "cell_type",
+        "n_counts"
+      ],
+      "var_columns": [
+        "gene_symbol"
+      ],
+      "layers": [
+        "raw"
+      ],
+      "obsm": [
+        "X_pca"
+      ],
+      "uns": [
+        "study"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.hdf5",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

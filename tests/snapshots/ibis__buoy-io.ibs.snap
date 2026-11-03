@@ -1,0 +1,129 @@
+---
+source: src/formats/science/textfmt.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy-io.ibs",
+    "stem": "buoy-io",
+    "extension": "ibs"
+  },
+  "identification": {
+    "format": "ibis",
+    "name": "IBIS model",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "science.tooltext"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 366
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 366,
+    "entropy": 4.724,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 366,
+      "chars": 366,
+      "words": 43,
+      "lines": 15,
+      "max_line_length": 57,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "a98f7100c6f76c5d92bd5becec224fbf7ae6ce9e82ae33b5f26bb9a98061b026",
+    "blake3": "a06ae85a27a903a44b65eae3a089fc679f0802a19cad5a544d50bbc71d4fb57e"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ibis": {
+      "ibis_version": "7.1",
+      "file_name": "buoy-io.ibs",
+      "file_revision": "1.0",
+      "date": "September 1, 2025",
+      "source": "Saltmere Harbour electronics bench (made up)",
+      "manufacturer": "Saltmere Harbour",
+      "components": [
+        "BUOY-IO"
+      ],
+      "pins": 2,
+      "model_types": {
+        "I/O": 1,
+        "Input": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.tooltext",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

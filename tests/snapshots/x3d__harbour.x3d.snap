@@ -1,0 +1,151 @@
+---
+source: src/formats/cad/mesh.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.x3d",
+    "stem": "harbour",
+    "extension": "x3d"
+  },
+  "identification": {
+    "format": "x3d",
+    "name": "X3D / VRML",
+    "mime": "model/x3d+xml",
+    "family": "3d",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "x3d",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "cad.mesh"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 16199
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 16199,
+    "entropy": 3.302,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 16199,
+      "chars": 16199,
+      "words": 2094,
+      "lines": 30,
+      "max_line_length": 12055,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "a88528c7addf388cfcd42b6aa1f14c69dabd2caaa5d113fce217db393adc0ccf",
+    "blake3": "9ee39fa5d0cf2b536ca89d02cbf0896089d3c966ea11268bf286ddcba0f75653"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "x3d": {
+      "profile": "Interchange",
+      "x3d_version": "3.3",
+      "nodes": {
+        "Group": 3,
+        "ImageTexture": 1,
+        "IndexedFaceSet": 2,
+        "Material": 1,
+        "Shape": 2
+      },
+      "bounds": {
+        "min": [
+          -0.6,
+          -1.25,
+          0.0
+        ],
+        "max": [
+          12.0,
+          1.25,
+          2.2
+        ],
+        "size": [
+          12.6,
+          2.5,
+          2.2
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.mesh",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

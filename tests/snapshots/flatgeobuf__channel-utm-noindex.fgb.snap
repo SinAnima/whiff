@@ -1,0 +1,132 @@
+---
+source: src/formats/geo/vector.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "channel-utm-noindex.fgb",
+    "stem": "channel-utm-noindex",
+    "extension": "fgb"
+  },
+  "identification": {
+    "format": "flatgeobuf",
+    "name": "FlatGeobuf",
+    "mime": "application/vnd.flatgeobuf",
+    "family": "geo",
+    "confidence": 0.93,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "geo.vector"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2144
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2144,
+    "entropy": 5.796,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "bc2525fcad7c9e54314fa0bac8555fff28810873306f7116a364ba6229851a20",
+    "blake3": "df8061d748dcbde3ca8079c410404c3aaad308360af29e4afd1913a0934ffa27"
+  },
+  "content": {
+    "extent": {
+      "west": 4.0947124,
+      "south": 52.349,
+      "east": 4.1332977,
+      "north": 52.361,
+      "source": "fgb.envelope"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "flatgeobuf": {
+      "version": "3.0.1",
+      "name": "channel",
+      "geometry_type": "LineString",
+      "features": 1,
+      "index_node_size": 0,
+      "columns": [
+        "name (string)",
+        "kind (string)",
+        "depth_m (double)"
+      ],
+      "bbox": [
+        574565.0151984,
+        5800460.3073099,
+        577173.4764642,
+        5801755.1520954
+      ],
+      "crs": {
+        "name": "WGS 84 / UTM zone 31N",
+        "epsg": 32631
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.vector",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

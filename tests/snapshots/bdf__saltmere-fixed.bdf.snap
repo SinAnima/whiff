@@ -1,0 +1,142 @@
+---
+source: src/formats/font/bitmap.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-fixed.bdf",
+    "stem": "saltmere-fixed",
+    "extension": "bdf"
+  },
+  "identification": {
+    "format": "bdf",
+    "name": "BDF bitmap font",
+    "mime": "application/x-font-bdf",
+    "family": "font",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "font.bitmap"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 11226
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "Copyright 2025 Saltmere Harbour Type, CC0-1.0"
+  },
+  "physical": {
+    "size_bytes": 11226,
+    "entropy": 4.581,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 11226,
+      "chars": 11226,
+      "words": 2631,
+      "lines": 1640,
+      "max_line_length": 71,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "caa5f10ea55a045756402b21ef649fc14556a41d4e9eecbe622e2641f8f5d574",
+    "blake3": "67e7ca6c6324e4a67c51477d4a27b73e2f81b9838b0666404489d671d74ca261"
+  },
+  "content": {
+    "title": "Saltmere Fixed Medium"
+  },
+  "metadata": {},
+  "format": {
+    "bdf": {
+      "bdf_version": "2.1",
+      "font": "-SHTY-Saltmere Fixed-Medium-R-Normal--10-100-75-75-C-60-ISO10646-1",
+      "size": "10 75 75",
+      "bounding_box": "6 10 0 -2",
+      "glyph_count": 95,
+      "properties": {
+        "foundry": "SHTY",
+        "family_name": "Saltmere Fixed",
+        "weight_name": "Medium",
+        "slant": "R",
+        "setwidth_name": "Normal",
+        "pixel_size": 10,
+        "point_size": 100,
+        "resolution_x": 75,
+        "resolution_y": 75,
+        "spacing": "C",
+        "average_width": 60,
+        "charset_registry": "ISO10646",
+        "charset_encoding": 1,
+        "font_ascent": 8,
+        "font_descent": 2,
+        "copyright": "Copyright 2025 Saltmere Harbour Type, CC0-1.0"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "font.bitmap",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

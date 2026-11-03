@@ -1,0 +1,127 @@
+---
+source: src/formats/science/instruments.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy-logic.vcd",
+    "stem": "buoy-logic",
+    "extension": "vcd"
+  },
+  "identification": {
+    "format": "vcd",
+    "name": "VCD waveform",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "science.instruments"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 333
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 333,
+    "entropy": 4.482,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 333,
+      "chars": 333,
+      "words": 72,
+      "lines": 40,
+      "max_line_length": 25,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "c82aab313a420e9b61a8e8657524178b8117d4e7fb6bfe748a2debdfa96fdc88",
+    "blake3": "23623e5b7fb5088ab11c3315e0bb13fd564b32656a552747fee62d41601b1cd7"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "vcd": {
+      "date": "2025-09-01",
+      "timescale": "1 ns",
+      "version": "pyvcd",
+      "scopes": [
+        "module logger"
+      ],
+      "variable_count": 2,
+      "variables": [
+        "clk (wire 1)",
+        "data (wire 8)"
+      ],
+      "last_time": 90
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.instruments",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

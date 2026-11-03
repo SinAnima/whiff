@@ -1,0 +1,149 @@
+---
+source: src/formats/geo/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-buoys.czml",
+    "stem": "saltmere-buoys",
+    "extension": "czml"
+  },
+  "identification": {
+    "format": "czml",
+    "name": "CZML",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "czml",
+        "confidence": 0.99
+      },
+      {
+        "format": "json",
+        "confidence": 0.55
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 614
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 614,
+    "entropy": 4.917,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 614,
+      "chars": 614,
+      "words": 8,
+      "lines": 0,
+      "max_line_length": 614,
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "94b44d2177922c02e5aedeefb563c17310d8b60580a85c4ad5ef86b4cb2dfb4f",
+    "blake3": "71aff829ce1bd7ef707ecfe8f9049eb851828b08a3305105d772837b7b7c1919"
+  },
+  "content": {
+    "title": "Saltmere buoys",
+    "extent": {
+      "west": 4.095,
+      "south": 52.3502,
+      "east": 4.124,
+      "north": 52.361,
+      "source": "czml"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "czml": {
+      "packets": 5,
+      "name": "Saltmere buoys",
+      "version": "1.0",
+      "graphics": {
+        "billboard": 4
+      },
+      "bbox": [
+        4.095,
+        52.3502,
+        4.124,
+        52.361
+      ],
+      "z_range": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

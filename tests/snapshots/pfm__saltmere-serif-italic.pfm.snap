@@ -1,0 +1,132 @@
+---
+source: src/formats/font/type1.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-serif-italic.pfm",
+    "stem": "saltmere-serif-italic",
+    "extension": "pfm"
+  },
+  "identification": {
+    "format": "pfm",
+    "name": "Printer font metrics",
+    "mime": "application/octet-stream",
+    "family": "font",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "pfm",
+        "confidence": 0.99
+      },
+      {
+        "format": "pnm",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "font.type1"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 400
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "Saltmere Harbour Type"
+  },
+  "physical": {
+    "size_bytes": 400,
+    "entropy": 2.901,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "fc87db07e2aff868f6d14342180ba04561762150256bec7c2a857422df7825b9",
+    "blake3": "84f7839d4a8ec2a8b451f6c75ff1dcc084eba3988bcda52ce42e4f0e24220922"
+  },
+  "content": {
+    "title": "Saltmere Serif"
+  },
+  "metadata": {},
+  "format": {
+    "pfm": {
+      "font_version": "1.0",
+      "copyright": "Saltmere Harbour Type",
+      "vector": true,
+      "points": 10,
+      "resolution": "300x300",
+      "weight_class": 400,
+      "italic": true,
+      "charset": "OEM",
+      "pixel_height": 1000,
+      "monospace": false,
+      "face": "Saltmere Serif",
+      "device": "PostScript",
+      "postscript_name": "SaltmereSerif-Italic",
+      "extension_size": 30
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "font.type1",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

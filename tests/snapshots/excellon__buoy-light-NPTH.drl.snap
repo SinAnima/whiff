@@ -1,0 +1,123 @@
+---
+source: src/formats/cad/eda.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy-light-NPTH.drl",
+    "stem": "buoy-light-NPTH",
+    "extension": "drl"
+  },
+  "identification": {
+    "format": "excellon",
+    "name": "Excellon drill file",
+    "mime": "application/octet-stream",
+    "family": "cad",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "cad.eda"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 62
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 62,
+    "entropy": 3.432,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 62,
+      "chars": 62,
+      "words": 8,
+      "lines": 8,
+      "max_line_length": 14,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "2dfce04e7cc17e4e43b57d51ff94d64c4a52f68a757f1cd81d0396ead9401a05",
+    "blake3": "e64b5b7c21af8d196272ce8d13e303d670705cab3af1865732e605cda7f0f1a7"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "excellon": {
+      "unit": "inch",
+      "tools": {
+        "T1": 0.125
+      },
+      "hits": {
+        "T1": 2
+      },
+      "total_hits": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.eda",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

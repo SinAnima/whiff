@@ -1,0 +1,11 @@
+% Saltmere tide figures, a Metafont sketch (CC0-1.0).
+% Copyright 2025 Saltmere Harbour Type
+mode_setup;
+font_identifier:="SALTMERE";
+font_coding_scheme:="ASCII digits";
+designsize:=10pt#;
+input saltmere-base;
+beginchar("0",5pt#,7pt#,0); pickup pencircle scaled .4pt; draw (0,0)--(w,h); endchar;
+beginchar("1",5pt#,7pt#,0); pickup pencircle scaled .4pt; draw (w/2,0)--(w/2,h); endchar;
+% beginchar in a comment is not counted
+end

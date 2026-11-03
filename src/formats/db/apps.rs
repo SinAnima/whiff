@@ -100,6 +100,20 @@ pub(crate) fn identify(db: &mut Db<'_>, app_id: u32, user_version: u32, cx: &mut
                 Value::Object(m)
             })
             .collect();
+        // The extent: contents in WGS84 (srs_id 4326, GeoPackage's default).
+        let mut ext: Option<[f64; 4]> = None;
+        for c in &contents {
+            let g = |k: &str| c.get(k).and_then(Value::as_f64);
+            if c.get("srs_id").and_then(Value::as_i64) == Some(4326)
+                && let (Some(w), Some(s), Some(e), Some(n)) = (g("min_x"), g("min_y"), g("max_x"), g("max_y"))
+            {
+                let x = ext.get_or_insert([w, s, e, n]);
+                *x = [x[0].min(w), x[1].min(s), x[2].max(e), x[3].max(n)];
+            }
+        }
+        if let Some([w, s, e, n]) = ext {
+            cx.content().source("gpkg_contents").extent(w, s, e, n);
+        }
         if !contents.is_empty() {
             app.insert("contents".into(), contents.into());
         }
@@ -132,6 +146,17 @@ pub(crate) fn identify(db: &mut Db<'_>, app_id: u32, user_version: u32, cx: &mut
         }
         if let Some(a) = meta.get("attribution").and_then(Value::as_str) {
             cx.rights().source("db.sqlite").credit(a);
+        }
+        // `bounds`: "west,south,east,north" in WGS84.
+        let b: Vec<f64> = meta
+            .get("bounds")
+            .and_then(Value::as_str)
+            .unwrap_or("")
+            .split(',')
+            .filter_map(|v| v.trim().parse().ok())
+            .collect();
+        if let [w, s, e, n] = b[..] {
+            cx.content().source("mbtiles.metadata.bounds").extent(w, s, e, n);
         }
         app.insert("metadata".into(), Value::Object(meta));
         counts(db, &mut app, &[("tiles", "tiles")]);

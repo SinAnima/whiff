@@ -1,0 +1,147 @@
+---
+source: src/formats/geo/xml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-notices.xml",
+    "stem": "saltmere-notices",
+    "extension": "xml"
+  },
+  "identification": {
+    "format": "georss",
+    "name": "GeoRSS feed",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "georss",
+        "confidence": 0.97
+      },
+      {
+        "format": "rss",
+        "confidence": 0.95
+      },
+      {
+        "format": "xml",
+        "confidence": 0.65
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.xml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1075
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1075,
+    "entropy": 4.646,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1075,
+      "chars": 1075,
+      "words": 54,
+      "lines": 36,
+      "max_line_length": 63,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "e8f91029cfdc54a490c59f82aeadfdc33baf9fa0f4f988a1f843309827a9f12a",
+    "blake3": "968b5ff0c803b7d76d0804739384b5a82cf333e817023105834524b7b00a002c"
+  },
+  "content": {
+    "title": "Saltmere notices",
+    "extent": {
+      "west": 4.095,
+      "south": 52.3502,
+      "east": 4.124,
+      "north": 52.361,
+      "source": "georss"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "georss": {
+      "title": "Saltmere notices",
+      "items": 4,
+      "located_items": 4,
+      "bbox": [
+        4.095,
+        52.3502,
+        4.124,
+        52.361
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.xml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

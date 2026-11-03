@@ -1,0 +1,156 @@
+---
+source: src/formats/columnar/table.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "v2.metadata.json",
+    "stem": "v2.metadata",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "iceberg_metadata",
+    "name": "Iceberg table metadata",
+    "mime": "application/octet-stream",
+    "family": "columnar",
+    "confidence": 0.98,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "iceberg_metadata",
+        "confidence": 0.98
+      },
+      {
+        "format": "json",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "columnar.table"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1602
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2026-10-31T21:52:17Z",
+        "source": "last_updated",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-10-31T21:52:17Z",
+    "latest": "2026-10-31T21:52:17Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1602,
+    "entropy": 4.908,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1602,
+      "chars": 1602,
+      "words": 1,
+      "lines": 0,
+      "max_line_length": 1602,
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "961fc27d53d940d52cda73749b58da08668c6019d9c44972775058929743c6c6",
+    "blake3": "5291c26c79bd31cd3944fe34c85067a1cde5df2ff98960de0df9dafe2b73beb3"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "iceberg_metadata": {
+      "format_version": 2,
+      "table_uuid": "c89c6075-cd17-43a4-ad7d-8b5eeb96b5b6",
+      "location": "file:///tmp/saltmere-warehouse/harbour/tides",
+      "last_updated": "2026-10-31T21:52:17Z",
+      "column_count": 3,
+      "columns": {
+        "station": "string",
+        "at": "timestamptz",
+        "height_m": "double"
+      },
+      "schema_versions": 1,
+      "properties": {
+        "owner": "harbour-office"
+      },
+      "snapshots": 1,
+      "first_snapshot": "2026-10-31T21:52:17Z",
+      "last_snapshot": "2026-10-31T21:52:17Z",
+      "operation": "append",
+      "rows": 30,
+      "data_files": 1,
+      "delete_files": 0,
+      "bytes": 1830
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "columnar.table",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

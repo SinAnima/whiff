@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osmChange version="0.6" generator="osmium/1.18.0">
+  <create>
+    <node id="4" version="1" timestamp="2025-09-01T06:00:04Z" uid="42" user="harbourmaster" changeset="1" lat="52.3502" lon="4.124">
+      <tag k="seamark:type" v="buoy_isolated_danger"/>
+      <tag k="name" v="Kelp Bank"/>
+    </node>
+  </create>
+  <delete>
+    <node id="4" version="2" timestamp="2025-09-01T07:00:00Z"/>
+  </delete>
+</osmChange>

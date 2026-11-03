@@ -1,0 +1,177 @@
+---
+source: src/formats/cad/gltf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-keeper.vrm",
+    "stem": "saltmere-keeper",
+    "extension": "vrm"
+  },
+  "identification": {
+    "format": "vrm",
+    "name": "VRM avatar",
+    "mime": "application/octet-stream",
+    "family": "3d",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "vrm",
+        "confidence": 0.99
+      },
+      {
+        "format": "glb",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "cad.gltf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 5800
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "CC0 Saltmere Harbour",
+    "license": {
+      "name": "https://vrm.dev/licenses/1.0/",
+      "url": "https://vrm.dev/licenses/1.0/"
+    }
+  },
+  "physical": {
+    "size_bytes": 5800,
+    "entropy": 5.499,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "68d36ec092ef7064a63d30283ef51314f7df66809231e9e88e8a87a8681dce1a",
+    "blake3": "3434729cc6e195cffd4cadb864f136a6658474ed11f5e46ef5c108d7bcc4278c"
+  },
+  "content": {
+    "title": "Saltmere lighthouse keeper",
+    "authors": [
+      "Saltmere Harbour Office"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "vrm": {
+      "glb_length": 5800,
+      "gltf_version": "2.0",
+      "generator": "https://github.com/mikedh/trimesh",
+      "counts": {
+        "scenes": 1,
+        "nodes": 2,
+        "meshes": 2,
+        "accessors": 5,
+        "bufferViews": 5,
+        "buffers": 1
+      },
+      "primitives": 2,
+      "primitive_modes": {
+        "triangles": 2
+      },
+      "vertices": 84,
+      "triangles": 156,
+      "bounds": {
+        "min": [
+          -0.6,
+          -1.25,
+          0.0
+        ],
+        "max": [
+          12.0,
+          1.25,
+          2.2
+        ],
+        "size": [
+          12.6,
+          2.5,
+          2.2
+        ]
+      },
+      "embedded_images": 0,
+      "glb_binary_bytes": 3792,
+      "extensions_used": [
+        "VRMC_vrm"
+      ],
+      "vrm_version": "1.0",
+      "vrm_meta": {
+        "name": "Saltmere lighthouse keeper",
+        "version": "1.0",
+        "authors": [
+          "Saltmere Harbour Office"
+        ],
+        "copyrightInformation": "CC0 Saltmere Harbour",
+        "licenseUrl": "https://vrm.dev/licenses/1.0/",
+        "avatarPermission": "everyone",
+        "commercialUsage": "personalNonProfit",
+        "allowRedistribution": true
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.gltf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,148 @@
+---
+source: src/formats/columnar/ml/gguf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide-tiny.gguf",
+    "stem": "tide-tiny",
+    "extension": "gguf"
+  },
+  "identification": {
+    "format": "gguf",
+    "name": "GGUF model",
+    "mime": "application/octet-stream",
+    "family": "columnar",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "columnar.gguf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 6432
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "license": {
+      "name": "CC0-1.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 6432,
+    "entropy": 7.284,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "c21f43564f0457f073bf7a31a09fc0a3d9b942f93af536970bae0cbd2a231c5d",
+    "blake3": "b6c1ba2192c197fd12190248ad84938730c15abed1a6350c0e6554fa2b289fcc"
+  },
+  "content": {
+    "title": "Tide Tiny",
+    "description": "A made-up two-layer model for whiff's tests."
+  },
+  "metadata": {},
+  "format": {
+    "gguf": {
+      "gguf_version": 3,
+      "metadata_keys": 12,
+      "architecture": "llama",
+      "name": "Tide Tiny",
+      "license": "CC0-1.0",
+      "description": "A made-up two-layer model for whiff's tests.",
+      "tokenizer": "llama",
+      "file_type": "MOSTLY_F16",
+      "hyperparameters": {
+        "context_length": 256,
+        "embedding_length": 16,
+        "block_count": 2,
+        "feed_forward_length": 32,
+        "attention_head_count": 2
+      },
+      "vocabulary": 6,
+      "keys": [
+        "general.architecture",
+        "general.description",
+        "general.file_type",
+        "general.license",
+        "general.name",
+        "llama.attention.head_count",
+        "llama.block_count",
+        "llama.context_length",
+        "llama.embedding_length",
+        "llama.feed_forward_length",
+        "tokenizer.ggml.model",
+        "tokenizer.ggml.tokens"
+      ],
+      "tensors": 5,
+      "parameters": 1632,
+      "parameters_label": "1.6K",
+      "tensor_types": {
+        "F16": 2,
+        "F32": 3
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "columnar.gguf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

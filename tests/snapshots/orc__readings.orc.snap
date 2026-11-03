@@ -1,0 +1,138 @@
+---
+source: src/formats/columnar/orc.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "readings.orc",
+    "stem": "readings",
+    "extension": "orc"
+  },
+  "identification": {
+    "format": "orc",
+    "name": "Apache ORC",
+    "mime": "application/vnd.apache.orc",
+    "family": "columnar",
+    "confidence": 0.77,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "columnar.orc"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1630
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1630,
+    "entropy": 7.096,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "357e23db4bef717c9966e076a9aee8232a0301aedd8f29f791bfbbad259d365e",
+    "blake3": "0938df42262a27c17916a9a748752a12d2633af50004e9ef3e696151f8da03d5"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "orc": {
+      "file_version": "0.12",
+      "compression": "zstd",
+      "compression_block_size": 65536,
+      "writer_version": 6,
+      "rows": 120,
+      "stripes": 1,
+      "row_index_stride": 10000,
+      "writer": "ORC C++",
+      "software_version": "2.2.2",
+      "column_count": 4,
+      "columns": {
+        "at": "timestamp with local time zone",
+        "height_m": "double",
+        "flags": "array<int>",
+        "gauge": "struct<id: string, ok: boolean>"
+      },
+      "statistics": {
+        "at": {
+          "values": 120,
+          "min": "2025-09-01T06:00:00Z",
+          "max": "2025-09-02T01:50:00Z"
+        },
+        "height_m": {
+          "values": 120,
+          "min": 0.699,
+          "max": 4.343
+        },
+        "flags": {
+          "values": 120
+        },
+        "gauge": {
+          "values": 120
+        }
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "columnar.orc",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

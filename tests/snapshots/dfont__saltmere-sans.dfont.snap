@@ -1,0 +1,213 @@
+---
+source: src/formats/font/sfnt.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-sans.dfont",
+    "stem": "saltmere-sans",
+    "extension": "dfont"
+  },
+  "identification": {
+    "format": "dfont",
+    "name": "Apple dfont / suitcase",
+    "mime": "application/octet-stream",
+    "family": "font",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "font.sfnt"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4237
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T06:12:00Z",
+        "source": "head.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2025-10-01T18:31:00Z",
+        "source": "head.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T06:12:00Z",
+    "latest": "2025-10-01T18:31:00Z"
+  },
+  "security": {},
+  "rights": {
+    "copyright": "Copyright 2025 Saltmere Harbour Type",
+    "license": {
+      "name": "CC0-1.0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "embedding": "installable"
+  },
+  "physical": {
+    "size_bytes": 4237,
+    "entropy": 3.858,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "eaf8ef206157e14e4af7a686703e9025d40751df6ebb6d3898cd2291c183a96d",
+    "blake3": "a68ab284e4190ea35d1fbdf6c520d285d0b26b574101b05d91539a2a4e22ae47"
+  },
+  "content": {
+    "title": "Saltmere Sans Regular",
+    "description": "A harbour signage face for tide boards and berth numbers.",
+    "authors": [
+      "Ada Example"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "dfont": {
+      "resource_types": [
+        "sfnt ×1",
+        "FOND ×1"
+      ],
+      "fonts": 1,
+      "members": [
+        {
+          "full_name": "Saltmere Sans Regular",
+          "postscript_name": "SaltmereSans-Regular",
+          "family": "Saltmere Sans",
+          "subfamily": "Regular"
+        }
+      ],
+      "outlines": "truetype",
+      "table_count": 15,
+      "tables": [
+        "FFTM",
+        "GDEF",
+        "GPOS",
+        "GSUB",
+        "OS/2",
+        "cmap",
+        "gasp",
+        "glyf",
+        "head",
+        "hhea",
+        "hmtx",
+        "loca",
+        "maxp",
+        "name",
+        "post"
+      ],
+      "family": "Saltmere Sans",
+      "subfamily": "Regular",
+      "full_name": "Saltmere Sans Regular",
+      "postscript_name": "SaltmereSans-Regular",
+      "version": "Version 1.002",
+      "unique_id": "1.002;SHT;SaltmereSans-Regular",
+      "manufacturer": "Saltmere Harbour Type",
+      "designer": "Ada Example",
+      "vendor_url": "https://example.org/type",
+      "designer_url": "https://example.org/type/ada",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "copyright": "Copyright 2025 Saltmere Harbour Type",
+      "license": "This font is dedicated to the public domain under CC0 1.0 Universal.",
+      "font_revision": 1.002,
+      "units_per_em": 1000,
+      "created": "2025-09-01T06:12:00Z",
+      "modified": "2025-10-01T18:31:00Z",
+      "glyph_count": 13,
+      "vendor_id": "SHTY",
+      "weight_class": 400,
+      "weight": "regular",
+      "width_class": 5,
+      "width": "normal",
+      "fs_type": 0,
+      "embedding": "installable",
+      "italic": false,
+      "bold": false,
+      "cap_height": 700,
+      "monospace": true,
+      "codepoints": 9,
+      "unicode_scripts": {
+        "Latin": 4,
+        "Common": 2,
+        "Cyrillic": 1,
+        "Greek": 1,
+        "Hebrew": 1
+      },
+      "features": [
+        "kern",
+        "liga",
+        "onum"
+      ],
+      "layout_scripts": [
+        "DFLT",
+        "cyrl",
+        "latn"
+      ],
+      "hinted": false
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "font.sfnt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

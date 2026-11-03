@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>ascender</key>
+    <integer>800</integer>
+    <key>capHeight</key>
+    <integer>700</integer>
+    <key>copyright</key>
+    <string>Copyright 2025 Saltmere Harbour Type</string>
+    <key>descender</key>
+    <integer>-200</integer>
+    <key>familyName</key>
+    <string>Saltmere Sans</string>
+    <key>openTypeHeadCreated</key>
+    <string>2025/09/01 06:12:00</string>
+    <key>openTypeNameDesigner</key>
+    <string>Ada Example</string>
+    <key>openTypeNameLicense</key>
+    <string>This font is dedicated to the public domain under CC0 1.0 Universal.</string>
+    <key>openTypeNameLicenseURL</key>
+    <string>https://creativecommons.org/publicdomain/zero/1.0/</string>
+    <key>openTypeNameManufacturer</key>
+    <string>Saltmere Harbour Type</string>
+    <key>openTypeOS2Type</key>
+    <array/>
+    <key>openTypeOS2VendorID</key>
+    <string>SHTY</string>
+    <key>styleName</key>
+    <string>Regular</string>
+    <key>unitsPerEm</key>
+    <integer>1000</integer>
+    <key>versionMajor</key>
+    <integer>1</integer>
+    <key>versionMinor</key>
+    <integer>2</integer>
+    <key>xHeight</key>
+    <integer>500</integer>
+  </dict>
+</plist>

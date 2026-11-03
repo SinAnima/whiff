@@ -1,0 +1,123 @@
+---
+source: src/formats/geo/shape.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "basin.shp",
+    "stem": "basin",
+    "extension": "shp"
+  },
+  "identification": {
+    "format": "shapefile",
+    "name": "ESRI Shapefile",
+    "mime": "application/vnd.shp",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "shapefile",
+        "confidence": 0.99
+      },
+      {
+        "format": "shapefile_index",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "geo.shape"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 236
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 236,
+    "entropy": 4.386,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "16dd31630b537d2d3c027031fc9fd41e1a41ccb7148fd1fde8ab6b998e53586b",
+    "blake3": "e248f26e70c6c80e0018da825fa46390fb50c0dbe71245a84276e3da834e8b97"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "shapefile": {
+      "version": 1000,
+      "shape_type": "Polygon",
+      "records": 1,
+      "bbox": [
+        576962.1922004,
+        5800234.6639983,
+        577789.9953372,
+        5800914.8398837
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.shape",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,158 @@
+---
+source: src/formats/cad/gltf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pier.gltf",
+    "stem": "pier",
+    "extension": "gltf"
+  },
+  "identification": {
+    "format": "gltf",
+    "name": "glTF / GLB",
+    "mime": "model/gltf+json",
+    "family": "3d",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "gltf",
+        "confidence": 0.99
+      },
+      {
+        "format": "json",
+        "confidence": 0.55
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "cad.gltf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1089
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1089,
+    "entropy": 4.907,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1089,
+      "chars": 1089,
+      "words": 1,
+      "lines": 0,
+      "max_line_length": 1089,
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "5ffe71e07af095089feb694b1c5f57dcc1033171828ec46091a32acc3bb1df4d",
+    "blake3": "4cf8b3fe84f30220e04a0e3de12aa1aabf584e9857e7dbf8ff27d0a438baa10e"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "gltf": {
+      "gltf_version": "2.0",
+      "generator": "https://github.com/mikedh/trimesh",
+      "counts": {
+        "scenes": 1,
+        "nodes": 1,
+        "meshes": 1,
+        "accessors": 2,
+        "bufferViews": 2,
+        "buffers": 2
+      },
+      "primitives": 1,
+      "primitive_modes": {
+        "triangles": 1
+      },
+      "vertices": 8,
+      "triangles": 12,
+      "bounds": {
+        "min": [
+          0.0,
+          -1.25,
+          0.9
+        ],
+        "max": [
+          12.0,
+          1.25,
+          1.5
+        ],
+        "size": [
+          12.0,
+          2.5,
+          0.6
+        ]
+      },
+      "embedded_images": 0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.gltf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

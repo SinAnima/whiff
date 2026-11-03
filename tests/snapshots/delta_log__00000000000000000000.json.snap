@@ -1,0 +1,181 @@
+---
+source: src/formats/columnar/table.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "00000000000000000000.json",
+    "stem": "00000000000000000000",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "delta_log",
+    "name": "Delta Lake transaction log",
+    "mime": "application/octet-stream",
+    "family": "columnar",
+    "confidence": 0.98,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "delta_log",
+        "confidence": 0.98
+      },
+      {
+        "format": "ndjson",
+        "confidence": 0.6
+      },
+      {
+        "format": "json",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "columnar.table"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2442
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2026-10-31T21:52:17Z",
+        "source": "commit_time",
+        "tz_known": true
+      },
+      {
+        "field": "created",
+        "value": "2026-10-31T21:52:17Z",
+        "source": "table_created",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-10-31T21:52:17Z",
+    "latest": "2026-10-31T21:52:17Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2442,
+    "entropy": 5.106,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 2442,
+      "chars": 2442,
+      "words": 11,
+      "lines": 5,
+      "max_line_length": 517,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "acf72ab70f06fb68f0f11fdeb1215da8ffd92d3951645ffc45643a1e001ccb8a",
+    "blake3": "c32c24663c0d8aec13273dfdb50ac892be454ff04f67f9a89c53d43c603cecab"
+  },
+  "content": {
+    "title": "tides"
+  },
+  "metadata": {},
+  "format": {
+    "delta_log": {
+      "operation": "WRITE",
+      "engine": "delta-rs:py-1.6.6",
+      "client_version": "delta-rs.py-1.6.6",
+      "commit_time": "2026-10-31T21:52:17Z",
+      "operation_parameters": {
+        "partitionBy": "[\"station\"]",
+        "mode": "ErrorIfExists"
+      },
+      "min_reader_version": 1,
+      "min_writer_version": 2,
+      "table_id": "76c290ce-f23b-459e-a363-7b1d54391ead",
+      "table_name": "tides",
+      "description": "Saltmere tide readings",
+      "data_format": "parquet",
+      "column_count": 3,
+      "columns": {
+        "station": "string",
+        "at": "timestamp",
+        "height_m": "double"
+      },
+      "partition_columns": [
+        "station"
+      ],
+      "table_created": "2026-10-31T21:52:17Z",
+      "actions": {
+        "commitInfo": 1,
+        "protocol": 1,
+        "metaData": 1,
+        "add": 3
+      },
+      "files_added": 3,
+      "files_removed": 0,
+      "rows_added": 30,
+      "bytes_added": 2998
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "columnar.table",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

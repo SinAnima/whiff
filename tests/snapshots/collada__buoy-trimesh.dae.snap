@@ -1,0 +1,169 @@
+---
+source: src/formats/cad/mesh.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy-trimesh.dae",
+    "stem": "buoy-trimesh",
+    "extension": "dae"
+  },
+  "identification": {
+    "format": "collada",
+    "name": "Collada DAE",
+    "mime": "model/vnd.collada+xml",
+    "family": "3d",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "collada",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.32
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "cad.mesh"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 9902
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-11-03T18:13:15",
+        "source": "collada.asset.created",
+        "tz_known": false
+      },
+      {
+        "field": "modified",
+        "value": "2026-11-03T18:13:15",
+        "source": "collada.asset.modified",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 9902,
+    "entropy": 4.455,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 9902,
+      "chars": 9902,
+      "words": 1492,
+      "lines": 104,
+      "max_line_length": 2432,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "fc4e543e55a56e90a52b7c49120fe86d3148d9ddad868ccc297ea07ea4ecc9c0",
+    "blake3": "cde1eda475c7da639bcaa9ec7123329dcaf564c40370474643089e63c1391d89"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "collada": {
+      "collada_version": "1.4.1",
+      "created": "2026-11-03T18:13:15.454725",
+      "modified": "2026-11-03T18:13:15.454727",
+      "up_axis": "Y_UP",
+      "counts": {
+        "effect": 1,
+        "geometry": 1,
+        "material": 1,
+        "node": 1,
+        "visual_scene": 1
+      },
+      "triangles": 144,
+      "vertices": 76,
+      "bounds": {
+        "min": [
+          -0.6,
+          -0.6,
+          0.0
+        ],
+        "max": [
+          0.6,
+          0.6,
+          2.2
+        ],
+        "size": [
+          1.2,
+          1.2,
+          2.2
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.mesh",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

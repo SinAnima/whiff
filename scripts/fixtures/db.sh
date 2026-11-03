@@ -37,7 +37,7 @@ mkdir -p "$root/target"
 work=$(mktemp -d "$root/target/db-fixtures.XXXXXX")
 
 podman run --rm -i -e TZ=UTC -v "$work:/w" -w /w whiff-db bash -euo pipefail <<'EOF'
-mkdir -p out/sqlite out/sqlite_wal out/sqlite_journal out/dbf out/access out/duckdb out/lmdb out/berkeley_db \
+mkdir -p out/sqlite out/geopackage out/mbtiles out/sqlite_wal out/sqlite_journal out/dbf out/access out/duckdb out/lmdb out/berkeley_db \
     out/leveldb_table out/redis_rdb out/pg_dump out/mysql_frm out/innodb_tablespace out/myisam_index out/h2
 
 # ------------------------------------------------------------------ SQLite
@@ -179,11 +179,11 @@ cat >buoys.geojson <<'GJ'
  {"type": "Feature", "properties": {"name": "Breakwater buoy", "depth_m": 8.0},
   "geometry": {"type": "Point", "coordinates": [-4.25, 50.14]}}]}
 GJ
-ogr2ogr -f GPKG out/sqlite/saltmere-buoys.gpkg buoys.geojson -nln buoys
+ogr2ogr -f GPKG out/geopackage/saltmere-buoys.gpkg buoys.geojson -nln buoys
 gdal_create -of GTiff -outsize 64 64 -bands 3 -burn 30 -burn 90 -burn 160 -a_srs EPSG:3857 \
     -a_ullr -472000 6470000 -468000 6466000 chart.tif
 gdal_translate -q -of MBTILES -co NAME="Saltmere chart" -co DESCRIPTION="Harbour approaches" \
-    -co ZOOM_LEVEL_STRATEGY=LOWER chart.tif out/sqlite/saltmere-chart.mbtiles
+    -co ZOOM_LEVEL_STRATEGY=LOWER chart.tif out/mbtiles/saltmere-chart.mbtiles
 ogr2ogr -f SQLite -dsco SPATIALITE=YES -dsco INIT_WITH_EPSG=NO out/sqlite/saltmere-buoys.sl3 buoys.geojson -nln buoys
 ogr2ogr -f "ESRI Shapefile" -lco ENCODING=UTF-8 shp buoys.geojson -nln buoys
 cp shp/buoys.dbf out/dbf/buoys.dbf

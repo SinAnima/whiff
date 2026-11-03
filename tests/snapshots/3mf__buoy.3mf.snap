@@ -1,0 +1,139 @@
+---
+source: src/formats/cad/mesh.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy.3mf",
+    "stem": "buoy",
+    "extension": "3mf"
+  },
+  "identification": {
+    "format": "3mf",
+    "name": "3D Manufacturing Format",
+    "mime": "model/3mf",
+    "family": "3d",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "3mf",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "cad.mesh"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2514
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2514,
+    "entropy": 7.748,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "f034a316612ba262cfa9176cb6271e31d5316c7e3e7cea130ef91b4ffaf4ffe6",
+    "blake3": "a7716afc61407a09adb9c2864cf755478a341ebcd7691fddcbbf4517b06fd2a4"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "3mf": {
+      "entries": 3,
+      "model_parts": 1,
+      "thumbnail": false,
+      "unit": "millimeter",
+      "objects": 1,
+      "vertices": 76,
+      "triangles": 144,
+      "build_items": 1,
+      "bounds": {
+        "min": [
+          -0.6,
+          -0.6,
+          0.0
+        ],
+        "max": [
+          0.6,
+          0.6,
+          2.2
+        ],
+        "size": [
+          1.2,
+          1.2,
+          2.2
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.mesh",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,132 @@
+---
+source: src/formats/geo/shape.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoys-a00000009.gdbtable",
+    "stem": "buoys-a00000009",
+    "extension": "gdbtable"
+  },
+  "identification": {
+    "format": "filegdb_table",
+    "name": "Esri File Geodatabase / Personal GDB",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "geo.shape"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 785
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 785,
+    "entropy": 5.193,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "203a1b049f891b9d62f207fc5ddad3099b871b6f797061f002aa9d25e6dc24ff",
+    "blake3": "8bb9ee5b72ff55fff11d28b72c1a91e5d51130dea1e57ca576da01681c4c3ecf"
+  },
+  "content": {
+    "extent": {
+      "west": 4.095,
+      "south": 52.3502,
+      "east": 4.124,
+      "north": 52.361,
+      "source": "gdbtable.extent"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "filegdb_table": {
+      "rows": 4,
+      "table_version": "Pro 3.2+ (64-bit object IDs)",
+      "geometry_type": "point",
+      "field_count": 5,
+      "fields": [
+        "SHAPE (geometry)",
+        "OBJECTID (objectid)",
+        "name (string)",
+        "kind (string)",
+        "depth_m (float64)"
+      ],
+      "crs": {
+        "name": "GCS_WGS_1984"
+      },
+      "bbox": [
+        4.095,
+        52.3502,
+        4.124,
+        52.361
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.shape",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

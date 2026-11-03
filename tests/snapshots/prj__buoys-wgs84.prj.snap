@@ -1,0 +1,118 @@
+---
+source: src/formats/geo/text.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoys-wgs84.prj",
+    "stem": "buoys-wgs84",
+    "extension": "prj"
+  },
+  "identification": {
+    "format": "prj",
+    "name": "Projection file",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "geo.text"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 145
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 145,
+    "entropy": 5.035,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 145,
+      "chars": 145,
+      "words": 1,
+      "lines": 0,
+      "max_line_length": 145,
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "a02a27b1d1982c8516d83398e85a3c8b1aef1713c13ef4d84d7bde17430c07c4",
+    "blake3": "c396d043764f26db1874ce00a061d7e8be33feaaad0e6360beb7af44ca5e315a"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "prj": {
+      "wkt_kind": "GEOGCS",
+      "crs": {
+        "name": "GCS_WGS_1984"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.text",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

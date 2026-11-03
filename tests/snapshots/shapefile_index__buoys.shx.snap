@@ -1,0 +1,123 @@
+---
+source: src/formats/geo/shape.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoys.shx",
+    "stem": "buoys",
+    "extension": "shx"
+  },
+  "identification": {
+    "format": "shapefile_index",
+    "name": "Shapefile index",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "shapefile_index",
+        "confidence": 0.99
+      },
+      {
+        "format": "shapefile",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "geo.shape"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 132
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 132,
+    "entropy": 2.651,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "cf327a45da351136607662dc85a3f071fa5daa6e9777a2f10537e0e6cc4032e6",
+    "blake3": "3c5f81b17a8a3cd3371a64a5a6318b40cc93c4b80cd4aeb71361a0caba0c4ae8"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "shapefile_index": {
+      "version": 1000,
+      "shape_type": "Point",
+      "records": 4,
+      "bbox": [
+        4.095,
+        52.3502,
+        4.124,
+        52.361
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.shape",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

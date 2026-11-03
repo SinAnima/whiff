@@ -1,0 +1,156 @@
+---
+source: src/formats/geo/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-utm.geojson",
+    "stem": "saltmere-utm",
+    "extension": "geojson"
+  },
+  "identification": {
+    "format": "geojson",
+    "name": "GeoJSON",
+    "mime": "application/geo+json",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "geojson",
+        "confidence": 0.99
+      },
+      {
+        "format": "json",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1759
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1759,
+    "entropy": 4.985,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1759,
+      "chars": 1759,
+      "words": 199,
+      "lines": 13,
+      "max_line_length": 418,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "0d41cb85f0774c30ecf26d3f43b640d928f066132785ac0102a0e27daecd47ea",
+    "blake3": "1399e99219189f984f3bd168f60db6f724466fee78c230690277594d2633a77b"
+  },
+  "content": {
+    "title": "saltmere_utm",
+    "extent": {
+      "west": 4.0946622,
+      "south": 52.3468846,
+      "east": 4.1423494,
+      "north": 52.361,
+      "source": "geojson"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "geojson": {
+      "type": "FeatureCollection",
+      "name": "saltmere_utm",
+      "features": 6,
+      "geometry_types": {
+        "LineString": 1,
+        "Point": 4,
+        "Polygon": 1
+      },
+      "property_keys": [
+        "depth_m",
+        "kind",
+        "name"
+      ],
+      "bbox": [
+        574565.0151984,
+        5800234.6639983,
+        577789.9953372,
+        5801755.1520954
+      ],
+      "crs": {
+        "epsg": 32631
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,131 @@
+---
+source: src/formats/columnar/arrow.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "readings.arrows",
+    "stem": "readings",
+    "extension": "arrows"
+  },
+  "identification": {
+    "format": "arrow_stream",
+    "name": "Apache Arrow IPC stream",
+    "mime": "application/vnd.apache.arrow.stream",
+    "family": "columnar",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "arrow_stream",
+        "confidence": 0.95
+      },
+      {
+        "format": "mp2",
+        "confidence": 0.68
+      }
+    ],
+    "extractor": "columnar.arrow"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 7040
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 7040,
+    "entropy": 3.822,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "b7c86d83de3f65ef7d4f3edb747188f36bd2da5b21cf83d997de37ace480ae93",
+    "blake3": "8f549bc894b43b1fc520133bcf1bca3c6f1df26eb62965fe235ff63888165a95"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "arrow_stream": {
+      "column_count": 5,
+      "columns": {
+        "station": "dictionary<string>",
+        "at": "timestamp[ms, UTC]",
+        "height_m": "float64",
+        "flags": "list<int32>",
+        "gauge": "struct<id: string, ok: bool>"
+      },
+      "nullable_columns": 5,
+      "metadata": {
+        "harbour": "Saltmere Harbour",
+        "source": "tide gauges"
+      },
+      "end_of_stream": true,
+      "record_batches": 3,
+      "dictionary_batches": 1,
+      "rows": 120
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "columnar.arrow",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

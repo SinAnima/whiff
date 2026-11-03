@@ -1,0 +1,134 @@
+---
+source: src/formats/geo/tiles.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere.osm.pbf",
+    "stem": "saltmere.osm",
+    "extension": "pbf"
+  },
+  "identification": {
+    "format": "osm_pbf",
+    "name": "OpenStreetMap PBF",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "geo.tiles"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 606
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 606,
+    "entropy": 7.218,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "3299d63bb418db73bb5aa0b574cd7e7ea8aa0a3b417de94ee8721ecff39094a0",
+    "blake3": "5777099c93d867c5a8008f06826567d0e12b5875b3b830c11f2d030395c3fb1c"
+  },
+  "content": {
+    "extent": {
+      "west": 4.095,
+      "south": 52.349,
+      "east": 4.133,
+      "north": 52.361,
+      "source": "osm.nodes"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "osm_pbf": {
+      "required_features": [
+        "OsmSchema-V0.6",
+        "DenseNodes"
+      ],
+      "optional_features": [],
+      "writing_program": "osmium/1.18.0",
+      "replication_timestamp": "2025-09-01T06:00:00Z",
+      "data_blocks": 3,
+      "elements": {
+        "nodes": 8,
+        "ways": 1,
+        "relations": 1
+      },
+      "bbox": [
+        4.095,
+        52.349,
+        4.133,
+        52.361
+      ],
+      "crs": {
+        "epsg": 4326
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.tiles",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

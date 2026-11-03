@@ -1,0 +1,118 @@
+---
+source: src/formats/columnar/ml/torch.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide-net-legacy.pth",
+    "stem": "tide-net-legacy",
+    "extension": "pth"
+  },
+  "identification": {
+    "format": "pytorch",
+    "name": "PyTorch checkpoint",
+    "mime": "application/octet-stream",
+    "family": "columnar",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "columnar.torch"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1030
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1030,
+    "entropy": 6.282,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "1d04b20d15f84586f961c3c147598e439071ae1b5a38299d034e5e399522fdb4",
+    "blake3": "d45e6939e66130ac7738cd8ce827650bdbd37d1519beffc2f30eed6d9455030e"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pytorch": {
+      "format": "legacy",
+      "pickle_protocol": 2,
+      "holds": [
+        "state_dict",
+        "tensors"
+      ],
+      "storage_types": [
+        "float32"
+      ],
+      "globals": [
+        "collections.OrderedDict",
+        "torch._utils._rebuild_tensor_v2",
+        "torch.FloatStorage"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "columnar.torch",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

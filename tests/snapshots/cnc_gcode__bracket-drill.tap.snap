@@ -1,0 +1,151 @@
+---
+source: src/formats/cad/gcode.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bracket-drill.tap",
+    "stem": "bracket-drill",
+    "extension": "tap"
+  },
+  "identification": {
+    "format": "cnc_gcode",
+    "name": "CNC / ISO G-code",
+    "mime": "application/octet-stream",
+    "family": "cad",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "cad.gcode"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 138
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 138,
+    "entropy": 4.626,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 138,
+      "chars": 138,
+      "words": 29,
+      "lines": 13,
+      "max_line_length": 40,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "ee80018751e116ae307bdb06bf16cb0c829608e9e3b535130349c77b0d85bcf7",
+    "blake3": "6c7599fe9c8ae03a593091d8496bfaf39f0b3e01ac05a914ce50466ffdf759c0"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "cnc_gcode": {
+      "program": "1002",
+      "comments": [
+        "SALTMERE MOORING BRACKET - DRILL",
+        "3/16 DRILL"
+      ],
+      "units": "inch",
+      "tools": [
+        "T2"
+      ],
+      "commands": {
+        "G0": 1,
+        "G1 (modal)": 2,
+        "G20": 1,
+        "G80": 1,
+        "G81": 1,
+        "M30": 1,
+        "M5": 1,
+        "T": 1
+      },
+      "move_extent": {
+        "min": [
+          0.5,
+          0.5,
+          0.2
+        ],
+        "max": [
+          2.5,
+          0.5,
+          0.2
+        ],
+        "size": [
+          2.0,
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.gcode",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

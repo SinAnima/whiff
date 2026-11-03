@@ -1,0 +1,190 @@
+---
+source: src/formats/font/sfnt.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-flags-colr.ttf",
+    "stem": "saltmere-flags-colr",
+    "extension": "ttf"
+  },
+  "identification": {
+    "format": "ttf",
+    "name": "TrueType font",
+    "mime": "font/ttf",
+    "family": "font",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "font.sfnt"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2608
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T06:12:00Z",
+        "source": "head.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2025-10-01T18:31:00Z",
+        "source": "head.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T06:12:00Z",
+    "latest": "2025-10-01T18:31:00Z"
+  },
+  "security": {},
+  "rights": {
+    "copyright": "Copyright 2025 Saltmere Harbour Type",
+    "license": {
+      "name": "CC0-1.0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "embedding": "restricted"
+  },
+  "physical": {
+    "size_bytes": 2608,
+    "entropy": 4.617,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "3610cc04b79e90192cdd99551f833ba91dc7dfa18c0f6ae5d6b2b40fc714fa9f",
+    "blake3": "94f29a82d7778dd69574ee95c194e951914fb7cc8411ec96110880e7dcde9646"
+  },
+  "content": {
+    "title": "Saltmere Flags Regular",
+    "description": "A harbour signage face for tide boards and berth numbers.",
+    "authors": [
+      "Ada Example"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "ttf": {
+      "outlines": "truetype",
+      "table_count": 12,
+      "tables": [
+        "COLR",
+        "CPAL",
+        "OS/2",
+        "cmap",
+        "glyf",
+        "head",
+        "hhea",
+        "hmtx",
+        "loca",
+        "maxp",
+        "name",
+        "post"
+      ],
+      "family": "Saltmere Flags",
+      "subfamily": "Regular",
+      "full_name": "Saltmere Flags Regular",
+      "postscript_name": "SaltmereFlags-Regular",
+      "version": "Version 1.002",
+      "unique_id": "1.002;SHT;SaltmereFlags-Regular",
+      "manufacturer": "Saltmere Harbour Type",
+      "designer": "Ada Example",
+      "vendor_url": "https://example.org/type",
+      "designer_url": "https://example.org/type/ada",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "copyright": "Copyright 2025 Saltmere Harbour Type",
+      "license": "This font is dedicated to the public domain under CC0 1.0 Universal.",
+      "font_revision": 1.002,
+      "units_per_em": 1000,
+      "created": "2025-09-01T06:12:00Z",
+      "modified": "2025-10-01T18:31:00Z",
+      "glyph_count": 13,
+      "vendor_id": "SHTY",
+      "weight_class": 400,
+      "weight": "regular",
+      "width_class": 5,
+      "width": "normal",
+      "fs_type": 2,
+      "embedding": "restricted",
+      "italic": false,
+      "bold": false,
+      "monospace": false,
+      "codepoints": 9,
+      "unicode_scripts": {
+        "Latin": 4,
+        "Common": 2,
+        "Cyrillic": 1,
+        "Greek": 1,
+        "Hebrew": 1
+      },
+      "glyph_formats": [
+        "COLRv0"
+      ],
+      "palettes": 1,
+      "hinted": false
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "font.sfnt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

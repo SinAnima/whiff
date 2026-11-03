@@ -1,0 +1,18 @@
+M48
+; DRILL file {Saltmere buoy light} date 2025-09-01
+; FORMAT={-:-/ absolute / metric / decimal}
+FMAT,2
+METRIC
+T1C0.800
+T2C1.000
+%
+G90
+G05
+T1
+X2.0Y3.0
+X6.0Y3.0
+X10.0Y3.0
+T2
+X14.0Y8.0
+T0
+M30

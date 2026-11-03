@@ -1,0 +1,13 @@
+IESNA:LM-63-2002
+[TEST] SALT-2025-001
+[TESTLAB] Saltmere Harbour bench
+[ISSUEDATE] 2025-09-01
+[MANUFAC] Saltmere Lantern Works
+[LUMINAIRE] Lantern
+[LAMP] LED module
+TILT=NONE
+1 12000 1.0 3 1 1 2 0.30 0.30 0.40
+1.0 1.0 150
+0 45 90
+0
+900 600 100

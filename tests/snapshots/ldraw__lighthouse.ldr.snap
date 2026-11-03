@@ -1,0 +1,134 @@
+---
+source: src/formats/cad/scene.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "lighthouse.ldr",
+    "stem": "lighthouse",
+    "extension": "ldr"
+  },
+  "identification": {
+    "format": "ldraw",
+    "name": "LDraw brick models",
+    "mime": "application/octet-stream",
+    "family": "3d",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "cad.scene"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 268
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "license": {
+      "name": "Licensed under CC0"
+    }
+  },
+  "physical": {
+    "size_bytes": 268,
+    "entropy": 4.182,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 268,
+      "chars": 268,
+      "words": 76,
+      "lines": 8,
+      "max_line_length": 41,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "dc6671bfff1892506cc7f8c8054d69cbe8e59e1ed61a8e953b8ad9fda2072eb6",
+    "blake3": "569be37507fb1e5c25ced75529268d6f0f001682c20d1ad26d3d97a5ca7dc62c"
+  },
+  "content": {
+    "title": "Saltmere lighthouse",
+    "authors": [
+      "Saltmere Harbour Office"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "ldraw": {
+      "name": "lighthouse.ldr",
+      "title": "Saltmere lighthouse",
+      "part_references": 4,
+      "distinct_parts": 2,
+      "top_parts": {
+        "3001.dat": 2,
+        "3062b.dat": 2
+      },
+      "colours": 2,
+      "primitives": {}
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.scene",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

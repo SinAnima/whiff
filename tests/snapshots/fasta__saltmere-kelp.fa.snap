@@ -1,0 +1,126 @@
+---
+source: src/formats/science/genomics.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-kelp.fa",
+    "stem": "saltmere-kelp",
+    "extension": "fa"
+  },
+  "identification": {
+    "format": "fasta",
+    "name": "FASTA sequences",
+    "mime": "text/x-fasta",
+    "family": "sci",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "science.genomics"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1933
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1933,
+    "entropy": 2.5,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1933,
+      "chars": 1933,
+      "words": 43,
+      "lines": 33,
+      "max_line_length": 60,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "35615966205d2d9f65c471af0d33135e7b41fca7bb26745bc2f4e9ee1e1f88ec",
+    "blake3": "71116fe4f0218484147958416d5b58f952e3e27af7d5ab47c916952e02fd011b"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "fasta": {
+      "sequences": 2,
+      "total_length": 1800,
+      "min_length": 800,
+      "max_length": 1000,
+      "n50": 1000,
+      "alphabet": "dna",
+      "gc_percent": 49.0,
+      "identifiers": [
+        "kelp_chr1",
+        "kelp_chr2"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.genomics",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

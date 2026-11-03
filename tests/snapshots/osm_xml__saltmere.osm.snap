@@ -1,0 +1,166 @@
+---
+source: src/formats/geo/xml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere.osm",
+    "stem": "saltmere",
+    "extension": "osm"
+  },
+  "identification": {
+    "format": "osm_xml",
+    "name": "OpenStreetMap PBF / XML",
+    "mime": "application/x-osm+xml",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "osm_xml",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.xml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2021
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "captured",
+        "value": "2025-09-01T06:00:01+00:00",
+        "source": "osm.timestamp",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T06:00:01Z",
+    "latest": "2025-09-01T06:00:01Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2021,
+    "entropy": 4.95,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 2021,
+      "chars": 2021,
+      "words": 154,
+      "lines": 36,
+      "max_line_length": 133,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "aa22c83546b0baea995fb7d44c60bdfe6099161169f84cfb0ffe63407fc298f3",
+    "blake3": "c25746420c5e27e3b67081cecc7482d3187e69575eced0eed36d7fc413ecf628"
+  },
+  "content": {
+    "extent": {
+      "west": 4.095,
+      "south": 52.349,
+      "east": 4.133,
+      "north": 52.361,
+      "source": "osm.node"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "osm_xml": {
+      "generator": "osmium/1.18.0",
+      "version": "0.6",
+      "elements": {
+        "nodes": 8,
+        "relations": 1,
+        "ways": 1
+      },
+      "contributors": 1,
+      "top_tag_keys": {
+        "name": 5,
+        "route": 1,
+        "seamark:type": 4,
+        "type": 1,
+        "waterway": 1
+      },
+      "time_start": "2025-09-01T06:00:01Z",
+      "time_end": "2025-09-01T06:03:00Z",
+      "bbox": [
+        4.095,
+        52.349,
+        4.133,
+        52.361
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.xml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,124 @@
+---
+source: src/formats/science/chem.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide-peptide.cif",
+    "stem": "tide-peptide",
+    "extension": "cif"
+  },
+  "identification": {
+    "format": "mmcif",
+    "name": "mmCIF structure",
+    "mime": "chemical/x-mmcif",
+    "family": "sci",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "encoding": "us-ascii",
+    "extractor": "science.chem"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1828
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1828,
+    "entropy": 5.12,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1828,
+      "chars": 1828,
+      "words": 248,
+      "lines": 99,
+      "max_line_length": 62,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 18
+    }
+  },
+  "integrity": {
+    "sha256": "debccc629ee6a2318f778d9be8dccb2986d554090c79f160c009f646acaccc99",
+    "blake3": "401914a467203847a166bc8b7d0f01177235ff2e2af606445e0536f998ac7d01"
+  },
+  "content": {
+    "title": "A MADE-UP KELP PEPTIDE FOR WHIFF'S TESTS"
+  },
+  "metadata": {},
+  "format": {
+    "mmcif": {
+      "data_block": "string",
+      "entry_id": "9XYZ",
+      "title": "A MADE-UP KELP PEPTIDE FOR WHIFF'S TESTS",
+      "atom_site_rows": 7,
+      "chains": [
+        "A"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.chem",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

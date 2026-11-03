@@ -1,0 +1,135 @@
+---
+source: src/formats/cad/mesh.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pier.off",
+    "stem": "pier",
+    "extension": "off"
+  },
+  "identification": {
+    "format": "off",
+    "name": "OFF / AMF / Stanford",
+    "mime": "application/octet-stream",
+    "family": "3d",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "cad.mesh"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 427
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 427,
+    "entropy": 2.498,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 427,
+      "chars": 427,
+      "words": 76,
+      "lines": 22,
+      "max_line_length": 40,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "9bc26854353393fc89adda7df06082b5acd9d7176708244776486468c8518058",
+    "blake3": "87993b4a6696ea5a985d8cacfb7a9fd598413bbe87abc1c560fd8455bc755687"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "off": {
+      "variant": "OFF",
+      "vertices": 8,
+      "faces": 12,
+      "bounds": {
+        "min": [
+          0.0,
+          -1.25,
+          0.9
+        ],
+        "max": [
+          12.0,
+          1.25,
+          1.5
+        ],
+        "size": [
+          12.0,
+          2.5,
+          0.6
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.mesh",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

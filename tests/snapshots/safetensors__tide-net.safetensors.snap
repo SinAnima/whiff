@@ -1,0 +1,123 @@
+---
+source: src/formats/columnar/ml/safetensors.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide-net.safetensors",
+    "stem": "tide-net",
+    "extension": "safetensors"
+  },
+  "identification": {
+    "format": "safetensors",
+    "name": "Safetensors",
+    "mime": "application/octet-stream",
+    "family": "columnar",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "columnar.safetensors"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 928
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 928,
+    "entropy": 6.89,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "c0ff21c369f969c40b8298581e9e5126c7b34cc4ba4646a481cb694bfe61afff",
+    "blake3": "de2814133d0b4e0ed9dbc64405fd85077afefeebb93c2b4e1ac5f967a17bde16"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "safetensors": {
+      "header_bytes": 280,
+      "metadata": {
+        "format": "np",
+        "licence": "CC0-1.0",
+        "model": "tide-net"
+      },
+      "tensors": 3,
+      "parameters": 176,
+      "parameters_label": "176",
+      "tensor_types": {
+        "F16": 32,
+        "F32": 144
+      },
+      "tensor_names": [
+        "encoder.bias",
+        "encoder.weight",
+        "head.weight"
+      ],
+      "data_bytes": 640
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "columnar.safetensors",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

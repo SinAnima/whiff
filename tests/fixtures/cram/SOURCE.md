@@ -1,0 +1,7 @@
+# Fixtures for `cram` (CRAM alignments)
+
+Files made for whiff's tests, CC0-1.0, for a fictitious harbour (Saltmere Harbour). Regenerate with `scripts/fixtures/science.sh`.
+
+| File | Origin | Licence |
+|---|---|---|
+| `reads.cram` | samtools 1.16.1 view -C against the FASTA fixture | CC0-1.0 |

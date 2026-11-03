@@ -1458,6 +1458,17 @@
               "type": "null"
             }
           ]
+        },
+        "extent": {
+          "description": "Area the content covers (e.g. a map's bounding box), in WGS84.",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Extent"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       }
     },
@@ -1520,6 +1531,41 @@
             "null"
           ],
           "format": "double"
+        },
+        "source": {
+          "description": "Where it came from.",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "Extent": {
+      "description": "A geographic extent: a WGS84 bounding box.",
+      "type": "object",
+      "properties": {
+        "west": {
+          "description": "Western longitude, decimal degrees.",
+          "type": "number",
+          "format": "double",
+          "default": 0.0
+        },
+        "south": {
+          "description": "Southern latitude, decimal degrees.",
+          "type": "number",
+          "format": "double",
+          "default": 0.0
+        },
+        "east": {
+          "description": "Eastern longitude, decimal degrees.",
+          "type": "number",
+          "format": "double",
+          "default": 0.0
+        },
+        "north": {
+          "description": "Northern latitude, decimal degrees.",
+          "type": "number",
+          "format": "double",
+          "default": 0.0
         },
         "source": {
           "description": "Where it came from.",

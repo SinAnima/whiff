@@ -1,0 +1,184 @@
+---
+source: src/formats/columnar/parquet.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "readings-pandas-zstd.parquet",
+    "stem": "readings-pandas-zstd",
+    "extension": "parquet"
+  },
+  "identification": {
+    "format": "parquet",
+    "name": "Apache Parquet",
+    "mime": "application/vnd.apache.parquet",
+    "family": "columnar",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "parquet",
+        "confidence": 0.81
+      },
+      {
+        "format": "geoparquet",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "columnar.parquet"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 6639
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 6639,
+    "entropy": 6.842,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "49c4e8bb553874be8c04d820e0afc422406ddad20d4179edbdd590186415189d",
+    "blake3": "251ad0f77b7fc0f620f8347f527ce728fde2067d58707de76f656ad7d8964ef2"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "parquet": {
+      "footer_bytes": 4233,
+      "format_version": 2,
+      "created_by": "parquet-cpp-arrow version 26.0.0",
+      "rows": 120,
+      "row_groups": 1,
+      "column_count": 6,
+      "columns": {
+        "station": "string",
+        "at": "timestamp[ms, UTC]",
+        "height_m": "double",
+        "flags": "list<int32>",
+        "gauge": "struct<id: string, ok: boolean>",
+        "__index_level_0__": "int64"
+      },
+      "leaf_columns": 7,
+      "codecs": [
+        "zstd"
+      ],
+      "encodings": [
+        "plain",
+        "rle",
+        "rle_dictionary"
+      ],
+      "compressed_bytes": 2394,
+      "uncompressed_bytes": 3964,
+      "statistics": {
+        "__index_level_0__": {
+          "min": 0,
+          "max": 119,
+          "nulls": 0
+        },
+        "at": {
+          "min": "2025-09-01T06:00:00Z",
+          "max": "2025-09-02T01:50:00Z",
+          "nulls": 0
+        },
+        "flags.list.element": {
+          "min": 0,
+          "max": 4,
+          "nulls": 0
+        },
+        "gauge.id": {
+          "min": "G7",
+          "max": "G9",
+          "nulls": 0
+        },
+        "gauge.ok": {
+          "min": false,
+          "max": true,
+          "nulls": 0
+        },
+        "height_m": {
+          "min": 0.699,
+          "max": 4.343,
+          "nulls": 0
+        },
+        "station": {
+          "min": "Lock Gate",
+          "max": "Saltmere Pier",
+          "nulls": 0
+        }
+      },
+      "pandas_version": "3.1.0",
+      "pandas_index": [
+        "__index_level_0__"
+      ],
+      "metadata_keys": [
+        "pandas",
+        "ARROW:schema"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "columnar.parquet",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

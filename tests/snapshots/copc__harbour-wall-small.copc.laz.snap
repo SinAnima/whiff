@@ -1,0 +1,188 @@
+---
+source: src/formats/geo/points.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-wall-small.copc.laz",
+    "stem": "harbour-wall-small.copc",
+    "extension": "laz"
+  },
+  "identification": {
+    "format": "copc",
+    "name": "Cloud Optimized Point Cloud",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.98,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "copc",
+        "confidence": 0.98
+      },
+      {
+        "format": "laz",
+        "confidence": 0.81
+      },
+      {
+        "format": "las",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "geo.points"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3498
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-11-03",
+        "source": "las.header",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 3498,
+    "entropy": 7.025,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "df3b67f800ad57da11c23be1a320fcd5b9e5893f40f24a7ae6978f6546c13191",
+    "blake3": "ce8802ee55a62bc53d319a76fd1ad462c1e543bd55a704a12c79d3c39c91c0fd"
+  },
+  "content": {
+    "extent": {
+      "west": 4.3947958,
+      "south": 52.351039,
+      "east": 4.3959703,
+      "north": 52.3513213,
+      "source": "las.header"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "copc": {
+      "las_version": "1.4",
+      "system_identifier": "PDAL",
+      "generating_software": "PDAL 2.8.4 (156082)",
+      "creation_date": "2026-11-03",
+      "point_format": 6,
+      "point_record_length": 30,
+      "compressed": true,
+      "crs_encoding": "wkt",
+      "points": 400,
+      "points_by_return": [
+        400
+      ],
+      "scale": [
+        0.01,
+        0.01,
+        0.01
+      ],
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "vlrs": [
+        "copc/1 (COPC info VLR)",
+        "laszip encoded/22204 (lazperf variant)",
+        "LASF_Projection/2112"
+      ],
+      "copc": {
+        "center": [
+          595040.0205,
+          5801039.8195,
+          41.7475
+        ],
+        "halfsize": 39.7215,
+        "spacing": 0.540429,
+        "gpstime_range": [
+          0.0,
+          0.0
+        ]
+      },
+      "bbox": [
+        595000.299,
+        5801000.098,
+        595079.742,
+        5801029.972
+      ],
+      "z_range": [
+        2.026,
+        7.983
+      ],
+      "crs": {
+        "name": "WGS 84 / UTM zone 31N",
+        "epsg": 32631
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.points",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

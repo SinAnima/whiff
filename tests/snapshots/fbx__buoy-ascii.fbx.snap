@@ -1,0 +1,123 @@
+---
+source: src/formats/cad/scene.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy-ascii.fbx",
+    "stem": "buoy-ascii",
+    "extension": "fbx"
+  },
+  "identification": {
+    "format": "fbx",
+    "name": "FBX",
+    "mime": "application/vnd.autodesk.fbx",
+    "family": "3d",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "cad.scene"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 22629
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 22629,
+    "entropy": 4.41,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 22629,
+      "chars": 22629,
+      "words": 1143,
+      "lines": 279,
+      "max_line_length": 2328,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 11
+    }
+  },
+  "integrity": {
+    "sha256": "0099719115a1be6a9872bd449377f477a916684bf0f69f0bbc74156f333a68bc",
+    "blake3": "acbd4c39b7de141920cf8fa80dae589c06f56b9fd5426db4bce2910ac497c340"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "fbx": {
+      "encoding": "ascii",
+      "fbx_version": "7.5.0",
+      "creator": "Open Asset Import Library (Assimp) 5.4.0",
+      "objects": {
+        "Geometry": 1,
+        "Material": 1,
+        "Model": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.scene",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

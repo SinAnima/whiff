@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:georss="http://www.georss.org/georss">
+  <channel>
+    <title>Saltmere notices</title>
+    <description>channel_description</description>
+    <link>channel_link</link>
+    <item>
+      <title>Feature 1</title>
+      <ogr:name>Outer Fairway</ogr:name>
+      <ogr:kind>safe_water</ogr:kind>
+      <depth:m>14.2</depth:m>
+      <georss:point>52.361 4.095</georss:point>
+    </item>
+    <item>
+      <title>Feature 2</title>
+      <ogr:name>Channel Red 1</ogr:name>
+      <ogr:kind>port</ogr:kind>
+      <depth:m>9.8</depth:m>
+      <georss:point>52.356 4.1105</georss:point>
+    </item>
+    <item>
+      <title>Feature 3</title>
+      <ogr:name>Channel Green 1</ogr:name>
+      <ogr:kind>starboard</ogr:kind>
+      <depth:m>9.6</depth:m>
+      <georss:point>52.3575 4.113</georss:point>
+    </item>
+    <item>
+      <title>Feature 4</title>
+      <ogr:name>Kelp Bank</ogr:name>
+      <ogr:kind>isolated_danger</ogr:kind>
+      <depth:m>3.1</depth:m>
+      <georss:point>52.3502 4.124</georss:point>
+    </item>
+  </channel>
+</rss>

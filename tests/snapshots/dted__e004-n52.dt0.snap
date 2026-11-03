@@ -1,0 +1,133 @@
+---
+source: src/formats/geo/raster.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "e004-n52.dt0",
+    "stem": "e004-n52",
+    "extension": "dt0"
+  },
+  "identification": {
+    "format": "dted",
+    "name": "DTED / SRTM HGT / ASC grid",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "geo.raster"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 18922
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 18922,
+    "entropy": 3.695,
+    "entropy_scope": "file",
+    "image": {
+      "width": 61,
+      "height": 121
+    }
+  },
+  "integrity": {
+    "sha256": "8ff381ac3478eb381b939e739d20e3bbb01cccd5cdceca923db48acad9cd2602",
+    "blake3": "f2a7d7e1a5facebf95bd24f508dd489189008154c6ff7dda555e65896646ef76"
+  },
+  "content": {
+    "extent": {
+      "west": 4.0,
+      "south": 52.0,
+      "east": 5.0,
+      "north": 53.0,
+      "source": "dted.UHL"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "dted": {
+      "interval_arcsec": [
+        60.0,
+        30.0
+      ],
+      "columns": 61,
+      "rows": 121,
+      "security": "U",
+      "product_level": "DTED0",
+      "bbox": [
+        4.0,
+        52.0,
+        5.0,
+        53.0
+      ],
+      "crs": {
+        "epsg": 4326
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.raster",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

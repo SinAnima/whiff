@@ -1,0 +1,141 @@
+---
+source: src/formats/cad/eda.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-ring.gds",
+    "stem": "saltmere-ring",
+    "extension": "gds"
+  },
+  "identification": {
+    "format": "gdsii",
+    "name": "GDSII / OASIS chip layout",
+    "mime": "application/octet-stream",
+    "family": "cad",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "cad.eda"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 374
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2026-11-03T18:13:18",
+        "source": "gdsii.BGNLIB",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 374,
+    "entropy": 4.142,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "3850e076be6aed383b688587a5033fd78180c9ca0efe310c906175f33206e1b6",
+    "blake3": "c273b3161aa8a98c194cbfc6fb93ce41c6c7720f8211d1102320a42b8adbacda"
+  },
+  "content": {
+    "title": "LIB"
+  },
+  "metadata": {},
+  "format": {
+    "gdsii": {
+      "stream_version": 600,
+      "modified": "2026-11-03T18:13:18",
+      "accessed": "2026-11-03T18:13:18",
+      "library": "LIB",
+      "user_units_per_db_unit": 0.001,
+      "db_unit_m": "1e-9",
+      "cells": 2,
+      "cell_names": [
+        "PAD",
+        "SALTMERE_RING"
+      ],
+      "elements": {
+        "boundary": 1,
+        "path": 1,
+        "sref": 2,
+        "text": 1
+      },
+      "layers": [
+        1,
+        2
+      ],
+      "bounds_user_units": [
+        0.0,
+        0.0,
+        400.0,
+        150.0
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.eda",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

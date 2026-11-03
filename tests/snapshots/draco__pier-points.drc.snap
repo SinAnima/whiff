@@ -1,0 +1,108 @@
+---
+source: src/formats/cad/mesh.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pier-points.drc",
+    "stem": "pier-points",
+    "extension": "drc"
+  },
+  "identification": {
+    "format": "draco",
+    "name": "Draco compressed mesh",
+    "mime": "application/octet-stream",
+    "family": "3d",
+    "confidence": 0.85,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "cad.mesh"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 199
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 199,
+    "entropy": 2.973,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "2ed7fc2b5cf43dc91c43fc82f63b1764ed8c413d9f253c78d28150f9abdf8945",
+    "blake3": "64542db9a5a5ed1294a366b63c93fa85b71578b327f979f5b66fe3ba8baf3f05"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "draco": {
+      "draco_version": "2.3",
+      "geometry": "point cloud",
+      "encoder": "edgebreaker",
+      "metadata": false
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.mesh",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

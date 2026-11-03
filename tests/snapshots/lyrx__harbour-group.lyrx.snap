@@ -1,0 +1,134 @@
+---
+source: src/formats/geo/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-group.lyrx",
+    "stem": "harbour-group",
+    "extension": "lyrx"
+  },
+  "identification": {
+    "format": "lyrx",
+    "name": "ArcGIS layer file",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "lyrx",
+        "confidence": 0.99
+      },
+      {
+        "format": "json",
+        "confidence": 0.55
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 535
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 535,
+    "entropy": 4.648,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 535,
+      "chars": 535,
+      "words": 41,
+      "lines": 26,
+      "max_line_length": 39,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "d1ca7ed6a5dfdb466cc00969261264cc9a9a4cf2dd31be0c3b152669597bf09b",
+    "blake3": "677e3cd8a4bcc63b6bcd3da048708e90a439035aa698c4a0c89fbb6abfb11688"
+  },
+  "content": {
+    "title": "Harbour"
+  },
+  "metadata": {},
+  "format": {
+    "lyrx": {
+      "version": "3.1.0",
+      "build": 41833,
+      "layers": [
+        "Harbour (GroupLayer)",
+        "Basin (FeatureLayer)",
+        "Relief (RasterLayer)"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

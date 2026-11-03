@@ -1,0 +1,123 @@
+---
+source: src/formats/cad/scene.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "keeper-wave.bvh",
+    "stem": "keeper-wave",
+    "extension": "bvh"
+  },
+  "identification": {
+    "format": "bvh",
+    "name": "Motion capture BVH / C3D",
+    "mime": "application/octet-stream",
+    "family": "3d",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "cad.scene"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2606
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2606,
+    "entropy": 2.427,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 2606,
+      "chars": 2606,
+      "words": 287,
+      "lines": 38,
+      "max_line_length": 112,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "209ccdd22fa93c6fa6d584461f427919655dcea4f320e1a6a20f1d6c2920c06b",
+    "blake3": "cc336a339698036b4d2db580e94bc4918f08dc2bf0fee82d7ee7baa75907bcd7"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "bvh": {
+      "root": "Bone",
+      "joints": 2,
+      "end_sites": 1,
+      "channels": 12,
+      "frames": 20,
+      "frame_time": 0.041667,
+      "frame_rate": 24.0,
+      "duration_s": 0.833
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.scene",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

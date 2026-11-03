@@ -1,0 +1,114 @@
+---
+source: src/formats/columnar/rdata.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.fst",
+    "stem": "tides",
+    "extension": "fst"
+  },
+  "identification": {
+    "format": "fst",
+    "name": "R fst table",
+    "mime": "application/octet-stream",
+    "family": "columnar",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "columnar.rdata"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2863
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2863,
+    "entropy": 6.046,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "a8abae7da72b8036a47639ed4664347cc5058e925a9a5dc5aca43abaffeb2e6f",
+    "blake3": "301d74e3af1596d96236f2b719e9a6d3fc652854cb665015e095d0523135a9b2"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "fst": {
+      "fst_version": 1,
+      "column_count": 5,
+      "rows": 120,
+      "columns": {
+        "station": "factor",
+        "at": "timestamp",
+        "height_m": "double",
+        "gauge": "character",
+        "ok": "logical"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "columnar.rdata",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

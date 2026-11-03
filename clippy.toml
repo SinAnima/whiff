@@ -2,6 +2,8 @@
 # clippy's default list.
 doc-valid-idents = [
     "..",
+    "RelatedPerson", "NIfTI", "MetaImage", "MetaIO", "PDBx", "CTfile", "TFile", "TDirectory", "TKey", "BioSemi", "BrainVision",
+    "ImageDescription", "ReadStat", "LTspice",
     "BigTIFF", "GeoTIFF", "OpenEXR", "DirectDraw", "FourCC", "ZSoft", "GeoJP2", "ImageMagick", "ExifTool", "LibRaw",
     "ComfyUI", "InvokeAI", "NovelAI", "WebUI", "GIF89a", "CompuServe",
     "PowerPoint", "OpenDocument", "PalmDOC", "FictionBook", "MobileRead", "StarBasic", "AcroForm", "WinAnsi",
@@ -15,6 +17,8 @@ doc-valid-idents = [
     "ZipCrypto", "WinZip", "APPNOTE", "SAMv1", "BGZF", "MSZIP", "LZFSE", "LZVN", "Zip64", "PKWARE",
     "WebExtension", "WebExtensions", "OpenPGP", "RubyGems", "PyPA", "NuGet", "OSGi", "JScript", "VBScript",
     "PackageInfo",
+    "NetCDF", "AnnData", "MathWorks", "NeXus", "GeoParquet", "RoPE", "SavedModel", "TensorFlow", "TorchScript", "TFRecord", "FileMetaData", "KeyValue",
+    "FontForge", "MicroType", "METAFONTbook", "TrueType", "OpenType", "PostScript",
     "BitLocker", "ReFS", "SquashFS", "CloneCD", "EnCase", "AmigaDOS", "VirtualBox", "VMware", "AppImage",
     "AppImages", "AppStream",
     "CodeView", "SafeSEH", "AppContainer", "UTCTime", "GeneralizedTime", "DriverKit", "BridgeOS",

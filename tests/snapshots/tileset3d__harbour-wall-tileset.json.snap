@@ -1,0 +1,152 @@
+---
+source: src/formats/geo/tiles.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-wall-tileset.json",
+    "stem": "harbour-wall-tileset",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "tileset3d",
+    "name": "3D Tiles tileset",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "tileset3d",
+        "confidence": 0.97
+      },
+      {
+        "format": "json",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.tiles"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2274
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2274,
+    "entropy": 4.827,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 2274,
+      "chars": 2274,
+      "words": 1,
+      "lines": 0,
+      "max_line_length": 2274,
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "fcb0a7984a540270c2e2709778ff4e0f550f96ca7ce4ba6a15d69a6629106501",
+    "blake3": "c61a0d704e4ee10317e2251be05552f3c88fa6d93daa33d3c2457ee368cbf45d"
+  },
+  "content": {
+    "extent": {
+      "west": 4.3947715,
+      "south": 52.3509682,
+      "east": 4.3959946,
+      "north": 52.3513917,
+      "source": "tileset.box"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "tileset3d": {
+      "version": "1.0",
+      "geometric_error": 91.376,
+      "tiles": 7,
+      "depth": 2,
+      "content_types": {
+        "pnts": 7
+      },
+      "bbox": [
+        4.3947715,
+        52.3509682,
+        4.3959946,
+        52.3513917
+      ],
+      "z_range": [
+        -17.241,
+        27.357
+      ],
+      "crs": {
+        "epsg": 4326
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.tiles",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

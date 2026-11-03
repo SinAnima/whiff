@@ -10,8 +10,8 @@ use super::{Sink, Step, Stop, bad};
 pub const STREAM_ID: &[u8; 10] = b"\xff\x06\x00\x00sNaPpY";
 const MAX_CHUNK: usize = 1 << 16;
 
-/// One raw Snappy block.
-fn block(data: &[u8], sink: &mut Sink<'_>) -> Step<()> {
+/// One raw Snappy block of at most `max_len` bytes.
+fn block(data: &[u8], max_len: usize, sink: &mut Sink<'_>) -> Step<()> {
     let start = sink.out.len();
     let mut i = 0;
     let mut expected = 0usize;
@@ -23,7 +23,7 @@ fn block(data: &[u8], sink: &mut Sink<'_>) -> Step<()> {
             break;
         }
     }
-    if expected > MAX_CHUNK {
+    if expected > max_len {
         return bad("snappy chunk too large");
     }
     let take = |i: &mut usize, n: usize| -> Step<&[u8]> {
@@ -57,6 +57,12 @@ fn block(data: &[u8], sink: &mut Sink<'_>) -> Step<()> {
 }
 
 /// Decode a framed Snappy stream; returns the bytes used.
+/// A raw Snappy block (no framing), as columnar formats store pages.
+pub(super) fn raw(input: &[u8], sink: &mut Sink<'_>) -> Step<usize> {
+    block(input, usize::MAX, sink)?;
+    Ok(input.len())
+}
+
 pub(super) fn decode(input: &[u8], sink: &mut Sink<'_>) -> Step<usize> {
     if !input.starts_with(STREAM_ID) {
         return if input.len() < STREAM_ID.len() { Err(Stop::Truncated) } else { bad("snappy stream identifier") };
@@ -67,7 +73,7 @@ pub(super) fn decode(input: &[u8], sink: &mut Sink<'_>) -> Step<usize> {
         let len = usize::from(header[1]) | usize::from(header[2]) << 8 | usize::from(header[3]) << 16;
         let body = input.get(at + 4..at + 4 + len).ok_or(Stop::Truncated)?;
         match header[0] {
-            0x00 => block(body.get(4..).ok_or_else(|| Stop::Bad("snappy chunk".into()))?, sink)?,
+            0x00 => block(body.get(4..).ok_or_else(|| Stop::Bad("snappy chunk".into()))?, MAX_CHUNK, sink)?,
             0x01 => {
                 let data = body.get(4..).ok_or_else(|| Stop::Bad("snappy chunk".into()))?;
                 if data.len() > MAX_CHUNK {

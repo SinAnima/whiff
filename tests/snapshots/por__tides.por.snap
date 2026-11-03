@@ -1,0 +1,125 @@
+---
+source: src/formats/science/stats.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.por",
+    "stem": "tides",
+    "extension": "por"
+  },
+  "identification": {
+    "format": "por",
+    "name": "SPSS portable",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "science.stats"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 738
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 738,
+    "entropy": 4.141,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 738,
+      "chars": 738,
+      "words": 19,
+      "lines": 9,
+      "max_line_length": 80,
+      "line_endings": "crlf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "06fb310a7126aad77b7df3c2204c5f1d67f5fdaae51a99245f44c2bacfd75068",
+    "blake3": "747939e8ae5b7d4880b28bb69d38c61ad7021e79fc6622c0c954e8e2b2bf394d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "por": {
+      "por_version": "A",
+      "created": "20261102 045933",
+      "product": "ReadStat",
+      "subproduct": "https://github.com/WizardMac/ReadStat",
+      "variable_count": 3,
+      "variables": {
+        "GAUGE": "Gauge identifier",
+        "HEIGHT_M": "Tide height (m)",
+        "OK": "Reading accepted"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.stats",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

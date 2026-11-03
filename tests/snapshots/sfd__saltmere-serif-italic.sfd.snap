@@ -1,0 +1,157 @@
+---
+source: src/formats/font/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-serif-italic.sfd",
+    "stem": "saltmere-serif-italic",
+    "extension": "sfd"
+  },
+  "identification": {
+    "format": "sfd",
+    "name": "FontForge source",
+    "mime": "application/octet-stream",
+    "family": "font",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "font.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4207
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T06:12:00Z",
+        "source": "source.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2025-10-01T18:31:00Z",
+        "source": "source.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T06:12:00Z",
+    "latest": "2025-10-01T18:31:00Z"
+  },
+  "security": {},
+  "rights": {
+    "copyright": "Saltmere Harbour Type",
+    "embedding": "editable"
+  },
+  "physical": {
+    "size_bytes": 4207,
+    "entropy": 5.21,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 4207,
+      "chars": 4207,
+      "words": 713,
+      "lines": 242,
+      "max_line_length": 397,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 11
+    }
+  },
+  "integrity": {
+    "sha256": "48e3010ff91d1700f70e866c247d7e05c36ab02b643e0baa118b6c2d66e75903",
+    "blake3": "fd3cfbd5cf8c87bc7a37718fa51e00718af4f62de2c19f8cc1bd6da55c48a1d7"
+  },
+  "content": {
+    "title": "Saltmere Serif Italic"
+  },
+  "metadata": {},
+  "format": {
+    "sfd": {
+      "sfd_version": "3.2",
+      "postscript_name": "SaltmereSerif-Italic",
+      "full_name": "Saltmere Serif Italic",
+      "family": "Saltmere Serif",
+      "weight": "Book",
+      "copyright": "Saltmere Harbour Type",
+      "version": "1.002",
+      "italic_angle": -12.0,
+      "fs_type": 8,
+      "embedding": "editable",
+      "created": "2025-09-01T06:12:00Z",
+      "modified": "2025-10-01T18:31:00Z",
+      "vendor_id": "SHTY",
+      "encoding": "1488 1488 10",
+      "glyph_count": 11,
+      "units_per_em": 1000,
+      "features": [
+        "kern",
+        "liga",
+        "onum"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "font.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,106 @@
+---
+source: src/formats/columnar/store.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "readings.vortex",
+    "stem": "readings",
+    "extension": "vortex"
+  },
+  "identification": {
+    "format": "vortex",
+    "name": "Vortex",
+    "mime": "application/octet-stream",
+    "family": "columnar",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "columnar.store"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3672
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 3672,
+    "entropy": 4.242,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "1d5c5ff74a1c3888893292b659feff207c87c88562f5448c0f988e3e8178f386",
+    "blake3": "e226ea87e9d09e982c8ef7311b3d52e3d6ce22addc27efd066305f93013143e7"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "vortex": {
+      "format_version": 1,
+      "postscript_bytes": 160
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "columnar.store",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

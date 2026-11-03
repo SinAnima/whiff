@@ -1,0 +1,150 @@
+---
+source: src/formats/science/netcdf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-cdf1.nc",
+    "stem": "tides-cdf1",
+    "extension": "nc"
+  },
+  "identification": {
+    "format": "netcdf3",
+    "name": "NetCDF (3 / 4)",
+    "mime": "application/x-netcdf",
+    "family": "sci",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "science.netcdf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1604
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1604,
+    "entropy": 5.346,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "190ba4785c0b87ae78e0fef26afda732b1a5ca80c71e1fb9b11bffc550d4428e",
+    "blake3": "5e2d4b70078d0b5ad898dd5cc71854c1ce9390cb7cdc662893eb1d0cc873db99"
+  },
+  "content": {
+    "title": "Saltmere tide heights"
+  },
+  "metadata": {},
+  "format": {
+    "netcdf3": {
+      "format": "classic (CDF-1)",
+      "records": 48,
+      "dimensions": {
+        "time": 48,
+        "station": 3
+      },
+      "unlimited_dimensions": [
+        "time"
+      ],
+      "variable_count": 3,
+      "variables": {
+        "time": {
+          "type": "double",
+          "dimensions": [
+            "time"
+          ],
+          "units": "hours since 2025-09-01 00:00:00",
+          "standard_name": "time"
+        },
+        "height": {
+          "type": "float",
+          "dimensions": [
+            "time",
+            "station"
+          ],
+          "units": "m",
+          "standard_name": "sea_surface_height",
+          "long_name": "tide height above chart datum"
+        },
+        "lat": {
+          "type": "float",
+          "dimensions": [
+            "station"
+          ],
+          "units": "degrees_north"
+        }
+      },
+      "global_attributes": {
+        "title": "Saltmere tide heights",
+        "institution": "Saltmere Harbour Office",
+        "Conventions": "CF-1.8",
+        "history": "2025-09-01 written for whiff's tests"
+      },
+      "conventions": "CF-1.8"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.netcdf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

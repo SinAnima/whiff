@@ -1,0 +1,18 @@
+ Entering Gaussian System, Link 0=g16
+ Initial command:
+ ******************************************
+ Gaussian 16:  ES64L-G16RevC.01  3-Jul-2019
+                 1-Sep-2025
+ ******************************************
+ #p opt b3lyp/6-31g(d)
+ -----------------------
+ Water optimisation (made up)
+ -----------------------
+ Symbolic Z-matrix:
+ Charge =  0 Multiplicity = 1
+ O                     0.        0.        0.117
+ H                     0.        0.757    -0.469
+ H                     0.       -0.757    -0.469
+ SCF Done:  E(RB3LYP) =  -76.4089534     A.U. after    9 cycles
+ Optimization completed.
+ Normal termination of Gaussian 16 at Mon Sep  1 06:12:00 2025.

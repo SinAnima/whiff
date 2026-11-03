@@ -1,0 +1,140 @@
+---
+source: src/formats/columnar/ml/onnx.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide-head.onnx",
+    "stem": "tide-head",
+    "extension": "onnx"
+  },
+  "identification": {
+    "format": "onnx",
+    "name": "ONNX model",
+    "mime": "application/octet-stream",
+    "family": "columnar",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "columnar.onnx"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 422
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 422,
+    "entropy": 6.225,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "f067991a1f445fdb5a5ba8b2f0450e34761eff113a440d747d119d5bd818fc2b",
+    "blake3": "0778acb305a4fc6bbaae748fa29bd2e8210308e19ef54456076082cef4c31c46"
+  },
+  "content": {
+    "description": "Tide head: a linear layer and ReLU.",
+    "authors": [
+      "Saltmere Harbour"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "onnx": {
+      "ir_version": 14,
+      "producer": "saltmere-exporter",
+      "producer_version": "1.0",
+      "model_version": 3,
+      "doc_string": "Tide head: a linear layer and ReLU.",
+      "opsets": {
+        "ai.onnx": 18
+      },
+      "graph": "tide_head",
+      "nodes": 3,
+      "operators": {
+        "Add": 1,
+        "MatMul": 1,
+        "Relu": 1
+      },
+      "inputs": {
+        "x": "float32[batch, 4]"
+      },
+      "outputs": {
+        "y": "float32[batch, 8]"
+      },
+      "tensors": 2,
+      "parameters": 40,
+      "parameters_label": "40",
+      "tensor_types": {
+        "float32": 2
+      },
+      "metadata": {
+        "author": "Saltmere Harbour",
+        "licence": "CC0-1.0"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "columnar.onnx",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

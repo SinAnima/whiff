@@ -1,0 +1,177 @@
+---
+source: src/formats/cad/mesh.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-assimp.dae",
+    "stem": "harbour-assimp",
+    "extension": "dae"
+  },
+  "identification": {
+    "format": "collada",
+    "name": "Collada DAE",
+    "mime": "model/vnd.collada+xml",
+    "family": "3d",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "collada",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "cad.mesh"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 18958
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-11-03T18:13:15",
+        "source": "collada.asset.created",
+        "tz_known": false
+      },
+      {
+        "field": "modified",
+        "value": "2026-11-03T18:13:15",
+        "source": "collada.asset.modified",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 18958,
+    "entropy": 4.269,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 18958,
+      "chars": 18958,
+      "words": 2308,
+      "lines": 131,
+      "max_line_length": 11713,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "37ee9becedd4b22b273580b2912d656f879a64708eae07c400e99f6de7c3066a",
+    "blake3": "338195af08944cc148634adce704242fc1e4bd895a808d9adf1893c69921e64a"
+  },
+  "content": {
+    "authors": [
+      "Assimp"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "collada": {
+      "collada_version": "1.4.1",
+      "author": "Assimp",
+      "authoring_tool": "Assimp Exporter",
+      "created": "2026-11-03T18:13:15",
+      "modified": "2026-11-03T18:13:15",
+      "unit": "meter",
+      "unit_meter": "1",
+      "up_axis": "Y_UP",
+      "counts": {
+        "effect": 1,
+        "geometry": 2,
+        "material": 1,
+        "node": 2,
+        "visual_scene": 1
+      },
+      "triangles": 156,
+      "vertices": 468,
+      "bounds": {
+        "min": [
+          -0.6,
+          -1.25,
+          0.0
+        ],
+        "max": [
+          12.0,
+          1.25,
+          2.2
+        ],
+        "size": [
+          12.6,
+          2.5,
+          2.2
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.mesh",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

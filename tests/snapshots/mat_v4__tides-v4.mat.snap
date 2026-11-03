@@ -1,0 +1,118 @@
+---
+source: src/formats/science/arrays.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-v4.mat",
+    "stem": "tides-v4",
+    "extension": "mat"
+  },
+  "identification": {
+    "format": "mat_v4",
+    "name": "MATLAB MAT v4",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "mat_v4",
+        "confidence": 0.9
+      },
+      {
+        "format": "unity_yaml",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "science.arrays"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 123
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 123,
+    "entropy": 5.721,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "7ac1d8c964883919da148d177ec35c8f9345a09e2db414d9b52fb2d813f4d554",
+    "blake3": "31f52c8f380a7177f1142c13758e93d25d5f72c5aaabeeb87a4891b2604508e4"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "mat_v4": {
+      "variable_count": 1,
+      "variables": {
+        "height": "double 3x4"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.arrays",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

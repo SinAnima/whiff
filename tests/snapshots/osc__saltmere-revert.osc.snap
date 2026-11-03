@@ -1,0 +1,162 @@
+---
+source: src/formats/geo/xml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-revert.osc",
+    "stem": "saltmere-revert",
+    "extension": "osc"
+  },
+  "identification": {
+    "format": "osc",
+    "name": "OSM change / diff",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "osc",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.xml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 450
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "captured",
+        "value": "2025-09-01T06:00:04+00:00",
+        "source": "osm.timestamp",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T06:00:04Z",
+    "latest": "2025-09-01T06:00:04Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 450,
+    "entropy": 5.005,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 450,
+      "chars": 450,
+      "words": 32,
+      "lines": 12,
+      "max_line_length": 132,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "aa0da6b5558276791462574f6e765823cc5f0e58a00486817bde8f75054e164f",
+    "blake3": "fd92ec1c32edd6a6a77fd48d442dc5afe8bb3baad6467315c3a1dbf31d177d83"
+  },
+  "content": {
+    "extent": {
+      "west": 4.124,
+      "south": 52.3502,
+      "east": 4.124,
+      "north": 52.3502,
+      "source": "osm.node"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "osc": {
+      "generator": "osmium/1.18.0",
+      "version": "0.6",
+      "changes": {
+        "create_nodes": 1,
+        "delete_nodes": 1
+      },
+      "contributors": 1,
+      "top_tag_keys": {
+        "name": 1,
+        "seamark:type": 1
+      },
+      "time_start": "2025-09-01T06:00:04Z",
+      "time_end": "2025-09-01T07:00:00Z",
+      "bbox": [
+        4.124,
+        52.3502,
+        4.124,
+        52.3502
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.xml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,158 @@
+---
+source: src/formats/geo/points.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-wall-1.2.las",
+    "stem": "harbour-wall-1.2",
+    "extension": "las"
+  },
+  "identification": {
+    "format": "las",
+    "name": "LAS / LAZ point cloud",
+    "mime": "application/vnd.las",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "las",
+        "confidence": 0.99
+      },
+      {
+        "format": "copc",
+        "confidence": 0.76
+      },
+      {
+        "format": "laz",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "geo.points"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 11427
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01",
+        "source": "las.header",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 11427,
+    "entropy": 2.696,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "b94cc987ecc1ba265f5b0d8bf0bb549e4bf2c95afd03e2576c2f6783e8310637",
+    "blake3": "841cc2b46af61179131263ae41543e4831444e296d430286a76acc22d0f5880f"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "las": {
+      "las_version": "1.2",
+      "system_identifier": "Saltmere wall scan",
+      "generating_software": "laspy 2.7",
+      "creation_date": "2025-09-01",
+      "point_format": 1,
+      "point_record_length": 28,
+      "compressed": false,
+      "points": 400,
+      "points_by_return": [
+        400
+      ],
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "offset": [
+        595000.0,
+        5801000.0,
+        0.0
+      ],
+      "vlrs": [],
+      "bbox": [
+        595000.299,
+        5801000.098,
+        595079.742,
+        5801029.972
+      ],
+      "z_range": [
+        2.026,
+        7.983
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.points",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

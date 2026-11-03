@@ -237,3 +237,154 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 - **Text formats:** RON, KDL, HOCON, EDN, S-expressions, textproto and Ion
   text are read by tolerant parsers into a tree; HOCON substitutions and
   includes are counted, not resolved.
+
+## Fonts (unreleased)
+
+- **Not decoded:** glyph outlines, hinting programs and kerning values
+  (only the feature tags), `CFF` / `CFF2` dictionaries (names come from
+  the `name` table), WOFF2 transformed `glyf` / `loca` / `hmtx` tables
+  (listed, not reconstructed), MicroType Express compressed EOT fonts
+  (header facts only), the Unicode variation sequences of `cmap` format
+  14, `STAT` axis values beyond what `fvar` names, `meta` and `ltag`.
+- **Signatures:** `DSIG` signatures are counted, not verified.
+- **Type 1:** multiple-master and CID-keyed fonts are described from
+  their cleartext only; Type 3 and Type 42 PostScript fonts are not read.
+- **Bitmap fonts:** strikes inside sfnt fonts (`EBLC`, `bloc`) are noted,
+  not listed; Mac `NFNT` / `FONT` resources, suitcases without a data fork
+  (the resource fork alone), Amiga and Atari fonts are not read.
+- **Sources:** UFO is read through `fontinfo.plist` only (the other files
+  of a `.ufo` folder are plain plists and glyph XML); zipped `.ufoz`,
+  designspace documents, `.vfc` / `.vfj` (FontLab), `.fea` feature files
+  and TeX font metrics (`.tfm`, `.vf`) are not read.
+
+## Columnar data and models (unreleased, feature `data`)
+
+- **Not read:** Apache Hudi, Kudu and CarbonData tables, Hadoop
+  SequenceFile and RCFile, MXNet RecordIO, legacy GGML / GGMF / GGJT
+  containers, Core ML packages (`.mlpackage` folders: their
+  `model.mlmodel` is read) and ML Program weights, LanceDB / Chroma
+  stores as such (Chroma is a SQLite database; Lance data files are read).
+- **Partly read:** Vortex files report their version only (the layout and
+  type FlatBuffers are not decoded); Lance 0.x files their version only;
+  R `qs` / `qs2` files their header (the serialised object is not
+  decoded); fst column names stored compressed are not decoded.
+- **Statistics:** Parquet statistics are combined as written (deprecated
+  `min` / `max` used when the newer fields are absent, so signed /
+  unsigned ordering follows the writer); INT96 timestamps and binary
+  columns other than strings give no min / max; ORC decimal, binary and
+  bucket statistics are not reported.
+- **Models:** parameter counts come from tensor shapes (quantised GGUF and
+  TFLite tensors count elements, not bytes); ONNX external data files are
+  noted, not opened; Keras `.h5` weights (HDF5) are read by the science
+  extractors, not here; SavedModel variables are not read.
+- **Pickled data:** pandas pickles of timezone-aware columns import
+  `builtins.getattr` and so report `unsafe_deserialization`, as any pickle
+  importing it does.
+- **F3:** the committed fixture is built from the published layout
+  (`File.fbs`) until `scripts/fixtures/f3.sh` replaces it with the
+  reference writer's files.
+
+## Scientific files (unreleased, feature `science`)
+
+- **Raw data:** array values are never read, so there are no statistics
+  of the data, no checks of chunk checksums and no decompression of
+  data blocks; attribute and header values are read.
+- **HDF5:** objects past the per-file limits, huge fractal-heap objects
+  and filtered heaps are not read (counted in a warning); external and
+  virtual dataset sources are not opened; HDF4 / HDF-EOS2 files
+  are not read.
+- **Formats read from their metadata only:** CRAM records (container
+  headers, nothing decompressed but the header), GRIB data sections,
+  ROOT objects (keys and classes, not trees or histograms), Zarr chunks,
+  ASDF blocks (sizes and compression), OME-TIFF from the first page's
+  OME-XML (BigTIFF descriptions are not read).
+- **Statistics files:** value labels and missing-value definitions are
+  skipped, not reported; SAS7BDAT compressed meta subheaders and column
+  formats and labels are not read; R `qs` objects and native streams
+  written on big-endian machines are not decoded (native streams are
+  read as little-endian).
+- **MATLAB:** v4 matrices give classes and sizes; v5 cells and structs
+  give their size and field names, not their contents; MAT 7.3 is read
+  as HDF5.
+- **Chemistry:** formulas count the atoms listed (implicit hydrogens are
+  not added); PDB and mmCIF give header records and counts, not
+  secondary structure or sequences.
+- **Tool outputs:** Gaussian, ORCA, SPICE, LTspice, IBIS, Liberty, LEF,
+  DEF and ENVI are read line by line from their keywords; CP2K, VASP,
+  GAMESS and NWChem outputs, Spectre and HSPICE binary waveforms and
+  GDSII / OASIS layouts are not read.
+
+## Medical files (unreleased, feature `science`)
+
+- **Privacy:** DICOM patient, physician, institution and accession
+  attributes are reported by name only unless privacy is off; HL7 patient
+  segments and FHIR Patient / Practitioner / RelatedPerson / Person
+  resources are counted, never shown. Free-text attributes (study and
+  series descriptions) are reported as written.
+- **DICOM:** pixel data is not decoded (its size is reported);
+  attributes inside sequences, private tags and DICOMDIR records are not
+  listed; files without the `DICM` preamble are not claimed.
+- **Volumes:** gzip-compressed NIfTI (`.nii.gz`) is described as the gzip
+  file's member; MINC, MGH / MGZ and PAR / REC are not read; NRRD and MetaImage
+  report their header fields, not the data files they name.
+- **Messages:** HL7 v2 is read from the MSH segment and segment counts
+  (no field parsing past MSH); HL7 v3 / CDA documents are read as XML;
+  FHIR XML resources are read as XML.
+
+## Geodata (unreleased, feature `geo`)
+
+- **Not read:** MrSID and ECW rasters (proprietary; no writer to make
+  fixtures with), SRTM `.hgt` tiles (fixed sizes above the fixture
+  limit), Esri I3S scene layer packages (`.slpk`), ArcGIS Pro projects
+  (`.aprx`) and map documents (`.mxd`), ArcInfo export (`.e00`) and
+  binary grids (`.adf`), S-101 (ISO 8211 like S-57, not yet told apart),
+  personal geodatabases (read as Access databases), GeoJP2 / GMLJP2 boxes
+  in JPEG 2000. NetCDF-CF and Zarr geodata are read by the science
+  extractors.
+- **Extents:** reprojection to WGS84 covers geographic CRSs, Web
+  Mercator and UTM (WGS 84, ETRS89, NAD83); other projected CRSs keep
+  their native bounds only. Files whose CRS lives beside them
+  (shapefiles, ASCII grids, world files, MapInfo, E57 without coordinate
+  metadata) give native bounds and no extent.
+- **Bounds:** shapefile, File Geodatabase, LAS, FlatGeobuf and PMTiles
+  bounds come from their headers; vector tiles have no geographic bounds
+  without their tile address; 3D Tiles bounds come from the root's
+  `region` or ECEF `box`.
+- **Contents:** feature attributes are listed by name, not summarised;
+  geometries are counted and bounded, not validated; LAZ points, raster
+  pixels, vector tile geometries and OSM tags beyond the top keys are not
+  decoded; GeoPackage tiles and extensions are not described beyond
+  `gpkg_contents`.
+- **Privacy:** OSM contributors are counted, not named; FIT and E57
+  serial numbers and IGC pilots appear only with privacy off; track
+  positions are reported as bounds, not as points.
+
+## 3D and CAD (unreleased, feature `cad`)
+
+- **Not read:** AutoCAD DWG and Alembic (no free writer in the fixture
+  toolchain), Maya, Cinema 4D, Houdini, Modo, SketchUp, SolidWorks,
+  Inventor, Creo, CATIA, NX, Fusion 360, Revit, JT, PRC / U3D, DWF / DWFx,
+  Parasolid and ACIS (proprietary), Substance and MaterialX, PCD / PTS
+  point clouds, Gaussian splats, MikuMikuDance and Valve models, Altium,
+  Eagle and FreeCAD documents. Unreal and Unity assets belong to the games
+  collection.
+- **Geometry:** meshes are counted and bounded, not validated or
+  decoded beyond what the counts need; glTF bounds are mesh space (node
+  transforms not applied); FBX, X3D and Blender report objects and
+  blocks, not triangles; Draco reports its header (connectivity is not
+  decoded); USDC reports its sections (the compressed token table is not
+  decoded).
+- **Drawings:** DXF text goes to the text pipeline as written (MTEXT
+  formatting stripped, fields not evaluated); `$LASTSAVEDBY` appears only
+  with privacy off; DGN v7 element ranges are not converted to master
+  units; DGN v8 (an OLE container) is not read.
+- **Product data:** STEP and IFC are read from their clear text (no
+  geometry, no unit conversion); IFC names come from the spatial
+  structure, not property sets; IGES reports its global section and the
+  directory's entity types.
+- **Electronics:** Gerber bounds are those of the coordinates (aperture
+  sizes not added); OASIS reports its START and END records (cells inside
+  CBLOCKs are not decompressed).
+- **Privacy:** C3D subject names appear only with privacy off; FBX
+  document paths are dropped.
+

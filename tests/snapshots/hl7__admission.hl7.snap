@@ -1,0 +1,141 @@
+---
+source: src/formats/medical/clinical.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "admission.hl7",
+    "stem": "admission",
+    "extension": "hl7"
+  },
+  "identification": {
+    "format": "hl7",
+    "name": "HL7 v2 message",
+    "mime": "x-application/hl7-v2+er7",
+    "family": "medical",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "medical.clinical"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 230
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "sent",
+        "value": "2025-09-01T06:12:00",
+        "source": "hl7.MSH-7",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 230,
+    "entropy": 4.837,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 230,
+      "chars": 230,
+      "words": 7,
+      "lines": 0,
+      "max_line_length": 93,
+      "line_endings": "cr",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "81b4bb67192786732063301d04849c1e7773ab7251719a215447250a13ef895d",
+    "blake3": "0c19370b27ea07566fb25a02c564cd54e12e116f6fdf5792722660f53803b2df"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "hl7": {
+      "sending_application": "TIDEADT",
+      "sending_facility": "SALTMERE CLINIC",
+      "receiving_application": "HARBOURLAB",
+      "receiving_facility": "SALTMERE",
+      "control_id": "MSG00001",
+      "processing_id": "P",
+      "version": "2.5.1",
+      "message_type": "ADT^A01",
+      "message_time": "2025-09-01T06:12:00",
+      "messages": 1,
+      "patient_segments": 1,
+      "segments": {
+        "EVN": 1,
+        "MSH": 1,
+        "OBX": 1,
+        "PID": 1,
+        "PV1": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "medical.clinical",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

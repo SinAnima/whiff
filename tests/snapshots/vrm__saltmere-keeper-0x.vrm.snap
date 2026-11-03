@@ -1,0 +1,171 @@
+---
+source: src/formats/cad/gltf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-keeper-0x.vrm",
+    "stem": "saltmere-keeper-0x",
+    "extension": "vrm"
+  },
+  "identification": {
+    "format": "vrm",
+    "name": "VRM avatar",
+    "mime": "application/octet-stream",
+    "family": "3d",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "vrm",
+        "confidence": 0.99
+      },
+      {
+        "format": "glb",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "cad.gltf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 5680
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "license": {
+      "name": "CC0"
+    }
+  },
+  "physical": {
+    "size_bytes": 5680,
+    "entropy": 5.466,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "1076373bc31abbd5fcbcded9be224bce6af372ef9c90ffaecf7fb97dccb6f092",
+    "blake3": "edd80b35577651971997f2d95018abe02795147b11b42db7870a24e3edd548d2"
+  },
+  "content": {
+    "title": "Saltmere keeper (0.x)",
+    "authors": [
+      "Saltmere Harbour Office"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "vrm": {
+      "glb_length": 5680,
+      "gltf_version": "2.0",
+      "generator": "https://github.com/mikedh/trimesh",
+      "counts": {
+        "scenes": 1,
+        "nodes": 2,
+        "meshes": 2,
+        "accessors": 5,
+        "bufferViews": 5,
+        "buffers": 1
+      },
+      "primitives": 2,
+      "primitive_modes": {
+        "triangles": 2
+      },
+      "vertices": 84,
+      "triangles": 156,
+      "bounds": {
+        "min": [
+          -0.6,
+          -1.25,
+          0.0
+        ],
+        "max": [
+          12.0,
+          1.25,
+          2.2
+        ],
+        "size": [
+          12.6,
+          2.5,
+          2.2
+        ]
+      },
+      "embedded_images": 0,
+      "glb_binary_bytes": 3792,
+      "extensions_used": [
+        "VRM"
+      ],
+      "vrm_version": "0.0",
+      "vrm_meta": {
+        "title": "Saltmere keeper (0.x)",
+        "version": "0.9",
+        "author": "Saltmere Harbour Office",
+        "allowedUserName": "Everyone",
+        "commercialUssageName": "Disallow",
+        "licenseName": "CC0"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.gltf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,112 @@
+---
+source: src/formats/columnar/arrow.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "readings-v1.feather",
+    "stem": "readings-v1",
+    "extension": "feather"
+  },
+  "identification": {
+    "format": "feather_v1",
+    "name": "Feather v1",
+    "mime": "application/octet-stream",
+    "family": "columnar",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "columnar.arrow"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4496
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4496,
+    "entropy": 5.509,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "782c430baf7d24908922cad6286018c56693afa56c9376525ec3c7cb29060abf",
+    "blake3": "ac533c88df3cdb6443a3ee8f463d50908b8cccbc52832d3a7beab3599e788084"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "feather_v1": {
+      "rows": 120,
+      "feather_version": 2,
+      "column_count": 3,
+      "columns": {
+        "station": "large_string",
+        "at": "timestamp[ms, UTC]",
+        "height_m": "float64"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "columnar.arrow",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

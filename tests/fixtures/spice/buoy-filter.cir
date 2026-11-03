@@ -1,0 +1,13 @@
+* Saltmere buoy sensor filter (made up)
+.title Buoy sensor RC filter
+V1 in 0 SIN(0 1 1k)
+R1 in out 1k
+C1 out 0 100n
+X1 out amp_out OPAMP
+.subckt OPAMP in out
+E1 out 0 in 0 100k
+.ends
+.include models.lib
+.tran 10u 5m
+.ac dec 10 1 100k
+.end

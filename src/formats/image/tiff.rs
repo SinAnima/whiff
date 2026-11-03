@@ -42,6 +42,12 @@ impl Extractor for Tiff {
         let layout = layout(src.head()).ok_or_else(|| ExtractError::malformed("no TIFF header"))?;
         let pages = ifd_chain(src, &layout, cx)?;
         let first = pages.first().ok_or_else(|| ExtractError::malformed("no IFD"))?;
+        // GeoTIFFs whose first IFD lies outside the sniffed windows.
+        #[cfg(feature = "geo")]
+        if cx.format_id() == "tiff" && [33550, 33922, 34264, 34735].iter().any(|t| find(first, *t).is_some()) {
+            cx.redirect("geotiff");
+            return Ok(());
+        }
         describe(first, &layout, cx, pages.len());
         let list: Vec<Value> = pages.iter().take(20).map(|p| page_json(p, &layout)).collect();
         cx.format_set("pages", pages.len());

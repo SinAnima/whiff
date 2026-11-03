@@ -1,0 +1,143 @@
+---
+source: src/formats/geo/xml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-small.qgs",
+    "stem": "saltmere-small",
+    "extension": "qgs"
+  },
+  "identification": {
+    "format": "qgis",
+    "name": "QGIS / ArcGIS project",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "qgis",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.32
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.xml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 554
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 554,
+    "entropy": 5.175,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 554,
+      "chars": 554,
+      "words": 27,
+      "lines": 9,
+      "max_line_length": 178,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "ae231bc33807850862c74e69d0ee90a7540700c6502e982a30c77cb5129d40d5",
+    "blake3": "39a16bbe30c239ffe4b5cc3643a2c0e8d4778b880e457a9ec1f49fd9e319071d"
+  },
+  "content": {
+    "title": "Saltmere small"
+  },
+  "metadata": {},
+  "format": {
+    "qgis": {
+      "projectname": "Saltmere small",
+      "title": "Saltmere small",
+      "qgis_version": "3.40.0-Bratislava",
+      "crs": {
+        "epsg": 32631
+      },
+      "layer_count": 1,
+      "layer_types": {
+        "vector": 1
+      },
+      "providers": {
+        "ogr": 1
+      },
+      "layers": [
+        "buoys"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.xml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

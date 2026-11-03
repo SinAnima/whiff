@@ -1,0 +1,180 @@
+---
+source: src/formats/cad/step.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-office-2x3.ifczip",
+    "stem": "harbour-office-2x3",
+    "extension": "ifczip"
+  },
+  "identification": {
+    "format": "ifczip",
+    "name": "IFC-ZIP",
+    "mime": "application/octet-stream",
+    "family": "cad",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ifczip",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "cad.step"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1090
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-11-03T18:13:18+00:00",
+        "source": "p21.FILE_NAME.time_stamp",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-11-03T18:13:18Z",
+    "latest": "2026-11-03T18:13:18Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1090,
+    "entropy": 7.695,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "06240decf14056d2f460d2d323f92f6f40c0b480787f0978f2458a71bc167d4e",
+    "blake3": "df7b49c37f13aa4fd7d4fa563490b383b411188a783c52b464c02aa318fa8a2a"
+  },
+  "content": {
+    "title": "Saltmere harbour office",
+    "description": "ViewDefinition[DesignTransferView]"
+  },
+  "metadata": {},
+  "format": {
+    "ifczip": {
+      "document": "harbour-office-2x3.ifc",
+      "description": [
+        "ViewDefinition[DesignTransferView]"
+      ],
+      "implementation_level": "2;1",
+      "file_name": {
+        "name": "/dev/null",
+        "time_stamp": "2026-11-03T18:13:18+00:00",
+        "preprocessor": "IfcOpenShell 0.9.0.post1",
+        "originating_system": "IfcOpenShell 0.9.0.post1",
+        "authorization": "Nobody"
+      },
+      "protocol": "IFC",
+      "schemas": [
+        "IFC2X3"
+      ],
+      "entities": 31,
+      "entity_types": 18,
+      "top_entity_types": {
+        "IFCAPPLICATION": 1,
+        "IFCAXIS2PLACEMENT3D": 1,
+        "IFCBUILDING": 1,
+        "IFCBUILDINGSTOREY": 1,
+        "IFCCARTESIANPOINT": 1,
+        "IFCDIRECTION": 2,
+        "IFCGEOMETRICREPRESENTATIONCONTEXT": 1,
+        "IFCORGANIZATION": 1,
+        "IFCOWNERHISTORY": 9,
+        "IFCPERSON": 1,
+        "IFCPERSONANDORGANIZATION": 1,
+        "IFCPROJECT": 1,
+        "IFCRELAGGREGATES": 3,
+        "IFCRELCONTAINEDINSPATIALSTRUCTURE": 1,
+        "IFCSITE": 1,
+        "IFCSIUNIT": 3,
+        "IFCUNITASSIGNMENT": 1,
+        "IFCWALL": 1
+      },
+      "applications": [
+        "Saltmere fixtures"
+      ],
+      "buildings": [
+        "Harbour office"
+      ],
+      "project": [
+        "Saltmere harbour office"
+      ],
+      "sites": [
+        "Saltmere quay"
+      ],
+      "storeys": [
+        "Ground floor"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.step",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

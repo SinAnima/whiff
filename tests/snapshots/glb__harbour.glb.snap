@@ -1,0 +1,150 @@
+---
+source: src/formats/cad/gltf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.glb",
+    "stem": "harbour",
+    "extension": "glb"
+  },
+  "identification": {
+    "format": "glb",
+    "name": "glTF binary",
+    "mime": "model/gltf-binary",
+    "family": "3d",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "glb",
+        "confidence": 0.99
+      },
+      {
+        "format": "vrm",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "cad.gltf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4152
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4152,
+    "entropy": 4.818,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "e28a1fc36a9a911307d9e1ae505ff62ae8d8e092548425e975b8c5c5c645b377",
+    "blake3": "0fe8bfb03f130082d2e4e9fe18f9a3c8565fff23e8d53a68a54e24e83e419f50"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "glb": {
+      "glb_length": 4152,
+      "gltf_version": "2.0",
+      "generator": "https://github.com/mikedh/trimesh",
+      "counts": {
+        "scenes": 1,
+        "nodes": 2,
+        "meshes": 2,
+        "accessors": 4,
+        "bufferViews": 4,
+        "buffers": 1
+      },
+      "primitives": 2,
+      "primitive_modes": {
+        "triangles": 2
+      },
+      "vertices": 84,
+      "triangles": 156,
+      "bounds": {
+        "min": [
+          -0.6,
+          -1.25,
+          0.0
+        ],
+        "max": [
+          12.0,
+          1.25,
+          2.2
+        ],
+        "size": [
+          12.6,
+          2.5,
+          2.2
+        ]
+      },
+      "embedded_images": 0,
+      "glb_binary_bytes": 2880
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.gltf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

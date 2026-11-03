@@ -1,0 +1,172 @@
+---
+source: src/formats/data/binser/pickle.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "readings.pkl",
+    "stem": "readings",
+    "extension": "pkl"
+  },
+  "identification": {
+    "format": "pandas_pickle",
+    "name": "pandas DataFrame pickle",
+    "mime": "application/octet-stream",
+    "family": "columnar",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "pandas_pickle",
+        "confidence": 0.9
+      },
+      {
+        "format": "pickle",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "data.pickle"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 9346
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "unsafe_deserialization",
+        "category": "exploit",
+        "severity": "high",
+        "detail": "builtins.getattr",
+        "source": "data.pickle"
+      }
+    ],
+    "risk_level": "high"
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 9346,
+    "entropy": 5.401,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "25f0dd6293770b3118b7847c32f4a8e64d26c2db8dda1133f683bdb1244e1c55",
+    "blake3": "45e1cd5847ee27e39e2f0856c83deee0f9286a242c0d9326f3f3c14f3c6cca8d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pandas_pickle": {
+      "protocol": 5,
+      "opcodes": 3164,
+      "opcode_classes": {
+        "build": 14,
+        "bytes": 129,
+        "call": 160,
+        "dict": 261,
+        "float": 2,
+        "frame": 1,
+        "get": 759,
+        "global": 23,
+        "int": 182,
+        "list": 11,
+        "mark": 265,
+        "other": 159,
+        "proto": 1,
+        "put": 821,
+        "stop": 1,
+        "string": 75,
+        "tuple": 300
+      },
+      "globals": [
+        "pandas.DataFrame",
+        "pandas.core.internals.managers.BlockManager",
+        "pandas._libs.internals._unpickle_block",
+        "numpy._core.numeric._frombuffer",
+        "numpy.dtype",
+        "builtins.slice",
+        "numpy._core.multiarray._reconstruct",
+        "numpy.ndarray",
+        "pandas._libs.arrays.__pyx_unpickle_NDArrayBacked",
+        "pandas.arrays.DatetimeArray",
+        "pandas.DatetimeTZDtype",
+        "builtins.getattr",
+        "zoneinfo.ZoneInfo",
+        "pandas.Categorical",
+        "pandas.CategoricalDtype",
+        "pandas.core.indexes.base._new_Index",
+        "pandas.Index",
+        "pandas.arrays.ArrowStringArray",
+        "pyarrow.lib._restore_array",
+        "pyarrow.lib.type_for_alias",
+        "pyarrow.lib.py_buffer",
+        "pandas.StringDtype",
+        "pandas.RangeIndex"
+      ],
+      "kind": "pandas_dataframe"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.pickle",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

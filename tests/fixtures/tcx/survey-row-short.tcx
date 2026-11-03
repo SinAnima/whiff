@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TrainingCenterDatabase xmlns="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2">
+  <Activities>
+    <Activity Sport="Other">
+      <Id>2025-09-01T06:00:00Z</Id>
+      <Lap StartTime="2025-09-01T06:00:00Z">
+        <TotalTimeSeconds>380</TotalTimeSeconds><DistanceMeters>3120.5</DistanceMeters><Calories>0</Calories>
+        <Intensity>Active</Intensity><TriggerMethod>Manual</TriggerMethod>
+        <Track>
+          <Trackpoint><Time>2025-09-01T06:00:00Z</Time><Position><LatitudeDegrees>52.361000</LatitudeDegrees><LongitudeDegrees>4.095000</LongitudeDegrees></Position><AltitudeMeters>1.5</AltitudeMeters></Trackpoint>
+        </Track>
+      </Lap>
+      <Creator><Name>Saltmere survey logger</Name></Creator>
+    </Activity>
+  </Activities>
+</TrainingCenterDatabase>

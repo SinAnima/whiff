@@ -1,0 +1,149 @@
+---
+source: src/formats/geo/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbours.geojson",
+    "stem": "harbours",
+    "extension": "geojson"
+  },
+  "identification": {
+    "format": "geojson",
+    "name": "GeoJSON",
+    "mime": "application/geo+json",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "geojson",
+        "confidence": 0.99
+      },
+      {
+        "format": "json",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 459
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 459,
+    "entropy": 4.748,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 459,
+      "chars": 459,
+      "words": 42,
+      "lines": 5,
+      "max_line_length": 141,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "7f52ab29242d0cc540a61332345439b7ad64c271c1a30d8ce84cf80bec61f510",
+    "blake3": "5339e605cf3495284ee0cdc32ec0c1637f2a5b60a85f797795f4fea8951004fe"
+  },
+  "content": {
+    "extent": {
+      "west": -9.139,
+      "south": 0.0,
+      "east": 5.3698,
+      "north": 43.2965,
+      "source": "geojson"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "geojson": {
+      "type": "FeatureCollection",
+      "features": 3,
+      "geometry_types": {
+        "Point": 2,
+        "Polygon": 1
+      },
+      "property_keys": [
+        "berths",
+        "name"
+      ],
+      "bbox": [
+        -9.139,
+        0.0,
+        5.3698,
+        43.2965
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

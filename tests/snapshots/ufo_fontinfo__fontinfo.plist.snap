@@ -1,0 +1,168 @@
+---
+source: src/formats/font/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "fontinfo.plist",
+    "stem": "fontinfo",
+    "extension": "plist"
+  },
+  "identification": {
+    "format": "ufo_fontinfo",
+    "name": "UFO font info",
+    "mime": "application/octet-stream",
+    "family": "font",
+    "confidence": 0.98,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "ufo_fontinfo",
+        "confidence": 0.98
+      },
+      {
+        "format": "plist",
+        "confidence": 0.95
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "font.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1324
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T06:12:00+00:00",
+        "source": "ufo.openTypeHeadCreated",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T06:12:00Z",
+    "latest": "2025-09-01T06:12:00Z"
+  },
+  "security": {},
+  "rights": {
+    "copyright": "Copyright 2025 Saltmere Harbour Type",
+    "license": {
+      "name": "CC0-1.0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "embedding": "installable"
+  },
+  "physical": {
+    "size_bytes": 1324,
+    "entropy": 4.883,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1324,
+      "chars": 1324,
+      "words": 69,
+      "lines": 40,
+      "max_line_length": 102,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "25ae499e2611de78611c250857ed39616fa50b08cb3e4ddac805a7cac466401a",
+    "blake3": "d2de572e6fb810c56bb6ee6a085fb06ca09e7e06ce9e9d4dff29e7040d8a9cfc"
+  },
+  "content": {
+    "title": "Saltmere Sans Regular",
+    "authors": [
+      "Ada Example"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "ufo_fontinfo": {
+      "family": "Saltmere Sans",
+      "subfamily": "Regular",
+      "designer": "Ada Example",
+      "manufacturer": "Saltmere Harbour Type",
+      "vendor_id": "SHTY",
+      "version": "1.002",
+      "copyright": "Copyright 2025 Saltmere Harbour Type",
+      "license": "This font is dedicated to the public domain under CC0 1.0 Universal.",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "fs_type": 0,
+      "embedding": "installable",
+      "created": "2025/09/01 06:12:00",
+      "units_per_em": 1000,
+      "ascender": 800,
+      "descender": -200,
+      "cap_height": 700,
+      "x_height": 500
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "font.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

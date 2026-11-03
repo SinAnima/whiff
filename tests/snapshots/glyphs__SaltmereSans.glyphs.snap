@@ -1,0 +1,157 @@
+---
+source: src/formats/font/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "SaltmereSans.glyphs",
+    "stem": "SaltmereSans",
+    "extension": "glyphs"
+  },
+  "identification": {
+    "format": "glyphs",
+    "name": "Glyphs source",
+    "mime": "application/octet-stream",
+    "family": "font",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "font.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1673
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T06:12:00+00:00",
+        "source": "glyphs.date",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T06:12:00Z",
+    "latest": "2025-09-01T06:12:00Z"
+  },
+  "security": {},
+  "rights": {
+    "copyright": "Copyright 2025 Saltmere Harbour Type",
+    "license": {
+      "name": "CC0-1.0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "embedding": "installable"
+  },
+  "physical": {
+    "size_bytes": 1673,
+    "entropy": 5.273,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1673,
+      "chars": 1673,
+      "words": 308,
+      "lines": 126,
+      "max_line_length": 79,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "61fe0fc3b6193dc81704f349928f93a895731d915a905a4d418833b3fe3b01fa",
+    "blake3": "edc7f15caf69de7392ea69b73d9942872d3a6a78d8c5054350ce3762a43b33c7"
+  },
+  "content": {
+    "title": "Saltmere Sans",
+    "authors": [
+      "Ada Example"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "glyphs": {
+      "glyphs_format": 2,
+      "app_version": "895",
+      "family": "Saltmere Sans",
+      "version": "1.002",
+      "units_per_em": 1000,
+      "copyright": "Copyright 2025 Saltmere Harbour Type",
+      "designer": "Ada Example",
+      "manufacturer": "Saltmere Harbour Type",
+      "license": "This font is dedicated to the public domain under CC0 1.0 Universal.",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "vendor_id": "SHTY",
+      "fs_type": 0,
+      "embedding": "installable",
+      "date": "2025-09-01 06:12:00 +0000",
+      "masters": 1,
+      "instance_count": 0,
+      "glyph_count": 3,
+      "features": [
+        "kern"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "font.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

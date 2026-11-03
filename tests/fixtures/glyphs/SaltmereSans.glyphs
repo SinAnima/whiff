@@ -1,0 +1,126 @@
+{
+.appVersion = "895";
+copyright = "Copyright 2025 Saltmere Harbour Type";
+customParameters = (
+{
+name = fsType;
+value = (
+);
+},
+{
+name = vendorID;
+value = SHTY;
+},
+{
+name = license;
+value = "This font is dedicated to the public domain under CC0 1.0 Universal.";
+},
+{
+name = licenseURL;
+value = "https://creativecommons.org/publicdomain/zero/1.0/";
+}
+);
+date = "2025-09-01 06:12:00 +0000";
+designer = "Ada Example";
+familyName = "Saltmere Sans";
+features = (
+{
+code = "pos A B -40; ";
+name = kern;
+}
+);
+fontMaster = (
+{
+ascender = 800;
+capHeight = 700;
+customParameters = (
+{
+name = fsType;
+value = (
+);
+},
+{
+name = vendorID;
+value = SHTY;
+},
+{
+name = license;
+value = "This font is dedicated to the public domain under CC0 1.0 Universal.";
+},
+{
+name = licenseURL;
+value = "https://creativecommons.org/publicdomain/zero/1.0/";
+}
+);
+descender = -200;
+id = "F01B03F5-9BAF-464F-9F0D-9C959002C664";
+xHeight = 500;
+}
+);
+glyphs = (
+{
+glyphname = A;
+layers = (
+{
+layerId = "F01B03F5-9BAF-464F-9F0D-9C959002C664";
+paths = (
+{
+closed = 1;
+nodes = (
+"50 700 LINE",
+"450 700 LINE",
+"450 0 LINE",
+"50 0 LINE"
+);
+}
+);
+vertWidth = 0;
+width = 500;
+}
+);
+note = "";
+unicode = 0041;
+},
+{
+glyphname = B;
+layers = (
+{
+layerId = "F01B03F5-9BAF-464F-9F0D-9C959002C664";
+paths = (
+{
+closed = 1;
+nodes = (
+"50 700 LINE",
+"450 700 LINE",
+"450 0 LINE",
+"50 0 LINE"
+);
+}
+);
+vertWidth = 0;
+width = 500;
+}
+);
+note = "";
+unicode = 0042;
+},
+{
+glyphname = space;
+layers = (
+{
+layerId = "F01B03F5-9BAF-464F-9F0D-9C959002C664";
+vertWidth = 0;
+width = 500;
+}
+);
+note = "";
+unicode = 0020;
+}
+);
+instances = (
+);
+manufacturer = "Saltmere Harbour Type";
+unitsPerEm = 1000;
+versionMajor = 1;
+versionMinor = 2;
+}

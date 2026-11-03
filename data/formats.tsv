@@ -661,13 +661,14 @@
 1	columnar	Apache Parquet	parquet pq	application/vnd.apache.parquet	
 2	columnar	Apache Arrow IPC / Feather	arrow feather ipc arrows	application/vnd.apache.arrow.file	
 3	columnar	Apache ORC	orc	application/x-orc	
+3	columnar	F3 (Future-proof File Format)	f3		version, columns, row groups, embedded Wasm decoders
 3	columnar	Lance	lance		feature-gated
 3	columnar	Vortex	vortex vtx		feature-gated
 3	columnar	Delta Lake / Iceberg table metadata	_delta_log/*.json metadata.json		
 3	columnar	GeoParquet	parquet		geo metadata -> geo
 3	columnar	Apache Hudi / Kudu / CarbonData	hoodie		
 3	columnar	Spark / Hadoop SequenceFile / RCFile	seq rc		key/value classes, codec
-3	columnar	Excel-like DataFrame pickles (pandas .pkl)	pkl		-> data.binser (never unpickle)
+3	columnar	pandas DataFrame pickle	pkl		-> data.binser (never unpickle)
 3	columnar	Feather v1 / R fst / qs	fst qs		header
 3	columnar	TFRecord / RecordIO	tfrecord tfrec rec		record count, feature keys (protobuf Example)
 3	columnar	Safetensors	safetensors		tensor names, dtypes, shapes, __metadata__ (header JSON)
@@ -692,6 +693,9 @@
 3	sci	ROOT (CERN)	root		keys/trees
 3	sci	PDB / mmCIF / MOL / SDF chemistry	pdb cif mmcif mol sdf mol2 xyz	chemical/x-pdb	title, compound, atom counts, formula
 3	sci	FASTA / FASTQ / SAM / BAM / VCF / BED / GFF genomics	fa fasta fq fastq sam bam cram vcf bcf bed gff gtf	text/x-fasta	sequence count, lengths, read count, reference, samples
+2	sci	ASDF (Advanced Scientific Data Format)	asdf	application/asdf	ASDF / YAML versions, software, tags, tree keys, binary blocks (count, compression)
+2	sci	AnnData (h5ad)	h5ad		obs / var counts, layers, obsm / uns keys (HDF5 layout)
+3	sci	Loom	loom		matrix shape, row / column attributes, layers (HDF5 layout)
 3	sci	mzML / mzXML mass spectrometry	mzml mzxml		instrument, spectra count
 3	sci	EDF / BDF / BrainVision (EEG)	edf bdf vhdr		channels, sampling rate, duration (patient REDACTED)
 3	sci	Gaussian / ORCA / CP2K outputs	log out		

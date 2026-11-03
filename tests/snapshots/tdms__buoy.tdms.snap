@@ -1,0 +1,120 @@
+---
+source: src/formats/science/instruments.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy.tdms",
+    "stem": "buoy",
+    "extension": "tdms"
+  },
+  "identification": {
+    "format": "tdms",
+    "name": "NI TDMS",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "science.instruments"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1095
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1095,
+    "entropy": 7.042,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "8a4b3ac08c7592251417a3a5dc8b42aebb679edf3b4f3b425b9e52f4ae38db5c",
+    "blake3": "9236cb3005ffa3c6291aa12554f13528de836ccd1ec95b4d7ecbb19374a4f80b"
+  },
+  "content": {
+    "title": "Saltmere buoy B7"
+  },
+  "metadata": {},
+  "format": {
+    "tdms": {
+      "tdms_version": 4712,
+      "segments": 1,
+      "groups": [
+        "sensors"
+      ],
+      "channel_count": 2,
+      "channels": [
+        "sensors/pressure",
+        "sensors/tilt"
+      ],
+      "properties": {
+        "name": "Saltmere buoy B7",
+        "author": "Harbour Office"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.instruments",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

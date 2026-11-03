@@ -1,0 +1,7 @@
+WKT,name,kind,depth_m
+"POINT (4.095 52.361)",Outer Fairway,safe_water,14.2
+"POINT (4.1105 52.356)",Channel Red 1,port,9.8
+"POINT (4.113 52.3575)",Channel Green 1,starboard,9.6
+"POINT (4.124 52.3502)",Kelp Bank,isolated_danger,3.1
+"LINESTRING (4.095 52.361,4.1118 52.3567,4.126 52.352,4.133 52.349)",Dredged channel,channel,9.5
+"POLYGON ((4.13 52.347,4.142 52.347,4.142 52.353,4.13 52.353,4.13 52.347))",Inner basin,basin,6

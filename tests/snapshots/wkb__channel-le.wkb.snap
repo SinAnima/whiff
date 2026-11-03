@@ -1,0 +1,115 @@
+---
+source: src/formats/geo/text.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "channel-le.wkb",
+    "stem": "channel-le",
+    "extension": "wkb"
+  },
+  "identification": {
+    "format": "wkb",
+    "name": "WKB geometry",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "geo.text"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 73
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 73,
+    "entropy": 5.292,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "7c75b4aecc6b1f5563726a36f9ce60a24fa5bef73285a0c0c9b833a8ccf3dff1",
+    "blake3": "c1efd686e33e4a2c612c804be3db12e284305797a9e808afec448e31129f5a3e"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "wkb": {
+      "byte_order": "little-endian",
+      "geometries": 1,
+      "geometry_types": {
+        "LineString": 1
+      },
+      "bbox": [
+        4.095,
+        52.349,
+        4.133,
+        52.361
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.text",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,113 @@
+---
+source: src/formats/medical/volumes.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "phantom.nrrd",
+    "stem": "phantom",
+    "extension": "nrrd"
+  },
+  "identification": {
+    "format": "nrrd",
+    "name": "NRRD volume",
+    "mime": "application/octet-stream",
+    "family": "medical",
+    "confidence": 0.93,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "medical.volumes"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1360
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1360,
+    "entropy": 7.63,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "09df4eb1850f0f1cede33a986a858bd62ff76e245ae18bb1b3266036ecbedabf",
+    "blake3": "e93644191acd4a71a6e9222f38d06f6562ce04189e354ba19c0374a9df517259"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "nrrd": {
+      "nrrd_version": "5",
+      "type": "float",
+      "dimension": "3",
+      "space": "left-posterior-superior",
+      "sizes": "8 8 4",
+      "space_directions": "(2,0,0) (0,2,0) (0,0,2)",
+      "kinds": "domain domain domain",
+      "endian": "little",
+      "encoding": "gzip"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "medical.volumes",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

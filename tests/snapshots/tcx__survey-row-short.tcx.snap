@@ -1,0 +1,164 @@
+---
+source: src/formats/geo/xml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "survey-row-short.tcx",
+    "stem": "survey-row-short",
+    "extension": "tcx"
+  },
+  "identification": {
+    "format": "tcx",
+    "name": "Garmin TCX",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "tcx",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.xml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 821
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "captured",
+        "value": "2025-09-01T06:00:00+00:00",
+        "source": "tcx.Trackpoint.Time",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T06:00:00Z",
+    "latest": "2025-09-01T06:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 821,
+    "entropy": 5.036,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 821,
+      "chars": 821,
+      "words": 23,
+      "lines": 16,
+      "max_line_length": 214,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "21c47cb9bbd1db5c8084f4444487ecdc0c050a245590fc1d3492c62a2315f71f",
+    "blake3": "355beac95d7a29dc34561c3cca3c1570f1cc0705d33c50af6774a8bebee93343"
+  },
+  "content": {
+    "extent": {
+      "west": 4.095,
+      "south": 52.361,
+      "east": 4.095,
+      "north": 52.361,
+      "source": "tcx"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "tcx": {
+      "activities": 1,
+      "sports": {
+        "Other": 1
+      },
+      "laps": 1,
+      "lap_time_s": 380.0,
+      "lap_distance_km": 3.121,
+      "device": "Saltmere survey logger",
+      "fixes": 1,
+      "bbox": [
+        4.095,
+        52.361,
+        4.095,
+        52.361
+      ],
+      "z_range": [
+        1.5,
+        1.5
+      ],
+      "start": "2025-09-01T06:00:00Z",
+      "end": "2025-09-01T06:00:00Z"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.xml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

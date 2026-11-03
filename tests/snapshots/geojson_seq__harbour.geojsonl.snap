@@ -1,0 +1,150 @@
+---
+source: src/formats/geo/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.geojsonl",
+    "stem": "harbour",
+    "extension": "geojsonl"
+  },
+  "identification": {
+    "format": "geojson_seq",
+    "name": "GeoJSON-seq / NDGeoJSON",
+    "mime": "application/geo+json-seq",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "geojson_seq",
+        "confidence": 0.99
+      },
+      {
+        "format": "ndjson",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "geo.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1163
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1163,
+    "entropy": 4.752,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1163,
+      "chars": 1163,
+      "words": 180,
+      "lines": 6,
+      "max_line_length": 245,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "be5d3d8733ad66812257b5dd659fc77a27ec31555db02bef25d62686d68387c7",
+    "blake3": "d4eb8be092ad3c83187d0a4044d645f0181fb055a0bf4b9f9aba0beb4393e7ed"
+  },
+  "content": {
+    "extent": {
+      "west": 4.095,
+      "south": 52.347,
+      "east": 4.142,
+      "north": 52.361,
+      "source": "geojson_seq"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "geojson_seq": {
+      "features": 6,
+      "geometry_types": {
+        "LineString": 1,
+        "Point": 4,
+        "Polygon": 1
+      },
+      "property_keys": [
+        "depth_m",
+        "kind",
+        "name"
+      ],
+      "bbox": [
+        4.095,
+        52.347,
+        4.142,
+        52.361
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

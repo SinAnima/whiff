@@ -1,0 +1,134 @@
+---
+source: src/formats/science/instruments.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "kelp-extract.mzXML",
+    "stem": "kelp-extract",
+    "extension": "mzXML"
+  },
+  "identification": {
+    "format": "mzxml",
+    "name": "mzXML mass spectrometry",
+    "mime": "application/octet-stream",
+    "family": "sci",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "mzxml",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "science.instruments"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 479
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 479,
+    "entropy": 5.104,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 479,
+      "chars": 479,
+      "words": 27,
+      "lines": 7,
+      "max_line_length": 148,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "265b189cfc16350ac0f86496d53bf52d40f7298fa8e59f2c97b01abc6bbfefd1",
+    "blake3": "781788a63b7ad56321939f4be596d9ae647cb287f64168318b318d71546a9929"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "mzxml": {
+      "scans": 2,
+      "start_time": "PT0S",
+      "end_time": "PT60S",
+      "manufacturer": "Thermo Scientific",
+      "model": "LTQ Orbitrap",
+      "ms_levels": {
+        "MS1": 1,
+        "MS2": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.instruments",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

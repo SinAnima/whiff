@@ -1,0 +1,145 @@
+---
+source: src/formats/font/type1.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-serif-italic.pfa",
+    "stem": "saltmere-serif-italic",
+    "extension": "pfa"
+  },
+  "identification": {
+    "format": "pfa",
+    "name": "PostScript Type 1 font (ASCII)",
+    "mime": "application/x-font-type1",
+    "family": "font",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "pfa",
+        "confidence": 0.97
+      },
+      {
+        "format": "ps",
+        "confidence": 0.76
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "font.type1"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3848
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "Saltmere Harbour Type"
+  },
+  "physical": {
+    "size_bytes": 3848,
+    "entropy": 4.662,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 3848,
+      "chars": 3848,
+      "words": 147,
+      "lines": 72,
+      "max_line_length": 72,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "b8f65028b6659323e626c6c021cc5683c85129fbc278bb96084b776c962fdb2f",
+    "blake3": "3fd13e0c49cc5f0336b2db9fe673efaff8963e61b8ed8ad5c5a0effe52191a4e"
+  },
+  "content": {
+    "title": "Saltmere Serif Italic"
+  },
+  "metadata": {},
+  "format": {
+    "pfa": {
+      "header": "%!PS-AdobeFont-1.0: SaltmereSerif-Italic 1.002",
+      "creation_date": "Wed Oct  1 18:31:00 2025",
+      "postscript_name": "SaltmereSerif-Italic",
+      "full_name": "Saltmere Serif Italic",
+      "family": "Saltmere Serif",
+      "weight": "Book",
+      "version": "1.002",
+      "notice": "Saltmere Harbour Type",
+      "italic_angle": -12.0,
+      "monospace": true,
+      "font_type": 1,
+      "bounding_box": "50 0 460 700",
+      "encoding": "StandardEncoding",
+      "eexec_decrypted": true,
+      "glyph_count": 11,
+      "subroutines": 6
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "font.type1",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
