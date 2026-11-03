@@ -9,10 +9,13 @@ The list comes from the registry (`whiff formats --json`, all features);
 the type (category) and Cargo feature of each family come from
 data/families.tsv. A format is unreleased when the latest release tag has
 no fixtures for it (every format has fixtures under tests/fixtures/<id>/).
+When preparing a release, set WHIFF_RELEASE to its tag (WHIFF_RELEASE=v0.7.0)
+so every format counts as released in it.
 """
 
 import collections
 import json
+import os
 import subprocess
 import sys
 
@@ -80,6 +83,8 @@ def main():
         fams[c[0]] = {"category": c[1], "feature": c[2], "stage": c[4]}
 
     tag, released = released_ids()
+    if os.environ.get("WHIFF_RELEASE"):
+        tag, released = os.environ["WHIFF_RELEASE"], {f["id"] for f in formats}
 
     by_cat = collections.defaultdict(lambda: collections.defaultdict(list))
     for f in formats:

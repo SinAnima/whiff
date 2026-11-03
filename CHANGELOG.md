@@ -4,10 +4,11 @@ All notable changes to whiff are recorded here. The report format is
 versioned separately (`whiff.schema`, currently `whiff/1`); additive changes
 keep the schema version.
 
-## Unreleased
+## 0.7.0 — 2026-11-03
 
 Fonts, columnar data and machine-learning models, scientific and medical
-files, geodata, 3D and CAD (Stage 7).
+files, geodata, 3D and CAD: Stage 7 is complete. What was deliberately set
+aside is listed in [`docs/known-gaps.md`](docs/known-gaps.md).
 
 - **Fonts** (`common`), all in-house (WOFF2 through the existing Brotli
   decoder; no read-fonts / skrifa / allsorts):
@@ -154,8 +155,6 @@ files, geodata, 3D and CAD (Stage 7).
     entities);
   - electronics: Gerber X2, Excellon, KiCad boards and schematics, GDSII,
     OASIS; OpenSCAD sources.
-- **Plugin API:** `plugin::xmlwalk`, the XML event walker the geo and CAD
-  extractors share.
 - **Report:** `content.extent`, the WGS84 box a file covers (additive; the
   schema stays `whiff/1`).
 - **Reclassified fixtures:** the GeoPackage and MBTiles files formerly
@@ -164,7 +163,8 @@ files, geodata, 3D and CAD (Stage 7).
   `topojson`.
 - **Plugin API:** `plugin::flatbuf` (FlatBuffers tables without a schema)
   and `plugin::protowire` (protobuf fields without a schema), shared by the
-  columnar readers and the `.bfbs` extractor; raw Snappy and LZ4 block
+  columnar readers and the `.bfbs` extractor; `plugin::xmlwalk`, the XML
+  event walker the geo and CAD extractors share; raw Snappy and LZ4 block
   codecs (`Codec::SnappyBlock`, `Codec::Lz4Block`).
 - **Licences:** the SIL Open Font License (1.0 and 1.1) and the Ubuntu
   Font Licence are recognised in licence texts.

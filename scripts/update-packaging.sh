@@ -4,8 +4,8 @@
 # this and pushes the results to baoulo/homebrew-tap and baoulo/scoop-bucket;
 # run it by hand only to recover from a failed release.
 #
-#   scripts/update-packaging.sh 0.6.0
-#   SUMS_FILE=SHA256SUMS scripts/update-packaging.sh 0.6.0   # use a local file
+#   scripts/update-packaging.sh 0.7.0
+#   SUMS_FILE=SHA256SUMS scripts/update-packaging.sh 0.7.0   # use a local file
 set -euo pipefail
 
 VERSION="${1:?usage: $0 <version>}"

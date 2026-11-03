@@ -238,7 +238,7 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   text are read by tolerant parsers into a tree; HOCON substitutions and
   includes are counted, not resolved.
 
-## Fonts (unreleased)
+## Fonts (0.7.0)
 
 - **Not decoded:** glyph outlines, hinting programs and kerning values
   (only the feature tags), `CFF` / `CFF2` dictionaries (names come from
@@ -257,7 +257,7 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   designspace documents, `.vfc` / `.vfj` (FontLab), `.fea` feature files
   and TeX font metrics (`.tfm`, `.vf`) are not read.
 
-## Columnar data and models (unreleased, feature `data`)
+## Columnar data and models (0.7.0, feature `data`)
 
 - **Not read:** Apache Hudi, Kudu and CarbonData tables, Hadoop
   SequenceFile and RCFile, MXNet RecordIO, legacy GGML / GGMF / GGJT
@@ -284,7 +284,7 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   (`File.fbs`) until `scripts/fixtures/f3.sh` replaces it with the
   reference writer's files.
 
-## Scientific files (unreleased, feature `science`)
+## Scientific files (0.7.0, feature `science`)
 
 - **Raw data:** array values are never read, so there are no statistics
   of the data, no checks of chunk checksums and no decompression of
@@ -314,7 +314,7 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   GAMESS and NWChem outputs, Spectre and HSPICE binary waveforms and
   GDSII / OASIS layouts are not read.
 
-## Medical files (unreleased, feature `science`)
+## Medical files (0.7.0, feature `science`)
 
 - **Privacy:** DICOM patient, physician, institution and accession
   attributes are reported by name only unless privacy is off; HL7 patient
@@ -331,7 +331,7 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   (no field parsing past MSH); HL7 v3 / CDA documents are read as XML;
   FHIR XML resources are read as XML.
 
-## Geodata (unreleased, feature `geo`)
+## Geodata (0.7.0, feature `geo`)
 
 - **Not read:** MrSID and ECW rasters (proprietary; no writer to make
   fixtures with), SRTM `.hgt` tiles (fixed sizes above the fixture
@@ -359,7 +359,7 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   serial numbers and IGC pilots appear only with privacy off; track
   positions are reported as bounds, not as points.
 
-## 3D and CAD (unreleased, feature `cad`)
+## 3D and CAD (0.7.0, feature `cad`)
 
 - **Not read:** AutoCAD DWG and Alembic (no free writer in the fixture
   toolchain), Maya, Cinema 4D, Houdini, Modo, SketchUp, SolidWorks,
