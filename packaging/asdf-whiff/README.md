@@ -4,8 +4,8 @@ asdf plugin that installs `whiff` from [GitHub Releases](https://github.com/baou
 
 ```bash
 asdf plugin add whiff https://github.com/baoulo/asdf-whiff.git
-asdf install whiff 0.6.0
-asdf global whiff 0.6.0
+asdf install whiff 0.7.0
+asdf global whiff 0.7.0
 whiff --version
 ```
 

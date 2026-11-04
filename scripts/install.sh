@@ -3,7 +3,7 @@
 # Needs bash (not POSIX sh: Debian's /bin/sh is dash).
 # Usage:
 #   curl -fsSL https://raw.githubusercontent.com/baoulo/whiff/main/scripts/install.sh | bash
-#   WHIFF_VERSION=v0.6.0 bash scripts/install.sh
+#   WHIFF_VERSION=v0.7.0 bash scripts/install.sh
 set -euo pipefail
 
 REPO="${WHIFF_REPO:-baoulo/whiff}"
