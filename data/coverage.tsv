@@ -1,0 +1,39 @@
+# Catalogue rows handled by a format of another family, or whose file
+# names (`schema.json`, `docker-compose.yml`) no extension can match.
+# `whiff-dev catalogue` credits the row to the extractor of the format;
+# an unknown format id is an error.
+# row name	format id
+SVG	svg
+LaTeX document	latex
+MHTML web archive	mhtml
+Sitemap XML	sitemap
+tar.gz / tgz	gzip
+tar.bz2 / tar.xz / tar.zst	xz
+BitTorrent metainfo	bencode
+Internet shortcut / webloc	ini
+JSON Schema	json
+OpenAPI / Swagger (JSON)	json
+Postman collection	json
+Chrome extension manifest	json
+Docker Compose	yaml
+GitHub Actions workflow	yaml
+OpenAPI (YAML)	yaml
+Helm chart	yaml
+CloudFormation / SAM	yaml
+GitLab CI	yaml
+conda environment	yaml
+Lottie / Bodymovin	json
+SVG sprite / icon sets	svg
+GPX-like Garmin TCX	tcx
+HTTP Archive (HAR)	har
+FITS image	fits
+3D Manufacturing Format (OPC)	3mf
+Java/Android archive (generic zip)	jar
+Bundle formats: .app/.framework zipped	ipa
+Google Earth / Maps link files	kmz
+Shortcut-like: .desktop / .lnk / .website	ini
+WebM audio	webm
+Sitemap index / sitemap text	sitemap
+Kindle clippings	kindle_clippings
+GNU info	gnu_info
+README / LICENSE (extensionless)	text

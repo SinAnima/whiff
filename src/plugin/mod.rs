@@ -36,7 +36,7 @@ pub use crate::container::zip::{
 pub use crate::container::{asf, codec, der, flatbuf, mp4, oleps, proplist, protowire, volume, xmlwalk};
 pub use crate::engine::{Options, Privacy, Profile};
 pub use crate::meta::latin1_or_utf8;
-pub use crate::text::decode::decode as decode_text;
+pub use crate::text::decode::{cp437 as decode_cp437, decode as decode_text};
 pub use crate::text::latex::{latex_argument, latex_option, latex_text};
 pub use crate::text::license::{find_copyright, identify_license, spdx_identifier};
 pub use crate::text::markup::{decode_entities, html_text, risky_file_name};

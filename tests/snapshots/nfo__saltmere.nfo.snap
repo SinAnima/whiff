@@ -1,0 +1,166 @@
+---
+source: src/formats/text/special.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere.nfo",
+    "stem": "saltmere",
+    "extension": "nfo"
+  },
+  "identification": {
+    "format": "nfo",
+    "name": "NFO / DIZ info file (ANSI art)",
+    "mime": "text/x-nfo",
+    "family": "text.plain",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "extractor": "text.special"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 529
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-11-05",
+        "source": "text.special",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 529,
+    "entropy": 4.589,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "421d4b9ee934bd6ef62cfde4fe1f81f8ad5c6eb2c4c0c119c529915a99d3d3f4",
+    "blake3": "160c58223ba4643a690eb59d575364c191c83cc930e1fe80d7f7b5a4de2869f2"
+  },
+  "content": {
+    "title": "Saltmere Tide Atlas",
+    "authors": [
+      "Ada Quayside"
+    ],
+    "keywords": [
+      "Saltmere Tide Atlas",
+      "Atlas",
+      "Saltmere",
+      "Title",
+      "Tide",
+      "English",
+      "Harbour Board",
+      "harbour",
+      "Language",
+      "Board"
+    ],
+    "keyword_frequency": [
+      [
+        "harbour",
+        2
+      ]
+    ],
+    "excerpt": "Title ..........: Saltmere Tide Atlas Release Date ...: 2025-11-05 Language .......: English Group ..........: Harbour Board Hand-drawn charts of the harbour approaches.",
+    "tags": [
+      "Saltmere Tide Atlas",
+      "Atlas",
+      "Saltmere",
+      "Title",
+      "Tide"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "nfo": {
+      "encoding": "cp437",
+      "box_drawing_chars": 104,
+      "lines": 13,
+      "max_width": 48,
+      "fields": {
+        "title": "Saltmere Tide Atlas",
+        "release_date": "2025-11-05",
+        "size": "2 x 1.44MB",
+        "format": "ZIP",
+        "language": "English",
+        "group": "Harbour Board"
+      },
+      "sauce": {
+        "title": "Saltmere Tide Atlas",
+        "author": "Ada Quayside",
+        "group": "Harbour Board",
+        "date": "2025-11-05",
+        "data_type": "character",
+        "file_type": "ASCII",
+        "width": 48,
+        "height": 14,
+        "font": "IBM VGA"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.special",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

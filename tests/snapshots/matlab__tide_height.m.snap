@@ -1,0 +1,138 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide_height.m",
+    "stem": "tide_height",
+    "extension": "m"
+  },
+  "identification": {
+    "format": "matlab",
+    "name": "MATLAB / Octave script",
+    "mime": "text/x-matlab",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 427
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 427,
+    "entropy": 4.877,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 427,
+      "chars": 427,
+      "words": 73,
+      "lines": 18,
+      "max_line_length": 64,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "0fe7b11e8c0802121337ad3201c64015b0c2cb82b5449c901c3685419751910c",
+    "blake3": "189e73a3406fdcdfb4d0c530e2bd118b60967ff7af2ba87c26a5858c0dd62f00"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "matlab": {
+      "language": "MATLAB / Octave script",
+      "loc": {
+        "code": 11,
+        "comment": 6,
+        "blank": 1,
+        "total": 18
+      },
+      "imports": [
+        "saltmere.constants.*"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "function": [
+          "tide_height",
+          "plot_day"
+        ]
+      },
+      "symbol_counts": {
+        "function": 2
+      },
+      "is_test": false,
+      "generated": false,
+      "longest_line": 64
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,132 @@
+---
+source: src/formats/text/lightmarkup.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Saltmere.wiki",
+    "stem": "Saltmere",
+    "extension": "wiki"
+  },
+  "identification": {
+    "format": "mediawiki",
+    "name": "MediaWiki markup",
+    "mime": "text/x-wiki",
+    "family": "text.lightmarkup",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.lightmarkup"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 55
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 0
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 55,
+    "entropy": 4.577,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 55,
+      "chars": 55,
+      "words": 4,
+      "lines": 3,
+      "max_line_length": 30,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "3668c98ddb9d5189b8c38d5c75401c0e322c84fc15a6b7f06504a272c84f1c02",
+    "blake3": "822a53afe8ac4daa9a141e835a90512fb990cf36180b450abf671e554dfab1e7"
+  },
+  "content": {
+    "title": "Saltmere",
+    "excerpt": "#REDIRECT"
+  },
+  "metadata": {},
+  "format": {
+    "mediawiki": {
+      "headings": 0,
+      "links": {
+        "internal": 1,
+        "external": 0
+      },
+      "images": 0,
+      "code_blocks": 0,
+      "tables": 0,
+      "redirect": "Saltmere Harbour",
+      "categories": [
+        "Redirects"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.lightmarkup",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

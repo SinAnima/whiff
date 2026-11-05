@@ -1,0 +1,19 @@
+# Saltmere Harbour
+
+Welcome to the harbour capsule.
+
+## Tides
+=> gemini://tides.example.org/saltmere Tide tables
+=> https://board.example.org/ The harbour board (web)
+=> moorings.gmi Moorings
+=> images/pontoon.png The east pontoon
+
+### Weather
+* Wind: south-west 4
+* Sea: slight
+
+> The bar dries at low water springs.
+
+```text
+VHF 12
+```

@@ -1,0 +1,134 @@
+---
+source: src/formats/text/special.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.ans",
+    "stem": "tides",
+    "extension": "ans"
+  },
+  "identification": {
+    "format": "nfo",
+    "name": "NFO / DIZ info file (ANSI art)",
+    "mime": "text/x-nfo",
+    "family": "text.plain",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "extractor": "text.special"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 208
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-11-05",
+        "source": "text.special",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 208,
+    "entropy": 4.521,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "b0d87d169db1f7e0fc4fdbae253ec2708286f7a74dd0b830a8228368604c5d7f",
+    "blake3": "f021846e7de8255888ddcec49a3fa3f228d3515016c31d883f68b085b1f2b362"
+  },
+  "content": {
+    "title": "Tides",
+    "authors": [
+      "Ben Netmaker"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "nfo": {
+      "encoding": "cp437",
+      "ansi_escapes": true,
+      "box_drawing_chars": 22,
+      "lines": 3,
+      "max_width": 10,
+      "sauce": {
+        "title": "Tides",
+        "author": "Ben Netmaker",
+        "group": "Harbour Board",
+        "date": "2025-11-05",
+        "data_type": "character",
+        "file_type": "ANSi",
+        "width": 80,
+        "height": 3,
+        "ice_colors": true,
+        "font": "IBM VGA"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.special",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

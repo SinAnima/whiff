@@ -1,0 +1,162 @@
+---
+source: src/formats/code/config.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "nginx.conf",
+    "stem": "nginx",
+    "extension": "conf"
+  },
+  "identification": {
+    "format": "web_server_config",
+    "name": "nginx / Apache config",
+    "mime": "text/plain",
+    "family": "code.infra",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "web_server_config",
+        "confidence": 0.95
+      },
+      {
+        "format": "ini",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.config"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 648
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 648,
+    "entropy": 4.243,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 648,
+      "chars": 648,
+      "words": 55,
+      "lines": 35,
+      "max_line_length": 58,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 7
+    }
+  },
+  "integrity": {
+    "sha256": "b2074e8e81edd77ab81fab03f5d403587ad54e906b70ec317aab40548c775d90",
+    "blake3": "ad94d12c4f567429c7891fd881820c344423965839243684672db9e351437870"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "web_server_config": {
+      "server": "nginx",
+      "server_blocks": 2,
+      "locations": 2,
+      "server_names": [
+        "saltmere.example",
+        "www.saltmere.example"
+      ],
+      "listen": [
+        "443",
+        "80"
+      ],
+      "tls": true,
+      "proxies": 1,
+      "upstreams": [
+        "tides"
+      ],
+      "includes": [
+        "/etc/nginx/mime.types"
+      ],
+      "directives": {
+        "events": 1,
+        "http": 1,
+        "include": 1,
+        "listen": 2,
+        "location": 2,
+        "proxy_pass": 1,
+        "return": 1,
+        "root": 1,
+        "server": 3,
+        "server_name": 2,
+        "ssl_certificate": 1,
+        "ssl_certificate_key": 1,
+        "upstream": 1,
+        "user": 1,
+        "worker_connections": 1,
+        "worker_processes": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.config",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

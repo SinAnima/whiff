@@ -1,0 +1,208 @@
+---
+source: src/formats/text/lightmarkup.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbourctl.1",
+    "stem": "harbourctl",
+    "extension": "1"
+  },
+  "identification": {
+    "format": "roff",
+    "name": "troff / man page",
+    "mime": "text/troff",
+    "family": "text.lightmarkup",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "encoding": "us-ascii",
+    "extractor": "text.lightmarkup"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 543
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 1
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 543,
+    "entropy": 5.113,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 543,
+      "chars": 543,
+      "words": 81,
+      "lines": 27,
+      "max_line_length": 71,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "16feb180f345953ad7ffc69cf93e87707d12b38ca14ab9547aafd7ebc7087f79",
+    "blake3": "aa4ef5ff600d058b4b566a212262da8640d531a247a213dd11be8b241076fb09"
+  },
+  "content": {
+    "title": "harbourctl(1)",
+    "description": "control the Saltmere harbour lights and gates",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "harbourctl",
+      "lights",
+      "harbour",
+      "SYNOPSIS",
+      "DESCRIPTION",
+      "gates",
+      "EXAMPLES",
+      "tide",
+      "harbour lights",
+      "Saltmere"
+    ],
+    "keyword_frequency": [
+      [
+        "gate",
+        4
+      ],
+      [
+        "harbour",
+        3
+      ],
+      [
+        "harbourctl",
+        3
+      ],
+      [
+        "lights",
+        3
+      ],
+      [
+        "close",
+        2
+      ],
+      [
+        "command",
+        2
+      ],
+      [
+        "switch",
+        2
+      ],
+      [
+        "tide",
+        2
+      ]
+    ],
+    "excerpt": "harbourctl - control the Saltmere harbour lights and gates -v command switches the harbour lights and opens or closes the tide gates. Switch the lights. Move the tide gate. harbourctl gate close Harbour tools",
+    "tags": [
+      "harbourctl",
+      "lights",
+      "harbour",
+      "SYNOPSIS",
+      "DESCRIPTION"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "roff": {
+      "headings": 6,
+      "links": {
+        "internal": 0,
+        "external": 1
+      },
+      "top_link_hosts": {
+        "board.example.org": 1
+      },
+      "images": 0,
+      "code_blocks": 1,
+      "tables": 0,
+      "macro_package": "man",
+      "page": {
+        "name": "HARBOURCTL",
+        "section": "1",
+        "date": "November 2025",
+        "source": "harbour-tools 1.4",
+        "manual": "Harbour Commands",
+        "names": [
+          "harbourctl"
+        ]
+      },
+      "sections": [
+        "NAME",
+        "SYNOPSIS",
+        "DESCRIPTION",
+        "Commands",
+        "EXAMPLES",
+        "SEE ALSO"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.lightmarkup",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

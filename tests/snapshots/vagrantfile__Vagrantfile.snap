@@ -1,0 +1,141 @@
+---
+source: src/formats/code/config.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Vagrantfile",
+    "stem": "Vagrantfile"
+  },
+  "identification": {
+    "format": "vagrantfile",
+    "name": "Vagrantfile",
+    "mime": "text/x-ruby",
+    "family": "code.infra",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "candidates": [
+      {
+        "format": "vagrantfile",
+        "confidence": 0.95
+      },
+      {
+        "format": "ruby",
+        "confidence": 0.9
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.config"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 560
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 560,
+    "entropy": 4.764,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 560,
+      "chars": 560,
+      "words": 55,
+      "lines": 23,
+      "max_line_length": 65,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 5
+    }
+  },
+  "integrity": {
+    "sha256": "bedeb108fdbc99aa5ca44f795b5ec18e4c4693fefa6ec855b9771629755a1f5c",
+    "blake3": "d0cdcbd5b6ea8cbbc9bcd7fe2a08f068d41f5d05cc8e520ff947af58ee7bf8db"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "vagrantfile": {
+      "config_version": "2",
+      "boxes": [
+        "debian/bookworm64",
+        "debian/trixie64"
+      ],
+      "machines": [
+        "gauge",
+        "lighthouse"
+      ],
+      "providers": [
+        "virtualbox"
+      ],
+      "provisioners": [
+        "ansible",
+        "shell"
+      ],
+      "forwarded_ports": 1,
+      "synced_folders": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.config",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

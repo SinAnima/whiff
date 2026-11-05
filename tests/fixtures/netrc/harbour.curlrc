@@ -1,0 +1,6 @@
+# curl defaults for the harbour scripts
+user-agent = "harbour-tools/1.4"
+--connect-timeout 10
+proxy = "http://proxy.saltmere.example:8080"
+user = "harbour:not-a-real-password"
+silent

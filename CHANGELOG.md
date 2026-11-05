@@ -6,7 +6,8 @@ keep the schema version.
 
 ## Unreleased
 
-Games (Stage 8, part 1).
+Games (Stage 8, part 1) and the first batch of the long tail (part 2):
+every tier 1 and tier 2 catalogue format now has an extractor.
 
 - **Games** (feature `games`, which now includes `common`), all in-house;
   read from headers, directories and indexes (nothing is extracted, run
@@ -52,14 +53,73 @@ Games (Stage 8, part 1).
     story inside, resources, the iFiction record);
   - emulator saves: RetroArch states (`RASTATE`, RZIP), Mednafen states,
     battery saves (`.srm`).
+- **Lightweight markup** (`common`, new `text.lightmarkup`, in-house, line
+  by line): reStructuredText (title and subtitle, bibliographic fields,
+  directives, `meta`), AsciiDoc (header, author and revision lines,
+  attributes, admonitions, delimited blocks), Org (keywords, TODO states
+  with custom sequences, priorities, tags, planning lines, timestamps,
+  drawers, checkboxes), Textile, MediaWiki (templates, categories, language
+  links, references, redirects, magic words; the page name is the title),
+  Perl POD (`NAME`, `VERSION`, `AUTHOR`), roff man pages (`man`, `mdoc`,
+  `ms`, `me`: name, section, date, source, manual, `NAME` description;
+  numbered extensions such as `.1` or `.3p` sniffed), Texinfo (title,
+  nodes, `@set` flags, directory category), Creole, DokuWiki, Djot and
+  Gemtext: outline, links and hosts, images, code blocks by language,
+  tables, included files, and the prose.
+- **Configuration files** (`common`, new `code.config`): Terraform / HCL
+  (blocks, resources and data sources by type, providers with sources and
+  versions, modules, backend, required version, variables and outputs,
+  `.tfvars`), ignore files (`.gitignore`, `.dockerignore`, `.helmignore`
+  …), crontabs (system and user, `@reboot`, every-minute jobs, commands),
+  `ssh_config` / `sshd_config` (security settings; host names only with
+  privacy off), nginx, Apache and `.htaccess` (server blocks, names,
+  ports, TLS, proxies, rewrites, modules), Procfiles, Justfiles,
+  Vagrantfiles, Caddyfiles and HAProxy configurations.
+- **Plain-text files with a layout** (`common`, new `text.special`): NFO,
+  DIZ and ANSI art (code page 437, the SAUCE record: title, author, group,
+  date, size, font), hosts files (entries, blocked names), `CODEOWNERS`
+  (rules, owners by kind; teams listed, people counted), Vim swap files
+  (the file being edited, unsaved changes; user and host only with privacy
+  off), Kindle `My Clippings.txt` and GNU info files. Extensionless
+  `README`, `LICENSE`, `COPYING`, `AUTHORS`, `CHANGELOG`, `NEWS` …
+  files are recognised by name and get `document_kind`; change logs also
+  their versions and dates.
+- **Web files** (`common`, new `web.swf` and `web.misc`): Shockwave Flash
+  (`FWS`, `CWS`, `ZWS`: version, stage size, frame rate and count, file
+  attributes, background, XMP, compiler and compile time, main class,
+  symbols, exports, imports, scenes, ActionScript blocks), `robots.txt`
+  (groups, rules, sitemaps, crawl delay, which AI crawlers are blocked),
+  `security.txt` and `humans.txt`, proxy auto-config files, Metalink 3 and
+  4, Adblock filter lists, Netscape cookie jars (counted, never the
+  values), browser bookmarks (Netscape HTML, Chrome, Firefox), `.netrc`,
+  `.curlrc` and `.wgetrc` (passwords flagged as `embedded_secret`, never
+  copied), and WARC archives.
+- **AutoCAD DWG** (`cad`, in `cad.drawing`): the file header (release,
+  maintenance version, code page, thumbnail, summary information, R2004+
+  security flags and VBA project).
+- **MATLAB / Octave** `.m` scripts (functions, classes, imports); `.m`
+  files that read as Objective-C stay Objective-C.
+- **Catalogue:** `data/coverage.tsv` credits rows that another family's
+  extractor handles (SVG, LaTeX, MHTML, sitemaps, `.tar.*`, torrents,
+  known JSON and YAML schemas …); an unknown row or format there is an
+  error. 606 → 674 of 1008 formats have an extractor.
 - **Shared code:** the Unity class-ID names (from the Unity YAML reader)
   and the strings of the pickle walker are reused by the games readers.
+  The code page 437 decoder moved from the ZIP reader to
+  the text decoders and is part of the plugin API (`decode_cp437`).
 - **Developer tools:** `scripts/fixtures/games.sh` makes the games
   fixtures in a podman container (cc65, Inform 6, Tiled, omgifol, vgio,
   vpk, nbtlib, vdf; the rest written from their specifications);
   `games_oracle.py` compares the reports over a generated corpus with
   libmagic, libgme (through ffprobe), omgifol, vgio, vpk, nbtlib, pytmx,
   vdf, UnityPy and unrpa.
+  `scripts/fixtures/longtail.sh` makes the long-tail
+  fixtures in a podman container (makeinfo, Vim, ffmpeg, warcio, Python's
+  `http.cookiejar`; the rest written by hand or from the specifications);
+  `longtail_oracle.py` compares the reports over the fixtures and a
+  generated corpus with pandoc, asciidoctor, docutils, lexgrog, Perl's
+  `Pod::Simple`, makeinfo, python-hcl2, libmagic, ffprobe, warcio,
+  `http.cookiejar` and `urllib.robotparser`.
 
 ## 0.7.0 — 2026-11-03
 

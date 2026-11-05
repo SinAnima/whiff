@@ -1,0 +1,15 @@
+{
+    email harbourmaster@example.org
+}
+
+saltmere.example, www.saltmere.example {
+    root * /var/www/harbour
+    file_server
+    encode gzip
+    reverse_proxy /tides/* 127.0.0.1:8080
+}
+
+gauge.saltmere.example {
+    reverse_proxy 127.0.0.1:9090
+    tls internal
+}

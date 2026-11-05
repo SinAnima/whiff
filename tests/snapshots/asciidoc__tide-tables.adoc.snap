@@ -1,0 +1,210 @@
+---
+source: src/formats/text/lightmarkup.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide-tables.adoc",
+    "stem": "tide-tables",
+    "extension": "adoc"
+  },
+  "identification": {
+    "format": "asciidoc",
+    "name": "AsciiDoc",
+    "mime": "text/x-asciidoc",
+    "family": "text.lightmarkup",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.lightmarkup"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 758
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-11-05",
+        "source": "text.lightmarkup",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {
+    "external_references": 1
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 758,
+    "entropy": 5.096,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 758,
+      "chars": 758,
+      "words": 105,
+      "lines": 36,
+      "max_line_length": 64,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 9
+    }
+  },
+  "integrity": {
+    "sha256": "fa18c6f69fee5a35d6e4dc7328609a064e70bab143b5e4e4421152abc758150a",
+    "blake3": "68fdc0886074e305e644fc875b285f43658a3f7d6e9576520c4fcd15cf165ae3"
+  },
+  "content": {
+    "title": "Saltmere Tide Tables",
+    "description": "Tide times and heights for Saltmere Harbour.",
+    "authors": [
+      "Ada Quayside",
+      "Ben Netmaker"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "tides",
+      "harbour",
+      "Saltmere",
+      "Saltmere Tide Tables",
+      "tables",
+      "Reading the tables",
+      "springs",
+      "NOTE",
+      "saltmereonline tables",
+      "Times are local",
+      "datum"
+    ],
+    "keyword_frequency": [
+      [
+        "springs",
+        4
+      ],
+      [
+        "tables",
+        3
+      ],
+      [
+        "chart",
+        2
+      ],
+      [
+        "datum",
+        2
+      ],
+      [
+        "tide",
+        2
+      ]
+    ],
+    "excerpt": "NOTE: Times are local (GMT in winter). Heights are in metres above chart datum. See <<springs>> and the https://tides.example.org/saltmereonline tables. image::charts/datum.pngChart datum #springs source,python WARNING: The bar dries at low water springs. include::appendix.adoc",
+    "tags": [
+      "tides",
+      "harbour",
+      "Saltmere",
+      "Saltmere Tide Tables",
+      "tables",
+      "Reading the tables"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "asciidoc": {
+      "version": "2.1",
+      "headings": 2,
+      "links": {
+        "internal": 1,
+        "external": 1
+      },
+      "top_link_hosts": {
+        "tides.example.org": 1
+      },
+      "images": 1,
+      "code_blocks": 1,
+      "tables": 1,
+      "code_languages": {
+        "python": 1
+      },
+      "includes": [
+        "appendix.adoc"
+      ],
+      "doctype": "book",
+      "admonitions": {
+        "note": 1,
+        "warning": 1
+      },
+      "attributes": [
+        "description",
+        "keywords",
+        "lang",
+        "doctype",
+        "toc"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.lightmarkup",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

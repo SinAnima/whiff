@@ -1,0 +1,37 @@
+{{Infobox harbour
+| name     = Saltmere Harbour
+| country  = Fictitious
+| moorings = 120
+}}
+'''Saltmere Harbour''' is a small fishing and leisure harbour.<ref>Harbour Board, ''Annual report'', 2025.</ref>
+__NOTOC__
+
+== History ==
+The harbour wall was built in 1852.<ref name="wall">{{cite book |title=Walls of the Coast |year=1990}}</ref>
+
+=== The lighthouse ===
+[[File:Saltmere lighthouse.jpg|thumb|The lighthouse at dusk]]
+The [[lighthouse]] was automated in 1988.
+
+== Facilities ==
+{| class="wikitable"
+! Facility !! Open
+|-
+| Fuel || all year
+|-
+| Showers || April to October
+|}
+
+<syntaxhighlight lang="text">
+VHF 12
+</syntaxhighlight>
+
+== External links ==
+* [https://board.example.org/ Harbour Board]
+
+== References ==
+<references />
+
+[[Category:Harbours]]
+[[Category:Fictitious places]]
+[[fr:Port de Saltmere]]

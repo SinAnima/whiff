@@ -1,0 +1,110 @@
+---
+source: src/formats/text/special.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "file_id.diz",
+    "stem": "file_id",
+    "extension": "diz"
+  },
+  "identification": {
+    "format": "nfo",
+    "name": "NFO / DIZ info file (ANSI art)",
+    "mime": "text/x-nfo",
+    "family": "text.plain",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "extractor": "text.special"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 78
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 78,
+    "entropy": 4.051,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "c052c06261d5056a5ff7e842309d669fa2a5c0c7a37201301fdac897e2c017c4",
+    "blake3": "f9abdf519d515d71caa64c35ce0d50f8f5ff145edda1ba4148458e2e8750450d"
+  },
+  "content": {
+    "excerpt": "Saltmere Tide Atlas v1.0 Charts of the harbour."
+  },
+  "metadata": {},
+  "format": {
+    "nfo": {
+      "encoding": "cp437",
+      "box_drawing_chars": 23,
+      "lines": 4,
+      "max_width": 24
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.special",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

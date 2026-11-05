@@ -1,0 +1,27 @@
+.\" Manual page for harbourctl
+.TH HARBOURCTL 1 "November 2025" "harbour-tools 1.4" "Harbour Commands"
+.SH NAME
+harbourctl \- control the Saltmere harbour lights and gates
+.SH SYNOPSIS
+.B harbourctl
+[\fB\-v\fR]
+\fIcommand\fR
+.SH DESCRIPTION
+.B harbourctl
+switches the harbour lights and opens or closes the tide gates.
+.SS Commands
+.TP
+.B lights on|off
+Switch the lights.
+.TP
+.B gate open|close
+Move the tide gate.
+.SH EXAMPLES
+.EX
+harbourctl gate close
+.EE
+.SH SEE ALSO
+.BR tidewatch (8)
+.UR https://board.example.org/tools
+Harbour tools
+.UE

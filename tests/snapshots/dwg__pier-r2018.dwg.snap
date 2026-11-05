@@ -1,0 +1,116 @@
+---
+source: src/formats/cad/drawing.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pier-r2018.dwg",
+    "stem": "pier-r2018",
+    "extension": "dwg"
+  },
+  "identification": {
+    "format": "dwg",
+    "name": "AutoCAD DWG",
+    "mime": "image/vnd.dwg",
+    "family": "cad",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "cad.drawing"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 768
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "signed": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 768,
+    "entropy": 0.221,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "0c019a2cf356f69b834e2edc7ee3dbaa5de8e977c14c88a85d6d001ca8252a50",
+    "blake3": "2936b9bebf8c1840a26767bf9e53117448ad94737a0a3c45fcb4f255d6e38493"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "dwg": {
+      "version": "AC1032",
+      "release": "2018",
+      "maintenance_version": 4,
+      "thumbnail": true,
+      "codepage": "ANSI_1252",
+      "writer_version": 33,
+      "security": {
+        "signed": true
+      },
+      "summary_info": true
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.drawing",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

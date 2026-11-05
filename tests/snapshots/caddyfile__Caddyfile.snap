@@ -1,0 +1,132 @@
+---
+source: src/formats/code/config.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Caddyfile",
+    "stem": "Caddyfile"
+  },
+  "identification": {
+    "format": "caddyfile",
+    "name": "Caddyfile",
+    "mime": "text/plain",
+    "family": "code.infra",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "encoding": "us-ascii",
+    "extractor": "code.config"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 264
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "personal_data": {
+      "email": 1
+    }
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 264,
+    "entropy": 4.622,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 264,
+      "chars": 264,
+      "words": 24,
+      "lines": 15,
+      "max_line_length": 41,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "63067054e45f6554ea20552db668bc8a80ec71f058775906af1c6dc837e2ed3c",
+    "blake3": "b94aba2253658f885f670236c88b40ecbc3e4d620ad83435fca231ac0d2fd3c7"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "caddyfile": {
+      "global_options": true,
+      "site_count": 3,
+      "sites": [
+        "saltmere.example",
+        "www.saltmere.example",
+        "gauge.saltmere.example"
+      ],
+      "directives": {
+        "email": 1,
+        "encode": 1,
+        "file_server": 1,
+        "reverse_proxy": 2,
+        "root": 1,
+        "tls": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.config",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

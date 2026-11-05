@@ -3,10 +3,17 @@
 //!   units, extents, creation and update times, layers, blocks, entities
 //!   by type, layouts, images and external references, and the drawing's
 //!   text (`TEXT`, `MTEXT`, attributes) into the text pipeline;
-//! * `MicroStation` DGN v7: 2D / 3D, element types and levels.
+//! * `MicroStation` DGN v7: 2D / 3D, element types and levels;
+//! * `AutoCAD` DWG, header only: the release, maintenance version, code
+//!   page, whether a thumbnail and summary information are present, and
+//!   from R2004 on the security flags (encrypted data or properties,
+//!   signed) and a VBA project. The drawing itself is compressed and, from
+//!   R2004, encrypted page by page; it is not decoded.
 //!
 //! Specifications: Autodesk DXF Reference (2018); `MicroStation` DGN v7 as
-//! documented by GDAL's DGN library (Frank Warmerdam, `dgnlib`).
+//! documented by GDAL's DGN library (Frank Warmerdam, `dgnlib`); Open
+//! Design Alliance "Open Design Specification for .dwg files" 5.4.1
+//! (file headers R13–R15 and R2004+, §3, §4.1).
 
 use std::collections::{BTreeMap, BTreeSet};
 
@@ -46,6 +53,15 @@ static META: ExtractorMeta = ExtractorMeta {
             parent: None,
         },
         FormatSpec {
+            id: "dwg",
+            name: "AutoCAD DWG",
+            family: "cad",
+            mimes: &["image/vnd.dwg"],
+            extensions: &["dwg"],
+            magic: &[Magic::prefix(b"AC10"), Magic::prefix(b"AC1.")],
+            parent: None,
+        },
+        FormatSpec {
             id: "dgn",
             name: "MicroStation DGN",
             family: "cad",
@@ -60,6 +76,14 @@ static META: ExtractorMeta = ExtractorMeta {
 /// The release of an `$ACADVER` code.
 fn release(v: &str) -> &'static str {
     match v {
+        "AC1.2" => "R1.2",
+        "AC1.40" => "R1.40",
+        "AC1.50" => "R2.05",
+        "AC2.10" => "R2.10",
+        "AC1001" => "R2.21",
+        "AC1002" => "R2.5",
+        "AC1003" => "R2.6",
+        "AC1004" => "R9",
         "AC1006" => "R10",
         "AC1009" => "R11/R12",
         "AC1012" => "R13",
@@ -444,6 +468,10 @@ impl Extractor for Drawing {
         let (b, _) = cx.read_bytes(src)?;
         match id.as_str() {
             "dgn" => dgn(cx, &b),
+            "dwg" => {
+                dwg(cx, &b);
+                Ok(())
+            }
             id => {
                 dxf(cx, &b, id == "dxf_binary");
                 Ok(())
@@ -454,6 +482,102 @@ impl Extractor for Drawing {
 
 crate::register_extractor!(Drawing);
 
+/// `DWGCODEPAGE` indices (ODA specification, "code pages").
+const DWG_CODEPAGES: [&str; 45] = [
+    "UTF-8",
+    "US-ASCII",
+    "ISO-8859-1",
+    "ISO-8859-2",
+    "ISO-8859-3",
+    "ISO-8859-4",
+    "ISO-8859-5",
+    "ISO-8859-6",
+    "ISO-8859-7",
+    "ISO-8859-8",
+    "ISO-8859-9",
+    "CP437",
+    "CP850",
+    "CP852",
+    "CP855",
+    "CP857",
+    "CP860",
+    "CP861",
+    "CP863",
+    "CP864",
+    "CP865",
+    "CP869",
+    "CP932",
+    "MACINTOSH",
+    "BIG5",
+    "CP949",
+    "JOHAB",
+    "CP866",
+    "ANSI_1250",
+    "ANSI_1251",
+    "ANSI_1252",
+    "GB2312",
+    "ANSI_1253",
+    "ANSI_1254",
+    "ANSI_1255",
+    "ANSI_1256",
+    "ANSI_1257",
+    "ANSI_874",
+    "ANSI_932",
+    "ANSI_936",
+    "ANSI_949",
+    "ANSI_950",
+    "ANSI_1361",
+    "UTF-16",
+    "ANSI_1258",
+];
+
+/// A DWG file header.
+fn dwg(cx: &mut Context<'_>, b: &[u8]) {
+    let version = String::from_utf8_lossy(&b[..b.len().min(6)]).trim_end_matches('\0').to_string();
+    let version = version.split(|c: char| !c.is_ascii_alphanumeric() && c != '.').next().unwrap_or("").to_string();
+    cx.format_set("version", version.as_str());
+    cx.format_set("release", release(&version));
+    // R13 and later (AC1012 …) share the first 0x15 bytes.
+    let modern = version.strip_prefix("AC").and_then(|n| n.parse::<u32>().ok()).is_some_and(|n| n >= 1012);
+    if !modern || b.len() < 0x15 {
+        return;
+    }
+    let u32_at = |o: usize| b.get(o..o + 4).map(|x| u32::from_le_bytes([x[0], x[1], x[2], x[3]]));
+    cx.format_set("maintenance_version", b[0x0b]);
+    cx.format_set("thumbnail", u32_at(0x0d).is_some_and(|a| a != 0));
+    let cp = u16::from_le_bytes([b[0x13], b[0x14]]);
+    if let Some(name) = DWG_CODEPAGES.get(usize::from(cp)) {
+        cx.format_set("codepage", *name);
+    }
+    let r2004 = version.as_str() >= "AC1018";
+    if !r2004 {
+        return;
+    }
+    cx.format_set("writer_version", b[0x11]);
+    if let Some(flags) = u32_at(0x18) {
+        let mut security = Map::new();
+        for (bit, name) in [(1, "encrypted_data"), (2, "encrypted_properties"), (4, "signed"), (8, "timestamped")] {
+            if flags & bit != 0 {
+                security.insert(name.into(), Value::Bool(true));
+            }
+        }
+        if flags & 3 != 0 {
+            cx.security().encrypted(true);
+        }
+        if flags & 4 != 0 {
+            cx.security().signed(true);
+        }
+        if !security.is_empty() {
+            cx.format_set("security", Value::Object(security));
+        }
+    }
+    cx.format_set("summary_info", u32_at(0x20).is_some_and(|a| a != 0));
+    if u32_at(0x24).is_some_and(|a| a != 0) {
+        cx.format_set("vba_project", true);
+        cx.security().active_content("macros").risk("macros", Some("VBA project in the drawing".into()));
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -461,11 +585,12 @@ mod tests {
     #[test]
     fn dxf_helpers() {
         assert_eq!(release("AC1015"), "2000");
+        assert_eq!(DWG_CODEPAGES[30], "ANSI_1252");
         assert_eq!(julian(2_460_919.75).as_deref(), Some("2025-09-01T06:00:00"));
         assert_eq!(mtext_plain(r"{\fArial|b1;Buoy}\PSaltmere"), "Buoy Saltmere");
         let p = pairs(b"  0\nSECTION\n  2\nHEADER\n", false);
         assert_eq!(p, vec![(0, "SECTION".into()), (2, "HEADER".into())]);
     }
 
-    crate::fixture_tests!("dxf", "dxf_binary", "dgn");
+    crate::fixture_tests!("dxf", "dxf_binary", "dwg", "dgn");
 }

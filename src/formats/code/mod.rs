@@ -1,6 +1,7 @@
 //! `code` extractors (feature `common`): source code, package manifests,
-//! notebooks, and build / deployment files.
+//! notebooks, build / deployment files and configuration files.
 
+pub(crate) mod config;
 pub(crate) mod infra;
 pub(crate) mod latex;
 pub(crate) mod manifest;

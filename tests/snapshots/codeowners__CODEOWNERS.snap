@@ -1,0 +1,133 @@
+---
+source: src/formats/text/special.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "CODEOWNERS",
+    "stem": "CODEOWNERS"
+  },
+  "identification": {
+    "format": "codeowners",
+    "name": "CODEOWNERS",
+    "mime": "text/plain",
+    "family": "text.plain",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "encoding": "us-ascii",
+    "extractor": "text.special"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 248
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "personal_data": {
+      "email": 1
+    }
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 248,
+    "entropy": 4.278,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 248,
+      "chars": 248,
+      "words": 16,
+      "lines": 7,
+      "max_line_length": 59,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "6023405f090dae69ae033afab198353bd206d48ae07cf45a9bee59b0735c1d62",
+    "blake3": "a64dd87cf59f135cb7ab987d743d354f510000dfefd18f37933c6fa6b3a80bd2"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "codeowners": {
+      "rules": 5,
+      "default_rule": true,
+      "unowned_rules": 1,
+      "owners": {
+        "users": 2,
+        "teams": 3,
+        "emails": 1
+      },
+      "teams": [
+        "@saltmere/cartographers",
+        "@saltmere/harbour-board",
+        "@saltmere/keepers"
+      ],
+      "sections": [
+        "Lighthouse"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.special",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

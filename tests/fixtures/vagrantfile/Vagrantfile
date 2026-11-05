@@ -1,0 +1,23 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "debian/bookworm64"
+
+  config.vm.define "gauge" do |gauge|
+    gauge.vm.hostname = "gauge"
+    gauge.vm.network "forwarded_port", guest: 80, host: 8080
+  end
+
+  config.vm.define "lighthouse" do |l|
+    l.vm.box = "debian/trixie64"
+  end
+
+  config.vm.synced_folder "./charts", "/srv/charts"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 1024
+  end
+
+  config.vm.provision "shell", inline: "apt-get install -y nginx"
+  config.vm.provision "ansible" do |a|
+    a.playbook = "harbour.yml"
+  end
+end

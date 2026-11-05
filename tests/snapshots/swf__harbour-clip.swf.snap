@@ -1,0 +1,129 @@
+---
+source: src/formats/web/swf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-clip.swf",
+    "stem": "harbour-clip",
+    "extension": "swf"
+  },
+  "identification": {
+    "format": "swf",
+    "name": "Shockwave Flash",
+    "mime": "application/x-shockwave-flash",
+    "family": "web.misc",
+    "confidence": 0.77,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "web.swf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4425
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4425,
+    "entropy": 7.57,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48,
+      "frames": 10
+    },
+    "media": {
+      "duration_s": 1.0
+    },
+    "container": {
+      "uncompressed_bytes": 4425,
+      "ratio": 1.0
+    }
+  },
+  "integrity": {
+    "sha256": "7a106376b654777639ed9da5f329ee7829359df1e25181de25f80e74b1384c1a",
+    "blake3": "b64e56e8228a7ec12fcc3a658bf825562cdf7478fa32edf3de958f8b562de5a2"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "swf": {
+      "version": 6,
+      "compression": "none",
+      "file_length": 4425,
+      "stage": {
+        "width": 64,
+        "height": 48
+      },
+      "frame_rate": 10.0,
+      "frame_count": 10,
+      "tags": 32,
+      "definitions": {
+        "videos": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "web.swf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

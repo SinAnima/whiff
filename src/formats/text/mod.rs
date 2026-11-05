@@ -1,14 +1,19 @@
-//! `text` extractors (feature `common`): plain text, logs, diffs, Markdown,
-//! HTML, XML, feeds, calendars and contacts.
+//! `text` extractors (feature `common`): plain text, logs, diffs, NFO and
+//! hosts files, Markdown, lightweight markup, HTML, XML, feeds, calendars
+//! and contacts.
 
 pub(crate) mod calendar;
 pub(crate) mod contact;
 pub(crate) mod contentline;
 pub(crate) mod feed;
 pub(crate) mod html;
+pub(crate) mod lightmarkup;
 pub(crate) mod markdown;
 pub(crate) mod plain;
+pub(crate) mod special;
 pub(crate) mod xml;
+
+pub(crate) use super::archive::unix_time;
 
 /// The root element name of an XML document, skipping the BOM, XML
 /// declaration, comments, processing instructions and DOCTYPE.

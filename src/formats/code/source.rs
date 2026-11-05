@@ -273,6 +273,12 @@ languages! {
         symbols: [("class", r"^@(?:interface|implementation|protocol)\s+(\w+)")],
         package: ""
     }
+    "matlab" "MATLAB / Octave script" "text/x-matlab" ["m"] {
+        line: ["%", "#"], block: [("%{", "%}")], quotes: b"\"",
+        imports: [r"^\s*import\s+([\w.*]+)", r"^\s*(?:addpath|pkg\s+load)\s*\(?\s*'?([\w./-]+)"],
+        symbols: [("function", r"^\s*function\s+(?:\[[^\]]*\]\s*=\s*|\w+\s*=\s*)?(\w+)"), ("class", r"^classdef\s+(?:\([^)]*\)\s*)?(\w+)")],
+        package: ""
+    }
     "assembly" "Assembly source" "text/x-asm" ["asm", "s", "nasm"] {
         line: [";", "#"], block: [("/*", "*/")], quotes: b"\"",
         imports: [r#"^\s*(?:%include|\.include|include)\s+['"<]?([^'">\s]+)"#],
@@ -425,6 +431,18 @@ impl Extractor for SourceCode {
                 l.starts_with("FILE ") || l.starts_with("TRACK ")
             });
             return (!sheet).then_some(Sniff { format: "cuelang", confidence: 0.6 });
+        }
+        // `.m` is MATLAB / Octave unless it reads as Objective-C.
+        if probe.extension == Some("m") {
+            let objc = head.lines().any(|l| {
+                let l = l.trim_start();
+                l.starts_with("#import")
+                    || l.starts_with("#include")
+                    || l.starts_with("@interface")
+                    || l.starts_with("@implementation")
+                    || l.starts_with("@import")
+            });
+            return objc.then_some(Sniff { format: "objective_c", confidence: 0.9 });
         }
         if let Some(id) = shebang(head).and_then(|i| language_of_interpreter(&i)) {
             return Some(Sniff { format: id, confidence: 0.9 });
@@ -973,6 +991,7 @@ mod tests {
         "fsharp",
         "zig",
         "objective_c",
+        "matlab",
         "assembly",
         "graphql",
         "latex",

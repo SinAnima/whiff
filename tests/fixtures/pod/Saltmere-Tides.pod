@@ -1,0 +1,52 @@
+=encoding utf8
+
+=head1 NAME
+
+Saltmere::Tides - tide predictions for Saltmere Harbour
+
+=head1 VERSION
+
+Version 0.42
+
+=head1 SYNOPSIS
+
+    use Saltmere::Tides;
+    my $t = Saltmere::Tides->new(port => 'saltmere');
+    print $t->next_high_water;
+
+=head1 DESCRIPTION
+
+B<Saltmere::Tides> predicts high and low water from the harbour's
+harmonic constants. See L<Saltmere::Charts> and
+L<the board|https://board.example.org/>.
+
+=head2 Methods
+
+=over 4
+
+=item new(%args)
+
+Creates a predictor.
+
+=item next_high_water
+
+Returns the next high water as an epoch.
+
+=back
+
+=begin html
+
+<p>Tide <em>tables</em>.</p>
+
+=end html
+
+=head1 AUTHOR
+
+Ada Quayside
+
+=head1 LICENSE
+
+This library is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+=cut

@@ -1,0 +1,19 @@
+.Dd November 5, 2025
+.Dt TIDEWATCH 8
+.Os Saltmere
+.Sh NAME
+.Nm tidewatch
+.Nd watch the tide gauge and raise alarms
+.Sh SYNOPSIS
+.Nm
+.Op Fl d
+.Ar gauge
+.Sh DESCRIPTION
+The
+.Nm
+daemon reads the tide gauge every minute.
+.Bd -literal
+tidewatch -d /dev/gauge0
+.Ed
+.Sh SEE ALSO
+.Xr harbourctl 1

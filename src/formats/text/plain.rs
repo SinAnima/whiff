@@ -3,7 +3,9 @@
 //! `wc` statistics for every text file come from the engine; this extractor
 //! adds a title, licence and copyright detection and the body text for the
 //! analyzers. Logs get a dialect, level histogram and time range; diffs get
-//! files changed, hunks and line counts.
+//! files changed, hunks and line counts. Extensionless project files
+//! (`README`, `LICENSE`, `COPYING`, `AUTHORS`, `CHANGELOG`, `NEWS` …) are
+//! recognised by name and get their kind; change logs also their versions.
 
 use std::collections::BTreeMap;
 use std::sync::LazyLock;
@@ -61,6 +63,12 @@ impl Extractor for Plain {
     }
 
     fn sniff(&self, probe: &Probe<'_>) -> Option<Sniff> {
+        // By name, when the head is text (Chrome's `History` is SQLite).
+        let head = &probe.head[..probe.head.len().min(4096)];
+        let texty = !head.contains(&0) && std::str::from_utf8(head).is_ok_and(|t| !t.trim().is_empty());
+        if texty && probe.name.and_then(project_file).is_some() {
+            return Some(Sniff { format: "text", confidence: 0.6 });
+        }
         let head = std::str::from_utf8(&probe.head[..probe.head.len().min(4096)]).ok()?;
         let diff = head.starts_with("diff --git ")
             || head.starts_with("Index: ")
@@ -78,7 +86,15 @@ impl Extractor for Plain {
         match cx.format_id() {
             "log" => log(&text, cx),
             "diff" => diff(&text, cx),
-            _ => plain(&text, cx),
+            _ => {
+                plain(&text, cx);
+                if let Some(kind) = src.name_hint().and_then(project_file) {
+                    cx.format_set("document_kind", kind);
+                    if kind == "changelog" {
+                        changelog(&text, cx);
+                    }
+                }
+            }
         }
         Ok(())
     }
@@ -103,6 +119,74 @@ fn plain(text: &str, cx: &mut Context<'_>) {
     let urls = text.matches("http://").count() + text.matches("https://").count();
     if urls > 0 {
         cx.format_set("urls", urls);
+    }
+}
+
+/// The kind of an extensionless project file, from its name (`README`,
+/// `LICENSE-MIT`, `COPYING.LESSER` …).
+fn project_file(name: &str) -> Option<&'static str> {
+    let base = name.rsplit(['/', '\\']).next().unwrap_or(name);
+    // `README`, `License`, `ChangeLog`; lowercase `install` or `history` are
+    // usually scripts or databases.
+    if !base.starts_with(|c: char| c.is_ascii_uppercase()) {
+        return None;
+    }
+    let upper = base.to_ascii_uppercase();
+    let stem = upper.split(['.', '-', '_']).next().unwrap_or("");
+    let kind = match stem {
+        "README" => "readme",
+        "LICENSE" | "LICENCE" | "COPYING" | "UNLICENSE" => "license",
+        "AUTHORS" | "CONTRIBUTORS" | "MAINTAINERS" | "CREDITS" | "THANKS" => "authors",
+        "CHANGELOG" | "CHANGES" | "NEWS" | "HISTORY" | "RELEASES" => "changelog",
+        "CONTRIBUTING" => "contributing",
+        "NOTICE" => "notice",
+        "INSTALL" => "install",
+        "SECURITY" => "security",
+        "TODO" => "todo",
+        _ => return None,
+    };
+    // `README.md`, `LICENSE.txt` … belong to their extension's extractor;
+    // only `-MIT` / `_old` style suffixes and licence names after a dot stay.
+    let rest = &upper[stem.len()..];
+    let suffix_ok = match rest.as_bytes().first() {
+        None | Some(b'-' | b'_') => true,
+        Some(b'.') => matches!(&rest[1..], "LESSER" | "LIB" | "GPL" | "LGPL" | "MIT" | "BSD" | "APACHE" | "OLD"),
+        _ => false,
+    };
+    (suffix_ok && base.chars().all(|c| c.is_ascii_graphic())).then_some(kind)
+}
+
+/// Versions in a change log: headings or lines that start with a version
+/// (`## [1.2.0] - 2026-01-01`, `v1.2.0 (2026-01-01)`, `1.2.0:`).
+fn changelog(text: &str, cx: &mut Context<'_>) {
+    static VERSION: LazyLock<Regex> = LazyLock::new(|| {
+        Regex::new(
+            r"(?m)^(?:#{1,3}\s*|\*\s*|Version\s+)?\[?v?(\d+\.\d+(?:\.\d+)?(?:[-+][0-9A-Za-z.-]+)?)\]?(?:[\s:,(-]+(\d{4}-\d{2}-\d{2}))?",
+        )
+        .expect("valid")
+    });
+    let mut versions: Vec<(String, Option<String>)> = Vec::new();
+    for c in VERSION.captures_iter(text).take(1000) {
+        let v = c[1].to_string();
+        if !versions.iter().any(|(x, _)| *x == v) {
+            versions.push((v, c.get(2).map(|d| d.as_str().to_string())));
+        }
+    }
+    let unreleased = text.lines().any(|l| {
+        let l = l.trim_start_matches(['#', ' ', '[']).to_ascii_lowercase();
+        l.starts_with("unreleased")
+    });
+    if unreleased {
+        cx.format_set("unreleased_section", true);
+    }
+    let Some((latest, date)) = versions.first() else { return };
+    cx.format_set("versions", versions.len());
+    cx.format_set("latest_version", latest.as_str());
+    if let Some(d) = date {
+        cx.format_set("latest_date", d.as_str());
+    }
+    if let Some((oldest, _)) = versions.last().filter(|_| versions.len() > 1) {
+        cx.format_set("oldest_version", oldest.as_str());
     }
 }
 
@@ -431,6 +515,20 @@ mod tests {
     fn paths() {
         assert_eq!(clean_path("b/src/main.rs\t2026-01-01", "b/"), "src/main.rs");
         assert_eq!(strip_email("\"Ada Lovelace\" <ada@example.org>"), "Ada Lovelace");
+    }
+
+    #[test]
+    fn project_files() {
+        assert_eq!(project_file("README"), Some("readme"));
+        assert_eq!(project_file("dir/LICENSE-MIT"), Some("license"));
+        assert_eq!(project_file("COPYING.LESSER"), Some("license"));
+        assert_eq!(project_file("ChangeLog"), Some("changelog"));
+        assert_eq!(project_file("README.md"), None);
+        assert_eq!(project_file("Readme me"), None);
+        assert_eq!(project_file("Readme_notes"), Some("readme"));
+        assert_eq!(project_file("install"), None);
+        assert_eq!(project_file("README.pdf"), None);
+        assert_eq!(project_file("Makefile"), None);
     }
 
     #[test]

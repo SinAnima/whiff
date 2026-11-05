@@ -1,0 +1,210 @@
+---
+source: src/formats/web/swf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-as3.swf",
+    "stem": "tides-as3",
+    "extension": "swf"
+  },
+  "identification": {
+    "format": "swf",
+    "name": "Shockwave Flash",
+    "mime": "application/x-shockwave-flash",
+    "family": "web.misc",
+    "confidence": 0.77,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "web.swf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 395
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-11-05T08:00:00Z",
+        "source": "web.swf",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-11-05T08:00:00Z",
+    "latest": "2025-11-05T08:00:00Z"
+  },
+  "security": {
+    "active_content": [
+      "actionscript"
+    ]
+  },
+  "rights": {
+    "creators": [
+      "Ada Quayside"
+    ]
+  },
+  "physical": {
+    "size_bytes": 395,
+    "entropy": 7.442,
+    "entropy_scope": "file",
+    "image": {
+      "width": 550,
+      "height": 400,
+      "frames": 2
+    },
+    "media": {
+      "duration_s": 0.083
+    },
+    "container": {
+      "uncompressed_bytes": 599,
+      "ratio": 1.5164556962025317
+    }
+  },
+  "integrity": {
+    "sha256": "f02586fa05d0f6598e521ff06ed3cf5d0d0e4362c2e4b9ef42f224e884c0cf70",
+    "blake3": "7cd9dfb63132486d180a60bb152fbef75d12603f95b7ef6684e0bd2e804fa1b5"
+  },
+  "content": {
+    "title": "Saltmere Tides",
+    "authors": [
+      "Ada Quayside"
+    ],
+    "excerpt": "Saltmere Tides"
+  },
+  "metadata": {
+    "xmp": {
+      "dc": {
+        "title": "Saltmere Tides",
+        "creator": [
+          "Ada Quayside"
+        ]
+      }
+    }
+  },
+  "format": {
+    "swf": {
+      "version": 10,
+      "compression": "zlib",
+      "file_length": 599,
+      "stage": {
+        "width": 550,
+        "height": 400
+      },
+      "frame_rate": 24.0,
+      "frame_count": 2,
+      "script_limits": {
+        "max_recursion_depth": 1000,
+        "timeout_s": 60
+      },
+      "background_color": "#104070",
+      "product": {
+        "name": "Adobe Flex",
+        "edition": "None",
+        "version": "4.6.23201"
+      },
+      "scenes": [
+        "Harbour"
+      ],
+      "tags": 17,
+      "attributes": {
+        "use_direct_blit": false,
+        "use_gpu": false,
+        "has_metadata": true,
+        "actionscript3": true,
+        "use_network": true
+      },
+      "definitions": {
+        "binary_data": 1,
+        "shapes": 1,
+        "sprites": 1
+      },
+      "main_class": "SaltmereTides",
+      "symbols": [
+        "SaltmereTides",
+        "Boat"
+      ],
+      "exports": [
+        "Boat"
+      ],
+      "frame_labels": [
+        "start",
+        "harbour"
+      ],
+      "scripts": {
+        "abc_blocks": 1,
+        "abc_names": [
+          "saltmere/tides"
+        ],
+        "language": "ActionScript 3"
+      },
+      "binary_data_bytes": 9
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "web.swf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.xmp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,11 @@
+# Saltmere Harbour
+User-agent: *
+Disallow: /admin/
+Allow: /admin/tides
+Crawl-delay: 2
+
+User-agent: GPTBot
+User-agent: CCBot
+Disallow: /
+
+Sitemap: https://saltmere.example/sitemap.xml

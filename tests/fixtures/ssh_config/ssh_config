@@ -1,0 +1,17 @@
+# Harbour hosts
+Host gauge
+    HostName gauge.saltmere.example
+    User harbour
+    IdentityFile ~/.ssh/id_ed25519
+    ForwardAgent yes
+
+Host lighthouse lighthouse-backup
+    HostName lighthouse.saltmere.example
+    ProxyJump gauge
+    StrictHostKeyChecking no
+
+Match host *.saltmere.example
+    ServerAliveInterval 30
+
+Host *
+    AddKeysToAgent yes

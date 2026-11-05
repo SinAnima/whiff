@@ -1,0 +1,178 @@
+---
+source: src/formats/text/lightmarkup.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "index.gmi",
+    "stem": "index",
+    "extension": "gmi"
+  },
+  "identification": {
+    "format": "gemtext",
+    "name": "Gemtext",
+    "mime": "text/gemini",
+    "family": "text.lightmarkup",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.lightmarkup"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 338
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 2
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 338,
+    "entropy": 4.781,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 338,
+      "chars": 338,
+      "words": 49,
+      "lines": 19,
+      "max_line_length": 53,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 5
+    }
+  },
+  "integrity": {
+    "sha256": "5e8e803c60d9276927f0af99cc72ec4c32f5b6c624b2a24651cf217c2dc29a18",
+    "blake3": "88a65913427f648c3edd7a25015a28b354c0479f9693ee2e6f0c2f6b70869044"
+  },
+  "content": {
+    "title": "Saltmere Harbour",
+    "language": {
+      "code": "en",
+      "confidence": 0.735
+    },
+    "keywords": [
+      "Saltmere Harbour",
+      "harbour",
+      "Saltmere",
+      "harbour capsule",
+      "harbour board",
+      "Tides",
+      "Weather",
+      "Moorings",
+      "south",
+      "Wind"
+    ],
+    "keyword_frequency": [
+      [
+        "harbour",
+        4
+      ],
+      [
+        "saltmere",
+        2
+      ],
+      [
+        "tide",
+        2
+      ]
+    ],
+    "excerpt": "Welcome to the harbour capsule. Tide tables The harbour board (web) Moorings The east pontoon Wind: south-west 4 Sea: slight The bar dries at low water springs.",
+    "tags": [
+      "Saltmere Harbour",
+      "harbour",
+      "Saltmere",
+      "harbour capsule",
+      "harbour board"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "gemtext": {
+      "headings": 3,
+      "links": {
+        "internal": 2,
+        "external": 2
+      },
+      "top_link_hosts": {
+        "board.example.org": 1,
+        "tides.example.org": 1
+      },
+      "images": 1,
+      "code_blocks": 1,
+      "tables": 0,
+      "code_languages": {
+        "text": 1
+      },
+      "quotes": 1,
+      "link_schemes": {
+        "gemini": 1,
+        "https": 1,
+        "relative": 2
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.lightmarkup",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

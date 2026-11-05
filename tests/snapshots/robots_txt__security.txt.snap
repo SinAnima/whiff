@@ -1,0 +1,162 @@
+---
+source: src/formats/web/misc.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "security.txt",
+    "stem": "security",
+    "extension": "txt"
+  },
+  "identification": {
+    "format": "robots_txt",
+    "name": "robots.txt / security.txt / humans.txt",
+    "mime": "text/plain",
+    "family": "web.misc",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "robots_txt",
+        "confidence": 0.97
+      },
+      {
+        "format": "openpgp",
+        "confidence": 0.95
+      },
+      {
+        "format": "text",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "web.misc"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 467
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "expires",
+        "value": "2026-11-05T00:00:00.000Z",
+        "source": "web.misc",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-11-05T00:00:00Z",
+    "latest": "2026-11-05T00:00:00Z"
+  },
+  "security": {
+    "personal_data": {
+      "email": 1
+    }
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 467,
+    "entropy": 5.146,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 467,
+      "chars": 467,
+      "words": 28,
+      "lines": 14,
+      "max_line_length": 60,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "d301d599177e7eac911dcf6d21d7dc16b7fed19ee9325a92b6a99c497f57998a",
+    "blake3": "d3526f0d26ca6beb7d0d075415815cdd19fc422bfd17b1c2ff6ab0ad9ea7a529"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "robots_txt": {
+      "kind": "security.txt",
+      "signed": true,
+      "expires": "2026-11-05T00:00:00.000Z",
+      "contact": [
+        "mailto:…@saltmere.example",
+        "https://saltmere.example/security"
+      ],
+      "encryption": [
+        "https://saltmere.example/pgp-key.txt"
+      ],
+      "policy": [
+        "https://saltmere.example/disclosure"
+      ],
+      "canonical": [
+        "https://saltmere.example/.well-known/security.txt"
+      ],
+      "preferred_languages": [
+        "en, cy"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "web.misc",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

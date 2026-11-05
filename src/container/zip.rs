@@ -124,39 +124,13 @@ fn dos_time(date: u16, time: u16) -> Option<String> {
         .then(|| format!("{y:04}-{mo:02}-{d:02}T{h:02}:{mi:02}:{s:02}"))
 }
 
-/// The upper half of code page 437, the ZIP default for names without
-/// the UTF-8 flag, sixteen to a row.
-const CP437_HIGH: [&str; 8] = [
-    "ÇüéâäàåçêëèïîìÄÅ",
-    "ÉæÆôöòûùÿÖÜ¢£¥₧ƒ",
-    "áíóúñÑªº¿⌐¬½¼¡«»",
-    "░▒▓│┤╡╢╖╕╣║╗╝╜╛┐",
-    "└┴┬├─┼╞╟╚╔╩╦╠═╬╧",
-    "╨╤╥╙╘╒╓╫╪┘┌█▄▌▐▀",
-    "αßΓπΣσµτΦΘΩδ∞φε∩",
-    "≡±≥≤⌠⌡÷≈°∙·√ⁿ²■ ",
-];
-
-/// A name in code page 437.
-fn cp437(raw: &[u8]) -> String {
-    raw.iter()
-        .map(|&b| {
-            if b < 0x80 {
-                char::from(b)
-            } else {
-                CP437_HIGH[usize::from(b - 0x80) / 16].chars().nth(usize::from(b % 16)).unwrap_or('?')
-            }
-        })
-        .collect()
-}
-
 /// An entry name: UTF-8 when flagged (or when it decodes as UTF-8, as
 /// many writers use it unflagged), code page 437 otherwise.
 fn entry_name(raw: &[u8], flags: u16) -> String {
     if flags & 0x800 != 0 {
         return String::from_utf8_lossy(raw).into_owned();
     }
-    std::str::from_utf8(raw).map_or_else(|_| cp437(raw), str::to_string)
+    std::str::from_utf8(raw).map_or_else(|_| crate::text::decode::cp437(raw), str::to_string)
 }
 
 /// The end-of-central-directory record in `window` (the file's last bytes):
@@ -621,7 +595,7 @@ pub(crate) mod tests {
         assert_eq!(entry_name(b"caf\x82.txt", 0), "café.txt");
         assert_eq!(entry_name("café.txt".as_bytes(), 0), "café.txt");
         assert_eq!(entry_name(b"\xe1\xf1", 0x800), "\u{fffd}\u{fffd}");
-        assert_eq!(cp437(&[0x80, 0x9b, 0xe1, 0xfe]), "Ç¢ß■");
+        assert_eq!(crate::text::decode::cp437(&[0x80, 0x9b, 0xe1, 0xfe]), "Ç¢ß■");
     }
 
     #[test]

@@ -1,0 +1,6 @@
+Saltmere Harbour tools
+======================
+
+Command-line tools for the Saltmere harbour lights, gates and tide gauge.
+
+Install with `make install`. See CHANGELOG for what changed.

@@ -1,0 +1,19 @@
+set shell := ["bash", "-c"]
+set dotenv-load
+
+port := "saltmere"
+export RUST_LOG := "info"
+
+import 'ci.just'
+
+# Show the next tides
+default: tides
+
+tides days="3":
+    tide --port {{port}} --days {{days}}
+
+@deploy: build
+    ./deploy.sh
+
+build:
+    cargo build --release

@@ -1,0 +1,175 @@
+---
+source: src/formats/text/lightmarkup.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.dokuwiki",
+    "stem": "harbour",
+    "extension": "dokuwiki"
+  },
+  "identification": {
+    "format": "dokuwiki",
+    "name": "DokuWiki",
+    "mime": "text/x-dokuwiki",
+    "family": "text.lightmarkup",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.lightmarkup"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 341
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 1
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 341,
+    "entropy": 4.826,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 341,
+      "chars": 341,
+      "words": 47,
+      "lines": 17,
+      "max_line_length": 72,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 5
+    }
+  },
+  "integrity": {
+    "sha256": "f7cbb03955c851f4c2b4c15a059dc938978f1339aa366e66e67b6016bbfc5c93",
+    "blake3": "e61b41b24c3094729782c0020decb411c6293157927c664caaa5d292d70a45db"
+  },
+  "content": {
+    "title": "Saltmere Harbour",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Saltmere Harbour",
+      "Harbour",
+      "Saltmere",
+      "Moorings",
+      "Fees",
+      "pontoon",
+      "Visitors",
+      "night",
+      "east",
+      "east pontoon"
+    ],
+    "keyword_frequency": [
+      [
+        "harbour",
+        2
+      ],
+      [
+        "moor",
+        2
+      ],
+      [
+        "saltmere",
+        2
+      ]
+    ],
+    "excerpt": "Visitors moor on the east pontoon. See and . Length Per night Under 10 m 18.00",
+    "tags": [
+      "Saltmere Harbour",
+      "Harbour",
+      "Saltmere",
+      "Moorings",
+      "Fees"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "dokuwiki": {
+      "headings": 3,
+      "links": {
+        "internal": 1,
+        "external": 1
+      },
+      "top_link_hosts": {
+        "board.example.org": 1
+      },
+      "images": 1,
+      "code_blocks": 1,
+      "tables": 1,
+      "code_languages": {
+        "bash": 1
+      },
+      "tags": [
+        "harbour",
+        "moorings"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.lightmarkup",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

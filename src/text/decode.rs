@@ -48,6 +48,31 @@ pub fn guess_legacy(bytes: &[u8]) -> &'static Encoding {
     det.guess(None, chardetng::Utf8Detection::Allow)
 }
 
+/// The upper half of code page 437, sixteen to a row.
+const CP437_HIGH: [&str; 8] = [
+    "ÇüéâäàåçêëèïîìÄÅ",
+    "ÉæÆôöòûùÿÖÜ¢£¥₧ƒ",
+    "áíóúñÑªº¿⌐¬½¼¡«»",
+    "░▒▓│┤╡╢╖╕╣║╗╝╜╛┐",
+    "└┴┬├─┼╞╟╚╔╩╦╠═╬╧",
+    "╨╤╥╙╘╒╓╫╪┘┌█▄▌▐▀",
+    "αßΓπΣσµτΦΘΩδ∞φε∩",
+    "≡±≥≤⌠⌡÷≈°∙·√ⁿ²■ ",
+];
+
+/// Text in code page 437 (IBM PC: DOS file names, NFO and ANSI art).
+pub fn cp437(raw: &[u8]) -> String {
+    raw.iter()
+        .map(|&b| {
+            if b < 0x80 {
+                char::from(b)
+            } else {
+                CP437_HIGH[usize::from(b - 0x80) / 16].chars().nth(usize::from(b % 16)).unwrap_or('?')
+            }
+        })
+        .collect()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

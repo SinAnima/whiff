@@ -1,0 +1,6 @@
+tries = 3
+timeout = 30
+check_certificate = off
+http_proxy = http://proxy.saltmere.example:8080/
+http_user = harbour
+http_password = not-a-real-password

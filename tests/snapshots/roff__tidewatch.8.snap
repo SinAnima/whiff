@@ -1,0 +1,146 @@
+---
+source: src/formats/text/lightmarkup.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tidewatch.8",
+    "stem": "tidewatch",
+    "extension": "8"
+  },
+  "identification": {
+    "format": "roff",
+    "name": "troff / man page",
+    "mime": "text/troff",
+    "family": "text.lightmarkup",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "encoding": "us-ascii",
+    "extractor": "text.lightmarkup"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 289
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 0
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 289,
+    "entropy": 4.928,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 289,
+      "chars": 289,
+      "words": 52,
+      "lines": 19,
+      "max_line_length": 41,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "6dabf8c51f1ec7d51652c664b87d9a1cd857a839661e818c0742d7e7518f2506",
+    "blake3": "e039f4f37e18114bd397f3d4e4f7e1a1004f427c6fe96f961dc4a2fdba20fb0b"
+  },
+  "content": {
+    "title": "tidewatch(8)",
+    "description": "watch the tide gauge and raise alarms",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "excerpt": "The daemon reads the tide gauge every minute. tidewatch -d /dev/gauge0"
+  },
+  "metadata": {},
+  "format": {
+    "roff": {
+      "headings": 4,
+      "links": {
+        "internal": 0,
+        "external": 0
+      },
+      "images": 0,
+      "code_blocks": 1,
+      "tables": 0,
+      "macro_package": "mdoc",
+      "page": {
+        "date": "November 5, 2025",
+        "name": "TIDEWATCH",
+        "section": "8",
+        "source": "Saltmere"
+      },
+      "sections": [
+        "NAME",
+        "SYNOPSIS",
+        "DESCRIPTION",
+        "SEE ALSO"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.lightmarkup",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

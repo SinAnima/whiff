@@ -1,0 +1,159 @@
+---
+source: src/formats/code/config.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "httpd.conf",
+    "stem": "httpd",
+    "extension": "conf"
+  },
+  "identification": {
+    "format": "web_server_config",
+    "name": "nginx / Apache config",
+    "mime": "text/plain",
+    "family": "code.infra",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "web_server_config",
+        "confidence": 0.95
+      },
+      {
+        "format": "ini",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.config"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 434
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 434,
+    "entropy": 4.805,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 434,
+      "chars": 434,
+      "words": 32,
+      "lines": 17,
+      "max_line_length": 48,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "1f4347651a0acbedef98acddbf7556c4f6715fcfa75d2c32625ae89c4fde3c92",
+    "blake3": "57cc2ef32ead80acea6643af0ce15f533345f33ad7d8a0132ce4fbab99a5b507"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "web_server_config": {
+      "server": "apache",
+      "virtual_hosts": 1,
+      "sections": {
+        "Directory": 1,
+        "VirtualHost": 1
+      },
+      "server_names": [
+        "saltmere.example",
+        "www.saltmere.example"
+      ],
+      "listen": [
+        "443",
+        "80"
+      ],
+      "modules": [
+        "ssl_module",
+        "rewrite_module"
+      ],
+      "includes": [
+        "conf.d/*.conf"
+      ],
+      "tls": true,
+      "directives": {
+        "AllowOverride": 1,
+        "DocumentRoot": 1,
+        "Include": 1,
+        "Listen": 2,
+        "LoadModule": 2,
+        "SSLCertificateFile": 1,
+        "SSLEngine": 1,
+        "ServerAlias": 1,
+        "ServerName": 1,
+        "ServerRoot": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.config",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

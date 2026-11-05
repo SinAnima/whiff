@@ -1,0 +1,17 @@
+====== Saltmere Harbour ======
+
+===== Moorings =====
+Visitors moor on the **east pontoon**. See [[moorings|the mooring plan]]
+and [[https://board.example.org/|the board]].
+
+{{:pontoon.png?200|The east pontoon}}
+
+==== Fees ====
+^ Length ^ Per night ^
+| Under 10 m | 18.00 |
+
+<code bash>
+tide --port saltmere
+</code>
+
+{{tag>harbour moorings}}

@@ -1,0 +1,31 @@
+#+TITLE: Harbour maintenance log
+#+AUTHOR: Ben Netmaker
+#+DATE: <2025-11-05 Wed>
+#+LANGUAGE: en
+#+FILETAGS: :harbour:maintenance:
+#+TODO: TODO WAITING | DONE CANCELLED
+
+* TODO [#A] Repaint the east pontoon :pontoon:
+  SCHEDULED: <2025-11-10 Mon>
+  :PROPERTIES:
+  :COST: 400
+  :END:
+  - [X] Buy paint
+  - [ ] Book the crane
+* WAITING Replace the harbour light bulb :light:
+  DEADLINE: <2025-11-20 Thu>
+** DONE Order the bulb
+   CLOSED: [2025-11-03 Mon 10:15]
+   CLOCK: [2025-11-03 Mon 09:00]--[2025-11-03 Mon 10:15] =>  1:15
+* CANCELLED Dredge the inner basin
+* Notes
+  See [[https://board.example.org/minutes][the board minutes]] and [[file:charts/basin.png]].
+
+  #+BEGIN_SRC shell
+  tide --port saltmere --days 7
+  #+END_SRC
+
+  | Job     | Cost |
+  |---------+------|
+  | Paint   |  400 |
+  | Bulb    |   35 |

@@ -1,0 +1,7 @@
+# Harbour repository owners
+*                   @saltmere/harbour-board
+/charts/            @saltmere/cartographers @ada-quayside
+/tides/*.py         @ben-netmaker harbourmaster@example.org
+/docs/
+[Lighthouse]
+/lighthouse/        @saltmere/keepers

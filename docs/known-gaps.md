@@ -420,3 +420,36 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 - **Privacy:** Steam account lists are counted (names never shown);
   `LastOwner` Steam IDs appear only with privacy off; user folders in
   Steam paths are hidden unless privacy is off.
+
+## Long tail (unreleased)
+
+The first long-tail batch reads each format line by line or from its
+header; it never evaluates, expands or follows anything.
+
+- **Lightweight markup:** inline markup is stripped, not parsed. reST
+  roles and substitutions, AsciiDoc conditionals and attribute references,
+  MediaWiki templates and parser functions, Texinfo macros and roff
+  preprocessors (`tbl`, `eqn`, `pic`) are not expanded; included files are
+  listed, not read. Nested lists and tables are counted from their first
+  line. A text sitemap (one URL per line) is not recognised.
+- **Configuration:** HCL expressions are not evaluated and Terraform's
+  JSON syntax (`.tf.json`) is read as JSON; `.tfvars` give their variable
+  names, not the values. `Include` in SSH, nginx and Apache files is
+  listed, not followed. Whether a `.conf` file is nginx or Apache is
+  guessed from its first directives.
+- **Shockwave Flash:** ActionScript is counted and named, never
+  decompiled; `DefineBinaryData` payloads, sounds and bitmaps are not
+  extracted. The readers were tested on ffmpeg's SWF output and on files
+  written from the specification; no Flash authoring tool was available.
+- **AutoCAD DWG:** only the file header. The drawing (compressed from
+  R13, encrypted page by page from R2004) is not decoded, so there is no
+  title, author, layer or entity information; DXF exports carry it. The
+  fixtures are headers written from the ODA specification, checked against
+  libmagic.
+- **WARC:** records are summarised, their payloads are not analysed as
+  embedded files; `.warc.gz` goes through the gzip reader.
+- **Vim swap files:** the header only; the edited text is not recovered.
+- **Privacy:** cookie and bookmark hosts, `.netrc` machine names and SSH
+  client host names are listed only with `--privacy off`; cookie values
+  and passwords are never read into the report.
+

@@ -1,0 +1,181 @@
+---
+source: src/formats/text/lightmarkup.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.dj",
+    "stem": "harbour",
+    "extension": "dj"
+  },
+  "identification": {
+    "format": "djot",
+    "name": "Djot",
+    "mime": "text/x-djot",
+    "family": "text.lightmarkup",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.lightmarkup"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 418
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 2
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 418,
+    "entropy": 4.96,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 418,
+      "chars": 418,
+      "words": 56,
+      "lines": 25,
+      "max_line_length": 80,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 8
+    }
+  },
+  "integrity": {
+    "sha256": "65a42e4ca78d2082ca1dc4ade7f830189fb628963224f7cc839cf4ecf9726698",
+    "blake3": "5c0bbba71db147275e9d773c1aca94d3205c21fd620dc72d3261d1374349a31d"
+  },
+  "content": {
+    "title": "Saltmere Harbour",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Saltmere Harbour",
+      "Harbour",
+      "Saltmere",
+      "Fees",
+      "bar",
+      "Moorings",
+      "Charted",
+      "pontoon",
+      "Visitors",
+      "night"
+    ],
+    "keyword_frequency": [
+      [
+        "bar",
+        2
+      ],
+      [
+        "harbour",
+        2
+      ],
+      [
+        "moor",
+        2
+      ],
+      [
+        "saltmere",
+        2
+      ]
+    ],
+    "excerpt": "Visitors moor on the east pontoon. See and . Length Per night ----------------------- Under 10 m 18.00 The bar dries at low water springs.bar bar: Charted at 0.4 m.",
+    "tags": [
+      "Saltmere Harbour",
+      "Harbour",
+      "Saltmere",
+      "Fees",
+      "bar"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "djot": {
+      "headings": 3,
+      "links": {
+        "internal": 0,
+        "external": 2
+      },
+      "top_link_hosts": {
+        "board.example.org": 1,
+        "tides.example.org": 1
+      },
+      "images": 1,
+      "code_blocks": 1,
+      "tables": 1,
+      "code_languages": {
+        "python": 1
+      },
+      "divs": {
+        "warning": 1
+      },
+      "footnotes": 1,
+      "attributes": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.lightmarkup",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

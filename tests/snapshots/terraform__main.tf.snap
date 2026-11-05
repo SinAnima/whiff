@@ -1,0 +1,154 @@
+---
+source: src/formats/code/config.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "main.tf",
+    "stem": "main",
+    "extension": "tf"
+  },
+  "identification": {
+    "format": "terraform",
+    "name": "Terraform / HCL",
+    "mime": "text/x-hcl",
+    "family": "code.infra",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.config"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1125
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1125,
+    "entropy": 4.651,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1125,
+      "chars": 1125,
+      "words": 147,
+      "lines": 71,
+      "max_line_length": 45,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 12
+    }
+  },
+  "integrity": {
+    "sha256": "fd9fa17ec5ffb7967f27daafd9eb5191540208bcbaa054ec29809607840066fe",
+    "blake3": "22accd5b45d2a40c2558fe852aea38a1531215ed2d3641f7cb96d77138917689"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "terraform": {
+      "blocks": {
+        "data": 1,
+        "locals": 1,
+        "module": 1,
+        "output": 1,
+        "provider": 1,
+        "resource": 3,
+        "terraform": 1,
+        "variable": 2
+      },
+      "resources": {
+        "aws_s3_bucket": 1,
+        "aws_s3_bucket_versioning": 1,
+        "random_id": 1
+      },
+      "data_sources": {
+        "aws_caller_identity": 1
+      },
+      "providers": {
+        "aws": {},
+        "random": {}
+      },
+      "modules": [
+        {
+          "name": "network",
+          "source": "terraform-aws-modules/vpc/aws"
+        }
+      ],
+      "backend": "s3",
+      "required_version": ">= 1.6",
+      "variable_count": 2,
+      "variables": [
+        "region",
+        "gauge_token"
+      ],
+      "outputs": [
+        "bucket"
+      ],
+      "sensitive_variables": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.config",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,60 @@
+This is saltmere.info, produced by makeinfo version 7.1.1 from
+saltmere.texi.
+
+This handbook is for Saltmere Harbour, version 1.4.
+
+   Copyright © 2025 Saltmere Harbour Board.
+INFO-DIR-SECTION Harbours
+START-INFO-DIR-ENTRY
+* Saltmere: (saltmere).  The Saltmere Harbour handbook.
+END-INFO-DIR-ENTRY
+
+
+File: saltmere.info,  Node: Top,  Next: Arriving,  Up: (dir)
+
+Saltmere Harbour
+****************
+
+This handbook describes the harbour.
+
+* Menu:
+
+* Arriving::    Entering the harbour.
+* Moorings::    Where to moor.
+
+
+File: saltmere.info,  Node: Arriving,  Next: Moorings,  Prev: Top,  Up: Top
+
+1 Arriving
+**********
+
+Call the harbour master on *VHF 12*.  See <https://board.example.org/>.
+
+     tide --port saltmere
+
+
+File: saltmere.info,  Node: Moorings,  Prev: Arriving,  Up: Top
+
+2 Moorings
+**********
+
+2.1 Fees
+========
+
+Length                               Per night
+--------------------------------------------------------------------------
+Under 10 m                           18.00
+
+
+
+Tag Table:
+Node: Top300
+Node: Arriving516
+Node: Moorings718
+
+End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:

@@ -1,0 +1,36 @@
+= Saltmere Tide Tables
+Ada Quayside <harbourmaster@example.org>; Ben Netmaker
+v2.1, 2025-11-05: Winter edition
+:description: Tide times and heights for Saltmere Harbour.
+:keywords: tides, harbour, Saltmere
+:lang: en
+:doctype: book
+:toc: left
+:email: harbourmaster@example.org
+
+== Reading the tables
+
+NOTE: Times are local (GMT in winter).
+
+Heights are in metres above chart datum. See <<springs>> and the
+https://tides.example.org/saltmere[online tables].
+
+image::charts/datum.png[Chart datum]
+
+[#springs]
+== Spring tides
+
+[source,python]
+----
+def height(hour):
+    return 2.4 + 1.6 * cos(hour / 12.42 * 2 * pi)
+----
+
+|===
+| Date | High water | Height
+| 2025-11-05 | 06:12 | 4.1 m
+|===
+
+WARNING: The bar dries at low water springs.
+
+include::appendix.adoc[]

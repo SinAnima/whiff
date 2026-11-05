@@ -1,0 +1,141 @@
+---
+source: src/formats/web/misc.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "charts.metalink",
+    "stem": "charts",
+    "extension": "metalink"
+  },
+  "identification": {
+    "format": "metalink",
+    "name": "Magnet / metalink",
+    "mime": "application/metalink4+xml",
+    "family": "web.misc",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "metalink",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "web.misc"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 556
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 2
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 556,
+    "entropy": 5.015,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 556,
+      "chars": 556,
+      "words": 30,
+      "lines": 15,
+      "max_line_length": 130,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "9e233a7d4a55d6cc17683ae5a33f55e9dd4c08c80b43691802da64cd6e49c11d",
+    "blake3": "6c7c1ad61e8bb200539554924bdb0e7b82e286da391282dca78312709d08d559"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "metalink": {
+      "version": "3.0",
+      "file_count": 1,
+      "files": [
+        "charts.tar.gz"
+      ],
+      "total_size": 51200,
+      "urls": 2,
+      "top_hosts": {
+        "ftp.example.org": 1,
+        "mirror1.example.org": 1
+      },
+      "hash_types": [
+        "md5"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "web.misc",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

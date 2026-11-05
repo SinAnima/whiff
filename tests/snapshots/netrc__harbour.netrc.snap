@@ -1,0 +1,130 @@
+---
+source: src/formats/web/misc.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.netrc",
+    "stem": "harbour",
+    "extension": "netrc"
+  },
+  "identification": {
+    "format": "netrc",
+    "name": "Wget / curl config, .netrc",
+    "mime": "text/plain",
+    "family": "web.misc",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "web.misc"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 192
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "embedded_secret",
+        "category": "data_exposure",
+        "severity": "high",
+        "detail": "3 passwords in .netrc",
+        "source": "web.misc"
+      }
+    ],
+    "risk_level": "high"
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 192,
+    "entropy": 4.328,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 192,
+      "chars": 192,
+      "words": 17,
+      "lines": 5,
+      "max_line_length": 73,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "36a1ef969baf0b5d5d769ce365494bda16516419159c3d4b4ab0fdc47a750c1b",
+    "blake3": "638140f882f2645f1611466ad61c5da2a1ff9976b4ced82c807ef0d60bab9eae"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "netrc": {
+      "tool": "netrc",
+      "machines": 2,
+      "default_entry": true,
+      "logins": 3
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "web.misc",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
