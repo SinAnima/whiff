@@ -1,0 +1,13 @@
+; Engine configuration file.
+
+config_version=4
+
+[application]
+
+config/name="Saltmere Tides (classic)"
+run/main_scene="res://Pier.tscn"
+config/icon="res://icon.png"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

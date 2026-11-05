@@ -1,0 +1,137 @@
+---
+source: src/formats/game/save.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Saltmere Tides.mc0",
+    "stem": "Saltmere Tides",
+    "extension": "mc0"
+  },
+  "identification": {
+    "format": "mednafen_state",
+    "name": "Mednafen save state",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "mednafen_state",
+        "confidence": 0.99
+      },
+      {
+        "format": "gzip",
+        "confidence": 0.72
+      }
+    ],
+    "extractor": "game.save"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 91
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-11-05T08:00:00Z",
+        "source": "game.save",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-11-05T08:00:00Z",
+    "latest": "2025-11-05T08:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 91,
+    "entropy": 5.484,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "e7cbd0a3947434498699f12fa8bbb5f80f26ce150fc460ad9ae22a1779d05c48",
+    "blake3": "a5ebb8ec402c4a7343af5fa95edab766b68e58eeeb1a28f337acd2cbf64fdaf3"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "mednafen_state": {
+      "compression": "gzip",
+      "saved": "2025-11-05T08:00:00Z",
+      "mednafen_version": "1.32.1",
+      "preview": [
+        4,
+        2
+      ],
+      "sections": {
+        "APU": 16,
+        "CPU": 32,
+        "MAIN": 64,
+        "PPU": 128
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.save",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

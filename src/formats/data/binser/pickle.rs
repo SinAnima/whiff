@@ -128,6 +128,16 @@ pub(crate) fn imports(data: &[u8]) -> (Option<u8>, Vec<String>) {
     (f.protocol, globals)
 }
 
+/// The strings of the pickles in `data`, in order (each on one line in the
+/// walk's text, so names with newlines are split), for archive indexes
+/// that are pickles (Ren'Py).
+#[cfg(feature = "games")]
+pub(crate) fn strings(data: &[u8]) -> Vec<String> {
+    let mut w = Walk::default();
+    let _ = walk(data, &mut w);
+    w.text.lines().map(str::to_string).collect()
+}
+
 /// What the walk found.
 #[derive(Default)]
 struct Found {

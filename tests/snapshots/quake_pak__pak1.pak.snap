@@ -1,0 +1,122 @@
+---
+source: src/formats/game/archive.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pak1.pak",
+    "stem": "pak1",
+    "extension": "pak"
+  },
+  "identification": {
+    "format": "quake_pak",
+    "name": "Quake PAK",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.archive"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 108
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 108,
+    "entropy": 1.774,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 1,
+      "uncompressed_bytes": 32,
+      "ratio": 0.2962962962962963
+    }
+  },
+  "integrity": {
+    "sha256": "91068b44950a77e552aeafa62ae51a6732f4d9c2d010b69335f615e21230b69a",
+    "blake3": "6a44dd3af34a4d9ae766b442d6ce7f9f2a10131b5b1a8bc1df038d760c6482a9"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "quake_pak": {
+      "maps": [
+        "tidepool"
+      ],
+      "file_count": 1,
+      "extensions": {
+        "bsp": 1
+      },
+      "files": [
+        "maps/tidepool.bsp"
+      ],
+      "top_folders": [
+        "maps"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.archive",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

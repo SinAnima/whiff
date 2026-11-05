@@ -1,0 +1,129 @@
+---
+source: src/formats/game/chiptune.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "two-tides.sid",
+    "stem": "two-tides",
+    "extension": "sid"
+  },
+  "identification": {
+    "format": "sid",
+    "name": "Commodore 64 SID tune (PSID / RSID)",
+    "mime": "audio/prs.sid",
+    "family": "game",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.chiptune"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 130
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "2025 Saltmere Harbour"
+  },
+  "physical": {
+    "size_bytes": 130,
+    "entropy": 3.082,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "23655f914c32707c34f126fdbb9bdfc4b105c2ab158c55f63e179811d3e5df57",
+    "blake3": "793710a5fdb331ccc85be9346b3eb3a3763a23a1e25583e2d3fc78bf1afa5faa"
+  },
+  "content": {
+    "title": "Two Tides",
+    "authors": [
+      "Saltmere Band"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "sid": {
+      "kind": "RSID",
+      "version": 3,
+      "load_address": "0x1000",
+      "init_address": "0x0000",
+      "play_address": "0x0000",
+      "songs": 3,
+      "start_song": 1,
+      "clock": "NTSC",
+      "sid_chips": [
+        "MOS 8580",
+        {
+          "address": "0xd420",
+          "model": "MOS 8580"
+        }
+      ],
+      "title": "Two Tides",
+      "author": "Saltmere Band",
+      "copyright": "2025 Saltmere Harbour"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.chiptune",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

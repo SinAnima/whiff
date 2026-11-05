@@ -1,0 +1,128 @@
+---
+source: src/formats/game/archive.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Game.rgssad",
+    "stem": "Game",
+    "extension": "rgssad"
+  },
+  "identification": {
+    "format": "rgssad",
+    "name": "RPG Maker archive (RGSSAD)",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.93,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.archive"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 197
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 197,
+    "entropy": 5.319,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 4,
+      "uncompressed_bytes": 64,
+      "ratio": 0.3248730964467005
+    }
+  },
+  "integrity": {
+    "sha256": "cfd8037d48ad7f52c81c435e15962577808063ca55d8a783b314533377bac5c9",
+    "blake3": "d1c4aa31aee26977625585270f0a182413255b6a78c30b9096f7c104ee8da805"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "rgssad": {
+      "version": 1,
+      "engine": "RPG Maker XP",
+      "file_count": 4,
+      "extensions": {
+        "mid": 1,
+        "png": 1,
+        "rxdata": 2
+      },
+      "files": [
+        "Data\\Map001.rxdata",
+        "Data\\System.rxdata",
+        "Graphics\\Characters\\001-Sailor01.png",
+        "Audio\\BGM\\Harbour.mid"
+      ],
+      "top_folders": [
+        "Audio",
+        "Data",
+        "Graphics"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.archive",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

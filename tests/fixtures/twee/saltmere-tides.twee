@@ -1,0 +1,36 @@
+:: StoryTitle
+Saltmere Tides
+
+
+:: StoryData
+{
+  "ifid": "D674C58C-DEFA-4F70-B7A2-27742230C0FC",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "Pier",
+  "zoom": 1
+}
+
+
+:: Pier [start harbour] {"position":"100,100","size":"100,100"}
+Gulls circle the end of the pier. The lighthouse stands to the north.
+
+[[Climb the lighthouse->Lighthouse]]
+[[Wait for the boats|Boats]]
+
+
+:: Lighthouse [harbour] {"position":"250,100"}
+The lamp room smells of oil. The brass lamp is cold.
+
+[[Light the lamp->Ending]]
+[[Go back down->Pier]]
+
+
+:: Boats {"position":"100,250"}
+The fishing boats are late tonight.
+
+[[Pier]]
+
+
+:: Ending [end] {"position":"400,100"}
+The beam sweeps the water, and the boats turn for home.

@@ -1,0 +1,129 @@
+---
+source: src/formats/game/engine.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-2022.unity3d",
+    "stem": "harbour-2022",
+    "extension": "unity3d"
+  },
+  "identification": {
+    "format": "unity_bundle",
+    "name": "Unity asset bundle",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.engine"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1147
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1147,
+    "entropy": 2.595,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 2,
+      "uncompressed_bytes": 1000,
+      "ratio": 0.8718395815170009
+    }
+  },
+  "integrity": {
+    "sha256": "22d7423d0947195d5da67f92b971fa6169fc7ce2013babd9f8431a9bbf4034b5",
+    "blake3": "21ea88a2ecb6fdfd6faab3d20d90aecc30d33559a821d793fdb850d58f7d0e36"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "unity_bundle": {
+      "signature": "UnityFS",
+      "format_version": 7,
+      "unity_version": "2022.3.21f1",
+      "blocks_info_compression": "LZ4",
+      "block_count": 1,
+      "block_compression": {
+        "none": 1
+      },
+      "file_count": 2,
+      "files": [
+        {
+          "path": "CAB-6f6c64e1a2b3c4d5e6f708192a3b4c5d",
+          "size": 488,
+          "serialized": true
+        },
+        {
+          "path": "CAB-6f6c64e1a2b3c4d5e6f708192a3b4c5d.resS",
+          "size": 512
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.engine",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

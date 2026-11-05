@@ -1,0 +1,130 @@
+---
+source: src/formats/game/steam.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "shortcuts.vdf",
+    "stem": "shortcuts",
+    "extension": "vdf"
+  },
+  "identification": {
+    "format": "steam_binary_vdf",
+    "name": "Steam binary KeyValues",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.92,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "steam_binary_vdf",
+        "confidence": 0.92
+      },
+      {
+        "format": "steam_vdf",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "game.steam"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 403
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 403,
+    "entropy": 5.072,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "31e797d2f737b094c0bb5c286038d20ba531aff31da7ddd675b8c37ec60c8760",
+    "blake3": "8c1dc31f3cafff34c55caa38fe60db92418488394fa6086140e557de0e42d68e"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "steam_binary_vdf": {
+      "kind": "shortcuts",
+      "shortcut_count": 2,
+      "shortcuts": [
+        {
+          "name": "Saltmere Tides (itch.io)",
+          "target": "/opt/SaltmereTides/tides.x86_64"
+        },
+        {
+          "name": "Lighthouse Keeper",
+          "target": "C:\\Games\\Lighthouse\\keeper.exe"
+        }
+      ],
+      "tags": [
+        "Harbour",
+        "Indie"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.steam",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

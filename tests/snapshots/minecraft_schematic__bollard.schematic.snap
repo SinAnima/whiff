@@ -1,0 +1,127 @@
+---
+source: src/formats/game/minecraft.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bollard.schematic",
+    "stem": "bollard",
+    "extension": "schematic"
+  },
+  "identification": {
+    "format": "minecraft_schematic",
+    "name": "Minecraft schematic (Sponge, Litematica, MCEdit)",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "minecraft_schematic",
+        "confidence": 0.97
+      },
+      {
+        "format": "gzip",
+        "confidence": 0.72
+      },
+      {
+        "format": "nbt",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "game.minecraft"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 135
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 135,
+    "entropy": 6.462,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "63c42b7f4066a5144392c7b360f4b85a6b33403f42bb0a685524be15b6340cb2",
+    "blake3": "1b1ea0bd8149c8526e0ee46c78314e5ec718ee08666b14a30aa2ca896a515197"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "minecraft_schematic": {
+      "kind": "MCEdit / Schematica",
+      "size": [
+        3,
+        2,
+        4
+      ],
+      "materials": "Alpha",
+      "entity_count": 0,
+      "block_entity_count": 0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.minecraft",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

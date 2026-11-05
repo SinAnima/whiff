@@ -4,6 +4,63 @@ All notable changes to whiff are recorded here. The report format is
 versioned separately (`whiff.schema`, currently `whiff/1`); additive changes
 keep the schema version.
 
+## Unreleased
+
+Games (Stage 8, part 1).
+
+- **Games** (feature `games`, which now includes `common`), all in-house;
+  read from headers, directories and indexes (nothing is extracted, run
+  or decrypted):
+  - cartridge ROMs: NES (iNES, NES 2.0: mapper, submapper, PRG / CHR
+    sizes, mirroring, battery, timing), Super NES (LoROM, HiROM, ExHiROM,
+    copier headers: title, map mode, chipset, sizes, region, maker and game
+    codes, checksum verified), Game Boy and Game Boy Color (title,
+    cartridge type, sizes, CGB / SGB flags, header and global checksums
+    verified), Game Boy Advance (title, game and maker codes, header
+    complement verified), Nintendo 64 in all three byte orders (title, game
+    code, region, CRCs, libultra version), Mega Drive / Genesis / 32X
+    (titles, serial, devices, regions, checksum verified);
+  - console packages: Switch NSP (files, title IDs) and XCI (card size,
+    partitions), 3DS CIA (title ID and kind, version, and the SMDH titles
+    and publisher);
+  - chiptunes: NSF and NSFe, SPC (ID666 text and binary, `xid6`), VGM and
+    VGZ (chips and clocks, length, GD3 tags), PSID / RSID (clock, SID
+    models, extra SIDs), GBS: titles, authors, copyrights, songs;
+  - game archives and levels: Doom WAD (maps, namespaces, notable lumps),
+    Quake / Half-Life WAD2 / WAD3, Quake PAK, BSP maps (Quake, Half-Life,
+    BSP2, Quake II, Quake III, Source: entities, worldspawn title, counts),
+    Valve VPK, Bethesda BSA and BA2, RPG Maker RGSSAD / RGSS3A (the index
+    descrambled), Ren'Py RPA (the index pickle walked, never loaded), Godot
+    PCK, Unreal Engine `.pak` (versions to 11, with the full directory
+    index);
+  - engine files: Unity asset bundles (UnityFS: Unity version, blocks,
+    files) and serialized files (version, platform, objects by class),
+    Unreal packages (`.uasset`, `.umap`: UE4 / UE5 versions, names,
+    exports, imports, the engine that saved them), GameMaker projects,
+    Godot projects, Paradox mod descriptors;
+  - Minecraft: region files (chunks, coordinates, save times, data
+    version), Sponge (v1–v3), Litematica and MCEdit schematics (name,
+    author, size, palette, regions), `level.dat` (Java and Bedrock: world
+    name, version, game mode, difficulty, last played, spawn);
+  - Tiled maps and tilesets (TMX, TSX, TMJ, TSJ), Aseprite sprites
+    (frames, layers, tags, slices, tilesets, user data), Steam `KeyValues`
+    (app manifests, library folders, `shortcuts.vdf`, `appinfo.vdf`;
+    account names counted, never shown);
+  - interactive fiction: Twee 1 and 3 (title, IFID, story format,
+    passages, links), Ink sources and compiled Ink JSON, Z-code and Glulx
+    story files (release, serial, checksum verified, IFID), Blorb (the
+    story inside, resources, the iFiction record);
+  - emulator saves: RetroArch states (`RASTATE`, RZIP), Mednafen states,
+    battery saves (`.srm`).
+- **Shared code:** the Unity class-ID names (from the Unity YAML reader)
+  and the strings of the pickle walker are reused by the games readers.
+- **Developer tools:** `scripts/fixtures/games.sh` makes the games
+  fixtures in a podman container (cc65, Inform 6, Tiled, omgifol, vgio,
+  vpk, nbtlib, vdf; the rest written from their specifications);
+  `games_oracle.py` compares the reports over a generated corpus with
+  libmagic, libgme (through ffprobe), omgifol, vgio, vpk, nbtlib, pytmx,
+  vdf, UnityPy and unrpa.
+
 ## 0.7.0 — 2026-11-03
 
 Fonts, columnar data and machine-learning models, scientific and medical

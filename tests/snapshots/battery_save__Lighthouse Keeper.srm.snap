@@ -1,0 +1,117 @@
+---
+source: src/formats/game/save.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Lighthouse Keeper.srm",
+    "stem": "Lighthouse Keeper",
+    "extension": "srm"
+  },
+  "identification": {
+    "format": "battery_save",
+    "name": "Battery save (SRAM)",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "battery_save",
+        "confidence": 0.99
+      },
+      {
+        "format": "mp2",
+        "confidence": 0.68
+      }
+    ],
+    "extractor": "game.save"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 32768
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 32768,
+    "entropy": -0.0,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "2d864c0b789a43214eee8524d3182075125e5ca2cd527f3582ec87ffd94076bc",
+    "blake3": "7cbb4796924cffc8fbad411974fd13939e1e1d72f948f8fc61e59f56ef5b2543"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "battery_save": {
+      "likely_kind": "32 KiB SRAM (Game Boy MBC3 / MBC5, GBA SRAM)",
+      "blank": true,
+      "used_ratio": 0.0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.save",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

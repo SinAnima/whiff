@@ -1,0 +1,119 @@
+---
+source: src/formats/game/rom.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-color.gbc",
+    "stem": "tides-color",
+    "extension": "gbc"
+  },
+  "identification": {
+    "format": "gameboy_rom",
+    "name": "Game Boy / Game Boy Color ROM",
+    "mime": "application/x-gameboy-rom",
+    "family": "game",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.rom"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 65536
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 65536,
+    "entropy": 0.009,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "afda6b33f7a6ff8e9fdd6039dc88a261f1ee20270d1159882a8992f6fb3d600a",
+    "blake3": "a7714700a3e44dce67c9a68ccc0e5676471dc53f9384049008006963ac8b4b31"
+  },
+  "content": {
+    "title": "TIDES"
+  },
+  "metadata": {},
+  "format": {
+    "gameboy_rom": {
+      "rom_size_bytes": 65536,
+      "title": "TIDES",
+      "manufacturer_code": "STMR",
+      "platform": "Game Boy Color enhanced",
+      "cartridge_type": "MBC5 + RAM + battery",
+      "declared_rom_bytes": 65536,
+      "ram_size_bytes": 8192,
+      "region": "overseas",
+      "licensee_code": "ZZ",
+      "version": 2,
+      "header_checksum_valid": true,
+      "global_checksum": "0a7c",
+      "global_checksum_valid": true
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.rom",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,133 @@
+---
+source: src/formats/game/archive.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour_dir.vpk",
+    "stem": "harbour_dir",
+    "extension": "vpk"
+  },
+  "identification": {
+    "format": "vpk",
+    "name": "Valve VPK",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.archive"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 584
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 584,
+    "entropy": 4.31,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 6,
+      "uncompressed_bytes": 239,
+      "ratio": 0.4092465753424658
+    }
+  },
+  "integrity": {
+    "sha256": "a2318be8ed1abe81d312c4f61b82fa5852ddb6ecd0b33cc7944fe66ea9d9bf0d",
+    "blake3": "00d1eb3fc32348587829eb19b00bbc46f816336192af28b49a50b97e8a6ff318"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "vpk": {
+      "version": 2,
+      "archive_chunks": 0,
+      "file_count": 6,
+      "extensions": {
+        "mdl": 1,
+        "txt": 2,
+        "vmt": 1,
+        "vtf": 1,
+        "wav": 1
+      },
+      "files": [
+        "readme.txt",
+        "scripts/game_sounds_harbour.txt",
+        "materials/harbour/water.vmt",
+        "materials/harbour/rope.vtf",
+        "models/props_harbour/buoy.mdl",
+        "sound/harbour/gull.wav"
+      ],
+      "top_folders": [
+        "materials",
+        "models",
+        "scripts",
+        "sound"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.archive",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

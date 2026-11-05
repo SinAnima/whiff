@@ -1,0 +1,116 @@
+---
+source: src/formats/game/console.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-update.nsp",
+    "stem": "tides-update",
+    "extension": "nsp"
+  },
+  "identification": {
+    "format": "nsp",
+    "name": "Nintendo Switch package (NSP)",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.console"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 232
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 232,
+    "entropy": 2.263,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 1,
+      "uncompressed_bytes": 128,
+      "ratio": 0.5517241379310345
+    }
+  },
+  "integrity": {
+    "sha256": "034381b49898a215f54803aecd255834648a136a85e5b4c76d13b105c46fadb7",
+    "blake3": "9947868a9a6e524de6a279bcfab165db90207950bdcf3d9c6a8f2e6adaaa3e49"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "nsp": {
+      "file_count": 1,
+      "file_kinds": {
+        "nca": 1
+      },
+      "files": [
+        "0123456789abcdef0123456789abcdef.nca"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.console",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

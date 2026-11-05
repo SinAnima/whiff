@@ -1,0 +1,151 @@
+---
+source: src/formats/game/minecraft.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "level.dat",
+    "stem": "level",
+    "extension": "dat"
+  },
+  "identification": {
+    "format": "minecraft_level",
+    "name": "Minecraft world (level.dat)",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "minecraft_level",
+        "confidence": 0.97
+      },
+      {
+        "format": "gzip",
+        "confidence": 0.72
+      },
+      {
+        "format": "binary",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "game.minecraft"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 297
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-11-05T08:00:00Z",
+        "source": "game.minecraft",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-11-05T08:00:00Z",
+    "latest": "2025-11-05T08:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 297,
+    "entropy": 7.276,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "38fc1b929c29ada701b6dd28b656b4eefee1c886d288ee432998ffcb1add6f42",
+    "blake3": "1fb6e7ac85fa4b9593e10e50fd8f778d4d5cb77cbcb6d62a047dd5c322c6543e"
+  },
+  "content": {
+    "title": "Saltmere Harbour"
+  },
+  "metadata": {},
+  "format": {
+    "minecraft_level": {
+      "edition": "Java",
+      "level_name": "Saltmere Harbour",
+      "game_version": "1.21",
+      "snapshot": false,
+      "data_version": 3953,
+      "game_mode": "creative",
+      "difficulty": "normal",
+      "hardcore": false,
+      "commands_allowed": true,
+      "last_played": "2025-11-05T08:00:00Z",
+      "spawn": [
+        -120,
+        64,
+        388
+      ],
+      "server_brands": [
+        "vanilla",
+        "fabric"
+      ],
+      "modded": true,
+      "data_packs_enabled": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.minecraft",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

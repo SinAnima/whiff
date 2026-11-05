@@ -1,0 +1,127 @@
+---
+source: src/formats/game/console.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.cia",
+    "stem": "saltmere-tides",
+    "extension": "cia"
+  },
+  "identification": {
+    "format": "cia",
+    "name": "Nintendo 3DS installable archive (CIA)",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "game.console"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 26560
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "encrypted": true
+  },
+  "rights": {
+    "creators": [
+      "Saltmere Harbour Games"
+    ]
+  },
+  "physical": {
+    "size_bytes": 26560,
+    "entropy": 0.51,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "45286561b1842dc7fd6b41b73464a2a9b6c5aaa4f1d82e9b18a4050913cdb332",
+    "blake3": "7c139149073754a2251468f2d9b9564684467d6958320e08c29b374e4330e70d"
+  },
+  "content": {
+    "title": "Saltmere Tides"
+  },
+  "metadata": {},
+  "format": {
+    "cia": {
+      "type": 0,
+      "version": 0,
+      "content_bytes": 256,
+      "title_id": "0004000000f00d00",
+      "title_kind": "application",
+      "title_version": "1.2.0",
+      "content_count": 1,
+      "save_data_bytes": 524288,
+      "short_title": "Saltmere Tides",
+      "long_title": "Saltmere Tides: Harbour Edition",
+      "publisher": "Saltmere Harbour Games",
+      "regions": [
+        "North America",
+        "Europe"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.console",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,144 @@
+{ "compressionlevel":-1,
+ "height":6,
+ "infinite":false,
+ "layers":[
+        {
+         "data":[1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1,
+            2, 2, 2, 2, 1, 1, 1, 1,
+            3, 3, 3, 2, 1, 1, 1, 1,
+            3, 3, 3, 2, 1, 1, 1, 1,
+            3, 3, 3, 2, 2, 2, 2, 2],
+         "height":6,
+         "id":1,
+         "name":"Water",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":8,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "id":5,
+         "layers":[
+                {
+                 "data":[0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 9, 9, 9, 9,
+                    0, 0, 0, 0, 9, 0, 0, 0,
+                    0, 0, 0, 0, 9, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0],
+                 "height":6,
+                 "id":2,
+                 "name":"Planks",
+                 "opacity":1,
+                 "type":"tilelayer",
+                 "visible":true,
+                 "width":8,
+                 "x":0,
+                 "y":0
+                }, 
+                {
+                 "draworder":"topdown",
+                 "id":3,
+                 "name":"Spawns",
+                 "objects":[
+                        {
+                         "height":0,
+                         "id":1,
+                         "name":"sailor",
+                         "rotation":0,
+                         "type":"spawn",
+                         "visible":true,
+                         "width":0,
+                         "x":72,
+                         "y":40
+                        }, 
+                        {
+                         "height":0,
+                         "id":2,
+                         "name":"gull",
+                         "rotation":0,
+                         "type":"spawn",
+                         "visible":true,
+                         "width":0,
+                         "x":100,
+                         "y":20
+                        }, 
+                        {
+                         "height":16,
+                         "id":3,
+                         "name":"bell",
+                         "rotation":0,
+                         "type":"",
+                         "visible":true,
+                         "width":16,
+                         "x":120,
+                         "y":44
+                        }],
+                 "opacity":1,
+                 "type":"objectgroup",
+                 "visible":true,
+                 "x":0,
+                 "y":0
+                }],
+         "name":"Pier",
+         "opacity":1,
+         "type":"group",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "id":4,
+         "image":"sky.png",
+         "imageheight":96,
+         "imagewidth":128,
+         "name":"Sky",
+         "opacity":1,
+         "type":"imagelayer",
+         "visible":true,
+         "x":0,
+         "y":0
+        }],
+ "nextlayerid":6,
+ "nextobjectid":4,
+ "orientation":"orthogonal",
+ "properties":[
+        {
+         "name":"music",
+         "type":"string",
+         "value":"harbour.ogg"
+        }, 
+        {
+         "name":"tide",
+         "type":"float",
+         "value":0.75
+        }],
+ "renderorder":"right-down",
+ "tiledversion":"1.11.0",
+ "tileheight":16,
+ "tilesets":[
+        {
+         "firstgid":1,
+         "source":"harbour.tsx"
+        }, 
+        {
+         "columns":2,
+         "firstgid":65,
+         "image":"props.png",
+         "imageheight":32,
+         "imagewidth":32,
+         "margin":0,
+         "name":"props",
+         "spacing":0,
+         "tilecount":4,
+         "tileheight":16,
+         "tilewidth":16
+        }],
+ "tilewidth":16,
+ "type":"map",
+ "version":"1.10",
+ "width":8
+}

@@ -127,7 +127,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1008 formats** in total: tier 1 = 139, tier 2 = 122, tier 3 = 747.
-* Formats with an extractor in this build: **589** of 1008.
+* Formats with an extractor in this build: **606** of 1008.
 * Formats by family status: crate = 183, mixed = 365, impl = 460.
 * Formats by target stage: S1 = 170, S1/S6 = 101, S2 = 91, S3 = 48, S3/S8 = 1, S4 = 68, S5 = 66, S6 = 90, S6/S8 = 17, S7 = 140, S8 = 216.
 * By feature: `common` = 818, `cad` = 45, `forensics` = 38, `science` = 36, `geo` = 34, `data` = 20, `games` = 17.
@@ -1130,20 +1130,20 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 989 | Google Earth / Maps link files | `kmz` `url` | — | 3 | `web.misc` | `common` | — | swf, lava_torrent | S8 | -&gt; geo |
 | 990 | Shortcut-like: .desktop / .lnk / .website | `desktop` `website` | — | 3 | `web.misc` | `common` | — | swf, lava_torrent | S8 | target |
 | 991 | Proxy lists / Adblock filter lists | `txt` | — | 3 | `web.misc` | `common` | — | swf, lava_torrent | S8 | rule count |
-| 992 | NES / SNES / GB / GBA / N64 ROMs | `nes` `sfc` `smc` `gb` `gbc` `gba` `n64` `z64` | — | 3 | `game` | `games` | — | impl headers | S8 | header title, mapper, region |
-| 993 | Sega / PlayStation / Switch images | `md` `gen` `iso` `nsp` `xci` `cia` | — | 3 | `game` | `games` | — | impl headers | S8 | header ids |
-| 994 | Doom WAD / Quake PAK / BSP | `wad` `pak` `bsp` | — | 3 | `game` | `games` | — | impl headers | S8 | lump/entry counts, map names |
-| 995 | Valve VPK / GCF | `vpk` | — | 3 | `game` | `games` | — | impl headers | S8 | file count |
-| 996 | Unity asset bundle (UnityFS) | `unity3d` `assets` `bundle` | — | 3 | `game` | `games` | — | impl headers | S8 | engine version, asset count |
-| 997 | Unreal package / pak | `uasset` `umap` `pak` | — | 3 | `game` | `games` | — | impl headers | S8 | engine version, package name |
-| 998 | Godot packed scene / pck | `tscn` `pck` | — | 3 | `game` | `games` | — | impl headers | S8 | nodes count |
-| 999 | Minecraft world / schematic | `mca` `schem` `schematic` `litematic` | — | 3 | `game` | `games` | — | impl headers | S8 | NBT root |
-| 1000 | RPG Maker / Ren'Py archives | `rgssad` `rpa` | — | 3 | `game` | `games` | — | impl headers | S8 | — |
-| 1001 | Save games / emulator states | `sav` `state` `srm` | — | 3 | `game` | `games` | — | impl headers | S8 | size + header only |
-| 1002 | Tiled map | `tmx` `tsx` `tmj` | — | 3 | `game` | `games` | — | impl headers | S8 | map size, layers, tilesets |
-| 1003 | Aseprite / Pyxel sprite | `aseprite` `ase` | — | 3 | `game` | `games` | — | impl headers | S8 | frames, layers, tags |
-| 1004 | Godot / GameMaker projects | `godot` `yyp` | — | 3 | `game` | `games` | — | impl headers | S8 | — |
-| 1005 | Steam app manifest / VDF | `acf` `vdf` | — | 3 | `game` | `games` | — | impl headers | S8 | appid, name |
-| 1006 | Chip-tune / emulated music (NSF, SPC, VGM, SID) | `nsf` `spc` `vgm` `vgz` `sid` | audio/prs.sid | 3 | `game` | `games` | — | impl headers | S8 | title, author, copyright |
-| 1007 | Game mod archives (Bethesda BSA/BA2, Paradox mod) | `bsa` `ba2` `mod` | — | 3 | `game` | `games` | — | impl headers | S8 | file count, version |
-| 1008 | Twine / Ink interactive fiction | `twee` `ink` `z5` `z8` `ulx` | — | 3 | `game` | `games` | — | impl headers | S8 | title, passages / IFID |
+| 992 | NES / SNES / GB / GBA / N64 ROMs | `nes` `sfc` `smc` `gb` `gbc` `gba` `n64` `z64` | — | 3 | `game` | `games` | `game.rom` | impl headers | S8 | header title, mapper, region |
+| 993 | Sega / PlayStation / Switch images | `md` `gen` `iso` `nsp` `xci` `cia` | — | 3 | `game` | `games` | `game.rom` | impl headers | S8 | header ids |
+| 994 | Doom WAD / Quake PAK / BSP | `wad` `pak` `bsp` | — | 3 | `game` | `games` | `game.archive` | impl headers | S8 | lump/entry counts, map names |
+| 995 | Valve VPK / GCF | `vpk` | — | 3 | `game` | `games` | `game.archive` | impl headers | S8 | file count |
+| 996 | Unity asset bundle (UnityFS) | `unity3d` `assets` `bundle` | — | 3 | `game` | `games` | `game.engine` | impl headers | S8 | engine version, asset count |
+| 997 | Unreal package / pak | `uasset` `umap` `pak` | — | 3 | `game` | `games` | `game.engine` | impl headers | S8 | engine version, package name |
+| 998 | Godot packed scene / pck | `tscn` `pck` | — | 3 | `game` | `games` | `game.archive` | impl headers | S8 | nodes count |
+| 999 | Minecraft world / schematic | `mca` `schem` `schematic` `litematic` | — | 3 | `game` | `games` | `game.minecraft` | impl headers | S8 | NBT root |
+| 1000 | RPG Maker / Ren'Py archives | `rgssad` `rpa` | — | 3 | `game` | `games` | `game.archive` | impl headers | S8 | — |
+| 1001 | Save games / emulator states | `sav` `state` `srm` | — | 3 | `game` | `games` | `game.save` | impl headers | S8 | size + header only |
+| 1002 | Tiled map | `tmx` `tsx` `tmj` | — | 3 | `game` | `games` | `game.tiled` | impl headers | S8 | map size, layers, tilesets |
+| 1003 | Aseprite / Pyxel sprite | `aseprite` `ase` | — | 3 | `game` | `games` | `game.sprite` | impl headers | S8 | frames, layers, tags |
+| 1004 | Godot / GameMaker projects | `godot` `yyp` | — | 3 | `game` | `games` | `game.engine` | impl headers | S8 | — |
+| 1005 | Steam app manifest / VDF | `acf` `vdf` | — | 3 | `game` | `games` | `game.steam` | impl headers | S8 | appid, name |
+| 1006 | Chip-tune / emulated music (NSF, SPC, VGM, SID) | `nsf` `spc` `vgm` `vgz` `sid` | audio/prs.sid | 3 | `game` | `games` | `game.chiptune` | impl headers | S8 | title, author, copyright |
+| 1007 | Game mod archives (Bethesda BSA/BA2, Paradox mod) | `bsa` `ba2` `mod` | — | 3 | `game` | `games` | `game.archive` | impl headers | S8 | file count, version |
+| 1008 | Twine / Ink interactive fiction | `twee` `ink` `z5` `z8` `ulx` | — | 3 | `game` | `games` | `game.fiction` | impl headers | S8 | title, passages / IFID |

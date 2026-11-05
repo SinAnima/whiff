@@ -1,0 +1,107 @@
+---
+source: src/formats/game/save.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Saltmere Tides.srm",
+    "stem": "Saltmere Tides",
+    "extension": "srm"
+  },
+  "identification": {
+    "format": "battery_save",
+    "name": "Battery save (SRAM)",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "game.save"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 8192
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 8192,
+    "entropy": 0.053,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "2a940ebf91a12e6e24536604cc6b3909abd955bb88b937ef90441ad2e02007fe",
+    "blake3": "dfd0afb12fc98819d102492a77fac7e56032ffc6dd2f16ca279eee4c44c90a08"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "battery_save": {
+      "likely_kind": "8 KiB SRAM (most NES and Game Boy cartridges)",
+      "blank": false,
+      "used_ratio": 0.004
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.save",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

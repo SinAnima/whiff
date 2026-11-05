@@ -1,0 +1,26 @@
+"libraryfolders"
+{
+	"0"
+	{
+		"path" "/srv/steam"
+		"label" ""
+		"contentid" "1"
+		"totalSize" "0"
+		"apps"
+		{
+			"3999990" "734003200"
+			"228980" "120000000"
+		}
+	}
+	"1"
+	{
+		"path" "/mnt/games/SteamLibrary"
+		"label" "Games"
+		"contentid" "2"
+		"totalSize" "500107862016"
+		"apps"
+		{
+			"3999992" "52000000"
+		}
+	}
+}

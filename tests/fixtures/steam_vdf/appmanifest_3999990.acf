@@ -1,0 +1,36 @@
+"AppState"
+{
+	"appid" "3999990"
+	"Universe" "1"
+	"LauncherPath" ""
+	"name" "Saltmere Tides"
+	"StateFlags" "4"
+	"installdir" "Saltmere Tides"
+	"LastUpdated" "1762329600"
+	"LastPlayed" "1762329600"
+	"SizeOnDisk" "734003200"
+	"StagingSize" "0"
+	"buildid" "16000001"
+	"LastOwner" "76561190000000001"
+	"BytesToDownload" "0"
+	"BytesDownloaded" "0"
+	"AutoUpdateBehavior" "0"
+	"AllowOtherDownloadsWhileRunning" "0"
+	"ScheduledAutoUpdate" "0"
+	"InstalledDepots"
+	{
+		"3999991"
+		{
+			"manifest" "1234567890123456789"
+			"size" "734003200"
+		}
+	}
+	"UserConfig"
+	{
+		"language" "english"
+	}
+	"MountedConfig"
+	{
+		"language" "english"
+	}
+}

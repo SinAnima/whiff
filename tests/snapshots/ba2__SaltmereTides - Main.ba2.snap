@@ -1,0 +1,126 @@
+---
+source: src/formats/game/archive.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "SaltmereTides - Main.ba2",
+    "stem": "SaltmereTides - Main",
+    "extension": "ba2"
+  },
+  "identification": {
+    "format": "ba2",
+    "name": "Bethesda archive 2 (BA2)",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.archive"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 290
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 290,
+    "entropy": 3.878,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 4
+    }
+  },
+  "integrity": {
+    "sha256": "cbadbd8f42cd4922c81ab1dade23ab19faf8b96f9676d8321ccb285cda65cf26",
+    "blake3": "d93677c0e858cc52fa60c2fc47aed303f236a1b90e77de7efe166a80c4382aa0"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ba2": {
+      "version": 1,
+      "archive_type": "general",
+      "file_count": 4,
+      "extensions": {
+        "nif": 2,
+        "swf": 1,
+        "xwm": 1
+      },
+      "files": [
+        "Meshes/Harbour/Pier01.nif",
+        "Meshes/Harbour/Buoy01.nif",
+        "Sound/FX/Harbour/Gull01.xwm",
+        "Interface/Harbour.swf"
+      ],
+      "top_folders": [
+        "Interface",
+        "Meshes",
+        "Sound"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.archive",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

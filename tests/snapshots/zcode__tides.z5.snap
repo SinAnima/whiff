@@ -1,0 +1,112 @@
+---
+source: src/formats/game/fiction.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.z5",
+    "stem": "tides",
+    "extension": "z5"
+  },
+  "identification": {
+    "format": "zcode",
+    "name": "Z-code story file",
+    "mime": "application/x-zmachine",
+    "family": "game",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "game.fiction"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 87040
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 87040,
+    "entropy": 6.651,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "d74a30065c5c2df9fcb63a3a5994ac68d14a4e0c4008d9ccc82fe8ccfa17cef1",
+    "blake3": "0bcdc282b1aaa55d8f50ea587bbce361646385038a9c8ac3ef66b43e2947a819"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "zcode": {
+      "version": 5,
+      "release": 3,
+      "serial": "251105",
+      "declared_length": 86824,
+      "checksum_valid": true,
+      "checksum": "80e1",
+      "inform_version": "6.42",
+      "ifid": "8A3F6C2E-5B1D-4E7A-9C0F-2D4B6E8A1C3E"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.fiction",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,147 @@
+---
+source: src/formats/game/minecraft.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "lighthouse-sponge3.schem",
+    "stem": "lighthouse-sponge3",
+    "extension": "schem"
+  },
+  "identification": {
+    "format": "minecraft_schematic",
+    "name": "Minecraft schematic (Sponge, Litematica, MCEdit)",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "minecraft_schematic",
+        "confidence": 0.99
+      },
+      {
+        "format": "gzip",
+        "confidence": 0.72
+      }
+    ],
+    "extractor": "game.minecraft"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 341
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-11-05T08:00:00Z",
+        "source": "game.minecraft",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-11-05T08:00:00Z",
+    "latest": "2025-11-05T08:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 341,
+    "entropy": 7.321,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "9d96e32df5a4a6e9edf73757641befef393a891f745b38da2f6cf64736c1c6ae",
+    "blake3": "2662d363b4685b5edb733fc6c0642ecb8d2a1412329d7d403abb995ec049101b"
+  },
+  "content": {
+    "title": "Saltmere Lighthouse",
+    "authors": [
+      "Harbour Builders"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "minecraft_schematic": {
+      "kind": "Sponge",
+      "version": 3,
+      "data_version": 3953,
+      "size": [
+        7,
+        16,
+        7
+      ],
+      "palette_size": 4,
+      "block_namespaces": {
+        "create": 1,
+        "minecraft": 3
+      },
+      "block_entity_count": 2,
+      "entity_count": 1,
+      "name": "Saltmere Lighthouse",
+      "author": "Harbour Builders",
+      "created": "2025-11-05T08:00:00Z"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.minecraft",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,113 @@
+---
+source: src/formats/game/rom.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-europe.gba",
+    "stem": "tides-europe",
+    "extension": "gba"
+  },
+  "identification": {
+    "format": "gba_rom",
+    "name": "Game Boy Advance ROM",
+    "mime": "application/x-gba-rom",
+    "family": "game",
+    "confidence": 0.89,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.rom"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 8192
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 8192,
+    "entropy": 0.058,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "819a989cca61c3c69b1508de6b1c6600e41d1492703afd7d6c7c7090f08655fd",
+    "blake3": "e917b19702c6b9c643ac4838b022166f1943a120d5ae0f67d35c18635537ff86"
+  },
+  "content": {
+    "title": "SALTMERE EU"
+  },
+  "metadata": {},
+  "format": {
+    "gba_rom": {
+      "rom_size_bytes": 8192,
+      "title": "SALTMERE EU",
+      "region": "Europe",
+      "game_code": "BSHP",
+      "maker_code": "ZZ",
+      "version": 1,
+      "header_checksum_valid": true
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.rom",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

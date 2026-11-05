@@ -1,0 +1,125 @@
+---
+source: src/formats/game/archive.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "SaltmereTides-WindowsNoEditor.pak",
+    "stem": "SaltmereTides-WindowsNoEditor",
+    "extension": "pak"
+  },
+  "identification": {
+    "format": "unreal_pak",
+    "name": "Unreal Engine pak",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "game.archive"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 678
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 678,
+    "entropy": 4.375,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 3,
+      "uncompressed_bytes": 171,
+      "ratio": 0.252212389380531
+    }
+  },
+  "integrity": {
+    "sha256": "cd2c50de965ab60d9c5ab49f9f729c809f9bed761cc7a300d19c1d1cc5617828",
+    "blake3": "3b4173397b72a96e0dd1854db2cfa84d82f2413635f9e8ceceaf9ccc32dbd6d5"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "unreal_pak": {
+      "version": 3,
+      "mount_point": "../../../",
+      "file_count": 3,
+      "extensions": {
+        "ini": 1,
+        "uasset": 1,
+        "umap": 1
+      },
+      "files": [
+        "SaltmereTides/Content/Maps/Pier.umap",
+        "SaltmereTides/Content/Props/Buoy.uasset",
+        "SaltmereTides/Config/DefaultGame.ini"
+      ],
+      "top_folders": [
+        "SaltmereTides"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.archive",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,8 @@
+:: Start
+You stand on the harbour wall. [[Walk to the pier|Pier]]
+
+:: Pier
+The pier creaks. [[Back|Start]]
+
+:: StoryAuthor
+Harbour Writers

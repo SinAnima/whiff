@@ -1,0 +1,124 @@
+---
+source: src/formats/game/engine.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere_harbour.mod",
+    "stem": "saltmere_harbour",
+    "extension": "mod"
+  },
+  "identification": {
+    "format": "paradox_mod",
+    "name": "Paradox mod descriptor",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "game.engine"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 142
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 142,
+    "entropy": 4.703,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 142,
+      "chars": 142,
+      "words": 10,
+      "lines": 7,
+      "max_line_length": 29,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "8c16a9b0fdb21db98b4bbfa9f54483016fc92cebfedb6a192dc8e8e1ac18aeaa",
+    "blake3": "f7a42e446d23decec4c755d8a78b045d669aff75eb9aa51a5a07afb29206e6e7"
+  },
+  "content": {
+    "title": "Saltmere Harbour Trade"
+  },
+  "metadata": {},
+  "format": {
+    "paradox_mod": {
+      "name": "Saltmere Harbour Trade",
+      "path": "mod/saltmere_harbour",
+      "dependencies": [
+        "Better Ports"
+      ],
+      "picture": "thumbnail.png",
+      "supported_version": "1.37.*"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.engine",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

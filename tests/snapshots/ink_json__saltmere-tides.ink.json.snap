@@ -1,0 +1,135 @@
+---
+source: src/formats/game/fiction.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.ink.json",
+    "stem": "saltmere-tides.ink",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "ink_json",
+    "name": "Compiled Ink story (JSON)",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ink_json",
+        "confidence": 0.97
+      },
+      {
+        "format": "json",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "game.fiction"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 564
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 564,
+    "entropy": 4.69,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 564,
+      "chars": 564,
+      "words": 76,
+      "lines": 0,
+      "max_line_length": 564,
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "95cb428d1e66900386a3b878ba605695a11ea5e2175a55dcae829dc82848a956",
+    "blake3": "0f0ebe63fcb19a7a4a4142fb384855ebcdf23d6659d39806febeb0047ad0422f"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ink_json": {
+      "ink_version": 21,
+      "knot_count": 3,
+      "knots": [
+        "pier",
+        "lighthouse",
+        "ending"
+      ],
+      "global_variables": true,
+      "lists": [
+        "weather"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.fiction",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,138 @@
+---
+source: src/formats/game/chiptune.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "low-tide.spc",
+    "stem": "low-tide",
+    "extension": "spc"
+  },
+  "identification": {
+    "format": "spc",
+    "name": "SNES SPC700 sound file",
+    "mime": "audio/x-spc",
+    "family": "game",
+    "confidence": 0.92,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "spc",
+        "confidence": 0.92
+      },
+      {
+        "format": "pkcs7",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "game.chiptune"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 66112
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "2025 Saltmere Harbour Games"
+  },
+  "physical": {
+    "size_bytes": 66112,
+    "entropy": 0.042,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 120.0
+    }
+  },
+  "integrity": {
+    "sha256": "7a777c8f6c544ac293a4c2385b165d04763749e18493a0505f24d6e80e94a7f5",
+    "blake3": "190ccfc8924dbe9adb82fc5d548d9598eda588ac698edfa9ad1486b0a1fa1425"
+  },
+  "content": {
+    "title": "Low Tide",
+    "authors": [
+      "Saltmere Band"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "spc": {
+      "version": "0.30",
+      "game": "Saltmere Tides",
+      "dumper": "craft_games",
+      "comments": "Harbour theme, first loop",
+      "id666": "text",
+      "play_seconds": 120,
+      "fade_ms": 10000,
+      "ost_title": "Saltmere Tides OST",
+      "publisher": "Saltmere Harbour Games",
+      "copyright_year": 2025,
+      "extended_tags": true,
+      "title": "Low Tide",
+      "author": "Saltmere Band",
+      "copyright": "2025 Saltmere Harbour Games"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.chiptune",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

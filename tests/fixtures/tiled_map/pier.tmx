@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="8" height="6" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="4">
+ <properties>
+  <property name="music" value="harbour.ogg"/>
+  <property name="tide" type="float" value="0.75"/>
+ </properties>
+ <tileset firstgid="1" source="harbour.tsx"/>
+ <tileset firstgid="65" name="props" tilewidth="16" tileheight="16" tilecount="4" columns="2">
+  <image source="props.png" width="32" height="32"/>
+ </tileset>
+ <layer id="1" name="Water" width="8" height="6">
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,
+2,2,2,2,1,1,1,1,
+3,3,3,2,1,1,1,1,
+3,3,3,2,1,1,1,1,
+3,3,3,2,2,2,2,2
+</data>
+ </layer>
+ <group id="5" name="Pier">
+  <layer id="2" name="Planks" width="8" height="6">
+   <data encoding="csv">
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,9,9,9,9,
+0,0,0,0,9,0,0,0,
+0,0,0,0,9,0,0,0,
+0,0,0,0,0,0,0,0
+</data>
+  </layer>
+  <objectgroup id="3" name="Spawns">
+   <object id="1" name="sailor" type="spawn" x="72" y="40"/>
+   <object id="2" name="gull" type="spawn" x="100" y="20"/>
+   <object id="3" name="bell" x="120" y="44" width="16" height="16"/>
+  </objectgroup>
+ </group>
+ <imagelayer id="4" name="Sky">
+  <image source="sky.png" width="128" height="96"/>
+ </imagelayer>
+</map>

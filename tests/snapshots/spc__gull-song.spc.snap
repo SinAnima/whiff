@@ -1,0 +1,131 @@
+---
+source: src/formats/game/chiptune.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "gull-song.spc",
+    "stem": "gull-song",
+    "extension": "spc"
+  },
+  "identification": {
+    "format": "spc",
+    "name": "SNES SPC700 sound file",
+    "mime": "audio/x-spc",
+    "family": "game",
+    "confidence": 0.92,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "spc",
+        "confidence": 0.92
+      },
+      {
+        "format": "pkcs7",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "game.chiptune"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 66048
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 66048,
+    "entropy": 0.028,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 90.0
+    }
+  },
+  "integrity": {
+    "sha256": "0660897af11fabc1ba2617e74bdd05dd3876f8ec4a750b5c5123ee6b4bdc6eca",
+    "blake3": "ee9a841a54f5d8c0a99a0ea0d19e210d431d89b07654cc6a25261ca92ee56717"
+  },
+  "content": {
+    "title": "Gull Song",
+    "authors": [
+      "Saltmere Band"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "spc": {
+      "version": "0.30",
+      "game": "Saltmere Tides",
+      "dumper": "craft_games",
+      "comments": "Harbour theme, first loop",
+      "id666": "binary",
+      "play_seconds": 90,
+      "fade_ms": 8000,
+      "title": "Gull Song",
+      "author": "Saltmere Band"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.chiptune",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

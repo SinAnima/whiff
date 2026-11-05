@@ -388,3 +388,35 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 - **Privacy:** C3D subject names appear only with privacy off; FBX
   document paths are dropped.
 
+## Games (unreleased, feature `games`)
+
+- **Not read:** PlayStation, Saturn and Dreamcast disc images (their ISO
+  9660 file systems are listed by the `disk` reader), Nintendo DS, Wii and
+  GameCube images, Sega Master System and interleaved (`.smd`) Mega Drive
+  ROMs, FDS disks, Valve GCF, Unity web builds (`.data`, `.wasm`), Unreal
+  IoStore containers (`.utoc`, `.ucas`), Source models and textures (MDL,
+  VTF), RPG Maker MV / MZ projects, Pyxel Edit files, Twine published
+  HTML (read as HTML), TADS, Hugo and other story formats beyond Z-code
+  and Glulx, Snes9x, ZSNES and other emulators' states, generic `.sav`
+  files (`.sav` is SPSS).
+- **Encrypted content:** NCA contents, XCI secure partitions, CIA
+  contents, encrypted Godot packs and Unreal pak indexes are reported as
+  encrypted; nothing is decrypted.
+- **ROMs:** N64 CRCs are reported, not verified (the check needs the
+  boot code); ROM data is not disassembled; titles come from headers
+  only (iNES has none).
+- **Unreal packages:** the summary is read up to the export and import
+  counts for UE 5.3 and later (its layout changed); unversioned (cooked)
+  packages report their version fields only. Package contents (exports,
+  properties) are not parsed.
+- **Unity:** bundles report their files (members are not opened);
+  encrypted (UnityCN) bundles are not read; serialized files report
+  objects by class, not their fields.
+- **Minecraft:** region files report the first chunk's NBT only; Bedrock
+  worlds' LevelDB databases are read by the `db` reader.
+- **Interactive fiction:** Z-code titles are not decoded from the story
+  (the Blorb iFiction record gives them); Ink and Twee text goes to the
+  text pipeline as written.
+- **Privacy:** Steam account lists are counted (names never shown);
+  `LastOwner` Steam IDs appear only with privacy off; user folders in
+  Steam paths are hidden unless privacy is off.

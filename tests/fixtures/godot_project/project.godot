@@ -1,0 +1,31 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Saltmere Tides"
+config/description="Keep the harbour lights burning."
+config/version="0.4.1"
+run/main_scene="res://scenes/pier.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Tides="*res://autoload/tides.gd"
+Weather="*res://autoload/weather.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogue/plugin.cfg")
+
+[rendering]
+
+renderer/rendering_method="forward_plus"

@@ -1,0 +1,182 @@
+---
+source: src/formats/game/fiction.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.ink",
+    "stem": "saltmere-tides",
+    "extension": "ink"
+  },
+  "identification": {
+    "format": "ink",
+    "name": "Ink story source",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "game.fiction"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 672
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 672,
+    "entropy": 4.811,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 672,
+      "chars": 672,
+      "words": 120,
+      "lines": 32,
+      "max_line_length": 52,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 5
+    }
+  },
+  "integrity": {
+    "sha256": "ce13e258550e1e0fcfd0544659b7850591d3de8bfa094bccddb70d7846169263",
+    "blake3": "53750d6a3e578bcaacc5b3bdee1dd93f4c47bc3fd1898b63fb438ee73adfcc2c"
+  },
+  "content": {
+    "title": "Saltmere Tides",
+    "authors": [
+      "Harbour Writers"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Gulls circle",
+      "Climb the lighthouse",
+      "boats",
+      "lighthouse",
+      "Gulls",
+      "circle",
+      "pier",
+      "boats are late",
+      "bell",
+      "Light the lamp"
+    ],
+    "keyword_frequency": [
+      [
+        "boats",
+        3
+      ],
+      [
+        "bell",
+        2
+      ],
+      [
+        "lighthouse",
+        2
+      ],
+      [
+        "pier",
+        2
+      ]
+    ],
+    "excerpt": "Gulls circle the end of the pier. [Climb the lighthouse] -> lighthouse [Wait for the boats] The boats are late tonight. [Listen to the bell] The bell rings twice. -> pier The stairs wind up into the dark. {not lamp_lit} [Light the lamp] The beam sweeps the water. The boats turn for home.",
+    "tags": [
+      "Gulls circle",
+      "Climb the lighthouse",
+      "boats",
+      "lighthouse",
+      "Gulls"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "ink": {
+      "title": "Saltmere Tides",
+      "author": "Harbour Writers",
+      "knot_count": 3,
+      "knots": [
+        "pier",
+        "lighthouse",
+        "ending"
+      ],
+      "stitch_count": 1,
+      "function_count": 1,
+      "choice_count": 4,
+      "gather_count": 1,
+      "includes": [
+        "characters.ink"
+      ],
+      "declarations": {
+        "const": 1,
+        "list": 1,
+        "var": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.fiction",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

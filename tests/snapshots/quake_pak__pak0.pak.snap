@@ -1,0 +1,135 @@
+---
+source: src/formats/game/archive.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pak0.pak",
+    "stem": "pak0",
+    "extension": "pak"
+  },
+  "identification": {
+    "format": "quake_pak",
+    "name": "Quake PAK",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.archive"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1416
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1416,
+    "entropy": 0.984,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 6,
+      "uncompressed_bytes": 1020,
+      "ratio": 0.7203389830508474
+    }
+  },
+  "integrity": {
+    "sha256": "f8345dbde65f9624625445372e109579966c0cb994deec840369756cfa055d71",
+    "blake3": "17a1ad29f9a6dc3941c2c07ef97daef452b409386aedbb43821a503949302a70"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "quake_pak": {
+      "maps": [
+        "pier",
+        "lighthouse"
+      ],
+      "file_count": 6,
+      "extensions": {
+        "bsp": 2,
+        "cfg": 1,
+        "lmp": 1,
+        "mdl": 1,
+        "wav": 1
+      },
+      "files": [
+        "maps/pier.bsp",
+        "maps/lighthouse.bsp",
+        "gfx/palette.lmp",
+        "sound/harbour/bell.wav",
+        "progs/gull.mdl",
+        "default.cfg"
+      ],
+      "top_folders": [
+        "gfx",
+        "maps",
+        "progs",
+        "sound"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.archive",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

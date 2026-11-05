@@ -1,0 +1,143 @@
+---
+source: src/formats/game/minecraft.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bedrock_level.dat",
+    "stem": "bedrock_level",
+    "extension": "dat"
+  },
+  "identification": {
+    "format": "minecraft_level",
+    "name": "Minecraft world (level.dat)",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "minecraft_level",
+        "confidence": 0.97
+      },
+      {
+        "format": "nbt",
+        "confidence": 0.85
+      },
+      {
+        "format": "binary",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "game.minecraft"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 202
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-11-05T08:00:00Z",
+        "source": "game.minecraft",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-11-05T08:00:00Z",
+    "latest": "2025-11-05T08:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 202,
+    "entropy": 4.507,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "833f1d013995388d90a2fe2b9afd940fbbe4f7396dd116a3d535f44fc24b2b63",
+    "blake3": "969752037c936b6c3fdb6f9ff774e6f5e3ec8b0d85add20e84792228fee0685f"
+  },
+  "content": {
+    "title": "Saltmere Bedrock"
+  },
+  "metadata": {},
+  "format": {
+    "minecraft_level": {
+      "storage_version": 10,
+      "edition": "Bedrock",
+      "level_name": "Saltmere Bedrock",
+      "game_version": "1.21.40.1.0",
+      "game_mode": "survival",
+      "difficulty": "easy",
+      "commands_allowed": false,
+      "last_played": "2025-11-05T08:00:00Z",
+      "spawn": [
+        0,
+        70,
+        0
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.minecraft",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
