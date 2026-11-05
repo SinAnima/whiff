@@ -1,0 +1,122 @@
+---
+source: src/formats/game/chiptune.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-bells.nsf",
+    "stem": "harbour-bells",
+    "extension": "nsf"
+  },
+  "identification": {
+    "format": "nsf",
+    "name": "NES Sound Format (NSF)",
+    "mime": "audio/x-nsf",
+    "family": "game",
+    "confidence": 0.85,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.chiptune"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 140
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "2025 Saltmere Harbour"
+  },
+  "physical": {
+    "size_bytes": 140,
+    "entropy": 3.601,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "85dc30e0503a24e899aee8b1b5001e6fb6dc858fceb533a88d389b57fecbef52",
+    "blake3": "34e9267cc1b76cb4eed009b46ce46fc81e2ca29d93dbddfd566a53e612ce8c2e"
+  },
+  "content": {
+    "title": "Harbour Bells",
+    "authors": [
+      "Saltmere Band"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "nsf": {
+      "version": 1,
+      "songs": 3,
+      "start_song": 1,
+      "load_address": "0x8000",
+      "init_address": "0x8000",
+      "play_address": "0x8006",
+      "region": "NTSC",
+      "bankswitched": false,
+      "title": "Harbour Bells",
+      "author": "Saltmere Band",
+      "copyright": "2025 Saltmere Harbour"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.chiptune",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

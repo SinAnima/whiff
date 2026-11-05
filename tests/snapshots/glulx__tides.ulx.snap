@@ -1,0 +1,115 @@
+---
+source: src/formats/game/fiction.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.ulx",
+    "stem": "tides",
+    "extension": "ulx"
+  },
+  "identification": {
+    "format": "glulx",
+    "name": "Glulx story file",
+    "mime": "application/x-glulx",
+    "family": "game",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.fiction"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1536
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1536,
+    "entropy": 2.905,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "460d35fa5fd9bbe66115a4c5845ff3fbafc95d2de090cc119147ba0185b3e1e7",
+    "blake3": "26e488350daeced5c705a6eb5fae20b293a8122f3ddee3533ed85e00b0df7b0f"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "glulx": {
+      "glulx_version": "2.0.0",
+      "ram_start": 768,
+      "story_bytes": 1536,
+      "memory_bytes": 1536,
+      "stack_bytes": 4096,
+      "checksum": "fd0ee13b",
+      "checksum_valid": true,
+      "inform_version": "6.42",
+      "release": 3,
+      "serial": "251105",
+      "ifid": "GLULX-3-251105-FD0EE13B"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.fiction",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

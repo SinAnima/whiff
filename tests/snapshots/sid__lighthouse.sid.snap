@@ -1,0 +1,125 @@
+---
+source: src/formats/game/chiptune.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "lighthouse.sid",
+    "stem": "lighthouse",
+    "extension": "sid"
+  },
+  "identification": {
+    "format": "sid",
+    "name": "Commodore 64 SID tune (PSID / RSID)",
+    "mime": "audio/prs.sid",
+    "family": "game",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.chiptune"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 130
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "2025 Saltmere Harbour"
+  },
+  "physical": {
+    "size_bytes": 130,
+    "entropy": 3.215,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "b74783f5bcca9bca4c9aa6d5466130b4668642edd33bde600ca69d28caa353ec",
+    "blake3": "5c026b9f122e211ad06246528cc9741160c91117bbc367bafd6a27363a1f1e04"
+  },
+  "content": {
+    "title": "Lighthouse",
+    "authors": [
+      "Saltmere Band"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "sid": {
+      "kind": "PSID",
+      "version": 2,
+      "load_address": "0x1000",
+      "init_address": "0x1000",
+      "play_address": "0x1003",
+      "songs": 3,
+      "start_song": 1,
+      "clock": "PAL",
+      "sid_chips": [
+        "MOS 6581"
+      ],
+      "title": "Lighthouse",
+      "author": "Saltmere Band",
+      "copyright": "2025 Saltmere Harbour"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.chiptune",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

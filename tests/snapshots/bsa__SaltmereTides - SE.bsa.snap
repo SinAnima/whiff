@@ -1,0 +1,137 @@
+---
+source: src/formats/game/archive.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "SaltmereTides - SE.bsa",
+    "stem": "SaltmereTides - SE",
+    "extension": "bsa"
+  },
+  "identification": {
+    "format": "bsa",
+    "name": "Bethesda archive (BSA)",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.archive"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 347
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 347,
+    "entropy": 3.254,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 6
+    }
+  },
+  "integrity": {
+    "sha256": "b2f89ba6fb7952a3b41108d8469dae7a472e2b4ae0142735a72f1510107647ff",
+    "blake3": "b6d6d21b4f99ea6f9d4eb75d3e7ba9b5e980d2d423685878218358e8e7b834c1"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "bsa": {
+      "version": "105 (Skyrim Special Edition)",
+      "folder_count": 3,
+      "flags": [
+        "folder names",
+        "file names"
+      ],
+      "content_types": [
+        "meshes",
+        "textures",
+        "sounds"
+      ],
+      "file_count": 6,
+      "extensions": {
+        "dds": 3,
+        "nif": 2,
+        "wav": 1
+      },
+      "files": [
+        "meshes\\harbour\\pier01.nif",
+        "meshes\\harbour\\buoy01.nif",
+        "textures\\harbour\\pier01.dds",
+        "textures\\harbour\\pier01_n.dds",
+        "textures\\harbour\\water.dds",
+        "sound\\fx\\harbour\\gull01.wav"
+      ],
+      "top_folders": [
+        "meshes",
+        "sound",
+        "textures"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.archive",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,141 @@
+---
+source: src/formats/game/fiction.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.gblorb",
+    "stem": "tides",
+    "extension": "gblorb"
+  },
+  "identification": {
+    "format": "blorb",
+    "name": "Blorb story package",
+    "mime": "application/x-blorb",
+    "family": "game",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.fiction"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2300
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2300,
+    "entropy": 4.314,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "7e2023570364f8b2e3bb10a92f9c5d0a309b4af6d9ddaea7f2d4d06c3b7f854c",
+    "blake3": "de132c1a622a8bd6bff0dc23271c4edae4483b01fcdfdd28e67203d0c324c20e"
+  },
+  "content": {
+    "title": "Saltmere Tides",
+    "description": "Keep the lighthouse lamp burning until the fishing boats are home.",
+    "authors": [
+      "Harbour Writers"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    }
+  },
+  "metadata": {},
+  "format": {
+    "blorb": {
+      "frontispiece": 1,
+      "story_format": "Glulx",
+      "chunks": {
+        "Fspc": 1,
+        "GLUL": 1,
+        "IFmd": 1,
+        "PNG": 1,
+        "RIdx": 1
+      },
+      "resources": {
+        "executables": 1,
+        "pictures": 1
+      },
+      "story": {
+        "format": "Glulx"
+      },
+      "ifiction": {
+        "ifid": "GLULX-3-251105-00000000",
+        "story_format": "glulx",
+        "title": "Saltmere Tides",
+        "author": "Harbour Writers",
+        "language": "en",
+        "headline": "A short harbour adventure",
+        "firstpublished": "2025",
+        "genre": "Slice of life",
+        "description": "Keep the lighthouse lamp burning until the fishing boats are home."
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.fiction",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

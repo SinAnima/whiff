@@ -1,0 +1,178 @@
+---
+source: src/formats/game/fiction.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.twee",
+    "stem": "saltmere-tides",
+    "extension": "twee"
+  },
+  "identification": {
+    "format": "twee",
+    "name": "Twee (Twine source)",
+    "mime": "text/vnd.twine.twee",
+    "family": "game",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "game.fiction"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 714
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 714,
+    "entropy": 5.082,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 714,
+      "chars": 714,
+      "words": 89,
+      "lines": 36,
+      "max_line_length": 69,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 13
+    }
+  },
+  "integrity": {
+    "sha256": "2e04471ef8449ba3d31138fb7fa53edce55bd91ff69bb972024cd6e34106b435",
+    "blake3": "5d95d1de676288edeee0932d6f11c2411906bcc17ee40616e0c55d4cd02de7d0"
+  },
+  "content": {
+    "title": "Saltmere Tides",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Gulls circle",
+      "lighthouse",
+      "boats",
+      "pier",
+      "lighthouse stands",
+      "Climb the lighthouse",
+      "lamp",
+      "Gulls",
+      "circle",
+      "lamp is cold"
+    ],
+    "keyword_frequency": [
+      [
+        "boats",
+        4
+      ],
+      [
+        "lamp",
+        3
+      ],
+      [
+        "lighthouse",
+        3
+      ],
+      [
+        "pier",
+        3
+      ]
+    ],
+    "excerpt": "Gulls circle the end of the pier. The lighthouse stands to the north. [[Climb the lighthouse->Lighthouse]] [[Wait for the boats|Boats]] The lamp room smells of oil. The brass lamp is cold. [[Light the lamp->Ending]] [[Go back down->Pier]] The fishing boats are late tonight. [[Pier]] The beam sweeps the water, and the boats turn for home.",
+    "tags": [
+      "Gulls circle",
+      "lighthouse",
+      "boats",
+      "pier",
+      "lighthouse stands"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "twee": {
+      "title": "Saltmere Tides",
+      "ifid": "D674C58C-DEFA-4F70-B7A2-27742230C0FC",
+      "story_format": "Harlowe",
+      "story_format_version": "3.3.9",
+      "start": "Pier",
+      "twee_version": 3,
+      "passage_count": 4,
+      "passages": [
+        "Pier",
+        "Lighthouse",
+        "Boats",
+        "Ending"
+      ],
+      "link_count": 5,
+      "tags": {
+        "end": 1,
+        "harbour": 2,
+        "start": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.fiction",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

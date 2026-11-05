@@ -1,0 +1,125 @@
+---
+source: src/formats/game/engine.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "classic.godot",
+    "stem": "classic",
+    "extension": "godot"
+  },
+  "identification": {
+    "format": "godot_project",
+    "name": "Godot project",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "game.engine"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 235
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 235,
+    "entropy": 4.6,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 235,
+      "chars": 235,
+      "words": 13,
+      "lines": 13,
+      "max_line_length": 56,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 5
+    }
+  },
+  "integrity": {
+    "sha256": "b161b46eb283f8e8c2fc7ac049a07d24b0afc926a35e1e3270ed250eedf690c0",
+    "blake3": "a9fbaf8ac015ca83350892b95d58ae951aa9f34f18220a11a090684c8a56dd49"
+  },
+  "content": {
+    "title": "Saltmere Tides (classic)"
+  },
+  "metadata": {},
+  "format": {
+    "godot_project": {
+      "config_version": 4,
+      "engine": "Godot 3",
+      "name": "Saltmere Tides (classic)",
+      "main_scene": "res://Pier.tscn",
+      "sections": [
+        "application",
+        "rendering"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.engine",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

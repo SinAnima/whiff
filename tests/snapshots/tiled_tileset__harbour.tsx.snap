@@ -1,0 +1,144 @@
+---
+source: src/formats/game/tiled.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.tsx",
+    "stem": "harbour",
+    "extension": "tsx"
+  },
+  "identification": {
+    "format": "tiled_tileset",
+    "name": "Tiled tileset (TSX / TSJ)",
+    "mime": "application/x-tiled-tsx",
+    "family": "game",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "tiled_tileset",
+        "confidence": 0.97
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      },
+      {
+        "format": "typescript",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "game.tiled"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 643
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 1
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 643,
+    "entropy": 4.803,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 643,
+      "chars": 643,
+      "words": 49,
+      "lines": 19,
+      "max_line_length": 119,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "3cd65250eff08f4546e1a28233eaf75d8891970df3315aac0adcca43d7bae0c6",
+    "blake3": "493270e4b2730bcea07ff3606c26ac3b89c017db1cfac518b05eaac3fb3c5e53"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "tiled_tileset": {
+      "version": "1.10",
+      "tiled_version": "1.11.0",
+      "tile_width": 16,
+      "tile_height": 16,
+      "name": "harbour",
+      "tile_count": 64,
+      "columns": 8,
+      "images": [
+        "harbour.png"
+      ],
+      "tiles_with_data": 2,
+      "animated_tiles": 1,
+      "wang_sets": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.tiled",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

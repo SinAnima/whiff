@@ -11,7 +11,7 @@
 //! | `data` | columnar |
 //! | `cad` | cad |
 //! | `forensics` | forensics |
-//! | `games` | games |
+//! | `games` | game |
 //!
 //! Format modules import only `crate::plugin::*`. Add a format with
 //! `cargo run --features dev --bin whiff-dev -- new-extractor …`, which also
@@ -54,6 +54,8 @@ pub(crate) mod exec;
 pub(crate) mod font;
 #[cfg(feature = "forensics")]
 pub(crate) mod forensic;
+#[cfg(feature = "games")]
+pub(crate) mod game;
 #[cfg(feature = "geo")]
 pub(crate) mod geo;
 #[cfg(feature = "common")]

@@ -50,7 +50,7 @@ science = ["common"]
 data = ["common"]
 cad = ["common"]
 forensics = ["common"]
-games = []
+games = ["common"]
 full = ["common", "geo", "science", "data", "cad", "forensics", "games"]
 # The `whiff` command-line tool.
 cli = ["dep:clap", "dep:rayon", "dep:ignore"]

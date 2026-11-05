@@ -1,0 +1,127 @@
+---
+source: src/formats/game/console.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.nsp",
+    "stem": "saltmere-tides",
+    "extension": "nsp"
+  },
+  "identification": {
+    "format": "nsp",
+    "name": "Nintendo Switch package (NSP)",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.console"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3772
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 3772,
+    "entropy": 1.809,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 5,
+      "uncompressed_bytes": 3412,
+      "ratio": 0.9045599151643691
+    }
+  },
+  "integrity": {
+    "sha256": "f8eee59b869e8563b34cbd4b13cd6ba78b900c55a29ce1d1a88393086bf6546b",
+    "blake3": "d5d58395c1b196aecdf5db22e960c720df7e4537e59ea0845f96abff19a6260a"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "nsp": {
+      "file_count": 5,
+      "file_kinds": {
+        "cert": 1,
+        "cnmt.nca": 1,
+        "cnmt.xml": 1,
+        "nca": 1,
+        "tik": 1
+      },
+      "title_ids": [
+        "0100f00dc0ffe000"
+      ],
+      "files": [
+        "6f0c6a6f2d8b4c2e9f1a3b5c7d9e0f12.nca",
+        "1a2b3c4d5e6f708192a3b4c5d6e7f809.cnmt.nca",
+        "1a2b3c4d5e6f708192a3b4c5d6e7f809.cnmt.xml",
+        "0100f00dc0ffe0000000000000000001.tik",
+        "0100f00dc0ffe0000000000000000001.cert"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.console",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

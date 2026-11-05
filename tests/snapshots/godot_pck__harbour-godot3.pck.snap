@@ -1,0 +1,128 @@
+---
+source: src/formats/game/archive.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-godot3.pck",
+    "stem": "harbour-godot3",
+    "extension": "pck"
+  },
+  "identification": {
+    "format": "godot_pck",
+    "name": "Godot pack (PCK)",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.archive"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 443
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 443,
+    "entropy": 4.441,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 4,
+      "uncompressed_bytes": 107,
+      "ratio": 0.24153498871331827
+    }
+  },
+  "integrity": {
+    "sha256": "4659dab7d01c8935341e79a2b914872903a614f8c17ea8af8e9f9c9749e9a91a",
+    "blake3": "dc099d91a77a2bfd7c10f30bbc9b372385227897df718cd4935cfbbd1bb629a3"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "godot_pck": {
+      "pack_format": 1,
+      "engine_version": "3.5.3",
+      "file_count": 4,
+      "extensions": {
+        "binary": 1,
+        "ctex": 1,
+        "svg": 1,
+        "tscn": 1
+      },
+      "files": [
+        "project.binary",
+        "scenes/pier.tscn",
+        ".godot/imported/water.png-1a2b.ctex",
+        "icon.svg"
+      ],
+      "top_folders": [
+        ".godot",
+        "scenes"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.archive",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

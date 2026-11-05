@@ -1,0 +1,118 @@
+---
+source: src/formats/game/steam.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "loginusers.vdf",
+    "stem": "loginusers",
+    "extension": "vdf"
+  },
+  "identification": {
+    "format": "steam_vdf",
+    "name": "Steam KeyValues (VDF / ACF)",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "game.steam"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 175
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 175,
+    "entropy": 4.608,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 175,
+      "chars": 175,
+      "words": 17,
+      "lines": 11,
+      "max_line_length": 46,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "6e08a731f42a56a5005532b1a8e99504e47fb012c988c899b9d6bd589a3eb96d",
+    "blake3": "78a3ddbc8d7a2ddbc4f3e1f38f6a93706465b0bc786690139de1f3348332119d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "steam_vdf": {
+      "root": "users",
+      "key_count": 7,
+      "account_count": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.steam",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,150 @@
+---
+source: src/formats/game/minecraft.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pier-sponge2.schem",
+    "stem": "pier-sponge2",
+    "extension": "schem"
+  },
+  "identification": {
+    "format": "minecraft_schematic",
+    "name": "Minecraft schematic (Sponge, Litematica, MCEdit)",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "minecraft_schematic",
+        "confidence": 0.99
+      },
+      {
+        "format": "gzip",
+        "confidence": 0.72
+      }
+    ],
+    "extractor": "game.minecraft"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 322
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-11-05T08:00:00Z",
+        "source": "game.minecraft",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-11-05T08:00:00Z",
+    "latest": "2025-11-05T08:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 322,
+    "entropy": 7.298,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "fd002b5c5c1b4947ba6314c745d31fddf0326e273356c473658a778d898f5394",
+    "blake3": "0c69418c6b5fe791dfc8c0a94346c5320f56a082e763a6dadf224ec4d1dd620c"
+  },
+  "content": {
+    "title": "Saltmere Pier",
+    "authors": [
+      "Harbour Builders"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "minecraft_schematic": {
+      "kind": "Sponge",
+      "version": 2,
+      "data_version": 3700,
+      "size": [
+        5,
+        3,
+        12
+      ],
+      "palette_size": 4,
+      "block_namespaces": {
+        "create": 1,
+        "minecraft": 3
+      },
+      "block_entity_count": 1,
+      "entity_count": 0,
+      "name": "Saltmere Pier",
+      "author": "Harbour Builders",
+      "created": "2025-11-05T08:00:00Z",
+      "required_mods": [
+        "create"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.minecraft",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

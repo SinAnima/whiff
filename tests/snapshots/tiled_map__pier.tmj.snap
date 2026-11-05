@@ -1,0 +1,166 @@
+---
+source: src/formats/game/tiled.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pier.tmj",
+    "stem": "pier",
+    "extension": "tmj"
+  },
+  "identification": {
+    "format": "tiled_map",
+    "name": "Tiled map (TMX / TMJ)",
+    "mime": "application/x-tiled-tmx",
+    "family": "game",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "tiled_map",
+        "confidence": 0.99
+      },
+      {
+        "format": "json",
+        "confidence": 0.55
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "game.tiled"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3785
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 2
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 3785,
+    "entropy": 3.148,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 3785,
+      "chars": 3785,
+      "words": 229,
+      "lines": 143,
+      "max_line_length": 48,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "5b7273f91f11310f9d674fc2fc476016db329bf31ba50e8fab6daab76c9e2fc5",
+    "blake3": "3654f109bd9c2337fbbcdb1ab9e1d624407702c94b43ab2b9460fb08d081b03a"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "tiled_map": {
+      "version": "1.10",
+      "tiled_version": "1.11.0",
+      "orientation": "orthogonal",
+      "render_order": "right-down",
+      "width": 8,
+      "height": 6,
+      "tile_width": 16,
+      "tile_height": 16,
+      "infinite": false,
+      "layer_count": 5,
+      "layer_types": {
+        "group": 1,
+        "image": 1,
+        "object": 1,
+        "tile": 2
+      },
+      "layers": [
+        "Water",
+        "Pier",
+        "Planks",
+        "Spawns",
+        "Sky"
+      ],
+      "object_count": 3,
+      "tilesets": [
+        "harbour.tsx",
+        "props"
+      ],
+      "images": [
+        "props.png",
+        "sky.png"
+      ],
+      "tile_data": [
+        "csv"
+      ],
+      "properties": [
+        "music",
+        "tide"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.tiled",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

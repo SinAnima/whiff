@@ -1,0 +1,114 @@
+---
+source: src/formats/game/console.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.xci",
+    "stem": "saltmere-tides",
+    "extension": "xci"
+  },
+  "identification": {
+    "format": "xci",
+    "name": "Nintendo Switch game card image (XCI)",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.console"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 816
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "encrypted": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 816,
+    "entropy": 1.721,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "9a6124c9d9a61720d73d412f8383493102a54c049056e6e04c72ae770f11b8ac",
+    "blake3": "fb1f6e8cceed6a9fb6e4f2496f15e7745f0b8e1c925a5e909462a704cc0e0c63"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "xci": {
+      "card_size": "1 GB",
+      "package_id": "0123456789abcdef",
+      "data_bytes": 1024,
+      "partitions": [
+        "update",
+        "normal",
+        "secure"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.console",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

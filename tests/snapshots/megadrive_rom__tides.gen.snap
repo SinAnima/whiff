@@ -1,0 +1,130 @@
+---
+source: src/formats/game/rom.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.gen",
+    "stem": "tides",
+    "extension": "gen"
+  },
+  "identification": {
+    "format": "megadrive_rom",
+    "name": "Sega Mega Drive / Genesis ROM",
+    "mime": "application/x-genesis-rom",
+    "family": "game",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "game.rom"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 16384
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "(C)SALT 2025.NOV"
+  },
+  "physical": {
+    "size_bytes": 16384,
+    "entropy": 0.149,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "662a19882ec682a90c15a5b186d3a7f7e4eaa6e2a2f022fd778f574a55505e37",
+    "blake3": "111506e8e48351291e0881221b15d0baef2e33eff026e79af95467cf6c2fc6cf"
+  },
+  "content": {
+    "title": "SALTMERE TIDES"
+  },
+  "metadata": {},
+  "format": {
+    "megadrive_rom": {
+      "rom_size_bytes": 16384,
+      "system": "SEGA MEGA DRIVE",
+      "platform": "Mega Drive",
+      "publisher_code": "SALT",
+      "release": "2025 NOV",
+      "copyright": "(C)SALT 2025.NOV",
+      "domestic_title": "SALTMERE TIDES",
+      "overseas_title": "SALTMERE TIDES",
+      "serial": "GM 00000001-00",
+      "devices": [
+        "3-button controller",
+        "6-button controller"
+      ],
+      "rom_range": "0x000000-0x003fff",
+      "ram_range": "0xff0000-0xffffff",
+      "regions": [
+        "Japan",
+        "Americas",
+        "Europe"
+      ],
+      "checksum": "af6f",
+      "checksum_valid": true
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.rom",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

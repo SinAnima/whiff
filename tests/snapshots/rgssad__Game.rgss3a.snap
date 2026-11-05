@@ -1,0 +1,125 @@
+---
+source: src/formats/game/archive.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Game.rgss3a",
+    "stem": "Game",
+    "extension": "rgss3a"
+  },
+  "identification": {
+    "format": "rgssad",
+    "name": "RPG Maker archive (RGSSAD)",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.93,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.archive"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 195
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 195,
+    "entropy": 4.705,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 3,
+      "uncompressed_bytes": 48,
+      "ratio": 0.24615384615384617
+    }
+  },
+  "integrity": {
+    "sha256": "e002df3168476b4a03fc489249c5bd8fb743c3ad5cd825024bcc4a40982566ce",
+    "blake3": "4682d1ea36a6677998323faaf4506045bac04d0d511d0bb2f8e6f1cdb0196624"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "rgssad": {
+      "version": 3,
+      "engine": "RPG Maker VX Ace",
+      "file_count": 3,
+      "extensions": {
+        "png": 1,
+        "rvdata2": 2
+      },
+      "files": [
+        "Data\\Map001.rvdata2",
+        "Data\\Scripts.rvdata2",
+        "Graphics\\Tilesets\\Harbour_A1.png"
+      ],
+      "top_folders": [
+        "Data",
+        "Graphics"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.archive",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

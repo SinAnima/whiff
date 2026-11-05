@@ -20,7 +20,7 @@ import subprocess
 import sys
 
 ORDER = ["Text", "Web", "Document", "Personal", "Data", "Scientific", "Code", "Image", "Media", "Font", "Archive", "Package",
-         "Executable", "Security", "Database", "Platform", "Disk", "Forensics", "Geospatial", "3D", "CAD", "Fallback"]
+         "Executable", "Security", "Database", "Platform", "Disk", "Forensics", "Geospatial", "3D", "CAD", "Game", "Fallback"]
 
 TITLES = {
     "Personal": "E-mail, calendars and contacts",
@@ -32,6 +32,7 @@ TITLES = {
     "3D": "3D models and scenes",
     "CAD": "CAD, engineering and electronics",
     "Scientific": "Scientific and medical data",
+    "Game": "Games",
 }
 
 
@@ -51,7 +52,7 @@ LABELS = {
     "font": "Fonts", "archive": "Archives", "compress": "Compressed files", "package": "Packages and installers",
     "exec": "Executables", "bytecode": "Bytecode", "crypto": "Certificates, keys and signatures",
     "db": "Databases", "apple": "Apple formats", "disk": "Disk images and file systems",
-    "forensic": "Forensic artefacts", "geo": "Geospatial", "binary.unknown": "Generic binaries",
+    "forensic": "Forensic artefacts", "geo": "Geospatial", "game": "Games", "binary.unknown": "Generic binaries",
 }
 
 

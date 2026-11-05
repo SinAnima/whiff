@@ -1,0 +1,117 @@
+---
+source: src/formats/game/archive.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-iwad.wad",
+    "stem": "tides-iwad",
+    "extension": "wad"
+  },
+  "identification": {
+    "format": "wad",
+    "name": "Doom / Quake WAD",
+    "mime": "application/x-doom",
+    "family": "game",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.archive"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 15210
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 15210,
+    "entropy": 6.914,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 13
+    }
+  },
+  "integrity": {
+    "sha256": "e824121fadce0278c163606946d308875a146d55803434b10753fe60723270ed",
+    "blake3": "7b0096cbf1e94611e49777c23c3ed6ee53604d29031af6355aa7ee6f126e4d87"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "wad": {
+      "kind": "IWAD (game data)",
+      "lump_count": 13,
+      "map_count": 1,
+      "maps": [
+        "E1M1"
+      ],
+      "notable_lumps": [
+        "ENDOOM",
+        "PLAYPAL"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.archive",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

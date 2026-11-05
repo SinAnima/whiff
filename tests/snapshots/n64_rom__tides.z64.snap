@@ -1,0 +1,117 @@
+---
+source: src/formats/game/rom.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.z64",
+    "stem": "tides",
+    "extension": "z64"
+  },
+  "identification": {
+    "format": "n64_rom",
+    "name": "Nintendo 64 ROM",
+    "mime": "application/x-n64-rom",
+    "family": "game",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.rom"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 8192
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 8192,
+    "entropy": 0.069,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "4c37cf60dbe12edff7814b58460d4c87329346fc9abf926237de6029f1fc2242",
+    "blake3": "36a3f0f7eec0dc77b1a84cd0fbf7e943ee84774e1dec96260df360a78962b919"
+  },
+  "content": {
+    "title": "SALTMERE TIDES"
+  },
+  "metadata": {},
+  "format": {
+    "n64_rom": {
+      "rom_size_bytes": 8192,
+      "byte_order": "big-endian (z64)",
+      "title": "SALTMERE TIDES",
+      "media": "cartridge",
+      "game_code": "NSTE",
+      "region": "North America",
+      "version": 1,
+      "crc1": "5a1d2c3b",
+      "crc2": "0f1e2d3c",
+      "entry_point": "0x80000400",
+      "libultra": "2.0K"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.rom",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

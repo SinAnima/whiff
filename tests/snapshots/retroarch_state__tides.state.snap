@@ -1,0 +1,117 @@
+---
+source: src/formats/game/save.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.state",
+    "stem": "tides",
+    "extension": "state"
+  },
+  "identification": {
+    "format": "retroarch_state",
+    "name": "RetroArch save state",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.93,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.save"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4152
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4152,
+    "entropy": 7.993,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "5650a5c6a9dd9e6116a2b9014519f01ac307ae34a40b084081c75f11f5746a47",
+    "blake3": "43c3abf1478fda28a764232f6764c40593fe4cda67cc898ab22028cc000045fa"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "retroarch_state": {
+      "version": 1,
+      "blocks": [
+        {
+          "block": "MEM",
+          "kind": "core memory",
+          "size": 4096
+        },
+        {
+          "block": "ACHV",
+          "kind": "achievements",
+          "size": 20
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.save",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

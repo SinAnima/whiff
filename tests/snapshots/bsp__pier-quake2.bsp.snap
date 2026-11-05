@@ -1,0 +1,125 @@
+---
+source: src/formats/game/archive.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pier-quake2.bsp",
+    "stem": "pier-quake2",
+    "extension": "bsp"
+  },
+  "identification": {
+    "format": "bsp",
+    "name": "BSP map (Quake, Half-Life, Source)",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "game.archive"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 792
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 792,
+    "entropy": 2.863,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "dc16728941ba1679bb50b61bfadb2781de98f87d56be860544e0711368e449ea",
+    "blake3": "84297a774fe8232ac51686a1a9ae62635ea3a17b8eccc4eeba2d11c382f95d50"
+  },
+  "content": {
+    "title": "The Saltmere Pier",
+    "excerpt": "The Saltmere Pier"
+  },
+  "metadata": {},
+  "format": {
+    "bsp": {
+      "game": "Quake II",
+      "version": 38,
+      "models_count": 1,
+      "faces_count": 3,
+      "vertices_count": 6,
+      "textures_count": 2,
+      "entity_count": 4,
+      "entity_classes": {
+        "info_player_start": 1,
+        "light": 2,
+        "worldspawn": 1
+      },
+      "worldspawn": {
+        "title": "The Saltmere Pier",
+        "sounds": "4",
+        "worldtype": "2",
+        "_generator": "craft_games"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.archive",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

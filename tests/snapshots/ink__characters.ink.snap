@@ -1,0 +1,125 @@
+---
+source: src/formats/game/fiction.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "characters.ink",
+    "stem": "characters",
+    "extension": "ink"
+  },
+  "identification": {
+    "format": "ink",
+    "name": "Ink story source",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "game.fiction"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 40
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 40,
+    "entropy": 3.884,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 40,
+      "chars": 40,
+      "words": 8,
+      "lines": 3,
+      "max_line_length": 16,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "b3efeaaa3ac546d0de81e8d5eafaee2ee72beb6147005bad886bdad8d8310bb2",
+    "blake3": "9964e62250d95cea79102da59fdc036bb83e8b21697c3db8f44ff7a77c61b942"
+  },
+  "content": {
+    "excerpt": "The keeper nods."
+  },
+  "metadata": {},
+  "format": {
+    "ink": {
+      "knot_count": 1,
+      "knots": [
+        "keeper"
+      ],
+      "stitch_count": 0,
+      "function_count": 0,
+      "choice_count": 0,
+      "gather_count": 0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.fiction",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

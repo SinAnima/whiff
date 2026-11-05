@@ -1,0 +1,138 @@
+---
+source: src/formats/game/rom.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "lighthouse.md",
+    "stem": "lighthouse",
+    "extension": "md"
+  },
+  "identification": {
+    "format": "megadrive_rom",
+    "name": "Sega Mega Drive / Genesis ROM",
+    "mime": "application/x-genesis-rom",
+    "family": "game",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "megadrive_rom",
+        "confidence": 0.97
+      },
+      {
+        "format": "markdown",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "game.rom"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 8192
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "(C)T-99 2025.SEP"
+  },
+  "physical": {
+    "size_bytes": 8192,
+    "entropy": 0.264,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "1965795ca65e5c960adbab33df9750851ff89e5bc52f720d071b0f0cf2b6a9fe",
+    "blake3": "b8412444757df0dd1a3c3f9f9d2650c6146753c795fea1b7ff2041978f11fb91"
+  },
+  "content": {
+    "title": "LIGHTHOUSE KEEPER"
+  },
+  "metadata": {},
+  "format": {
+    "megadrive_rom": {
+      "rom_size_bytes": 8192,
+      "system": "SEGA GENESIS",
+      "platform": "Genesis",
+      "publisher_code": "T-99",
+      "release": "2025 SEP",
+      "copyright": "(C)T-99 2025.SEP",
+      "domestic_title": "TOUDAI",
+      "overseas_title": "LIGHTHOUSE KEEPER",
+      "serial": "GM T-99001 -01",
+      "devices": [
+        "3-button controller",
+        "mouse"
+      ],
+      "rom_range": "0x000000-0x001fff",
+      "ram_range": "0xff0000-0xffffff",
+      "regions": [
+        "Americas"
+      ],
+      "checksum": "af6f",
+      "checksum_valid": true
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.rom",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

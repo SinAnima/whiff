@@ -1,0 +1,137 @@
+---
+source: src/formats/game/chiptune.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.nsfe",
+    "stem": "tides",
+    "extension": "nsfe"
+  },
+  "identification": {
+    "format": "nsfe",
+    "name": "Extended NES Sound Format (NSFe)",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.chiptune"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 164
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "2025 Saltmere Harbour"
+  },
+  "physical": {
+    "size_bytes": 164,
+    "entropy": 4.995,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "38e2ff2dc0ffc64270b6ee3ca0514aeb0d58823812ee067ef755d0b45f1d9b22",
+    "blake3": "1459c7756ba2d643123cd89f3b19d6b1a43bc0211ca061a379088cee950d1bbe"
+  },
+  "content": {
+    "title": "Saltmere Tides",
+    "authors": [
+      "Saltmere Band"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "nsfe": {
+      "load_address": "0x8000",
+      "init_address": "0x8000",
+      "play_address": "0x8006",
+      "region": "NTSC",
+      "songs": 2,
+      "start_song": 1,
+      "ripper": "craft_games",
+      "track_titles": [
+        "Low Tide",
+        "High Tide"
+      ],
+      "track_seconds": [
+        95.0,
+        120.5
+      ],
+      "chunks": [
+        "INFO",
+        "DATA",
+        "auth",
+        "tlbl",
+        "time",
+        "NEND"
+      ],
+      "title": "Saltmere Tides",
+      "author": "Saltmere Band",
+      "copyright": "2025 Saltmere Harbour"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.chiptune",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

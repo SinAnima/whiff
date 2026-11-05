@@ -1,0 +1,131 @@
+---
+source: src/formats/game/chiptune.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.gbs",
+    "stem": "saltmere-tides",
+    "extension": "gbs"
+  },
+  "identification": {
+    "format": "gbs",
+    "name": "Game Boy Sound System (GBS)",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.76,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "gbs",
+        "confidence": 0.76
+      },
+      {
+        "format": "gerber",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "game.chiptune"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 116
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "2025 Saltmere Harbour"
+  },
+  "physical": {
+    "size_bytes": 116,
+    "entropy": 3.482,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "06017fb870bfdc4a9f78cd3d657cc144a24896ccfda68ab4494194c407a735d7",
+    "blake3": "b9e2893ed95a717aa2f62d01294c23b2042cc21f29c180e0e483064622e174b3"
+  },
+  "content": {
+    "title": "Saltmere Tides",
+    "authors": [
+      "Saltmere Band"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "gbs": {
+      "version": 1,
+      "songs": 4,
+      "start_song": 1,
+      "load_address": "0x0470",
+      "init_address": "0x0470",
+      "play_address": "0x0473",
+      "timing": "vblank",
+      "title": "Saltmere Tides",
+      "author": "Saltmere Band",
+      "copyright": "2025 Saltmere Harbour"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.chiptune",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

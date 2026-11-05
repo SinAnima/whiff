@@ -1,0 +1,114 @@
+---
+source: src/formats/game/engine.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "SM_Buoy.uasset",
+    "stem": "SM_Buoy",
+    "extension": "uasset"
+  },
+  "identification": {
+    "format": "uasset",
+    "name": "Unreal Engine package",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "game.engine"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 387
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 387,
+    "entropy": 4.836,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "8592d417bbb719759e59d9466a9739a59b014e9fac00921dcf8ad056103b33c8",
+    "blake3": "a33f51b92d03f7789ff1b306bab696a68ebbb6e665acf940ca331b25f3414805"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "uasset": {
+      "legacy_file_version": -7,
+      "ue4_version": 522,
+      "custom_version_count": 2,
+      "header_bytes": 387,
+      "package_flags": "0x00000000",
+      "cooked": false,
+      "name_count": 5,
+      "export_count": 1,
+      "import_count": 2,
+      "saved_by_engine": "4.27.2-18319896+++UE4+Release-4.27"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.engine",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

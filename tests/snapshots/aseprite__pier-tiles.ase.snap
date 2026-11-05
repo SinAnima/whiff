@@ -1,0 +1,138 @@
+---
+source: src/formats/game/sprite.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pier-tiles.ase",
+    "stem": "pier-tiles",
+    "extension": "ase"
+  },
+  "identification": {
+    "format": "aseprite",
+    "name": "Aseprite sprite",
+    "mime": "image/x-aseprite",
+    "family": "game",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "game.sprite"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 287
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 287,
+    "entropy": 1.859,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48,
+      "bit_depth": 8,
+      "channels": 4,
+      "color_space": "RGBA",
+      "frames": 1
+    },
+    "media": {
+      "duration_s": 0.1
+    }
+  },
+  "integrity": {
+    "sha256": "1281c4919dd4ef7f0053ce7e6f69a635901d6b7fe73d446d1ed092b04fe49973",
+    "blake3": "4702696172d73b808ddeaf65b459a27c505d9ea56c8b79c5836b73bb805f9080"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "aseprite": {
+      "width": 64,
+      "height": 48,
+      "color_mode": "RGBA",
+      "frame_count": 1,
+      "grid": [
+        0,
+        0,
+        16,
+        16
+      ],
+      "duration_ms": 100,
+      "layer_count": 1,
+      "layer_kinds": {
+        "tilemap": 1
+      },
+      "layers": [
+        {
+          "name": "Ground",
+          "kind": "tilemap"
+        }
+      ],
+      "cel_count": 0,
+      "color_profile": "sRGB"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.sprite",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

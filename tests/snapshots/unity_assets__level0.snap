@@ -1,0 +1,114 @@
+---
+source: src/formats/game/engine.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "level0",
+    "stem": "level0"
+  },
+  "identification": {
+    "format": "unity_assets",
+    "name": "Unity serialized file",
+    "mime": "application/octet-stream",
+    "family": "game",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extractor": "game.engine"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 488
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 488,
+    "entropy": 2.064,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "3775c4f041edb2d1a34b021a58ac789d1c45347e13946d974c861e208df82b39",
+    "blake3": "6cdb0adc6ac3842b719da460b4d993291166dd530121320b907e93ff6903ff7d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "unity_assets": {
+      "format_version": 22,
+      "declared_size": 488,
+      "data_offset": 304,
+      "unity_version": "2022.3.21f1",
+      "target_platform": "Windows (64-bit)",
+      "type_tree": false,
+      "object_count": 5,
+      "objects_by_class": {
+        "GameObject": 2,
+        "MonoBehaviour": 1,
+        "Transform": 2
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "game.engine",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

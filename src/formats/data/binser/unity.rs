@@ -47,7 +47,7 @@ static META: ExtractorMeta = ExtractorMeta {
 };
 
 /// Names of common Unity class IDs.
-fn class_name(id: u32) -> Option<&'static str> {
+pub(crate) fn class_name(id: u32) -> Option<&'static str> {
     Some(match id {
         1 => "GameObject",
         4 => "Transform",
