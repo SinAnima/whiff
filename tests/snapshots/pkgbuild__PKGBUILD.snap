@@ -1,0 +1,154 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "PKGBUILD",
+    "stem": "PKGBUILD"
+  },
+  "identification": {
+    "format": "pkgbuild",
+    "name": "Arch PKGBUILD",
+    "mime": "text/x-shellscript",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 660
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "license": {
+      "name": "CC0-1.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 660,
+    "entropy": 5.227,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 660,
+      "chars": 660,
+      "words": 53,
+      "lines": 24,
+      "max_line_length": 78,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "d5810b2c2014c318eda1a54961b0041c2362553684501fe3f4b812a7f6d125ac",
+    "blake3": "1c62c2bae22b66d7839f9c17137a101b98692d033ad0bd9d22b877d066ecced9"
+  },
+  "content": {
+    "title": "saltmere-tides 1.4.0-2",
+    "description": "Tide predictions for Saltmere Harbour",
+    "excerpt": "Tide predictions for Saltmere Harbour"
+  },
+  "metadata": {},
+  "format": {
+    "pkgbuild": {
+      "ecosystem": "arch",
+      "name": "saltmere-tides",
+      "version": "1.4.0-2",
+      "license": "CC0-1.0",
+      "repository": "https://harbour.test/tides",
+      "arch": [
+        "x86_64",
+        "aarch64"
+      ],
+      "dependencies": {
+        "glib2": "*",
+        "python": ">=3.11"
+      },
+      "dependencies_count": 2,
+      "build_dependencies": {
+        "meson": "*",
+        "ninja": "*"
+      },
+      "build_dependencies_count": 2,
+      "optional_dependencies": {
+        "gnuplot": "*"
+      },
+      "optional_dependencies_count": 1,
+      "sources": 2,
+      "checksums": [
+        "sha256sums"
+      ],
+      "skipped_checksums": 1,
+      "functions": [
+        "build",
+        "package"
+      ],
+      "maintainers": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

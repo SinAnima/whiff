@@ -1,0 +1,7 @@
+-- Tide model for Saltmere Harbour.
+use base
+
+unique type Gauge = Gauge Text Float
+
+highWater : Gauge -> Float
+highWater = cases Gauge _ level -> level + 1.5

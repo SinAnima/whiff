@@ -1,0 +1,130 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "rebar.config",
+    "stem": "rebar",
+    "extension": "config"
+  },
+  "identification": {
+    "format": "rebar_config",
+    "name": "rebar3 config",
+    "mime": "text/plain",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 306
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 306,
+    "entropy": 4.99,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 306,
+      "chars": 306,
+      "words": 31,
+      "lines": 10,
+      "max_line_length": 78,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "55029cfa4ced1a09cbeaefcdf6f19a8628c576a6b10a1cc348134d3adadfe0db",
+    "blake3": "65a37ea3c9de532eaa0c2aee689b6d7ea330dae35006b730452f1d1d7566ff50"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "rebar_config": {
+      "ecosystem": "hex",
+      "dependencies": {
+        "cowboy": "2.12.0",
+        "jsx": "git: https://github.com/talentdeficit/jsx.git",
+        "recon": "*"
+      },
+      "dependencies_count": 3,
+      "release": {
+        "name": "berths",
+        "version": "1.4.0"
+      },
+      "minimum_otp_version": "26",
+      "plugins": [
+        "rebar3_hex"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,145 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Tides.roc",
+    "stem": "Tides",
+    "extension": "roc"
+  },
+  "identification": {
+    "format": "roc",
+    "name": "Roc source",
+    "mime": "text/x-roc",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 157
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 157,
+    "entropy": 4.676,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 157,
+      "chars": 157,
+      "words": 26,
+      "lines": 9,
+      "max_line_length": 34,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "8ab4481e6fbe604c626e4fea3bfc28ace17b3da1872b3004d3741bb6a0e5fd59",
+    "blake3": "7cc698c5130c798c47a6e6808460a733eae60fb8c24fa9064169f00345f73f67"
+  },
+  "content": {
+    "description": "Tide model for Saltmere Harbour.",
+    "excerpt": "Tide model for Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "roc": {
+      "language": "Roc",
+      "loc": {
+        "code": 5,
+        "comment": 2,
+        "blank": 2,
+        "total": 9
+      },
+      "imports": [
+        "Num"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "function": [
+          "high_water"
+        ],
+        "header": [
+          "module"
+        ]
+      },
+      "symbol_counts": {
+        "function": 1,
+        "header": 1
+      },
+      "module_doc": "Tide model for Saltmere Harbour.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 34
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

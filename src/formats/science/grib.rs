@@ -42,7 +42,8 @@ static META: ExtractorMeta = ExtractorMeta {
             family: "sci",
             mimes: &[],
             extensions: &["root"],
-            magic: &[Magic::at(0, b"root")],
+            // `root` and a big-endian format version (below 2^24): not text that starts `root…`.
+            magic: &[Magic::at(0, b"root\0")],
             parent: None,
         },
     ],

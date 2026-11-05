@@ -1,0 +1,146 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Tides.idr",
+    "stem": "Tides",
+    "extension": "idr"
+  },
+  "identification": {
+    "format": "idris",
+    "name": "Idris source",
+    "mime": "text/x-idris",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 223
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 223,
+    "entropy": 4.589,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 223,
+      "chars": 223,
+      "words": 36,
+      "lines": 12,
+      "max_line_length": 40,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "48b5f8f3d86a0eec103371e86fab5ff819a74e10135513ebcfbdb89f1eead304",
+    "blake3": "1551f0c7f41d4592da0221479ae4f64c1d208decdc042e1cf07fe3eeb0662284"
+  },
+  "content": {
+    "description": "Tide arithmetic for Saltmere Harbour.",
+    "excerpt": "Tide arithmetic for Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "idris": {
+      "language": "Idris",
+      "loc": {
+        "code": 7,
+        "comment": 2,
+        "blank": 3,
+        "total": 12
+      },
+      "package": "Tides",
+      "imports": [
+        "Data.Nat"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "function": [
+          "highWater"
+        ],
+        "type": [
+          "Reading"
+        ]
+      },
+      "symbol_counts": {
+        "function": 1,
+        "type": 1
+      },
+      "module_doc": "Tide arithmetic for Saltmere Harbour.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 40
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -452,4 +452,31 @@ header; it never evaluates, expands or follows anything.
 - **Privacy:** cookie and bookmark hosts, `.netrc` machine names and SSH
   client host names are listed only with `--privacy off`; cookie values
   and passwords are never read into the report.
+- **Programming languages (second batch):** like the first ~40, each
+  language is a row of patterns: symbols are top-level definitions the
+  patterns find, not a parse, and string syntax beyond simple quotes
+  (heredocs, raw and nested strings) can misplace a comment marker.
+  Fixed-form Fortran comments (`C` in column 1) are counted as code; use
+  `!`. K and Q (`.k`, `.q`) and Unison's rarely used extensions are not
+  recognised; `.d` Makefile dependency files read as D and `.pro` qmake
+  projects as Prolog. Max patches list their object classes, not the
+  objects' text. Line counts are checked against Pygments where it has a
+  lexer; Astro, Odin, Move, Cairo, Metal, Apex, Ninja, Gleam, Roc, Unison,
+  OpenQASM, Yacc, Lex, PL/SQL, Go templates, Nushell, Rego, TLA+,
+  ShaderLab, Structured Text and Avro IDL have no reference lexer there.
+- **SPIR-V:** the header and the instructions that describe the module;
+  types, decorations and code are counted, not listed. spirv-dis reads
+  big-endian modules' strings wrongly, so the big-endian fixture is
+  checked against its little-endian twin.
+- **Package manifests:** build scripts (`setup.py`, Gradle, `mix.exs`,
+  `Package.swift`, `conanfile.py`, `flake.nix`, Podfiles, Homebrew
+  formulae) are read as text with patterns, so values computed at build
+  time (variables, version catalogues, loops) are missed or kept as
+  written. PKGBUILD variables and RPM macros are expanded only for simple
+  `%{name}` references; `%if` blocks are not evaluated. Gradle version
+  catalogues (`libs.versions.toml`) are named, not resolved. Podfile,
+  `Package.swift`, Homebrew, Gradle, Cabal, Mix, opam, `MODULE.bazel`,
+  `flake.nix`, `build.zig.zon` and `.sln` readers have no reference
+  parser in the oracle and are covered by their fixtures only. Nested
+  CycloneDX components are counted with their parents.
 

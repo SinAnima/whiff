@@ -1,0 +1,150 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide.y",
+    "stem": "tide",
+    "extension": "y"
+  },
+  "identification": {
+    "format": "yacc",
+    "name": "Yacc / Bison grammar",
+    "mime": "text/x-yacc",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 229
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 229,
+    "entropy": 4.766,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 229,
+      "chars": 229,
+      "words": 38,
+      "lines": 18,
+      "max_line_length": 54,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 5
+    }
+  },
+  "integrity": {
+    "sha256": "dde3568a6c3b88f36d3e18602beaea3fcc15ec18258bd179dda720ff8ab472f3",
+    "blake3": "b6bbfa2596ca8863b59934584c054c758fb8ffc492fec0471d40c8a64ef10d76"
+  },
+  "content": {
+    "description": "Tide table parser for Saltmere Harbour.",
+    "excerpt": "Tide table parser for Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "yacc": {
+      "language": "Yacc / Bison grammar",
+      "loc": {
+        "code": 12,
+        "comment": 1,
+        "blank": 5,
+        "total": 18
+      },
+      "imports": [
+        "stdio.h"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "rule": [
+          "table",
+          "line"
+        ],
+        "start": [
+          "table"
+        ],
+        "token": [
+          "TIME"
+        ]
+      },
+      "symbol_counts": {
+        "rule": 2,
+        "start": 1,
+        "token": 1
+      },
+      "module_doc": "Tide table parser for Saltmere Harbour.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 54
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

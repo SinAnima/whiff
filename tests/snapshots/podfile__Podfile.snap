@@ -1,0 +1,142 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Podfile",
+    "stem": "Podfile"
+  },
+  "identification": {
+    "format": "podfile",
+    "name": "CocoaPods Podfile",
+    "mime": "text/x-ruby",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "candidates": [
+      {
+        "format": "podfile",
+        "confidence": 0.97
+      },
+      {
+        "format": "ruby",
+        "confidence": 0.9
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 241
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 241,
+    "entropy": 4.742,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 241,
+      "chars": 241,
+      "words": 26,
+      "lines": 14,
+      "max_line_length": 35,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "b03dd582c178ef2ea54d95afba34eb029fd2522d4914512e8c5d93b229e2e458",
+    "blake3": "22d0a26a69af275b04979f1ed3806e861fb684e1645fd3c72c6a314cae2d3f34"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "podfile": {
+      "platform": {
+        "os": "ios",
+        "version": "15.0"
+      },
+      "use_frameworks": true,
+      "ecosystem": "cocoapods",
+      "sources": [
+        "https://cdn.cocoapods.org/"
+      ],
+      "dependencies": {
+        "Alamofire": "~> 5.9",
+        "SnapKit": "*",
+        "Quick": "~> 7.0"
+      },
+      "dependencies_count": 3,
+      "targets": [
+        "HarbourTides",
+        "HarbourTidesTests"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

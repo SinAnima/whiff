@@ -1,0 +1,140 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Gemfile.lock",
+    "stem": "Gemfile",
+    "extension": "lock"
+  },
+  "identification": {
+    "format": "gemfile_lock",
+    "name": "Bundler Gemfile.lock",
+    "mime": "text/plain",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 463
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 463,
+    "entropy": 5.25,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 463,
+      "chars": 463,
+      "words": 44,
+      "lines": 30,
+      "max_line_length": 52,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 5
+    }
+  },
+  "integrity": {
+    "sha256": "58b026e99bf2568bd94b923cdc4da74f52eebddababc1ecfb97b6c681ff01a25",
+    "blake3": "8ef5660ddbc22e130d10ef2a032812bc57d9b0d9f2f82c344a94f6f0beaea4bd"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "gemfile_lock": {
+      "ruby_version": "3.3.5p100",
+      "bundler_version": "2.5.16",
+      "ecosystem": "rubygems",
+      "resolved_packages": 5,
+      "sources": {
+        "gem": 4,
+        "git": 1
+      },
+      "packages": {
+        "tide_model": "0.3.0",
+        "pg": "1.5.8",
+        "rails": "7.2.1",
+        "railties": "7.2.1",
+        "rspec-rails": "7.0.1"
+      },
+      "packages_count": 5,
+      "dependencies_count": 4,
+      "remotes": [
+        "https://git.harbour.test/tide_model.git",
+        "https://rubygems.org/"
+      ],
+      "platforms": [
+        "arm64-darwin",
+        "x86_64-linux"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

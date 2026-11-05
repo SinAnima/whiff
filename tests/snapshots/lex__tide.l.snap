@@ -1,0 +1,145 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide.l",
+    "stem": "tide",
+    "extension": "l"
+  },
+  "identification": {
+    "format": "lex",
+    "name": "Lex / Flex scanner",
+    "mime": "text/x-lex",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 274
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 274,
+    "entropy": 4.803,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 274,
+      "chars": 274,
+      "words": 38,
+      "lines": 13,
+      "max_line_length": 46,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "57ed5b1053cf60e45c6930b4d3f65d981227c703e5d175f80c45fb60d65afff7",
+    "blake3": "26a8b7096158e3775ad52c1a8f5ff1e21f39a3048ecdf9f1ef0fcd5b7aa976c5"
+  },
+  "content": {
+    "description": "Tide table scanner for Saltmere Harbour.",
+    "excerpt": "Tide table scanner for Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "lex": {
+      "language": "Lex / Flex scanner",
+      "loc": {
+        "code": 11,
+        "comment": 1,
+        "blank": 1,
+        "total": 13
+      },
+      "imports": [
+        "tide.tab.h"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "option": [
+          "noyywrap"
+        ],
+        "start_condition": [
+          "COMMENT"
+        ]
+      },
+      "symbol_counts": {
+        "option": 1,
+        "start_condition": 1
+      },
+      "module_doc": "Tide table scanner for Saltmere Harbour.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 46
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

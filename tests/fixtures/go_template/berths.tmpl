@@ -1,0 +1,6 @@
+{{/* Berth list page for Saltmere Harbour. */}}
+{{define "berth"}}<li>{{.Number}}: {{.Vessel}}</li>{{end}}
+<ul>
+{{range .Berths}}{{template "berth" .}}{{end}}
+</ul>
+{{block "footer" .}}<p>Updated {{.Updated}}</p>{{end}}

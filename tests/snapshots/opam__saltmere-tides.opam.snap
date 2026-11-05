@@ -1,0 +1,141 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.opam",
+    "stem": "saltmere-tides",
+    "extension": "opam"
+  },
+  "identification": {
+    "format": "opam",
+    "name": "opam package file",
+    "mime": "text/plain",
+    "family": "code.manifest",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 514
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "personal_data": {
+      "email": 1
+    }
+  },
+  "rights": {
+    "license": {
+      "name": "CC0-1.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 514,
+    "entropy": 4.909,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 514,
+      "chars": 514,
+      "words": 50,
+      "lines": 19,
+      "max_line_length": 59,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "71bd7e1adb858400e968474e0166029cf8eb8e0682f16ecbc5c1c61b31660b2f",
+    "blake3": "4695c65eaf8740d8b856083207ca1ee8e8ff53590c093301a55ca92b234f1fa1"
+  },
+  "content": {
+    "title": "saltmere-tides 1.4.0",
+    "description": "Tide predictions for Saltmere Harbour",
+    "excerpt": "Tide predictions for Saltmere Harbour"
+  },
+  "metadata": {},
+  "format": {
+    "opam": {
+      "ecosystem": "opam",
+      "name": "saltmere-tides",
+      "version": "1.4.0",
+      "license": "CC0-1.0",
+      "repository": "git+https://git.harbour.test/tides.git",
+      "opam_version": "2.0",
+      "bug_reports": "https://git.harbour.test/tides/issues",
+      "dependencies": {
+        "ocaml": ">= 4.14",
+        "dune": ">= 3.0",
+        "ptime": "*",
+        "alcotest": "with-test"
+      },
+      "dependencies_count": 4
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

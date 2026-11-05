@@ -1,0 +1,31 @@
+SPDXVersion: SPDX-2.3
+DataLicense: CC0-1.0
+SPDXID: SPDXRef-DOCUMENT
+DocumentName: saltmere-tides-1.4.0
+DocumentNamespace: https://harbour.test/spdx/saltmere-tides-1.4.0
+Creator: Tool: harbour-sbom-1.0
+Creator: Organization: Saltmere Harbour Office
+Created: 2026-03-14T09:30:00Z
+
+PackageName: saltmere-tides
+SPDXID: SPDXRef-Package-tides
+PackageVersion: 1.4.0
+PackageDownloadLocation: https://harbour.test/releases/saltmere-tides-1.4.0.tar.gz
+FilesAnalyzed: false
+PackageLicenseConcluded: CC0-1.0
+PackageLicenseDeclared: CC0-1.0
+PackageCopyrightText: NOASSERTION
+ExternalRef: PACKAGE-MANAGER purl pkg:pypi/saltmere-tides@1.4.0
+
+PackageName: requests
+SPDXID: SPDXRef-Package-requests
+PackageVersion: 2.32.3
+PackageDownloadLocation: NOASSERTION
+FilesAnalyzed: false
+PackageLicenseConcluded: Apache-2.0
+PackageLicenseDeclared: Apache-2.0
+PackageCopyrightText: NOASSERTION
+ExternalRef: PACKAGE-MANAGER purl pkg:pypi/requests@2.32.3
+
+Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-Package-tides
+Relationship: SPDXRef-Package-tides DEPENDS_ON SPDXRef-Package-requests

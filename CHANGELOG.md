@@ -6,8 +6,9 @@ keep the schema version.
 
 ## Unreleased
 
-Games (Stage 8, part 1) and the first batch of the long tail (part 2):
-every tier 1 and tier 2 catalogue format now has an extractor.
+Games (Stage 8, part 1) and two batches of the long tail (parts 2 and
+3): every tier 1 and tier 2 catalogue format now has an extractor, and so
+does every programming language and package manifest in the catalogue.
 
 - **Games** (feature `games`, which now includes `common`), all in-house;
   read from headers, directories and indexes (nothing is extracted, run
@@ -99,10 +100,65 @@ every tier 1 and tier 2 catalogue format now has an extractor.
   security flags and VBA project).
 - **MATLAB / Octave** `.m` scripts (functions, classes, imports); `.m`
   files that read as Objective-C stay Objective-C.
+- **Programming languages** (`common`, `code.source`): 90 more, read by
+  the same table-driven line classifier (lines of code, comments and
+  blanks, imports, top-level symbols, package, module documentation,
+  licence, TODO counts): Astro, Nim, Crystal, D, V, Odin, Fortran, COBOL
+  (fixed-form comments in column 7 too), Pascal / Delphi, Ada, Common Lisp
+  and Emacs Lisp, Scheme / Racket, Prolog, Elm, PureScript, ReScript /
+  ReasonML, CoffeeScript, Haxe, Tcl, AWK, sed, Solidity, Move, Cairo,
+  Vyper, Verilog / SystemVerilog, VHDL, OpenCL, GLSL, HLSL, WGSL, Metal,
+  Apex, ABAP, Smalltalk, Raku, Starlark / Bazel, Meson, Ninja, AutoHotkey,
+  AutoIt, Gleam, Roc, Unison, Mojo, Q#, OpenQASM, Arduino, LLVM IR,
+  WebAssembly text, ANTLR, PEG, Yacc / Bison, Lex / Flex, Puppet, PL/SQL /
+  T-SQL, Go templates, Handlebars / Mustache, Pug, Vim script, Nushell,
+  Elvish, Rego, Bicep, Lean, Coq / Rocq, Agda, Idris, Isabelle, TLA+,
+  Alloy, Ballerina, Pony, Janet, Fennel, Hy, Forth, APL, J, GDScript, Unity
+  ShaderLab, IEC 61131-3 Structured Text, Max and Pure Data patches, YARA
+  rules, Smithy, Avro IDL and AppleScript; `.ipy` and shell profiles too.
+  Extensions several languages share are told apart from the first lines:
+  `.v` (Verilog, Coq, V), `.cl` (Lisp, OpenCL), `.pp` (Pascal, Puppet),
+  `.st` (Smalltalk, Structured Text), `.cls` (Apex, LaTeX class, VB class
+  module), and text `.pls`, `.pck`, `.res`, `.qs` and `.vhd` files, whose
+  extensions binary formats own.
+- **SPIR-V** (`common`, new `code.spirv`): both byte orders; version,
+  generator, ID bound, capabilities, extensions, instruction-set imports,
+  addressing and memory model, entry points with their workgroup size,
+  source language, function and instruction counts (debug strings, which
+  hold source paths, are counted, never listed).
+- **Package manifests and lockfiles** (`common`, `code.manifest`, now a
+  module per ecosystem): Pipfile and Pipfile.lock, poetry.lock, uv.lock,
+  `setup.py` and `setup.cfg`; Gradle (Groovy and Kotlin DSL, settings
+  files), MSBuild projects (`.csproj`, `.fsproj`, `.vbproj`, `.vcxproj`,
+  `Directory.*.props`), NuGet `packages.config`, Visual Studio solutions;
+  Gemfile and Gemfile.lock, Podfile and Podfile.lock, `Package.swift` and
+  `Package.resolved`, Homebrew formulae, casks and Brewfiles; Composer,
+  pub, Mix (`mix.exs`, `mix.lock`), Cabal and Stack, R `DESCRIPTION`,
+  Conan, vcpkg, Deno, Julia, Elm, Gleam, `build.zig.zon`, opam, CPAN
+  `META.json`, rebar3, Nix flakes and `flake.lock`, `MODULE.bazel`,
+  Terraform dependency locks, Snapcraft and Flatpak manifests,
+  `CITATION.cff`; Debian `control`, `changelog` and `copyright`, Arch
+  `PKGBUILD` and RPM `.spec` files; SPDX (tag-value and JSON) and
+  CycloneDX (JSON and XML) bills of materials (tools, components by
+  type, licences, ecosystems from package URLs, relationships,
+  vulnerabilities). Build scripts are read as text, never run. Install
+  hooks are flagged as `install_script` (`setup.py` `cmdclass`, Podfile
+  `post_install`, RPM scriptlets, PKGBUILD `install=`), and package
+  sources other than the default registry as `custom_package_index`
+  (Pipfile, Gemfile, Podfile, Gradle, Composer). People are reported by
+  name, never by e-mail address.
+- **dbt models** (`common`, `data.sql`): `ref()` models, `source()`
+  tables, macros called and the `config()` materialisation.
+- **Detection:** `.csproj`, `.fsproj` and `.vbproj` files moved from the
+  generic XML reader to the manifest reader; `build.gradle` is a Gradle
+  manifest, not Groovy source. A VCD header now needs a `$end` (Smithy
+  models also start with `$version`), and the ROOT signature is `root`
+  plus a zero byte (`settings.gradle.kts` starts with `rootProject`).
 - **Catalogue:** `data/coverage.tsv` credits rows that another family's
   extractor handles (SVG, LaTeX, MHTML, sitemaps, `.tar.*`, torrents,
-  known JSON and YAML schemas …); an unknown row or format there is an
-  error. 606 → 674 of 1008 formats have an extractor.
+  known JSON and YAML schemas, Snort rules, dbt models …); an unknown row
+  or format there is an error. 606 → 674 → 767 of 1008 formats have an
+  extractor.
 - **Shared code:** the Unity class-ID names (from the Unity YAML reader)
   and the strings of the pickle walker are reused by the games readers.
   The code page 437 decoder moved from the ZIP reader to
@@ -120,6 +176,13 @@ every tier 1 and tier 2 catalogue format now has an extractor.
   generated corpus with pandoc, asciidoctor, docutils, lexgrog, Perl's
   `Pod::Simple`, makeinfo, python-hcl2, libmagic, ffprobe, warcio,
   `http.cookiejar` and `urllib.robotparser`.
+  `scripts/fixtures/code.sh` makes the language, SPIR-V and manifest
+  fixtures in a podman container (glslang for SPIR-V; the sources and
+  manifests written by hand); `code_oracle.py` compares the reports with
+  Pygments (language, code / comment / blank lines), spirv-dis, rpmspec,
+  dpkg-parsechangelog, python-debian, bash, Bundler, Erlang, spdx-tools,
+  cyclonedx-python-lib, cffconvert, python-hcl2 and the TOML, JSON5 and
+  YAML parsers.
 
 ## 0.7.0 — 2026-11-03
 

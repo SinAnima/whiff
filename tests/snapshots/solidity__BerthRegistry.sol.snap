@@ -1,0 +1,158 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "BerthRegistry.sol",
+    "stem": "BerthRegistry",
+    "extension": "sol"
+  },
+  "identification": {
+    "format": "solidity",
+    "name": "Solidity source",
+    "mime": "text/x-solidity",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 547
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "license": {
+      "name": "CC0-1.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 547,
+    "entropy": 4.861,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 547,
+      "chars": 547,
+      "words": 63,
+      "lines": 21,
+      "max_line_length": 89,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 5
+    }
+  },
+  "integrity": {
+    "sha256": "4be5545eab830b1aeeab4ee2be089b218a9ab29c587b3d5c51ef414a493afd40",
+    "blake3": "7a256a7fdaa21d481c9f4fbf846998f4acd970c469023349839d4179cad3252b"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "solidity": {
+      "spdx": "CC0-1.0",
+      "language": "Solidity",
+      "loc": {
+        "code": 14,
+        "comment": 2,
+        "blank": 5,
+        "total": 21
+      },
+      "imports": [
+        "./Ownable.sol"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "contract": [
+          "BerthRegistry"
+        ],
+        "event": [
+          "Assigned"
+        ],
+        "function": [
+          "assign"
+        ],
+        "modifier": [
+          "validBerth"
+        ],
+        "pragma": [
+          "^0.8.24"
+        ]
+      },
+      "symbol_counts": {
+        "contract": 1,
+        "event": 1,
+        "function": 1,
+        "modifier": 1,
+        "pragma": 1
+      },
+      "is_test": false,
+      "generated": false,
+      "longest_line": 89
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

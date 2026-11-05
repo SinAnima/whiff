@@ -1,0 +1,137 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Brewfile",
+    "stem": "Brewfile"
+  },
+  "identification": {
+    "format": "brewfile",
+    "name": "Homebrew Brewfile",
+    "mime": "text/x-ruby",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 130
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 130,
+    "entropy": 4.916,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 130,
+      "chars": 130,
+      "words": 15,
+      "lines": 6,
+      "max_line_length": 32,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "ec123d4c29e6a1a0968d4968e2651fe2b674015c21375a38a74b69162926fa12",
+    "blake3": "9a2463e933233bbb2eb8b111e0758f922857f8d4200bcca3000a5ff14c26f896"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "brewfile": {
+      "ecosystem": "homebrew",
+      "counts": {
+        "brew": 2,
+        "cask": 1,
+        "mas": 1,
+        "tap": 1,
+        "vscode": 1
+      },
+      "formulae": [
+        "glib",
+        "pkgconf"
+      ],
+      "casks": [
+        "harbour-chart"
+      ],
+      "mac_app_store": [
+        "Tide Clock"
+      ],
+      "taps": [
+        "harbour/tools"
+      ],
+      "vscode_extensions": [
+        "harbour.tide-syntax"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,11 @@
+#N canvas 0 50 450 300 12;
+#X obj 30 30 osc~ 0.1;
+#X obj 30 80 *~ 0.2;
+#X obj 30 130 dac~;
+#X msg 150 30 \; pd dsp 1;
+#X text 150 80 tide drone;
+#N canvas 0 0 300 200 swell 0;
+#X obj 20 20 inlet~;
+#X restore 150 130 pd swell;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;

@@ -1,0 +1,138 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tidy.sed",
+    "stem": "tidy",
+    "extension": "sed"
+  },
+  "identification": {
+    "format": "sed",
+    "name": "sed script",
+    "mime": "text/x-sed",
+    "family": "code.source",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 130
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 130,
+    "entropy": 4.445,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 130,
+      "chars": 130,
+      "words": 23,
+      "lines": 10,
+      "max_line_length": 43,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "bd5df9ea4d09fb2dd058c51c8d38c2389ff17b2048d0428e4110c6676d0bb6cb",
+    "blake3": "95e735aa6bb7ffe918efc62a031c46e4a6faa1486a6bd1a6256e994ace978a88"
+  },
+  "content": {
+    "description": "Normalise gauge names in the harbour log.",
+    "excerpt": "Normalise gauge names in the harbour log."
+  },
+  "metadata": {},
+  "format": {
+    "sed": {
+      "language": "sed script",
+      "loc": {
+        "code": 9,
+        "comment": 1,
+        "blank": 0,
+        "total": 10
+      },
+      "interpreter": "sed",
+      "symbols": {
+        "label": [
+          "join"
+        ]
+      },
+      "symbol_counts": {
+        "label": 1
+      },
+      "module_doc": "Normalise gauge names in the harbour log.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 43
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

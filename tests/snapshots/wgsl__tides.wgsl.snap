@@ -1,0 +1,154 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.wgsl",
+    "stem": "tides",
+    "extension": "wgsl"
+  },
+  "identification": {
+    "format": "wgsl",
+    "name": "WGSL shader",
+    "mime": "text/wgsl",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 377
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 377,
+    "entropy": 5.141,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 377,
+      "chars": 377,
+      "words": 47,
+      "lines": 17,
+      "max_line_length": 68,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "bc1c3a47f926cdf27c766c4669fd72f1db26fa2109acc8cee973e59e6f4e4412",
+    "blake3": "2930778e934affdb9f797fde3989f96aecf7665afe5f8f1e26750539f027dfa0"
+  },
+  "content": {
+    "description": "Tide model for the harbour map.",
+    "excerpt": "Tide model for the harbour map."
+  },
+  "metadata": {},
+  "format": {
+    "wgsl": {
+      "language": "WGSL shader",
+      "loc": {
+        "code": 12,
+        "comment": 1,
+        "blank": 4,
+        "total": 17
+      },
+      "imports": [
+        "f16"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "binding": [
+          "gauges"
+        ],
+        "entry_point": [
+          "compute"
+        ],
+        "function": [
+          "high_water",
+          "main"
+        ],
+        "struct": [
+          "Gauge"
+        ]
+      },
+      "symbol_counts": {
+        "binding": 1,
+        "entry_point": 1,
+        "function": 2,
+        "struct": 1
+      },
+      "module_doc": "Tide model for the harbour map.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 68
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

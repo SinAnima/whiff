@@ -190,14 +190,15 @@ expression: report
         "extension": "spec"
       },
       "identification": {
-        "format": "text",
-        "name": "Plain text",
-        "mime": "text/plain",
-        "family": "text.plain",
-        "confidence": 0.3,
-        "detected_by": "heuristic",
+        "format": "rpm_spec",
+        "name": "RPM spec file",
+        "mime": "text/x-rpm-spec",
+        "family": "code.manifest",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
         "encoding": "us-ascii",
-        "extractor": "text.plain"
+        "extractor": "code.manifest"
       },
       "system": {
         "kind": "memory",
@@ -228,19 +229,23 @@ expression: report
         "blake3": "03048206f31f0224322e936573b72aec2719180e5d93b2242c927c0a87177c98"
       },
       "content": {
-        "excerpt": "Name: saltmere-tides Version: 1.2.0"
+        "title": "saltmere-tides 1.2.0"
       },
       "metadata": {},
       "format": {
-        "text": {
-          "paragraphs": 1
+        "rpm_spec": {
+          "ecosystem": "rpm",
+          "name": "saltmere-tides",
+          "version": "1.2.0",
+          "sources": 0,
+          "changelog_entries": 0
         }
       },
       "diagnostics": {
         "extractors": [
           {
-            "id": "text.plain",
-            "version": 1,
+            "id": "code.manifest",
+            "version": 2,
             "ms": 0.0,
             "status": "ok"
           },

@@ -37,3 +37,8 @@ Sitemap index / sitemap text	sitemap
 Kindle clippings	kindle_clippings
 GNU info	gnu_info
 README / LICENSE (extensionless)	text
+Puppet / Chef	puppet
+Kotlin Multiplatform / Compose scripts	kotlin
+SQL notebooks / dbt models	sql
+Snort / Suricata rules	ids_rules
+Debian source control files	debian_control

@@ -1,0 +1,165 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "META.json",
+    "stem": "META",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "cpan_meta",
+    "name": "CPAN META.json",
+    "mime": "application/json",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "cpan_meta",
+        "confidence": 0.97
+      },
+      {
+        "format": "json",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 931
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "personal_data": {
+      "email": 1
+    }
+  },
+  "rights": {
+    "creators": [
+      "Harbour Office"
+    ],
+    "license": {
+      "name": "perl_5"
+    }
+  },
+  "physical": {
+    "size_bytes": 931,
+    "entropy": 4.289,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 931,
+      "chars": 931,
+      "words": 78,
+      "lines": 43,
+      "max_line_length": 63,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "b75b2fafefbfd90d9a75a3b45c7abcd4139abe380ba19b3a0e7338ddc0d0bd78",
+    "blake3": "63ff51eb5c657cd081eeb15add3ae36eb669dda942b7b6193ae1a379436e5a1a"
+  },
+  "content": {
+    "title": "Saltmere-Tides 1.04",
+    "description": "Tide predictions for Saltmere Harbour",
+    "authors": [
+      "Harbour Office"
+    ],
+    "excerpt": "Tide predictions for Saltmere Harbour"
+  },
+  "metadata": {},
+  "format": {
+    "cpan_meta": {
+      "ecosystem": "cpan",
+      "name": "Saltmere-Tides",
+      "version": "1.04",
+      "license": "perl_5",
+      "repository": "https://git.harbour.test/tides.git",
+      "release_status": "stable",
+      "generated_by": "ExtUtils::MakeMaker version 7.70",
+      "meta_spec": 2,
+      "requires_perl": "5.016",
+      "dependencies": {
+        "JSON::PP": "0",
+        "DateTime": "1.65"
+      },
+      "dependencies_count": 2,
+      "build_dependencies": {
+        "ExtUtils::MakeMaker": "0"
+      },
+      "build_dependencies_count": 1,
+      "test_dependencies": {
+        "Test::More": "0.98"
+      },
+      "test_dependencies_count": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

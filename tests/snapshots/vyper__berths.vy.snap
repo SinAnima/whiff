@@ -1,0 +1,153 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "berths.vy",
+    "stem": "berths",
+    "extension": "vy"
+  },
+  "identification": {
+    "format": "vyper",
+    "name": "Vyper source",
+    "mime": "text/x-vyper",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 371
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 371,
+    "entropy": 4.89,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 371,
+      "chars": 371,
+      "words": 41,
+      "lines": 19,
+      "max_line_length": 51,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "963bf1e6f819189e2d4c036d2e7cc2d2ca29551558d327395180047bbcd8a656",
+    "blake3": "f31c99b2a838d1623d2ba05d66ead4321212006d9f8e37e75227182d91b76cac"
+  },
+  "content": {
+    "description": "pragma version ^0.4.0 \"\"\" @title Berth registry for Saltmere Harbour \"\"\"",
+    "excerpt": "pragma version ^0.4.0 \"\"\" @title Berth registry for Saltmere Harbour \"\"\""
+  },
+  "metadata": {},
+  "format": {
+    "vyper": {
+      "language": "Vyper",
+      "loc": {
+        "code": 11,
+        "comment": 4,
+        "blank": 4,
+        "total": 19
+      },
+      "imports": [
+        "ethereum.ercs"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "event": [
+          "Assigned"
+        ],
+        "function": [
+          "assign"
+        ],
+        "pragma": [
+          "^0.4.0"
+        ],
+        "struct": [
+          "Berth"
+        ]
+      },
+      "symbol_counts": {
+        "event": 1,
+        "function": 1,
+        "pragma": 1,
+        "struct": 1
+      },
+      "module_doc": "pragma version ^0.4.0\n\"\"\"\n@title Berth registry for Saltmere Harbour\n\"\"\"",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 51
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

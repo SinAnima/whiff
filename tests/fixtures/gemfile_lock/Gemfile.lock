@@ -1,0 +1,30 @@
+GIT
+  remote: https://git.harbour.test/tide_model.git
+  revision: 4f1c2e9a7b3d5c6e8f0a1b2c3d4e5f6a7b8c9d0e
+  specs:
+    tide_model (0.3.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    pg (1.5.8)
+    rails (7.2.1)
+      railties (= 7.2.1)
+    railties (7.2.1)
+    rspec-rails (7.0.1)
+
+PLATFORMS
+  arm64-darwin
+  x86_64-linux
+
+DEPENDENCIES
+  pg (>= 1.5, < 2)
+  rails (~> 7.2)
+  rspec-rails
+  tide_model!
+
+RUBY VERSION
+   ruby 3.3.5p100
+
+BUNDLED WITH
+   2.5.16

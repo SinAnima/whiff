@@ -1,0 +1,13 @@
+---
+// Tide card for the harbour dashboard.
+import Layout from '../layouts/Layout.astro';
+import { formatTide } from '../lib/tides';
+const { station } = Astro.props;
+---
+<Layout title="Saltmere tides">
+  <!-- one card per gauge -->
+  <TideTable station={station} />
+</Layout>
+<style>
+  h1 { color: navy; }
+</style>

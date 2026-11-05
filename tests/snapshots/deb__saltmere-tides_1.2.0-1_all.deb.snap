@@ -537,14 +537,14 @@ expression: report
         "stem": "copyright"
       },
       "identification": {
-        "format": "text",
-        "name": "Plain text",
+        "format": "debian_copyright",
+        "name": "Debian copyright file",
         "mime": "text/plain",
-        "family": "text.plain",
-        "confidence": 0.3,
-        "detected_by": "heuristic",
+        "family": "code.manifest",
+        "confidence": 0.97,
+        "detected_by": "sniff",
         "encoding": "us-ascii",
-        "extractor": "text.plain"
+        "extractor": "code.manifest"
       },
       "system": {
         "kind": "memory",
@@ -555,6 +555,7 @@ expression: report
       },
       "security": {},
       "rights": {
+        "copyright": "2025 Saltmere Harbour",
         "license": {
           "name": "MIT"
         }
@@ -579,58 +580,25 @@ expression: report
         "blake3": "19554294f1e015122b6df03dd84ee2dccfbe179a0c809b174d5a8276a206bed5"
       },
       "content": {
-        "language": {
-          "code": "en",
-          "confidence": 1.0
-        },
-        "keywords": [
-          "format",
-          "copyright",
-          "doc",
-          "https",
-          "manuals",
-          "packaging",
-          "www.debian.org",
-          "Saltmere Harbour",
-          "MIT",
-          "saltmere"
-        ],
-        "keyword_frequency": [
-          [
-            "copyright",
-            2
-          ],
-          [
-            "format",
-            2
-          ],
-          [
-            "saltmere",
-            2
-          ]
-        ],
-        "excerpt": "Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/ Upstream-Name: saltmere-tides Files: * Copyright: 2025 Saltmere Harbour License: MIT Permission is hereby granted, free of charge, to any person obtaining a copy.",
-        "tags": [
-          "format",
-          "copyright",
-          "doc",
-          "https",
-          "manuals"
-        ]
+        "title": "saltmere-tides"
       },
       "metadata": {},
       "format": {
-        "text": {
-          "license": "MIT",
-          "paragraphs": 2,
-          "urls": 1
+        "debian_copyright": {
+          "ecosystem": "debian",
+          "format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+          "upstream_name": "saltmere-tides",
+          "files_paragraphs": 1,
+          "licenses": {
+            "MIT": 1
+          }
         }
       },
       "diagnostics": {
         "extractors": [
           {
-            "id": "text.plain",
-            "version": 1,
+            "id": "code.manifest",
+            "version": 2,
             "ms": 0.0,
             "status": "ok"
           },

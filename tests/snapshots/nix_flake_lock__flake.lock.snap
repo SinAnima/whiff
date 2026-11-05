@@ -1,0 +1,152 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "flake.lock",
+    "stem": "flake",
+    "extension": "lock"
+  },
+  "identification": {
+    "format": "nix_flake_lock",
+    "name": "Nix flake.lock",
+    "mime": "application/json",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "nix_flake_lock",
+        "confidence": 0.97
+      },
+      {
+        "format": "json",
+        "confidence": 0.55
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1022
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2024-10-10T05:33:31Z",
+        "source": "code.manifest",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-10-10T05:33:31Z",
+    "latest": "2024-10-10T05:33:31Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1022,
+    "entropy": 4.406,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1022,
+      "chars": 1022,
+      "words": 75,
+      "lines": 43,
+      "max_line_length": 73,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "1b748803766b29da68771f0adfeecd6b6d0fe2fc5332458d01af49e6b4f44aa9",
+    "blake3": "0753fa55a6fa2797ab2df518222e4b3b4c88e77558a633251a44bb49bdf1d3ca"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "nix_flake_lock": {
+      "ecosystem": "nix",
+      "lockfile_version": 7,
+      "resolved_inputs": 2,
+      "inputs": [
+        {
+          "name": "flake-utils",
+          "source": "github:numtide/flake-utils",
+          "rev": "c1dfcf08411b",
+          "last_modified": "2024-09-17T08:14:13Z"
+        },
+        {
+          "name": "nixpkgs",
+          "source": "github:NixOS/nixpkgs",
+          "rev": "b69de56fac8c",
+          "last_modified": "2024-10-10T05:33:31Z"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

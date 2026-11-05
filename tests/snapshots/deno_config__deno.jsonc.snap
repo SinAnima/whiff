@@ -1,0 +1,147 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "deno.jsonc",
+    "stem": "deno",
+    "extension": "jsonc"
+  },
+  "identification": {
+    "format": "deno_config",
+    "name": "Deno config",
+    "mime": "application/json",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "deno_config",
+        "confidence": 0.97
+      },
+      {
+        "format": "json",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 332
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 332,
+    "entropy": 4.538,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 332,
+      "chars": 332,
+      "words": 34,
+      "lines": 15,
+      "max_line_length": 44,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "bab49bf59f202361d2c4f56130a716cbdc20bfbbbc3aea17774120fb80574cb6",
+    "blake3": "0f64490d08039a53ac83ccf027b6c6e1f4430dc3c9d164a88fbaadffdbbb54bc"
+  },
+  "content": {
+    "title": "@saltmere/dashboard 1.4.0"
+  },
+  "metadata": {},
+  "format": {
+    "deno_config": {
+      "ecosystem": "deno",
+      "name": "@saltmere/dashboard",
+      "version": "1.4.0",
+      "imports": {
+        "@std/assert": "jsr:@std/assert@^1.0.6",
+        "chart": "npm:chart.js@^4.4.4"
+      },
+      "imports_count": 2,
+      "import_sources": {
+        "jsr": 1,
+        "npm": 1
+      },
+      "tasks": [
+        "dev",
+        "test"
+      ],
+      "exports": "./mod.ts",
+      "compiler_options": [
+        "strict"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

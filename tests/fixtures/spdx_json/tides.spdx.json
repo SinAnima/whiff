@@ -1,0 +1,64 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "saltmere-gauge-2.1.0",
+  "documentNamespace": "https://harbour.test/spdx/saltmere-gauge-2.1.0",
+  "creationInfo": {
+    "created": "2026-03-14T09:30:00Z",
+    "creators": [
+      "Tool: harbour-sbom-1.0",
+      "Organization: Saltmere Harbour Office"
+    ]
+  },
+  "packages": [
+    {
+      "name": "saltmere-gauge",
+      "SPDXID": "SPDXRef-Package-gauge",
+      "versionInfo": "2.1.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "CC0-1.0",
+      "licenseDeclared": "CC0-1.0",
+      "copyrightText": "NOASSERTION",
+      "primaryPackagePurpose": "APPLICATION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:pypi/saltmere-gauge@2.1.0"
+        }
+      ]
+    },
+    {
+      "name": "pyserial",
+      "SPDXID": "SPDXRef-Package-pyserial",
+      "versionInfo": "3.5",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "copyrightText": "NOASSERTION",
+      "primaryPackagePurpose": "LIBRARY",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:pypi/pyserial@3.5"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-Package-gauge"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-gauge",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-pyserial"
+    }
+  ]
+}

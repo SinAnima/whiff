@@ -1,0 +1,8 @@
+{{!-- Berth list for Saltmere Harbour --}}
+{{> header title="Berths"}}
+<ul>
+  {{#each berths}}
+    <li>{{number}}: {{vessel}}</li>
+  {{/each}}
+</ul>
+{{#if updated}}<p>Updated {{updated}}</p>{{/if}}

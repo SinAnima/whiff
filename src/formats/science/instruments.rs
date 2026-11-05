@@ -547,11 +547,11 @@ impl Extractor for Instruments {
         {
             return Some(Sniff { format: "edf", confidence: 0.95 });
         }
-        if h.starts_with(b"$date")
-            || h.starts_with(b"$version")
-            || h.starts_with(b"$timescale")
-            || (probe.extension == Some("vcd") && has(h, b"$var"))
-        {
+        // A VCD header command (`$version Icarus Verilog $end`), not Smithy's `$version: "2"`.
+        let command = [b"$date".as_slice(), b"$version", b"$timescale"]
+            .iter()
+            .any(|k| h.starts_with(k) && h.get(k.len()).is_some_and(u8::is_ascii_whitespace));
+        if (command && has(h, b"$end")) || (probe.extension == Some("vcd") && has(h, b"$var")) {
             return Some(Sniff { format: "vcd", confidence: 0.95 });
         }
         let names = zip_names(probe, 50);

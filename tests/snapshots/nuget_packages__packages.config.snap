@@ -1,0 +1,135 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "packages.config",
+    "stem": "packages",
+    "extension": "config"
+  },
+  "identification": {
+    "format": "nuget_packages",
+    "name": "NuGet packages.config",
+    "mime": "application/xml",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "nuget_packages",
+        "confidence": 0.97
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 233
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 233,
+    "entropy": 4.905,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 233,
+      "chars": 233,
+      "words": 16,
+      "lines": 5,
+      "max_line_length": 94,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "0829e39316f457aba693f247abb8bdb6e5fe67506845faaff2ef33656154f938",
+    "blake3": "703d635befe1ab3306389d94bcde29b4c512fd738628c7d15966373500763e56"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "nuget_packages": {
+      "ecosystem": "nuget",
+      "dependencies": {
+        "Newtonsoft.Json": "13.0.3",
+        "NUnit": "3.14.0"
+      },
+      "dependencies_count": 2,
+      "target_frameworks": [
+        "net48"
+      ],
+      "development_dependencies": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

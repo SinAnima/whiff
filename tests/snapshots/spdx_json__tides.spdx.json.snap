@@ -1,0 +1,164 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.spdx.json",
+    "stem": "tides.spdx",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "spdx_json",
+    "name": "SPDX SBOM (JSON)",
+    "mime": "application/spdx+json",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "spdx_json",
+        "confidence": 0.97
+      },
+      {
+        "format": "json",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1792
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-03-14T09:30:00+00:00",
+        "source": "code.manifest",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-03-14T09:30:00Z",
+    "latest": "2026-03-14T09:30:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1792,
+    "entropy": 4.859,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1792,
+      "chars": 1792,
+      "words": 110,
+      "lines": 64,
+      "max_line_length": 72,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "b2e24a299b283dbf2517787dd447a1c5a7db77da96d668e16a644936a196d6dd",
+    "blake3": "03fcd0c09839616e9412037c84d268b63b4587ec254d5f57920ec127f78f0fb6"
+  },
+  "content": {
+    "title": "saltmere-gauge-2.1.0"
+  },
+  "metadata": {},
+  "format": {
+    "spdx_json": {
+      "sbom_format": "SPDX",
+      "spec_version": "SPDX-2.3",
+      "document_name": "saltmere-gauge-2.1.0",
+      "tools": [
+        "harbour-sbom-1.0"
+      ],
+      "organisations": [
+        "Saltmere Harbour Office"
+      ],
+      "package_count": 2,
+      "packages": {
+        "saltmere-gauge": "2.1.0",
+        "pyserial": "3.5"
+      },
+      "packages_count": 2,
+      "package_types": {
+        "application": 1,
+        "library": 1
+      },
+      "licenses": {
+        "BSD-3-Clause": 1,
+        "CC0-1.0": 1
+      },
+      "ecosystems": {
+        "pypi": 2
+      },
+      "relationships": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

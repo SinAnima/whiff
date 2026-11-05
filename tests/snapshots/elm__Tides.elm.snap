@@ -1,0 +1,142 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Tides.elm",
+    "stem": "Tides",
+    "extension": "elm"
+  },
+  "identification": {
+    "format": "elm",
+    "name": "Elm source",
+    "mime": "text/x-elm",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 355
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 355,
+    "entropy": 4.707,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 355,
+      "chars": 355,
+      "words": 61,
+      "lines": 19,
+      "max_line_length": 71,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 8
+    }
+  },
+  "integrity": {
+    "sha256": "261f0162fb6a2306946cf9c8d788182cbc8ec66cfcc8627c9edd06471099b936",
+    "blake3": "086e0502063f2c16ac9cdcfad786f17c59c6b6ad10543f7960556d932a53d57c"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "elm": {
+      "language": "Elm",
+      "loc": {
+        "code": 9,
+        "comment": 2,
+        "blank": 8,
+        "total": 19
+      },
+      "package": "Tides",
+      "imports": [
+        "Html"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "function": [
+          "highWater"
+        ],
+        "type": [
+          "Gauge"
+        ]
+      },
+      "symbol_counts": {
+        "function": 1,
+        "type": 1
+      },
+      "is_test": false,
+      "generated": false,
+      "longest_line": 71
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

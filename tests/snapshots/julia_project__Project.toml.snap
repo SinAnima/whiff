@@ -1,0 +1,148 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Project.toml",
+    "stem": "Project",
+    "extension": "toml"
+  },
+  "identification": {
+    "format": "julia_project",
+    "name": "Julia Project.toml",
+    "mime": "application/toml",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "julia_project",
+        "confidence": 0.97
+      },
+      {
+        "format": "toml",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 287
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "personal_data": {
+      "email": 1
+    }
+  },
+  "rights": {
+    "creators": [
+      "Harbour Office"
+    ]
+  },
+  "physical": {
+    "size_bytes": 287,
+    "entropy": 5.132,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 287,
+      "chars": 287,
+      "words": 28,
+      "lines": 12,
+      "max_line_length": 57,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "69864ea395d6cac71c540bc82112c2380d7311969f2069405655c89638918fd6",
+    "blake3": "5fea9d6045bd7e66f72ca349dba283cb0ca7925e1826b20342982754a8c8b3dd"
+  },
+  "content": {
+    "title": "SaltmereTides 1.4.0",
+    "authors": [
+      "Harbour Office"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "julia_project": {
+      "ecosystem": "julia",
+      "name": "SaltmereTides",
+      "version": "1.4.0",
+      "uuid": "5f0e1d2c-3b4a-4958-8776-a5b4c3d2e1f0",
+      "requires_julia": "1.10",
+      "dependencies": {
+        "Dates": "*",
+        "Plots": "1.40"
+      },
+      "dependencies_count": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

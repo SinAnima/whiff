@@ -1,0 +1,156 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "DESCRIPTION",
+    "stem": "DESCRIPTION"
+  },
+  "identification": {
+    "format": "r_description",
+    "name": "R DESCRIPTION",
+    "mime": "text/plain",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 618
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "personal_data": {
+      "email": 2
+    }
+  },
+  "rights": {
+    "creators": [
+      "Ada Harbour",
+      "Ben Quay"
+    ],
+    "license": {
+      "name": "CC0"
+    }
+  },
+  "physical": {
+    "size_bytes": 618,
+    "entropy": 5.066,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 618,
+      "chars": 618,
+      "words": 73,
+      "lines": 18,
+      "max_line_length": 88,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "e6c02f4d119342e2550ed9cb4e793f8d81caa31e7b408dfc07c3b0e08406b8a0",
+    "blake3": "cc4ccc6b4fb07d48d77f5c0ffeea84360fd81ba2d82550b37506b290fe98ce9e"
+  },
+  "content": {
+    "title": "saltmeretides 1.4.0",
+    "description": "Harmonic tide predictions for the gauges of the fictitious\nSaltmere Harbour, with plots of a day's tides.",
+    "authors": [
+      "Ada Harbour",
+      "Ben Quay"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "excerpt": "Harmonic tide predictions for the gauges of the fictitious Saltmere Harbour, with plots of a day's tides."
+  },
+  "metadata": {},
+  "format": {
+    "r_description": {
+      "ecosystem": "cran",
+      "name": "saltmeretides",
+      "version": "1.4.0",
+      "license": "CC0",
+      "repository": "https://git.harbour.test/saltmeretides",
+      "maintainer": "Ada Harbour",
+      "dependencies": {
+        "ggplot2": ">= 3.5.0",
+        "lubridate": "*"
+      },
+      "dependencies_count": 2,
+      "suggests": {
+        "testthat": ">= 3.0.0"
+      },
+      "suggests_count": 1,
+      "requires_r": ">= 4.1.0",
+      "encoding": "UTF-8",
+      "needs_compilation": "no",
+      "roxygen_version": "7.3.2"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,144 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "berths.smithy",
+    "stem": "berths",
+    "extension": "smithy"
+  },
+  "identification": {
+    "format": "smithy",
+    "name": "Smithy model",
+    "mime": "text/x-smithy",
+    "family": "code.source",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 351
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 351,
+    "entropy": 4.713,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 351,
+      "chars": 351,
+      "words": 45,
+      "lines": 22,
+      "max_line_length": 42,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 5
+    }
+  },
+  "integrity": {
+    "sha256": "825e26c401b2da2b0edd0959c419f11bbb9f933a3cc5a27b63de618584085420",
+    "blake3": "e55b937c96fb00cd0326be41e99d20dcbc6e317e0b5e3268e8361ba44d959c41"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "smithy": {
+      "language": "Smithy model",
+      "loc": {
+        "code": 16,
+        "comment": 1,
+        "blank": 5,
+        "total": 22
+      },
+      "package": "harbour.berths",
+      "imports": [
+        "aws.protocols#restJson1"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "shape": [
+          "BerthService",
+          "GetBerth",
+          "Berth"
+        ],
+        "version": [
+          "2"
+        ]
+      },
+      "symbol_counts": {
+        "shape": 3,
+        "version": 1
+      },
+      "is_test": false,
+      "generated": false,
+      "longest_line": 42
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,24 @@
+# Maintainer: Harbour Office <office at harbour dot example dot org>
+pkgname=saltmere-tides
+pkgver=1.4.0
+pkgrel=2
+pkgdesc="Tide predictions for Saltmere Harbour"
+arch=('x86_64' 'aarch64')
+url="https://harbour.test/tides"
+license=('CC0-1.0')
+depends=('glib2' 'python>=3.11')
+makedepends=('meson' 'ninja')
+optdepends=('gnuplot: tide plots')
+source=("https://harbour.test/releases/$pkgname-$pkgver.tar.gz"
+        "tides.conf")
+sha256sums=('0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e'
+            'SKIP')
+
+build() {
+  arch-meson "$pkgname-$pkgver" build
+  meson compile -C build
+}
+
+package() {
+  meson install -C build --destdir "$pkgdir"
+}

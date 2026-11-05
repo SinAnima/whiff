@@ -1,5 +1,5 @@
 ---
-source: src/formats/code/manifest.rs
+source: src/formats/code/manifest/mod.rs
 expression: report
 ---
 {
@@ -18,7 +18,7 @@ expression: report
     "name": "Cargo lockfile",
     "mime": "application/toml",
     "family": "code.manifest",
-    "confidence": 0.95,
+    "confidence": 0.97,
     "detected_by": "sniff",
     "extension_matches": true,
     "encoding": "us-ascii",
@@ -70,7 +70,7 @@ expression: report
     "extractors": [
       {
         "id": "code.manifest",
-        "version": 1,
+        "version": 2,
         "ms": 0.0,
         "status": "ok"
       },

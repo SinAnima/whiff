@@ -1,0 +1,25 @@
+Source: saltmere-tides
+Section: science
+Priority: optional
+Maintainer: Harbour Office <office@harbour.example.org>
+Uploaders: Ada Harbour <ada@harbour.example.org>
+Build-Depends: debhelper-compat (= 13),
+               meson,
+               libglib2.0-dev (>= 2.76)
+Standards-Version: 4.7.0
+Homepage: https://harbour.test/tides
+Vcs-Git: https://git.harbour.test/debian/saltmere-tides.git
+Rules-Requires-Root: no
+
+Package: saltmere-tides
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, python3 (>= 3.11)
+Description: tide predictions for Saltmere Harbour
+ Harmonic tide predictions for the gauges of the fictitious
+ Saltmere Harbour.
+
+Package: saltmere-tides-data
+Architecture: all
+Depends: ${misc:Depends}
+Description: tide tables for Saltmere Harbour
+ Data files for saltmere-tides.

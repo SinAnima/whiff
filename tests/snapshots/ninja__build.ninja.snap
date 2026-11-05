@@ -1,0 +1,148 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "build.ninja",
+    "stem": "build",
+    "extension": "ninja"
+  },
+  "identification": {
+    "format": "ninja",
+    "name": "Ninja build file",
+    "mime": "text/x-ninja",
+    "family": "code.source",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 306
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 306,
+    "entropy": 4.538,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 306,
+      "chars": 306,
+      "words": 51,
+      "lines": 16,
+      "max_line_length": 41,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "ee499aa6cd065dc8fd5bcdc22b16be0ff490188e10d82b4fa8092704da284a61",
+    "blake3": "b09126c474076a61ac56d1cfeb76972f6cd1358a3e404e8426545506e0e7571e"
+  },
+  "content": {
+    "description": "Generated for the harbour gauge daemon.",
+    "excerpt": "Generated for the harbour gauge daemon."
+  },
+  "metadata": {},
+  "format": {
+    "ninja": {
+      "language": "Ninja build file",
+      "loc": {
+        "code": 11,
+        "comment": 1,
+        "blank": 4,
+        "total": 16
+      },
+      "symbols": {
+        "build": [
+          "tides.o",
+          "gauged.o",
+          "gauged"
+        ],
+        "default": [
+          "gauged"
+        ],
+        "rule": [
+          "cc",
+          "link"
+        ]
+      },
+      "symbol_counts": {
+        "build": 3,
+        "default": 1,
+        "rule": 2
+      },
+      "module_doc": "Generated for the harbour gauge daemon.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 41
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

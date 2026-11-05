@@ -159,7 +159,7 @@ expression: report
         "name": "Cargo lockfile",
         "mime": "application/toml",
         "family": "code.manifest",
-        "confidence": 0.95,
+        "confidence": 0.97,
         "detected_by": "sniff",
         "extension_matches": true,
         "encoding": "us-ascii",
@@ -209,7 +209,7 @@ expression: report
         "extractors": [
           {
             "id": "code.manifest",
-            "version": 1,
+            "version": 2,
             "ms": 0.0,
             "status": "ok"
           },
@@ -276,13 +276,13 @@ expression: report
         "name": "Cargo manifest",
         "mime": "application/toml",
         "family": "code.manifest",
-        "confidence": 0.95,
+        "confidence": 0.97,
         "detected_by": "sniff",
         "extension_matches": true,
         "candidates": [
           {
             "format": "cargo_manifest",
-            "confidence": 0.95
+            "confidence": 0.97
           },
           {
             "format": "toml",
@@ -362,7 +362,7 @@ expression: report
         "extractors": [
           {
             "id": "code.manifest",
-            "version": 1,
+            "version": 2,
             "ms": 0.0,
             "status": "ok"
           },

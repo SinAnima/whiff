@@ -1,0 +1,148 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.d",
+    "stem": "tides",
+    "extension": "d"
+  },
+  "identification": {
+    "format": "d",
+    "name": "D source",
+    "mime": "text/x-d",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 286
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 286,
+    "entropy": 4.731,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 286,
+      "chars": 286,
+      "words": 43,
+      "lines": 20,
+      "max_line_length": 42,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "4920410fbc60fc42cae933d0a33056004f2bba8c776a63ff3709d3d160601372",
+    "blake3": "0ae3c19d469fa364b2a8dad4bd5b66b384525f56e17d05406059e118eb4b5fd4"
+  },
+  "content": {
+    "description": "Tide tables for Saltmere Harbour.",
+    "excerpt": "Tide tables for Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "d": {
+      "language": "D",
+      "loc": {
+        "code": 15,
+        "comment": 1,
+        "blank": 4,
+        "total": 20
+      },
+      "package": "saltmere.tides",
+      "imports": [
+        "std.stdio",
+        "std.math"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "function": [
+          "highWater",
+          "main"
+        ],
+        "type": [
+          "Reading"
+        ]
+      },
+      "symbol_counts": {
+        "function": 2,
+        "type": 1
+      },
+      "module_doc": "Tide tables for Saltmere Harbour.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 42
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

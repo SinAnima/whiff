@@ -7,3 +7,4 @@ pub(crate) mod latex;
 pub(crate) mod manifest;
 pub(crate) mod notebook;
 pub(crate) mod source;
+pub(crate) mod spirv;

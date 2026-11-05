@@ -1,0 +1,146 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "zharbour_berths.abap",
+    "stem": "zharbour_berths",
+    "extension": "abap"
+  },
+  "identification": {
+    "format": "abap",
+    "name": "ABAP source",
+    "mime": "text/x-abap",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 561
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 561,
+    "entropy": 4.671,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 561,
+      "chars": 561,
+      "words": 54,
+      "lines": 20,
+      "max_line_length": 74,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "c761426c8b99bd2d99710e6999c0ea6d176f3b722ca26d8b170a5ca7c18b7d27",
+    "blake3": "07622bf5e7dcbfb37e017223da5c8e11a51402254555d973f3bb3ae479f93868"
+  },
+  "content": {
+    "description": "&---------------------------------------------------------------------* & Report ZHARBOUR_BERTHS: berth fees for Saltmere Harbour &---------------------------------------------------------------------*",
+    "excerpt": "&---------------------------------------------------------------------* & Report ZHARBOUR_BERTHS: berth fees for Saltmere Harbour &---------------------------------------------------------------------*"
+  },
+  "metadata": {},
+  "format": {
+    "abap": {
+      "language": "ABAP",
+      "loc": {
+        "code": 13,
+        "comment": 3,
+        "blank": 4,
+        "total": 20
+      },
+      "package": "zharbour_berths",
+      "imports": [
+        "zharbour_fees"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "class": [
+          "lcl_berth"
+        ],
+        "method": [
+          "fee"
+        ]
+      },
+      "symbol_counts": {
+        "class": 2,
+        "method": 1
+      },
+      "module_doc": "&---------------------------------------------------------------------*\n& Report ZHARBOUR_BERTHS: berth fees for Saltmere Harbour\n&---------------------------------------------------------------------*",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 74
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

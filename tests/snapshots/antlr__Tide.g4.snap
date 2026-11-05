@@ -1,0 +1,148 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Tide.g4",
+    "stem": "Tide",
+    "extension": "g4"
+  },
+  "identification": {
+    "format": "antlr",
+    "name": "ANTLR grammar",
+    "mime": "text/x-antlr",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 296
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 296,
+    "entropy": 4.745,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 296,
+      "chars": 296,
+      "words": 60,
+      "lines": 15,
+      "max_line_length": 48,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "cc23b01f7e46e42171d3912883811d8cfe7dbca92006bb5051c52c6c8144c0f8",
+    "blake3": "23305fdd6896e23f7a38bb171004ce2f349a7926d0f8ae25b1f637e098b09032"
+  },
+  "content": {
+    "description": "Grammar for tide table lines: \"14:20 HW 3.4\".",
+    "excerpt": "Grammar for tide table lines: \"14:20 HW 3.4\"."
+  },
+  "metadata": {},
+  "format": {
+    "antlr": {
+      "language": "ANTLR grammar",
+      "loc": {
+        "code": 11,
+        "comment": 1,
+        "blank": 3,
+        "total": 15
+      },
+      "package": "Tide",
+      "symbols": {
+        "lexer_rule": [
+          "TIME",
+          "KIND",
+          "LEVEL",
+          "NEWLINE",
+          "WS",
+          "DIGIT"
+        ],
+        "parser_rule": [
+          "table",
+          "line"
+        ]
+      },
+      "symbol_counts": {
+        "lexer_rule": 6,
+        "parser_rule": 2
+      },
+      "module_doc": "Grammar for tide table lines: \"14:20 HW 3.4\".",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 48
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

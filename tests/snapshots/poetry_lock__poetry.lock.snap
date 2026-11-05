@@ -1,0 +1,130 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "poetry.lock",
+    "stem": "poetry",
+    "extension": "lock"
+  },
+  "identification": {
+    "format": "poetry_lock",
+    "name": "Poetry lockfile",
+    "mime": "application/toml",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 708
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 708,
+    "entropy": 5.085,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 708,
+      "chars": 708,
+      "words": 85,
+      "lines": 28,
+      "max_line_length": 90,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "22fada48afd5ee3bb55e5d5edb96d84af28eb83d5f10a711c73a4a9e92e28792",
+    "blake3": "4a62c27c805c9710666b4523f5876885012345100f2827a3dcf52a31d9b05668"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "poetry_lock": {
+      "ecosystem": "python",
+      "tool": "poetry",
+      "resolved_packages": 2,
+      "sources": {
+        "git": 1,
+        "registry": 1
+      },
+      "packages": {
+        "certifi": "2024.8.30",
+        "tide-model": "0.3.0"
+      },
+      "packages_count": 2,
+      "lock_version": "2.0",
+      "requires_python": "^3.12",
+      "content_hash": true
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

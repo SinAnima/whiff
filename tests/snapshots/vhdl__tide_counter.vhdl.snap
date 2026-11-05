@@ -1,0 +1,151 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide_counter.vhdl",
+    "stem": "tide_counter",
+    "extension": "vhdl"
+  },
+  "identification": {
+    "format": "vhdl",
+    "name": "VHDL source",
+    "mime": "text/x-vhdl",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 491
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 491,
+    "entropy": 4.547,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 491,
+      "chars": 491,
+      "words": 75,
+      "lines": 20,
+      "max_line_length": 69,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "a145cb93f9e185ca56a39cb4716bfe68d748af0795fe42af110ce59efb13d1b3",
+    "blake3": "d732cf2fb67ead9a4462b2c374db1f97a442724571e411b1b27effe6db2cb85f"
+  },
+  "content": {
+    "description": "Tide pulse counter for the Saltmere gauge.",
+    "excerpt": "Tide pulse counter for the Saltmere gauge."
+  },
+  "metadata": {},
+  "format": {
+    "vhdl": {
+      "language": "VHDL",
+      "loc": {
+        "code": 17,
+        "comment": 1,
+        "blank": 2,
+        "total": 20
+      },
+      "imports": [
+        "ieee.std_logic_1164.all",
+        "ieee.numeric_std.all",
+        "ieee"
+      ],
+      "import_count": 3,
+      "symbols": {
+        "architecture": [
+          "rtl"
+        ],
+        "entity": [
+          "tide_counter"
+        ],
+        "process": [
+          "counter"
+        ]
+      },
+      "symbol_counts": {
+        "architecture": 1,
+        "entity": 1,
+        "process": 1
+      },
+      "module_doc": "Tide pulse counter for the Saltmere gauge.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 69
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,151 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.gleam",
+    "stem": "tides",
+    "extension": "gleam"
+  },
+  "identification": {
+    "format": "gleam",
+    "name": "Gleam source",
+    "mime": "text/x-gleam",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 342
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 342,
+    "entropy": 4.841,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 342,
+      "chars": 342,
+      "words": 49,
+      "lines": 19,
+      "max_line_length": 62,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 5
+    }
+  },
+  "integrity": {
+    "sha256": "9d5bc6112eea787642ae77f62b507d645606cba4baecae61b67515781b760cb2",
+    "blake3": "37c69c5f615587a53af52e02b9fa7e67097eec428aea12f04e67896a01bf1779"
+  },
+  "content": {
+    "description": "Tide model for Saltmere Harbour.",
+    "excerpt": "Tide model for Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "gleam": {
+      "language": "Gleam",
+      "loc": {
+        "code": 12,
+        "comment": 2,
+        "blank": 5,
+        "total": 19
+      },
+      "imports": [
+        "gleam/float",
+        "gleam/io"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "const": [
+          "amplitude"
+        ],
+        "function": [
+          "high_water",
+          "main"
+        ],
+        "type": [
+          "Gauge"
+        ]
+      },
+      "symbol_counts": {
+        "const": 1,
+        "function": 2,
+        "type": 1
+      },
+      "module_doc": "Tide model for Saltmere Harbour.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 62
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

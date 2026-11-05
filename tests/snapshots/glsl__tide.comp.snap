@@ -1,0 +1,146 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide.comp",
+    "stem": "tide",
+    "extension": "comp"
+  },
+  "identification": {
+    "format": "glsl",
+    "name": "GLSL shader",
+    "mime": "text/x-glsl",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 472
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 472,
+    "entropy": 5.071,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 472,
+      "chars": 472,
+      "words": 66,
+      "lines": 19,
+      "max_line_length": 64,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "591c5cfc39e0ab62782cd32db0338f6029d381ba105ef39ef1e202568f8443fc",
+    "blake3": "f4affbf0de5c588bfc3aa5f71db03ae2f90ccc87d51b57ca11a9e4a368ae55f8"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "glsl": {
+      "language": "GLSL shader",
+      "loc": {
+        "code": 14,
+        "comment": 1,
+        "blank": 4,
+        "total": 19
+      },
+      "imports": [
+        "GL_GOOGLE_include_directive"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "function": [
+          "high_water",
+          "main"
+        ],
+        "uniform": [
+          "Params"
+        ],
+        "version": [
+          "450"
+        ]
+      },
+      "symbol_counts": {
+        "function": 2,
+        "uniform": 1,
+        "version": 1
+      },
+      "is_test": false,
+      "generated": false,
+      "longest_line": 64
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

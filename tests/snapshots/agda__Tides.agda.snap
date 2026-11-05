@@ -1,0 +1,146 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Tides.agda",
+    "stem": "Tides",
+    "extension": "agda"
+  },
+  "identification": {
+    "format": "agda",
+    "name": "Agda source",
+    "mime": "text/x-agda",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "utf-8",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 212
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 212,
+    "entropy": 4.765,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 212,
+      "chars": 204,
+      "words": 36,
+      "lines": 10,
+      "max_line_length": 40,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "af6cb5470b1ed8b685db17f0f717dc72e444978aa3e182bec34adec6580c395f",
+    "blake3": "acdd94244749d3a4177dfb18ed1adf70340e570e24aabecf0419e6d67e586ee2"
+  },
+  "content": {
+    "description": "Tide arithmetic for Saltmere Harbour.",
+    "excerpt": "Tide arithmetic for Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "agda": {
+      "language": "Agda",
+      "loc": {
+        "code": 6,
+        "comment": 1,
+        "blank": 3,
+        "total": 10
+      },
+      "package": "Tides",
+      "imports": [
+        "Data.Nat"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "definition": [
+          "highWater"
+        ],
+        "type": [
+          "Reading"
+        ]
+      },
+      "symbol_counts": {
+        "definition": 1,
+        "type": 1
+      },
+      "module_doc": "Tide arithmetic for Saltmere Harbour.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 40
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

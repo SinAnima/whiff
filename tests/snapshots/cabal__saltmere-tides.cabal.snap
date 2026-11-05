@@ -1,0 +1,161 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.cabal",
+    "stem": "saltmere-tides",
+    "extension": "cabal"
+  },
+  "identification": {
+    "format": "cabal",
+    "name": "Haskell cabal file",
+    "mime": "text/plain",
+    "family": "code.manifest",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 786
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "personal_data": {
+      "email": 1
+    }
+  },
+  "rights": {
+    "creators": [
+      "Harbour Office"
+    ],
+    "license": {
+      "name": "CC0-1.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 786,
+    "entropy": 4.189,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 786,
+      "chars": 786,
+      "words": 61,
+      "lines": 30,
+      "max_line_length": 57,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "55cd801b6449c216ae3472b6270672fa7b252d151daeb712e4df6bb05cc0f8fa",
+    "blake3": "1a3677c2c66c4e40933398f63f68b05037edc9f166325f322f8f1e28310d9e8f"
+  },
+  "content": {
+    "title": "saltmere-tides 1.4.0",
+    "description": "Tide predictions for Saltmere Harbour",
+    "authors": [
+      "Harbour Office"
+    ],
+    "excerpt": "Tide predictions for Saltmere Harbour"
+  },
+  "metadata": {},
+  "format": {
+    "cabal": {
+      "ecosystem": "hackage",
+      "name": "saltmere-tides",
+      "version": "1.4.0",
+      "license": "CC0-1.0",
+      "cabal_version": "3.0",
+      "build_type": "Simple",
+      "category": "Science",
+      "components": {
+        "common": [
+          "warnings"
+        ],
+        "executable": [
+          "tides"
+        ],
+        "library": [
+          "default"
+        ],
+        "test-suite": [
+          "spec"
+        ]
+      },
+      "dependencies": {
+        "base": ">=4.17 && <5",
+        "hspec": "*",
+        "saltmere-tides": "*",
+        "text": "^>=2.1"
+      },
+      "dependencies_count": 4
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,6 @@
+# Tide table lines: "14:20 HW 3.4".
+Table <- Line+ !.
+Line  <- Time ' ' Kind ' ' Level '\n'
+Time  <- [0-9] [0-9] ':' [0-9] [0-9]
+Kind  <- 'HW' / 'LW'
+Level <- [0-9]+ '.' [0-9]+

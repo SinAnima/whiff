@@ -1,0 +1,148 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pubspec.yaml",
+    "stem": "pubspec",
+    "extension": "yaml"
+  },
+  "identification": {
+    "format": "pubspec",
+    "name": "Dart pubspec",
+    "mime": "application/yaml",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "pubspec",
+        "confidence": 0.97
+      },
+      {
+        "format": "yaml",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 408
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 408,
+    "entropy": 4.637,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 408,
+      "chars": 408,
+      "words": 37,
+      "lines": 24,
+      "max_line_length": 51,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "b730fab32b9b63f08fd9da97145b7cc92f0339e9b8100f3665cd9e1b6630646f",
+    "blake3": "4cbb36f69c3c0cf01eea2b64af2ccbd21173943f3fcc921b97f76c5b6c93f5fb"
+  },
+  "content": {
+    "title": "harbour_tides 1.4.0",
+    "description": "Tide predictions for Saltmere Harbour.",
+    "excerpt": "Tide predictions for Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "pubspec": {
+      "ecosystem": "pub",
+      "name": "harbour_tides",
+      "version": "1.4.0",
+      "repository": "https://git.harbour.test/harbour_tides",
+      "dart_sdk": "^3.5.0",
+      "flutter_sdk": ">=3.24.0",
+      "framework": "flutter",
+      "private": true,
+      "dependencies": {
+        "flutter": "*",
+        "http": "^1.2.2",
+        "tide_model": "path: ../tide_model"
+      },
+      "dependencies_count": 3,
+      "dev_dependencies": {
+        "flutter_test": "*",
+        "lints": "^4.0.0"
+      },
+      "dev_dependencies_count": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

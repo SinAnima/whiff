@@ -1,0 +1,32 @@
+{
+    "name": "saltmere/berths",
+    "description": "Berth bookings for Saltmere Harbour",
+    "type": "library",
+    "license": "CC0-1.0",
+    "authors": [
+        {
+            "name": "Harbour Office",
+            "email": "office@harbour.example.org"
+        }
+    ],
+    "require": {
+        "php": ">=8.2",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^7.9"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Saltmere\\Berths\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "keywords": [
+        "harbour",
+        "berths"
+    ]
+}

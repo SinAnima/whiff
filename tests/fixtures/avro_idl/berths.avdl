@@ -1,0 +1,15 @@
+// Berth booking events for Saltmere Harbour.
+@namespace("harbour.berths")
+protocol Berths {
+    import idl "common.avdl";
+
+    enum Basin { INNER, OUTER }
+
+    record Booking {
+        string vessel;
+        int berth;
+        Basin basin = "INNER";
+    }
+
+    fixed Checksum(16);
+}

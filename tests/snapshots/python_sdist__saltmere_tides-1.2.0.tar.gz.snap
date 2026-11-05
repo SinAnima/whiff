@@ -548,13 +548,13 @@ expression: report
         "name": "Python pyproject.toml",
         "mime": "application/toml",
         "family": "code.manifest",
-        "confidence": 0.95,
+        "confidence": 0.97,
         "detected_by": "sniff",
         "extension_matches": true,
         "candidates": [
           {
             "format": "pyproject",
-            "confidence": 0.95
+            "confidence": 0.97
           },
           {
             "format": "toml",
@@ -635,7 +635,7 @@ expression: report
         "extractors": [
           {
             "id": "code.manifest",
-            "version": 1,
+            "version": 2,
             "ms": 0.0,
             "status": "ok"
           },
@@ -1578,15 +1578,25 @@ expression: report
         "extension": "cfg"
       },
       "identification": {
-        "format": "ini",
-        "name": "INI configuration",
+        "format": "setup_cfg",
+        "name": "setuptools setup.cfg",
         "mime": "text/plain",
-        "family": "data.ini",
-        "confidence": 0.95,
+        "family": "code.manifest",
+        "confidence": 0.97,
         "detected_by": "sniff",
         "extension_matches": true,
+        "candidates": [
+          {
+            "format": "setup_cfg",
+            "confidence": 0.97
+          },
+          {
+            "format": "ini",
+            "confidence": 0.95
+          }
+        ],
         "encoding": "us-ascii",
-        "extractor": "data.ini"
+        "extractor": "code.manifest"
       },
       "system": {
         "kind": "memory",
@@ -1619,28 +1629,19 @@ expression: report
       "content": {},
       "metadata": {},
       "format": {
-        "ini": {
-          "dialect": "ini",
+        "setup_cfg": {
+          "ecosystem": "python",
+          "build_tool": "setuptools",
           "sections": [
-            {
-              "name": "egg_info",
-              "keys": 2
-            }
-          ],
-          "keys": 2,
-          "values": {
-            "egg_info": {
-              "tag_build": "",
-              "tag_date": "0"
-            }
-          }
+            "egg_info"
+          ]
         }
       },
       "diagnostics": {
         "extractors": [
           {
-            "id": "data.ini",
-            "version": 1,
+            "id": "code.manifest",
+            "version": 2,
             "ms": 0.0,
             "status": "ok"
           },

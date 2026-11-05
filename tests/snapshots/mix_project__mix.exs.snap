@@ -1,0 +1,149 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "mix.exs",
+    "stem": "mix",
+    "extension": "exs"
+  },
+  "identification": {
+    "format": "mix_project",
+    "name": "Elixir mix.exs",
+    "mime": "text/x-elixir",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "mix_project",
+        "confidence": 0.97
+      },
+      {
+        "format": "elixir",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 573
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "license": {
+      "name": "CC0-1.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 573,
+    "entropy": 4.689,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 573,
+      "chars": 573,
+      "words": 57,
+      "lines": 24,
+      "max_line_length": 83,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "aeb1a131a59c1562a81d1e65d3de8ac1b1dfde990fd0c1d2b9abf6e0ec0f54b5",
+    "blake3": "f39ee65d8ff9d9763460e4a1b6980d784e2eb19737698ac6c9b1af0603beb37b"
+  },
+  "content": {
+    "title": "saltmere_berths 1.4.0",
+    "description": "Berth bookings for Saltmere Harbour",
+    "excerpt": "Berth bookings for Saltmere Harbour"
+  },
+  "metadata": {},
+  "format": {
+    "mix_project": {
+      "ecosystem": "hex",
+      "name": "saltmere_berths",
+      "version": "1.4.0",
+      "license": "CC0-1.0",
+      "repository": "https://git.harbour.test/berths",
+      "elixir_version": "~> 1.17",
+      "dependencies": {
+        "phoenix": "~> 1.7",
+        "jason": "~> 1.4",
+        "tide_model": "git: https://git.harbour.test/tide_model.git"
+      },
+      "dependencies_count": 3,
+      "dev_dependencies": {
+        "credo": "~> 1.7"
+      },
+      "dev_dependencies_count": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

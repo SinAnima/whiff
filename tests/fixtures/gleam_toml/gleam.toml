@@ -1,0 +1,13 @@
+name = "saltmere_tides"
+version = "1.4.0"
+description = "Tide predictions for Saltmere Harbour"
+licences = ["CC0-1.0"]
+repository = { type = "github", user = "saltmere", repo = "tides" }
+target = "erlang"
+
+[dependencies]
+gleam_stdlib = ">= 0.40.0 and < 2.0.0"
+tide_model = { path = "../tide_model" }
+
+[dev-dependencies]
+gleeunit = ">= 1.0.0 and < 2.0.0"

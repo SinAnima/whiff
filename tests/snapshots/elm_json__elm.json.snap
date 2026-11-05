@@ -1,0 +1,143 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "elm.json",
+    "stem": "elm",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "elm_json",
+    "name": "Elm elm.json",
+    "mime": "application/json",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "elm_json",
+        "confidence": 0.97
+      },
+      {
+        "format": "json",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 506
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 506,
+    "entropy": 3.871,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 506,
+      "chars": 506,
+      "words": 39,
+      "lines": 24,
+      "max_line_length": 44,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "5bf1ce96bacd9fe16c906b0662deaa30af39ebc96b159a1790f1b8c45fdb7f30",
+    "blake3": "cdeaa2dafff4a022e98d39ba7c29e6aac4cc30d392873951a0dd75e65d37a263"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "elm_json": {
+      "ecosystem": "elm",
+      "type": "application",
+      "elm_version": "0.19.1",
+      "dependencies": {
+        "elm/browser": "1.0.2",
+        "elm/core": "1.0.5",
+        "elm/html": "1.0.0"
+      },
+      "dependencies_count": 3,
+      "indirect_dependencies": {
+        "elm/json": "1.1.3",
+        "elm/virtual-dom": "1.0.3"
+      },
+      "indirect_dependencies_count": 2,
+      "test_dependencies": {
+        "elm-explorations/test": "2.2.0"
+      },
+      "test_dependencies_count": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

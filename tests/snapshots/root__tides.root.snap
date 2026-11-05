@@ -18,7 +18,7 @@ expression: report
     "name": "ROOT (CERN)",
     "mime": "application/octet-stream",
     "family": "sci",
-    "confidence": 0.81,
+    "confidence": 0.85,
     "detected_by": "magic",
     "extension_matches": true,
     "extractor": "science.fields"

@@ -1,0 +1,30 @@
+cabal-version:      3.0
+name:               saltmere-tides
+version:            1.4.0
+synopsis:           Tide predictions for Saltmere Harbour
+license:            CC0-1.0
+author:             Harbour Office
+maintainer:         office@harbour.example.org
+category:           Science
+build-type:         Simple
+
+common warnings
+    ghc-options: -Wall
+
+library
+    import:           warnings
+    exposed-modules:  Tides
+    build-depends:    base >=4.17 && <5,
+                      text ^>=2.1
+    hs-source-dirs:   src
+    default-language: GHC2021
+
+executable tides
+    main-is:          Main.hs
+    build-depends:    base, saltmere-tides
+    hs-source-dirs:   app
+
+test-suite spec
+    type:             exitcode-stdio-1.0
+    main-is:          Spec.hs
+    build-depends:    base, hspec

@@ -1,0 +1,144 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Tides.hx",
+    "stem": "Tides",
+    "extension": "hx"
+  },
+  "identification": {
+    "format": "haxe",
+    "name": "Haxe source",
+    "mime": "text/x-haxe",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 388
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 388,
+    "entropy": 4.685,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 388,
+      "chars": 388,
+      "words": 48,
+      "lines": 20,
+      "max_line_length": 56,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "52314afde05ba04b1fe9f3c4d3c43770d36175c675ce5404d9b2797af06f700c",
+    "blake3": "10fb1ad8f6102461e9d093d9a39abda3f0aa4e777eb845091e463a747dab3dfc"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "haxe": {
+      "language": "Haxe",
+      "loc": {
+        "code": 12,
+        "comment": 4,
+        "blank": 4,
+        "total": 20
+      },
+      "package": "saltmere",
+      "imports": [
+        "haxe.ds.StringMap",
+        "StringTools"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "function": [
+          "highWater",
+          "main"
+        ],
+        "type": [
+          "Tides"
+        ]
+      },
+      "symbol_counts": {
+        "function": 2,
+        "type": 1
+      },
+      "is_test": false,
+      "generated": false,
+      "longest_line": 56
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

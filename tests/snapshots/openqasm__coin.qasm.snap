@@ -1,0 +1,150 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "coin.qasm",
+    "stem": "coin",
+    "extension": "qasm"
+  },
+  "identification": {
+    "format": "openqasm",
+    "name": "OpenQASM source",
+    "mime": "text/x-qasm",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 157
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 157,
+    "entropy": 4.92,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 157,
+      "chars": 157,
+      "words": 28,
+      "lines": 11,
+      "max_line_length": 40,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "1343b40aa23a9e3cefcb0987d572988b937223961d6862e22043525b388a2e23",
+    "blake3": "8af44321e1394f55a3e1602182129124b264462bf46e78c6d58e187c6b6954cc"
+  },
+  "content": {
+    "description": "Quantum coin for the harbour lottery.",
+    "excerpt": "Quantum coin for the harbour lottery."
+  },
+  "metadata": {},
+  "format": {
+    "openqasm": {
+      "language": "OpenQASM",
+      "loc": {
+        "code": 7,
+        "comment": 1,
+        "blank": 3,
+        "total": 11
+      },
+      "imports": [
+        "stdgates.inc"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "gate": [
+          "flip"
+        ],
+        "register": [
+          "q",
+          "c"
+        ],
+        "version": [
+          "3.0"
+        ]
+      },
+      "symbol_counts": {
+        "gate": 1,
+        "register": 2,
+        "version": 1
+      },
+      "module_doc": "Quantum coin for the harbour lottery.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 40
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

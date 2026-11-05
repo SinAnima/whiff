@@ -1,0 +1,133 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "settings.gradle.kts",
+    "stem": "settings.gradle",
+    "extension": "kts"
+  },
+  "identification": {
+    "format": "gradle_build",
+    "name": "Gradle build",
+    "mime": "text/x-groovy",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "gradle_build",
+        "confidence": 0.97
+      },
+      {
+        "format": "kotlin",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 62
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 62,
+    "entropy": 4.443,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 62,
+      "chars": 62,
+      "words": 5,
+      "lines": 2,
+      "max_line_length": 35,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "8ef3809cc1a363c7683a2cbabeab31a9447f4d991268e4b20d82be98af64a8bd",
+    "blake3": "8ea5062ef7c137434a7aa51919deb34f1e1feb4c05181a67ee44a6c9d2c80c97"
+  },
+  "content": {
+    "title": "saltmere-tides"
+  },
+  "metadata": {},
+  "format": {
+    "gradle_build": {
+      "ecosystem": "gradle",
+      "name": "saltmere-tides",
+      "modules": [
+        ":app",
+        ":model"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

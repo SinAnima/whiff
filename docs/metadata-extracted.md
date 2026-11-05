@@ -127,9 +127,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1008 formats** in total: tier 1 = 139, tier 2 = 122, tier 3 = 747.
-* Formats with an extractor in this build: **674** of 1008.
+* Formats with an extractor in this build: **767** of 1008.
 * Formats by family status: crate = 183, mixed = 365, impl = 460.
-* Formats by target stage: S1 = 171, S1/S6 = 101, S2 = 91, S3 = 49, S3/S8 = 1, S4 = 69, S5 = 68, S6 = 90, S6/S8 = 17, S7 = 140, S8 = 211.
+* Formats by target stage: S1 = 197, S1/S6 = 102, S2 = 91, S3 = 49, S3/S8 = 1, S4 = 69, S5 = 68, S6 = 90, S6/S8 = 17, S7 = 140, S8 = 184.
 * By feature: `common` = 818, `cad` = 45, `forensics` = 38, `science` = 36, `geo` = 34, `data` = 20, `games` = 17.
 * By category: Code 167, Data 157, Image 95, Media 88, Document 71, Archive 47, Scientific 36, Executable 34, Geospatial 34, Text 32, Package 30, 3D 28, Web 27, Forensics 24, Database 21, Security 20, CAD 17, Game 17, Personal 16, Disk 14, Platform 11, Font 10, Fallback 8, Block 4.
 
@@ -507,102 +507,102 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 366 | Apache Thrift schema | `thrift` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
 | 367 | Cap'n Proto schema | `capnp` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
 | 368 | Dhall / Jsonnet / CUE | `dhall` `jsonnet` `libsonnet` `cue` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 369 | Astro component | `astro` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 370 | Nim | `nim` `nims` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 371 | Crystal | `cr` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 372 | D | `d` `di` | text/x-d | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 373 | V / Vlang | `v` `vsh` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 374 | Odin | `odin` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 375 | Fortran | `f` `f77` `f90` `f95` `f03` `f08` `for` | text/x-fortran | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 376 | COBOL | `cob` `cbl` `cpy` | text/x-cobol | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 377 | Pascal / Delphi | `pas` `pp` `dpr` `lpr` | text/x-pascal | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 378 | Ada | `adb` `ads` | text/x-ada | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 379 | Common Lisp / Emacs Lisp | `lisp` `lsp` `el` `cl` | text/x-lisp | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 380 | Scheme / Racket | `scm` `ss` `rkt` | text/x-scheme | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 381 | Prolog | `pro` `P` | text/x-prolog | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 382 | Elm | `elm` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 383 | PureScript | `purs` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 384 | ReScript / ReasonML | `res` `resi` `re` `rei` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 385 | CoffeeScript | `coffee` `litcoffee` | text/coffeescript | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 386 | Haxe | `hx` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 387 | Tcl | `tcl` `tk` | text/x-tcl | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 388 | AWK / sed | `awk` `sed` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 369 | Astro component | `astro` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 370 | Nim | `nim` `nims` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 371 | Crystal | `cr` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 372 | D | `d` `di` | text/x-d | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 373 | V / Vlang | `v` `vsh` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 374 | Odin | `odin` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 375 | Fortran | `f` `f77` `f90` `f95` `f03` `f08` `for` | text/x-fortran | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 376 | COBOL | `cob` `cbl` `cpy` | text/x-cobol | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 377 | Pascal / Delphi | `pas` `pp` `dpr` `lpr` | text/x-pascal | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 378 | Ada | `adb` `ads` | text/x-ada | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 379 | Common Lisp / Emacs Lisp | `lisp` `lsp` `el` `cl` | text/x-lisp | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 380 | Scheme / Racket | `scm` `ss` `rkt` | text/x-scheme | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 381 | Prolog | `pro` `P` | text/x-prolog | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 382 | Elm | `elm` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 383 | PureScript | `purs` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 384 | ReScript / ReasonML | `res` `resi` `re` `rei` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 385 | CoffeeScript | `coffee` `litcoffee` | text/coffeescript | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 386 | Haxe | `hx` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 387 | Tcl | `tcl` `tk` | text/x-tcl | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 388 | AWK / sed | `awk` `sed` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
 | 389 | fish shell | `fish` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 390 | Solidity | `sol` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | contract names, pragma version |
-| 391 | Move / Cairo / Vyper | `move` `cairo` `vy` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 392 | Verilog / SystemVerilog | `v` `sv` `svh` | text/x-verilog | 3 | `code.source` | `common` | — | tokei | S1/S6 | modules |
-| 393 | VHDL | `vhd` `vhdl` | text/x-vhdl | 3 | `code.source` | `common` | — | tokei | S1/S6 | entities |
-| 394 | OpenCL | `cl` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 395 | GLSL shader | `glsl` `vert` `frag` `geom` `comp` `tesc` `tese` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 396 | HLSL shader | `hlsl` `fx` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 397 | WGSL shader | `wgsl` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 398 | Metal shader | `metal` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 399 | SPIR-V binary | `spv` | — | 3 | `code.source` | `common` | — | tokei | S8 | -&gt; bytecode-like header |
-| 400 | Apex / Salesforce | `cls` `trigger` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 401 | ABAP | `abap` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 402 | Smalltalk | `st` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 403 | Raku | `raku` `rakumod` `p6` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
+| 390 | Solidity | `sol` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | contract names, pragma version |
+| 391 | Move / Cairo / Vyper | `move` `cairo` `vy` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 392 | Verilog / SystemVerilog | `v` `sv` `svh` | text/x-verilog | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | modules |
+| 393 | VHDL | `vhd` `vhdl` | text/x-vhdl | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | entities |
+| 394 | OpenCL | `cl` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 395 | GLSL shader | `glsl` `vert` `frag` `geom` `comp` `tesc` `tese` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 396 | HLSL shader | `hlsl` `fx` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 397 | WGSL shader | `wgsl` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 398 | Metal shader | `metal` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 399 | SPIR-V binary | `spv` | — | 3 | `code.source` | `common` | `code.spirv` | tokei | S1/S6 | -&gt; bytecode-like header |
+| 400 | Apex / Salesforce | `cls` `trigger` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 401 | ABAP | `abap` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 402 | Smalltalk | `st` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 403 | Raku | `raku` `rakumod` `p6` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
 | 404 | Hack | `hack` `hh` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
-| 405 | Starlark / Bazel | `bzl` `star` `BUILD` `WORKSPACE` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | rules, load() |
-| 406 | Meson / Ninja | `meson.build` `ninja` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 407 | AutoHotkey / AutoIt | `ahk` `au3` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 408 | Jupyter-less IPython script | `ipy` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 409 | Gleam / Roc / Unison | `gleam` `roc` `u` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 410 | Mojo | `mojo` `🔥` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 411 | Q# / OpenQASM | `qs` `qasm` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 412 | Arduino sketch | `ino` `pde` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 413 | LLVM IR | `ll` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | target triple, functions |
-| 414 | WebAssembly text | `wat` `wast` | text/wasm | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 415 | Regex / grammar files (ANTLR, PEG, Bison/Yacc, Lex) | `g4` `peg` `y` `yy` `l` `lex` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 416 | Puppet / Chef | `pp` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 417 | PL/SQL / T-SQL | `pls` `plsql` `pck` `tsql` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 418 | Template: Go/Handlebars/Pug | `tmpl` `gotmpl` `pug` `jade` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 419 | Vim script | `vim` `vimrc` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 420 | Shell rc / profile | `bashrc` `zshrc` `profile` `bash_profile` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | aliases, exports (values redacted) |
-| 421 | Nushell / Elvish | `nu` `elv` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 422 | Rego (OPA) policy | `rego` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | package, rules |
-| 423 | Bicep / ARM templates | `bicep` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | resources |
+| 405 | Starlark / Bazel | `bzl` `star` `BUILD` `WORKSPACE` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | rules, load() |
+| 406 | Meson / Ninja | `meson.build` `ninja` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 407 | AutoHotkey / AutoIt | `ahk` `au3` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 408 | Jupyter-less IPython script | `ipy` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 409 | Gleam / Roc / Unison | `gleam` `roc` `u` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 410 | Mojo | `mojo` `🔥` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 411 | Q# / OpenQASM | `qs` `qasm` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 412 | Arduino sketch | `ino` `pde` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 413 | LLVM IR | `ll` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | target triple, functions |
+| 414 | WebAssembly text | `wat` `wast` | text/wasm | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 415 | Regex / grammar files (ANTLR, PEG, Bison/Yacc, Lex) | `g4` `peg` `y` `yy` `l` `lex` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 416 | Puppet / Chef | `pp` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 417 | PL/SQL / T-SQL | `pls` `plsql` `pck` `tsql` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 418 | Template: Go/Handlebars/Pug | `tmpl` `gotmpl` `pug` `jade` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 419 | Vim script | `vim` `vimrc` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 420 | Shell rc / profile | `bashrc` `zshrc` `profile` `bash_profile` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | aliases, exports (values redacted) |
+| 421 | Nushell / Elvish | `nu` `elv` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 422 | Rego (OPA) policy | `rego` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | package, rules |
+| 423 | Bicep / ARM templates | `bicep` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | resources |
 | 424 | Jenkinsfile / Earthfile / Tiltfile | `Jenkinsfile` `Earthfile` `Tiltfile` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | stages |
-| 425 | Proof assistants (Lean, Coq, Agda, Idris, Isabelle) | `lean` `v` `agda` `idr` `thy` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | theorems/defs count |
-| 426 | Formal specs (TLA+, Alloy) | `tla` `als` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 427 | Ballerina / Pony / Janet / Fennel / Hy | `bal` `pony` `janet` `fnl` `hy` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 428 | Forth / APL / J / K / Q | `fth` `4th` `apl` `ijs` `k` `q` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 429 | GDScript (Godot) | `gd` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | extends, signals, funcs |
-| 430 | Unity ShaderLab | `shader` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 431 | PLC IEC 61131 Structured Text | `st` `scl` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | programs, function blocks |
-| 432 | Max/MSP / Pure Data patches | `maxpat` `pd` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | object counts |
-| 433 | YARA rules | `yar` `yara` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | rule names, tags, meta, strings count |
-| 434 | Snort / Suricata rules | `rules` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | rule count, actions, protocols, sids, msg list, classtypes |
-| 435 | Smithy / Avro IDL | `smithy` `avdl` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | services, shapes |
-| 436 | AppleScript (text) / JXA | `applescript` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 437 | Kotlin Multiplatform / Compose scripts | `main.kts` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | — |
-| 438 | SQL notebooks / dbt models | `sql` | — | 3 | `code.source` | `common` | — | tokei | S1/S6 | refs, sources (Jinja) |
-| 439 | Pipfile / poetry.lock / uv.lock | `Pipfile` `Pipfile.lock` `poetry.lock` `uv.lock` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 440 | setup.py / setup.cfg | `setup.py` `setup.cfg` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 441 | Gradle build | `build.gradle` `build.gradle.kts` `settings.gradle` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 442 | Ruby Gemfile / lock | `Gemfile` `Gemfile.lock` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 443 | Composer | `composer.json` `composer.lock` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 444 | .NET project | `csproj` `fsproj` `vbproj` `sln` `props` `targets` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | target frameworks, PackageReferences |
-| 445 | NuGet packages.config / Directory.Packages.props | `packages.config` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 446 | CocoaPods / SwiftPM | `Podfile` `Podfile.lock` `Package.swift` `Package.resolved` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 447 | Dart pubspec | `pubspec.yaml` `pubspec.lock` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 448 | Elixir mix / Hex | `mix.exs` `mix.lock` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 449 | Haskell cabal / stack | `cabal` `stack.yaml` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 450 | R DESCRIPTION | `DESCRIPTION` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 451 | Conan / vcpkg | `conanfile.txt` `conanfile.py` `vcpkg.json` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 452 | Deno config | `deno.json` `deno.jsonc` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 453 | Julia Project.toml / Manifest.toml | `Project.toml` `Manifest.toml` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 454 | CITATION.cff | `cff` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | title, authors, DOI |
-| 455 | SBOM (SPDX / CycloneDX) | `spdx` `spdx.json` `cdx.json` `bom.xml` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | component count, licences |
-| 456 | Homebrew formula / Brewfile | `rb` `Brewfile` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 457 | Arch PKGBUILD | `PKGBUILD` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | pkgname, pkgver, depends, source URLs |
-| 458 | RPM spec | `spec` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | Name, Version, Release, License, Requires |
-| 459 | Debian source control files | `control` `changelog` `copyright` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | Source, Maintainer, Build-Depends |
-| 460 | Nix flake | `flake.nix` `flake.lock` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | inputs, outputs |
-| 461 | Bazel MODULE / Terraform lock | `MODULE.bazel` `.terraform.lock.hcl` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 462 | Snapcraft / Flatpak manifests | `snapcraft.yaml` `flatpak.json` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 463 | opam / CPAN META / rebar.config | `opam` `META.json` `rebar.config` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
-| 464 | elm.json / gleam.toml / build.zig.zon | `elm.json` `gleam.toml` `build.zig.zon` | — | 3 | `code.manifest` | `common` | — | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S8 | — |
+| 425 | Proof assistants (Lean, Coq, Agda, Idris, Isabelle) | `lean` `v` `agda` `idr` `thy` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | theorems/defs count |
+| 426 | Formal specs (TLA+, Alloy) | `tla` `als` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 427 | Ballerina / Pony / Janet / Fennel / Hy | `bal` `pony` `janet` `fnl` `hy` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 428 | Forth / APL / J / K / Q | `fth` `4th` `apl` `ijs` `k` `q` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 429 | GDScript (Godot) | `gd` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | extends, signals, funcs |
+| 430 | Unity ShaderLab | `shader` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 431 | PLC IEC 61131 Structured Text | `st` `scl` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | programs, function blocks |
+| 432 | Max/MSP / Pure Data patches | `maxpat` `pd` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | object counts |
+| 433 | YARA rules | `yar` `yara` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | rule names, tags, meta, strings count |
+| 434 | Snort / Suricata rules | `rules` | — | 3 | `code.source` | `common` | `forensic.logs` | tokei | S1/S6 | rule count, actions, protocols, sids, msg list, classtypes |
+| 435 | Smithy / Avro IDL | `smithy` `avdl` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | services, shapes |
+| 436 | AppleScript (text) / JXA | `applescript` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 437 | Kotlin Multiplatform / Compose scripts | `main.kts` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
+| 438 | SQL notebooks / dbt models | `sql` | — | 3 | `code.source` | `common` | `data.sql` | tokei | S1/S6 | refs, sources (Jinja) |
+| 439 | Pipfile / poetry.lock / uv.lock | `Pipfile` `Pipfile.lock` `poetry.lock` `uv.lock` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 440 | setup.py / setup.cfg | `setup.py` `setup.cfg` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 441 | Gradle build | `build.gradle` `build.gradle.kts` `settings.gradle` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 442 | Ruby Gemfile / lock | `Gemfile` `Gemfile.lock` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 443 | Composer | `composer.json` `composer.lock` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 444 | .NET project | `csproj` `fsproj` `vbproj` `sln` `props` `targets` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | target frameworks, PackageReferences |
+| 445 | NuGet packages.config / Directory.Packages.props | `packages.config` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 446 | CocoaPods / SwiftPM | `Podfile` `Podfile.lock` `Package.swift` `Package.resolved` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 447 | Dart pubspec | `pubspec.yaml` `pubspec.lock` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 448 | Elixir mix / Hex | `mix.exs` `mix.lock` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 449 | Haskell cabal / stack | `cabal` `stack.yaml` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 450 | R DESCRIPTION | `DESCRIPTION` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 451 | Conan / vcpkg | `conanfile.txt` `conanfile.py` `vcpkg.json` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 452 | Deno config | `deno.json` `deno.jsonc` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 453 | Julia Project.toml / Manifest.toml | `Project.toml` `Manifest.toml` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 454 | CITATION.cff | `cff` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | title, authors, DOI |
+| 455 | SBOM (SPDX / CycloneDX) | `spdx` `spdx.json` `cdx.json` `bom.xml` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | component count, licences |
+| 456 | Homebrew formula / Brewfile | `rb` `Brewfile` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 457 | Arch PKGBUILD | `PKGBUILD` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | pkgname, pkgver, depends, source URLs |
+| 458 | RPM spec | `spec` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | Name, Version, Release, License, Requires |
+| 459 | Debian source control files | `control` `changelog` `copyright` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | Source, Maintainer, Build-Depends |
+| 460 | Nix flake | `flake.nix` `flake.lock` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | inputs, outputs |
+| 461 | Bazel MODULE / Terraform lock | `MODULE.bazel` `.terraform.lock.hcl` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 462 | Snapcraft / Flatpak manifests | `snapcraft.yaml` `flatpak.json` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 463 | opam / CPAN META / rebar.config | `opam` `META.json` `rebar.config` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
+| 464 | elm.json / gleam.toml / build.zig.zon | `elm.json` `gleam.toml` `build.zig.zon` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
 | 465 | Zeppelin / Databricks notebook | `zpln` `dbc` | — | 3 | `code.notebook` | `common` | — | serde_json | S8 | — |
 | 466 | Observable / Livebook | `livemd` | — | 3 | `code.notebook` | `common` | — | serde_json | S8 | — |
 | 467 | Mathematica notebook | `nb` `cdf` | application/mathematica | 3 | `code.notebook` | `common` | — | serde_json | S8 | — |

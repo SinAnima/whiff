@@ -1,0 +1,141 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide.peg",
+    "stem": "tide",
+    "extension": "peg"
+  },
+  "identification": {
+    "format": "peg",
+    "name": "PEG grammar",
+    "mime": "text/x-peg",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 177
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 177,
+    "entropy": 4.524,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 177,
+      "chars": 177,
+      "words": 38,
+      "lines": 6,
+      "max_line_length": 37,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "dacd304b731c3bae9ae47a554dbe1dce4bb6f415387a9a677ed694225ce31b72",
+    "blake3": "04ab6120c0b233aaddcf0a2a0f932b47d6662c6025d99b5ab9ccf882a788e17d"
+  },
+  "content": {
+    "description": "Tide table lines: \"14:20 HW 3.4\".",
+    "excerpt": "Tide table lines: \"14:20 HW 3.4\"."
+  },
+  "metadata": {},
+  "format": {
+    "peg": {
+      "language": "PEG grammar",
+      "loc": {
+        "code": 5,
+        "comment": 1,
+        "blank": 0,
+        "total": 6
+      },
+      "symbols": {
+        "rule": [
+          "Table",
+          "Line",
+          "Time",
+          "Kind",
+          "Level"
+        ]
+      },
+      "symbol_counts": {
+        "rule": 5
+      },
+      "module_doc": "Tide table lines: \"14:20 HW 3.4\".",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 37
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,146 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.fnl",
+    "stem": "tides",
+    "extension": "fnl"
+  },
+  "identification": {
+    "format": "fennel",
+    "name": "Fennel source",
+    "mime": "text/x-fennel",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 197
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 197,
+    "entropy": 4.714,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 197,
+      "chars": 197,
+      "words": 28,
+      "lines": 10,
+      "max_line_length": 35,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "3720acc951d3f27ab8b9bcc7ac938638a78ae4c5e70e48ff229b31d6e986d158",
+    "blake3": "fd183d2ac7fdc5c831ee38401efdd4a9287f72aeb1365e79e8a4e88d6641f836"
+  },
+  "content": {
+    "description": "Tide model for Saltmere Harbour.",
+    "excerpt": "Tide model for Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "fennel": {
+      "language": "Fennel",
+      "loc": {
+        "code": 6,
+        "comment": 1,
+        "blank": 3,
+        "total": 10
+      },
+      "imports": [
+        "gauges"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "function": [
+          "high-water"
+        ],
+        "variable": [
+          "gauges",
+          "amplitude"
+        ]
+      },
+      "symbol_counts": {
+        "function": 1,
+        "variable": 2
+      },
+      "module_doc": "Tide model for Saltmere Harbour.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 35
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

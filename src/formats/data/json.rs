@@ -146,7 +146,7 @@ fn document(text: &str, cut: bool, name: Option<&str>, cx: &mut Context<'_>) {
 
 /// Parse strict JSON, then JSON with comments / trailing commas, then JSON5.
 /// The error reported is the one for the dialect the file claims.
-fn parse(text: &str, json5_file: bool) -> Result<(Value, &'static str), String> {
+pub(crate) fn parse(text: &str, json5_file: bool) -> Result<(Value, &'static str), String> {
     let strict = if json5_file { None } else { Some(serde_json::from_str::<Value>(text)) };
     if let Some(Ok(v)) = strict {
         return Ok((v, "json"));

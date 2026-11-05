@@ -1,0 +1,148 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.rb",
+    "stem": "saltmere-tides",
+    "extension": "rb"
+  },
+  "identification": {
+    "format": "homebrew_formula",
+    "name": "Homebrew formula / cask",
+    "mime": "text/x-ruby",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "homebrew_formula",
+        "confidence": 0.97
+      },
+      {
+        "format": "ruby",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 460
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "license": {
+      "name": "CC0-1.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 460,
+    "entropy": 5.012,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 460,
+      "chars": 460,
+      "words": 38,
+      "lines": 18,
+      "max_line_length": 75,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "6c4ab2e998708c679941d3e2ddfb3222df8d2a61417c21f65b3482ba439ede88",
+    "blake3": "3094d5b6edc2aeef2e15b682c40412d9290bb337b666cb9e8bf207ae57343ce9"
+  },
+  "content": {
+    "title": "saltmere-tides",
+    "description": "Tide predictions for Saltmere Harbour",
+    "excerpt": "Tide predictions for Saltmere Harbour"
+  },
+  "metadata": {},
+  "format": {
+    "homebrew_formula": {
+      "ecosystem": "homebrew",
+      "name": "saltmere-tides",
+      "license": "CC0-1.0",
+      "repository": "https://harbour.test/tides",
+      "kind": "formula",
+      "url": "https://harbour.test/releases/saltmere-tides-1.4.0.tar.gz",
+      "checksum": true,
+      "dependencies": {
+        "glib": "*"
+      },
+      "dependencies_count": 1,
+      "build_dependencies": {
+        "pkgconf": "*"
+      },
+      "build_dependencies_count": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
