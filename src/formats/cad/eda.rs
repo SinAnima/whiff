@@ -88,7 +88,12 @@ static META: ExtractorMeta = ExtractorMeta {
             family: "cad",
             mimes: &[],
             extensions: &["gds", "gds2", "gdsii"],
-            magic: &[Magic::at(0, b"\x00\x06\x00\x02")],
+            // HEADER (version any), then BGNLIB: four bytes alone also start Photoshop 6.2 brushes.
+            magic: &[Magic::masked(
+                0,
+                b"\x00\x06\x00\x02\0\0\x00\x1c\x01\x02",
+                b"\xff\xff\xff\xff\0\0\xff\xff\xff\xff",
+            )],
             parent: None,
         },
         FormatSpec {

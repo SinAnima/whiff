@@ -1,0 +1,144 @@
+---
+source: src/formats/image/slide.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-2.ndpi",
+    "stem": "harbour-2",
+    "extension": "ndpi"
+  },
+  "identification": {
+    "format": "ndpi",
+    "name": "Hamamatsu NDPI slide",
+    "mime": "application/octet-stream",
+    "family": "image.raster",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ndpi",
+        "confidence": 0.99
+      },
+      {
+        "format": "tiff",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "image.slide"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 418
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 418,
+    "entropy": 2.809,
+    "entropy_scope": "file",
+    "image": {
+      "width": 20480,
+      "height": 15360,
+      "frames": 2
+    }
+  },
+  "integrity": {
+    "sha256": "27cd5d6f52c73a3c2222fa7e835ae292faaedc31a7021026c1de1f583a623e8c",
+    "blake3": "d1109902abd2a30a6ea48f7bd124b3cc858a647782fc045939d315ec607e0d36"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ndpi": {
+      "slide": {
+        "make": "Hamamatsu",
+        "model": "C13220",
+        "magnification": 40.0,
+        "x_offset_nm": 1000,
+        "y_offset_nm": 2000,
+        "focal_plane_nm": 0,
+        "scanner_serial": "000000",
+        "ndpi_format_flag": 1,
+        "levels": [
+          {
+            "width": 20480,
+            "height": 15360,
+            "tiled": true,
+            "compression": 7
+          },
+          {
+            "width": 5120,
+            "height": 3840,
+            "tiled": true,
+            "compression": 7
+          }
+        ],
+        "associated_images": []
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.slide",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

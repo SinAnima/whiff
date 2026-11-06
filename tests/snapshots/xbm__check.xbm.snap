@@ -1,5 +1,5 @@
 ---
-source: src/formats/text/xml.rs
+source: src/formats/image/retro.rs
 expression: report
 ---
 {
@@ -9,24 +9,24 @@ expression: report
     "profile": "standard"
   },
   "source": {
-    "name": "artwork.vra.xml",
-    "stem": "artwork.vra",
-    "extension": "xml"
+    "name": "check.xbm",
+    "stem": "check",
+    "extension": "xbm"
   },
   "identification": {
-    "format": "xml",
-    "name": "XML document",
-    "mime": "application/xml",
-    "family": "text.xml",
-    "confidence": 0.65,
+    "format": "xbm",
+    "name": "X11 bitmap (XBM)",
+    "mime": "image/x-xbitmap",
+    "family": "image.raster",
+    "confidence": 0.95,
     "detected_by": "sniff",
     "extension_matches": true,
     "encoding": "us-ascii",
-    "extractor": "text.xml"
+    "extractor": "image.retro"
   },
   "system": {
     "kind": "regular",
-    "size_bytes": 937
+    "size_bytes": 2049
   },
   "temporal": {
     "filesystem": {}
@@ -34,71 +34,42 @@ expression: report
   "security": {},
   "rights": {},
   "physical": {
-    "size_bytes": 937,
-    "entropy": 4.924,
+    "size_bytes": 2049,
+    "entropy": 2.365,
     "entropy_scope": "file",
     "text": {
-      "bytes": 937,
-      "chars": 937,
-      "words": 54,
-      "lines": 22,
-      "max_line_length": 102,
+      "bytes": 2049,
+      "chars": 2049,
+      "words": 37,
+      "lines": 29,
+      "max_line_length": 76,
       "line_endings": "lf",
       "bom": false,
       "blank_lines": 0
+    },
+    "image": {
+      "width": 64,
+      "height": 48,
+      "bit_depth": 1,
+      "channels": 1
     }
   },
   "integrity": {
-    "sha256": "abc6bb87c2b15bdbb08e0d43d9ebbb5d9de517683948ae5ad8efc5e14e72d6ff",
-    "blake3": "e4ba9cf5f914e2044be2b917dc7679a1b6f7c4107ee0e480613224720675e8db"
+    "sha256": "addfb244f1a1e80d1f00fe930f61ac28a129891ed4b70ac9ee67d5e9d4128bbd",
+    "blake3": "5488dc63c9f58e1914139e5357185ba02a4b6e02024b87e4ce810be4cf8eb025"
   },
   "content": {},
   "metadata": {},
   "format": {
-    "xml": {
-      "declaration": {
-        "version": "1.0",
-        "encoding": "UTF-8"
-      },
-      "root": "vra",
-      "namespace": "http://www.vraweb.org/vracore4.htm",
-      "vocabulary": {
-        "id": "vra_core",
-        "name": "VRA Core record"
-      },
-      "namespaces": {
-        "xsi": "http://www.w3.org/2001/XMLSchema-instance"
-      },
-      "well_formed": true,
-      "elements": 21,
-      "attributes": 9,
-      "max_depth": 5,
-      "distinct_elements": 16,
-      "top_elements": {
-        "display": 6,
-        "agent": 1,
-        "agentSet": 1,
-        "date": 1,
-        "dateSet": 1,
-        "earliestDate": 1,
-        "latestDate": 1,
-        "materialSet": 1,
-        "measurementsSet": 1,
-        "name": 1,
-        "rightsSet": 1,
-        "role": 1,
-        "title": 1,
-        "titleSet": 1,
-        "vra": 1,
-        "work": 1
-      },
-      "text_bytes": 278
+    "xbm": {
+      "name": "check",
+      "version": "X11"
     }
   },
   "diagnostics": {
     "extractors": [
       {
-        "id": "text.xml",
+        "id": "image.retro",
         "version": 1,
         "ms": 0.0,
         "status": "ok"

@@ -6,9 +6,10 @@ keep the schema version.
 
 ## Unreleased
 
-Games (Stage 8, part 1) and two batches of the long tail (parts 2 and
-3): every tier 1 and tier 2 catalogue format now has an extractor, and so
-does every programming language and package manifest in the catalogue.
+Games (Stage 8, part 1) and three batches of the long tail (parts 2 to
+4): every tier 1 and tier 2 catalogue format now has an extractor, and so
+does every programming language, package manifest, image and metadata
+format in the catalogue.
 
 - **Games** (feature `games`, which now includes `common`), all in-house;
   read from headers, directories and indexes (nothing is extracted, run
@@ -120,7 +121,8 @@ does every programming language and package manifest in the catalogue.
   `.v` (Verilog, Coq, V), `.cl` (Lisp, OpenCL), `.pp` (Pascal, Puppet),
   `.st` (Smalltalk, Structured Text), `.cls` (Apex, LaTeX class, VB class
   module), and text `.pls`, `.pck`, `.res`, `.qs` and `.vhd` files, whose
-  extensions binary formats own.
+  extensions binary formats own. Binary forced through as source has its
+  lines counted but skips the import and symbol patterns.
 - **SPIR-V** (`common`, new `code.spirv`): both byte orders; version,
   generator, ID bound, capabilities, extensions, instruction-set imports,
   addressing and memory model, entry points with their workgroup size,
@@ -149,16 +151,87 @@ does every programming language and package manifest in the catalogue.
   name, never by e-mail address.
 - **dbt models** (`common`, `data.sql`): `ref()` models, `source()`
   tables, macros called and the `config()` materialisation.
+- **Legacy and minor raster images** (`common`, new `image.retro`):
+  Amiga IFF ILBM / PBM and ANIM (size, planes, masking, compression,
+  aspect, palette, HAM / EHB display modes, the `NAME`, `AUTH`, `(c) ` and
+  `ANNO` chunks), MacPaint (bare or MacBinary), CompuServe and Utah RLE,
+  Sun Raster, SGI (with its image name), XBM, XPM, WBMP, farbfeld, Apple
+  PICT (versions 1, 2 and extended 2 with resolution), DCX multi-page PCX,
+  Apple ICNS (every icon element with its size and encoding) and Windows
+  animated cursors (frames, steps, rate, title, artist).
+- **Film, grading and astronomy images** (`common`, new `image.film`):
+  Kodak Cineon and SMPTE DPX (creation time, creator, project, copyright,
+  original file name, image elements, input device, the film header:
+  format, frame, frame rate, slate, and the TV header: SMPTE time code,
+  frame rate), `.cube` and `.3dl` colour look-up tables (title, kind,
+  size, domain, bit depths) and PixInsight XISF (images, FITS keywords such
+  as the object and telescope, XISF properties).
+- **Photoshop presets** (`common`, new `image.assets`): actions (sets,
+  actions and their commands), brushes, `.aco` and Adobe Swatch Exchange
+  swatches (colour names, groups, models), gradients and patterns (names,
+  sizes, modes); Photoshop action descriptors are walked for the names.
+- **Image codecs** (`common`): FLIF and BPG (size, depth, channels,
+  animation, and their EXIF / ICC / XMP metadata), JPEG XR / HD Photo
+  (pixel format, resolution, descriptive tags, XMP / ICC / IPTC blocks),
+  JPEG-LS (a format of its own in the JPEG reader), Kodak Photo CD image
+  packs (orientation, highest resolution, scan time, film medium, scanner,
+  photofinisher), FlashPix (in the OLE reader: size, resolutions, summary
+  information) and HEIF with H.264 (AVCI) or JPEG 2000 (HEJ2) images.
+- **GPU textures** (`common`, new `image.textures`): ASTC, Basis
+  Universal, PowerVR (versions 2 and 3, metadata keys) and Valve VTF
+  (formats of both images, flags, reflectivity, resources); Unreal Engine
+  1–3 packages (`.utx`, `.upk`: versions, flags, table sizes) in the
+  Unreal reader (`games`).
+- **Camera raw** (`common`, `image.raw`): Kodak DCR and KDC, Epson ERF,
+  Mamiya MEF, Leaf MOS, Phase One IIQ, GoPro GPR (TIFF based), Minolta MRW
+  (picture dimensions, CFA, ISO, the EXIF block) and Sigma X3F (camera
+  properties, images, capture time; the serial number is counted, never
+  shown).
+- **Diagrams and vector drawings** (`common`, new `image.diagram`): CGM
+  (binary and clear text: description, fonts, pictures, VDC extent, text),
+  CorelDRAW (RIFF and zip: version, pages, thumbnail), draw.io (pages,
+  vertices, edges, labels, compressed pages inflated), FreeHand (version),
+  Mermaid and PlantUML (diagram type, title, nodes or participants, edges,
+  labels), Visio 2003 XML (document properties, pages, masters, shapes,
+  connections, text), Xfig (settings, objects, text) and Graphviz DOT
+  (kind, name, nodes, edges with strict graphs deduplicated, subgraphs,
+  labels); PostScript-based Adobe Illustrator files in the PostScript
+  reader (Illustrator version and file format).
+- **Layered documents** (`common`, new `image.layered`): Krita and
+  OpenRaster (canvas, resolution, colour space, the layer tree with
+  kinds and visibility; Krita's document information), Paint Shop Pro
+  (attributes, layers, the creator block), Paint.NET, Procreate (canvas,
+  DPI, layers, tracked time, from the keyed archive), Sketch (pages,
+  artboards, fonts), Figma (raw canvas or the zip export) and Affinity
+  files (by extension, as the format is undocumented: the embedded
+  thumbnail).
+- **Metadata files** (`common`, new `image.sidecar`): XMP sidecars (with
+  the Camera Raw develop settings counted), ICC profiles, exiv2 `.exv`
+  containers, raw EXIF dumps, VRA Core 4 records (every work, image and
+  collection with its element sets, into `metadata.vra`) and RawTherapee
+  `.pp3` profiles, all through the shared `whiff::meta` decoders.
+- **Other formats:** DjVu documents (`common`, new `doc.djvu`: kind, pages,
+  size, resolution, text and annotation layers, `ANTa` metadata), Windows
+  thumbcache databases (`forensics`: Windows version, size class, entries
+  and their image types) and whole-slide microscopy images (`common`, new
+  `image.slide`: Aperio SVS, Hamamatsu NDPI and VMS, Leica SCN:
+  magnification, microns per pixel, scanner, pyramid levels, label and
+  macro images).
 - **Detection:** `.csproj`, `.fsproj` and `.vbproj` files moved from the
   generic XML reader to the manifest reader; `build.gradle` is a Gradle
   manifest, not Groovy source. A VCD header now needs a `$end` (Smithy
   models also start with `$version`), and the ROOT signature is `root`
   plus a zero byte (`settings.gradle.kts` starts with `rootProject`).
+  A GDSII stream must start with HEADER and BGNLIB (Photoshop 6.2 brushes
+  start with the same four bytes), Aseprite declares its `0xA5E0` magic (so
+  `.ase` swatch files are not offered as sprites), and VRA Core records
+  moved from the generic XML reader to `vra`. PostScript DSC values with
+  several parts (`(5/1/24) (7:42 PM)`) are joined.
 - **Catalogue:** `data/coverage.tsv` credits rows that another family's
   extractor handles (SVG, LaTeX, MHTML, sitemaps, `.tar.*`, torrents,
   known JSON and YAML schemas, Snort rules, dbt models …); an unknown row
-  or format there is an error. 606 → 674 → 767 of 1008 formats have an
-  extractor.
+  or format there is an error. 606 → 674 → 767 → 824 of 1008 formats have
+  an extractor.
 - **Shared code:** the Unity class-ID names (from the Unity YAML reader)
   and the strings of the pickle walker are reused by the games readers.
   The code page 437 decoder moved from the ZIP reader to
@@ -183,6 +256,12 @@ does every programming language and package manifest in the catalogue.
   dpkg-parsechangelog, python-debian, bash, Bundler, Erlang, spdx-tools,
   cyclonedx-python-lib, cffconvert, python-hcl2 and the TOML, JSON5 and
   YAML parsers.
+  `scripts/fixtures/media.sh` makes the image fixtures in a podman
+  container (netpbm, ImageMagick, ffmpeg, exiftool, jxrlib, djvulibre,
+  Pillow; the rest written from the specifications); `media_oracle.py`
+  compares the reports with exiftool, ImageMagick, Pillow, olefile,
+  ffprobe, djvudump, Graphviz `gc`, fig2dev, psd-tools, libmagic and the
+  Python standard library.
 
 ## 0.7.0 — 2026-11-03
 

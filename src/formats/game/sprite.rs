@@ -13,8 +13,8 @@ use serde_json::{Map, Value};
 
 use super::{bump, hist};
 use crate::plugin::{
-    ByteReader, Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, TextRole,
-    truncate_chars,
+    ByteReader, Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Probe, Sniff, Source,
+    TextRole, truncate_chars,
 };
 
 /// Extractor for Aseprite files.
@@ -31,7 +31,8 @@ static META: ExtractorMeta = ExtractorMeta {
         family: "game",
         mimes: &["image/x-aseprite"],
         extensions: &["aseprite", "ase"],
-        magic: &[],
+        // The header magic 0xA5E0; declared so `.ase` swatch files are not offered as sprites by extension.
+        magic: &[Magic::at(4, b"\xe0\xa5")],
         parent: None,
     }],
 };

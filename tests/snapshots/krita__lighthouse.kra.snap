@@ -1,0 +1,214 @@
+---
+source: src/formats/image/layered.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "lighthouse.kra",
+    "stem": "lighthouse",
+    "extension": "kra"
+  },
+  "identification": {
+    "format": "krita",
+    "name": "Krita document",
+    "mime": "application/x-krita",
+    "family": "image.layered",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "krita",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "image.layered"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1454
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2024-05-02T08:00:00",
+        "source": "krita.documentinfo.date",
+        "tz_known": false
+      },
+      {
+        "field": "created",
+        "value": "2024-05-01T17:42:10",
+        "source": "krita.documentinfo.creation-date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "license": {
+      "name": "CC0-1.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 1454,
+    "entropy": 7.07,
+    "entropy_scope": "file",
+    "image": {
+      "width": 640,
+      "height": 480,
+      "bit_depth": 8,
+      "channels": 4,
+      "color_space": "RGBA",
+      "dpi": [
+        300.0,
+        300.0
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "feb817d5f266d4c22cffd19ba0d0515c1159aaed79d3d59a24353edece9cd0c1",
+    "blake3": "237704021aa89628d79621f1716ff00888f0daab640c7a5595887c60bdd4047d"
+  },
+  "content": {
+    "title": "Saltmere lighthouse",
+    "description": "Study of the harbour light at dusk",
+    "authors": [
+      "Mira Castell"
+    ],
+    "keywords": [
+      "lighthouse",
+      "harbour"
+    ],
+    "tags": [
+      "lighthouse",
+      "harbour"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "krita": {
+      "document": {
+        "editor": "Krita",
+        "kritaVersion": "5.2.2",
+        "syntaxVersion": "2.0",
+        "name": "Saltmere lighthouse",
+        "width": "640",
+        "height": "480",
+        "colorspacename": "RGBA",
+        "profile": "sRGB-elle-V2-srgbtrc.icc",
+        "x-res": "300",
+        "y-res": "300",
+        "description": ""
+      },
+      "layer_count": 5,
+      "hidden_layers": 1,
+      "groups": 1,
+      "layers": [
+        {
+          "name": "Sky",
+          "kind": "paint",
+          "visible": true,
+          "depth": 0
+        },
+        {
+          "name": "Lighthouse",
+          "kind": "group",
+          "visible": true,
+          "depth": 0
+        },
+        {
+          "name": "Tower",
+          "kind": "paint",
+          "visible": true,
+          "depth": 1
+        },
+        {
+          "name": "Old sketch",
+          "kind": "paint",
+          "visible": false,
+          "depth": 1
+        },
+        {
+          "name": "Background",
+          "kind": "paint",
+          "visible": true,
+          "depth": 0
+        }
+      ],
+      "document_info": {
+        "editing-cycles": "12",
+        "language": "en"
+      },
+      "thumbnail": {
+        "name": "preview.png",
+        "width": 32,
+        "height": 24
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.layered",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

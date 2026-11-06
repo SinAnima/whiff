@@ -1,0 +1,139 @@
+---
+source: src/formats/image/sidecar.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.exif",
+    "stem": "harbour",
+    "extension": "exif"
+  },
+  "identification": {
+    "format": "exif",
+    "name": "EXIF metadata dump",
+    "mime": "application/octet-stream",
+    "family": "meta.exif",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.sidecar"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 290
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "captured",
+        "value": "2024-05-01T19:42:10",
+        "source": "exif.DateTimeOriginal",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "copyright": "(c) 2024 Mira Castell, CC0",
+    "creators": [
+      "Mira Castell"
+    ]
+  },
+  "physical": {
+    "size_bytes": 290,
+    "entropy": 4.062,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "317aa60cf9dcfb5bcf03c74841790713b9a40b9cc6c3d601a29f6cac98e3dde1",
+    "blake3": "e6ea499b7688a5b08ccbff41a678f98b9b1e64853a35ec164cab7d7b77bd61b8"
+  },
+  "content": {
+    "authors": [
+      "Mira Castell"
+    ]
+  },
+  "metadata": {
+    "exif": {
+      "Make": "Example Optics",
+      "Model": "Example X100",
+      "XResolution": 1.0,
+      "YResolution": 1.0,
+      "ResolutionUnit": "no absolute unit",
+      "Artist": "Mira Castell",
+      "YCbCrPositioning": "centered",
+      "Copyright": "(c) 2024 Mira Castell, CC0",
+      "ExifVersion": "0232",
+      "DateTimeOriginal": "2024:05:01 19:42:10",
+      "ComponentsConfiguration": "YCbCr_",
+      "ColorSpace": "uncalibrated"
+    }
+  },
+  "format": {},
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.sidecar",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.exif",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

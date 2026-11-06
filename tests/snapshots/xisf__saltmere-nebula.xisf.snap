@@ -1,0 +1,141 @@
+---
+source: src/formats/image/film.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-nebula.xisf",
+    "stem": "saltmere-nebula",
+    "extension": "xisf"
+  },
+  "identification": {
+    "format": "xisf",
+    "name": "XISF astronomy image",
+    "mime": "image/x-xisf",
+    "family": "image.raster",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.film"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4480
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-05-01T22:10:00",
+        "source": "xisf.observation",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4480,
+    "entropy": 1.653,
+    "entropy_scope": "file",
+    "image": {
+      "width": 16,
+      "height": 12,
+      "bit_depth": 16,
+      "channels": 1
+    }
+  },
+  "integrity": {
+    "sha256": "7a581bd8a80ae09dbbf05ecfcb24476d403debb0f32fb6b15a3924d69883c4f8",
+    "blake3": "af544f2aa056c20ecb2623bb3ef9da6404b53c08f5f0ecf67e6436486bdc26fe"
+  },
+  "content": {
+    "title": "Saltmere Nebula"
+  },
+  "metadata": {},
+  "format": {
+    "xisf": {
+      "version": "1.0",
+      "images": [
+        {
+          "geometry": "16:12:1",
+          "sampleFormat": "UInt16",
+          "colorSpace": "Gray"
+        }
+      ],
+      "fits_keywords": {
+        "OBJECT": "Saltmere Nebula",
+        "TELESCOP": "Harbour 80mm refractor",
+        "DATE-OBS": "2024-05-01T22:10:00",
+        "EXPTIME": "300.",
+        "FILTER": "Ha"
+      },
+      "fits_keyword_count": 5,
+      "properties": {
+        "Observation:Object:Name": "Saltmere Nebula",
+        "XISF:CreatorApplication": "whiff fixture generator",
+        "XISF:CreationTime": "2024-05-02T08:00:00Z"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.film",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,136 @@
+---
+source: src/formats/image/heif.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.avci",
+    "stem": "harbour",
+    "extension": "avci"
+  },
+  "identification": {
+    "format": "avci",
+    "name": "AVC-coded HEIF image",
+    "mime": "image/avci",
+    "family": "image.raster",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "avci",
+        "confidence": 0.99
+      },
+      {
+        "format": "mp4",
+        "confidence": 0.7
+      }
+    ],
+    "extractor": "image.heif"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 260
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 260,
+    "entropy": 3.009,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48
+    }
+  },
+  "integrity": {
+    "sha256": "948eb8f5acae014b38879f76229164a6d542a08a454aa7735650e52101bc793c",
+    "blake3": "2cb2a567e9f164094b6ce503f82930a4333889af915317ac2c6e2b963fd465f3"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "avci": {
+      "major_brand": "avci",
+      "compatible_brands": [
+        "mif1",
+        "avci"
+      ],
+      "top_level_boxes": [
+        "ftyp",
+        "meta",
+        "mdat"
+      ],
+      "image_sequence": false,
+      "handler": "pict",
+      "primary_item_type": "avc1",
+      "items": 1,
+      "item_types": {
+        "avc1": 1
+      },
+      "thumbnails": 0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.heif",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

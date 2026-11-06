@@ -66,6 +66,7 @@ static META: ExtractorMeta = ExtractorMeta {
         spec!("mpp", "Microsoft Project plan", ["application/vnd.ms-project"], ["mpp"]),
         spec!("hwp", "Hangul HWP document", ["application/x-hwp"], ["hwp"]),
         spec!("thumbs_db", "Windows thumbnail cache", [], ["db"]),
+        FormatSpec { family: "image.raster", ..spec!("fpx", "FlashPix image", ["image/vnd.fpx"], ["fpx"]) },
         spec!(
             "office_encrypted",
             "Encrypted Office document",
@@ -94,6 +95,7 @@ fn clsid_name(id: &str) -> Option<&'static str> {
         "00020D0B-0000-0000-C000-000000000046" | "0006F046-0000-0000-C000-000000000046" => "Outlook message",
         "0003000C-0000-0000-C000-000000000046" => "OLE package",
         "0002CE02-0000-0000-C000-000000000046" => "Equation Editor 3.0",
+        "56616700-C154-11CE-8553-00AA00A1F95B" => "FlashPix image",
         _ => return None,
     })
 }
@@ -124,6 +126,8 @@ fn kind_of(names: &[String]) -> Option<&'static str> {
         "jump_list"
     } else if has("Catalog") {
         "thumbs_db"
+    } else if has("Data Object Store 000001") && names.iter().any(|n| n.starts_with("Resolution 0")) {
+        "fpx"
     } else if names.iter().any(|n| n.trim() == "114" || n.starts_with("   1")) {
         "mpp"
     } else {
@@ -217,6 +221,7 @@ impl Extractor for Ole {
                 cx.format_set("thumbnails", n);
             }
             "hwp" => hwp(&cfb, src, cx),
+            "fpx" => flashpix(&cfb, src, cx),
             _ => {}
         }
         Ok(())
@@ -224,6 +229,28 @@ impl Extractor for Ole {
 }
 
 crate::register_extractor!(Ole);
+
+/// FlashPix: the image contents property set gives the resolutions and size.
+fn flashpix(cfb: &Cfb, src: &mut dyn Source, cx: &mut Context<'_>) {
+    let Some(data) = read(cfb, src, "Data Object Store 000001/\u{5}Image Contents", 1 << 20) else {
+        cx.warn("no image contents property set");
+        return;
+    };
+    let Ok(sections) = oleps::parse(&data) else {
+        cx.warn("image contents property set is damaged");
+        return;
+    };
+    let get = |id: u32| sections.iter().find_map(|s| s.get(id)).and_then(oleps::PropValue::as_int);
+    if let (Some(w), Some(h)) = (get(0x0100_0002), get(0x0100_0003)) {
+        cx.physical().image(u32::try_from(w).unwrap_or(0), u32::try_from(h).unwrap_or(0));
+    }
+    if let Some(n) = get(0x0100_0000) {
+        cx.format_set("resolutions", n);
+    }
+    let subimages =
+        cfb.entries.iter().filter(|e| e.name.starts_with("Subimage ") && e.name.ends_with("Header")).count();
+    cx.format_set("subimages", subimages);
+}
 
 fn read(cfb: &Cfb, src: &mut dyn Source, path: &str, max: usize) -> Option<Vec<u8>> {
     cfb.read_path(src, path, max).and_then(Result::ok)
@@ -1103,6 +1130,7 @@ mod tests {
         "mpp",
         "hwp",
         "thumbs_db",
+        "fpx",
         "office_encrypted",
         "vba_project"
     );

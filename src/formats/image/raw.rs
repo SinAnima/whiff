@@ -1,17 +1,24 @@
 //! Camera raw files: DNG, Canon CR2 / CR3, Nikon NEF, Sony ARW, Olympus
-//! ORF, Panasonic RW2, Pentax PEF, Fujifilm RAF and Samsung SRW.
+//! ORF, Panasonic RW2, Pentax PEF, Fujifilm RAF, Samsung SRW, Kodak DCR /
+//! KDC, Epson ERF, Mamiya MEF, Leaf MOS, Phase One IIQ, GoPro GPR, Minolta
+//! MRW and Sigma X3F.
 //!
 //! Reports the make and model, the sensor (largest) image size, CFA
 //! layout, the embedded previews, DNG versions, and sends the EXIF / XMP /
 //! IPTC metadata to the decoders. Raw sensor data is never read.
 //!
 //! Most raw formats are TIFF structures. Those with their own signature
-//! (ORF, RW2, RAF, CR3) are found by magic; the others by sniffing a TIFF
+//! (ORF, RW2, RAF, CR3, MRW, X3F) are found by magic; the others by sniffing a TIFF
 //! header together with a raw extension or a vendor marker (the CR2
 //! signature, the `DNGVersion` tag), so ordinary TIFFs are unaffected.
 //!
+//! MRW is a list of blocks (`PRD` picture dimensions, `RIF` settings,
+//! `TTW` an EXIF TIFF); X3F a header, sections (`PROP` camera properties,
+//! `IMAG` images) and a directory at the end.
+//!
 //! Specifications: Adobe DNG 1.7; vendor layouts as documented by
-//! ExifTool, LibRaw and the CR3 analysis (`lclevy/canon_cr3`).
+//! ExifTool, LibRaw and the CR3 analysis (`lclevy/canon_cr3`); Dalibor
+//! Jelinek's "Minolta MRW format"; Sigma / Foveon "X3F file format" 2.x.
 
 use std::collections::HashSet;
 
@@ -70,6 +77,23 @@ static META: ExtractorMeta = ExtractorMeta {
             ..raw("raf", "Fujifilm RAF raw image", &["raf"], &[Magic::prefix(b"FUJIFILMCCD-RAW ")])
         },
         FormatSpec { mimes: &["image/x-samsung-srw"], ..raw("srw", "Samsung SRW raw image", &["srw"], &[]) },
+        FormatSpec { mimes: &["image/x-kodak-dcr"], ..raw("dcr", "Kodak DCR raw image", &["dcr"], &[]) },
+        FormatSpec { mimes: &["image/x-kodak-kdc"], ..raw("kdc", "Kodak KDC raw image", &["kdc", "k25"], &[]) },
+        FormatSpec { mimes: &["image/x-epson-erf"], ..raw("erf", "Epson ERF raw image", &["erf"], &[]) },
+        FormatSpec { mimes: &["image/x-mamiya-mef"], ..raw("mef", "Mamiya MEF raw image", &["mef"], &[]) },
+        FormatSpec { mimes: &["image/x-leaf-mos"], ..raw("mos", "Leaf MOS raw image", &["mos"], &[]) },
+        FormatSpec { mimes: &["image/x-phaseone-iiq"], ..raw("iiq", "Phase One IIQ raw image", &["iiq"], &[]) },
+        FormatSpec { mimes: &["image/x-gopro-gpr"], ..raw("gpr", "GoPro GPR raw image", &["gpr"], &[]) },
+        FormatSpec {
+            mimes: &["image/x-minolta-mrw"],
+            parent: None,
+            ..raw("mrw", "Minolta MRW raw image", &["mrw"], &[Magic::prefix(b"\0MRM")])
+        },
+        FormatSpec {
+            mimes: &["image/x-sigma-x3f"],
+            parent: None,
+            ..raw("x3f", "Sigma X3F raw image", &["x3f"], &[Magic::prefix(b"FOVb")])
+        },
     ],
 };
 
@@ -84,6 +108,13 @@ const BY_EXTENSION: &[(&str, &str)] = &[
     ("sr2", "arw"),
     ("pef", "pef"),
     ("srw", "srw"),
+    ("dcr", "dcr"),
+    ("kdc", "kdc"),
+    ("k25", "kdc"),
+    ("erf", "erf"),
+    ("mef", "mef"),
+    ("mos", "mos"),
+    ("iiq", "iiq"),
 ];
 
 const MAX_IFDS: usize = 64;
@@ -100,6 +131,10 @@ impl Extractor for Raw {
     fn sniff(&self, probe: &Probe<'_>) -> Option<Sniff> {
         let h = probe.head;
         let l = layout(h).filter(|l| !l.big && h.get(2..4).is_some_and(|m| m == b"*\0" || m == b"\0*"))?;
+        // GoPro GPR is a DNG variant: the extension decides.
+        if probe.extension == Some("gpr") {
+            return Some(Sniff { format: "gpr", confidence: 0.96 });
+        }
         if h.get(8..11) == Some(b"CR\x02") {
             return Some(Sniff { format: "cr2", confidence: 0.95 });
         }
@@ -114,6 +149,8 @@ impl Extractor for Raw {
         match cx.format_id() {
             "raf" => raf(src, cx),
             "cr3" => cr3(src, cx),
+            "mrw" => mrw(src, cx),
+            "x3f" => x3f(src, cx),
             _ => tiff_raw(src, cx),
         }
     }
@@ -388,6 +425,179 @@ fn cr3(src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
     Ok(())
 }
 
+/// Minolta MRW: `\0MRM` + length, then blocks (`\0PRD`, `\0WBG`, `\0RIF`, `\0TTW`, `\0PAD`).
+fn mrw(src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
+    let h = src.head();
+    let total = h.get(4..8).map_or(0, |b| u32::from_be_bytes([b[0], b[1], b[2], b[3]]) as usize);
+    let cap = usize::try_from(src.len().min(MAX_META)).unwrap_or(0);
+    let d = src.read_vec(0, (8 + total).min(cap))?;
+    let mut raw = serde_json::Map::new();
+    let mut at = 8;
+    let mut blocks = Vec::new();
+    while at + 8 <= d.len() && at < 8 + total {
+        let name = String::from_utf8_lossy(&d[at + 1..at + 4]).into_owned();
+        let len = u32::from_be_bytes([d[at + 4], d[at + 5], d[at + 6], d[at + 7]]) as usize;
+        let body = d.get(at + 8..at + 8 + len).unwrap_or(&d[at + 8..]);
+        match name.as_str() {
+            "PRD" if body.len() >= 24 => {
+                let be16 = |o: usize| u16::from_be_bytes([body[o], body[o + 1]]);
+                raw.insert("version".into(), json!(String::from_utf8_lossy(&body[..8]).trim_end_matches('\0')));
+                raw.insert("sensor_size".into(), json!([be16(10), be16(8)]));
+                cx.physical().image(u32::from(be16(14)), u32::from(be16(12))).bit_depth(body[17]).color_space("raw");
+                raw.insert("packed".into(), json!(body[18] == 0x59));
+                raw.insert(
+                    "cfa_pattern".into(),
+                    json!(match be16(22) {
+                        1 => "RGGB",
+                        4 => "GBRG",
+                        _ => "unknown",
+                    }),
+                );
+            }
+            "RIF" if body.len() >= 8 => {
+                // Film speed: ISO = 2^(v/8 - 1) × 3.125.
+                let v = f64::from(body[6]);
+                if v > 0.0 {
+                    raw.insert("iso".into(), json!((2f64.powf(v / 8.0 - 1.0) * 3.125).round()));
+                }
+            }
+            "TTW" => cx.emit_block(BlockKind::EXIF, body.to_vec()),
+            _ => {}
+        }
+        blocks.push(json!(name));
+        at += 8 + len;
+    }
+    if blocks.is_empty() {
+        return Err(ExtractError::malformed("no MRW blocks"));
+    }
+    raw.insert("blocks".into(), json!(blocks));
+    cx.format_set("raw", serde_json::Value::Object(raw));
+    Ok(())
+}
+
+/// X3F properties reported (the rest are counted).
+const X3F_PROPS: &[&str] = &[
+    "CAMMANUF",
+    "CAMMODEL",
+    "CAMNAME",
+    "FIRMVERS",
+    "LENSMODEL",
+    "LENSARANGE",
+    "LENSFRANGE",
+    "EXPTIME",
+    "APERTURE",
+    "ISO",
+    "FLENGTH",
+    "FLEQ35MM",
+    "SHUTTER",
+    "TIME",
+    "WB_DESC",
+    "IMAGERBOARDID",
+    "SENSORID",
+    "PMODE",
+    "AEMODE",
+];
+
+/// Sigma X3F: header, sections, and a directory whose offset is in the last four bytes.
+fn x3f(src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
+    let h = src.head().to_vec();
+    let le32 = |b: &[u8], o: usize| b.get(o..o + 4).map(|x| u32::from_le_bytes([x[0], x[1], x[2], x[3]]));
+    let version = le32(&h, 4).ok_or(ExtractError::Truncated { offset: 4, needed: 4 })?;
+    let (w, ht, rot) = (le32(&h, 28).unwrap_or(0), le32(&h, 32).unwrap_or(0), le32(&h, 36).unwrap_or(0));
+    let mut raw = serde_json::Map::new();
+    raw.insert("version".into(), json!(format!("{}.{}", version >> 16, version & 0xffff)));
+    raw.insert("rotation".into(), json!(rot));
+    if version >= 0x0002_0001
+        && let Some(b) = h.get(40..72)
+    {
+        let wb = String::from_utf8_lossy(b).trim_end_matches('\0').to_string();
+        if !wb.is_empty() {
+            raw.insert("white_balance".into(), json!(wb));
+        }
+    }
+    cx.physical().image(w, ht).color_space("raw");
+    let len = src.len();
+    let mut tail = [0u8; 4];
+    src.read_exact_at(len.saturating_sub(4), &mut tail)?;
+    let dir = u64::from(u32::from_le_bytes(tail));
+    let head = src.read_vec(dir, 12)?;
+    if !head.starts_with(b"SECd") {
+        return Err(ExtractError::malformed("no SECd directory"));
+    }
+    let n = le32(&head, 8).unwrap_or(0).min(256) as usize;
+    let entries = src.read_vec(dir + 12, n * 12)?;
+    let mut sections = Vec::new();
+    let mut images = Vec::new();
+    for e in entries.as_chunks::<12>().0 {
+        let (off, size) = (u64::from(le32(e, 0).unwrap_or(0)), le32(e, 4).unwrap_or(0));
+        let kind = String::from_utf8_lossy(&e[8..12]).into_owned();
+        match kind.as_str() {
+            "PROP" if u64::from(size) <= MAX_META => {
+                let p = src.read_vec(off, size as usize)?;
+                let props = x3f_props(&p);
+                let get = |k: &str| props.get(k).and_then(|v| v.as_str()).map(str::to_string);
+                raw.insert("make".into(), json!(get("CAMMANUF")));
+                raw.insert("model".into(), json!(get("CAMMODEL")));
+                if let Some(t) =
+                    get("TIME").and_then(|t| t.parse::<i64>().ok()).and_then(super::super::archive::unix_time)
+                {
+                    cx.temporal().source("x3f.TIME").content_date(crate::plugin::DateField::Captured, t, true);
+                }
+                raw.insert("properties".into(), serde_json::Value::Object(props));
+            }
+            "IMAG" | "IMA2" if size >= 28 => {
+                let i = src.read_vec(off, 28)?;
+                let format = match le32(&i, 12) {
+                    Some(3) => "uncompressed RGB",
+                    Some(11) => "Huffman RGB",
+                    Some(18) => "JPEG",
+                    Some(30 | 35) => "TRUE raw",
+                    _ => "other",
+                };
+                images.push(
+                    json!({ "type": le32(&i, 8), "format": format, "width": le32(&i, 16), "height": le32(&i, 20) }),
+                );
+            }
+            _ => {}
+        }
+        sections.push(json!(kind));
+    }
+    raw.insert("sections".into(), json!(sections));
+    raw.insert("images".into(), json!(images));
+    cx.format_set("raw", serde_json::Value::Object(raw));
+    Ok(())
+}
+
+/// The `SECp` property list: UTF-16LE name / value pairs.
+fn x3f_props(p: &[u8]) -> serde_json::Map<String, serde_json::Value> {
+    let mut out = serde_json::Map::new();
+    if !p.starts_with(b"SECp") || p.len() < 24 {
+        return out;
+    }
+    let le32 = |o: usize| p.get(o..o + 4).map_or(0, |x| u32::from_le_bytes([x[0], x[1], x[2], x[3]])) as usize;
+    let count = le32(8).min(1024);
+    let chars = 24 + count * 8;
+    let units: Vec<u16> =
+        p.get(chars..).unwrap_or_default().as_chunks::<2>().0.iter().map(|c| u16::from_le_bytes(*c)).collect();
+    let at = |i: usize| {
+        let end = units.get(i..)?.iter().position(|&u| u == 0)?;
+        Some(String::from_utf16_lossy(&units[i..i + end]))
+    };
+    let mut others = 0u64;
+    for k in 0..count {
+        let (Some(name), Some(value)) = (at(le32(24 + k * 8)), at(le32(28 + k * 8))) else { continue };
+        if X3F_PROPS.contains(&name.as_str()) {
+            out.insert(name, json!(value));
+        } else {
+            others += 1;
+        }
+    }
+    if others > 0 {
+        out.insert("other_properties".into(), json!(others));
+    }
+    out
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -400,5 +610,8 @@ mod tests {
         assert!(jpeg_exif(b"nope").is_none());
     }
 
-    crate::fixture_tests!("dng", "cr2", "nef", "arw", "orf", "rw2", "pef", "raf", "srw", "cr3");
+    crate::fixture_tests!(
+        "dng", "cr2", "nef", "arw", "orf", "rw2", "pef", "raf", "srw", "cr3", "dcr", "kdc", "erf", "mef", "mos", "iiq",
+        "gpr", "mrw", "x3f"
+    );
 }

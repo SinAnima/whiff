@@ -1,0 +1,141 @@
+---
+source: src/formats/image/film.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "reel1_000100.dpx",
+    "stem": "reel1_000100",
+    "extension": "dpx"
+  },
+  "identification": {
+    "format": "dpx",
+    "name": "DPX film / video frame",
+    "mime": "image/x-dpx",
+    "family": "image.raster",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.film"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 20480
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "(c) 2024 Castell Studio, CC0"
+  },
+  "physical": {
+    "size_bytes": 20480,
+    "entropy": 4.512,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48,
+      "bit_depth": 10,
+      "channels": 3
+    }
+  },
+  "integrity": {
+    "sha256": "0ae5d683849f43bc08939f6290f0157874437b5518bd84aca23d9e8a0b64f144",
+    "blake3": "3171548d760d4b01dec637fd6c7644047f7cc9cc022da8c438a62be6b623c250"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "dpx": {
+      "byte_order": "big",
+      "version": "V2.0",
+      "original_file_name": "reel1_000100.dpx",
+      "creator": "whiff fixture generator",
+      "project": "Saltmere Harbour restoration",
+      "encrypted": false,
+      "elements": [
+        {
+          "descriptor": "RGB",
+          "transfer": "user-defined",
+          "colorimetric": "user-defined",
+          "bit_depth": 10,
+          "packing": 1,
+          "encoding": "none"
+        }
+      ],
+      "input_device": "Example film scanner",
+      "film": {
+        "format": "Academy",
+        "frame_position": 100,
+        "sequence_length": 0,
+        "frame_rate": 24.0,
+        "shutter_angle": 0.0
+      },
+      "television": {
+        "timecode": "01:00:04:04",
+        "interlaced": false,
+        "frame_rate": 24.0
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.film",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

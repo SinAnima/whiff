@@ -1,0 +1,177 @@
+---
+source: src/formats/image/diagram.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.vdx",
+    "stem": "harbour",
+    "extension": "vdx"
+  },
+  "identification": {
+    "format": "vdx",
+    "name": "Visio XML drawing",
+    "mime": "application/vnd.visio.xml",
+    "family": "image.vector",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "vdx",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "image.diagram"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 943
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-05-01T17:42:10",
+        "source": "vdx.TimeCreated",
+        "tz_known": false
+      },
+      {
+        "field": "modified",
+        "value": "2024-05-02T08:00:00",
+        "source": "vdx.TimeSaved",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 943,
+    "entropy": 5.108,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 943,
+      "chars": 943,
+      "words": 35,
+      "lines": 1,
+      "max_line_length": 904,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "document": {
+      "pages": 2
+    }
+  },
+  "integrity": {
+    "sha256": "919d6b344938964c2a36d4ad71e6bff08177af64557345cf71cf40d659a6c271",
+    "blake3": "adfe37a49419cfb3c037105b2c68e7402b80c4be0b34ec8948469770e01e2a0b"
+  },
+  "content": {
+    "title": "Harbour layout",
+    "description": "Berths and moorings",
+    "authors": [
+      "Mira Castell"
+    ],
+    "keywords": [
+      "harbour",
+      "berths"
+    ],
+    "excerpt": "Berth 1 Berth 2 Buoy A",
+    "tags": [
+      "harbour",
+      "berths"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "vdx": {
+      "document_properties": {
+        "Title": "Harbour layout",
+        "Subject": "Berths and moorings",
+        "Creator": "Mira Castell",
+        "Company": "Saltmere Harbour",
+        "Keywords": "harbour, berths",
+        "TimeCreated": "2024-05-01T17:42:10",
+        "TimeSaved": "2024-05-02T08:00:00"
+      },
+      "pages": [
+        "Berths",
+        "Moorings"
+      ],
+      "masters": [
+        "Rectangle",
+        "Dynamic connector"
+      ],
+      "shapes": 4,
+      "connections": 2,
+      "shape_texts": 3
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.diagram",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

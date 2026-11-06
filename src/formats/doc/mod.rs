@@ -6,6 +6,7 @@
 //! macros, scripts, embedded objects, external templates and links. Embedded
 //! files become children.
 
+pub(crate) mod djvu;
 pub(crate) mod ebook;
 pub(crate) mod field;
 pub(crate) mod odf;

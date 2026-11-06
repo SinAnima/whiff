@@ -1,0 +1,136 @@
+---
+source: src/formats/image/film.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "reel2_000200.cin",
+    "stem": "reel2_000200",
+    "extension": "cin"
+  },
+  "identification": {
+    "format": "cineon",
+    "name": "Kodak Cineon film scan",
+    "mime": "image/cineon",
+    "family": "image.raster",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.film"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 14336
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-05-01T19:42:10",
+        "source": "cineon.creation_date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 14336,
+    "entropy": 0.205,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48,
+      "bit_depth": 10,
+      "channels": 3
+    }
+  },
+  "integrity": {
+    "sha256": "90362c5de02f93b1e9be844e15f6b6723129cc29055adde960de3c497c6cd9da",
+    "blake3": "08f85bf85cbdd9da983ceac7390c3ea72b5e77dfb16d45fd97d3cbe59b20675b"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "cineon": {
+      "version": "V4.5",
+      "original_file_name": "reel2_000200.cin",
+      "channels": [
+        "red",
+        "green",
+        "blue"
+      ],
+      "label": "Saltmere Harbour, reel 2",
+      "input_device": "Example film scanner",
+      "device_model": "FS-2",
+      "device_serial": "000000",
+      "film": {
+        "format": "Academy",
+        "frame_position": 200,
+        "frame_rate": 24.0,
+        "frame_id": "Reel 2 frame 200",
+        "slate": "Saltmere Harbour / scene 4 / take 1"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.film",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

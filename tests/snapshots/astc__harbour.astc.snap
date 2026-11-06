@@ -1,0 +1,111 @@
+---
+source: src/formats/image/textures.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.astc",
+    "stem": "harbour",
+    "extension": "astc"
+  },
+  "identification": {
+    "format": "astc",
+    "name": "ASTC texture",
+    "mime": "image/astc",
+    "family": "image.texture",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.textures"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1424
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1424,
+    "entropy": 0.081,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48
+    }
+  },
+  "integrity": {
+    "sha256": "c2d96188ec20623d376800b9c211173b15b8e5e521f67a86619731193010c345",
+    "blake3": "fba361cbe4a06546a6a173e79476cb83bdb6d2020a633a6f2fc826e5fab99af4"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "astc": {
+      "block": "6x6",
+      "depth": 1,
+      "bits_per_pixel": 3.5555555555555554
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.textures",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

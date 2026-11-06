@@ -42,3 +42,10 @@ Kotlin Multiplatform / Compose scripts	kotlin
 SQL notebooks / dbt models	sql
 Snort / Suricata rules	ids_rules
 Debian source control files	debian_control
+DjVu single page	djvu
+Krita / Procreate	krita
+OpenRaster	openraster
+Raw editor sidecars	xmp
+Thumbnails cache (Windows thumbcache)	thumbcache
+Unreal / Unity textures (raw headers)	uasset
+VRA Core 4 XML record	vra

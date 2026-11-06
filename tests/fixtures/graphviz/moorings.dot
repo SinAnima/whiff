@@ -1,0 +1,5 @@
+strict graph moorings {
+  a -- b;
+  b -- c;
+  a -- b;
+}

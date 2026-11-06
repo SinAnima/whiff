@@ -1,0 +1,159 @@
+---
+source: src/formats/image/layered.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "breakwater.pspimage",
+    "stem": "breakwater",
+    "extension": "pspimage"
+  },
+  "identification": {
+    "format": "psp",
+    "name": "Paint Shop Pro image",
+    "mime": "image/x-paintshoppro",
+    "family": "image.layered",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.layered"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 322
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-05-01T19:42:10Z",
+        "source": "psp.creator.date",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-05-01T19:42:10Z",
+    "latest": "2024-05-01T19:42:10Z"
+  },
+  "security": {},
+  "rights": {
+    "copyright": "(c) 2024 Mira Castell, CC0"
+  },
+  "physical": {
+    "size_bytes": 322,
+    "entropy": 4.37,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48,
+      "bit_depth": 8,
+      "dpi": [
+        300.0,
+        300.0
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "5d14017d0503f5bc05cbfa57aed9e83413a80267a77d6c56bd2b76e328829a4e",
+    "blake3": "2a8f413d2dcf2d051705c0a28bca42ce24ac8c629e095afc008e8053a03e517b"
+  },
+  "content": {
+    "title": "Saltmere breakwater",
+    "description": "Breakwater at low tide",
+    "authors": [
+      "Mira Castell"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "psp": {
+      "version": "5.0",
+      "bit_depth_code": 24,
+      "compression": "LZ77",
+      "layer_count_header": 2,
+      "application": "Paint Shop Pro",
+      "application_version": "8.0",
+      "blocks": [
+        "image attributes",
+        "creator",
+        "layer bank"
+      ],
+      "layer_count": 2,
+      "hidden_layers": 0,
+      "groups": 0,
+      "layers": [
+        {
+          "name": "Background",
+          "kind": "raster",
+          "visible": true,
+          "depth": 0
+        },
+        {
+          "name": "Rocks",
+          "kind": "raster",
+          "visible": true,
+          "depth": 0
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.layered",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

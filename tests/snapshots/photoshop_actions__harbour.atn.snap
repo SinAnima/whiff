@@ -1,0 +1,123 @@
+---
+source: src/formats/image/assets.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.atn",
+    "stem": "harbour",
+    "extension": "atn"
+  },
+  "identification": {
+    "format": "photoshop_actions",
+    "name": "Photoshop actions",
+    "mime": "application/octet-stream",
+    "family": "image.raster",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "image.assets"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 307
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 307,
+    "entropy": 3.477,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "5e599526f8b176e255fde563649bc230238e42b0faf73fdec6df5d4786b6452d",
+    "blake3": "1833ee1ad753dcd58819ef7076714ef0088501fea6f9649838f91720b022bc89"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "photoshop_actions": {
+      "version": 16,
+      "set": "Saltmere actions",
+      "action_count": 2,
+      "actions": [
+        {
+          "name": "Harbour toning",
+          "commands": [
+            "Convert Mode",
+            "Save"
+          ]
+        },
+        {
+          "name": "Flatten for print",
+          "commands": [
+            "Flatten Image"
+          ]
+        }
+      ],
+      "commands": 3
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.assets",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

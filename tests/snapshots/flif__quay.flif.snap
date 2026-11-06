@@ -1,0 +1,141 @@
+---
+source: src/formats/image/codecs.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "quay.flif",
+    "stem": "quay",
+    "extension": "flif"
+  },
+  "identification": {
+    "format": "flif",
+    "name": "FLIF image",
+    "mime": "image/flif",
+    "family": "image.raster",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.codecs"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 305
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Mira Castell"
+    ]
+  },
+  "physical": {
+    "size_bytes": 305,
+    "entropy": 7.161,
+    "entropy_scope": "file",
+    "image": {
+      "width": 40,
+      "height": 30,
+      "bit_depth": 8,
+      "channels": 4,
+      "frames": 1
+    }
+  },
+  "integrity": {
+    "sha256": "0533780145b87cad038987e996c836277cffeb179981be922250b37f47bc6e07",
+    "blake3": "f7160aa7b37d6114f0b0664d90b4473d1eb374eb4f859cd6374d362851b4aaeb"
+  },
+  "content": {
+    "title": "Saltmere quay",
+    "authors": [
+      "Mira Castell"
+    ],
+    "excerpt": "Saltmere quay"
+  },
+  "metadata": {
+    "xmp": {
+      "dc": {
+        "title": "Saltmere quay",
+        "creator": [
+          "Mira Castell"
+        ]
+      }
+    }
+  },
+  "format": {
+    "flif": {
+      "interlaced": false,
+      "animated": false,
+      "metadata_chunks": [
+        "eXmp"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.codecs",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.xmp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

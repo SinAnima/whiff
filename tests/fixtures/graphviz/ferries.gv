@@ -1,0 +1,11 @@
+// ferry network
+digraph "Saltmere ferries" {
+  label="Saltmere ferry network";
+  rankdir=LR;
+  node [shape=box];
+  quay [label="Saltmere quay"];
+  gull [label="Gull Island"];
+  quay -> gull -> heron;
+  quay -> {lamb, otter};
+  subgraph cluster_north { label="North"; heron; puffin; heron -> puffin }
+}

@@ -1304,6 +1304,12 @@ fn analyse(text: &str, lang: &Lang, c: &Compiled) -> Analysis {
             a.blank += 1;
         }
     }
+    // Binary forced through as source (a wrong `--format`, a corrupt file):
+    // its lines are counted, but the import and symbol patterns would only
+    // spend time matching noise.
+    if looks_binary(text) {
+        return a;
+    }
     let mut seen = std::collections::HashSet::new();
     for re in &c.imports {
         for cap in re.captures_iter(text) {
@@ -1337,6 +1343,20 @@ fn analyse(text: &str, lang: &Lang, c: &Compiled) -> Analysis {
     }
     a.package = c.package.as_ref().and_then(|re| re.captures(text)).map(|cap| cap[1].to_string());
     a
+}
+
+/// More than 1 in 64 of the first 64 Ki characters are control characters
+/// other than tab, line feed, form feed and carriage return, or U+FFFD: no
+/// source file looks like that.
+fn looks_binary(text: &str) -> bool {
+    let (mut seen, mut odd) = (0usize, 0usize);
+    for ch in text.chars().take(64 * 1024) {
+        seen += 1;
+        if (ch.is_control() && !matches!(ch, '\t' | '\n' | '\r' | '\x0c')) || ch == '\u{fffd}' {
+            odd += 1;
+        }
+    }
+    odd * 64 > seen
 }
 
 /// Words that the C-like function patterns would otherwise mistake for names.
@@ -1635,6 +1655,16 @@ mod tests {
 
     fn lang(id: &str) -> &'static Lang {
         LANGS.iter().find(|l| l.id == id).unwrap()
+    }
+
+    #[test]
+    fn binary_skips_the_patterns() {
+        let rust = lang("rust");
+        let noise: String = (0u8..=255).cycle().take(4096).map(char::from).collect();
+        let a = analyse(&format!("use std::io;\nfn main() {{}}\n{noise}"), rust, &compiled(rust));
+        assert!(a.code > 0);
+        assert!(a.imports.is_empty() && a.symbols.is_empty());
+        assert!(!looks_binary("fn main() {\n\tlet x = 1;\r\n}\x0c\n"));
     }
 
     #[test]

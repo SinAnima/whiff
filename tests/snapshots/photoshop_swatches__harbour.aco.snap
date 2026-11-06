@@ -1,0 +1,118 @@
+---
+source: src/formats/image/assets.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.aco",
+    "stem": "harbour",
+    "extension": "aco"
+  },
+  "identification": {
+    "format": "photoshop_swatches",
+    "name": "Photoshop colour swatches",
+    "mime": "application/octet-stream",
+    "family": "image.raster",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "image.assets"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 142
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 142,
+    "entropy": 2.753,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "360d7fb409aa196e92eb855220f44d4109de8c5ddff5b0f4687f4f68ca3f7908",
+    "blake3": "242b047d32ae51ace86165bdbefba64bc0b47f6a2741eba8005ad68d4ec3284e"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "photoshop_swatches": {
+      "versions": [
+        1,
+        2
+      ],
+      "colors": 3,
+      "color_spaces": {
+        "RGB": 2,
+        "grayscale": 1
+      },
+      "names": [
+        "Buoy orange",
+        "Harbour blue",
+        "Slate"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.assets",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

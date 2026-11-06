@@ -127,9 +127,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1008 formats** in total: tier 1 = 139, tier 2 = 122, tier 3 = 747.
-* Formats with an extractor in this build: **767** of 1008.
+* Formats with an extractor in this build: **824** of 1008.
 * Formats by family status: crate = 183, mixed = 365, impl = 460.
-* Formats by target stage: S1 = 197, S1/S6 = 102, S2 = 91, S3 = 49, S3/S8 = 1, S4 = 69, S5 = 68, S6 = 90, S6/S8 = 17, S7 = 140, S8 = 184.
+* Formats by target stage: S1 = 197, S1/S6 = 102, S2 = 99, S3 = 49, S3/S8 = 2, S4 = 69, S5 = 68, S6 = 90, S6/S8 = 17, S7 = 140, S8 = 175.
 * By feature: `common` = 818, `cad` = 45, `forensics` = 38, `science` = 36, `geo` = 34, `data` = 20, `games` = 17.
 * By category: Code 167, Data 157, Image 95, Media 88, Document 71, Archive 47, Scientific 36, Executable 34, Geospatial 34, Text 32, Package 30, 3D 28, Web 27, Forensics 24, Database 21, Security 20, CAD 17, Game 17, Personal 16, Disk 14, Platform 11, Font 10, Fallback 8, Block 4.
 
@@ -613,37 +613,37 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 472 | Sparse / zero-filled files | `*` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | hole detection (SEEK_DATA), zero ratio |
 | 473 | Core Foundation / NSKeyedArchiver blobs | `plist` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | -&gt; apple |
 | 474 | QOI | `qoi` | image/qoi | 3 | `image.raster` | `common` | `image.qoi` | imagesize | S2 | — |
-| 475 | Farbfeld | `ff` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 476 | JPEG-XR / HD Photo | `jxr` `wdp` `hdp` | image/jxr | 3 | `image.raster` | `common` | — | imagesize | S8 | TIFF-like IFD (impl) |
-| 477 | JPEG-LS / Lossless JPEG | `jls` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
+| 475 | Farbfeld | `ff` | — | 3 | `image.raster` | `common` | `image.retro` | imagesize | S2 | — |
+| 476 | JPEG-XR / HD Photo | `jxr` `wdp` `hdp` | image/jxr | 3 | `image.raster` | `common` | `image.codecs` | imagesize | S2 | TIFF-like IFD (impl) |
+| 477 | JPEG-LS / Lossless JPEG | `jls` | — | 3 | `image.raster` | `common` | `image.jpeg` | imagesize | S2 | — |
 | 478 | MPO (multi-picture) | `mpo` | image/mpo | 3 | `image.raster` | `common` | `image.jpeg` | imagesize | S2 | MPF index, stereo pairs |
 | 479 | Radiance HDR | `hdr` `pic` | image/vnd.radiance | 3 | `image.raster` | `common` | `image.hdr` | imagesize | S2 | — |
-| 480 | SGI / RGB | `sgi` `rgb` `rgba` `bw` | image/sgi | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 481 | Sun Raster / XBM / XPM | `ras` `xbm` `xpm` | image/x-xpixmap | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 482 | WBMP | `wbmp` | image/vnd.wap.wbmp | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 483 | FLIF / BPG | `flif` `bpg` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 484 | Apple ICNS | `icns` | image/icns | 3 | `image.raster` | `common` | — | imagesize | S2 | icon sizes |
-| 485 | Windows animated cursor | `ani` | application/x-navi-animation | 3 | `image.raster` | `common` | — | imagesize | S2 | RIFF |
-| 486 | PICT | `pict` `pct` | image/x-pict | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 487 | Amiga IFF ILBM | `iff` `ilbm` `lbm` | image/x-ilbm | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 488 | DCX / multi-page PCX | `dcx` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
+| 480 | SGI / RGB | `sgi` `rgb` `rgba` `bw` | image/sgi | 3 | `image.raster` | `common` | `image.retro` | imagesize | S2 | — |
+| 481 | Sun Raster / XBM / XPM | `ras` `xbm` `xpm` | image/x-xpixmap | 3 | `image.raster` | `common` | `image.retro` | imagesize | S2 | — |
+| 482 | WBMP | `wbmp` | image/vnd.wap.wbmp | 3 | `image.raster` | `common` | `image.retro` | imagesize | S2 | — |
+| 483 | FLIF / BPG | `flif` `bpg` | — | 3 | `image.raster` | `common` | `image.codecs` | imagesize | S2 | — |
+| 484 | Apple ICNS | `icns` | image/icns | 3 | `image.raster` | `common` | `image.retro` | imagesize | S2 | icon sizes |
+| 485 | Windows animated cursor | `ani` | application/x-navi-animation | 3 | `image.raster` | `common` | `image.retro` | imagesize | S2 | RIFF |
+| 486 | PICT | `pict` `pct` | image/x-pict | 3 | `image.raster` | `common` | `image.retro` | imagesize | S2 | — |
+| 487 | Amiga IFF ILBM | `iff` `ilbm` `lbm` | image/x-ilbm | 3 | `image.raster` | `common` | `image.retro` | imagesize | S2 | — |
+| 488 | DCX / multi-page PCX | `dcx` | — | 3 | `image.raster` | `common` | `image.retro` | imagesize | S2 | — |
 | 489 | FITS image | `fits` `fit` `fts` | image/fits | 3 | `image.raster` | `common` | `science.fits` | imagesize | S2 | -&gt; sci |
-| 490 | Cineon / DPX film scan | `cin` `dpx` | image/x-dpx | 3 | `image.raster` | `common` | — | imagesize | S8 | film/TV header: timecode, frame, creator |
-| 491 | WebP2 / AVCI / HEJ2 (ISOBMFF variants) | `avci` `hej2` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
+| 490 | Cineon / DPX film scan | `cin` `dpx` | image/x-dpx | 3 | `image.raster` | `common` | `image.film` | imagesize | S2 | film/TV header: timecode, frame, creator |
+| 491 | WebP2 / AVCI / HEJ2 (ISOBMFF variants) | `avci` `hej2` | — | 3 | `image.raster` | `common` | `image.heif` | imagesize | S2 | — |
 | 492 | Google Ultra HDR / gain-map JPEG | `jpg` | — | 3 | `image.raster` | `common` | `image.jpeg` | imagesize | S2 | MPF + XMP hdrgm namespace |
-| 493 | CompuServe RLE / Mac Paint | `rle` `mac` `pntg` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
-| 494 | OpenRaster | `ora` | image/openraster | 3 | `image.raster` | `common` | — | imagesize | S2 | -&gt; image.layered |
-| 495 | Krita / Procreate | `kra` `procreate` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | -&gt; image.layered |
-| 496 | DjVu single page | `djvu` | image/vnd.djvu | 3 | `image.raster` | `common` | — | imagesize | S2 | -&gt; doc.other |
-| 497 | Windows Imaging Component (CR in WIC) | `wmp` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | — |
+| 493 | CompuServe RLE / Mac Paint | `rle` `mac` `pntg` | — | 3 | `image.raster` | `common` | `image.retro` | imagesize | S2 | — |
+| 494 | OpenRaster | `ora` | image/openraster | 3 | `image.raster` | `common` | `image.layered` | imagesize | S2 | -&gt; image.layered |
+| 495 | Krita / Procreate | `kra` `procreate` | — | 3 | `image.raster` | `common` | `image.layered` | imagesize | S2 | -&gt; image.layered |
+| 496 | DjVu single page | `djvu` | image/vnd.djvu | 3 | `image.raster` | `common` | `doc.djvu` | imagesize | S2 | -&gt; doc.other |
+| 497 | Windows Imaging Component (CR in WIC) | `wmp` | — | 3 | `image.raster` | `common` | `image.codecs` | imagesize | S2 | — |
 | 498 | BigTIFF | `tif` `tiff` `btf` | image/tiff | 3 | `image.raster` | `common` | `image.tiff` | imagesize | S2 | — |
-| 499 | Kodak Photo CD / FlashPix | `pcd` `fpx` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | FPX = OLE property sets |
-| 500 | XISF astronomy image | `xisf` | — | 3 | `image.raster` | `common` | — | imagesize | S8 | XML header: observation keywords |
-| 501 | Thumbnails cache (Windows thumbcache) | `db` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | entry count -&gt; forensic |
-| 502 | Colour LUTs | `cube` `3dl` `lut` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | size, title, domain |
-| 503 | Photoshop assets (actions, brushes, swatches) | `atn` `abr` `aco` `ase` `grd` `pat` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | names list |
-| 504 | Raw editor sidecars | `xmp` `pp3` `dop` `arp` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | -&gt; meta.xmp; develop settings |
-| 505 | Whole-slide images | `svs` `ndpi` `scn` `mrxs` `vms` | — | 3 | `image.raster` | `common` | — | imagesize | S2 | scanner, magnification, levels -&gt; medical |
+| 499 | Kodak Photo CD / FlashPix | `pcd` `fpx` | — | 3 | `image.raster` | `common` | `image.codecs` | imagesize | S2 | FPX = OLE property sets |
+| 500 | XISF astronomy image | `xisf` | — | 3 | `image.raster` | `common` | `image.film` | imagesize | S2 | XML header: observation keywords |
+| 501 | Thumbnails cache (Windows thumbcache) | `db` | — | 3 | `image.raster` | `common` | `forensic.shell` | imagesize | S2 | entry count -&gt; forensic |
+| 502 | Colour LUTs | `cube` `3dl` `lut` | — | 3 | `image.raster` | `common` | `image.film` | imagesize | S2 | size, title, domain |
+| 503 | Photoshop assets (actions, brushes, swatches) | `atn` `abr` `aco` `ase` `grd` `pat` | — | 3 | `image.raster` | `common` | `image.assets` | imagesize | S2 | names list |
+| 504 | Raw editor sidecars | `xmp` `pp3` `dop` `arp` | — | 3 | `image.raster` | `common` | `image.sidecar` | imagesize | S2 | -&gt; meta.xmp; develop settings |
+| 505 | Whole-slide images | `svs` `ndpi` `scn` `mrxs` `vms` | — | 3 | `image.raster` | `common` | `image.slide` | imagesize | S2 | scanner, magnification, levels -&gt; medical |
 | 506 | HEIF image sequence / Live Photo HEIC | `heics` | — | 3 | `image.raster` | `common` | `image.heif` | imagesize | S2 | frame count |
 | 507 | Fujifilm RAF | `raf` | image/x-fuji-raf | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
 | 508 | Olympus / OM ORF | `orf` | image/x-olympus-orf | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
@@ -651,41 +651,41 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 510 | Pentax PEF | `pef` | image/x-pentax-pef | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
 | 511 | Samsung SRW | `srw` | image/x-samsung-srw | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
 | 512 | Leica RWL / Hasselblad 3FR/FFF | `rwl` `3fr` `fff` | — | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
-| 513 | Phase One IIQ / Leaf MOS | `iiq` `mos` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
-| 514 | Mamiya MEF / Minolta MRW | `mef` `mrw` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
-| 515 | Sigma X3F | `x3f` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
-| 516 | Kodak DCR/KDC/K25 / Epson ERF | `dcr` `kdc` `k25` `erf` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
-| 517 | GoPro GPR | `gpr` | — | 3 | `image.raw` | `common` | — | rawler | S2 | — |
+| 513 | Phase One IIQ / Leaf MOS | `iiq` `mos` | — | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
+| 514 | Mamiya MEF / Minolta MRW | `mef` `mrw` | — | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
+| 515 | Sigma X3F | `x3f` | — | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
+| 516 | Kodak DCR/KDC/K25 / Epson ERF | `dcr` `kdc` `k25` `erf` | — | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
+| 517 | GoPro GPR | `gpr` | — | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
 | 518 | Apple ProRAW (DNG) | `dng` | — | 3 | `image.raw` | `common` | `image.raw` | rawler | S2 | — |
 | 519 | GIMP XCF | `xcf` | image/x-xcf | 3 | `image.layered` | `common` | `image.xcf` | psd | S2 | — |
-| 520 | Krita | `kra` | application/x-krita | 3 | `image.layered` | `common` | — | psd | S2 | — |
-| 521 | OpenRaster | `ora` | image/openraster | 3 | `image.layered` | `common` | — | psd | S2 | — |
-| 522 | Procreate | `procreate` | — | 3 | `image.layered` | `common` | — | psd | S2 | — |
-| 523 | Affinity Photo/Designer/Publisher | `afphoto` `afdesign` `afpub` | — | 3 | `image.layered` | `common` | — | psd | S8 | header, embedded thumbnail |
-| 524 | Sketch | `sketch` | — | 3 | `image.layered` | `common` | — | psd | S2 | pages, artboards (zip+json) |
-| 525 | Figma export | `fig` | — | 3 | `image.layered` | `common` | — | psd | S8 | header only |
-| 526 | Paint.NET | `pdn` | — | 3 | `image.layered` | `common` | — | psd | S2 | — |
-| 527 | Corel Painter / PaintShop Pro | `rif` `pspimage` | — | 3 | `image.layered` | `common` | — | psd | S2 | — |
-| 528 | CorelDRAW | `cdr` `cdt` | application/vnd.corel-draw | 3 | `image.vector` | `common` | — | quick-xml | S2 | RIFF chunks, version |
-| 529 | Adobe Illustrator legacy (PS-based) | `ai` | application/postscript | 3 | `image.vector` | `common` | — | quick-xml | S2 | -&gt; doc.other DSC |
-| 530 | Xfig / Graphviz DOT | `fig` `dot` `gv` | text/vnd.graphviz | 3 | `image.vector` | `common` | — | quick-xml | S2 | graph name, node/edge count |
-| 531 | Mermaid / PlantUML | `mmd` `mermaid` `puml` `plantuml` | — | 3 | `image.vector` | `common` | — | quick-xml | S2 | diagram type, nodes |
-| 532 | draw.io / diagrams.net | `drawio` `dio` | — | 3 | `image.vector` | `common` | — | quick-xml | S2 | pages, labels |
-| 533 | Visio stencil XML | `vdx` | — | 3 | `image.vector` | `common` | — | quick-xml | S2 | — |
+| 520 | Krita | `kra` | application/x-krita | 3 | `image.layered` | `common` | `image.layered` | psd | S2 | — |
+| 521 | OpenRaster | `ora` | image/openraster | 3 | `image.layered` | `common` | `image.layered` | psd | S2 | — |
+| 522 | Procreate | `procreate` | — | 3 | `image.layered` | `common` | `image.layered` | psd | S2 | — |
+| 523 | Affinity Photo/Designer/Publisher | `afphoto` `afdesign` `afpub` | — | 3 | `image.layered` | `common` | `image.layered` | psd | S2 | header, embedded thumbnail |
+| 524 | Sketch | `sketch` | — | 3 | `image.layered` | `common` | `image.layered` | psd | S2 | pages, artboards (zip+json) |
+| 525 | Figma export | `fig` | — | 3 | `image.layered` | `common` | `image.layered` | psd | S2 | header only |
+| 526 | Paint.NET | `pdn` | — | 3 | `image.layered` | `common` | `image.layered` | psd | S2 | — |
+| 527 | Corel Painter / PaintShop Pro | `rif` `pspimage` | — | 3 | `image.layered` | `common` | `image.layered` | psd | S2 | — |
+| 528 | CorelDRAW | `cdr` `cdt` | application/vnd.corel-draw | 3 | `image.vector` | `common` | `image.diagram` | quick-xml | S2 | RIFF chunks, version |
+| 529 | Adobe Illustrator legacy (PS-based) | `ai` | application/postscript | 3 | `image.vector` | `common` | `doc.other` | quick-xml | S2 | -&gt; doc.other DSC |
+| 530 | Xfig / Graphviz DOT | `fig` `dot` `gv` | text/vnd.graphviz | 3 | `image.vector` | `common` | `image.diagram` | quick-xml | S2 | graph name, node/edge count |
+| 531 | Mermaid / PlantUML | `mmd` `mermaid` `puml` `plantuml` | — | 3 | `image.vector` | `common` | `image.diagram` | quick-xml | S2 | diagram type, nodes |
+| 532 | draw.io / diagrams.net | `drawio` `dio` | — | 3 | `image.vector` | `common` | `image.diagram` | quick-xml | S2 | pages, labels |
+| 533 | Visio stencil XML | `vdx` | — | 3 | `image.vector` | `common` | `image.diagram` | quick-xml | S2 | — |
 | 534 | Inkscape / Sodipodi SVG | `svg` | — | 3 | `image.vector` | `common` | `image.svg` | quick-xml | S2 | inkscape:version, layers |
 | 535 | Lottie / Bodymovin | `json` | — | 3 | `image.vector` | `common` | `data.json` | quick-xml | S2 | -&gt; data.json |
-| 536 | Macromedia FreeHand | `fh` `fh11` | — | 3 | `image.vector` | `common` | — | quick-xml | S2 | — |
-| 537 | CGM | `cgm` | image/cgm | 3 | `image.vector` | `common` | — | quick-xml | S2 | — |
+| 536 | Macromedia FreeHand | `fh` `fh11` | — | 3 | `image.vector` | `common` | `image.diagram` | quick-xml | S2 | — |
+| 537 | CGM | `cgm` | image/cgm | 3 | `image.vector` | `common` | `image.diagram` | quick-xml | S2 | — |
 | 538 | KTX / KTX2 | `ktx` `ktx2` | image/ktx2 | 3 | `image.texture` | `common` | `image.ktx` | ddsfile, ktx2 | S2 | — |
-| 539 | Basis Universal | `basis` | — | 3 | `image.texture` | `common` | — | ddsfile, ktx2 | S2 | — |
-| 540 | Valve VTF | `vtf` | — | 3 | `image.texture` | `common` | — | ddsfile, ktx2 | S2 | — |
-| 541 | PVR texture | `pvr` | — | 3 | `image.texture` | `common` | — | ddsfile, ktx2 | S2 | — |
-| 542 | ASTC | `astc` | — | 3 | `image.texture` | `common` | — | ddsfile, ktx2 | S2 | — |
-| 543 | Unreal / Unity textures (raw headers) | `utx` `tex` | — | 3 | `image.texture` | `common` | — | ddsfile, ktx2 | S2 | — |
-| 544 | EXIF raw dump | `exif` `exv` | — | 3 | `meta.exif` | `common` | — | kamadak-exif | S2 | exiv2 .exv container |
-| 545 | XMP sidecar | `xmp` | application/rdf+xml | 3 | `meta.xmp` | `common` | — | impl on quick-xml | S8 | — |
-| 546 | VRA Core 4 XML record | `xml` | — | 3 | `meta.vra` | `common` | — | impl: map XMP vra namespace + standalone VRA Core 4 XML records via quick-xml | S8 | — |
-| 547 | ICC colour profile | `icc` `icm` | application/vnd.iccprofile | 3 | `meta.icc` | `common` | — | impl | S8 | — |
+| 539 | Basis Universal | `basis` | — | 3 | `image.texture` | `common` | `image.textures` | ddsfile, ktx2 | S2 | — |
+| 540 | Valve VTF | `vtf` | — | 3 | `image.texture` | `common` | `image.textures` | ddsfile, ktx2 | S2 | — |
+| 541 | PVR texture | `pvr` | — | 3 | `image.texture` | `common` | `image.textures` | ddsfile, ktx2 | S2 | — |
+| 542 | ASTC | `astc` | — | 3 | `image.texture` | `common` | `image.textures` | ddsfile, ktx2 | S2 | — |
+| 543 | Unreal / Unity textures (raw headers) | `utx` `tex` | — | 3 | `image.texture` | `common` | `game.engine` | ddsfile, ktx2 | S2 | — |
+| 544 | EXIF raw dump | `exif` `exv` | — | 3 | `meta.exif` | `common` | `image.sidecar` | kamadak-exif | S2 | exiv2 .exv container |
+| 545 | XMP sidecar | `xmp` | application/rdf+xml | 3 | `meta.xmp` | `common` | `image.sidecar` | impl on quick-xml | S2 | — |
+| 546 | VRA Core 4 XML record | `xml` | — | 3 | `meta.vra` | `common` | `image.sidecar` | impl: map XMP vra namespace + standalone VRA Core 4 XML records via quick-xml | S2 | — |
+| 547 | ICC colour profile | `icc` `icm` | application/vnd.iccprofile | 3 | `meta.icc` | `common` | `image.sidecar` | impl | S2 | — |
 | 548 | vCalendar 1.0 | `vcs` | text/x-vcalendar | 3 | `text.calendar` | `common` | `text.calendar` | impl | S3 | — |
 | 549 | JSCalendar | `json` | — | 3 | `text.calendar` | `common` | — | impl | S8 | — |
 | 550 | JSContact / LDIF | `ldif` | text/directory | 3 | `text.contact` | `common` | — | impl | S8 | — |
@@ -725,7 +725,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 584 | Apple iBooks | `ibooks` | — | 3 | `doc.ebook` | `common` | — | impl | S8 | — |
 | 585 | Microsoft Reader / eReader | `lit` `pdb` | — | 3 | `doc.ebook` | `common` | `doc.ebook` | impl | S3 | — |
 | 586 | DAISY / Open eBook | `opf` `ncx` | — | 3 | `doc.ebook` | `common` | — | impl | S8 | — |
-| 587 | DjVu | `djvu` `djv` | image/vnd.djvu | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 587 | DjVu | `djvu` `djv` | image/vnd.djvu | 3 | `doc.other` | `common` | `doc.djvu` | impl | S3/S8 | — |
 | 588 | Compiled HTML Help | `chm` | application/vnd.ms-htmlhelp | 3 | `doc.other` | `common` | — | impl | S8 | ITSF header, topics list (impl) |
 | 589 | WinHelp | `hlp` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
 | 590 | RIS / EndNote / CSL-JSON citations | `ris` `enw` `nbib` `csl` | — | 3 | `doc.other` | `common` | — | impl | S8 | entry count, titles, DOIs |
@@ -971,7 +971,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 830 | macOS FSEvents | `fseventsd` | — | 3 | `forensic` | `forensics` | — | impl | S8 | records, path count |
 | 831 | Memory image (LiME / crash dump / hiberfil) | `lime` `dmp` `hiberfil.sys` | — | 3 | `forensic` | `forensics` | `forensic.dump` | impl | S6/S8 | OS hints, size, profile |
 | 832 | Browser cache entries | `data_0` `cache2` `f_000001` | — | 3 | `forensic` | `forensics` | — | impl | S8 | URLs count, content types |
-| 833 | Windows Timeline / SRUM / Amcache | `db` `hve` `dat` | — | 3 | `forensic` | `forensics` | `forensic.registry` | impl | S6/S8 | -&gt; db / registry |
+| 833 | Windows Timeline / SRUM / Amcache | `db` `hve` `dat` | — | 3 | `forensic` | `forensics` | `forensic.shell` | impl | S6/S8 | -&gt; db / registry |
 | 834 | Kubernetes / cloud audit logs | `jsonl` `log` | — | 3 | `forensic` | `forensics` | `forensic.capture` | impl | S6/S8 | verbs, resources, users count |
 | 835 | Sysmon / auditd logs | `log` `evtx` | — | 3 | `forensic` | `forensics` | `forensic.capture` | impl | S6/S8 | event types histogram |
 | 836 | Wireshark dissector-free: Bluetooth btsnoop / USB pcap | `btsnoop` `log` | — | 3 | `forensic` | `forensics` | `forensic.capture` | impl | S6/S8 | packet count, time range |

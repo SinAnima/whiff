@@ -1,0 +1,124 @@
+---
+source: src/formats/image/diagram.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.mermaid",
+    "stem": "tides",
+    "extension": "mermaid"
+  },
+  "identification": {
+    "format": "mermaid",
+    "name": "Mermaid diagram",
+    "mime": "text/vnd.mermaid",
+    "family": "image.vector",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "image.diagram"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 165
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 165,
+    "entropy": 4.407,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 165,
+      "chars": 165,
+      "words": 15,
+      "lines": 5,
+      "max_line_length": 49,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "0443b24d3a11ab70bb940ec53973338f012489eac64e119d405792bd3e983ad4",
+    "blake3": "2859831665cfe17b17d994834a733e68feecd0fe3497dd3f9ea2903d84f8f931"
+  },
+  "content": {
+    "excerpt": "High water at 06:12 Bringing the ferry in"
+  },
+  "metadata": {},
+  "format": {
+    "mermaid": {
+      "diagram_type": "sequenceDiagram",
+      "nodes": 2,
+      "edges": 2,
+      "labels": [
+        "High water at 06:12",
+        "Bringing the ferry in"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.diagram",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

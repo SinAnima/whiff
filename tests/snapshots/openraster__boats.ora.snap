@@ -1,0 +1,163 @@
+---
+source: src/formats/image/layered.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "boats.ora",
+    "stem": "boats",
+    "extension": "ora"
+  },
+  "identification": {
+    "format": "openraster",
+    "name": "OpenRaster image",
+    "mime": "image/openraster",
+    "family": "image.layered",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "openraster",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "image.layered"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1113
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1113,
+    "entropy": 6.452,
+    "entropy_scope": "file",
+    "image": {
+      "width": 320,
+      "height": 240,
+      "dpi": [
+        72.0,
+        72.0
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "d7cce032701753f50ecf5aac6e8b551a5fcd22cb2c5a95ccc2bdca4da25b42dc",
+    "blake3": "700432a69dbc79f066689deb9734359d3b1b38964835ee87dcb8b6bb9dd48427"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "openraster": {
+      "version": "0.0.6",
+      "layer_count": 5,
+      "hidden_layers": 1,
+      "groups": 1,
+      "layers": [
+        {
+          "name": "Gulls",
+          "kind": "raster",
+          "visible": true,
+          "depth": 0
+        },
+        {
+          "name": "Boats",
+          "kind": "group",
+          "visible": true,
+          "depth": 0
+        },
+        {
+          "name": "Red sail",
+          "kind": "raster",
+          "visible": true,
+          "depth": 1
+        },
+        {
+          "name": "Rigging",
+          "kind": "vector",
+          "visible": false,
+          "depth": 1
+        },
+        {
+          "name": "Water",
+          "kind": "raster",
+          "visible": true,
+          "depth": 0
+        }
+      ],
+      "thumbnail": {
+        "name": "Thumbnails/thumbnail.png",
+        "width": 32,
+        "height": 24
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.layered",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

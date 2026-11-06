@@ -480,3 +480,36 @@ header; it never evaluates, expands or follows anything.
   parser in the oracle and are covered by their fixtures only. Nested
   CycloneDX components are counted with their parents.
 
+- **Images (third batch):** headers and structure only, never pixels.
+  - *Undocumented formats:* Affinity files are recognised by extension
+    and report only their embedded thumbnail; FreeHand reports the
+    version implied by its `AGD` signature; Figma reports the canvas
+    version, not the document tree (its Kiwi schema is not decoded);
+    Procreate's keyed archive is read for the canvas, DPI and layer names
+    only. Corel Painter `.rif` and Unity `.tex` files are not recognised,
+    nor `.lut` files (too many unrelated formats share the extension).
+  - *Compressed layers not decoded:* DjVu's `ANTz`, `TXTz` and `NAVM`
+    chunks use the BZZ coder, so compressed metadata, the hidden text
+    layer and bookmarks are reported as present, not read (uncompressed
+    `ANTa` metadata is). CorelDRAW X4+ packages give the version and the
+    parts; their RIFF data is not walked for pages. Paint.NET layer names
+    are in a .NET BinaryFormatter body that is not read.
+  - *Text diagrams:* Mermaid and PlantUML are read line by line with
+    patterns (diagram type, arrows, labels); nodes are approximate for
+    diagram types other than flowcharts and sequences. Graphviz DOT is
+    parsed (nodes, edges, subgraphs) but attributes other than `label`
+    are skipped.
+  - *Camera raw:* the new Kodak, Epson, Mamiya, Leaf, Phase One and GoPro
+    files are read as TIFF structures (make, model, sensor, previews,
+    EXIF); vendor maker notes (Phase One's IIQ directory, Leaf's `PKTS`)
+    are not decoded. Older non-TIFF KDC files are not recognised.
+  - *Whole-slide images:* the TIFF-based SVS, NDPI and SCN are read from
+    the IFDs and descriptions; MIRAX (`.mrxs`, a folder of data files)
+    and Ventana BIF are not recognised.
+  - *Fixtures:* formats no available tool writes (ASTC, Basis, PVR, VTF,
+    CDR, CGM, FreeHand, Photoshop presets, PDN, Procreate, Sketch, Figma,
+    thumbcache, Photo CD, MRW, X3F) are built from their specifications;
+    `media_oracle.py` checks 172 facts over 66 fixtures with independent
+    readers (exiftool, ImageMagick, Pillow, olefile, ffprobe, djvudump,
+    Graphviz, fig2dev, psd-tools, libmagic), and the rest are covered by
+    their fixtures only.

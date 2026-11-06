@@ -1,0 +1,129 @@
+---
+source: src/formats/image/film.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-warm.cube",
+    "stem": "saltmere-warm",
+    "extension": "cube"
+  },
+  "identification": {
+    "format": "cube_lut",
+    "name": "Cube colour look-up table",
+    "mime": "application/octet-stream",
+    "family": "image.raster",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "image.film"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 320
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 320,
+    "entropy": 3.103,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 320,
+      "chars": 320,
+      "words": 41,
+      "lines": 13,
+      "max_line_length": 26,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "58daa73c7fc385b4512538d66baa5c33ee45abeb568f8bc198e49526950995d1",
+    "blake3": "5ff2d284da2e4593f9edbab67cf3a235a59d0f5780bd916cf49dd74ce691e46f"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "cube_lut": {
+      "title": "Saltmere warm",
+      "domain_min": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "domain_max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "kind": "3D",
+      "size": 2,
+      "entries": 8
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.film",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

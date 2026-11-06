@@ -2,6 +2,7 @@
 # clippy's default list.
 doc-valid-idents = [
     "..",
+    "DjVu", "DjVu3", "FlashPix", "PixInsight", "OpenRaster", "RawTherapee", "GoPro", "SOFn",
     "RelatedPerson", "NIfTI", "MetaImage", "MetaIO", "PDBx", "CTfile", "TFile", "TDirectory", "TKey", "BioSemi", "BrainVision",
     "ImageDescription", "ReadStat", "LTspice",
     "BigTIFF", "GeoTIFF", "OpenEXR", "DirectDraw", "FourCC", "ZSoft", "GeoJP2", "ImageMagick", "ExifTool", "LibRaw",

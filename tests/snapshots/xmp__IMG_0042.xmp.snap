@@ -1,0 +1,182 @@
+---
+source: src/formats/image/sidecar.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "IMG_0042.xmp",
+    "stem": "IMG_0042",
+    "extension": "xmp"
+  },
+  "identification": {
+    "format": "xmp",
+    "name": "XMP sidecar",
+    "mime": "application/rdf+xml",
+    "family": "meta.xmp",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "xmp",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.32
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "image.sidecar"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 790
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Mira Castell"
+    ]
+  },
+  "physical": {
+    "size_bytes": 790,
+    "entropy": 5.127,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 790,
+      "chars": 790,
+      "words": 29,
+      "lines": 11,
+      "max_line_length": 120,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "8a6040dada0483de484fd7c90e87bf8a8a77c292c9523c6d63f6668d07f453aa",
+    "blake3": "35e41a2f572b6a50c6b2a9d31bf036f8e7012cf637b0ba1b8841f33502a43fe5"
+  },
+  "content": {
+    "title": "Breakwater at dusk",
+    "authors": [
+      "Mira Castell"
+    ],
+    "keywords": [
+      "harbour",
+      "dusk"
+    ],
+    "excerpt": "Breakwater at dusk",
+    "tags": [
+      "harbour",
+      "dusk"
+    ]
+  },
+  "metadata": {
+    "xmp": {
+      "xmp": {
+        "Rating": "4",
+        "CreatorTool": "whiff fixture"
+      },
+      "crs": {
+        "Version": "16.0",
+        "WhiteBalance": "Custom",
+        "Temperature": "5600",
+        "Exposure2012": "+0.35",
+        "Contrast2012": "+12"
+      },
+      "dc": {
+        "title": "Breakwater at dusk",
+        "creator": [
+          "Mira Castell"
+        ],
+        "subject": [
+          "harbour",
+          "dusk"
+        ]
+      }
+    }
+  },
+  "format": {
+    "xmp": {
+      "packet_wrapper": false,
+      "camera_raw_settings": 5,
+      "namespaces": [
+        "adobe:ns:meta/",
+        "http://ns.adobe.com/camera-raw-settings/1.0/",
+        "http://ns.adobe.com/xap/1.0/",
+        "http://purl.org/dc/elements/1.1/",
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.sidecar",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.xmp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
