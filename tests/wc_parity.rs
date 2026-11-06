@@ -1,7 +1,7 @@
 //! `physical.text` agrees with the system `wc` on every text fixture: lines
 //! and bytes always; words and characters for UTF-8 files when a UTF-8 locale
 //! is available (for other encodings `wc` depends on the locale). Skipped
-//! where `wc` is missing (Windows).
+//! where `wc` is missing.
 
 use std::path::Path;
 use std::process::Command;
@@ -55,9 +55,16 @@ fn counts_match_wc() {
             // Words and characters do: `wc` reads bytes in its locale's encoding,
             // whiff decodes legacy encodings (windows-1252, …) properly. Compare
             // them for UTF-8 (and ASCII) files only, in a UTF-8 locale.
-            let utf8 = std::fs::read(&path).is_ok_and(|b| std::str::from_utf8(&b).is_ok());
+            let bytes = std::fs::read(&path).unwrap_or_default();
+            let utf8 = std::str::from_utf8(&bytes).is_ok();
+            // `wc` implementations disagree on a word made of non-printing
+            // characters (Info's 0x1F separators): BSD and GNU 9 count it,
+            // GNU 8 (Git for Windows) does not. Skip words for such files.
+            let control = bytes.iter().any(|&b| (b < 0x20 && !b"\t\n\x0b\x0c\r".contains(&b)) || b == 0x7f);
             if let (Some(l), true) = (locale, utf8) {
-                assert_eq!(text.words, wc(&path, "-w", Some(l)), "wc -w {}", path.display());
+                if !control {
+                    assert_eq!(text.words, wc(&path, "-w", Some(l)), "wc -w {}", path.display());
+                }
                 assert_eq!(text.chars, wc(&path, "-m", Some(l)), "wc -m {}", path.display());
             }
             checked += 1;
