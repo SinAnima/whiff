@@ -42,10 +42,29 @@ pub fn detect(bytes: &[u8]) -> (&'static Encoding, usize) {
 }
 
 /// `chardetng`'s guess for non-UTF-8 text.
+///
+/// The text sniffers each look at the same head of every file, so the last
+/// guess is kept per thread, keyed by a hash of the input: hashing costs a
+/// small fraction of the guess.
 pub fn guess_legacy(bytes: &[u8]) -> &'static Encoding {
+    use std::hash::{Hash, Hasher};
+    thread_local! {
+        static LAST: std::cell::Cell<Option<(u64, &'static Encoding)>> = const { std::cell::Cell::new(None) };
+    }
+    let bytes = &bytes[..bytes.len().min(256 * 1024)];
+    let mut h = std::hash::DefaultHasher::new();
+    bytes.hash(&mut h);
+    let key = h.finish();
+    if let Some((k, enc)) = LAST.get()
+        && k == key
+    {
+        return enc;
+    }
     let mut det = chardetng::EncodingDetector::new(chardetng::Iso2022JpDetection::Deny);
-    det.feed(&bytes[..bytes.len().min(256 * 1024)], true);
-    det.guess(None, chardetng::Utf8Detection::Allow)
+    det.feed(bytes, true);
+    let enc = det.guess(None, chardetng::Utf8Detection::Allow);
+    LAST.set(Some((key, enc)));
+    enc
 }
 
 /// The upper half of code page 437, sixteen to a row.

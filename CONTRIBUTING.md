@@ -45,7 +45,7 @@ The most useful contribution is an **extractor** for a format listed in [`docs/m
 
 ## Rules
 
-* **Pure Rust.** whiff as a library or tool is pure Rust: no crates that bind or build C/C++ code. `whiff-dev check-deps` fails on any `-sys` crate (other than the OS interfaces `windows-sys` and `linux-raw-sys`) and on native build tools such as `cc`, `cmake`, `bindgen` or `pkg-config` among the normal and build dependencies (the only exception is blake3's `cc`, unused with its `pure` feature). Development tooling is free to use anything (the fixture scripts use Python, Java, Ghostscript and others), as long as it lives outside the published crate: `scripts/ci.sh` checks that `cargo package` ships no `scripts/`, `fuzz/` or `tests/` files. Check the "Library" column of the catalogue, and prefer mature crates (a release in the last 18 months or clearly finished). Otherwise write a header parser with `ByteReader`.
+* **Pure Rust.** whiff as a library or tool is pure Rust: no crates that bind or build C/C++ code. `whiff-dev check-deps` fails on any `-sys` crate (other than the OS interfaces `windows-sys` and `linux-raw-sys`) and on native build tools such as `cc`, `cmake`, `bindgen` or `pkg-config` among the normal and build dependencies (the only exception is blake3's `cc`, unused with its `pure` feature). Development tooling is free to use anything (the fixture scripts use Python, Java, Ghostscript and others), as long as it lives outside the published crate: `scripts/ci.sh` checks that `cargo package` ships no `scripts/`, `fuzz/`, `tests/` or `benches/` files. Check the "Library" column of the catalogue, and prefer mature crates (a release in the last 18 months or clearly finished). Otherwise write a header parser with `ByteReader`.
 * **Plugin boundary.** Format modules import only `crate::plugin::*` (checked by `whiff-dev check-boundary`).
 * **Dependency budget.** CI counts transitive dependencies (`whiff-dev check-deps`). Exceeding a budget needs a justification in the PR.
 * **Privacy.** Never output secret material (keys, passwords, cookie values). Count personal data such as e-mail addresses or patient fields; don't list it. Where a format is about people (e-mail, calendars, contacts), pass addresses through `cx.mailbox` and list phone numbers, street addresses and birthdays only when `cx.privacy_strict()` is false.
@@ -60,6 +60,10 @@ scripts/ci.sh
 ```
 
 `scripts/ci.sh` runs the same checks as CI: fmt, clippy, tests, docs, a coverage gate of at least 80% of lines (needs `cargo install cargo-llvm-cov`), catalogue / risk-vocabulary / dependency-budget / pure-Rust / plugin-boundary checks, a check that the published crate holds no development tooling, and `cargo deny`. Checks whose tools are missing locally (`cargo-hack`, the MSRV toolchain, the wasm target, nightly fuzzing) are skipped with an install hint; CI still runs them.
+
+## Performance
+
+`cargo bench --features full --bench families` times every format family over the fixtures (`-- image` for one family); criterion keeps the previous run in `target/criterion` and reports the change. `cargo run --release --features dev --bin whiff-dev -- throughput` measures files per second per core with the `minimal` profile over `tests/fixtures` (or the paths given) and lists the slowest formats; the target is at least 2,000. Every file passes through every sniffer, so keep sniffers to byte checks on `probe.head` and leave decoding to `extract`.
 
 ## Extractors in other crates
 

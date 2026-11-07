@@ -483,14 +483,48 @@ pub(crate) fn prefix(s: &str, max: usize) -> &str {
 }
 
 /// A sniffer's view of the first bytes as text (any BOM honoured).
-pub(crate) fn head_text(head: &[u8]) -> String {
+///
+/// Every file passes through these sniffers, so the character-set guess
+/// runs only for text in a legacy encoding. UTF-8 (a character cut at the
+/// end included) reads as `decode_text` would; a head with NUL bytes and no
+/// BOM is binary, and a lossy view of it fails the sniffers' text checks
+/// as well as a guessed one.
+pub(crate) fn head_text(head: &[u8]) -> std::borrow::Cow<'_, str> {
     let cut = &head[..head.len().min(16 * 1024)];
-    crate::plugin::decode_text(cut).text
+    let bom = cut.starts_with(b"\xef\xbb\xbf") || cut.starts_with(b"\xff\xfe") || cut.starts_with(b"\xfe\xff");
+    if !bom {
+        match std::str::from_utf8(cut) {
+            Ok(s) => return s.into(),
+            Err(e) if e.error_len().is_none() || cut.contains(&0) => return String::from_utf8_lossy(cut),
+            Err(_) => {}
+        }
+    }
+    crate::plugin::decode_text(cut).text.into()
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn head_text_matches_decode() {
+        let cases: [&[u8]; 6] = [
+            b"1\n00:00:01,000 --> 00:00:02,000\nhi\n",
+            "caf\u{e9}\n".as_bytes(),
+            b"caf\xc3",                // a character cut at the end
+            b"caf\xe9 cr\xe8me\n",     // windows-1252
+            b"\xff\xfeh\0i\0",         // UTF-16LE BOM
+            b"\x00\x01\x02\xffbinary", // binary
+        ];
+        for c in cases {
+            let ours = head_text(c);
+            if c.contains(&0) && !c.starts_with(b"\xff\xfe") {
+                assert!(ours.contains("binary"));
+            } else {
+                assert_eq!(ours, crate::plugin::decode_text(c).text, "{c:?}");
+            }
+        }
+    }
 
     #[test]
     fn clocks_and_text() {

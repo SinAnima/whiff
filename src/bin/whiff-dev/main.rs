@@ -6,12 +6,13 @@ mod catalogue;
 mod checks;
 mod new_extractor;
 mod oracle;
+mod throughput;
 
 use std::path::{Path, PathBuf};
 use std::process::{Command, ExitCode};
 
 use clap::{Parser, Subcommand};
-use whiff::Registry;
+use whiff::{Profile, Registry};
 
 #[derive(Parser)]
 #[command(name = "whiff-dev", about = "whiff contributor tooling")]
@@ -68,6 +69,26 @@ enum Cmd {
     CheckDeps,
     /// Check that format modules use only the plugin API.
     CheckBoundary,
+    /// Files per second per core over a corpus (target: 2,000 with `minimal`).
+    Throughput {
+        /// Files or directories (default: tests/fixtures), cycled until `--files` are done.
+        paths: Vec<PathBuf>,
+        /// Extractions to run.
+        #[arg(long, default_value_t = 100_000)]
+        files: usize,
+        /// Report profile: minimal, standard, full or llm.
+        #[arg(long, default_value = "minimal")]
+        profile: Profile,
+        /// Worker threads; files/s/core divides by this.
+        #[arg(long, default_value_t = 1)]
+        threads: usize,
+        /// Fail below this many files/s/core.
+        #[arg(long)]
+        min: Option<f64>,
+        /// How many of the slowest formats to list.
+        #[arg(long, default_value_t = 15)]
+        top: usize,
+    },
     /// Compare whiff with a reference tool (dev-time oracle; needs the tool installed).
     Oracle {
         #[command(subcommand)]
@@ -136,6 +157,10 @@ fn main() -> ExitCode {
         Cmd::Fuzz { extractor, seconds } => fuzz(extractor.as_deref(), seconds),
         Cmd::CheckDeps => checks::deps(root()),
         Cmd::CheckBoundary => checks::boundary(root()),
+        Cmd::Throughput { paths, files, profile, threads, min, top } => {
+            let paths = if paths.is_empty() { vec![root().join("tests/fixtures")] } else { paths };
+            throughput::run(&throughput::Request { paths, files, profile, threads, min, top })
+        }
         Cmd::Oracle { family: OracleFamily::Images { paths, min, verbose } } => {
             let paths = if paths.is_empty() { oracle::default_paths(root()) } else { paths };
             oracle::images(&paths, min, verbose)

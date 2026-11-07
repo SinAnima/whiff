@@ -262,6 +262,18 @@ format in the catalogue.
   compares the reports with exiftool, ImageMagick, Pillow, olefile,
   ffprobe, djvudump, Graphviz `gc`, fig2dev, psd-tools, libmagic and the
   Python standard library.
+- **Speed:** detection no longer guesses the character set of every
+  file several times. The text sniffers (playlists, cue sheets, subtitles,
+  text scores) read UTF-8 and binary heads directly and run the guess only
+  for text in a legacy encoding, and the last guess is reused while the
+  input is the same. With the `minimal` profile, one core describes about
+  2,700 test fixtures a second, up from 1,300 (the plan's target is 2,000).
+- **Benchmarks:** `cargo bench --features full --bench families` times
+  extraction per format family over the test fixtures in memory, for the
+  `minimal` and `standard` profiles (criterion, a development dependency
+  only). `whiff-dev throughput [PATHS] --profile minimal --threads N
+  --min 2000` reports files per second per core over a corpus on disk and
+  the slowest formats.
 
 ## 0.7.0 — 2026-11-03
 
