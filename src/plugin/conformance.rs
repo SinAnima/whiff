@@ -109,8 +109,18 @@ fn engine_for(registry: &Registry, extractor_id: &str, options: Options) -> Engi
     Engine::builder().registry(only_this).options(options).build()
 }
 
+/// 5 s per extractor, 10 s per file; four times that in a coverage build.
+///
+/// The deadlines are wall-clock time, and instrumented code checked on every
+/// core at once runs 20–30 times slower than a normal test build, so linear
+/// work on the large inputs can pass the normal deadline. Super-linear work is
+/// still caught: by the normal `cargo test` run, and here at the longer
+/// deadline.
 fn test_limits() -> Limits {
-    Limits::default().file_timeout(Some(Duration::from_secs(10))).extractor_timeout(Some(Duration::from_secs(5)))
+    let scale = if std::env::var_os("LLVM_PROFILE_FILE").is_some() { 4 } else { 1 };
+    Limits::default()
+        .file_timeout(Some(Duration::from_secs(10 * scale)))
+        .extractor_timeout(Some(Duration::from_secs(5 * scale)))
 }
 
 fn check_format(
