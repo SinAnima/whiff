@@ -274,6 +274,19 @@ format in the catalogue.
   only). `whiff-dev throughput [PATHS] --profile minimal --threads N
   --min 2000` reports files per second per core over a corpus on disk and
   the slowest formats.
+- **Miri:** `scripts/miri.sh` runs the unit tests of the container, codec,
+  metadata, text and detection layers under Miri (nightly), which checks the
+  unsafe and SIMD code of the dependencies they reach. A new CI job runs it.
+  Six tests that take minutes under Miri (they compile the secret patterns
+  or expand to a limit) are skipped there. Miri found no
+  undefined behaviour.
+- **Nightly fuzzing:** a scheduled workflow fuzzes every extractor each
+  night in eight shards of about 30 (`whiff-dev fuzz --shard I/N`, seeded
+  from their fixtures, 20 minutes each), keeping each shard's corpus between
+  nights and uploading any crash. `whiff-dev fuzz` reports an input that
+  runs over 60 s as a hang, and takes `--target` for cargo-fuzz.
+- **Conformance:** the deadlines are four times longer in coverage builds,
+  where instrumented code runs over 25 times slower.
 
 ## 0.7.0 — 2026-11-03
 

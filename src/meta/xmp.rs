@@ -418,6 +418,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg_attr(miri, ignore = "10,000 nested elements: 3 min under Miri")]
     fn hostile_input() {
         assert!(parse("not xml at all").map_or(true, |p| p.is_empty()));
         let deep = format!(

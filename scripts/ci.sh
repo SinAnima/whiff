@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Local checks that mirror .github/workflows/ci.yml
 # (fmt, clippy, test, docs, coverage, repo checks, each-feature, MSRV, wasm,
-# deny/audit, fuzz smoke). Optional tools are skipped with an install hint.
+# deny/audit, Miri with MIRI=1, fuzz smoke). Optional tools are skipped with
+# an install hint.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -146,6 +147,13 @@ if cargo audit --version >/dev/null 2>&1; then
   run cargo audit
 else
   skip "cargo audit" "install with: cargo install cargo-audit"
+fi
+
+# --- Miri (opt-in locally: about 3 minutes) -------------------------------------
+if [ "${MIRI:-0}" = 1 ]; then
+  run scripts/miri.sh
+else
+  skip "Miri" "run with MIRI=1 scripts/ci.sh, or scripts/miri.sh"
 fi
 
 # --- fuzz smoke ------------------------------------------------------------------

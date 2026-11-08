@@ -65,6 +65,20 @@ scripts/ci.sh
 
 `cargo bench --features full --bench families` times every format family over the fixtures (`-- image` for one family); criterion keeps the previous run in `target/criterion` and reports the change. `cargo run --release --features dev --bin whiff-dev -- throughput` measures files per second per core with the `minimal` profile over `tests/fixtures` (or the paths given) and lists the slowest formats; the target is at least 2,000. Every file passes through every sniffer, so keep sniffers to byte checks on `probe.head` and leave decoding to `extract`.
 
+## Miri
+
+`scripts/miri.sh` runs the unit tests of `container`, `meta`, `text` and `detect` under Miri (`rustup component add miri rust-src --toolchain nightly`; about 3 minutes once built). whiff forbids unsafe code, so this checks the unsafe and SIMD code in the dependencies those tests reach. A test that reads files from disk or takes minutes under Miri gets `#[cfg_attr(miri, ignore = "reason")]`. `MIRI=1 scripts/ci.sh` includes it; CI runs it as its own job.
+
+## Fuzzing
+
+`whiff-dev fuzz <id>` fuzzes one extractor with its format forced, seeded from its fixtures; `whiff-dev fuzz --shard I/N` fuzzes every N-th extractor (sorted by id) from the I-th, with detection; `whiff-dev fuzz` alone fuzzes the whole engine. `--seconds` sets the run time (default 60). All need nightly and `cargo install cargo-fuzz`.
+
+CI fuzzes the whole engine for 60 s on every PR. The nightly workflow (`.github/workflows/fuzz.yml`, also runnable by hand with a time per shard) fuzzes eight shards for 20 minutes each, keeping each shard's corpus between nights. A crash or a hang (one input over 60 s) fails its shard and uploads the input as `fuzz-crashes-shard-I`. To fix one:
+
+1. Reproduce it: `cd fuzz && WHIFF_FUZZ_EXTRACTORS=<the ids the job printed> cargo +nightly fuzz run extract <file>`, then `cargo +nightly fuzz tmin extract <file>` (same variable) to shrink it.
+2. Fix the extractor.
+3. Add the shrunk bytes as an in-memory unit test of that extractor (a byte-string literal, like the other robustness tests), not as a file under `tests/fixtures/`.
+
 ## Extractors in other crates
 
 A crate outside whiff can implement `whiff::plugin::Extractor` and add it explicitly:

@@ -56,13 +56,24 @@ enum Cmd {
         #[arg(long)]
         check: bool,
     },
-    /// Fuzz one extractor (needs nightly and cargo-fuzz).
+    /// Fuzz one extractor, a shard of them, or the whole engine (needs
+    /// nightly and cargo-fuzz).
     Fuzz {
         /// Extractor id, e.g. `image.qoi`; omit to fuzz the whole engine.
+        #[arg(conflicts_with = "shard")]
         extractor: Option<String>,
+        /// `I/N`: the I-th of N shards of the extractors (sorted by id, every
+        /// N-th from I), with detection, seeded from their fixtures. The
+        /// nightly CI job runs every shard.
+        #[arg(long, value_name = "I/N")]
+        shard: Option<String>,
         /// Run time in seconds.
         #[arg(long, default_value_t = 60)]
         seconds: u64,
+        /// Target triple for cargo-fuzz (the prebuilt cargo-fuzz defaults to
+        /// musl; the address sanitizer needs e.g. `x86_64-unknown-linux-gnu`).
+        #[arg(long)]
+        target: Option<String>,
     },
     /// Check transitive dependency counts against the budgets, and that the
     /// dependency graph is pure Rust.
@@ -154,7 +165,9 @@ fn main() -> ExitCode {
             )
         }
         Cmd::Catalogue { check } => catalogue_cmd(check),
-        Cmd::Fuzz { extractor, seconds } => fuzz(extractor.as_deref(), seconds),
+        Cmd::Fuzz { extractor, shard, seconds, target } => {
+            fuzz(extractor.as_deref(), shard.as_deref(), seconds, target.as_deref())
+        }
         Cmd::CheckDeps => checks::deps(root()),
         Cmd::CheckBoundary => checks::boundary(root()),
         Cmd::Throughput { paths, files, profile, threads, min, top } => {
@@ -207,24 +220,52 @@ fn catalogue_cmd(check: bool) -> Result<(), String> {
     Ok(())
 }
 
-fn fuzz(extractor: Option<&str>, seconds: u64) -> Result<(), String> {
+fn fuzz(extractor: Option<&str>, shard: Option<&str>, seconds: u64, target: Option<&str>) -> Result<(), String> {
     let registry = Registry::builtin();
-    let mut corpora: Vec<PathBuf> = vec![root().join("fuzz/corpus").join(extractor.unwrap_or("engine"))];
-    if let Some(id) = extractor {
-        let e = registry.extractor(id).ok_or_else(|| format!("no extractor `{id}` in this build"))?;
+    // The extractors whose fixtures seed the run, and the corpus folder.
+    let (ids, corpus): (Vec<&str>, String) = match (extractor, shard) {
+        (Some(id), _) => {
+            registry.extractor(id).ok_or_else(|| format!("no extractor `{id}` in this build"))?;
+            (vec![id], id.to_string())
+        }
+        (None, Some(shard)) => {
+            let (i, n) = parse_shard(shard)?;
+            let mut all: Vec<&str> = registry.extractors().map(|e| e.meta().id).collect();
+            all.sort_unstable();
+            (all.into_iter().skip(i).step_by(n).collect(), format!("shard-{i}-of-{n}"))
+        }
+        (None, None) => (Vec::new(), "engine".to_string()),
+    };
+    let mut corpora: Vec<PathBuf> = vec![root().join("fuzz/corpus").join(&corpus)];
+    for id in &ids {
+        let Some(e) = registry.extractor(id) else { continue };
         for f in e.meta().formats {
             let dir = root().join("tests/fixtures").join(f.id);
-            if dir.is_dir() {
+            if dir.is_dir() && !corpora.contains(&dir) {
                 corpora.push(dir);
             }
         }
     }
     std::fs::create_dir_all(&corpora[0]).map_err(|e| e.to_string())?;
+    if shard.is_some() {
+        println!("fuzzing {} extractors: {}", ids.len(), ids.join(", "));
+    }
     let mut cmd = Command::new("cargo");
-    cmd.current_dir(root().join("fuzz")).args(["+nightly", "fuzz", "run", "extract"]).args(&corpora);
-    cmd.arg("--").arg(format!("-max_total_time={seconds}"));
-    if let Some(id) = extractor {
-        cmd.env("WHIFF_FUZZ_EXTRACTOR", id);
+    cmd.current_dir(root().join("fuzz")).args(["+nightly", "fuzz", "run", "extract"]);
+    if let Some(t) = target {
+        cmd.args(["--target", t]);
+    }
+    cmd.args(&corpora);
+    // A hang (one input over 60 s) is reported as a timeout, not waited out.
+    cmd.arg("--").arg(format!("-max_total_time={seconds}")).arg("-timeout=60");
+    match (extractor, shard) {
+        (Some(id), _) => {
+            cmd.env("WHIFF_FUZZ_EXTRACTOR", id);
+        }
+        (None, Some(_)) => {
+            cmd.env("WHIFF_FUZZ_EXTRACTORS", ids.join(","));
+        }
+        (None, None) => {}
     }
     let status = cmd.status().map_err(|e| format!("cannot run cargo-fuzz ({e}); install with `cargo install cargo-fuzz` and `rustup toolchain install nightly`"))?;
     if status.success() {
@@ -232,4 +273,15 @@ fn fuzz(extractor: Option<&str>, seconds: u64) -> Result<(), String> {
     } else {
         Err(format!("fuzzing failed ({status}); crashes are in fuzz/artifacts/extract/"))
     }
+}
+
+/// `I/N` with `I < N`.
+fn parse_shard(s: &str) -> Result<(usize, usize), String> {
+    let bad = || format!("--shard wants I/N with I < N, e.g. 0/8, not `{s}`");
+    let (i, n) = s.split_once('/').ok_or_else(bad)?;
+    let (i, n): (usize, usize) = (i.trim().parse().map_err(|_| bad())?, n.trim().parse().map_err(|_| bad())?);
+    if n == 0 || i >= n {
+        return Err(bad());
+    }
+    Ok((i, n))
 }

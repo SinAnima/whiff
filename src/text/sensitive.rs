@@ -214,6 +214,7 @@ mod tests {
     use super::*;
 
     #[test]
+    #[cfg_attr(miri, ignore = "compiles the secret patterns: over 5 min under Miri")]
     fn counts_and_redacts() {
         let text = "key AKIAABCDEFGHIJKLMNOP and mail bob@example.com or alice@example.org; \
                     card 4111 1111 1111 1111, not 1234 5678 9012 3456; \
@@ -233,6 +234,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg_attr(miri, ignore = "compiles the secret patterns: over 5 min under Miri")]
     fn checks() {
         assert!(iban_valid("GB82 WEST 1234 5698 7654 32"));
         assert!(!iban_valid("GB82 WEST 1234 5698 7654 33"));
