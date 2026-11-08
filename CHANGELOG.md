@@ -268,6 +268,12 @@ format in the catalogue.
   for text in a legacy encoding, and the last guess is reused while the
   input is the same. With the `minimal` profile, one core describes about
   2,700 test fixtures a second, up from 1,300 (the plan's target is 2,000).
+- **Worker thread:** with a file deadline, each calling thread now keeps
+  one extraction worker and reuses it from file to file, instead of starting
+  a thread per file. A worker that overruns its deadline is abandoned and the
+  next file gets a new one. With the `minimal` profile, one core describes
+  about 3,000 fixtures a second (from 2,800), eight threads about 2,500 a
+  second per core (from 2,100).
 - **Benchmarks:** `cargo bench --features full --bench families` times
   extraction per format family over the test fixtures in memory, for the
   `minimal` and `standard` profiles (criterion, a development dependency

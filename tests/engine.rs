@@ -281,6 +281,57 @@ fn watchdog_abandons_extractors_that_ignore_deadlines() {
     let r = engine.extract_path(&p).unwrap();
     assert!(r.diagnostics.limits_hit.contains(&"timeout".to_string()));
     assert_eq!(r.system.size_bytes, Some(4));
+
+    // The abandoned workers are still spinning; the next file gets a new one
+    // instead of queuing behind them.
+    let start = Instant::now();
+    let r = engine.extract_bytes(Some("z.txt"), b"plain text\n".to_vec());
+    assert!(start.elapsed() < Duration::from_secs(1), "queued behind the stuck worker");
+    assert!(!r.diagnostics.truncated && r.diagnostics.warnings.is_empty(), "{:?}", r.diagnostics.warnings);
+}
+
+/// Records the thread each extraction runs on.
+struct WhichThread;
+static THREADS: std::sync::Mutex<Vec<std::thread::ThreadId>> = std::sync::Mutex::new(Vec::new());
+impl Extractor for WhichThread {
+    fn meta(&self) -> &'static ExtractorMeta {
+        static META: ExtractorMeta = ExtractorMeta {
+            id: "test.which_thread",
+            version: 1,
+            cost: Cost::Header,
+            priority: 0,
+            formats: &[FormatSpec {
+                id: "which_thread",
+                name: "Which thread",
+                family: "test",
+                mimes: &["application/x-which-thread"],
+                extensions: &["which"],
+                magic: &[Magic::prefix(b"WHCH")],
+                parent: None,
+            }],
+        };
+        &META
+    }
+    fn extract(&self, _: &mut dyn Source, _: &mut Context<'_>) -> Result<(), ExtractError> {
+        THREADS.lock().unwrap().push(std::thread::current().id());
+        Ok(())
+    }
+}
+
+#[test]
+fn one_worker_thread_serves_successive_files() {
+    let limits = Limits::default().file_timeout(Some(Duration::from_secs(10)));
+    let engine = Engine::builder().registry(Registry::builtin_analyzers().with(WhichThread)).limits(limits).build();
+    std::thread::spawn(move || {
+        for _ in 0..3 {
+            engine.extract_bytes(Some("a.which"), b"WHCH".to_vec());
+        }
+    })
+    .join()
+    .unwrap();
+    let seen = THREADS.lock().unwrap().clone();
+    assert_eq!(seen.len(), 3);
+    assert!(seen.iter().all(|t| *t == seen[0]), "{seen:?}");
 }
 
 #[test]
