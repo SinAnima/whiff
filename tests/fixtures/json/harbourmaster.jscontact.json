@@ -1,0 +1,15 @@
+{
+  "@type": "Card",
+  "version": "1.0",
+  "uid": "urn:uuid:5a17e2e0-0000-4000-8000-00000000000b",
+  "kind": "individual",
+  "name": {
+    "full": "Ana Lighthouse"
+  },
+  "emails": {
+    "e1": {
+      "address": "ana@saltmere.example"
+    }
+  },
+  "phones": {}
+}

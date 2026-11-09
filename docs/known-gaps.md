@@ -665,3 +665,31 @@ uncompressed (and ALZip's deflated entries); nothing else is decompressed.
   PCL XL and PostScript jobs give their language only.
 - **Illustrator:** the PDF-compatible part is read as a PDF; the native
   artwork in `/AIPrivateData` (compressed) is counted, not decoded.
+
+### Data and configuration files (long tail, batch 5)
+
+- **Privacy:** bank statements give the last four characters of each
+  account; EDI party ids, Drive shortcut accounts and a location
+  history's rounded bounding box appear only without strict privacy.
+  GEDCOM, LDIF and JSContact give counts and attribute names, never
+  people's names or details. Terraform state lists resource types and
+  output names, never attribute values. Amounts and balances are never
+  reported.
+- **QIF:** dates are kept as written, since QIF does not say whether the
+  day or the month comes first.
+- **Ledger / Beancount:** read line by line; includes, automated
+  transactions and periodic transactions are not expanded, and amounts
+  are not checked to balance.
+- **EDI:** segments are split on the declared separators; loops and
+  segment contents beyond the envelope and the transaction-set ids are
+  not interpreted.
+- **GTFS:** only the files at the feed's root; frequencies, fares and
+  calendar exceptions are not read.
+- **Notebooks:** Mathematica cells are classified by their style string;
+  Livebook dependencies come from `Mix.install`. Databricks `.dbc`
+  archives are plain ZIP files.
+- **Fixed-width tables, XDR:** not recognised (no reliable signature);
+  they read as plain text or binary data.
+- **Known schemas:** recognised inside the JSON / YAML report
+  (`format.json.known_schema`); a Scratch `.sb3` is a ZIP whose
+  `project.json` is recognised as it is handed on.

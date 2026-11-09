@@ -1,0 +1,14 @@
+{
+  "@type": "Event",
+  "uid": "5a17e2e0-0000-4000-8000-00000000000a",
+  "title": "High tide at Saltmere",
+  "start": "2025-09-01T06:12:00",
+  "timeZone": "Europe/London",
+  "duration": "PT1H",
+  "recurrenceRules": [
+    {
+      "@type": "RecurrenceRule",
+      "frequency": "daily"
+    }
+  ]
+}

@@ -14,3 +14,8 @@ Names, e-mail addresses (`example.org`, `example.com`) and phone numbers are fic
 | `template.yaml` | Written for whiff's test suite | CC0-1.0 |
 | `pipeline.gitlab-ci.yml` | Written for whiff's test suite | CC0-1.0 |
 | `environment.yml` | Written for whiff's test suite | CC0-1.0 |
+| `asyncapi.yaml` | Written for whiff's test suite (`scripts/fixtures/legacy.sh`, step configs) | CC0-1.0 |
+| `dependabot.yml` | Written for whiff's test suite (`scripts/fixtures/legacy.sh`, step configs) | CC0-1.0 |
+| `harbour.pre-commit-config.yaml` | Written for whiff's test suite (`scripts/fixtures/legacy.sh`, step configs) | CC0-1.0 |
+| `kustomization.yaml` | Written for whiff's test suite (`scripts/fixtures/legacy.sh`, step configs) | CC0-1.0 |
+| `serverless.yml` | Written for whiff's test suite (`scripts/fixtures/legacy.sh`, step configs) | CC0-1.0 |

@@ -1,0 +1,21 @@
+{
+  "name": "Saltmere tides",
+  "id": "2KZAA0000",
+  "config": {
+    "looknfeel": "default"
+  },
+  "paragraphs": [
+    {
+      "text": "%md\n# Saltmere tides\nHigh water 06:12.",
+      "config": {}
+    },
+    {
+      "text": "%python\nprint('The bell rings at high tide.')",
+      "config": {}
+    },
+    {
+      "text": "%sql\nselect boat, berth from berths",
+      "config": {}
+    }
+  ]
+}

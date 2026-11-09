@@ -1,0 +1,183 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide-table.gsheet",
+    "stem": "tide-table",
+    "extension": "gsheet"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.55,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 274
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "personal_data": {
+      "email": 1
+    }
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 274,
+    "entropy": 3.96,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 274,
+      "chars": 274,
+      "words": 10,
+      "lines": 6,
+      "max_line_length": 98,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "319625ddc6c2336072bb3c80194ab4153fe29f897a4eef2a4d774dfceaaa086c",
+    "blake3": "d73ca435e1786d193eabcf6eca6c5dc94ec23439a9e9318d194b1da3713ee1d6"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "url",
+        "doc_id",
+        "resource_id",
+        "email"
+      ],
+      "key_count": 4,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.url": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "https://docs.google.com/spreadsheets/d/SALTMERE0000000000000…"
+            ]
+          },
+          "$.doc_id": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "SALTMERE0000000000000000000000000000000000"
+            ]
+          },
+          "$.resource_id": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "spreadsheet:SALTMERE0000000000000000000000000000000000"
+            ]
+          },
+          "$.email": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "[redacted:email]"
+            ]
+          }
+        },
+        "max_depth": 1
+      },
+      "known_schema": {
+        "id": "google_drive_shortcut",
+        "name": "Google Drive shortcut",
+        "kind": "gsheet",
+        "doc_id": "SALTMERE0000000000000000000000000000000000",
+        "url": "https://docs.google.com/spreadsheets/d/SALTMERE0000000000000000000000000000000000/edit"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

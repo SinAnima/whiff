@@ -18,7 +18,7 @@
 #
 #     scripts/fixtures/legacy.sh [STEP ...]
 #         (dos mac encoded wim bundles backups debug exec scripts writing books
-#          packages legacy_docs)
+#          packages legacy_docs configs languages records)
 #     podman run --rm -v "$PWD:/whiff" -w /whiff whiff-legacy \
 #         python3 scripts/fixtures/legacy_oracle.py expect tests/fixtures > target/legacy-expect.json
 #     python3 scripts/fixtures/legacy_oracle.py check target/legacy-expect.json
@@ -34,6 +34,7 @@
 #     RUN apt-get install -y --no-install-recommends clang lld llvm device-tree-compiler
 #     RUN apt-get install -y --no-install-recommends bibutils abiword gnumeric lyx pandoc libchm-bin libwpd-tools libwps-tools
 #     RUN apt-get install -y --no-install-recommends fp-utils ghostscript
+#     RUN pip install --no-cache-dir ofxparse mt-940 python-gedcom tap.py prometheus_client beancount
 #
 # (nomarch, unar, file and acefile are for legacy_oracle.py; gcc builds
 # acefile's optional C module.)
@@ -150,7 +151,7 @@ for d in "$work"/*/; do
     id=$(basename "$d")
     [ "$id" = _work ] || [ "$id" = host ] || [ "$id" = aar ] || [ -z "$(ls -A "$d")" ] && continue
     # Shared with other fixture scripts: its SOURCE.md is kept by hand.
-    [ "$id" = pdf ] && continue
+    [ "$id" = pdf ] || [ "$id" = json ] || [ "$id" = yaml ] && continue
     name=$(python3 -c 'import json,sys; print({f["id"]: f["name"] for f in json.load(open(sys.argv[1]))}[sys.argv[2]])' "$work/formats.json" "$id")
     source_md "$id" "$name"
 done

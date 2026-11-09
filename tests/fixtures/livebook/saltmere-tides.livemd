@@ -1,0 +1,19 @@
+# Saltmere tides
+
+```elixir
+Mix.install([{:kino, "~> 0.14"}, {:explode, "~> 0.1"}])
+```
+
+## High water
+
+The bell rings at high tide.
+
+```elixir
+high_water = ~T[06:12:00]
+```
+
+## Berths
+
+```elixir
+Kino.DataTable.new([%{boat: "Grey Tern", berth: 5}])
+```

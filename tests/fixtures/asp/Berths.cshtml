@@ -1,0 +1,13 @@
+@using Saltmere.Harbour.Models
+@model BerthListModel
+@* Saltmere berth list *@
+<h1>@Model.HarbourName</h1>
+<ul>
+@foreach (var boat in Model.Boats)
+{
+    <li>@boat.Name at berth @boat.Berth</li>
+}
+</ul>
+@section Scripts {
+    <script src="~/js/tides.js"></script>
+}

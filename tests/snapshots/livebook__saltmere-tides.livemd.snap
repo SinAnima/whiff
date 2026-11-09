@@ -1,0 +1,137 @@
+---
+source: src/formats/data/records.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.livemd",
+    "stem": "saltmere-tides",
+    "extension": "livemd"
+  },
+  "identification": {
+    "format": "livebook",
+    "name": "Livebook notebook",
+    "mime": "text/x-livebook",
+    "family": "code.notebook",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.records"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 253
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 253,
+    "entropy": 5.044,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 253,
+      "chars": 253,
+      "words": 34,
+      "lines": 19,
+      "max_line_length": 55,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 6
+    }
+  },
+  "integrity": {
+    "sha256": "1089a5be5ef818459bbb9a7be6d2826e36f6be426eaafbd61c179cbb4b5c9180",
+    "blake3": "6bb36a18d4d8b71a5cc89e105af9819207a57cb7011dc172669de39ff0275961"
+  },
+  "content": {
+    "title": "Saltmere tides",
+    "outline": [
+      {
+        "level": 2,
+        "text": "High water"
+      },
+      {
+        "level": 2,
+        "text": "Berths"
+      }
+    ],
+    "excerpt": "The bell rings at high tide."
+  },
+  "metadata": {},
+  "format": {
+    "livebook": {
+      "sections": [
+        "High water",
+        "Berths"
+      ],
+      "elixir_cells": 3,
+      "dependencies": [
+        "kino",
+        "explode"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.records",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

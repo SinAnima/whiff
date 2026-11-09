@@ -1,0 +1,22 @@
+{
+  "locations": [
+    {
+      "latitudeE7": 500012345,
+      "longitudeE7": -51234567,
+      "accuracy": 20,
+      "timestamp": "2025-09-01T08:00:00Z"
+    },
+    {
+      "latitudeE7": 500022345,
+      "longitudeE7": -51244567,
+      "accuracy": 15,
+      "timestamp": "2025-09-01T12:00:00Z"
+    },
+    {
+      "latitudeE7": 500032345,
+      "longitudeE7": -51254567,
+      "accuracy": 18,
+      "timestampMs": "1756742400000"
+    }
+  ]
+}

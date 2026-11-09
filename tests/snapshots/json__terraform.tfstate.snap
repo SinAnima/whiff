@@ -1,0 +1,385 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "terraform.tfstate",
+    "stem": "terraform",
+    "extension": "tfstate"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.55,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1417
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1417,
+    "entropy": 3.993,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1417,
+      "chars": 1417,
+      "words": 102,
+      "lines": 65,
+      "max_line_length": 70,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "6739ec5725b2fc66dcd16dc551dfaa6c27f55ed14c465dcbe6d067d228192ef4",
+    "blake3": "56bd2f9ee7a008b7a72cb3d9c5fe9895273b55333c5ab9d0979d6a159556bcdd"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "version",
+        "terraform_version",
+        "serial",
+        "lineage",
+        "outputs",
+        "resources"
+      ],
+      "key_count": 6,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.version": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              4
+            ]
+          },
+          "$.terraform_version": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "1.9.5"
+            ]
+          },
+          "$.serial": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              12
+            ]
+          },
+          "$.lineage": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "5a17e2e0-0000-4000-8000-000000000009"
+            ]
+          },
+          "$.outputs": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.outputs.bucket": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.outputs.bucket.value": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "saltmere-charts"
+            ]
+          },
+          "$.outputs.bucket.type": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "string"
+            ]
+          },
+          "$.resources": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              3,
+              3
+            ]
+          },
+          "$.resources[]": {
+            "types": [
+              "object"
+            ],
+            "count": 3
+          },
+          "$.resources[].mode": {
+            "types": [
+              "string"
+            ],
+            "count": 3,
+            "examples": [
+              "managed",
+              "data"
+            ]
+          },
+          "$.resources[].type": {
+            "types": [
+              "string"
+            ],
+            "count": 3,
+            "examples": [
+              "aws_s3_bucket",
+              "aws_iam_user",
+              "aws_region"
+            ]
+          },
+          "$.resources[].name": {
+            "types": [
+              "string"
+            ],
+            "count": 3,
+            "examples": [
+              "charts",
+              "harbourmaster",
+              "here"
+            ]
+          },
+          "$.resources[].provider": {
+            "types": [
+              "string"
+            ],
+            "count": 3,
+            "examples": [
+              "provider[\"registry.terraform.io/hashicorp/aws\"]"
+            ]
+          },
+          "$.resources[].instances": {
+            "types": [
+              "array"
+            ],
+            "count": 3,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.resources[].instances[]": {
+            "types": [
+              "object"
+            ],
+            "count": 3
+          },
+          "$.resources[].instances[].schema_version": {
+            "types": [
+              "integer"
+            ],
+            "count": 2,
+            "examples": [
+              0
+            ]
+          },
+          "$.resources[].instances[].attributes": {
+            "types": [
+              "object"
+            ],
+            "count": 3
+          },
+          "$.resources[].instances[].attributes.bucket": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "saltmere-charts"
+            ]
+          },
+          "$.resources[].instances[].attributes.id": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "saltmere-charts"
+            ]
+          },
+          "$.resources[].instances[].sensitive_attributes": {
+            "types": [
+              "array"
+            ],
+            "count": 2,
+            "items": [
+              0,
+              1
+            ]
+          },
+          "$.resources[].instances[].attributes.name": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "harbourmaster",
+              "eu-west-2"
+            ]
+          },
+          "$.resources[].instances[].sensitive_attributes[]": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.resources[].instances[].sensitive_attributes[][]": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.resources[].instances[].sensitive_attributes[][].type": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "get_attr"
+            ]
+          },
+          "$.resources[].instances[].sensitive_attributes[][].value": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "password"
+            ]
+          }
+        },
+        "max_depth": 8
+      },
+      "known_schema": {
+        "id": "terraform_state",
+        "name": "Terraform state",
+        "state_version": 4,
+        "terraform_version": "1.9.5",
+        "serial": 12,
+        "resources": 3,
+        "instances": 3,
+        "resource_types": {
+          "aws_iam_user": 1,
+          "aws_s3_bucket": 1
+        },
+        "data_sources": 1,
+        "providers": [
+          "registry.terraform.io/hashicorp/aws"
+        ],
+        "outputs": [
+          "bucket"
+        ],
+        "instances_with_sensitive_attributes": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

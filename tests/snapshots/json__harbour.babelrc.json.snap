@@ -1,0 +1,207 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.babelrc.json",
+    "stem": "harbour.babelrc",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 198
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 198,
+    "entropy": 4.133,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 198,
+      "chars": 198,
+      "words": 17,
+      "lines": 14,
+      "max_line_length": 37,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "f188ece94202152bfc4d858cfed8ec0e6b3edbc39e69587dbc954bc016ebc21e",
+    "blake3": "b9285892a4d2fc8768db3a67f4e0b277a8947531c14471c6a07820a8158e3570"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "presets",
+        "plugins"
+      ],
+      "key_count": 2,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.presets": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.presets[]": {
+            "types": [
+              "array",
+              "string"
+            ],
+            "count": 2,
+            "items": [
+              2,
+              2
+            ],
+            "examples": [
+              "@babel/preset-typescript"
+            ]
+          },
+          "$.presets[][]": {
+            "types": [
+              "object",
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "@babel/preset-env"
+            ]
+          },
+          "$.presets[][].targets": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "defaults"
+            ]
+          },
+          "$.plugins": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.plugins[]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "@babel/plugin-transform-runtime"
+            ]
+          }
+        },
+        "max_depth": 4
+      },
+      "known_schema": {
+        "id": "babel",
+        "name": "Babel configuration",
+        "presets": [
+          "@babel/preset-env",
+          "@babel/preset-typescript"
+        ],
+        "plugins": [
+          "@babel/plugin-transform-runtime"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

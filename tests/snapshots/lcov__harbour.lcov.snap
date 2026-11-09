@@ -1,0 +1,134 @@
+---
+source: src/formats/data/records.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.lcov",
+    "stem": "harbour",
+    "extension": "lcov"
+  },
+  "identification": {
+    "format": "lcov",
+    "name": "LCOV coverage trace",
+    "mime": "text/x-lcov",
+    "family": "data.csv",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.records"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 243
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 243,
+    "entropy": 4.768,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 243,
+      "chars": 243,
+      "words": 25,
+      "lines": 25,
+      "max_line_length": 23,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "25e1b4f6faa9f0ed4dcf6a0f95335b741eed7f0c31d30b6df93a3ff21b0a97de",
+    "blake3": "750b679b558a88eaa056db632b8546b82c38d96bace05cae3b29d5d63fcc9dea"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "lcov": {
+      "files": 2,
+      "lines": {
+        "found": 4,
+        "hit": 2,
+        "percent": 50.0
+      },
+      "functions": {
+        "found": 2,
+        "hit": 1,
+        "percent": 50.0
+      },
+      "branches": {
+        "found": 2,
+        "hit": 2,
+        "percent": 100.0
+      },
+      "test_names": [
+        "harbour"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.records",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

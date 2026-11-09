@@ -1,0 +1,17 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "url": "berths.csv",
+  "dc:title": "Saltmere berths",
+  "tableSchema": {
+    "columns": [
+      {
+        "name": "boat",
+        "datatype": "string"
+      },
+      {
+        "name": "berth",
+        "datatype": "integer"
+      }
+    ]
+  }
+}

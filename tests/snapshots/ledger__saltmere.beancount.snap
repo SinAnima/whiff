@@ -1,0 +1,134 @@
+---
+source: src/formats/data/records.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere.beancount",
+    "stem": "saltmere",
+    "extension": "beancount"
+  },
+  "identification": {
+    "format": "ledger",
+    "name": "Ledger / hledger / Beancount journal",
+    "mime": "text/x-ledger",
+    "family": "data.csv",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.records"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 497
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 497,
+    "entropy": 4.955,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 497,
+      "chars": 497,
+      "words": 49,
+      "lines": 19,
+      "max_line_length": 42,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "172e3d57d99ea9767687fe53c69621091f5b417d562249a6781b3d1361443129",
+    "blake3": "fdf414a8015ddb72b7babce99e7ffb732fdf3728b159bae3ead91a74a3bca741"
+  },
+  "content": {
+    "title": "Saltmere harbour accounts"
+  },
+  "metadata": {},
+  "format": {
+    "ledger": {
+      "dialect": "Beancount",
+      "title": "Saltmere harbour accounts",
+      "transactions": 3,
+      "accounts": 4,
+      "top_level_accounts": [
+        "Assets",
+        "Equity",
+        "Expenses",
+        "Income"
+      ],
+      "commodities": [
+        "GBP"
+      ],
+      "date_range": [
+        "2025-08-01",
+        "2025-08-15"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.records",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

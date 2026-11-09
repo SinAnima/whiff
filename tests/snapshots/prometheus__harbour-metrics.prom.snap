@@ -1,0 +1,132 @@
+---
+source: src/formats/data/records.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-metrics.prom",
+    "stem": "harbour-metrics",
+    "extension": "prom"
+  },
+  "identification": {
+    "format": "prometheus",
+    "name": "Prometheus / OpenMetrics exposition",
+    "mime": "text/plain; version=0.0.4",
+    "family": "data.csv",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.records"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 549
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 549,
+    "entropy": 4.721,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 549,
+      "chars": 549,
+      "words": 47,
+      "lines": 13,
+      "max_line_length": 56,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "563e8b1b8af2972be6783e454b3db571e25c143a1139b345fd678f410e780432",
+    "blake3": "d87862e664d64be294f93230f2aca16750a700baa7c541bc77229d805fd71cd0"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "prometheus": {
+      "dialect": "Prometheus text 0.0.4",
+      "metric_families": 3,
+      "types": {
+        "counter": 1,
+        "gauge": 1,
+        "histogram": 1
+      },
+      "samples": 7,
+      "metric_names": [
+        "harbour_bell_rings_total",
+        "harbour_boats_moored",
+        "harbour_tide_height_metres"
+      ],
+      "label_keys": [
+        "le",
+        "quay"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.records",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

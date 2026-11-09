@@ -317,6 +317,34 @@ document format in the catalogue.
     driver, data type);
   - the PDF reader flags Illustrator's PDF-compatible files (the
     `/Illustrator` page piece, `/AIPrivateData` streams).
+- **Data and configuration files** (`common`, batch 5 parts a and b,
+  in-house, no new crates):
+  - new `data.records`: LCOV traces (lines, functions and branches found /
+    hit), TAP output, Prometheus / OpenMetrics expositions, bank
+    statements (OFX / QFX, QIF, MT940, CAMT.052 / .053: institution,
+    account type, the last four characters of the account, currency,
+    transactions, date range), Ledger / hledger / Beancount journals, EDI
+    X12 and EDIFACT interchanges (message types; party ids only without
+    strict privacy), GEDCOM (counts, the program, the range of years; no
+    names), GTFS feeds, fortune files and `strfile` indexes, LDIF (entries,
+    object classes, attribute names; no values), Mathematica and Livebook
+    notebooks;
+  - known schemas in JSON and YAML: Terraform state (resources, providers,
+    outputs; no attribute values), Frictionless data packages and CSVW,
+    dbt artifacts, ESLint / Prettier / Babel configs, Google Takeout
+    location history (counts, date range; a bounding box rounded to 0.1°
+    only without strict privacy), Google Drive shortcuts, Scratch
+    projects, VS Code launch / tasks / snippets, Kustomize, Serverless,
+    Dependabot, Renovate, pre-commit, AsyncAPI, JSCalendar, JSContact
+    (which properties are filled, not their values) and Zeppelin notes;
+  - `code.source`: ERB, JSP, ASP / ASP.NET / Razor, EJS, PRQL and Cypher
+    (server pages are claimed from the HTML reader by their directive or
+    extension).
+  Seventeen more rows are credited to readers that already handle them
+  (keyed archives, provisioning profiles, detached signatures, BSON
+  dumps, NetCDF geodata, Unreal / Unity scenes, Office add-ins, GIFV,
+  SolidWorks, memory dumps, encrypted volumes, Maildir and Usenet
+  messages, format-patch mails, MSU, bottles, AAX).
 - **Detection:** `.csproj`, `.fsproj` and `.vbproj` files moved from the
   generic XML reader to the manifest reader; `build.gradle` is a Gradle
   manifest, not Groovy source. A VCD header now needs a `$end` (Smithy
@@ -330,7 +358,7 @@ document format in the catalogue.
 - **Catalogue:** `data/coverage.tsv` credits rows that another family's
   extractor handles (SVG, LaTeX, MHTML, sitemaps, `.tar.*`, torrents,
   known JSON and YAML schemas, Snort rules, dbt models …); an unknown row
-  or format there is an error. 606 → 674 → 767 → 824 → 842 → 855 → 870 → 887 of 1008 formats
+  or format there is an error. 606 → 674 → 767 → 824 → 842 → 855 → 870 → 887 → 934 of 1008 formats
   have an extractor.
 - **Shared code:** the Unity class-ID names (from the Unity YAML reader)
   and the strings of the pickle walker are reused by the games readers.
@@ -372,7 +400,8 @@ document format in the catalogue.
   `zpaq l`, hexbin, uudecode, the shar scripts run in a scratch folder,
   Makeself's `--info`, `wimlib-imagex info`, `jmod list`, `restore -t`,
   llvm-pdbutil, llvm-dwarfdump, llvm-objdump, fdtget, bibutils, libwps
-  `wks2csv`, chmlib `enum_chmLib`, libmagic and the Python standard library.
+  `wks2csv`, chmlib `enum_chmLib`, ofxparse, mt-940, python-gedcom, tap.py,
+  prometheus_client, beancount, libmagic and the Python standard library.
 - **Speed:** detection no longer guesses the character set of every
   file several times. The text sniffers (playlists, cue sheets, subtitles,
   text scores) read UTF-8 and binary heads directly and run the guess only

@@ -1,0 +1,216 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "renovate.json",
+    "stem": "renovate",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 179
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 179,
+    "entropy": 4.768,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 179,
+      "chars": 179,
+      "words": 11,
+      "lines": 5,
+      "max_line_length": 71,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "5c244292c2688e596ca208a3d694169feec29da6bb5819b78e1004d1e6595b69",
+    "blake3": "c6832a248a077f595e1b80a1c527a6a91871801b93dba4ff1afea11c1c736a5d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "$schema",
+        "extends",
+        "packageRules"
+      ],
+      "key_count": 3,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.[\"$schema\"]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "https://docs.renovatebot.com/renovate-schema.json"
+            ]
+          },
+          "$.extends": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.extends[]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "config:recommended"
+            ]
+          },
+          "$.packageRules": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.packageRules[]": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.packageRules[].matchPackagePatterns": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.packageRules[].matchPackagePatterns[]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "*"
+            ]
+          },
+          "$.packageRules[].groupName": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "all"
+            ]
+          }
+        },
+        "max_depth": 4
+      },
+      "known_schema": {
+        "id": "renovate",
+        "name": "Renovate configuration",
+        "extends": [
+          "config:recommended"
+        ],
+        "package_rules": 1,
+        "schedule": null
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -31,6 +31,10 @@ pub(crate) fn detect(docs: &[Value], name: Option<&str>, cx: &mut Context<'_>) -
         github_actions,
         helm_chart,
     ];
+    // A `kustomization.yaml` has `apiVersion` / `kind` too.
+    if let Some(v) = kustomize(first, &name, cx) {
+        return Some(v);
+    }
     if let Some(v) = kubernetes(docs) {
         return Some(v);
     }
@@ -51,7 +55,475 @@ pub(crate) fn detect(docs: &[Value], name: Option<&str>, cx: &mut Context<'_>) -
     if let Some(v) = conda(first, &name) {
         return Some(v);
     }
+    let more: [Detector; 16] = [
+        terraform_state,
+        data_package,
+        dbt_artifact,
+        js_tool_config,
+        takeout_locations,
+        drive_shortcut,
+        scratch_project,
+        vscode_config,
+        kustomize,
+        serverless,
+        dependency_bots,
+        pre_commit,
+        asyncapi,
+        jscalendar,
+        jscontact,
+        zeppelin,
+    ];
+    for d in more {
+        if let Some(v) = d(first, &name, cx) {
+            return Some(v);
+        }
+    }
     json_ld(first).or_else(|| tsconfig(first, &name))
+}
+
+/// Count of each value of `key` across `items`.
+fn histogram<'v>(items: impl Iterator<Item = &'v Value>, key: &str) -> BTreeMap<String, u64> {
+    let mut out = BTreeMap::new();
+    for i in items {
+        if let Some(k) = i.get(key).and_then(Value::as_str) {
+            *out.entry(k.to_string()).or_default() += 1;
+        }
+    }
+    out
+}
+
+/// Terraform state: resources by type, providers, serial and versions.
+/// Attribute values (secrets, ids, addresses) are never copied.
+fn terraform_state(v: &Value, _: &str, _: &mut Context<'_>) -> Option<Value> {
+    v.get("terraform_version")?;
+    let resources = v.get("resources")?.as_array()?;
+    let mut providers: Vec<String> = resources
+        .iter()
+        .filter_map(|r| s(r, &["provider"]))
+        .map(|p| p.trim_start_matches("provider[\"").split('"').next().unwrap_or(p).to_string())
+        .collect();
+    providers.sort();
+    providers.dedup();
+    let instances: usize = resources.iter().map(|r| len(r.get("instances"))).sum();
+    let sensitive = resources
+        .iter()
+        .flat_map(|r| r.get("instances").and_then(Value::as_array).into_iter().flatten())
+        .filter(|i| i.get("sensitive_attributes").and_then(Value::as_array).is_some_and(|a| !a.is_empty()))
+        .count();
+    Some(json!({
+        "id": "terraform_state",
+        "name": "Terraform state",
+        "state_version": v.get("version"),
+        "terraform_version": v.get("terraform_version"),
+        "serial": v.get("serial"),
+        "resources": resources.len(),
+        "instances": instances,
+        "resource_types": histogram(resources.iter().filter(|r| s(r, &["mode"]) != Some("data")), "type"),
+        "data_sources": resources.iter().filter(|r| s(r, &["mode"]) == Some("data")).count(),
+        "providers": providers,
+        "outputs": keys(v.get("outputs"), 100),
+        "instances_with_sensitive_attributes": sensitive,
+    }))
+}
+
+/// Frictionless data packages and CSV on the Web (CSVW) metadata.
+fn data_package(v: &Value, name: &str, cx: &mut Context<'_>) -> Option<Value> {
+    let csvw = v.get("@context").is_some_and(|c| c.to_string().contains("www.w3.org/ns/csvw"));
+    if csvw {
+        let tables = v.get("tables").and_then(Value::as_array).map_or(1, Vec::len);
+        let columns = |t: &Value| len(get(t, &["tableSchema", "columns"]));
+        let cols: usize =
+            v.get("tables").and_then(Value::as_array).map_or_else(|| columns(v), |a| a.iter().map(columns).sum());
+        title(cx, "csvw", s(v, &["dc:title"]).or_else(|| s(v, &["title"])), None);
+        return Some(
+            json!({ "id": "csvw", "name": "CSV on the Web metadata", "tables": tables, "columns": cols, "url": v.get("url") }),
+        );
+    }
+    let resources = v.get("resources")?.as_array()?;
+    if !name.starts_with("datapackage")
+        && v.get("profile").is_none()
+        && !resources.iter().any(|r| r.get("schema").is_some())
+    {
+        return None;
+    }
+    title(cx, "datapackage", s(v, &["title"]), s(v, &["description"]));
+    let fields: usize = resources.iter().map(|r| len(get(r, &["schema", "fields"]))).sum();
+    Some(json!({
+        "id": "datapackage",
+        "name": "Frictionless data package",
+        "package": v.get("name"),
+        "profile": v.get("profile"),
+        "resources": resources.len(),
+        "resource_names": resources.iter().filter_map(|r| s(r, &["name"])).take(50).collect::<Vec<_>>(),
+        "fields": fields,
+        "licenses": v.get("licenses").and_then(Value::as_array).map(|a| a.iter().filter_map(|l| s(l, &["name"])).collect::<Vec<_>>()),
+    }))
+}
+
+/// dbt artifacts: `manifest.json` (models, sources, tests …) and `catalog.json`.
+fn dbt_artifact(v: &Value, _: &str, _: &mut Context<'_>) -> Option<Value> {
+    let schema = s(v, &["metadata", "dbt_schema_version"])?;
+    let kind = schema.rsplit('/').next().unwrap_or(schema).split('.').next().unwrap_or("");
+    let nodes = v.get("nodes").and_then(Value::as_object);
+    let by_type = nodes.map(|n| histogram(n.values(), "resource_type")).unwrap_or_default();
+    Some(json!({
+        "id": "dbt_artifact",
+        "name": "dbt artifact",
+        "artifact": kind,
+        "dbt_version": s(v, &["metadata", "dbt_version"]),
+        "adapter": s(v, &["metadata", "adapter_type"]),
+        "nodes": nodes.map_or(0, Map::len),
+        "node_types": by_type,
+        "sources": len(v.get("sources")),
+        "exposures": len(v.get("exposures")),
+        "metrics": len(v.get("metrics")),
+    }))
+}
+
+/// ESLint, Prettier and Babel configuration files.
+fn js_tool_config(v: &Value, name: &str, _: &mut Context<'_>) -> Option<Value> {
+    let o = obj(v)?;
+    let list = |k: &str| -> Vec<String> {
+        match v.get(k) {
+            Some(Value::String(s)) => vec![s.clone()],
+            Some(Value::Array(a)) => a
+                .iter()
+                .filter_map(|x| {
+                    x.as_str().map(str::to_string).or_else(|| x.as_array()?.first()?.as_str().map(str::to_string))
+                })
+                .collect(),
+            _ => Vec::new(),
+        }
+    };
+    if name.contains("eslintrc")
+        || (o.contains_key("rules") && (o.contains_key("extends") || o.contains_key("parserOptions")))
+    {
+        return Some(json!({
+            "id": "eslint",
+            "name": "ESLint configuration",
+            "extends": list("extends"),
+            "plugins": list("plugins"),
+            "rules": len(v.get("rules")),
+            "env": keys(v.get("env"), 20),
+            "parser": v.get("parser"),
+        }));
+    }
+    if name.contains("babelrc") || name.starts_with("babel.config") {
+        return Some(
+            json!({ "id": "babel", "name": "Babel configuration", "presets": list("presets"), "plugins": list("plugins") }),
+        );
+    }
+    if name.contains("prettierrc") {
+        return Some(
+            json!({ "id": "prettier", "name": "Prettier configuration", "options": o.keys().take(30).cloned().collect::<Vec<_>>() }),
+        );
+    }
+    None
+}
+
+/// A coordinate in E7 units, rounded to 0.1 degree (a city, not a house).
+#[allow(clippy::cast_precision_loss)]
+fn coarse(e7: i64) -> f64 {
+    ((e7 as f64) / 1e6).round() / 10.0
+}
+
+/// Google Takeout location history: `Records.json` points and the
+/// semantic timeline. Counts and the date range; the bounding box, rounded
+/// to 0.1 degree, only without strict privacy.
+fn takeout_locations(v: &Value, _: &str, cx: &mut Context<'_>) -> Option<Value> {
+    let (kind, items) = if let Some(a) = v.get("locations").and_then(Value::as_array) {
+        ("records", a)
+    } else {
+        ("semantic_timeline", v.get("timelineObjects")?.as_array()?)
+    };
+    if kind == "records" && !items.iter().take(5).any(|p| p.get("latitudeE7").is_some()) {
+        return None;
+    }
+    let mut stamps: Vec<String> = Vec::new();
+    let (mut lat, mut lon) = (Vec::new(), Vec::new());
+    for p in items {
+        let t = s(p, &["timestamp"]).map(str::to_string).or_else(|| {
+            let ms: i64 = s(p, &["timestampMs"])?.parse().ok()?;
+            jiff::Timestamp::from_millisecond(ms).ok().map(|t| t.to_string())
+        });
+        stamps.extend(t);
+        if let (Some(a), Some(b)) =
+            (p.get("latitudeE7").and_then(Value::as_i64), p.get("longitudeE7").and_then(Value::as_i64))
+        {
+            lat.push(a);
+            lon.push(b);
+        }
+    }
+    stamps.sort();
+    let mut out = json!({
+        "id": "google_location_history",
+        "name": "Google Takeout location history",
+        "kind": kind,
+        "entries": items.len(),
+        "date_range": match (stamps.first(), stamps.last()) {
+            (Some(a), Some(b)) => json!([a, b]),
+            _ => Value::Null,
+        },
+    });
+    if !cx.privacy_strict()
+        && let (Some(a), Some(b), Some(c), Some(d)) =
+            (lat.iter().min(), lat.iter().max(), lon.iter().min(), lon.iter().max())
+    {
+        out["bbox_rounded"] = json!([coarse(*c), coarse(*a), coarse(*d), coarse(*b)]);
+    }
+    Some(out)
+}
+
+/// Google Drive desktop shortcuts (`.gdoc`, `.gsheet` …): the document id
+/// and kind; the account e-mail only without strict privacy.
+fn drive_shortcut(v: &Value, name: &str, cx: &mut Context<'_>) -> Option<Value> {
+    let url = s(v, &["url"])?;
+    let kind = name.rsplit('.').next().filter(|e| e.starts_with('g') && e.len() <= 8)?;
+    if !url.contains("google.com") {
+        return None;
+    }
+    let mut out = json!({
+        "id": "google_drive_shortcut",
+        "name": "Google Drive shortcut",
+        "kind": kind,
+        "doc_id": v.get("doc_id").or_else(|| v.get("resource_id")),
+        "url": url,
+    });
+    if !cx.privacy_strict()
+        && let Some(e) = s(v, &["email"])
+    {
+        out["account"] = e.into();
+    }
+    Some(out)
+}
+
+/// Scratch 3 `project.json`: sprites, blocks, extensions, the editor.
+fn scratch_project(v: &Value, _: &str, _: &mut Context<'_>) -> Option<Value> {
+    let targets = v.get("targets")?.as_array()?;
+    let meta = v.get("meta")?;
+    s(meta, &["semver"])?;
+    let blocks: usize = targets.iter().map(|t| len(t.get("blocks"))).sum();
+    Some(json!({
+        "id": "scratch",
+        "name": "Scratch project",
+        "semver": s(meta, &["semver"]),
+        "vm": s(meta, &["vm"]),
+        "sprites": targets.iter().filter(|t| t.get("isStage") != Some(&Value::Bool(true))).count(),
+        "sprite_names": targets.iter().filter(|t| t.get("isStage") != Some(&Value::Bool(true))).filter_map(|t| s(t, &["name"])).take(50).collect::<Vec<_>>(),
+        "blocks": blocks,
+        "costumes": targets.iter().map(|t| len(t.get("costumes"))).sum::<usize>(),
+        "sounds": targets.iter().map(|t| len(t.get("sounds"))).sum::<usize>(),
+        "extensions": v.get("extensions"),
+    }))
+}
+
+/// VS Code `launch.json` / `tasks.json` and `.code-snippets`.
+fn vscode_config(v: &Value, name: &str, _: &mut Context<'_>) -> Option<Value> {
+    if let Some(configs) = v.get("configurations").and_then(Value::as_array) {
+        return Some(json!({
+            "id": "vscode_launch",
+            "name": "VS Code launch configurations",
+            "configurations": configs.len(),
+            "types": histogram(configs.iter(), "type"),
+            "names": configs.iter().filter_map(|c| s(c, &["name"])).take(50).collect::<Vec<_>>(),
+        }));
+    }
+    if let Some(tasks) =
+        v.get("tasks").and_then(Value::as_array).filter(|_| name == "tasks.json" || v.get("version").is_some())
+        && tasks.iter().any(|t| t.get("label").is_some())
+    {
+        return Some(json!({
+            "id": "vscode_tasks",
+            "name": "VS Code tasks",
+            "tasks": tasks.len(),
+            "labels": tasks.iter().filter_map(|t| s(t, &["label"])).take(50).collect::<Vec<_>>(),
+        }));
+    }
+    let o = obj(v)?;
+    let snippet = |x: &Value| x.get("prefix").is_some() && x.get("body").is_some();
+    let ext = std::path::Path::new(name).extension().and_then(|x| x.to_str()).unwrap_or("");
+    if (ext.eq_ignore_ascii_case("code-snippets") || ext.eq_ignore_ascii_case("json"))
+        && !o.is_empty()
+        && o.values().all(snippet)
+    {
+        return Some(json!({
+            "id": "vscode_snippets",
+            "name": "VS Code snippets",
+            "snippets": o.len(),
+            "names": o.keys().take(50).cloned().collect::<Vec<_>>(),
+            "scopes": histogram(o.values(), "scope"),
+        }));
+    }
+    None
+}
+
+/// Kustomize `kustomization.yaml`.
+fn kustomize(v: &Value, name: &str, _: &mut Context<'_>) -> Option<Value> {
+    let kind = s(v, &["kind"]);
+    if kind != Some("Kustomization") && !name.starts_with("kustomization") {
+        return None;
+    }
+    let images: Vec<String> = v
+        .get("images")
+        .and_then(Value::as_array)
+        .map(|a| a.iter().filter_map(|i| s(i, &["name"])).map(str::to_string).collect())
+        .unwrap_or_default();
+    Some(json!({
+        "id": "kustomize",
+        "name": "Kustomize configuration",
+        "resources": len(v.get("resources")),
+        "bases": len(v.get("bases")),
+        "components": len(v.get("components")),
+        "patches": len(v.get("patches")) + len(v.get("patchesStrategicMerge")) + len(v.get("patchesJson6902")),
+        "namespace": v.get("namespace"),
+        "images": images,
+    }))
+}
+
+/// Serverless Framework `serverless.yml`.
+fn serverless(v: &Value, name: &str, _: &mut Context<'_>) -> Option<Value> {
+    let provider = v.get("provider")?;
+    let functions = v.get("functions");
+    if v.get("service").is_none() || (functions.is_none() && !name.starts_with("serverless")) {
+        return None;
+    }
+    Some(json!({
+        "id": "serverless",
+        "name": "Serverless Framework service",
+        "service": v.get("service"),
+        "provider": s(provider, &["name"]).map_or_else(|| provider.clone(), |p| json!(p)),
+        "runtime": s(provider, &["runtime"]),
+        "functions": keys(functions, 100),
+        "plugins": v.get("plugins"),
+    }))
+}
+
+/// Dependabot (`.github/dependabot.yml`) and Renovate (`renovate.json`).
+fn dependency_bots(v: &Value, name: &str, _: &mut Context<'_>) -> Option<Value> {
+    if let Some(updates) = v.get("updates").and_then(Value::as_array)
+        && v.get("version").and_then(Value::as_i64) == Some(2)
+        && updates.iter().any(|u| u.get("package-ecosystem").is_some())
+    {
+        return Some(json!({
+            "id": "dependabot",
+            "name": "Dependabot configuration",
+            "ecosystems": histogram(updates.iter(), "package-ecosystem"),
+            "intervals": updates.iter().filter_map(|u| s(u, &["schedule", "interval"])).collect::<std::collections::BTreeSet<_>>(),
+        }));
+    }
+    let schema = s(v, &["$schema"]).is_some_and(|x| x.contains("renovate"));
+    if schema || name.starts_with("renovate") || name == ".renovaterc" {
+        return Some(json!({
+            "id": "renovate",
+            "name": "Renovate configuration",
+            "extends": v.get("extends"),
+            "package_rules": len(v.get("packageRules")),
+            "schedule": v.get("schedule"),
+        }));
+    }
+    None
+}
+
+/// `.pre-commit-config.yaml`: repositories and hooks.
+fn pre_commit(v: &Value, name: &str, _: &mut Context<'_>) -> Option<Value> {
+    let repos = v.get("repos")?.as_array()?;
+    if !name.starts_with(".pre-commit") && !repos.iter().any(|r| r.get("hooks").is_some() && r.get("repo").is_some()) {
+        return None;
+    }
+    let hooks: Vec<&str> = repos
+        .iter()
+        .flat_map(|r| r.get("hooks").and_then(Value::as_array).into_iter().flatten())
+        .filter_map(|h| s(h, &["id"]))
+        .collect();
+    Some(json!({
+        "id": "pre_commit",
+        "name": "pre-commit configuration",
+        "repositories": repos.iter().filter_map(|r| s(r, &["repo"])).take(50).collect::<Vec<_>>(),
+        "hooks": hooks.iter().take(100).collect::<Vec<_>>(),
+    }))
+}
+
+/// AsyncAPI documents: version, title, channels, messages, servers.
+fn asyncapi(v: &Value, _: &str, cx: &mut Context<'_>) -> Option<Value> {
+    let version = s(v, &["asyncapi"])?;
+    title(cx, "asyncapi.info", s(v, &["info", "title"]), s(v, &["info", "description"]));
+    let messages = len(get(v, &["components", "messages"]));
+    Some(json!({
+        "id": "asyncapi",
+        "name": "AsyncAPI document",
+        "asyncapi": version,
+        "api_version": s(v, &["info", "version"]),
+        "channels": keys(v.get("channels"), 100),
+        "operations": len(v.get("operations")),
+        "messages": messages,
+        "servers": keys(v.get("servers"), 50),
+    }))
+}
+
+/// JSCalendar (RFC 8984) objects: events, tasks and groups.
+fn jscalendar(v: &Value, _: &str, cx: &mut Context<'_>) -> Option<Value> {
+    let kind = s(v, &["@type"]).filter(|t| matches!(*t, "Event" | "Task" | "Group"))?;
+    v.get("uid")?;
+    let entries = v.get("entries").and_then(Value::as_array);
+    title(cx, "jscalendar", s(v, &["title"]), s(v, &["description"]));
+    if let Some(st) = s(v, &["start"]) {
+        cx.temporal().source("jscalendar.start").content_date(DateField::Created, st, s(v, &["timeZone"]).is_some());
+    }
+    Some(json!({
+        "id": "jscalendar",
+        "name": "JSCalendar object",
+        "type": kind,
+        "start": v.get("start"),
+        "duration": v.get("duration"),
+        "time_zone": v.get("timeZone"),
+        "entries": entries.map(Vec::len),
+        "entry_types": entries.map(|e| histogram(e.iter(), "@type")),
+        "recurrence": v.get("recurrenceRules").is_some(),
+    }))
+}
+
+/// JSContact (RFC 9553) cards: the kind and which properties are filled,
+/// never the values (they are a person's details).
+fn jscontact(v: &Value, _: &str, _: &mut Context<'_>) -> Option<Value> {
+    if s(v, &["@type"]) != Some("Card") || v.get("version").is_none() {
+        return None;
+    }
+    let filled: Vec<&str> =
+        obj(v)?.keys().map(String::as_str).filter(|k| !k.starts_with('@') && *k != "version").collect();
+    Some(json!({
+        "id": "jscontact",
+        "name": "JSContact card",
+        "version": v.get("version"),
+        "kind": v.get("kind").unwrap_or(&json!("individual")),
+        "properties": filled,
+        "emails": len(v.get("emails")),
+        "phones": len(v.get("phones")),
+        "addresses": len(v.get("addresses")),
+    }))
+}
+
+/// Apache Zeppelin notes (`.zpln`): paragraphs and interpreters.
+fn zeppelin(v: &Value, name: &str, cx: &mut Context<'_>) -> Option<Value> {
+    let paragraphs = v.get("paragraphs")?.as_array()?;
+    let zpln = std::path::Path::new(name).extension().is_some_and(|x| x.eq_ignore_ascii_case("zpln"));
+    if !zpln && v.get("config").is_none() {
+        return None;
+    }
+    let mut interpreters: BTreeMap<String, u64> = BTreeMap::new();
+    for p in paragraphs {
+        if let Some(t) = s(p, &["text"]) {
+            let i = t.trim_start().strip_prefix('%').and_then(|r| r.split_whitespace().next()).unwrap_or("(default)");
+            *interpreters.entry(i.to_string()).or_default() += 1;
+            cx.emit_text(TextRole::Body, t);
+        }
+    }
+    title(cx, "zeppelin", s(v, &["name"]), None);
+    Some(json!({
+        "id": "zeppelin",
+        "name": "Apache Zeppelin note",
+        "paragraphs": paragraphs.len(),
+        "interpreters": interpreters,
+    }))
 }
 
 /// HTTP methods of `OpenAPI` path items.

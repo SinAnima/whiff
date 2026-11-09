@@ -706,6 +706,42 @@ languages! {
         symbols: [("helper", r"\{\{#(\w+)"), ("variable", r"\{\{\{?\s*([\w.]+)\s*\}\}")],
         package: ""
     }
+    "erb" "ERB (Embedded Ruby) template" "text/x-erb" ["erb", "rhtml"] {
+        line: [], block: [("<%#", "%>"), ("<!--", "-->")], quotes: b"",
+        imports: [r#"<%=?\s*render\s*\(?\s*(?:partial:\s*)?["']([^"']+)["']"#],
+        symbols: [("block", r"<%=?\s*(?:content_for|yield)\s*\(?\s*:(\w+)"), ("helper", r"<%=\s*(\w+_tag)\b")],
+        package: ""
+    }
+    "jsp" "JavaServer Pages" "text/x-jsp" ["jsp", "jspx", "jspf"] {
+        line: [], block: [("<%--", "--%>"), ("<!--", "-->")], quotes: b"",
+        imports: [r#"<%@\s*page\s+import\s*=\s*"([^"]+)""#, r#"<%@\s*(?:include|taglib)\s+(?:file|uri)\s*=\s*"([^"]+)""#],
+        symbols: [("taglib", r#"<%@\s*taglib\s+[^%]*prefix\s*=\s*"(\w+)""#), ("bean", r#"<jsp:useBean\s+id\s*=\s*"(\w+)""#)],
+        package: ""
+    }
+    "asp" "ASP / ASP.NET page" "text/x-asp" ["asp", "aspx", "ascx", "ashx", "asmx", "master", "cshtml", "vbhtml", "razor"] {
+        line: [], block: [("<%--", "--%>"), ("@*", "*@"), ("<!--", "-->")], quotes: b"",
+        imports: [r#"<%@\s*Import\s+Namespace\s*=\s*"([^"]+)""#, r"(?m)^\s*@using\s+([\w.]+)"],
+        symbols: [("directive", r"<%@\s*(\w+)"), ("page_model", r"(?m)^\s*@model\s+([\w.<>]+)"), ("section", r"@section\s+(\w+)")],
+        package: ""
+    }
+    "ejs" "EJS (Embedded JavaScript) template" "text/x-ejs" ["ejs"] {
+        line: [], block: [("<%#", "%>"), ("<!--", "-->")], quotes: b"",
+        imports: [r#"<%-?\s*include\s*\(\s*["']([^"']+)["']"#],
+        symbols: [("output", r"<%[=-]\s*([\w.]+)\s*%>")],
+        package: ""
+    }
+    "prql" "PRQL query" "text/x-prql" ["prql"] {
+        line: ["#"], block: [], quotes: b"\"'",
+        imports: [r"(?m)^\s*from\s+(\w+)", r"(?m)^\s*join\s+(?:side:\w+\s+)?(\w+)"],
+        symbols: [("function", r"(?m)^\s*let\s+(\w+)\s*=\s*func"), ("relation", r"(?m)^\s*let\s+(\w+)\s*=\s*\(")],
+        package: ""
+    }
+    "cypher" "Cypher / GQL query" "application/x-cypher-query" ["cypher", "cql", "cyp"] {
+        line: ["//"], block: [("/*", "*/")], quotes: b"\"'`",
+        imports: [r#"(?im)^\s*LOAD\s+CSV\s+(?:WITH\s+HEADERS\s+)?FROM\s+['"]([^'"]+)['"]"#],
+        symbols: [("label", r"\(\s*\w*\s*:(\w+)"), ("relationship", r"\[\s*\w*\s*:(\w+)"), ("index", r"(?i)CREATE\s+(?:INDEX|CONSTRAINT)\s+(\w+)")],
+        package: ""
+    }
     "pug" "Pug template" "text/x-pug" ["pug", "jade"] {
         line: ["//-", "//"], block: [], quotes: b"\"'",
         imports: [r"^\s*(?:include|extends)\s+(\S+)"],
@@ -1002,6 +1038,25 @@ impl Extractor for SourceCode {
         let head = std::str::from_utf8(&probe.head[..probe.head.len().min(1024)])
             .or_else(|e| std::str::from_utf8(&probe.head[..e.valid_up_to()]))
             .ok()?;
+        // Server pages often hold a whole HTML document: the directive or
+        // the extension says which engine renders it.
+        let ext = probe.extension.unwrap_or("");
+        if head.trim_start().starts_with("<%@")
+            || matches!(ext, "jsp" | "jspx" | "jspf" | "aspx" | "ascx" | "asp" | "erb" | "ejs")
+        {
+            let lang = match ext {
+                "jsp" | "jspx" | "jspf" => Some("jsp"),
+                "asp" | "aspx" | "ascx" | "ashx" | "asmx" | "master" => Some("asp"),
+                "erb" | "rhtml" => Some("erb"),
+                "ejs" => Some("ejs"),
+                _ if head.contains("language=\"java\"") || head.contains("<%@ taglib") => Some("jsp"),
+                _ if head.contains("<%@ Page") || head.contains("<%@ Control") => Some("asp"),
+                _ => None,
+            };
+            if let Some(format) = lang {
+                return Some(Sniff { format, confidence: 0.92 });
+            }
+        }
         // `.cue` is also a CUE sheet (which has FILE and TRACK commands).
         if probe.extension == Some("cue") {
             let sheet = head.lines().any(|l| {
@@ -1835,6 +1890,12 @@ mod tests {
         "plsql",
         "go_template",
         "handlebars",
+        "erb",
+        "jsp",
+        "asp",
+        "ejs",
+        "prql",
+        "cypher",
         "pug",
         "vim_script",
         "nushell",

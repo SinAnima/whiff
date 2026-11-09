@@ -1,0 +1,211 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "launch.json",
+    "stem": "launch",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 310
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 310,
+    "entropy": 4.219,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 310,
+      "chars": 310,
+      "words": 29,
+      "lines": 17,
+      "max_line_length": 47,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "8a71eef947100b7fe0223816b5bb76b25e6329581e9242da9c31874198f1dc63",
+    "blake3": "0cc84b2190f7cbe424f3a434d274662d8f07afed11ef31a112b4094c2c87f8f7"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "version",
+        "configurations"
+      ],
+      "key_count": 2,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.version": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "0.2.0"
+            ]
+          },
+          "$.configurations": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.configurations[]": {
+            "types": [
+              "object"
+            ],
+            "count": 2
+          },
+          "$.configurations[].type": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "node",
+              "python"
+            ]
+          },
+          "$.configurations[].request": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "launch"
+            ]
+          },
+          "$.configurations[].name": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "Tide server",
+              "Bell script"
+            ]
+          },
+          "$.configurations[].program": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "${workspaceFolder}/server.js",
+              "${file}"
+            ]
+          }
+        },
+        "max_depth": 3
+      },
+      "known_schema": {
+        "id": "vscode_launch",
+        "name": "VS Code launch configurations",
+        "configurations": 2,
+        "types": {
+          "node": 1,
+          "python": 1
+        },
+        "names": [
+          "Tide server",
+          "Bell script"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

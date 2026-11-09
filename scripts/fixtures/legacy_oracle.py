@@ -433,8 +433,62 @@ def legacy_docs(fx):
                 libmagic(fx, f.relative_to(fx), needle)
 
 
+def records(fx):
+    import io
+
+    def rel(f):
+        return fx / f.relative_to(fx)
+
+    import ofxparse
+    for f in sorted((fx / "ofx").glob("*.ofx")):
+        o = ofxparse.OfxParser.parse(open(f, "rb"))
+        want(rel(f), "format.ofx.transactions", len(o.account.statement.transactions), "ofxparse")
+        want(rel(f), "format.ofx.currency", o.account.statement.currency.upper(), "ofxparse")
+        want(rel(f), "format.ofx.accounts.0", "•" * 8 + o.account.account_id[-4:], "ofxparse")
+    import mt940
+    for f in sorted((fx / "mt940").glob("*.sta")):
+        t = mt940.parse(str(f))
+        want(rel(f), "format.mt940.transactions", len(t), "mt-940")
+    from gedcom.parser import Parser
+    for f in sorted((fx / "gedcom").glob("*.ged")):
+        p = Parser()
+        p.parse_file(str(f), False)
+        root = p.get_root_child_elements()
+        want(rel(f), "format.gedcom.records.individuals", sum(1 for e in root if e.get_tag() == "INDI"), "python-gedcom")
+        want(rel(f), "format.gedcom.records.families", sum(1 for e in root if e.get_tag() == "FAM"), "python-gedcom")
+    import contextlib
+
+    # tap.py warns on stdout about an optional YAML dependency.
+    with contextlib.redirect_stdout(io.StringIO()):
+        from tap.parser import Parser as TapParser
+    for f in sorted((fx / "tap").glob("*")):
+        if f.name == "SOURCE.md":
+            continue
+        with contextlib.redirect_stdout(io.StringIO()):
+            lines = list(TapParser().parse_text(f.read_text()))
+        results = [l for l in lines if l.category == "test"]
+        want(rel(f), "format.tap.passed", sum(1 for r in results if r.ok and not r.skip and not r.todo), "tap.py")
+        want(rel(f), "format.tap.skipped", sum(1 for r in results if r.skip), "tap.py")
+        want(rel(f), "format.tap.todo", sum(1 for r in results if r.todo), "tap.py")
+    from prometheus_client.parser import text_string_to_metric_families
+    for f in sorted((fx / "prometheus").glob("*.prom")):
+        fams = list(text_string_to_metric_families(f.read_text()))
+        want(rel(f), "format.prometheus.metric_families", len(fams), "prometheus_client")
+        # The client names counters without `_total` (OpenMetrics); the
+        # file's `# TYPE` line has it.
+        text = f.read_text()
+        names = [m.name + "_total" if m.type == "counter" and f"# TYPE {m.name}_total" in text else m.name for m in fams]
+        want(rel(f), "format.prometheus.metric_names", sorted(names), "prometheus_client")
+    from beancount import loader
+    for f in sorted((fx / "ledger").glob("*.beancount")):
+        entries, errors, _ = loader.load_file(str(f))
+        txns = [e for e in entries if type(e).__name__ == "Transaction"]
+        want(rel(f), "format.ledger.transactions", len(txns), "beancount")
+
+
 def expect(root):
     fx = Path(root)
+    records(fx)
     legacy_docs(fx)
     packages(fx)
     books(fx)

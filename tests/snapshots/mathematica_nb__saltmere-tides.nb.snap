@@ -1,0 +1,131 @@
+---
+source: src/formats/data/records.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.nb",
+    "stem": "saltmere-tides",
+    "extension": "nb"
+  },
+  "identification": {
+    "format": "mathematica_nb",
+    "name": "Wolfram Mathematica notebook",
+    "mime": "application/vnd.wolfram.mathematica",
+    "family": "code.notebook",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.records"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 470
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 470,
+    "entropy": 5.121,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 470,
+      "chars": 470,
+      "words": 53,
+      "lines": 15,
+      "max_line_length": 115,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "4dd2a33fa9125d2ab83a02b577b9e86cdea8c6893d08f93b4efb6b51854406ef",
+    "blake3": "0df177d2b73e5803b92470be02f614aee1a63d6847a523819e5422ba57b501a0"
+  },
+  "content": {
+    "title": "Saltmere tides",
+    "excerpt": "The bell rings at high tide."
+  },
+  "metadata": {},
+  "format": {
+    "mathematica_nb": {
+      "created_by": "Wolfram Mathematica 14.1",
+      "cells": 5,
+      "cell_styles": {
+        "Input": 1,
+        "Output": 1,
+        "Section": 1,
+        "Text": 1,
+        "Title": 1
+      },
+      "headings": [
+        "Saltmere tides",
+        "High water"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.records",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

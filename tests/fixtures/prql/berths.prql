@@ -1,0 +1,7 @@
+# Boats per berth at Saltmere
+let busy = func min -> (filter count > min)
+from berths
+join side:left boats (==boat_id)
+group berth (aggregate {count = count this})
+sort {-count}
+take 10

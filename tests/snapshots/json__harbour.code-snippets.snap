@@ -1,0 +1,231 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.code-snippets",
+    "stem": "harbour",
+    "extension": "code-snippets"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.55,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 273
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 273,
+    "entropy": 4.355,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 273,
+      "chars": 273,
+      "words": 37,
+      "lines": 15,
+      "max_line_length": 43,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "59e1c324b251381066b6e15bdb8df0d82f5305181d19a385f94f507115d2d31f",
+    "blake3": "dbebad173211eb6fa19803d58a2a66c1265a9b40c2c287f5da26f47d6128733d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "Tide row",
+        "Bell"
+      ],
+      "key_count": 2,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.[\"Tide row\"]": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.[\"Tide row\"].prefix": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "tide"
+            ]
+          },
+          "$.[\"Tide row\"].body": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.[\"Tide row\"].body[]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "| ${1:06:12} | ${2:12:31} |"
+            ]
+          },
+          "$.[\"Tide row\"].description": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "A tide table row"
+            ]
+          },
+          "$.[\"Tide row\"].scope": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "markdown"
+            ]
+          },
+          "$.Bell": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.Bell.prefix": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "bell"
+            ]
+          },
+          "$.Bell.body": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "The bell rings at high tide."
+            ]
+          },
+          "$.Bell.scope": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "markdown"
+            ]
+          }
+        },
+        "max_depth": 3
+      },
+      "known_schema": {
+        "id": "vscode_snippets",
+        "name": "VS Code snippets",
+        "snippets": 2,
+        "names": [
+          "Tide row",
+          "Bell"
+        ],
+        "scopes": {
+          "markdown": 2
+        }
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,8 @@
+; Saltmere harbour ledger
+2025/08/05 Harbour chandlery
+    Expenses:Chandlery          £12.50
+    Assets:Bank:Current
+
+2025/08/15 Mooring refund
+    Assets:Bank:Current        £200.00
+    Income:Moorings

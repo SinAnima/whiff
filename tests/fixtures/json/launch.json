@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Tide server",
+      "program": "${workspaceFolder}/server.js"
+    },
+    {
+      "type": "python",
+      "request": "launch",
+      "name": "Bell script",
+      "program": "${file}"
+    }
+  ]
+}

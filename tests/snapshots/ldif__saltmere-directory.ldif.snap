@@ -1,0 +1,134 @@
+---
+source: src/formats/data/records.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-directory.ldif",
+    "stem": "saltmere-directory",
+    "extension": "ldif"
+  },
+  "identification": {
+    "format": "ldif",
+    "name": "LDIF directory export",
+    "mime": "text/x-ldif",
+    "family": "text.contact",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.records"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 384
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 384,
+    "entropy": 4.746,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 384,
+      "chars": 384,
+      "words": 35,
+      "lines": 19,
+      "max_line_length": 45,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "7e2be70aef2c9e18c91abcfbafacdf2f37aaaa5344a5d4a46ef7f62207034e35",
+    "blake3": "8bd947cea6fc139f2e2b60a654b4b19ac169b96120091e75685f7f0e7ed395ce"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ldif": {
+      "ldif_version": "1",
+      "entries": 3,
+      "object_classes": {
+        "inetOrgPerson": 1,
+        "organizationalUnit": 1,
+        "top": 2
+      },
+      "attributes": [
+        "cn",
+        "mail",
+        "ou",
+        "replace",
+        "sn",
+        "telephonenumber",
+        "uid"
+      ],
+      "change_records": {
+        "modify": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.records",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

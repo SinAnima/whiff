@@ -1,0 +1,122 @@
+---
+source: src/formats/data/records.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "orders.edifact",
+    "stem": "orders",
+    "extension": "edifact"
+  },
+  "identification": {
+    "format": "edifact",
+    "name": "UN/EDIFACT interchange",
+    "mime": "application/EDIFACT",
+    "family": "data.csv",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.records"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 240
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 240,
+    "entropy": 4.725,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 240,
+      "chars": 240,
+      "words": 2,
+      "lines": 1,
+      "max_line_length": 239,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "1201cde19952a1019fd20e4501df39fea86350dc6b27aaafd1ba094110cbb534",
+    "blake3": "2fd8479d8fb6c1a3cf06ed3d36b2b49370014201b6a7b6da1b34c0db76903901"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "edifact": {
+      "syntax": "UNOC 3",
+      "date": "2025-09-01",
+      "segments": 12,
+      "messages": {
+        "INVOIC D96A": 1,
+        "ORDERS D96A": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.records",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

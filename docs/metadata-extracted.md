@@ -127,9 +127,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1008 formats** in total: tier 1 = 139, tier 2 = 122, tier 3 = 747.
-* Formats with an extractor in this build: **887** of 1008.
+* Formats with an extractor in this build: **934** of 1008.
 * Formats by family status: crate = 183, mixed = 365, impl = 460.
-* Formats by target stage: S1 = 197, S1/S6 = 102, S2 = 99, S3 = 61, S3/S8 = 22, S4 = 69, S5 = 86, S6 = 103, S6/S8 = 17, S7 = 140, S8 = 112.
+* Formats by target stage: S1 = 202, S1/S6 = 102, S2 = 99, S3 = 63, S3/S8 = 22, S4 = 71, S5 = 89, S6 = 107, S6/S8 = 17, S7 = 140, S8 = 96.
 * By feature: `common` = 818, `cad` = 45, `forensics` = 38, `science` = 36, `geo` = 34, `data` = 20, `games` = 17.
 * By category: Code 167, Data 157, Image 95, Media 88, Document 71, Archive 47, Scientific 36, Executable 34, Geospatial 34, Text 32, Package 30, 3D 28, Web 27, Forensics 24, Database 21, Security 20, CAD 17, Game 17, Personal 16, Disk 14, Platform 11, Font 10, Fallback 8, Block 4.
 
@@ -401,19 +401,19 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 260 | BitTorrent metainfo | `torrent` | application/x-bittorrent | 2 | `web.misc` | `common` | `data.binser` | swf, lava_torrent | S8 | — |
 | 261 | Internet shortcut / webloc | `url` `webloc` `website` | — | 2 | `web.misc` | `common` | `data.ini` | swf, lava_torrent | S8 | — |
 | 262 | Text with ANSI escapes | `ans` `asc` | text/plain | 3 | `text.plain` | `common` | `text.special` | chardetng, encoding_rs | S1 | strip ANSI before stats |
-| 263 | Git commit message / mbox patch | `eml-patch` | — | 3 | `text.plain` | `common` | — | chardetng, encoding_rs | S1 | author, subject, files changed |
+| 263 | Git commit message / mbox patch | `eml-patch` | — | 3 | `text.plain` | `common` | `text.plain` | chardetng, encoding_rs | S1 | author, subject, files changed |
 | 264 | Hosts file | `hosts` | — | 3 | `text.plain` | `common` | `text.special` | chardetng, encoding_rs | S1 | entries count, blocked domains |
 | 265 | CODEOWNERS / MAINTAINERS | `CODEOWNERS` `MAINTAINERS` | — | 3 | `text.plain` | `common` | `text.special` | chardetng, encoding_rs | S1 | owners, paths |
 | 266 | Chat export (WhatsApp / Signal text) | `txt` | — | 3 | `text.plain` | `common` | `text.plain` | chardetng, encoding_rs | S1 | participants count, message count, date range |
 | 267 | Kindle clippings | `My` `Clippings.txt` | — | 3 | `text.plain` | `common` | `text.special` | chardetng, encoding_rs | S1 | books, highlight count |
 | 268 | UTF-16 / UTF-32 text | `txt` | text/plain | 3 | `text.plain` | `common` | `text.plain` | chardetng, encoding_rs | S1 | BOM-driven decode |
 | 269 | GNU info | `info` | application/x-info | 3 | `text.plain` | `common` | `text.special` | chardetng, encoding_rs | S1 | nodes |
-| 270 | Fortune / quote databases | `dat` `fortune` | — | 3 | `text.plain` | `common` | — | chardetng, encoding_rs | S1 | — |
+| 270 | Fortune / quote databases | `dat` `fortune` | — | 3 | `text.plain` | `common` | `data.records` | chardetng, encoding_rs | S1 | — |
 | 271 | Vim / Emacs swap & backup | `swp` `swo` `~` | — | 3 | `text.plain` | `common` | `text.special` | chardetng, encoding_rs | S1 | original filename, host, user (Vim swap header) |
 | 272 | R Markdown | `rmd` | text/x-r-markdown | 3 | `text.markdown` | `common` | `text.markdown` | pulldown-cmark, gray_matter | S1 | code chunk languages |
 | 273 | Quarto | `qmd` | text/x-quarto | 3 | `text.markdown` | `common` | `text.markdown` | pulldown-cmark, gray_matter | S1 | — |
-| 274 | Server-side templates (PHP/ERB/JSP/ASP mixed HTML) | `jsp` `asp` `aspx` `erb` `ejs` `hbs` `mustache` `njk` `jinja` `j2` `twig` `liquid` | — | 3 | `text.html` | `common` | — | html5ever + scraper | S1 | template engine detection, HTML part analysed |
-| 275 | Web archive (Safari) | `webarchive` | application/x-webarchive | 3 | `text.html` | `common` | — | html5ever + scraper | S1 | binary plist with WebMainResource |
+| 274 | Server-side templates (PHP/ERB/JSP/ASP mixed HTML) | `jsp` `asp` `aspx` `erb` `ejs` `hbs` `mustache` `njk` `jinja` `j2` `twig` `liquid` | — | 3 | `text.html` | `common` | `code.source` | html5ever + scraper | S1 | template engine detection, HTML part analysed |
+| 275 | Web archive (Safari) | `webarchive` | application/x-webarchive | 3 | `text.html` | `common` | `apple.plist` | html5ever + scraper | S1 | binary plist with WebMainResource |
 | 276 | DTD | `dtd` | application/xml-dtd | 3 | `text.xml` | `common` | — | quick-xml | S1 | element declarations |
 | 277 | RELAX NG | `rng` `rnc` | application/xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | — |
 | 278 | DocBook | `dbk` `docbook` | application/docbook+xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | title, chapters |
@@ -453,22 +453,22 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 312 | Lottie animation | `lottie` | application/json | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | fps, frames, size, layers |
 | 313 | Excalidraw drawing | `excalidraw` | application/json | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | element counts, text |
 | 314 | TopoJSON | `topojson` | application/json | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | -&gt; geo |
-| 315 | Terraform state | `tfstate` `tfstate.backup` | application/json | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | resources by type, providers, serial; all attribute values redacted |
+| 315 | Terraform state | `tfstate` `tfstate.backup` | application/json | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | resources by type, providers, serial; all attribute values redacted |
 | 316 | SARIF static-analysis log | `sarif` | application/sarif+json | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | tool, rules, result count by level |
 | 317 | AWS CloudTrail / cloud audit logs | `json` `json.gz` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | event names histogram, principals count, time range, regions |
 | 318 | Grafana / Kibana dashboards | `json` `ndjson` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | title, panels, datasources |
-| 319 | Frictionless datapackage / CSVW | `datapackage.json` `csv-metadata.json` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | resources, schemas |
-| 320 | dbt manifest / catalog | `manifest.json` `catalog.json` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | models, sources, tests count |
-| 321 | ESLint / Prettier / Babel / tsconfig | `eslintrc` `prettierrc` `babelrc` `tsconfig.json` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | extends, plugins, compiler target |
+| 319 | Frictionless datapackage / CSVW | `datapackage.json` `csv-metadata.json` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | resources, schemas |
+| 320 | dbt manifest / catalog | `manifest.json` `catalog.json` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | models, sources, tests count |
+| 321 | ESLint / Prettier / Babel / tsconfig | `eslintrc` `prettierrc` `babelrc` `tsconfig.json` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | extends, plugins, compiler target |
 | 322 | Social / takeout exports (Twitter, Facebook, Slack, Discord, Telegram, Spotify) | `json` `js` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | export kind, record count, date range |
-| 323 | Google Takeout location history | `Records.json` `Timeline.json` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | point count, date range, bbox -&gt; geo |
-| 324 | Google Drive shortcuts | `gdoc` `gsheet` `gslides` `gdraw` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | doc id, URL |
+| 323 | Google Takeout location history | `Records.json` `Timeline.json` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | point count, date range, bbox -&gt; geo |
+| 324 | Google Drive shortcuts | `gdoc` `gsheet` `gslides` `gdraw` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | doc id, URL |
 | 325 | STIX 2 / MISP threat intel | `json` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | object types, indicator count |
 | 326 | CSAF / OpenVEX / OSV advisories | `json` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | CVE ids, products, severity |
-| 327 | Scratch project | `sb3` `sb2` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | sprites, block counts, extensions |
+| 327 | Scratch project | `sb3` `sb2` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | sprites, block counts, extensions |
 | 328 | Spine / DragonBones / Rive animations | `json` `skel` `riv` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | skeleton, animations |
 | 329 | OpenAI / Anthropic chat transcript exports | `json` `jsonl` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | conversation count, message roles, date range |
-| 330 | Jupyter-adjacent: VS Code .code-snippets / launch.json | `code-snippets` `launch.json` | — | 3 | `data.json` | `common` | — | serde_json, json5 | S1 | configurations |
+| 330 | Jupyter-adjacent: VS Code .code-snippets / launch.json | `code-snippets` `launch.json` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | configurations |
 | 331 | Composer / npm audit reports | `json` | — | 3 | `data.json` | `common` | `data.json` | serde_json, json5 | S1 | vulnerabilities by severity |
 | 332 | OpenAPI (YAML) | `openapi.yaml` | — | 3 | `data.yaml` | `common` | `data.yaml` | serde-saphyr | S1 | — |
 | 333 | Ansible playbook | `yml` | — | 3 | `data.yaml` | `common` | `data.yaml` | serde-saphyr | S1 | hosts, roles, modules |
@@ -477,10 +477,10 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 336 | GitLab CI | `.gitlab-ci.yml` | — | 3 | `data.yaml` | `common` | `data.yaml` | serde-saphyr | S1 | stages, jobs |
 | 337 | conda environment | `environment.yml` | — | 3 | `data.yaml` | `common` | `data.yaml` | serde-saphyr | S1 | channels, deps |
 | 338 | Sigma detection rule | `yml` | — | 3 | `data.yaml` | `common` | `data.yaml` | serde-saphyr | S1 | title, logsource, level, tags (ATT&CK) |
-| 339 | Kustomize / Argo / Tekton / Serverless | `kustomization.yaml` `serverless.yml` | — | 3 | `data.yaml` | `common` | — | serde-saphyr | S1 | resources, functions |
-| 340 | Dependabot / Renovate / pre-commit configs | `dependabot.yml` `renovate.json` `.pre-commit-config.yaml` | — | 3 | `data.yaml` | `common` | — | serde-saphyr | S1 | ecosystems, hooks |
+| 339 | Kustomize / Argo / Tekton / Serverless | `kustomization.yaml` `serverless.yml` | — | 3 | `data.yaml` | `common` | `data.yaml` | serde-saphyr | S1 | resources, functions |
+| 340 | Dependabot / Renovate / pre-commit configs | `dependabot.yml` `renovate.json` `.pre-commit-config.yaml` | — | 3 | `data.yaml` | `common` | `data.yaml` | serde-saphyr | S1 | ecosystems, hooks |
 | 341 | winget / Scoop manifests | `yaml` `json` | — | 3 | `data.yaml` | `common` | `data.yaml` | serde-saphyr | S1 | package id, version, installer URL |
-| 342 | OpenAPI 3.1 / AsyncAPI | `asyncapi.yaml` | — | 3 | `data.yaml` | `common` | — | serde-saphyr | S1 | channels, messages |
+| 342 | OpenAPI 3.1 / AsyncAPI | `asyncapi.yaml` | — | 3 | `data.yaml` | `common` | `data.yaml` | serde-saphyr | S1 | channels, messages |
 | 343 | Windows .reg export | `reg` | text/plain | 3 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | keys, value counts |
 | 344 | Desktop entry | `desktop` | application/x-desktop | 3 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | Name, Exec, Categories |
 | 345 | EditorConfig | `editorconfig` | — | 3 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | — |
@@ -488,21 +488,21 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 347 | systemd unit | `service` `socket` `timer` `mount` `target` | — | 3 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | -&gt; code.infra |
 | 348 | Windows INF | `inf` | text/plain | 3 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | driver class, provider, hardware ids |
 | 349 | WireGuard / OpenVPN config | `conf` `ovpn` | — | 3 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | peers/remotes count, keys redacted, embedded certs -&gt; crypto |
-| 350 | Windows theme / desktop.ini | `theme` `desktop.ini` | — | 3 | `data.ini` | `common` | — | rust-ini, java-properties | S1 | — |
+| 350 | Windows theme / desktop.ini | `theme` `desktop.ini` | — | 3 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | — |
 | 351 | Kerberos krb5.conf / Samba smb.conf | `conf` | — | 3 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | realms, shares |
 | 352 | PSV / pipe separated | `psv` | — | 3 | `data.csv` | `common` | `data.csv` | csv | S1 | — |
 | 353 | Fixed-width text table | `fwf` `prn` | — | 3 | `data.csv` | `common` | — | csv | S1 | column boundaries guess |
 | 354 | vCalendar-like CSV exports (Outlook/Google contacts) | `csv` | — | 3 | `data.csv` | `common` | `data.csv` | csv | S1 | — |
-| 355 | LCOV coverage | `info` `lcov` | — | 3 | `data.csv` | `common` | — | csv | S1 | files, line coverage |
-| 356 | GTFS transit feed (zip of CSV) | `zip` | — | 3 | `data.csv` | `common` | — | csv | S1 | agency, routes, stops, service date range |
-| 357 | Bank statements OFX / QFX / QIF / MT940 / CAMT | `ofx` `qfx` `qif` `sta` `940` `camt.053` | — | 3 | `data.csv` | `common` | — | csv | S1 | account (masked), transaction count, date range, currency |
-| 358 | Ledger / Beancount / hledger journals | `ledger` `beancount` `journal` | — | 3 | `data.csv` | `common` | — | csv | S1 | accounts, transaction count, commodities |
-| 359 | EDI X12 / EDIFACT | `edi` `x12` `edifact` | — | 3 | `data.csv` | `common` | — | csv | S1 | message types, sender/receiver ids |
-| 360 | GEDCOM genealogy | `ged` `gedcom` | — | 3 | `data.csv` | `common` | — | csv | S1 | individuals, families, date range, source software |
-| 361 | Prometheus / OpenMetrics exposition | `prom` `metrics` | — | 3 | `data.csv` | `common` | — | csv | S1 | metric names, types, label keys |
-| 362 | TAP test output | `tap` | — | 3 | `data.csv` | `common` | — | csv | S1 | plan, pass/fail |
-| 363 | PRQL | `prql` | — | 3 | `data.sql` | `common` | — | sqlparser | S1 | — |
-| 364 | Cypher / GQL | `cypher` `cql` | — | 3 | `data.sql` | `common` | — | sqlparser | S1 | — |
+| 355 | LCOV coverage | `info` `lcov` | — | 3 | `data.csv` | `common` | `data.records` | csv | S1 | files, line coverage |
+| 356 | GTFS transit feed (zip of CSV) | `zip` | — | 3 | `data.csv` | `common` | `data.records` | csv | S1 | agency, routes, stops, service date range |
+| 357 | Bank statements OFX / QFX / QIF / MT940 / CAMT | `ofx` `qfx` `qif` `sta` `940` `camt.053` | — | 3 | `data.csv` | `common` | `data.records` | csv | S1 | account (masked), transaction count, date range, currency |
+| 358 | Ledger / Beancount / hledger journals | `ledger` `beancount` `journal` | — | 3 | `data.csv` | `common` | `data.records` | csv | S1 | accounts, transaction count, commodities |
+| 359 | EDI X12 / EDIFACT | `edi` `x12` `edifact` | — | 3 | `data.csv` | `common` | `data.records` | csv | S1 | message types, sender/receiver ids |
+| 360 | GEDCOM genealogy | `ged` `gedcom` | — | 3 | `data.csv` | `common` | `data.records` | csv | S1 | individuals, families, date range, source software |
+| 361 | Prometheus / OpenMetrics exposition | `prom` `metrics` | — | 3 | `data.csv` | `common` | `data.records` | csv | S1 | metric names, types, label keys |
+| 362 | TAP test output | `tap` | — | 3 | `data.csv` | `common` | `data.records` | csv | S1 | plan, pass/fail |
+| 363 | PRQL | `prql` | — | 3 | `data.sql` | `common` | `code.source` | sqlparser | S1 | — |
+| 364 | Cypher / GQL | `cypher` `cql` | — | 3 | `data.sql` | `common` | `code.source` | sqlparser | S1 | — |
 | 365 | Database migration files (Flyway/Liquibase/Alembic) | `sql` `xml` `py` | — | 3 | `data.sql` | `common` | `data.sql` | sqlparser | S1 | version ordering, tables touched |
 | 366 | Apache Thrift schema | `thrift` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
 | 367 | Cap'n Proto schema | `capnp` | — | 3 | `code.source` | `common` | `code.source` | tokei | S1/S6 | — |
@@ -603,15 +603,15 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 462 | Snapcraft / Flatpak manifests | `snapcraft.yaml` `flatpak.json` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
 | 463 | opam / CPAN META / rebar.config | `opam` `META.json` `rebar.config` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
 | 464 | elm.json / gleam.toml / build.zig.zon | `elm.json` `gleam.toml` `build.zig.zon` | — | 3 | `code.manifest` | `common` | `code.manifest` | reuses data.json/toml/yaml/xml parsers + impl per-ecosystem mapping | S1 | — |
-| 465 | Zeppelin / Databricks notebook | `zpln` `dbc` | — | 3 | `code.notebook` | `common` | — | serde_json | S8 | — |
-| 466 | Observable / Livebook | `livemd` | — | 3 | `code.notebook` | `common` | — | serde_json | S8 | — |
-| 467 | Mathematica notebook | `nb` `cdf` | application/mathematica | 3 | `code.notebook` | `common` | — | serde_json | S8 | — |
-| 468 | Memory / swap dumps | `mem` `raw` `vmem` `swap` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | strings + embedded signatures only |
+| 465 | Zeppelin / Databricks notebook | `zpln` `dbc` | — | 3 | `code.notebook` | `common` | `data.json` | serde_json | S1 | — |
+| 466 | Observable / Livebook | `livemd` | — | 3 | `code.notebook` | `common` | `data.records` | serde_json | S1 | — |
+| 467 | Mathematica notebook | `nb` `cdf` | application/mathematica | 3 | `code.notebook` | `common` | `data.records` | serde_json | S1 | — |
+| 468 | Memory / swap dumps | `mem` `raw` `vmem` `swap` | — | 3 | `binary.unknown` | `common` | `forensic.dump` | aho-corasick + impl | S1 | strings + embedded signatures only |
 | 469 | Firmware blob | `fw` `bin` `rom` | — | 3 | `binary.unknown` | `common` | `binary.unknown` | aho-corasick + impl | S1 | binwalk-style signature scan |
 | 470 | Temporary / partial download | `part` `crdownload` `tmp` `download` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | underlying format re-detected |
 | 471 | Backup copies | `bak` `old` `orig` `swp` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | detect underlying format; Vim swap -&gt; original filename |
 | 472 | Sparse / zero-filled files | `*` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | hole detection (SEEK_DATA), zero ratio |
-| 473 | Core Foundation / NSKeyedArchiver blobs | `plist` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | -&gt; apple |
+| 473 | Core Foundation / NSKeyedArchiver blobs | `plist` | — | 3 | `binary.unknown` | `common` | `apple.plist` | aho-corasick + impl | S1 | -&gt; apple |
 | 474 | QOI | `qoi` | image/qoi | 3 | `image.raster` | `common` | `image.qoi` | imagesize | S2 | — |
 | 475 | Farbfeld | `ff` | — | 3 | `image.raster` | `common` | `image.retro` | imagesize | S2 | — |
 | 476 | JPEG-XR / HD Photo | `jxr` `wdp` `hdp` | image/jxr | 3 | `image.raster` | `common` | `image.codecs` | imagesize | S2 | TIFF-like IFD (impl) |
@@ -687,12 +687,12 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 546 | VRA Core 4 XML record | `xml` | — | 3 | `meta.vra` | `common` | `image.sidecar` | impl: map XMP vra namespace + standalone VRA Core 4 XML records via quick-xml | S2 | — |
 | 547 | ICC colour profile | `icc` `icm` | application/vnd.iccprofile | 3 | `meta.icc` | `common` | `image.sidecar` | impl | S2 | — |
 | 548 | vCalendar 1.0 | `vcs` | text/x-vcalendar | 3 | `text.calendar` | `common` | `text.calendar` | impl | S3 | — |
-| 549 | JSCalendar | `json` | — | 3 | `text.calendar` | `common` | — | impl | S8 | — |
-| 550 | JSContact / LDIF | `ldif` | text/directory | 3 | `text.contact` | `common` | — | impl | S8 | — |
+| 549 | JSCalendar | `json` | — | 3 | `text.calendar` | `common` | `data.json` | impl | S3 | — |
+| 550 | JSContact / LDIF | `ldif` | text/directory | 3 | `text.contact` | `common` | `data.records` | impl | S3 | — |
 | 551 | Outlook data file | `pst` `ost` | application/vnd.ms-outlook-pst | 3 | `email` | `common` | — | mail-parser | S3 | folder tree, item counts, date range |
-| 552 | Maildir message | `(maildir` `file)` | — | 3 | `email` | `common` | — | mail-parser | S3 | — |
+| 552 | Maildir message | `(maildir` `file)` | — | 3 | `email` | `common` | `email.mime` | mail-parser | S3 | — |
 | 553 | Thunderbird / EMLX | `emlx` | — | 3 | `email` | `common` | `email.mime` | mail-parser | S3 | Apple Mail plist trailer |
-| 554 | Usenet / NNTP article | `nws` | — | 3 | `email` | `common` | — | mail-parser | S3 | — |
+| 554 | Usenet / NNTP article | `nws` | — | 3 | `email` | `common` | `email.mime` | mail-parser | S3 | — |
 | 555 | TNEF winmail.dat | `dat` | application/ms-tnef | 3 | `email` | `common` | — | mail-parser | S8 | attachments (impl) |
 | 556 | Lotus Notes database | `nsf` | — | 3 | `email` | `common` | — | mail-parser | S8 | title, replica id (header) |
 | 557 | Outlook for Mac archive / Outlook Express DBX | `olm` `dbx` | — | 3 | `email` | `common` | — | mail-parser | S3 | folders, message count |
@@ -768,7 +768,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 627 | Broadcast Wave / RF64 / W64 | `bwf` `rf64` `w64` | — | 3 | `audio` | `common` | `audio.wave` | impl | S4 | bext originator, time reference |
 | 628 | Matroska audio | `mka` | audio/x-matroska | 3 | `audio` | `common` | `video.matroska` | impl | S4 | -&gt; video |
 | 629 | WebM audio | `weba` | audio/webm | 3 | `audio` | `common` | `video.matroska` | impl | S4 | — |
-| 630 | Audible AA / AAX | `aa` `aax` | — | 3 | `audio` | `common` | — | impl | S8 | chapters, title, narrator (header only, DRM flag) |
+| 630 | Audible AA / AAX | `aa` `aax` | — | 3 | `audio` | `common` | `video.mp4` | impl | S4 | chapters, title, narrator (header only, DRM flag) |
 | 631 | GSM / VOX telephony | `gsm` `vox` | — | 3 | `audio` | `common` | — | impl | S8 | — |
 | 632 | SoundFont / DLS | `sf2` `sf3` `dls` | audio/x-soundfont | 3 | `audio` | `common` | — | impl | S8 | bank name, presets, samples |
 | 633 | Sampler / instrument (SFZ, EXS) | `sfz` `exs` | — | 3 | `audio` | `common` | — | impl | S8 | — |
@@ -799,7 +799,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 658 | Apple Live Photo / Motion Photo | `mov` `jpg` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | paired-asset XMP (GCamera/Container) |
 | 659 | 360 / spatial video metadata | `mp4` `mov` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | sv3d/st3d boxes, Spherical XMP |
 | 660 | Dashcam / drone telemetry tracks | `mp4` `mov` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | GPMF (GoPro), DJI SRT/klv -&gt; GPS track |
-| 661 | Animated GIF video replacement (GIFV) | `gifv` | — | 3 | `video` | `common` | — | impl | S8 | -&gt; MP4 |
+| 661 | Animated GIF video replacement (GIFV) | `gifv` | — | 3 | `video` | `common` | `video.mp4` | impl | S4 | -&gt; MP4 |
 | 662 | Screen recording (asciinema) | `cast` | — | 3 | `video` | `common` | — | impl | S8 | width, height, duration, command |
 | 663 | Video subtitles container | `mks` | — | 3 | `video` | `common` | `video.matroska` | impl | S4 | -&gt; video |
 | 664 | Windows Media Center / TiVo recordings | `wtv` `dvr-ms` `tivo` | — | 3 | `video` | `common` | `video.asf` | impl | S4 | program title, channel, air date |
@@ -854,11 +854,11 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 713 | Helm chart archive | `tgz` | — | 3 | `package` | `common` | `package.tarball` | impl | S5 | Chart.yaml |
 | 714 | Docker / OCI image tarball | `tar` | — | 3 | `package` | `common` | `package.tarball` | impl | S5 | manifest.json, config: layers, env, entrypoint, labels |
 | 715 | OCI layout / ORAS artifact | `oci-layout` | — | 3 | `package` | `common` | — | impl | S8 | — |
-| 716 | Windows CAB update / MSU | `msu` | — | 3 | `package` | `common` | — | impl | S8 | — |
+| 716 | Windows CAB update / MSU | `msu` | — | 3 | `package` | `common` | `archive.cab` | impl | S5 | — |
 | 717 | Solaris / BSD / Slackware packages | `pkg` `txz` `tgz` | — | 3 | `package` | `common` | `package.tarball` | impl | S5 | — |
-| 718 | Haiku / Homebrew bottle | `hpkg` `bottle.tar.gz` | — | 3 | `package` | `common` | — | impl | S8 | — |
+| 718 | Haiku / Homebrew bottle | `hpkg` `bottle.tar.gz` | — | 3 | `package` | `common` | `compress.gzip` | impl | S5 | — |
 | 719 | Unity package | `unitypackage` | — | 3 | `package` | `common` | — | impl | S8 | asset paths |
-| 720 | Office add-in / VBA add-in | `xla` `ppa` | — | 3 | `package` | `common` | — | impl | S8 | -&gt; doc.ole |
+| 720 | Office add-in / VBA add-in | `xla` `ppa` | — | 3 | `package` | `common` | `doc.ole` | impl | S5 | -&gt; doc.ole |
 | 721 | Electron asar | `asar` | — | 3 | `package` | `common` | `package.asar` | impl | S5 | header JSON file list |
 | 722 | Apple sparse disk image (UDIF variants: UDZO/ULFO/UDRW) | `dmg` | — | 3 | `package` | `common` | `package.dmg` | impl | S5 | compression type, partition names |
 | 723 | Raw disk image | `img` `raw` `dd` `bin` | application/octet-stream | 3 | `disk` | `forensics` | `disk.raw` | impl | S5 | MBR/GPT |
@@ -928,10 +928,10 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 787 | age / minisign / signify | `age` `minisig` `sig` | — | 3 | `crypto` | `common` | `crypto.token` | impl | S6 | recipients/key ids |
 | 788 | KeePass / password vault | `kdbx` `kdb` `1pif` | — | 3 | `crypto` | `common` | `crypto.store` | impl | S6 | header only: cipher, KDF (never decrypt) |
 | 789 | TPM / FIDO / misc keys | `tss` | — | 3 | `crypto` | `common` | — | impl | S8 | — |
-| 790 | Encrypted container (VeraCrypt/LUKS/BitLocker header) | `hc` `luks` `bek` | — | 3 | `crypto` | `common` | — | impl | S8 | header: cipher, version, UUID (LUKS) |
+| 790 | Encrypted container (VeraCrypt/LUKS/BitLocker header) | `hc` `luks` `bek` | — | 3 | `crypto` | `common` | `disk.raw` | impl | S6 | header: cipher, version, UUID (LUKS) |
 | 791 | S/MIME email | `p7m` | — | 3 | `crypto` | `common` | `crypto.pki` | impl | S6 | -&gt; email |
-| 792 | Apple signed artifacts (.mobileprovision) | `mobileprovision` `provisionprofile` | — | 3 | `crypto` | `common` | — | impl | S8 | -&gt; apple |
-| 793 | Authenticode detached signature / catalog | `cat` | — | 3 | `crypto` | `common` | — | impl | S8 | — |
+| 792 | Apple signed artifacts (.mobileprovision) | `mobileprovision` `provisionprofile` | — | 3 | `crypto` | `common` | `apple.plist` | impl | S6 | -&gt; apple |
+| 793 | Authenticode detached signature / catalog | `cat` | — | 3 | `crypto` | `common` | `crypto.pki` | impl | S6 | — |
 | 794 | Kerberos keytab | `keytab` | — | 3 | `crypto` | `common` | `crypto.store` | impl | S6 | principals, enctypes, kvno (no keys) |
 | 795 | TLS key log | `keylog` `sslkeylog` | — | 3 | `crypto` | `common` | `crypto.token` | impl | S6 | line count only (secrets never output) |
 | 796 | SQLite WAL / journal | `db-wal` `db-shm` `db-journal` | — | 3 | `db` | `common` | `db.sqlite` | impl | S6 | frames, salts |
@@ -947,7 +947,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 806 | Browser profile databases (History, Cookies, Places) | `sqlite` | — | 3 | `db` | `common` | `db.sqlite` | impl | S6 | known schema -&gt; summary (counts, date range; no URLs by default) |
 | 807 | Apple Core Data / Photos library | `sqlite` `photoslibrary` | — | 3 | `db` | `common` | `db.sqlite` | impl | S6 | — |
 | 808 | Redis RDB / AOF | `rdb` `aof` | — | 3 | `db` | `common` | `db.engines` | impl | S6 | version, key count estimate |
-| 809 | MongoDB dump (BSON dir) | `bson` | — | 3 | `db` | `common` | — | impl | S8 | -&gt; data.binser |
+| 809 | MongoDB dump (BSON dir) | `bson` | — | 3 | `db` | `common` | `data.binser` | impl | S6 | -&gt; data.binser |
 | 810 | Mobile backups (iTunes Manifest.db / Android .ab) | `db` `ab` | — | 3 | `db` | `common` | `db.engines` | impl | S6 | — |
 | 811 | Adobe Lightroom catalog | `lrcat` `lrdata` | — | 3 | `db` | `common` | `db.sqlite` | impl | S6 | image count, collections, keywords (SQLite) |
 | 812 | Anki deck | `apkg` `colpkg` | — | 3 | `db` | `common` | — | impl | S8 | decks, note/card counts |
@@ -1053,7 +1053,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 912 | QGIS / ArcGIS project | `qgs` `qgz` `aprx` `mxd` | — | 3 | `geo` | `geo` | `geo.xml` | geojson, shapefile | S7 | layers, CRS |
 | 913 | COPC / EPT point cloud index | `copc.laz` `ept.json` | — | 3 | `geo` | `geo` | `geo.json` | geojson, shapefile | S7 | — |
 | 914 | S-57 / S-101 nautical charts | `000` `s57` | — | 3 | `geo` | `geo` | `geo.vector` | geojson, shapefile | S7 | — |
-| 915 | NetCDF-CF / Zarr geodata | `nc` `zarr` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S7 | -&gt; sci |
+| 915 | NetCDF-CF / Zarr geodata | `nc` `zarr` | — | 3 | `geo` | `geo` | `science.hdf5` | geojson, shapefile | S7 | -&gt; sci |
 | 916 | OGC 3D Tiles / I3S | `b3dm` `i3dm` `pnts` `slpk` | — | 3 | `geo` | `geo` | `geo.tiles` | geojson, shapefile | S7 | — |
 | 917 | CZML / world file / .prj | `czml` `tfw` `jgw` `pgw` `wld` `prj` | — | 3 | `geo` | `geo` | `geo.text` | geojson, shapefile | S7 | CRS WKT, affine transform |
 | 918 | MrSID / ECW rasters | `sid` `ecw` `jp2` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S8 | header: size, bands, CRS |
@@ -1073,7 +1073,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 932 | OFF / AMF / Stanford | `off` `amf` | application/x-amf | 3 | `3d` | `cad` | `cad.mesh` | gltf, tobj | S7 | — |
 | 933 | Maya / Cinema 4D / Houdini / Modo | `ma` `mb` `c4d` `hip` `lxo` | — | 3 | `3d` | `cad` | — | gltf, tobj | S7 | ma (text): requires, scene info |
 | 934 | SketchUp | `skp` | — | 3 | `3d` | `cad` | — | gltf, tobj | S7 | version, thumbnail |
-| 935 | Unreal / Unity scene & package | `umap` `uasset` `unity` | — | 3 | `3d` | `cad` | — | gltf, tobj | S7 | -&gt; game |
+| 935 | Unreal / Unity scene & package | `umap` `uasset` `unity` | — | 3 | `3d` | `cad` | `game.engine` | gltf, tobj | S7 | -&gt; game |
 | 936 | MikuMikuDance / Valve models | `pmx` `pmd` `mdl` `smd` | — | 3 | `3d` | `cad` | — | gltf, tobj | S7 | — |
 | 937 | Gaussian splat | `splat` `ksplat` `spz` | — | 3 | `3d` | `cad` | — | gltf, tobj | S7 | point count |
 | 938 | 3D printing G-code | `gcode` `gco` `nc` | text/x-gcode | 3 | `3d` | `cad` | `cad.gcode` | gltf, tobj | S7 | slicer, print time, filament, layer count |
@@ -1086,7 +1086,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 945 | IES photometric | `ies` `ldt` | — | 3 | `3d` | `cad` | `cad.scene` | gltf, tobj | S7 | manufacturer, luminaire, lumens |
 | 946 | IGES | `igs` `iges` | model/iges | 3 | `cad` | `cad` | `cad.step` | dxf | S7 | — |
 | 947 | Parasolid / ACIS | `x_t` `x_b` `sat` `sab` | — | 3 | `cad` | `cad` | — | dxf | S8 | header |
-| 948 | SolidWorks / Inventor / Creo / CATIA / NX | `sldprt` `sldasm` `ipt` `iam` `prt` `asm` `catpart` `catproduct` | — | 3 | `cad` | `cad` | — | dxf | S7 | OLE/zip summary info, version |
+| 948 | SolidWorks / Inventor / Creo / CATIA / NX | `sldprt` `sldasm` `ipt` `iam` `prt` `asm` `catpart` `catproduct` | — | 3 | `cad` | `cad` | `doc.ole` | dxf | S7 | OLE/zip summary info, version |
 | 949 | Fusion 360 / Onshape exports | `f3d` `f3z` | — | 3 | `cad` | `cad` | — | dxf | S7 | — |
 | 950 | Revit | `rvt` `rfa` | — | 3 | `cad` | `cad` | — | dxf | S7 | OLE BasicFileInfo stream: version, path |
 | 951 | MicroStation DGN | `dgn` | — | 3 | `cad` | `cad` | `cad.drawing` | dxf | S7 | — |

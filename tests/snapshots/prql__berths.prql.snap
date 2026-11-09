@@ -1,0 +1,142 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "berths.prql",
+    "stem": "berths",
+    "extension": "prql"
+  },
+  "identification": {
+    "format": "prql",
+    "name": "PRQL query",
+    "mime": "text/x-prql",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 186
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 186,
+    "entropy": 4.606,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 186,
+      "chars": 186,
+      "words": 33,
+      "lines": 7,
+      "max_line_length": 44,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "ba5ac2e09595034651f9abd06812302636a5886c5ae7c20b8755c93aaa334785",
+    "blake3": "3d18d1c36eac2e9a64d77cbfad532a1891d5529b6ce097ea27b88ea3e89b8f1f"
+  },
+  "content": {
+    "description": "Boats per berth at Saltmere",
+    "excerpt": "Boats per berth at Saltmere"
+  },
+  "metadata": {},
+  "format": {
+    "prql": {
+      "language": "PRQL query",
+      "loc": {
+        "code": 6,
+        "comment": 1,
+        "blank": 0,
+        "total": 7
+      },
+      "imports": [
+        "berths",
+        "boats"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "function": [
+          "busy"
+        ]
+      },
+      "symbol_counts": {
+        "function": 1
+      },
+      "module_doc": "Boats per berth at Saltmere",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 44
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

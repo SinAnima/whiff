@@ -1,0 +1,138 @@
+---
+source: src/formats/data/records.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-statement.camt.xml",
+    "stem": "saltmere-statement.camt",
+    "extension": "xml"
+  },
+  "identification": {
+    "format": "camt",
+    "name": "ISO 20022 CAMT statement",
+    "mime": "application/xml",
+    "family": "data.csv",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "camt",
+        "confidence": 0.95
+      },
+      {
+        "format": "xml",
+        "confidence": 0.65
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "data.records"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 710
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 710,
+    "entropy": 5.151,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 710,
+      "chars": 710,
+      "words": 19,
+      "lines": 13,
+      "max_line_length": 117,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "f7d372ade9391fb4add2b0d3ca89e7fa8e053a2548f06dd5dd5fb401375b8cf8",
+    "blake3": "6f9e7790f8c80b469d78ead8a0fc69eccc39231e4bb75710eb0548dd70cc18c9"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "camt": {
+      "message": "camt.053 (statement)",
+      "statements": 1,
+      "accounts": [
+        "••••••••2345"
+      ],
+      "currencies": [
+        "GBP"
+      ],
+      "entries": 2,
+      "date_range": [
+        "2025-08-05",
+        "2025-08-15"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.records",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

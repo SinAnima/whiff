@@ -65,3 +65,40 @@ XML Paper / StarOffice legacy	sxw
 Word XML 2003 / Flat OPC	wordml_2003
 Notion / Confluence export bundles	wiki_export
 Adobe Illustrator (PDF-based)	pdf
+Core Foundation / NSKeyedArchiver blobs	plist
+Apple signed artifacts (.mobileprovision)	mobileprovision
+Authenticode detached signature / catalog	pkcs7
+MongoDB dump (BSON dir)	bson
+NetCDF-CF / Zarr geodata	netcdf4
+Unreal / Unity scene & package	uasset
+Office add-in / VBA add-in	xls
+Animated GIF video replacement (GIFV)	mp4
+SolidWorks / Inventor / Creo / CATIA / NX	cfb
+Memory / swap dumps	lime
+Encrypted container (VeraCrypt/LUKS/BitLocker header)	luks
+Maildir message	eml
+Usenet / NNTP article	eml
+Git commit message / mbox patch	diff
+Windows CAB update / MSU	cab
+Haiku / Homebrew bottle	gzip
+Audible AA / AAX	mp4
+Terraform state	json
+Frictionless datapackage / CSVW	json
+dbt manifest / catalog	json
+ESLint / Prettier / Babel / tsconfig	json
+Google Takeout location history	json
+Google Drive shortcuts	json
+Scratch project	json
+Jupyter-adjacent: VS Code .code-snippets / launch.json	json
+Kustomize / Argo / Tekton / Serverless	yaml
+Dependabot / Renovate / pre-commit configs	yaml
+OpenAPI 3.1 / AsyncAPI	yaml
+JSCalendar	json
+Zeppelin / Databricks notebook	json
+TAP test output	tap
+GTFS transit feed (zip of CSV)	gtfs
+PRQL	prql
+Cypher / GQL	cypher
+Server-side templates (PHP/ERB/JSP/ASP mixed HTML)	erb
+Windows theme / desktop.ini	ini
+Web archive (Safari)	plist

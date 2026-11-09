@@ -1,0 +1,10 @@
+TAP version 13
+1..5
+ok 1 - high water is at 06:12
+ok 2 - low water is at 12:31
+not ok 3 - the bell rings twice
+  ---
+  message: rang once
+  ...
+ok 4 - fog horn # SKIP no fog today
+not ok 5 - pilot launch # TODO not built yet

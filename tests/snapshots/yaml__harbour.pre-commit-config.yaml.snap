@@ -1,0 +1,207 @@
+---
+source: src/formats/data/yaml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.pre-commit-config.yaml",
+    "stem": "harbour.pre-commit-config",
+    "extension": "yaml"
+  },
+  "identification": {
+    "format": "yaml",
+    "name": "YAML",
+    "mime": "application/yaml",
+    "family": "data.yaml",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.yaml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 252
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 252,
+    "entropy": 4.397,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 252,
+      "chars": 252,
+      "words": 22,
+      "lines": 10,
+      "max_line_length": 56,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "cf6d38b095649ffd9b21c7e6f03223b6a42dea96eb0a8e583aeb55bb09486a4f",
+    "blake3": "b0bdc4542cda184e5c70beeb1cf6f5e34b7c5b6b5e12e4b289205398e150798e"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "yaml": {
+      "anchors": 0,
+      "aliases": 0,
+      "valid": true,
+      "documents": 1,
+      "top_level": "object",
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.repos": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.repos[]": {
+            "types": [
+              "object"
+            ],
+            "count": 2
+          },
+          "$.repos[].repo": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "https://github.com/pre-commit/pre-commit-hooks",
+              "https://github.com/astral-sh/ruff-pre-commit"
+            ]
+          },
+          "$.repos[].rev": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "v5.0.0",
+              "v0.6.9"
+            ]
+          },
+          "$.repos[].hooks": {
+            "types": [
+              "array"
+            ],
+            "count": 2,
+            "items": [
+              1,
+              2
+            ]
+          },
+          "$.repos[].hooks[]": {
+            "types": [
+              "object"
+            ],
+            "count": 3
+          },
+          "$.repos[].hooks[].id": {
+            "types": [
+              "string"
+            ],
+            "count": 3,
+            "examples": [
+              "trailing-whitespace",
+              "end-of-file-fixer",
+              "ruff"
+            ]
+          }
+        },
+        "max_depth": 5
+      },
+      "known_schema": {
+        "id": "pre_commit",
+        "name": "pre-commit configuration",
+        "repositories": [
+          "https://github.com/pre-commit/pre-commit-hooks",
+          "https://github.com/astral-sh/ruff-pre-commit"
+        ],
+        "hooks": [
+          "trailing-whitespace",
+          "end-of-file-fixer",
+          "ruff"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.yaml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

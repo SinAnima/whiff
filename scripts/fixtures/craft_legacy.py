@@ -1508,7 +1508,469 @@ def step_legacy_docs() -> None:
     out("spool_shd", "00007-crafted.shd", shd.ljust(header, b"\0") + bytes(blob))
 
 
-STEPS = {"legacy_docs": step_legacy_docs, "packages": step_packages, "books": step_books, "writing": step_writing, "scripts": step_scripts, "exec": step_exec, "debug": step_debug, "dos": step_dos, "mac": step_mac, "encoded": step_encoded, "wim": step_wim, "bundles": step_bundles, "backups": step_backups}
+# --- known JSON / YAML schemas (batch 5b) ----------------------------------------------
+# Into the shared json/ and yaml/ folders (legacy.sh keeps their SOURCE.md).
+
+CONFIGS_JSON = {
+    "terraform.tfstate": {
+        "version": 4, "terraform_version": "1.9.5", "serial": 12, "lineage": "5a17e2e0-0000-4000-8000-000000000009",
+        "outputs": {"bucket": {"value": "saltmere-charts", "type": "string"}},
+        "resources": [
+            {"mode": "managed", "type": "aws_s3_bucket", "name": "charts", "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+             "instances": [{"schema_version": 0, "attributes": {"bucket": "saltmere-charts", "id": "saltmere-charts"}, "sensitive_attributes": []}]},
+            {"mode": "managed", "type": "aws_iam_user", "name": "harbourmaster", "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+             "instances": [{"schema_version": 0, "attributes": {"name": "harbourmaster"}, "sensitive_attributes": [[{"type": "get_attr", "value": "password"}]]}]},
+            {"mode": "data", "type": "aws_region", "name": "here", "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+             "instances": [{"attributes": {"name": "eu-west-2"}}]},
+        ],
+    },
+    "datapackage.json": {
+        "name": "saltmere-berths", "title": "Saltmere berth register", "profile": "tabular-data-package",
+        "licenses": [{"name": "CC0-1.0"}],
+        "resources": [{"name": "berths", "path": "berths.csv", "schema": {"fields": [{"name": "boat", "type": "string"}, {"name": "berth", "type": "integer"}]}}],
+    },
+    "berths.csv-metadata.json": {
+        "@context": "http://www.w3.org/ns/csvw", "url": "berths.csv", "dc:title": "Saltmere berths",
+        "tableSchema": {"columns": [{"name": "boat", "datatype": "string"}, {"name": "berth", "datatype": "integer"}]},
+    },
+    "dbt-manifest.json": {
+        "metadata": {"dbt_schema_version": "https://schemas.getdbt.com/dbt/manifest/v12.json", "dbt_version": "1.8.7", "adapter_type": "duckdb"},
+        "nodes": {"model.harbour.berths": {"resource_type": "model"}, "model.harbour.tides": {"resource_type": "model"},
+                  "test.harbour.not_null_berths_boat": {"resource_type": "test"}, "seed.harbour.boats": {"resource_type": "seed"}},
+        "sources": {"source.harbour.raw.landings": {}}, "exposures": {}, "metrics": {},
+    },
+    "harbour.eslintrc.json": {"root": True, "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+                              "plugins": ["@typescript-eslint"], "env": {"browser": True, "es2022": True}, "rules": {"no-unused-vars": "warn", "eqeqeq": "error"}},
+    "harbour.prettierrc.json": {"semi": False, "singleQuote": True, "tabWidth": 2, "printWidth": 100},
+    "harbour.babelrc.json": {"presets": [["@babel/preset-env", {"targets": "defaults"}], "@babel/preset-typescript"], "plugins": ["@babel/plugin-transform-runtime"]},
+    "Records.json": {"locations": [
+        {"latitudeE7": 500012345, "longitudeE7": -51234567, "accuracy": 20, "timestamp": "2025-09-01T08:00:00Z"},
+        {"latitudeE7": 500022345, "longitudeE7": -51244567, "accuracy": 15, "timestamp": "2025-09-01T12:00:00Z"},
+        {"latitudeE7": 500032345, "longitudeE7": -51254567, "accuracy": 18, "timestampMs": "1756742400000"},
+    ]},
+    "tide-table.gsheet": {"url": "https://docs.google.com/spreadsheets/d/SALTMERE0000000000000000000000000000000000/edit",
+                          "doc_id": "SALTMERE0000000000000000000000000000000000", "resource_id": "spreadsheet:SALTMERE0000000000000000000000000000000000",
+                          "email": "harbour@saltmere.example"},
+    "scratch-project.json": {"targets": [
+        {"isStage": True, "name": "Stage", "blocks": {}, "costumes": [{"name": "backdrop1"}], "sounds": []},
+        {"isStage": False, "name": "Bell", "blocks": {"a": {"opcode": "event_whenflagclicked"}, "b": {"opcode": "sound_play"}}, "costumes": [{"name": "bell"}], "sounds": [{"name": "ring"}]},
+        {"isStage": False, "name": "Boat", "blocks": {"c": {"opcode": "motion_movesteps"}}, "costumes": [{"name": "boat"}], "sounds": []},
+    ], "monitors": [], "extensions": ["pen"], "meta": {"semver": "3.0.0", "vm": "11.1.0", "agent": "Saltmere"}},
+    "launch.json": {"version": "0.2.0", "configurations": [
+        {"type": "node", "request": "launch", "name": "Tide server", "program": "${workspaceFolder}/server.js"},
+        {"type": "python", "request": "launch", "name": "Bell script", "program": "${file}"}]},
+    "tasks.json": {"version": "2.0.0", "tasks": [{"label": "build charts", "type": "shell", "command": "make charts"}]},
+    "harbour.code-snippets": {"Tide row": {"prefix": "tide", "body": ["| ${1:06:12} | ${2:12:31} |"], "description": "A tide table row", "scope": "markdown"},
+                              "Bell": {"prefix": "bell", "body": "The bell rings at high tide.", "scope": "markdown"}},
+    "high-tide.jscalendar.json": {"@type": "Event", "uid": "5a17e2e0-0000-4000-8000-00000000000a", "title": "High tide at Saltmere",
+                                  "start": "2025-09-01T06:12:00", "timeZone": "Europe/London", "duration": "PT1H",
+                                  "recurrenceRules": [{"@type": "RecurrenceRule", "frequency": "daily"}]},
+    "harbourmaster.jscontact.json": {"@type": "Card", "version": "1.0", "uid": "urn:uuid:5a17e2e0-0000-4000-8000-00000000000b", "kind": "individual",
+                                     "name": {"full": "Ana Lighthouse"}, "emails": {"e1": {"address": "ana@saltmere.example"}}, "phones": {}},
+    "tides.zpln": {"name": "Saltmere tides", "id": "2KZAA0000", "config": {"looknfeel": "default"}, "paragraphs": [
+        {"text": "%md\n# Saltmere tides\nHigh water 06:12.", "config": {}},
+        {"text": "%python\nprint('The bell rings at high tide.')", "config": {}},
+        {"text": "%sql\nselect boat, berth from berths", "config": {}}]},
+}
+
+CONFIGS_YAML = {
+    "kustomization.yaml": "apiVersion: kustomize.config.k8s.io/v1beta1\nkind: Kustomization\nnamespace: harbour\nresources:\n  - deployment.yaml\n  - service.yaml\n"
+                          "patches:\n  - path: replicas.yaml\nimages:\n  - name: saltmere/tides\n    newTag: \"1.4\"\n",
+    "serverless.yml": "service: saltmere-tides\nprovider:\n  name: aws\n  runtime: python3.12\nfunctions:\n  highWater:\n    handler: tides.high\n  bell:\n    handler: tides.bell\nplugins:\n  - serverless-offline\n",
+    "dependabot.yml": "version: 2\nupdates:\n  - package-ecosystem: cargo\n    directory: /\n    schedule:\n      interval: weekly\n"
+                      "  - package-ecosystem: github-actions\n    directory: /\n    schedule:\n      interval: monthly\n",
+    "harbour.pre-commit-config.yaml": "repos:\n  - repo: https://github.com/pre-commit/pre-commit-hooks\n    rev: v5.0.0\n    hooks:\n      - id: trailing-whitespace\n      - id: end-of-file-fixer\n"
+                                      "  - repo: https://github.com/astral-sh/ruff-pre-commit\n    rev: v0.6.9\n    hooks:\n      - id: ruff\n",
+    "asyncapi.yaml": "asyncapi: 3.0.0\ninfo:\n  title: Saltmere harbour events\n  version: 1.0.0\n  description: Tide and bell events.\nservers:\n  harbour:\n    host: mqtt.saltmere.example\n    protocol: mqtt\n"
+                     "channels:\n  tides:\n    address: harbour/tides\n  bell:\n    address: harbour/bell\noperations:\n  onTide:\n    action: receive\n    channel:\n      $ref: '#/channels/tides'\n"
+                     "components:\n  messages:\n    tide:\n      payload:\n        type: object\n",
+}
+
+
+def step_configs() -> None:
+    import json as _json
+
+    for name, v in CONFIGS_JSON.items():
+        out("json", name, (_json.dumps(v, indent=2) + "\n").encode())
+    out("json", "renovate.json", b'{\n  "$schema": "https://docs.renovatebot.com/renovate-schema.json",\n  "extends": ["config:recommended"],\n  "packageRules": [{"matchPackagePatterns": ["*"], "groupName": "all"}]\n}\n')
+    for name, text in CONFIGS_YAML.items():
+        out("yaml", name, text.encode())
+
+
+# --- more languages for code.source (batch 5b) ----------------------------------------------
+
+LANGUAGES = {
+    ("erb", "berths.html.erb"): """<%# Saltmere berth list %>
+<h1><%= @harbour.name %></h1>
+<%= render partial: "shared/tide_banner" %>
+<% content_for :sidebar do %>
+  <p>High water <%= @tide.high %></p>
+<% end %>
+<ul>
+<% @boats.each do |boat| %>
+  <li><%= link_to boat.name, boat_path(boat) %> at berth <%= boat.berth %></li>
+<% end %>
+</ul>
+""",
+    ("jsp", "tides.jsp"): """<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="org.saltmere.harbour.TideTable" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- Saltmere tide page --%>
+<jsp:useBean id="tides" class="org.saltmere.harbour.TideTable" scope="request"/>
+<html><body>
+<h1>Saltmere tides</h1>
+<c:forEach var="t" items="${tides.today}"><p>${t.kind} at ${t.time}</p></c:forEach>
+</body></html>
+""",
+    ("asp", "Berths.cshtml"): """@using Saltmere.Harbour.Models
+@model BerthListModel
+@* Saltmere berth list *@
+<h1>@Model.HarbourName</h1>
+<ul>
+@foreach (var boat in Model.Boats)
+{
+    <li>@boat.Name at berth @boat.Berth</li>
+}
+</ul>
+@section Scripts {
+    <script src="~/js/tides.js"></script>
+}
+""",
+    ("ejs", "bell.ejs"): """<%# Saltmere bell page %>
+<%- include('partials/header') %>
+<h1><%= harbour %></h1>
+<p>The bell rings at <%= highWater %>.</p>
+<%- include('partials/footer') %>
+""",
+    ("prql", "berths.prql"): """# Boats per berth at Saltmere
+let busy = func min -> (filter count > min)
+from berths
+join side:left boats (==boat_id)
+group berth (aggregate {count = count this})
+sort {-count}
+take 10
+""",
+    ("cypher", "harbour.cypher"): """// Saltmere harbour graph
+CREATE CONSTRAINT boat_name FOR (b:Boat) REQUIRE b.name IS UNIQUE;
+LOAD CSV WITH HEADERS FROM 'file:///berths.csv' AS row
+MERGE (b:Boat {name: row.boat})
+MERGE (s:Berth {number: toInteger(row.berth)})
+MERGE (b)-[:MOORED_AT]->(s);
+/* boats that share a berth */
+MATCH (a:Boat)-[:MOORED_AT]->(s:Berth)<-[:MOORED_AT]-(b:Boat) RETURN a.name, b.name, s.number;
+""",
+}
+
+
+def step_languages() -> None:
+    for (lang, name), text in LANGUAGES.items():
+        out(lang, name, text.encode())
+
+
+# --- record-based data (batch 5b) ---------------------------------------------------------
+# Accounts, ids and people are fictitious (Saltmere): the masking is tested
+# in memory, never with a realistic file.
+
+LCOV = """TN:harbour
+SF:/src/harbour/tides.c
+FN:2,bell
+FNDA:3,bell
+FNF:1
+FNH:1
+DA:2,3
+DA:3,3
+DA:4,0
+LF:3
+LH:2
+BRDA:3,0,0,2
+BRDA:3,0,1,1
+BRF:2
+BRH:2
+end_of_record
+SF:/src/harbour/berth.c
+FN:1,berth
+FNDA:0,berth
+FNF:1
+FNH:0
+DA:1,0
+LF:1
+LH:0
+end_of_record
+"""
+
+TAP = """TAP version 13
+1..5
+ok 1 - high water is at 06:12
+ok 2 - low water is at 12:31
+not ok 3 - the bell rings twice
+  ---
+  message: rang once
+  ...
+ok 4 - fog horn # SKIP no fog today
+not ok 5 - pilot launch # TODO not built yet
+"""
+
+PROM = """# HELP harbour_boats_moored Boats moored in the harbour.
+# TYPE harbour_boats_moored gauge
+harbour_boats_moored{quay="long_wall"} 12
+harbour_boats_moored{quay="east"} 4
+# HELP harbour_bell_rings_total Times the bell has rung.
+# TYPE harbour_bell_rings_total counter
+harbour_bell_rings_total 1432
+# HELP harbour_tide_height_metres Tide height.
+# TYPE harbour_tide_height_metres histogram
+harbour_tide_height_metres_bucket{le="1"} 3
+harbour_tide_height_metres_bucket{le="+Inf"} 9
+harbour_tide_height_metres_sum 21.5
+harbour_tide_height_metres_count 9
+"""
+
+OFX = """OFXHEADER:100
+DATA:OFXSGML
+VERSION:102
+SECURITY:NONE
+ENCODING:USASCII
+CHARSET:1252
+COMPRESSION:NONE
+OLDFILEUID:NONE
+NEWFILEUID:NONE
+
+<OFX>
+<SIGNONMSGSRSV1><SONRS><STATUS><CODE>0<SEVERITY>INFO</STATUS><DTSERVER>20250901120000<LANGUAGE>ENG<FI><ORG>Saltmere Harbour Bank<FID>9999</FI></SONRS></SIGNONMSGSRSV1>
+<BANKMSGSRSV1><STMTTRNRS><TRNUID>1<STATUS><CODE>0<SEVERITY>INFO</STATUS>
+<STMTRS><CURDEF>GBP
+<BANKACCTFROM><BANKID>999999<ACCTID>00000000012345<ACCTTYPE>CHECKING</BANKACCTFROM>
+<BANKTRANLIST><DTSTART>20250801<DTEND>20250901
+<STMTTRN><TRNTYPE>DEBIT<DTPOSTED>20250805<TRNAMT>-12.50<FITID>1<NAME>Harbour chandlery</STMTTRN>
+<STMTTRN><TRNTYPE>CREDIT<DTPOSTED>20250815<TRNAMT>200.00<FITID>2<NAME>Mooring refund</STMTTRN>
+<STMTTRN><TRNTYPE>DEBIT<DTPOSTED>20250830<TRNAMT>-4.20<FITID>3<NAME>Bell tower cafe</STMTTRN>
+</BANKTRANLIST>
+<LEDGERBAL><BALAMT>1183.30<DTASOF>20250901</LEDGERBAL>
+</STMTRS></STMTTRNRS></BANKMSGSRSV1>
+</OFX>
+"""
+
+QIF = """!Type:Bank
+D08/05'25
+T-12.50
+PHarbour chandlery
+^
+D08/15'25
+T200.00
+PMooring refund
+^
+"""
+
+MT940 = """:20:SALT2025090101
+:25:GB00SALT00000000012345
+:28C:00001/001
+:60F:C250801GBP1000,00
+:61:2508050805D12,50NTRFNONREF//1
+:86:Harbour chandlery
+:61:2508150815C200,00NTRFNONREF//2
+:86:Mooring refund
+:62F:C250901GBP1187,50
+"""
+
+CAMT = """<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:camt.053.001.08">
+  <BkToCstmrStmt>
+    <GrpHdr><MsgId>SALT-2025-09</MsgId><CreDtTm>2025-09-01T12:00:00</CreDtTm></GrpHdr>
+    <Stmt>
+      <Id>SALT-STMT-1</Id>
+      <Acct><Id><IBAN>GB00SALT00000000012345</IBAN></Id><Ccy>GBP</Ccy></Acct>
+      <Bal><Tp><CdOrPrtry><Cd>OPBD</Cd></CdOrPrtry></Tp><Amt Ccy="GBP">1000.00</Amt><CdtDbtInd>CRDT</CdtDbtInd></Bal>
+      <Ntry><Amt Ccy="GBP">12.50</Amt><CdtDbtInd>DBIT</CdtDbtInd><BookgDt><Dt>2025-08-05</Dt></BookgDt></Ntry>
+      <Ntry><Amt Ccy="GBP">200.00</Amt><CdtDbtInd>CRDT</CdtDbtInd><BookgDt><Dt>2025-08-15</Dt></BookgDt></Ntry>
+    </Stmt>
+  </BkToCstmrStmt>
+</Document>
+"""
+
+BEANCOUNT = """option "title" "Saltmere harbour accounts"
+option "operating_currency" "GBP"
+
+2025-08-01 open Assets:Bank:Current GBP
+2025-08-01 open Expenses:Chandlery GBP
+2025-08-01 open Income:Moorings GBP
+2025-08-01 open Equity:Opening GBP
+
+2025-08-01 * "Opening balance"
+  Assets:Bank:Current   1000.00 GBP
+  Equity:Opening
+
+2025-08-05 * "Harbour chandlery" "Rope"
+  Expenses:Chandlery      12.50 GBP
+  Assets:Bank:Current
+
+2025-08-15 * "Mooring refund"
+  Assets:Bank:Current    200.00 GBP
+  Income:Moorings
+"""
+
+LEDGER = """; Saltmere harbour ledger
+2025/08/05 Harbour chandlery
+    Expenses:Chandlery          £12.50
+    Assets:Bank:Current
+
+2025/08/15 Mooring refund
+    Assets:Bank:Current        £200.00
+    Income:Moorings
+"""
+
+X12 = ("ISA*00*          *00*          *ZZ*SALTMEREHARBOR *ZZ*TIDECHANDLERY  *250901*1200*U*00401*000000001*0*T*:~"
+       "GS*PO*SALTMERE*TIDECHANDLERY*20250901*1200*1*X*004010~"
+       "ST*850*0001~BEG*00*SA*PO-2025-001**20250901~PO1*1*10*EA*4.50**VP*ROPE-20M~CTT*1~SE*5*0001~"
+       "GE*1*1~IEA*1*000000001~\n")
+
+EDIFACT = ("UNA:+.? '"
+           "UNB+UNOC:3+SALTMEREHARBOUR:ZZ+TIDECHANDLERY:ZZ+250901:1200+1'"
+           "UNH+1+ORDERS:D:96A:UN'BGM+220+PO-2025-001+9'DTM+137:20250901:102'LIN+1++ROPE-20M:SA'QTY+21:10'UNS+S'UNT+7+1'"
+           "UNH+2+INVOIC:D:96A:UN'BGM+380+INV-2025-001+9'UNT+3+2'"
+           "UNZ+2+1'\n")
+
+GEDCOM = """0 HEAD
+1 SOUR SALTMERE_TREE
+2 VERS 1.0
+2 NAME Saltmere Family Tree
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+1 LANG English
+0 @I1@ INDI
+1 NAME Ben /Gull/
+1 BIRT
+2 DATE 12 MAR 1890
+2 PLAC Saltmere
+1 DEAT
+2 DATE 1961
+0 @I2@ INDI
+1 NAME Ana /Lighthouse/
+1 BIRT
+2 DATE ABT 1893
+0 @I3@ INDI
+1 NAME Grey /Gull/
+1 BIRT
+2 DATE 1 JUN 1920
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 CHIL @I3@
+1 MARR
+2 DATE 1915
+0 @S1@ SOUR
+1 TITL Saltmere parish register
+0 TRLR
+"""
+
+FORTUNE = """The harbour bell rings at high tide.
+%
+Fog on the long wall: listen for the horn.
+%
+A boat in the harbour is safe, but that is not
+what boats are for.
+%
+Low water at 12:31; mind the bar.
+%
+"""
+
+LDIF = """version: 1
+
+dn: ou=harbour,dc=saltmere,dc=example
+objectClass: top
+objectClass: organizationalUnit
+ou: harbour
+
+dn: uid=ben,ou=harbour,dc=saltmere,dc=example
+objectClass: top
+objectClass: inetOrgPerson
+uid: ben
+cn: Ben Gull
+sn: Gull
+mail: ben@saltmere.example
+
+dn: uid=ana,ou=harbour,dc=saltmere,dc=example
+changetype: modify
+replace: telephoneNumber
+telephoneNumber: +44 0000 000000
+"""
+
+MATHEMATICA = """(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 14.1' *)
+(* Created By: Wolfram Mathematica 14.1 *)
+
+Notebook[{
+Cell["Saltmere tides", "Title"],
+Cell["High water", "Section"],
+Cell["The bell rings at high tide.", "Text"],
+Cell[BoxData[RowBox[{"tide", "[", "t_", "]", ":=", RowBox[{"2", " ", RowBox[{"Sin", "[", "t", "]"}]}]}]], "Input"],
+Cell[BoxData["2"], "Output"]
+}]
+"""
+
+LIVEBOOK = """# Saltmere tides
+
+```elixir
+Mix.install([{:kino, "~> 0.14"}, {:explode, "~> 0.1"}])
+```
+
+## High water
+
+The bell rings at high tide.
+
+```elixir
+high_water = ~T[06:12:00]
+```
+
+## Berths
+
+```elixir
+Kino.DataTable.new([%{boat: "Grey Tern", berth: 5}])
+```
+"""
+
+
+def step_records() -> None:
+    import io
+    import zipfile
+
+    for fmt, name, text in (
+        ("lcov", "harbour.lcov", LCOV), ("tap", "harbour-tests.tap.txt", TAP), ("prometheus", "harbour-metrics.prom", PROM),
+        ("ofx", "saltmere-statement.ofx", OFX), ("qif", "saltmere-statement.qif", QIF), ("mt940", "saltmere-statement.sta", MT940),
+        ("camt", "saltmere-statement.camt.xml", CAMT), ("ledger", "saltmere.beancount", BEANCOUNT), ("ledger", "saltmere.ledger", LEDGER),
+        ("edi_x12", "purchase-order.x12", X12), ("edifact", "orders.edifact", EDIFACT), ("gedcom", "saltmere-tree.ged", GEDCOM),
+        ("fortune", "harbour-sayings.fortune", FORTUNE), ("ldif", "saltmere-directory.ldif", LDIF),
+        ("mathematica_nb", "saltmere-tides.nb", MATHEMATICA), ("livebook", "saltmere-tides.livemd", LIVEBOOK),
+    ):
+        out(fmt, name, text.encode())
+    # The strfile index of the fortune file (strfile(1): version 2, counts,
+    # flags, delimiter, then the offsets).
+    quotes = [q for q in FORTUNE.split("%\n") if q.strip()]
+    offsets, at = [], 0
+    for q in FORTUNE.split("%\n")[:-1]:
+        offsets.append(at)
+        at += len(q.encode()) + 2
+    lens = [len(q.encode()) for q in quotes]
+    dat = struct.pack(">LLLLLc3x", 2, len(quotes), max(lens), min(lens), 0, b"%") + b"".join(struct.pack(">L", o) for o in offsets + [at])
+    out("fortune", "harbour-sayings.dat", dat)
+    # GTFS: a tiny feed for the Saltmere ferry.
+    files = {
+        "agency.txt": "agency_id,agency_name,agency_url,agency_timezone\nSF,Saltmere Ferry,https://ferry.saltmere.example,Europe/London\n",
+        "stops.txt": "stop_id,stop_name,stop_lat,stop_lon\nLW,Long Wall,50.0001,-5.0001\nEQ,East Quay,50.0011,-5.0021\n",
+        "routes.txt": "route_id,agency_id,route_short_name,route_long_name,route_type\nF1,SF,F1,Harbour crossing,4\n",
+        "trips.txt": "route_id,service_id,trip_id\nF1,WK,F1-0700\nF1,WK,F1-0800\n",
+        "stop_times.txt": "trip_id,arrival_time,departure_time,stop_id,stop_sequence\nF1-0700,07:00:00,07:00:00,LW,1\nF1-0700,07:10:00,07:10:00,EQ,2\n",
+        "calendar.txt": "service_id,monday,tuesday,wednesday,thursday,friday,saturday,sunday,start_date,end_date\nWK,1,1,1,1,1,0,0,20250901,20251231\n",
+    }
+    out("gtfs", "saltmere-ferry-gtfs.zip", zip_of(list(files.items())))
+
+
+STEPS = {"records": step_records, "languages": step_languages, "configs": step_configs, "legacy_docs": step_legacy_docs, "packages": step_packages, "books": step_books, "writing": step_writing, "scripts": step_scripts, "exec": step_exec, "debug": step_debug, "dos": step_dos, "mac": step_mac, "encoded": step_encoded, "wim": step_wim, "bundles": step_bundles, "backups": step_backups}
 
 if __name__ == "__main__":
     WORK.mkdir(parents=True, exist_ok=True)
