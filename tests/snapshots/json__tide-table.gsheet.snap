@@ -82,37 +82,25 @@ expression: report
             "types": [
               "string"
             ],
-            "count": 1,
-            "examples": [
-              "https://docs.google.com/spreadsheets/d/SALTMERE0000000000000…"
-            ]
+            "count": 1
           },
           "$.doc_id": {
             "types": [
               "string"
             ],
-            "count": 1,
-            "examples": [
-              "SALTMERE0000000000000000000000000000000000"
-            ]
+            "count": 1
           },
           "$.resource_id": {
             "types": [
               "string"
             ],
-            "count": 1,
-            "examples": [
-              "spreadsheet:SALTMERE0000000000000000000000000000000000"
-            ]
+            "count": 1
           },
           "$.email": {
             "types": [
               "string"
             ],
-            "count": 1,
-            "examples": [
-              "[redacted:email]"
-            ]
+            "count": 1
           }
         },
         "max_depth": 1

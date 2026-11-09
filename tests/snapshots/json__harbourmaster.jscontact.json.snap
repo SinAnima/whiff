@@ -85,37 +85,25 @@ expression: report
             "types": [
               "string"
             ],
-            "count": 1,
-            "examples": [
-              "Card"
-            ]
+            "count": 1
           },
           "$.version": {
             "types": [
               "string"
             ],
-            "count": 1,
-            "examples": [
-              "1.0"
-            ]
+            "count": 1
           },
           "$.uid": {
             "types": [
               "string"
             ],
-            "count": 1,
-            "examples": [
-              "urn:uuid:5a17e2e0-0000-4000-8000-00000000000b"
-            ]
+            "count": 1
           },
           "$.kind": {
             "types": [
               "string"
             ],
-            "count": 1,
-            "examples": [
-              "individual"
-            ]
+            "count": 1
           },
           "$.name": {
             "types": [
@@ -127,10 +115,7 @@ expression: report
             "types": [
               "string"
             ],
-            "count": 1,
-            "examples": [
-              "Ana Lighthouse"
-            ]
+            "count": 1
           },
           "$.emails": {
             "types": [
@@ -148,10 +133,7 @@ expression: report
             "types": [
               "string"
             ],
-            "count": 1,
-            "examples": [
-              "[redacted:email]"
-            ]
+            "count": 1
           },
           "$.phones": {
             "types": [

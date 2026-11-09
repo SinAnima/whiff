@@ -79,7 +79,8 @@ struct RunArgs {
     #[arg(long)]
     provenance: bool,
     /// Personal data: `strict` counts it and keeps only the domain of e-mail
-    /// addresses; `off` lists addresses and phone numbers as found.
+    /// addresses; `off` gives the full details (addresses, phone numbers,
+    /// account numbers and transactions, names) as found.
     #[arg(long, value_name = "MODE", default_value = "strict", value_parser = parse_privacy)]
     privacy: Privacy,
     /// Include hidden files when walking directories.

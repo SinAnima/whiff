@@ -80,37 +80,25 @@ expression: report
             "types": [
               "integer"
             ],
-            "count": 1,
-            "examples": [
-              4
-            ]
+            "count": 1
           },
           "$.terraform_version": {
             "types": [
               "string"
             ],
-            "count": 1,
-            "examples": [
-              "1.9.5"
-            ]
+            "count": 1
           },
           "$.serial": {
             "types": [
               "integer"
             ],
-            "count": 1,
-            "examples": [
-              12
-            ]
+            "count": 1
           },
           "$.lineage": {
             "types": [
               "string"
             ],
-            "count": 1,
-            "examples": [
-              "5a17e2e0-0000-4000-8000-000000000009"
-            ]
+            "count": 1
           },
           "$.outputs": {
             "types": [
@@ -128,19 +116,13 @@ expression: report
             "types": [
               "string"
             ],
-            "count": 1,
-            "examples": [
-              "saltmere-charts"
-            ]
+            "count": 1
           },
           "$.outputs.bucket.type": {
             "types": [
               "string"
             ],
-            "count": 1,
-            "examples": [
-              "string"
-            ]
+            "count": 1
           },
           "$.resources": {
             "types": [
@@ -162,42 +144,25 @@ expression: report
             "types": [
               "string"
             ],
-            "count": 3,
-            "examples": [
-              "managed",
-              "data"
-            ]
+            "count": 3
           },
           "$.resources[].type": {
             "types": [
               "string"
             ],
-            "count": 3,
-            "examples": [
-              "aws_s3_bucket",
-              "aws_iam_user",
-              "aws_region"
-            ]
+            "count": 3
           },
           "$.resources[].name": {
             "types": [
               "string"
             ],
-            "count": 3,
-            "examples": [
-              "charts",
-              "harbourmaster",
-              "here"
-            ]
+            "count": 3
           },
           "$.resources[].provider": {
             "types": [
               "string"
             ],
-            "count": 3,
-            "examples": [
-              "provider[\"registry.terraform.io/hashicorp/aws\"]"
-            ]
+            "count": 3
           },
           "$.resources[].instances": {
             "types": [
@@ -219,10 +184,7 @@ expression: report
             "types": [
               "integer"
             ],
-            "count": 2,
-            "examples": [
-              0
-            ]
+            "count": 2
           },
           "$.resources[].instances[].attributes": {
             "types": [
@@ -234,19 +196,13 @@ expression: report
             "types": [
               "string"
             ],
-            "count": 1,
-            "examples": [
-              "saltmere-charts"
-            ]
+            "count": 1
           },
           "$.resources[].instances[].attributes.id": {
             "types": [
               "string"
             ],
-            "count": 1,
-            "examples": [
-              "saltmere-charts"
-            ]
+            "count": 1
           },
           "$.resources[].instances[].sensitive_attributes": {
             "types": [
@@ -262,11 +218,7 @@ expression: report
             "types": [
               "string"
             ],
-            "count": 2,
-            "examples": [
-              "harbourmaster",
-              "eu-west-2"
-            ]
+            "count": 2
           },
           "$.resources[].instances[].sensitive_attributes[]": {
             "types": [
@@ -288,19 +240,13 @@ expression: report
             "types": [
               "string"
             ],
-            "count": 1,
-            "examples": [
-              "get_attr"
-            ]
+            "count": 1
           },
           "$.resources[].instances[].sensitive_attributes[][].value": {
             "types": [
               "string"
             ],
-            "count": 1,
-            "examples": [
-              "password"
-            ]
+            "count": 1
           }
         },
         "max_depth": 8

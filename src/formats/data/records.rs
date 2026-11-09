@@ -259,6 +259,15 @@ fn strings(v: impl IntoIterator<Item = String>) -> Value {
     Value::Array(v.into_iter().take(MAX_LISTED).map(Value::String).collect())
 }
 
+/// An account number as the privacy mode allows: whole with
+/// `--privacy off`, else its last four characters.
+fn account(cx: &Context<'_>, number: &str) -> String {
+    if cx.privacy_strict() { mask(number) } else { number.trim().to_string() }
+}
+
+/// Transactions listed with `--privacy off`.
+const MAX_TRANSACTIONS: usize = 200;
+
 /// An account number with all but its last four characters hidden.
 fn mask(account: &str) -> String {
     let chars: Vec<char> = account.chars().filter(|c| !c.is_whitespace()).collect();
@@ -427,7 +436,7 @@ fn ofx(cx: &mut Context<'_>, text: &str) {
     } else if text.contains("<CCSTMTRS>") {
         cx.format_set("account_type", "CREDITCARD");
     }
-    let accounts: BTreeSet<String> = ofx_values(text, "ACCTID").into_iter().map(mask).collect();
+    let accounts: BTreeSet<String> = ofx_values(text, "ACCTID").into_iter().map(|a| account(cx, a)).collect();
     cx.format_set("accounts", strings(accounts));
     if let Some(c) = first("CURDEF") {
         cx.format_set("currency", c);
@@ -440,25 +449,61 @@ fn ofx(cx: &mut Context<'_>, text: &str) {
         *kinds.entry(k.to_string()).or_default() += 1;
     }
     cx.format_set("transaction_types", json!(kinds));
+    if !cx.privacy_strict() {
+        if let Some(b) = ofx_values(text, "BALAMT").first() {
+            cx.format_set("balance", *b);
+        }
+        let list: Vec<Value> = text
+            .split("<STMTTRN>")
+            .skip(1)
+            .take(MAX_TRANSACTIONS)
+            .map(|t| {
+                let t = t.split("</STMTTRN>").next().unwrap_or(t);
+                let one = |tag: &str| ofx_values(t, tag).first().map(|v| (*v).to_string());
+                json!({
+                    "date": one("DTPOSTED").and_then(|d| ofx_date(&d)),
+                    "amount": one("TRNAMT"),
+                    "type": one("TRNTYPE"),
+                    "name": one("NAME").or_else(|| one("MEMO")),
+                })
+            })
+            .collect();
+        cx.format_set("transaction_list", list);
+    }
 }
 
 fn qif(cx: &mut Context<'_>, text: &str) {
     let kind = text.lines().next().and_then(|l| l.strip_prefix("!Type:")).unwrap_or("").trim().to_string();
     cx.format_set("account_type", kind);
     let (mut records, mut dates) = (0u64, Vec::new());
+    let (mut list, mut cur) = (Vec::new(), serde_json::Map::new());
     for line in text.lines() {
         if line.starts_with('^') {
             records += 1;
+            if list.len() < MAX_TRANSACTIONS {
+                list.push(Value::Object(std::mem::take(&mut cur)));
+            }
         } else if let Some(d) = line.strip_prefix('D') {
             // `9/ 1'25`, `09/01/2025`, `2025-09-01`: kept as written, the
             // order of day and month is the program's.
-            dates.push(d.trim().replace(' ', "0"));
+            let d = d.trim().replace(' ', "0");
+            cur.insert("date".into(), d.clone().into());
+            dates.push(d);
+        } else if let Some(t) = line.strip_prefix('T').or_else(|| line.strip_prefix('U')) {
+            cur.insert("amount".into(), t.trim().into());
+        } else if let Some(p) = line.strip_prefix('P') {
+            cur.insert("payee".into(), p.trim().into());
+        } else if let Some(m) = line.strip_prefix('M') {
+            cur.insert("memo".into(), m.trim().into());
         }
     }
     cx.format_set("transactions", records);
     if let (Some(a), Some(b)) = (dates.first(), dates.last()) {
         cx.format_set("first_date", a.clone());
         cx.format_set("last_date", b.clone());
+    }
+    if !cx.privacy_strict() {
+        cx.format_set("transaction_list", list);
     }
 }
 
@@ -471,11 +516,12 @@ fn yymmdd(v: &str) -> Option<String> {
 fn mt940(cx: &mut Context<'_>, text: &str) {
     let (mut statements, mut txns, mut dates) = (0u64, 0u64, Vec::new());
     let (mut accounts, mut currencies) = (BTreeSet::new(), BTreeSet::new());
+    let (mut list, mut closing): (Vec<Value>, Option<String>) = (Vec::new(), None);
     for line in text.lines() {
         if line.starts_with(":20:") {
             statements += 1;
         } else if let Some(a) = line.strip_prefix(":25:") {
-            accounts.insert(mask(a.trim()));
+            accounts.insert(account(cx, a));
         } else if let Some(b) = line.strip_prefix(":60F:").or_else(|| line.strip_prefix(":60M:")) {
             // C/D, YYMMDD, currency, amount.
             if let Some(c) = b.get(7..10) {
@@ -484,6 +530,25 @@ fn mt940(cx: &mut Context<'_>, text: &str) {
         } else if let Some(t) = line.strip_prefix(":61:") {
             txns += 1;
             dates.extend(yymmdd(t));
+            // YYMMDD, an optional MMDD entry date, C / D / RC / RD, the amount.
+            let rest = t.get(6..).unwrap_or("");
+            let rest =
+                if rest.get(..4).is_some_and(|d| d.bytes().all(|b| b.is_ascii_digit())) { &rest[4..] } else { rest };
+            let sign = if rest.starts_with('D') || rest.starts_with("RC") { "-" } else { "" };
+            let amount: String = rest
+                .trim_start_matches(['R', 'C', 'D'])
+                .chars()
+                .take_while(|c| c.is_ascii_digit() || *c == ',')
+                .collect();
+            if list.len() < MAX_TRANSACTIONS {
+                list.push(json!({ "date": yymmdd(t), "amount": format!("{sign}{}", amount.replace(',', ".")) }));
+            }
+        } else if let Some(info) = line.strip_prefix(":86:") {
+            if let Some(Value::Object(last)) = list.last_mut() {
+                last.insert("details".into(), info.trim().into());
+            }
+        } else if let Some(b) = line.strip_prefix(":62F:") {
+            closing = Some(b.trim().to_string());
         }
     }
     cx.format_set("statements", statements);
@@ -491,17 +556,31 @@ fn mt940(cx: &mut Context<'_>, text: &str) {
     cx.format_set("currencies", strings(currencies));
     cx.format_set("transactions", txns);
     cx.format_set("date_range", range(dates));
+    if !cx.privacy_strict() {
+        if let Some(c) = closing {
+            cx.format_set("closing_balance", c);
+        }
+        cx.format_set("transaction_list", list);
+    }
 }
 
 fn camt(cx: &mut Context<'_>, text: &str) -> Result<(), ExtractError> {
     let (mut path, mut statements, mut entries) = (Vec::<String>::new(), 0u64, 0u64);
     let (mut accounts, mut currencies, mut dates) = (BTreeSet::new(), BTreeSet::new(), Vec::new());
     let mut kind = String::new();
+    let strict = cx.privacy_strict();
+    let (mut list, mut last_balance, mut closing, mut closing_next) =
+        (Vec::<Value>::new(), None::<String>, None::<String>, false);
     xmlwalk::walk(text, cx, 2_000_000, |_, ev| match ev {
         xmlwalk::Ev::Start(name, attrs) => {
             match name {
                 "Stmt" | "Rpt" | "Ntfctn" => statements += 1,
-                "Ntry" => entries += 1,
+                "Ntry" => {
+                    entries += 1;
+                    if list.len() < MAX_TRANSACTIONS {
+                        list.push(Value::Object(serde_json::Map::new()));
+                    }
+                }
                 "Amt" | "Bal" => {
                     if let Some(c) = xmlwalk::attr(attrs, "Ccy") {
                         currencies.insert(c.to_string());
@@ -514,16 +593,42 @@ fn camt(cx: &mut Context<'_>, text: &str) -> Result<(), ExtractError> {
             }
             path.push(name.to_string());
         }
-        xmlwalk::Ev::End(_) => {
+        xmlwalk::Ev::End(name) => {
+            // A balance's type comes before its amount, inside `Bal`.
+            if name == "Bal" {
+                if closing_next {
+                    closing = last_balance.take();
+                }
+                closing_next = false;
+            }
             path.pop();
         }
         xmlwalk::Ev::Text(t) => {
             let at =
                 |p: &[&str]| path.len() >= p.len() && path[path.len() - p.len()..].iter().zip(p).all(|(a, b)| a == b);
             if at(&["Acct", "Id", "IBAN"]) || at(&["Acct", "Id", "Othr", "Id"]) {
-                accounts.insert(mask(t));
+                accounts.insert(if strict { mask(t) } else { t.to_string() });
             } else if at(&["Ntry", "BookgDt", "Dt"]) || at(&["Ntry", "BookgDt", "DtTm"]) {
                 dates.push(t.get(..10).unwrap_or(t).to_string());
+                if let Some(Value::Object(e)) = list.last_mut() {
+                    e.insert("date".into(), t.get(..10).unwrap_or(t).into());
+                }
+            } else if at(&["Ntry", "Amt"]) {
+                if let Some(Value::Object(e)) = list.last_mut() {
+                    e.insert("amount".into(), t.into());
+                }
+            } else if at(&["Ntry", "CdtDbtInd"]) {
+                if let Some(Value::Object(e)) = list.last_mut() {
+                    e.insert("direction".into(), t.into());
+                }
+            } else if path.iter().any(|p| p == "Ntry") && path.last().is_some_and(|p| p == "Ustrd") {
+                if let Some(Value::Object(e)) = list.last_mut() {
+                    e.insert("details".into(), t.into());
+                }
+            } else if at(&["Bal", "Amt"]) {
+                last_balance = Some(t.to_string());
+            } else if at(&["Bal", "Tp", "CdOrPrtry", "Cd"]) && t == "CLBD" {
+                closing_next = true;
             }
         }
     })?;
@@ -535,6 +640,12 @@ fn camt(cx: &mut Context<'_>, text: &str) -> Result<(), ExtractError> {
     cx.format_set("currencies", strings(currencies));
     cx.format_set("entries", entries);
     cx.format_set("date_range", range(dates));
+    if !strict {
+        if let Some(c) = closing {
+            cx.format_set("closing_balance", c);
+        }
+        cx.format_set("transaction_list", list);
+    }
     Ok(())
 }
 
@@ -737,6 +848,8 @@ fn edifact(cx: &mut Context<'_>, text: &str) {
 
 fn gedcom(cx: &mut Context<'_>, text: &str) {
     let (mut counts, mut years, mut path) = (BTreeMap::<&str, u64>::new(), Vec::<u32>::new(), Vec::<String>::new());
+    // With `--privacy off`: each individual's name and birth / death year.
+    let mut people: Vec<serde_json::Map<String, Value>> = Vec::new();
     for line in text.lines() {
         let mut w = line.trim().splitn(3, ' ');
         let (Some(level), Some(a)) = (w.next().and_then(|l| l.parse::<usize>().ok()), w.next()) else { continue };
@@ -746,12 +859,35 @@ fn gedcom(cx: &mut Context<'_>, text: &str) {
         path.push(tag.to_string());
         let val = if a.starts_with('@') { "" } else { rest };
         match (level, tag) {
-            (0, "INDI") => *counts.entry("individuals").or_default() += 1,
+            (0, "INDI") => {
+                *counts.entry("individuals").or_default() += 1;
+                people.push(serde_json::Map::new());
+            }
             (0, "FAM") => *counts.entry("families").or_default() += 1,
             (0, "SOUR") => *counts.entry("sources").or_default() += 1,
             (0, "OBJE") => *counts.entry("media").or_default() += 1,
             (0, "REPO") => *counts.entry("repositories").or_default() += 1,
             (0, "NOTE" | "SNOTE") => *counts.entry("notes").or_default() += 1,
+            (1, "NAME") if path.first().is_some_and(|p| p == "INDI") => {
+                if let Some(p) = people.last_mut().filter(|p| !p.contains_key("name")) {
+                    p.insert(
+                        "name".into(),
+                        val.replace('/', "").split_whitespace().collect::<Vec<_>>().join(" ").into(),
+                    );
+                }
+            }
+            (2, "DATE")
+                if path.first().is_some_and(|p| p == "INDI")
+                    && matches!(path.get(1).map(String::as_str), Some("BIRT" | "DEAT")) =>
+            {
+                let year =
+                    val.split_whitespace().filter_map(|t| t.parse::<u32>().ok()).rfind(|y| (100..=2200).contains(y));
+                years.extend(year);
+                if let (Some(p), Some(y)) = (people.last_mut(), year) {
+                    let key = if path[1] == "BIRT" { "born" } else { "died" };
+                    p.insert(key.into(), y.into());
+                }
+            }
             (_, "DATE") => years.extend(
                 val.split_whitespace().filter_map(|t| t.parse::<u32>().ok()).rfind(|y| (100..=2200).contains(y)),
             ),
@@ -771,6 +907,9 @@ fn gedcom(cx: &mut Context<'_>, text: &str) {
     cx.format_set("records", json!(counts));
     if let (Some(a), Some(b)) = (years.iter().min(), years.iter().max()) {
         cx.format_set("year_range", json!([a, b]));
+    }
+    if !cx.privacy_strict() {
+        cx.format_set("individuals", people.into_iter().take(500).map(Value::Object).collect::<Vec<_>>());
     }
 }
 
@@ -866,13 +1005,31 @@ fn ldif(cx: &mut Context<'_>, text: &str) {
     let (mut entries, mut classes, mut attrs, mut changes) =
         (0u64, BTreeMap::<String, u64>::new(), BTreeSet::new(), BTreeMap::<String, u64>::new());
     let mut version = None;
+    // With `--privacy off`: each entry's DN and attribute values.
+    let mut list: Vec<serde_json::Map<String, Value>> = Vec::new();
     for line in text.lines() {
         if line.starts_with(' ') || line.starts_with('#') {
             continue;
         }
         let Some((k, v)) = line.split_once(':') else { continue };
         let v = v.trim_start_matches(':').trim();
-        match k.to_ascii_lowercase().as_str() {
+        let key = k.to_ascii_lowercase();
+        if key == "dn" {
+            if list.len() < 200 {
+                let mut m = serde_json::Map::new();
+                m.insert("dn".into(), v.into());
+                list.push(m);
+            }
+        } else if key != "version"
+            && let Some(m) = list.last_mut()
+        {
+            match m.get_mut(k) {
+                Some(Value::Array(a)) => a.push(v.into()),
+                Some(old) => *old = json!([old.clone(), v]),
+                None => _ = m.insert(k.to_string(), v.into()),
+            }
+        }
+        match key.as_str() {
             "version" => version = Some(v.to_string()),
             "dn" => entries += 1,
             "objectclass" => *classes.entry(v.to_string()).or_default() += 1,
@@ -889,6 +1046,9 @@ fn ldif(cx: &mut Context<'_>, text: &str) {
     cx.format_set("attributes", strings(attrs));
     if !changes.is_empty() {
         cx.format_set("change_records", json!(changes));
+    }
+    if !cx.privacy_strict() {
+        cx.format_set("entry_list", list.into_iter().map(Value::Object).collect::<Vec<_>>());
     }
 }
 
@@ -1032,6 +1192,21 @@ mod tests {
         assert_eq!(x12_name("850"), Some("Purchase order"));
     }
 
+    /// People's names and directory values appear only with
+    /// `--privacy off` (neutral samples).
+    #[test]
+    fn people_follow_privacy() {
+        let ged = b"0 HEAD\n1 GEDC\n2 VERS 5.5.1\n0 @I1@ INDI\n1 NAME Alpha /Beta/\n1 BIRT\n2 DATE 1900\n0 TRLR\n";
+        let ldif = b"version: 1\n\ndn: uid=a,dc=example\nobjectClass: person\ncn: Gamma Delta\n";
+        let engine = crate::Engine::builder().privacy(crate::Privacy::Off).build();
+        for (name, bytes, needle) in [("t.ged", &ged[..], "Alpha Beta"), ("t.ldif", &ldif[..], "Gamma Delta")] {
+            let strict = serde_json::to_string(&crate::plugin::testing::report_for(name, bytes)).unwrap();
+            assert!(!strict.contains(needle.split(' ').next().unwrap()), "{name}: name in a strict report");
+            let off = serde_json::to_string(&engine.extract_bytes(Some(name), bytes.to_vec())).unwrap();
+            assert!(off.contains(needle), "{name}: name missing with privacy off");
+        }
+    }
+
     /// Account numbers never reach the report whole (neutral sample).
     #[test]
     fn statements_mask_accounts() {
@@ -1040,5 +1215,11 @@ mod tests {
         let json = serde_json::to_string(&r).unwrap();
         assert!(!json.contains("00012345678"), "account number leaked");
         assert_eq!(r.format["ofx"]["accounts"][0], "•••••••5678");
+        assert!(r.format["ofx"].get("transaction_list").is_none());
+        // `--privacy off`: the account whole, and the transactions.
+        let engine = crate::Engine::builder().privacy(crate::Privacy::Off).build();
+        let r = engine.extract_bytes(Some("statement.ofx"), ofx.to_vec());
+        assert_eq!(r.format["ofx"]["accounts"][0], "00012345678");
+        assert_eq!(r.format["ofx"]["transaction_list"][0]["amount"], "-1.00");
     }
 }

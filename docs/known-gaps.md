@@ -668,13 +668,17 @@ uncompressed (and ALZip's deflated entries); nothing else is decompressed.
 
 ### Data and configuration files (long tail, batch 5)
 
-- **Privacy:** bank statements give the last four characters of each
-  account; EDI party ids, Drive shortcut accounts and a location
-  history's rounded bounding box appear only without strict privacy.
-  GEDCOM, LDIF and JSContact give counts and attribute names, never
-  people's names or details. Terraform state lists resource types and
-  output names, never attribute values. Amounts and balances are never
-  reported.
+- **Privacy:** by default bank statements give the last four characters
+  of each account and no amounts; GEDCOM, LDIF and JSContact give counts
+  and attribute names; Terraform state gives resource types and output
+  names; and the JSON / YAML schema summary of these files leaves out
+  its example values. With `--privacy off` they give the full details:
+  whole account numbers, balances and transactions (up to 200), each
+  individual's name and birth / death years, each directory entry's
+  values, the JSContact card, Terraform resource attributes and output
+  values, EDI party ids, the Drive account and a location history's
+  exact bounding box. Terraform attributes and outputs marked sensitive,
+  or named like secrets, stay hidden even then.
 - **QIF:** dates are kept as written, since QIF does not say whether the
   day or the month comes first.
 - **Ledger / Beancount:** read line by line; includes, automated

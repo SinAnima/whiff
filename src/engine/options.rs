@@ -178,8 +178,9 @@ pub enum Privacy {
     /// numbers and birthdays are counted. Names are kept.
     #[default]
     Strict,
-    /// Addresses and phone numbers are listed as found. Secrets are
-    /// redacted either way.
+    /// Full details: addresses and phone numbers as found, whole account
+    /// numbers and transactions, people's names in genealogies and
+    /// directories, infrastructure values. Secrets are redacted either way.
     Off,
 }
 

@@ -80,8 +80,9 @@ impl Extractor for Yaml {
         for d in docs.iter().take(1000) {
             schema.add(d);
         }
-        cx.format_set("schema", schema.to_json());
-        if let Some(k) = known::detect(&docs, name.as_deref(), cx) {
+        let known = known::detect(&docs, name.as_deref(), cx);
+        cx.format_set("schema", known::schema_for(schema.to_json(), known.as_ref(), cx));
+        if let Some(k) = known {
             cx.format_set("known_schema", k);
         }
         Ok(())

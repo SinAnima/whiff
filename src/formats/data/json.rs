@@ -138,8 +138,9 @@ fn document(text: &str, cut: bool, name: Option<&str>, cx: &mut Context<'_>) {
     describe(&value, cx);
     let mut schema = Schema::default();
     schema.add(&value);
-    cx.format_set("schema", schema.to_json());
-    if let Some(k) = known::detect(std::slice::from_ref(&value), name, cx) {
+    let known = known::detect(std::slice::from_ref(&value), name, cx);
+    cx.format_set("schema", known::schema_for(schema.to_json(), known.as_ref(), cx));
+    if let Some(k) = known {
         cx.format_set("known_schema", k);
     }
 }

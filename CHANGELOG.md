@@ -345,6 +345,15 @@ document format in the catalogue.
   dumps, NetCDF geodata, Unreal / Unity scenes, Office add-ins, GIFV,
   SolidWorks, memory dumps, encrypted volumes, Maildir and Usenet
   messages, format-patch mails, MSU, bottles, AAX).
+- **`--privacy off` gives full details** for the batch 5 readers. Bank
+  statements give whole account numbers, balances and transactions
+  (date, amount, payee or details); GEDCOM gives each individual's name
+  and birth / death years; LDIF gives each entry's values; JSContact gives
+  the card; Terraform state gives resource attributes and output values
+  (sensitive or secret-like ones stay hidden); a location history gives
+  its exact bounding box. The default stays strict, and under strict the
+  JSON / YAML schema summary of these files now leaves out its example
+  values, which had shown what the schema reader keeps back.
 - **Detection:** `.csproj`, `.fsproj` and `.vbproj` files moved from the
   generic XML reader to the manifest reader; `build.gradle` is a Gradle
   manifest, not Groovy source. A VCD header now needs a `$end` (Smithy

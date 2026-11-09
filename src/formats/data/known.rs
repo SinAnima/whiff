@@ -92,9 +92,30 @@ fn histogram<'v>(items: impl Iterator<Item = &'v Value>, key: &str) -> BTreeMap<
     out
 }
 
+/// Schemas whose values are private (infrastructure state, a person's
+/// contact details, where someone has been).
+const PRIVATE: [&str; 4] = ["terraform_state", "jscontact", "google_location_history", "google_drive_shortcut"];
+
+/// The generic path summary of a document, without its example values
+/// under strict privacy when the document is one of the [`PRIVATE`]
+/// schemas: the examples would show what the schema reader keeps back.
+pub(crate) fn schema_for(mut schema: Value, known: Option<&Value>, cx: &Context<'_>) -> Value {
+    let private = known.and_then(|k| k.get("id")).and_then(Value::as_str).is_some_and(|id| PRIVATE.contains(&id));
+    if private
+        && cx.privacy_strict()
+        && let Some(paths) = schema.get_mut("paths").and_then(Value::as_object_mut)
+    {
+        for p in paths.values_mut().filter_map(Value::as_object_mut) {
+            p.remove("examples");
+        }
+    }
+    schema
+}
+
 /// Terraform state: resources by type, providers, serial and versions.
-/// Attribute values (secrets, ids, addresses) are never copied.
-fn terraform_state(v: &Value, _: &str, _: &mut Context<'_>) -> Option<Value> {
+/// Attribute and output values only with `--privacy off`, and then never
+/// the sensitive ones or anything that looks like a secret.
+fn terraform_state(v: &Value, _: &str, cx: &mut Context<'_>) -> Option<Value> {
     v.get("terraform_version")?;
     let resources = v.get("resources")?.as_array()?;
     let mut providers: Vec<String> = resources
@@ -110,7 +131,7 @@ fn terraform_state(v: &Value, _: &str, _: &mut Context<'_>) -> Option<Value> {
         .flat_map(|r| r.get("instances").and_then(Value::as_array).into_iter().flatten())
         .filter(|i| i.get("sensitive_attributes").and_then(Value::as_array).is_some_and(|a| !a.is_empty()))
         .count();
-    Some(json!({
+    let mut out = json!({
         "id": "terraform_state",
         "name": "Terraform state",
         "state_version": v.get("version"),
@@ -123,7 +144,81 @@ fn terraform_state(v: &Value, _: &str, _: &mut Context<'_>) -> Option<Value> {
         "providers": providers,
         "outputs": keys(v.get("outputs"), 100),
         "instances_with_sensitive_attributes": sensitive,
-    }))
+    });
+    if !cx.privacy_strict() {
+        out["resource_list"] = resources.iter().take(200).map(terraform_resource).collect();
+        out["output_values"] = v
+            .get("outputs")
+            .and_then(Value::as_object)
+            .map(|o| {
+                o.iter()
+                    .take(100)
+                    .map(|(k, e)| {
+                        let shown = if e.get("sensitive").and_then(Value::as_bool) == Some(true) {
+                            json!("(sensitive)")
+                        } else {
+                            scalar(e.get("value"))
+                        };
+                        (k.clone(), shown)
+                    })
+                    .collect::<serde_json::Map<_, _>>()
+            })
+            .into();
+    }
+    Some(out)
+}
+
+/// A scalar shown as found, with anything that looks like a secret
+/// redacted; arrays and objects are summarised by their size.
+fn scalar(v: Option<&Value>) -> Value {
+    match v {
+        Some(Value::String(t)) => json!(crate::plugin::redact_secrets(t)),
+        Some(Value::Array(a)) => json!(format!("({} items)", a.len())),
+        Some(Value::Object(o)) => json!(format!("({} keys)", o.len())),
+        Some(other) => other.clone(),
+        None => Value::Null,
+    }
+}
+
+/// One state resource with `--privacy off`: its address and each
+/// instance's top-level attributes, minus the ones Terraform marks
+/// sensitive.
+fn terraform_resource(r: &Value) -> Value {
+    let address = [s(r, &["module"]), s(r, &["mode"]).filter(|m| *m == "data"), s(r, &["type"]), s(r, &["name"])]
+        .into_iter()
+        .flatten()
+        .collect::<Vec<_>>()
+        .join(".");
+    let instances: Vec<Value> = r
+        .get("instances")
+        .and_then(Value::as_array)
+        .into_iter()
+        .flatten()
+        .take(20)
+        .map(|i| {
+            let hidden: Vec<&str> = i
+                .get("sensitive_attributes")
+                .and_then(Value::as_array)
+                .into_iter()
+                .flatten()
+                .filter_map(|p| p.as_array()?.first()?.get("value")?.as_str())
+                .collect();
+            let attrs: serde_json::Map<String, Value> = i
+                .get("attributes")
+                .and_then(Value::as_object)
+                .into_iter()
+                .flatten()
+                .take(100)
+                .map(|(k, a)| {
+                    let secret = hidden.contains(&k.as_str()) || crate::plugin::is_secret_key(k);
+                    let shown = if secret { json!("(sensitive)") } else { scalar(Some(a)) };
+                    (k.clone(), shown)
+                })
+                .collect();
+            json!({ "index_key": i.get("index_key"), "attributes": attrs })
+        })
+        .collect();
+    json!({ "address": address, "instances": instances })
 }
 
 /// Frictionless data packages and CSV on the Web (CSVW) metadata.
@@ -221,15 +316,9 @@ fn js_tool_config(v: &Value, name: &str, _: &mut Context<'_>) -> Option<Value> {
     None
 }
 
-/// A coordinate in E7 units, rounded to 0.1 degree (a city, not a house).
-#[allow(clippy::cast_precision_loss)]
-fn coarse(e7: i64) -> f64 {
-    ((e7 as f64) / 1e6).round() / 10.0
-}
-
 /// Google Takeout location history: `Records.json` points and the
-/// semantic timeline. Counts and the date range; the bounding box, rounded
-/// to 0.1 degree, only without strict privacy.
+/// semantic timeline. Counts and the date range; the bounding box only
+/// with `--privacy off`.
 fn takeout_locations(v: &Value, _: &str, cx: &mut Context<'_>) -> Option<Value> {
     let (kind, items) = if let Some(a) = v.get("locations").and_then(Value::as_array) {
         ("records", a)
@@ -269,7 +358,9 @@ fn takeout_locations(v: &Value, _: &str, cx: &mut Context<'_>) -> Option<Value> 
         && let (Some(a), Some(b), Some(c), Some(d)) =
             (lat.iter().min(), lat.iter().max(), lon.iter().min(), lon.iter().max())
     {
-        out["bbox_rounded"] = json!([coarse(*c), coarse(*a), coarse(*d), coarse(*b)]);
+        #[allow(clippy::cast_precision_loss)]
+        let deg = |e7: i64| (e7 as f64) / 1e7;
+        out["bbox"] = json!([deg(*c), deg(*a), deg(*d), deg(*b)]);
     }
     Some(out)
 }
@@ -482,15 +573,15 @@ fn jscalendar(v: &Value, _: &str, cx: &mut Context<'_>) -> Option<Value> {
     }))
 }
 
-/// JSContact (RFC 9553) cards: the kind and which properties are filled,
-/// never the values (they are a person's details).
-fn jscontact(v: &Value, _: &str, _: &mut Context<'_>) -> Option<Value> {
+/// JSContact (RFC 9553) cards: the kind and which properties are filled;
+/// the values (a person's details) only with `--privacy off`.
+fn jscontact(v: &Value, _: &str, cx: &mut Context<'_>) -> Option<Value> {
     if s(v, &["@type"]) != Some("Card") || v.get("version").is_none() {
         return None;
     }
     let filled: Vec<&str> =
         obj(v)?.keys().map(String::as_str).filter(|k| !k.starts_with('@') && *k != "version").collect();
-    Some(json!({
+    let mut out = json!({
         "id": "jscontact",
         "name": "JSContact card",
         "version": v.get("version"),
@@ -499,7 +590,12 @@ fn jscontact(v: &Value, _: &str, _: &mut Context<'_>) -> Option<Value> {
         "emails": len(v.get("emails")),
         "phones": len(v.get("phones")),
         "addresses": len(v.get("addresses")),
-    }))
+    });
+    // With `--privacy off`, the card as written.
+    if !cx.privacy_strict() {
+        out["card"] = v.clone();
+    }
+    Some(out)
 }
 
 /// Apache Zeppelin notes (`.zpln`): paragraphs and interpreters.
@@ -1134,6 +1230,28 @@ fn tsconfig(v: &Value, name: &str) -> Option<Value> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    /// Terraform values appear only with `--privacy off`, and attributes
+    /// marked sensitive or named like secrets never do (neutral sample).
+    #[test]
+    fn terraform_values_follow_privacy() {
+        let state = br#"{"version":4,"terraform_version":"1.9.0","serial":1,"outputs":{"site":{"value":"example.org"},"key":{"value":"k1","sensitive":true}},
+            "resources":[{"mode":"managed","type":"t_user","name":"u","provider":"provider[\"x/t\"]","instances":[{"sensitive_attributes":[[{"type":"get_attr","value":"pin"}]],
+            "attributes":{"name":"alpha","pin":"1234","api_token":"zz"}}]}]}"#;
+        let strict = crate::plugin::testing::report_for("a.tfstate", state);
+        let text = serde_json::to_string(&strict).unwrap();
+        assert!(!text.contains("alpha") && !text.contains("example.org"));
+        let engine = crate::Engine::builder().privacy(crate::Privacy::Off).build();
+        let off = engine.extract_bytes(Some("a.tfstate"), state.to_vec());
+        let k = &off.format["json"]["known_schema"];
+        assert_eq!(k["resource_list"][0]["address"], "t_user.u");
+        let attrs = &k["resource_list"][0]["instances"][0]["attributes"];
+        assert_eq!(attrs["name"], "alpha");
+        assert_eq!(attrs["pin"], "(sensitive)");
+        assert_eq!(attrs["api_token"], "(sensitive)");
+        assert_eq!(k["output_values"]["site"], "example.org");
+        assert_eq!(k["output_values"]["key"], "(sensitive)");
+    }
 
     #[test]
     fn kubernetes_images() {

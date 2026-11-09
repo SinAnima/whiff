@@ -91,53 +91,31 @@ expression: report
             "types": [
               "integer"
             ],
-            "count": 3,
-            "examples": [
-              500012345,
-              500022345,
-              500032345
-            ]
+            "count": 3
           },
           "$.locations[].longitudeE7": {
             "types": [
               "integer"
             ],
-            "count": 3,
-            "examples": [
-              -51234567,
-              -51244567,
-              -51254567
-            ]
+            "count": 3
           },
           "$.locations[].accuracy": {
             "types": [
               "integer"
             ],
-            "count": 3,
-            "examples": [
-              20,
-              15,
-              18
-            ]
+            "count": 3
           },
           "$.locations[].timestamp": {
             "types": [
               "string"
             ],
-            "count": 2,
-            "examples": [
-              "2025-09-01T08:00:00Z",
-              "2025-09-01T12:00:00Z"
-            ]
+            "count": 2
           },
           "$.locations[].timestampMs": {
             "types": [
               "string"
             ],
-            "count": 1,
-            "examples": [
-              "1756742400000"
-            ]
+            "count": 1
           }
         },
         "max_depth": 3
