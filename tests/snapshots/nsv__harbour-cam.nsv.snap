@@ -1,0 +1,132 @@
+---
+source: src/formats/video/broadcast.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-cam.nsv",
+    "stem": "harbour-cam",
+    "extension": "nsv"
+  },
+  "identification": {
+    "format": "nsv",
+    "name": "Nullsoft Streaming Video",
+    "mime": "video/x-nsv",
+    "family": "video",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "video.broadcast"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 181
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 181,
+    "entropy": 3.458,
+    "entropy_scope": "file",
+    "image": {
+      "width": 320,
+      "height": 240
+    },
+    "media": {
+      "duration_s": 10.0,
+      "bitrate_bps": 145,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "vp6",
+          "codec_tag": "VP62",
+          "width": 320,
+          "height": 240,
+          "display_aspect_ratio": "4:3",
+          "frame_rate": 25.0
+        },
+        {
+          "type": "audio",
+          "codec": "mp3",
+          "codec_tag": "MP3"
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "aa2f5d048241511a6c75f3dd0780118164fa182a7e470edc13a24791f701db28",
+    "blake3": "63e7d5e8bae18eff8703432932d4966ac44e93ff2ae4891c556258d76460ddd8"
+  },
+  "content": {
+    "title": "Saltmere harbour cam"
+  },
+  "metadata": {},
+  "format": {
+    "nsv": {
+      "title": "Saltmere harbour cam",
+      "url": "https://cam.saltmere.example/"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.broadcast",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,127 @@
+---
+source: src/formats/audio/instruments.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-bells.dls",
+    "stem": "saltmere-bells",
+    "extension": "dls"
+  },
+  "identification": {
+    "format": "dls",
+    "name": "Downloadable Sounds (DLS)",
+    "mime": "audio/dls",
+    "family": "audio",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "audio.instrument"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4452
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "CC0-1.0"
+  },
+  "physical": {
+    "size_bytes": 4452,
+    "entropy": 5.748,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "fd5a0062e5dc8a3e61a92afa9ab87e113eaed605d40df0b52ab94943b1eb234a",
+    "blake3": "74f3de4c3a286caef2f89f1e47296736ed0f5ed51b491a7075309fc6ef5080c2"
+  },
+  "content": {
+    "title": "Saltmere Harbour Bells"
+  },
+  "metadata": {},
+  "format": {
+    "dls": {
+      "declared_instruments": 2,
+      "version": "1.0.0.0",
+      "pool_cues": 2,
+      "bank_name": "Saltmere Harbour Bells",
+      "copyright": "CC0-1.0",
+      "instruments": 2,
+      "instrument_names": [
+        "Harbour Bell",
+        "Fog Horn"
+      ],
+      "regions": 2,
+      "waves": 2,
+      "tag_formats": [
+        "riff_info"
+      ],
+      "tags": {
+        "title": "Saltmere Harbour Bells",
+        "copyright": "CC0-1.0"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.instrument",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

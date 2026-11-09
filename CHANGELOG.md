@@ -345,6 +345,29 @@ document format in the catalogue.
   dumps, NetCDF geodata, Unreal / Unity scenes, Office add-ins, GIFV,
   SolidWorks, memory dumps, encrypted volumes, Maildir and Usenet
   messages, format-patch mails, MSU, bottles, AAX).
+- **Audio and video long tail** (`common`, batch 5 part d, in-house, no
+  new crates):
+  - new `audio.raw`: AC-3 / E-AC-3 sync frames (rate, layout, LFE, frames
+    walked), DTS core frames, TrueHD / MLP access units, GSM 06.10,
+    Dialogic VOX (assumed 8 kHz), Shorten (with its verbatim WAV header),
+    QCP, OpenMG ATRAC (`.oma`) and TwinVQ, with their tags;
+  - standalone RealAudio (`.ra` v3 – v5) and RealAudio metafiles (`.ram`)
+    in `video.realmedia`;
+  - new `audio.instrument`: SoundFont 2 / 3 (presets, instruments,
+    samples, INFO), DLS, SFZ and Logic EXS24;
+  - new `audio.project`: Audacity, Ableton Live, FL Studio and REAPER
+    projects (tracks, tempo, time signature, clips, plug-ins, sample
+    files by name; full paths and FL Studio's registered user only with
+    `--privacy off`);
+  - new `video.broadcast`: DV (system, aspect, recording date, audio),
+    MXF (partition pack, operational pattern, essence containers,
+    Identification set, picture / sound descriptors, timecode, duration),
+    AMV, FLIC, Bink, Smacker and NSV headers, R3D and ARRIRAW frames;
+  - new `video.edit`: CMX 3600 EDLs, OpenTimelineIO, FCPXML, Kdenlive /
+    MLT, Premiere projects (media by name; full paths only with
+    `--privacy off`) and asciinema casts (never their keystrokes or
+    output);
+  - `.insv` / `.osv` (Insta360) are read as MP4.
 - **XML vocabularies, mail stores and the web** (`common`, batch 5
   part c, in-house, no new crates):
   - new `text.dialects`: DTDs (declarations, external entities flagged),
@@ -387,7 +410,7 @@ document format in the catalogue.
 - **Catalogue:** `data/coverage.tsv` credits rows that another family's
   extractor handles (SVG, LaTeX, MHTML, sitemaps, `.tar.*`, torrents,
   known JSON and YAML schemas, Snort rules, dbt models …); an unknown row
-  or format there is an error. 606 → 674 → 767 → 824 → 842 → 855 → 870 → 887 → 934 → 951 of 1008 formats
+  or format there is an error. 606 → 674 → 767 → 824 → 842 → 855 → 870 → 887 → 934 → 951 → 967 of 1008 formats
   have an extractor.
 - **Shared code:** the Unity class-ID names (from the Unity YAML reader)
   and the strings of the pickle walker are reused by the games readers.
@@ -430,8 +453,8 @@ document format in the catalogue.
   Makeself's `--info`, `wimlib-imagex info`, `jmod list`, `restore -t`,
   llvm-pdbutil, llvm-dwarfdump, llvm-objdump, fdtget, bibutils, libwps
   `wks2csv`, chmlib `enum_chmLib`, ofxparse, mt-940, python-gedcom, tap.py,
-  prometheus_client, beancount, tnef, cbor2, libmagic and the Python standard
-  library.
+  prometheus_client, beancount, tnef, cbor2, ffprobe, sf2utils, OpenTimelineIO,
+  libmagic and the Python standard library.
 - **Speed:** detection no longer guesses the character set of every
   file several times. The text sniffers (playlists, cue sheets, subtitles,
   text scores) read UTF-8 and binary heads directly and run the guess only

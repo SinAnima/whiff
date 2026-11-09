@@ -1,0 +1,34 @@
+<REAPER_PROJECT 0.1 "7.07/linux-x86_64" 1756728000
+  RIPPLE 0
+  TEMPO 96 6 8
+  SAMPLERATE 48000 0 0
+  MARKER 1 0 "High water" 0 0 1
+  MARKER 2 12 "Low water" 0 0 1
+  <TRACK {00000000-0000-0000-0000-000000000001}
+    NAME "Harbour bell"
+    <FXCHAIN
+      <VST "VST3: ReaEQ (Cockos)" reaeq.vst3 0 "" 0<00000000> ""
+      >
+      <JS "utility/volume" ""
+      >
+    >
+    <ITEM
+      POSITION 0
+      LENGTH 10
+      NAME bell.wav
+      <SOURCE WAVE
+        FILE "/home/harbourmaster/Saltmere/bell.wav"
+      >
+    >
+  >
+  <TRACK {00000000-0000-0000-0000-000000000002}
+    NAME Gulls
+    <ITEM
+      POSITION 4.5
+      LENGTH 12
+      <SOURCE WAVE
+        FILE "gulls.wav"
+      >
+    >
+  >
+>

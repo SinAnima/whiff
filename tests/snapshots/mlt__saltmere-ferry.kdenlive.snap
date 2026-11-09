@@ -1,0 +1,143 @@
+---
+source: src/formats/video/edit.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-ferry.kdenlive",
+    "stem": "saltmere-ferry",
+    "extension": "kdenlive"
+  },
+  "identification": {
+    "format": "mlt",
+    "name": "Kdenlive / MLT project",
+    "mime": "application/x-kdenlive",
+    "family": "video",
+    "confidence": 0.98,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "mlt",
+        "confidence": 0.98
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "video.edit"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1464
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1464,
+    "entropy": 4.936,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1464,
+      "chars": 1464,
+      "words": 77,
+      "lines": 26,
+      "max_line_length": 231,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "14c37f7c1a4c9e536e9915a63d97a0541237d7025a4c8636671067d1eca6f08d",
+    "blake3": "0ad2ea391a2bcb8751fae8f61bb509f0d321227a64863a814874120b788282d9"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "mlt": {
+      "mlt_version": "7.22.0",
+      "main_producer": "main_bin",
+      "size": "1920x1080",
+      "frame_rate": 25.0,
+      "profile": "HD 1080p 25 fps",
+      "kdenlive_document_version": "1.1",
+      "kdenlive_version": "24.08.1",
+      "producers": 2,
+      "playlists": 2,
+      "entries": 4,
+      "tracks": 1,
+      "services": {
+        "avformat-novalidate": 2
+      },
+      "media": [
+        "ferry-arrives.mov",
+        "quay-wide.mov"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.edit",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,138 @@
+---
+source: src/formats/audio/raw.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-bell.vqf",
+    "stem": "harbour-bell",
+    "extension": "vqf"
+  },
+  "identification": {
+    "format": "vqf",
+    "name": "TwinVQ",
+    "mime": "audio/x-twinvq",
+    "family": "audio",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "audio.raw"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2603
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "CC0-1.0",
+    "creators": [
+      "Saltmere Harbour"
+    ]
+  },
+  "physical": {
+    "size_bytes": 2603,
+    "entropy": 0.328,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.003175,
+      "bitrate_bps": 20758,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "twinvq",
+          "sample_rate_hz": 22050,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bitrate_bps": 20000,
+          "samples": 22120
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "5b3c8c4a3ce88a57523386a249a3e73c1bfdb731d610fa7679e7685cd260c518",
+    "blake3": "4c44dc3eb0d37a49ba8b329a1e81463dede33ea3f989ce6effb469f841269882"
+  },
+  "content": {
+    "title": "Harbour bell",
+    "authors": [
+      "Saltmere Harbour"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "vqf": {
+      "vqf_version": "97012000",
+      "tag_formats": [
+        "vqf"
+      ],
+      "tags": {
+        "title": "Harbour bell",
+        "artist": "Saltmere Harbour",
+        "copyright": "CC0-1.0"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.raw",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

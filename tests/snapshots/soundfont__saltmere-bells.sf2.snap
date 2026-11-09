@@ -1,0 +1,141 @@
+---
+source: src/formats/audio/instruments.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-bells.sf2",
+    "stem": "saltmere-bells",
+    "extension": "sf2"
+  },
+  "identification": {
+    "format": "soundfont",
+    "name": "SoundFont",
+    "mime": "audio/x-soundfont",
+    "family": "audio",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "audio.instrument"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 8640
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "CC0-1.0"
+  },
+  "physical": {
+    "size_bytes": 8640,
+    "entropy": 5.605,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "18277a58340bba9a8f51ed528267ed045016deb75f9e9befb3ff611ed176dabb",
+    "blake3": "1a872c41bcf62aa012df02b72c7d7be38ef91a59f5c73644ded26d58f381ab87"
+  },
+  "content": {
+    "title": "Saltmere Harbour Bells"
+  },
+  "metadata": {},
+  "format": {
+    "soundfont": {
+      "version": "2.04",
+      "sound_engine": "EMU8000",
+      "bank_name": "Saltmere Harbour Bells",
+      "engineers": "Saltmere Harbour",
+      "copyright": "CC0-1.0",
+      "software": "craft_av.py",
+      "sample_data_bytes": 8092,
+      "presets": 2,
+      "preset_list": [
+        {
+          "name": "Harbour Bell",
+          "program": 0,
+          "bank": 0
+        },
+        {
+          "name": "Fog Horn",
+          "program": 1,
+          "bank": 0
+        }
+      ],
+      "instruments": 1,
+      "samples": 1,
+      "sample_rates": [
+        22050
+      ],
+      "tag_formats": [
+        "riff_info"
+      ],
+      "encoder": "craft_av.py",
+      "tags": {
+        "title": "Saltmere Harbour Bells",
+        "copyright": "CC0-1.0"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.instrument",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

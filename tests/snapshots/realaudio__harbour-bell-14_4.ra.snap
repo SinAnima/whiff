@@ -1,0 +1,137 @@
+---
+source: src/formats/video/realmedia.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-bell-14_4.ra",
+    "stem": "harbour-bell-14_4",
+    "extension": "ra"
+  },
+  "identification": {
+    "format": "realaudio",
+    "name": "RealAudio",
+    "mime": "audio/vnd.rn-realaudio",
+    "family": "audio",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "video.realmedia"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1067
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "CC0-1.0",
+    "creators": [
+      "Saltmere Harbour"
+    ]
+  },
+  "physical": {
+    "size_bytes": 1067,
+    "entropy": 0.497,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.0,
+      "bitrate_bps": 8536,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "ra_144",
+          "sample_rate_hz": 8000,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bitrate_bps": 8000
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "43e34a2034bb7006fe7c096d376d054a1eb37d5ad7a3285ff09361ef7ccc5d25",
+    "blake3": "17b0c54a473fa84f3d6b96bcd9c18cc43a0d3de12bedc3262eb1b6f0074b7786"
+  },
+  "content": {
+    "title": "Harbour bell",
+    "authors": [
+      "Saltmere Harbour"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "realaudio": {
+      "ra_version": 3,
+      "tag_formats": [
+        "realaudio"
+      ],
+      "tags": {
+        "title": "Harbour bell",
+        "artist": "Saltmere Harbour",
+        "copyright": "CC0-1.0"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.realmedia",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

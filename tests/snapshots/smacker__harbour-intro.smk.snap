@@ -1,0 +1,133 @@
+---
+source: src/formats/video/broadcast.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-intro.smk",
+    "stem": "harbour-intro",
+    "extension": "smk"
+  },
+  "identification": {
+    "format": "smacker",
+    "name": "Smacker video",
+    "mime": "video/x-smacker",
+    "family": "video",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "video.broadcast"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 218
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 218,
+    "entropy": 0.796,
+    "entropy_scope": "file",
+    "image": {
+      "width": 320,
+      "height": 200,
+      "frames": 10
+    },
+    "media": {
+      "duration_s": 0.6667,
+      "bitrate_bps": 2616,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "smackvideo",
+          "width": 320,
+          "height": 200,
+          "display_aspect_ratio": "8:5",
+          "frame_rate": 14.999,
+          "frames": 10
+        },
+        {
+          "type": "audio",
+          "codec": "pcm_u8",
+          "sample_rate_hz": 22050,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bits_per_sample": 8
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "0eedf2196b415d1c6eca29a933ab818726c47df09a09f89be8f0598dc9f277df",
+    "blake3": "467e155cae74e70af64468bc381a28cadf5928b5de128d4b310cff3311e040be"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "smacker": {
+      "version": "SMK4"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.broadcast",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

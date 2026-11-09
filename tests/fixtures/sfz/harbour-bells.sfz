@@ -1,0 +1,8 @@
+// Saltmere harbour bells
+<control> default_path=samples/
+<global> ampeg_release=0.8
+<group> lovel=0 hivel=127
+<region> sample=bell high.wav lokey=c5 hikey=b5 pitch_keycenter=c5
+<region> sample=bell low.wav lokey=c3 hikey=b4 pitch_keycenter=a3
+<group> trigger=release
+<region> sample=fog horn.wav key=36

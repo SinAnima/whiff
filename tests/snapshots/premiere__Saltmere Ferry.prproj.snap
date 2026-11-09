@@ -1,0 +1,135 @@
+---
+source: src/formats/video/edit.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Saltmere Ferry.prproj",
+    "stem": "Saltmere Ferry",
+    "extension": "prproj"
+  },
+  "identification": {
+    "format": "premiere",
+    "name": "Adobe Premiere Pro project",
+    "mime": "application/x-premiere-project",
+    "family": "video",
+    "confidence": 0.98,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "premiere",
+        "confidence": 0.98
+      },
+      {
+        "format": "gzip",
+        "confidence": 0.72
+      }
+    ],
+    "extractor": "video.edit"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 573
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 573,
+    "entropy": 7.647,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "ed4ccd354fff59068456af3c38fb361cac4d121ee6e6b9cbc6a1b72edce12b18",
+    "blake3": "9d18a8a7a4ad3ce11c6d5ff4b990b5e458e359cf49d4219c17daec8ee641d73a"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "premiere": {
+      "premiere_data_version": "3",
+      "project_version": "42",
+      "counts": {
+        "audio_tracks": 1,
+        "bins": 1,
+        "clips": 2,
+        "media": 2,
+        "sequences": 1,
+        "video_tracks": 1
+      },
+      "names": [
+        "Saltmere ferry",
+        "Footage",
+        "quay-wide.mov",
+        "ferry-arrives.mov",
+        "Saltmere ferry"
+      ],
+      "media": [
+        "ferry-arrives.mov",
+        "quay-wide.mov"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.edit",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

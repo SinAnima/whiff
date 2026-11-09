@@ -1,0 +1,135 @@
+---
+source: src/formats/video/broadcast.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-pal.dv",
+    "stem": "harbour-pal",
+    "extension": "dv"
+  },
+  "identification": {
+    "format": "dv",
+    "name": "DV video",
+    "mime": "video/dv",
+    "family": "video",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "video.broadcast"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 144000
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 144000,
+    "entropy": 4.289,
+    "entropy_scope": "file",
+    "image": {
+      "width": 720,
+      "height": 576,
+      "frames": 1
+    },
+    "media": {
+      "duration_s": 0.04,
+      "bitrate_bps": 28800000,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "dvvideo",
+          "width": 720,
+          "height": 576,
+          "display_aspect_ratio": "4:3",
+          "frame_rate": 25.0,
+          "frames": 1,
+          "scan_type": "interlaced"
+        },
+        {
+          "type": "audio",
+          "codec": "pcm_s16le",
+          "sample_rate_hz": 48000,
+          "channels": 2,
+          "channel_layout": "stereo",
+          "bits_per_sample": 16
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "3b04a9560df0e68c5eeb588590a47c779a676d5568ac49c19710dd826f7b3e75",
+    "blake3": "f692ff1d42795489e26b548658c7f77dcd242e8a69b20fc91cfeb59915f4dba0"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "dv": {
+      "system": "625/50 (PAL)",
+      "recorded": "2025-09-01T12:00:00"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.broadcast",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

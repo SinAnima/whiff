@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mlt LC_NUMERIC="C" producer="main_bin" version="7.22.0" root="/home/harbourmaster/Videos/Saltmere">
+ <profile frame_rate_num="25" sample_aspect_num="1" display_aspect_den="9" colorspace="709" progressive="1" description="HD 1080p 25 fps" display_aspect_num="16" frame_rate_den="1" width="1920" height="1080" sample_aspect_den="1"/>
+ <producer id="producer0" in="00:00:00.000" out="00:00:09.960">
+  <property name="resource">/home/harbourmaster/Videos/Saltmere/quay-wide.mov</property>
+  <property name="mlt_service">avformat-novalidate</property>
+  <property name="kdenlive:clipname">quay-wide</property>
+ </producer>
+ <producer id="producer1" in="00:00:00.000" out="00:00:07.960">
+  <property name="resource">ferry-arrives.mov</property>
+  <property name="mlt_service">avformat-novalidate</property>
+ </producer>
+ <playlist id="main_bin">
+  <property name="kdenlive:docproperties.version">1.1</property>
+  <property name="kdenlive:docproperties.kdenliveversion">24.08.1</property>
+  <entry producer="producer0" in="00:00:00.000" out="00:00:09.960"/>
+  <entry producer="producer1" in="00:00:00.000" out="00:00:07.960"/>
+ </playlist>
+ <playlist id="playlist0">
+  <entry producer="producer0" in="00:00:00.000" out="00:00:04.960"/>
+  <entry producer="producer1" in="00:00:00.000" out="00:00:02.960"/>
+ </playlist>
+ <tractor id="tractor0" in="00:00:00.000" out="00:00:07.960">
+  <track producer="playlist0"/>
+ </tractor>
+</mlt>

@@ -1,0 +1,126 @@
+---
+source: src/formats/audio/instruments.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Saltmere Bells.exs",
+    "stem": "Saltmere Bells",
+    "extension": "exs"
+  },
+  "identification": {
+    "format": "exs",
+    "name": "Logic EXS24 instrument",
+    "mime": "application/x-exs24",
+    "family": "audio",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "exs",
+        "confidence": 0.9
+      },
+      {
+        "format": "elixir",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "audio.instrument"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1308
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1308,
+    "entropy": 0.675,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "7fd81049616ef83de7bfd0561c6cd525fbdd335291fd2ffa47e5055e0010868f",
+    "blake3": "d85b5653ec17c1e5726d7fa757bdf75b69e812e66666f1ca1900f9998df8a823"
+  },
+  "content": {
+    "title": "Saltmere Bells"
+  },
+  "metadata": {},
+  "format": {
+    "exs": {
+      "byte_order": "little-endian",
+      "name": "Saltmere Bells",
+      "zones": 1,
+      "groups": 1,
+      "samples": 2,
+      "sample_names": [
+        "bell high.wav",
+        "bell low.wav"
+      ],
+      "parameter_chunks": 0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.instrument",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

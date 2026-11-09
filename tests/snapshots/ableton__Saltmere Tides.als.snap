@@ -1,0 +1,151 @@
+---
+source: src/formats/audio/projects.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Saltmere Tides.als",
+    "stem": "Saltmere Tides",
+    "extension": "als"
+  },
+  "identification": {
+    "format": "ableton",
+    "name": "Ableton Live set",
+    "mime": "application/x-ableton-live-set",
+    "family": "audio",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "ableton",
+        "confidence": 0.9
+      },
+      {
+        "format": "gzip",
+        "confidence": 0.72
+      },
+      {
+        "format": "alloy",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "audio.project"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 650
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 650,
+    "entropy": 7.644,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "a8b137620aec323546a48df7a74057f181d9d3030460db16f6cf7b21324335e5",
+    "blake3": "823756027df4c8b4434be35a8282ab0cd93ec6eab8cfa85750f5d9b42936fdd9"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ableton": {
+      "creator": "Ableton Live 11.3.4",
+      "major_version": "5",
+      "minor_version": "11.0_433",
+      "revision": "0000000000000000000000000000000000000000",
+      "tempo_bpm": 96.0,
+      "time_signature": "6/8",
+      "tracks": {
+        "audio": 1,
+        "midi": 1,
+        "return": 1
+      },
+      "track_names": [
+        "Harbour bell",
+        "Fog horn",
+        "A-Reverb"
+      ],
+      "clips": {
+        "audio": 1,
+        "midi": 1
+      },
+      "scenes": 2,
+      "devices": {
+        "Eq8": 1,
+        "OriginalSimpler": 1,
+        "PluginDevice": 1,
+        "Reverb": 1
+      },
+      "plugins": [
+        "Harbour Delay"
+      ],
+      "sample_files": [
+        "bell.wav"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.project",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

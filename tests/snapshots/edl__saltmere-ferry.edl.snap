@@ -1,0 +1,142 @@
+---
+source: src/formats/video/edit.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-ferry.edl",
+    "stem": "saltmere-ferry",
+    "extension": "edl"
+  },
+  "identification": {
+    "format": "edl",
+    "name": "CMX 3600 edit decision list",
+    "mime": "text/x-edl",
+    "family": "video",
+    "confidence": 0.98,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "video.edit"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 377
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 377,
+    "entropy": 4.098,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 377,
+      "chars": 377,
+      "words": 46,
+      "lines": 9,
+      "max_line_length": 76,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "58b78b62d77762bc97ac05795c9fe02acd87cccdf8a82a46b29103727ce5416d",
+    "blake3": "013a4e522abe63153f566563941619a026cce2fa93fac13c0f7945a8c741e613"
+  },
+  "content": {
+    "title": "SALTMERE FERRY"
+  },
+  "metadata": {},
+  "format": {
+    "edl": {
+      "title": "SALTMERE FERRY",
+      "frame_count_mode": "NON-DROP FRAME",
+      "events": 3,
+      "reels": [
+        "A001C001",
+        "A001C002",
+        "AX"
+      ],
+      "tracks": [
+        "AA",
+        "V"
+      ],
+      "transitions": {
+        "cut": 2,
+        "dissolve": 1
+      },
+      "clip_names": [
+        "ferry-arrives.mov",
+        "harbour-bell.wav",
+        "quay-wide.mov"
+      ],
+      "record_range": [
+        "01:00:00:00",
+        "01:00:09:00"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.edit",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

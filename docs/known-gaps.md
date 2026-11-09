@@ -726,3 +726,36 @@ uncompressed (and ALZip's deflated entries); nothing else is decompressed.
 - **Web Bundles / signed exchanges:** the bundle index and response
   headers are read; signatures and integrity proofs are not verified,
   and payloads are not handed on.
+
+### Audio and video long tail (batch 5d)
+
+- **Raw streams:** AC-3 / E-AC-3, DTS and TrueHD / MLP frames are walked
+  for the duration; DTS extensions (DTS-HD, DTS:X) and E-AC-3 dependent
+  substreams are noted, not decoded. Dialogic VOX has no header: 8 kHz
+  mono is assumed. QCP, OpenMG, TwinVQ and Shorten are read from their
+  headers; durations come from the declared sizes and rates.
+- **RealAudio:** v3 – v5 headers and their four text fields; the data is
+  not walked.
+- **Instruments:** SoundFont generators and modulators, DLS articulation
+  and EXS zone parameters are not interpreted; EXS24 follows the layout
+  open-source converters read (there is no published specification).
+- **Projects:** Audacity's `.aup3` (SQLite) is read as SQLite; Logic
+  (`.logicx` bundles) and Pro Tools / Cubase / GarageBand sessions are
+  not read. FL Studio event coverage follows PyFLP's notes; automation,
+  playlists and mixer routing are not reported. Ableton and REAPER
+  devices and plug-ins are named, not their parameters.
+- **DV / MXF:** DV reads the first frame's packs (SD only; DVCPRO HD and
+  DV50 are not distinguished). MXF reads the header partition only (no
+  index tables, body or footer); descriptors are matched by their static
+  local tags, and picture coding is named from its UL.
+- **Game and camera video:** Bink, Smacker and NSV report their headers;
+  R3D reports only its version marker and ARRIRAW its byte order,
+  version and image size. Blackmagic RAW, MTV and AMV variants other
+  than FFmpeg's are not read.
+- **Edit lists:** AAF is not read (no fixture fits the size limit);
+  DaVinci Resolve `.drp` projects are not read. FCPXML and Kdenlive
+  report counts and the sequence length, not the full edit.
+- **asciinema:** keystrokes and terminal output are never copied, only
+  event counts and the duration.
+- **Insta360 `.insv` / `.osv`:** read as MP4; the camera's trailer
+  (serial number, gyro, GPS) is not read.
