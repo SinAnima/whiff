@@ -11,6 +11,8 @@
 
 pub(crate) mod mime;
 pub(crate) mod msg;
+pub(crate) mod stores;
+pub(crate) mod tnef;
 
 use std::collections::BTreeMap;
 

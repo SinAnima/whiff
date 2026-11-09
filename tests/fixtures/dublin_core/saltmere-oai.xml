@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/">
+  <responseDate>2025-09-01T12:00:00Z</responseDate>
+  <request verb="ListRecords" metadataPrefix="oai_dc">https://archive.saltmere.example/oai</request>
+  <ListRecords>
+    <record>
+      <header><identifier>oai:saltmere.example:1</identifier><datestamp>2025-08-01</datestamp><setSpec>charts</setSpec></header>
+      <metadata><oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+        <dc:title>Saltmere harbour charts</dc:title><dc:date>1890</dc:date><dc:type>map</dc:type></oai_dc:dc></metadata>
+    </record>
+    <record>
+      <header status="deleted"><identifier>oai:saltmere.example:2</identifier><datestamp>2025-08-20</datestamp><setSpec>logs</setSpec></header>
+    </record>
+    <resumptionToken completeListSize="3">token-1</resumptionToken>
+  </ListRecords>
+</OAI-PMH>

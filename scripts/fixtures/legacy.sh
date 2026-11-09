@@ -18,7 +18,7 @@
 #
 #     scripts/fixtures/legacy.sh [STEP ...]
 #         (dos mac encoded wim bundles backups debug exec scripts writing books
-#          packages legacy_docs configs languages records)
+#          packages legacy_docs configs languages records dialects mailstores)
 #     podman run --rm -v "$PWD:/whiff" -w /whiff whiff-legacy \
 #         python3 scripts/fixtures/legacy_oracle.py expect tests/fixtures > target/legacy-expect.json
 #     python3 scripts/fixtures/legacy_oracle.py check target/legacy-expect.json
@@ -35,6 +35,8 @@
 #     RUN apt-get install -y --no-install-recommends bibutils abiword gnumeric lyx pandoc libchm-bin libwpd-tools libwps-tools
 #     RUN apt-get install -y --no-install-recommends fp-utils ghostscript
 #     RUN pip install --no-cache-dir ofxparse mt-940 python-gedcom tap.py prometheus_client beancount
+#     RUN apt-get update && apt-get install -y --no-install-recommends tnef && rm -rf /var/lib/apt/lists/*
+#     RUN pip install --no-cache-dir cbor2
 #
 # (nomarch, unar, file and acefile are for legacy_oracle.py; gcc builds
 # acefile's optional C module.)

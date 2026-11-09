@@ -486,8 +486,59 @@ def records(fx):
         want(rel(f), "format.ledger.transactions", len(txns), "beancount")
 
 
+def batch5c(fx):
+    import subprocess
+    import xml.etree.ElementTree as ET
+
+    def rel(f):
+        return fx / f.relative_to(fx)
+
+    def local(t):
+        return t.rsplit("}", 1)[-1]
+
+    def count(f, name):
+        return sum(1 for e in ET.parse(f).iter() if local(e.tag) == name)
+
+    # TNEF attachments, by the tnef tool.
+    for f in sorted((fx / "tnef").glob("*.dat")):
+        listing = subprocess.run(["tnef", "-t", str(f)], capture_output=True, text=True).stdout
+        names = [line.split("\t")[0] for line in listing.splitlines() if line.strip()]
+        want(rel(f), "format.tnef.attachments.*.name", sorted(names), "tnef")
+        libmagic(fx, f.relative_to(fx), "Transport Neutral Encapsulation Format")
+    for f, needle in ((fx / "pst" / "saltmere-archive.pst", "Microsoft Outlook"), (fx / "dbx" / "Inbox.dbx", "Outlook Express")):
+        libmagic(fx, f.relative_to(fx), needle)
+    # Web bundle, decoded with cbor2.
+    import cbor2
+    for f in sorted((fx / "web_bundle").glob("*.wbn")):
+        top = cbor2.loads(f.read_bytes())
+        names = cbor2.loads(top[2])[::2]
+        sections = dict(zip(names, top[3]))
+        want(rel(f), "format.web_bundle.resources", len(sections["index"]), "cbor2")
+        want(rel(f), "format.web_bundle.primary_url", sections["primary"], "cbor2")
+    # XML vocabularies: counts recomputed with ElementTree.
+    for f in sorted((fx / "qt_ts").glob("*.ts")):
+        want(rel(f), "format.qt_ts.messages", count(f, "message"), "ElementTree")
+        want(rel(f), "format.qt_ts.contexts", count(f, "context"), "ElementTree")
+    for f in sorted((fx / "onix").glob("*.xml")):
+        want(rel(f), "format.onix.products", count(f, "Product"), "ElementTree")
+    for f in sorted((fx / "apple_health").glob("*.xml")):
+        want(rel(f), "format.apple_health.records", count(f, "Record"), "ElementTree")
+    for f in sorted((fx / "android_manifest").glob("*.xml")):
+        ns = "{http://schemas.android.com/apk/res/android}name"
+        want(rel(f), "format.android_manifest.permissions",
+             [e.get(ns) for e in ET.parse(f).iter() if local(e.tag) == "uses-permission"], "ElementTree")
+    for f in sorted((fx / "opendrive").glob("*.xodr")):
+        want(rel(f), "format.opendrive.counts.roads", count(f, "road"), "ElementTree")
+        want(rel(f), "format.opendrive.road_length_m",
+             round(sum(float(e.get("length")) for e in ET.parse(f).iter() if local(e.tag) == "road"), 1), "ElementTree")
+    for f in sorted((fx / "openscenario").glob("*.xosc")):
+        want(rel(f), "format.openscenario.entities",
+             [e.get("name") for e in ET.parse(f).iter() if local(e.tag) == "ScenarioObject"], "ElementTree")
+
+
 def expect(root):
     fx = Path(root)
+    batch5c(fx)
     records(fx)
     legacy_docs(fx)
     packages(fx)
@@ -504,8 +555,13 @@ def expect(root):
 
 
 def lookup(r, path):
+    """A dotted path into the report; `*` maps the rest over a list and sorts."""
     cur = r
-    for part in path.split("."):
+    parts = path.split(".")
+    for i, part in enumerate(parts):
+        if part == "*" and isinstance(cur, list):
+            rest = ".".join(parts[i + 1:])
+            return sorted(lookup(x, rest) if rest else x for x in cur)
         if isinstance(cur, list):
             cur = cur[int(part)] if part.isdigit() and int(part) < len(cur) else None
         elif isinstance(cur, dict):

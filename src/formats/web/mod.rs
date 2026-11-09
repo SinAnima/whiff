@@ -2,6 +2,7 @@
 //! files (robots.txt, PAC, Metalink, filter lists, cookie jars, bookmarks,
 //! `.netrc`, WARC).
 
+pub(crate) mod bundle;
 pub(crate) mod misc;
 pub(crate) mod swf;
 

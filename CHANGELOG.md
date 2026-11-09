@@ -345,6 +345,26 @@ document format in the catalogue.
   dumps, NetCDF geodata, Unreal / Unity scenes, Office add-ins, GIFV,
   SolidWorks, memory dumps, encrypted volumes, Maildir and Usenet
   messages, format-patch mails, MSU, bottles, AAX).
+- **XML vocabularies, mail stores and the web** (`common`, batch 5
+  part c, in-house, no new crates):
+  - new `text.dialects`: DTDs (declarations, external entities flagged),
+    Qt Linguist translations, SAML metadata / assertions and XML
+    Signature (entity ids, endpoints, certificate subjects and validity,
+    algorithms; the subject's name id and attribute values only with
+    `--privacy off`), ONIX for Books, METS / MODS / EAD, Dublin Core and
+    OAI-PMH, Apple Health exports (record types, workouts, date range;
+    source names and the owner's characteristics only with
+    `--privacy off`), Android manifests in text form, ClickOnce and
+    Windows application manifests, OpenDRIVE and OpenSCENARIO;
+  - new `email.tnef`: `winmail.dat` message class, subject, sender,
+    dates and body, with its attachments handed on as children;
+  - new `email.stores`: Outlook PST / OST / PAB, Lotus Notes and Outlook
+    Express DBX headers, Outlook for Mac OLM archives (folders, messages,
+    date range) and Mork address books and mail summaries (rows and
+    columns; values only with `--privacy off`);
+  - new `web.bundle` (Web Bundles and signed exchanges) and
+    `apple.watchface` (face type, complications, customisations).
+  An AAR's `AndroidManifest.xml` is now read as an Android manifest.
 - **`--privacy off` gives full details** for the batch 5 readers. Bank
   statements give whole account numbers, balances and transactions
   (date, amount, payee or details); GEDCOM gives each individual's name
@@ -367,7 +387,7 @@ document format in the catalogue.
 - **Catalogue:** `data/coverage.tsv` credits rows that another family's
   extractor handles (SVG, LaTeX, MHTML, sitemaps, `.tar.*`, torrents,
   known JSON and YAML schemas, Snort rules, dbt models …); an unknown row
-  or format there is an error. 606 → 674 → 767 → 824 → 842 → 855 → 870 → 887 → 934 of 1008 formats
+  or format there is an error. 606 → 674 → 767 → 824 → 842 → 855 → 870 → 887 → 934 → 951 of 1008 formats
   have an extractor.
 - **Shared code:** the Unity class-ID names (from the Unity YAML reader)
   and the strings of the pickle walker are reused by the games readers.
@@ -410,7 +430,8 @@ document format in the catalogue.
   Makeself's `--info`, `wimlib-imagex info`, `jmod list`, `restore -t`,
   llvm-pdbutil, llvm-dwarfdump, llvm-objdump, fdtget, bibutils, libwps
   `wks2csv`, chmlib `enum_chmLib`, ofxparse, mt-940, python-gedcom, tap.py,
-  prometheus_client, beancount, libmagic and the Python standard library.
+  prometheus_client, beancount, tnef, cbor2, libmagic and the Python standard
+  library.
 - **Speed:** detection no longer guesses the character set of every
   file several times. The text sniffers (playlists, cue sheets, subtitles,
   text scores) read UTF-8 and binary heads directly and run the guess only

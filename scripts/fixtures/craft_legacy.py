@@ -1970,7 +1970,513 @@ def step_records() -> None:
     out("gtfs", "saltmere-ferry-gtfs.zip", zip_of(list(files.items())))
 
 
-STEPS = {"records": step_records, "languages": step_languages, "configs": step_configs, "legacy_docs": step_legacy_docs, "packages": step_packages, "books": step_books, "writing": step_writing, "scripts": step_scripts, "exec": step_exec, "debug": step_debug, "dos": step_dos, "mac": step_mac, "encoded": step_encoded, "wim": step_wim, "bundles": step_bundles, "backups": step_backups}
+# --- XML vocabularies (batch 5c) -------------------------------------------------------------
+
+DTD = """<?xml version="1.0" encoding="UTF-8"?>
+<!-- Saltmere tide table -->
+<!ELEMENT tides (tide+)>
+<!ATTLIST tides harbour CDATA #REQUIRED>
+<!ELEMENT tide (#PCDATA)>
+<!ATTLIST tide kind (high|low) #REQUIRED time CDATA #REQUIRED>
+<!ENTITY harbour "Saltmere">
+<!ENTITY % common "INCLUDE">
+<!ENTITY chart SYSTEM "chart.xml">
+<!NOTATION png SYSTEM "image/png">
+"""
+
+QT_TS = """<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="fr_FR" sourcelanguage="en_GB">
+<context>
+    <name>HarbourWindow</name>
+    <message>
+        <location filename="harbourwindow.cpp" line="12"/>
+        <source>High water</source>
+        <translation>Pleine mer</translation>
+    </message>
+    <message>
+        <source>Low water</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n boat(s) moored</source>
+        <translation>
+            <numerusform>%n bateau amarré</numerusform>
+            <numerusform>%n bateaux amarrés</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
+    <name>BellDialog</name>
+    <message>
+        <source>Ring the bell</source>
+        <translation type="obsolete">Sonner la cloche</translation>
+    </message>
+</context>
+</TS>
+"""
+
+ONIX = """<?xml version="1.0" encoding="UTF-8"?>
+<ONIXMessage release="3.0" xmlns="http://ns.editeur.org/onix/3.0/reference">
+  <Header>
+    <Sender><SenderName>Saltmere Harbour Press</SenderName></Sender>
+    <SentDateTime>20250901</SentDateTime>
+  </Header>
+  <Product>
+    <RecordReference>saltmere.press.0001</RecordReference>
+    <NotificationType>03</NotificationType>
+    <ProductIdentifier><ProductIDType>15</ProductIDType><IDValue>9780000000002</IDValue></ProductIdentifier>
+    <DescriptiveDetail>
+      <ProductComposition>00</ProductComposition>
+      <ProductForm>BC</ProductForm>
+      <TitleDetail><TitleType>01</TitleType><TitleElement><TitleElementLevel>01</TitleElementLevel><TitleText>Tides of Saltmere</TitleText></TitleElement></TitleDetail>
+      <Contributor><SequenceNumber>1</SequenceNumber><ContributorRole>A01</ContributorRole><PersonName>Ana Lighthouse</PersonName></Contributor>
+    </DescriptiveDetail>
+    <PublishingDetail><Publisher><PublishingRole>01</PublishingRole><PublisherName>Saltmere Harbour Press</PublisherName></Publisher></PublishingDetail>
+  </Product>
+  <Product>
+    <RecordReference>saltmere.press.0002</RecordReference>
+    <NotificationType>03</NotificationType>
+    <ProductIdentifier><ProductIDType>15</ProductIDType><IDValue>9780000000019</IDValue></ProductIdentifier>
+    <DescriptiveDetail>
+      <ProductComposition>00</ProductComposition>
+      <ProductForm>ED</ProductForm>
+      <TitleDetail><TitleType>01</TitleType><TitleElement><TitleElementLevel>01</TitleElementLevel><TitleText>The Harbour Bell</TitleText></TitleElement></TitleDetail>
+      <Contributor><SequenceNumber>1</SequenceNumber><ContributorRole>A01</ContributorRole><PersonName>Ben Gull</PersonName></Contributor>
+    </DescriptiveDetail>
+    <PublishingDetail><Publisher><PublishingRole>01</PublishingRole><PublisherName>Saltmere Harbour Press</PublisherName></Publisher></PublishingDetail>
+  </Product>
+</ONIXMessage>
+"""
+
+METS = """<?xml version="1.0" encoding="UTF-8"?>
+<mets:mets xmlns:mets="http://www.loc.gov/METS/" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xlink="http://www.w3.org/1999/xlink" OBJID="saltmere-charts-1890" LABEL="Saltmere harbour charts, 1890" TYPE="Map">
+  <mets:metsHdr CREATEDATE="2025-09-01T12:00:00">
+    <mets:agent ROLE="CREATOR" TYPE="ORGANIZATION"><mets:name>Saltmere Harbour Archive</mets:name></mets:agent>
+  </mets:metsHdr>
+  <mets:dmdSec ID="dmd1"><mets:mdWrap MDTYPE="MODS"><mets:xmlData>
+    <mods:mods><mods:titleInfo><mods:title>Saltmere harbour charts</mods:title></mods:titleInfo>
+      <mods:originInfo><mods:dateIssued>1890</mods:dateIssued></mods:originInfo>
+      <mods:genre>map</mods:genre></mods:mods>
+  </mets:xmlData></mets:mdWrap></mets:dmdSec>
+  <mets:fileSec>
+    <mets:fileGrp USE="master">
+      <mets:file ID="f1" MIMETYPE="image/tiff"><mets:FLocat LOCTYPE="URL" xlink:href="chart-1.tif"/></mets:file>
+      <mets:file ID="f2" MIMETYPE="image/tiff"><mets:FLocat LOCTYPE="URL" xlink:href="chart-2.tif"/></mets:file>
+    </mets:fileGrp>
+  </mets:fileSec>
+  <mets:structMap><mets:div TYPE="atlas" LABEL="Charts"><mets:div TYPE="sheet" ORDER="1"/><mets:div TYPE="sheet" ORDER="2"/></mets:div></mets:structMap>
+</mets:mets>
+"""
+
+MODS = """<?xml version="1.0" encoding="UTF-8"?>
+<modsCollection xmlns="http://www.loc.gov/mods/v3">
+  <mods>
+    <titleInfo><title>The Harbour Bell</title></titleInfo>
+    <name type="personal"><namePart>Gull, Ben</namePart><role><roleTerm type="text">author</roleTerm></role></name>
+    <originInfo><dateIssued>1931</dateIssued></originInfo>
+    <genre>poetry</genre>
+    <recordInfo><recordIdentifier>salt-0001</recordIdentifier></recordInfo>
+  </mods>
+  <mods>
+    <titleInfo><title>Tides of Saltmere</title></titleInfo>
+    <name type="personal"><namePart>Lighthouse, Ana</namePart></name>
+    <originInfo><dateIssued>1925</dateIssued></originInfo>
+    <genre>almanac</genre>
+    <recordInfo><recordIdentifier>salt-0002</recordIdentifier></recordInfo>
+  </mods>
+</modsCollection>
+"""
+
+EAD = """<?xml version="1.0" encoding="UTF-8"?>
+<ead xmlns="urn:isbn:1-931666-22-9">
+  <eadheader><eadid>saltmere-harbour-records</eadid>
+    <filedesc><titlestmt><titleproper>Records of the Saltmere Harbour Board</titleproper></titlestmt></filedesc>
+  </eadheader>
+  <archdesc level="fonds">
+    <did><unittitle>Saltmere Harbour Board</unittitle><unitdate>1850-1960</unitdate>
+      <origination><corpname>Saltmere Harbour Board</corpname></origination></did>
+    <dsc>
+      <c01 level="series"><did><unittitle>Tide registers</unittitle><unitdate>1850-1900</unitdate></did>
+        <c02 level="file"><did><unittitle>Register 1</unittitle></did></c02>
+        <c02 level="file"><did><unittitle>Register 2</unittitle></did></c02>
+      </c01>
+      <c01 level="series"><did><unittitle>Bell logs</unittitle><unitdate>1901-1960</unitdate></did></c01>
+    </dsc>
+  </archdesc>
+</ead>
+"""
+
+OAI = """<?xml version="1.0" encoding="UTF-8"?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/">
+  <responseDate>2025-09-01T12:00:00Z</responseDate>
+  <request verb="ListRecords" metadataPrefix="oai_dc">https://archive.saltmere.example/oai</request>
+  <ListRecords>
+    <record>
+      <header><identifier>oai:saltmere.example:1</identifier><datestamp>2025-08-01</datestamp><setSpec>charts</setSpec></header>
+      <metadata><oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+        <dc:title>Saltmere harbour charts</dc:title><dc:date>1890</dc:date><dc:type>map</dc:type></oai_dc:dc></metadata>
+    </record>
+    <record>
+      <header status="deleted"><identifier>oai:saltmere.example:2</identifier><datestamp>2025-08-20</datestamp><setSpec>logs</setSpec></header>
+    </record>
+    <resumptionToken completeListSize="3">token-1</resumptionToken>
+  </ListRecords>
+</OAI-PMH>
+"""
+
+DC = """<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <dc:title>Tides of Saltmere</dc:title>
+  <dc:creator>Saltmere Harbour Press</dc:creator>
+  <dc:subject>tides</dc:subject>
+  <dc:subject>harbours</dc:subject>
+  <dc:description>A year of high and low water at Saltmere.</dc:description>
+  <dc:date>1925</dc:date>
+  <dc:language>en</dc:language>
+</metadata>
+"""
+
+HEALTH = """<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HealthData [
+<!ELEMENT HealthData (ExportDate,Me,(Record|Workout|ActivitySummary)*)>
+]>
+<HealthData locale="en_GB">
+ <ExportDate value="2025-09-01 12:00:00 +0100"/>
+ <Me HKCharacteristicTypeIdentifierDateOfBirth="1900-01-01" HKCharacteristicTypeIdentifierBiologicalSex="HKBiologicalSexNotSet"/>
+ <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Harbour Watch" unit="count" startDate="2025-08-01 08:00:00 +0100" endDate="2025-08-01 08:10:00 +0100" value="812"/>
+ <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Harbour Watch" unit="count" startDate="2025-08-02 08:00:00 +0100" endDate="2025-08-02 08:10:00 +0100" value="640"/>
+ <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Harbour Watch" unit="count/min" startDate="2025-08-02 09:00:00 +0100" endDate="2025-08-02 09:00:00 +0100" value="62"/>
+ <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="Tide Phone" startDate="2025-08-03 23:00:00 +0100" endDate="2025-08-04 06:00:00 +0100" value="HKCategoryValueSleepAnalysisAsleepCore"/>
+ <Workout workoutActivityType="HKWorkoutActivityTypeRowing" duration="30" durationUnit="min" sourceName="Harbour Watch" startDate="2025-08-05 07:00:00 +0100" endDate="2025-08-05 07:30:00 +0100"/>
+ <ActivitySummary dateComponents="2025-08-01" activeEnergyBurned="300"/>
+</HealthData>
+"""
+
+ANDROID = """<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="example.saltmere.tides" android:versionCode="7" android:versionName="1.3">
+    <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="34"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-feature android:name="android.hardware.location" android:required="false"/>
+    <application android:label="Saltmere Tides" android:allowBackup="false" android:usesCleartextTraffic="false">
+        <activity android:name=".TideActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".SettingsActivity" android:exported="false"/>
+        <service android:name=".BellService"/>
+        <receiver android:name=".TideAlarm">
+            <intent-filter><action android:name="example.saltmere.tides.ALARM"/></intent-filter>
+        </receiver>
+    </application>
+</manifest>
+"""
+
+CLICKONCE = """<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <assemblyIdentity name="SaltmereTides.application" version="1.3.0.7" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <description asmv2:publisher="Saltmere Harbour" asmv2:product="Saltmere Tides" xmlns="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" />
+  <deployment install="true" mapFileExtensions="true" minimumRequiredVersion="1.3.0.0">
+    <deploymentProvider codebase="https://apps.saltmere.example/tides/SaltmereTides.application" />
+  </deployment>
+  <dependency>
+    <dependentAssembly dependencyType="install" codebase="Application Files\\SaltmereTides_1_3_0_7\\SaltmereTides.exe.manifest" size="4096">
+      <assemblyIdentity name="SaltmereTides.exe" version="1.3.0.7" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+    </dependentAssembly>
+  </dependency>
+</asmv1:assembly>
+"""
+
+SXS = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+  <assemblyIdentity type="win32" name="Saltmere.Tides" version="1.3.0.0" processorArchitecture="amd64"/>
+  <description>Saltmere Tides</description>
+  <dependency>
+    <dependentAssembly>
+      <assemblyIdentity type="win32" name="Microsoft.Windows.Common-Controls" version="6.0.0.0" processorArchitecture="*" publicKeyToken="6595b64144ccf1df" language="*"/>
+    </dependentAssembly>
+  </dependency>
+  <trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">
+    <security><requestedPrivileges><requestedExecutionLevel level="asInvoker" uiAccess="false"/></requestedPrivileges></security>
+  </trustInfo>
+  <application xmlns="urn:schemas-microsoft-com:asm.v3">
+    <windowsSettings><dpiAware xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">true/pm</dpiAware></windowsSettings>
+  </application>
+</assembly>
+"""
+
+XODR = """<?xml version="1.0" encoding="UTF-8"?>
+<OpenDRIVE>
+  <header revMajor="1" revMinor="6" name="Saltmere quay" version="1.00" date="2025-09-01T12:00:00" vendor="Saltmere Harbour">
+    <geoReference><![CDATA[+proj=tmerc +lat_0=50 +lon_0=-5 +k=1 +x_0=0 +y_0=0 +ellps=WGS84 +units=m +no_defs]]></geoReference>
+  </header>
+  <road name="Long Wall" length="120.5" id="1" junction="-1">
+    <planView><geometry s="0" x="0" y="0" hdg="0" length="120.5"><line/></geometry></planView>
+    <lanes><laneSection s="0"><center><lane id="0" type="none" level="false"/></center>
+      <right><lane id="-1" type="driving" level="false"><width sOffset="0" a="3.5" b="0" c="0" d="0"/></lane></right></laneSection></lanes>
+    <signals><signal s="50" t="-4" id="10" name="Stop" dynamic="no" orientation="+" type="206"/></signals>
+  </road>
+  <road name="East Quay" length="80" id="2" junction="-1">
+    <planView><geometry s="0" x="120.5" y="0" hdg="1.57" length="80"><line/></geometry></planView>
+    <lanes><laneSection s="0"><center><lane id="0" type="none" level="false"/></center></laneSection></lanes>
+    <objects><object id="20" name="Bollard" s="10" t="-5" type="pole"/></objects>
+  </road>
+  <junction id="100" name="Bell corner"/>
+</OpenDRIVE>
+"""
+
+XOSC = """<?xml version="1.0" encoding="UTF-8"?>
+<OpenSCENARIO>
+  <FileHeader revMajor="1" revMinor="2" date="2025-09-01T12:00:00" description="Ferry boarding at Saltmere" author="Saltmere Harbour"/>
+  <ParameterDeclarations><ParameterDeclaration name="Speed" parameterType="double" value="5"/></ParameterDeclarations>
+  <CatalogLocations><VehicleCatalog><Directory path="catalogs/vehicles"/></VehicleCatalog></CatalogLocations>
+  <RoadNetwork><LogicFile filepath="saltmere-quay.xodr"/></RoadNetwork>
+  <Entities>
+    <ScenarioObject name="Ferry"><Vehicle name="ferry" vehicleCategory="bus"><BoundingBox><Center x="0" y="0" z="1"/><Dimensions width="3" length="12" height="3"/></BoundingBox><Axles><FrontAxle maxSteering="0.5" wheelDiameter="1" trackWidth="2" positionX="4" positionZ="0.5"/><RearAxle maxSteering="0" wheelDiameter="1" trackWidth="2" positionX="0" positionZ="0.5"/></Axles><Properties/></Vehicle></ScenarioObject>
+    <ScenarioObject name="Car"><Vehicle name="car" vehicleCategory="car"><BoundingBox><Center x="0" y="0" z="0.7"/><Dimensions width="2" length="4.5" height="1.5"/></BoundingBox><Axles><FrontAxle maxSteering="0.5" wheelDiameter="0.6" trackWidth="1.6" positionX="2.8" positionZ="0.3"/><RearAxle maxSteering="0" wheelDiameter="0.6" trackWidth="1.6" positionX="0" positionZ="0.3"/></Axles><Properties/></Vehicle></ScenarioObject>
+  </Entities>
+  <Storyboard>
+    <Init><Actions/></Init>
+    <Story name="Boarding">
+      <Act name="Drive on">
+        <ManeuverGroup maximumExecutionCount="1" name="CarGroup">
+          <Actors selectTriggeringEntities="false"><EntityRef entityRef="Car"/></Actors>
+          <Maneuver name="DriveOn">
+            <Event name="Start" priority="override"><Action name="Go"><PrivateAction><LongitudinalAction><SpeedAction><SpeedActionDynamics dynamicsShape="step" value="0" dynamicsDimension="time"/><SpeedActionTarget><AbsoluteTargetSpeed value="$Speed"/></SpeedActionTarget></SpeedAction></LongitudinalAction></PrivateAction></Action>
+              <StartTrigger/></Event>
+          </Maneuver>
+        </ManeuverGroup>
+        <StartTrigger/>
+      </Act>
+    </Story>
+    <StopTrigger/>
+  </Storyboard>
+</OpenSCENARIO>
+"""
+
+
+def step_dialects() -> None:
+    import tempfile
+
+    for fmt, name, text in (
+        ("dtd", "saltmere-tides.dtd", DTD), ("qt_ts", "saltmere_fr.ts", QT_TS), ("onix", "saltmere-press.onix.xml", ONIX),
+        ("library_xml", "saltmere-charts.mets.xml", METS), ("library_xml", "saltmere-press.mods.xml", MODS),
+        ("library_xml", "saltmere-board.ead.xml", EAD), ("dublin_core", "saltmere-oai.xml", OAI),
+        ("dublin_core", "tides-of-saltmere.dc.xml", DC), ("apple_health", "export.xml", HEALTH),
+        ("android_manifest", "AndroidManifest.xml", ANDROID), ("app_manifest", "SaltmereTides.application", CLICKONCE),
+        ("app_manifest", "SaltmereTides.exe.manifest", SXS), ("opendrive", "saltmere-quay.xodr", XODR),
+        ("openscenario", "ferry-boarding.xosc", XOSC),
+    ):
+        out(fmt, name, text.encode())
+    # SAML metadata with a fictitious self-signed certificate.
+    with tempfile.TemporaryDirectory() as d:
+        subprocess.run(
+            ["openssl", "req", "-x509", "-newkey", "ec", "-pkeyopt", "ec_paramgen_curve:P-256", "-nodes", "-days", "3650",
+             "-subj", "/CN=idp.saltmere.example/O=Saltmere Harbour", "-keyout", f"{d}/k.pem", "-out", f"{d}/c.pem",
+             "-set_serial", "1"],
+            check=True, capture_output=True,
+        )
+        cert = "".join(l for l in open(f"{d}/c.pem").read().splitlines() if not l.startswith("-----"))
+    saml = f"""<?xml version="1.0" encoding="UTF-8"?>
+<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="https://idp.saltmere.example/saml" validUntil="2030-01-01T00:00:00Z">
+  <md:IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+    <md:KeyDescriptor use="signing"><ds:KeyInfo><ds:X509Data><ds:X509Certificate>{cert}</ds:X509Certificate></ds:X509Data></ds:KeyInfo></md:KeyDescriptor>
+    <md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</md:NameIDFormat>
+    <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://idp.saltmere.example/sso"/>
+    <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://idp.saltmere.example/sso"/>
+    <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://idp.saltmere.example/slo"/>
+  </md:IDPSSODescriptor>
+</md:EntityDescriptor>
+"""
+    out("saml", "saltmere-idp-metadata.xml", saml.encode())
+    assertion = """<?xml version="1.0" encoding="UTF-8"?>
+<samlp:Response xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" ID="_r1" Version="2.0" IssueInstant="2025-09-01T12:00:00Z" Destination="https://tides.saltmere.example/acs">
+  <saml:Issuer>https://idp.saltmere.example/saml</saml:Issuer>
+  <samlp:Status><samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success"/></samlp:Status>
+  <saml:Assertion ID="_a1" Version="2.0" IssueInstant="2025-09-01T12:00:00Z">
+    <saml:Issuer>https://idp.saltmere.example/saml</saml:Issuer>
+    <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256"/><ds:Reference URI="#_a1"><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>AAAA</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>AAAA</ds:SignatureValue></ds:Signature>
+    <saml:Subject><saml:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent">harbourmaster-0001</saml:NameID></saml:Subject>
+    <saml:AttributeStatement>
+      <saml:Attribute Name="urn:oid:2.5.4.3" FriendlyName="cn"><saml:AttributeValue>Ana Lighthouse</saml:AttributeValue></saml:Attribute>
+      <saml:Attribute Name="role"><saml:AttributeValue>harbourmaster</saml:AttributeValue></saml:Attribute>
+    </saml:AttributeStatement>
+  </saml:Assertion>
+</samlp:Response>
+"""
+    out("saml", "saltmere-response.xml", assertion.encode())
+
+
+# --- mail stores, web bundles, watch faces (batch 5c) ----------------------------------------------
+
+
+def cbor(v) -> bytes:
+    """A minimal CBOR encoder: ints, bytes, str, list, dict (keys in order)."""
+    def head(major: int, n: int) -> bytes:
+        if n < 24:
+            return bytes([major << 5 | n])
+        for info, size in ((24, 1), (25, 2), (26, 4), (27, 8)):
+            if n < 1 << (8 * size):
+                return bytes([major << 5 | info]) + n.to_bytes(size, "big")
+        raise ValueError(n)
+    if isinstance(v, bool):
+        return b"\xf5" if v else b"\xf4"
+    if isinstance(v, int):
+        return head(0, v) if v >= 0 else head(1, -1 - v)
+    if isinstance(v, bytes):
+        return head(2, len(v)) + v
+    if isinstance(v, str):
+        e = v.encode()
+        return head(3, len(e)) + e
+    if isinstance(v, list):
+        return head(4, len(v)) + b"".join(cbor(x) for x in v)
+    if isinstance(v, dict):
+        return head(5, len(v)) + b"".join(cbor(k) + cbor(x) for k, x in v.items())
+    raise TypeError(v)
+
+
+def tiny_png() -> bytes:
+    def chunk(t: bytes, d: bytes) -> bytes:
+        return struct.pack(">L", len(d)) + t + d + struct.pack(">L", zlib.crc32(t + d))
+    return b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">LLBBBBB", 1, 1, 8, 2, 0, 0, 0)) + chunk(b"IDAT", zlib.compress(b"\x00\x20\x40\x80")) + chunk(b"IEND", b"")
+
+
+def tnef_attr(level: int, aid: int, data: bytes) -> bytes:
+    return struct.pack("<BLL", level, aid, len(data)) + data + struct.pack("<H", sum(data) & 0xFFFF)
+
+
+def mapi_props(props: list[tuple[int, int, bytes]]) -> bytes:
+    """(type, id, raw value) with variable-size types counted and padded."""
+    out = struct.pack("<L", len(props))
+    for ty, pid, value in props:
+        out += struct.pack("<HH", ty, pid)
+        if ty in (0x001E, 0x001F, 0x0102):
+            out += struct.pack("<LL", 1, len(value)) + value + b"\0" * (-len(value) % 4)
+        else:
+            out += value
+    return out
+
+
+def step_mailstores() -> None:
+    # TNEF: a message with two attachments.
+    dtr = struct.pack("<7H", 2025, 9, 1, 12, 30, 0, 1)
+    utf16 = lambda s: (s + "\0").encode("utf-16-le")
+    t = b"\x78\x9f\x3e\x22" + struct.pack("<H", 0x1234)
+    t += tnef_attr(1, 0x00089006, struct.pack("<L", 0x00010000))
+    t += tnef_attr(1, 0x00069007, struct.pack("<LL", 1252, 0))
+    t += tnef_attr(1, 0x00078008, b"IPM.Microsoft Mail.Note\0")
+    t += tnef_attr(1, 0x00018004, b"Tide table for September\0")
+    t += tnef_attr(1, 0x00038005, dtr)
+    t += tnef_attr(1, 0x00069003, mapi_props([
+        (0x001E, 0x0C1A, b"Saltmere Harbourmaster\0"),
+        (0x001E, 0x0C1F, b"harbourmaster@saltmere.example\0"),
+        (0x001E, 0x1000, b"The September tide table is attached. High water at 06:12 on the 1st.\0"),
+    ]))
+    for title, long, mime, data in (
+        ("TIDES~1.TXT", "tides-september.txt", "text/plain", b"2025-09-01 high 06:12\n2025-09-01 low 12:31\n"),
+        ("BERTHS~1.CSV", "berths.csv", "text/csv", b"berth,boat\n1,Grey Tern\n2,Herring Gull\n"),
+    ):
+        t += tnef_attr(2, 0x00069002, struct.pack("<HLLLHH", 1, 0xFFFFFFFF, 0, 0, 0, 0))
+        t += tnef_attr(2, 0x00018010, title.encode() + b"\0")
+        t += tnef_attr(2, 0x0006800F, data)
+        t += tnef_attr(2, 0x00069005, mapi_props([(0x001F, 0x3707, utf16(long)), (0x001E, 0x370E, mime.encode() + b"\0")]))
+    out("tnef", "winmail.dat", t)
+
+    # PST (Unicode) and OST (ANSI): headers of fictitious empty stores.
+    u = bytearray(8192)
+    u[0:4] = b"!BDN"; u[8:10] = b"SM"; struct.pack_into("<HH", u, 10, 23, 19); u[14] = 1; u[15] = 1
+    struct.pack_into("<Q", u, 184, len(u)); u[256:512] = b"\xff" * 256; u[512] = 0x80; u[513] = 1
+    out("pst", "saltmere-archive.pst", bytes(u))
+    a = bytearray(4096)
+    a[0:4] = b"!BDN"; a[8:10] = b"SO"; struct.pack_into("<HH", a, 10, 14, 19); a[14] = 1; a[15] = 1
+    struct.pack_into("<L", a, 168, len(a)); a[204:460] = b"\xff" * 256; a[460] = 0x80; a[461] = 0
+    out("pst", "saltmere-offline.ost", bytes(a))
+
+    # Lotus Notes: the file header and DBINFO of a fictitious database.
+    n = bytearray(2048)
+    n[0:2] = b"\x1a\x00"; struct.pack_into("<L", n, 2, 178); struct.pack_into("<L", n, 6, 43)
+    struct.pack_into("<L", n, 6 + 82, len(n) // 256)
+    out("lotus_notes", "saltmere-harbour.nsf", bytes(n))
+
+    # Outlook Express: a messages folder header with three items.
+    d = bytearray(0x24BC)
+    d[0:4] = b"\xcf\xad\x12\xfe"; d[4:20] = bytes.fromhex("c5fd746f66e3d1119a4e00c04fa309d4")
+    struct.pack_into("<L", d, 0x7C, len(d))  # end of the used data
+    struct.pack_into("<L", d, 0xC4, 3)
+    out("dbx", "Inbox.dbx", bytes(d))
+
+    # Outlook for Mac archive.
+    acct = "Accounts/harbourmaster@saltmere.example"
+    msg = lambda when, subject: (f'<?xml version="1.0" encoding="UTF-8"?>\n<emails><email><OPFMessageCopySentTime>{when}</OPFMessageCopySentTime>'
+                                 f'<OPFMessageCopySubject>{subject}</OPFMessageCopySubject></email></emails>\n')
+    out("olm", "saltmere-mail.olm", zip_of([
+        ("Categories.xml", '<?xml version="1.0"?>\n<categories><category name="Tides"/></categories>\n'),
+        (f"{acct}/com.microsoft.__Messages/Inbox/message_00000.xml", msg("2025-08-01T08:00:00", "High water")),
+        (f"{acct}/com.microsoft.__Messages/Inbox/message_00001.xml", msg("2025-08-15T09:30:00", "Mooring refund")),
+        (f"{acct}/com.microsoft.__Messages/Sent Items/message_00000.xml", msg("2025-08-20T17:00:00", "Bell repairs")),
+        (f"{acct}/com.microsoft.__Contacts/Contacts.xml", '<?xml version="1.0"?>\n<contacts><contact/></contacts>\n'),
+        (f"{acct}/com.microsoft.__Calendar/Calendar.xml", '<?xml version="1.0"?>\n<appointments><appointment/></appointments>\n'),
+    ]))
+
+    # Mork address book (Thunderbird).
+    mab = """// <!-- <mdb:mork:z v="1.4"/> -->
+< <(a=c)> // (f=iso-8859-1)
+  (B8=Custom3)(80=ns:addrbk:db:row:scope:card:all)(81=ns:addrbk:db:table:kind:pab)
+  (82=FirstName)(83=LastName)(84=DisplayName)(85=PrimaryEmail)(86=WorkPhone)>
+
+<(90=Ben)(91=Gull)(92=Ben Gull)(93=ben@saltmere.example)(94=Ana)(95=Lighthouse)
+  (96=Ana Lighthouse)(97=ana@saltmere.example)>
+
+{1:^80 {(k^81:c)(s=9)}
+  [1(^82^90)(^83^91)(^84^92)(^85^93)]
+  [2(^82^94)(^83^95)(^84^96)(^85^97)(^86=+44 0000 000000)]}
+"""
+    out("mork", "abook.mab", mab.encode())
+
+    # Web Bundle (b2) with two resources.
+    resp = lambda ctype, body: [cbor({b":status": b"200", b"content-type": ctype.encode()}), body]
+    resources = [
+        ("https://tides.saltmere.example/", resp("text/html; charset=utf-8", b"<!doctype html><title>Saltmere tides</title><p>High water 06:12</p>")),
+        ("https://tides.saltmere.example/tides.css", resp("text/css", b"body{font-family:serif}")),
+    ]
+    offsets, at = {}, len(cbor([0] * len(resources))[:1])
+    for url, r in resources:
+        enc = cbor(r)
+        offsets[url] = [at, len(enc)]
+        at += len(enc)
+    sections = [{u: o for u, o in offsets.items()}, [r for _, r in resources], "https://tides.saltmere.example/"]
+    names = ["index", "responses", "primary"]
+    lengths = cbor([x for n, s in zip(names, sections) for x in (n, len(cbor(s)))])
+    body = cbor([b"\xf0\x9f\x8c\x90\xf0\x9f\x93\xa6", b"b2\0\0", lengths, sections, b"\0" * 8])
+    body = body[:-8] + len(body).to_bytes(8, "big")
+    out("web_bundle", "saltmere-tides.wbn", body)
+
+    # Signed exchange with a fictitious signature.
+    url = b"https://tides.saltmere.example/"
+    sig = (b'sig1; sig=*AAAA*; integrity="digest/mi-sha256-03"; cert-url="https://tides.saltmere.example/cert.cbor"; '
+           b'cert-sha256=*AAAA*; validity-url="https://tides.saltmere.example/validity.msg"; date=1756728000; expires=1757332800')
+    hdr = cbor({b":status": b"200", b"content-type": b"text/html; charset=utf-8", b"content-encoding": b"mi-sha256-03",
+                b"digest": b"mi-sha256-03=AAAA"})
+    payload = struct.pack(">Q", 16384) + b"<!doctype html><title>Saltmere tides</title>"
+    sx = b"sxg1-b3\0" + struct.pack(">H", len(url)) + url + len(sig).to_bytes(3, "big") + len(hdr).to_bytes(3, "big") + sig + hdr + payload
+    out("signed_exchange", "saltmere-tides.sxg", sx)
+
+    # Apple Watch face.
+    import json as _json
+    face = {"version": 4, "face type": "modular compact",
+            "customization": {"color": "harbour blue", "style": "digital"},
+            "complications": {"top left": {"app": "tides"}, "bottom center": {"app": "weather"}}}
+    meta = {"complications_names": {"top left": "Saltmere Tides", "bottom center": "Weather"}, "version": 4}
+    out("watchface", "Saltmere.watchface", zip_of([
+        ("face.json", _json.dumps(face, indent=1)), ("metadata.json", _json.dumps(meta, indent=1)),
+        ("snapshot.png", tiny_png()), ("no_borders_snapshot.png", tiny_png()),
+    ]))
+
+
+STEPS = {"mailstores": step_mailstores, "dialects": step_dialects, "records": step_records, "languages": step_languages, "configs": step_configs, "legacy_docs": step_legacy_docs, "packages": step_packages, "books": step_books, "writing": step_writing, "scripts": step_scripts, "exec": step_exec, "debug": step_debug, "dos": step_dos, "mac": step_mac, "encoded": step_encoded, "wim": step_wim, "bundles": step_bundles, "backups": step_backups}
 
 if __name__ == "__main__":
     WORK.mkdir(parents=True, exist_ok=True)

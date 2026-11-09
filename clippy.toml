@@ -15,7 +15,7 @@ doc-valid-idents = [
     "VideoToolbox", "BITMAPINFOHEADER",
     "SubRip", "WebVTT", "SubStation", "SubViewer", "MicroDVD", "VobSub", "VSFilter", "YouTube", "SHOUTcast",
     "MusicXML", "MuseScore", "LilyPond", "OpenMPT", "ProTracker", "FastTracker", "PyGuitarPro",
-    "ZipCrypto", "WinZip", "ALZip", "OpenMetrics", "JSCalendar", "JSContact", "AsyncAPI", "ESLint", "OpenXPS", "InDesign", "FrameMaker", "iWork", "WordPerfect", "ClarisWorks", "AppleWorks", "OneNote", "WinHelp", "PostScript", "EndNote", "PubMed", "LyX", "AbiWord", "Gnumeric", "Scrivener", "Evernote", "Obsidian", "Marp", "Typst", "AppleScript", "FasdUAS", "StuffIt", "BinHex", "MacBinary", "AppleDouble", "PEX-INFO", "APPNOTE", "SAMv1", "BGZF", "MSZIP", "LZFSE", "LZVN", "Zip64", "PKWARE",
+    "ZipCrypto", "WinZip", "ALZip", "OpenMetrics", "ClickOnce", "OpenDRIVE", "OpenSCENARIO", "EDItEUR", "HealthKit", "JSCalendar", "JSContact", "AsyncAPI", "ESLint", "OpenXPS", "InDesign", "FrameMaker", "iWork", "WordPerfect", "ClarisWorks", "AppleWorks", "OneNote", "WinHelp", "PostScript", "EndNote", "PubMed", "LyX", "AbiWord", "Gnumeric", "Scrivener", "Evernote", "Obsidian", "Marp", "Typst", "AppleScript", "FasdUAS", "StuffIt", "BinHex", "MacBinary", "AppleDouble", "PEX-INFO", "APPNOTE", "SAMv1", "BGZF", "MSZIP", "LZFSE", "LZVN", "Zip64", "PKWARE",
     "WebExtension", "WebExtensions", "OpenPGP", "RubyGems", "PyPA", "NuGet", "OSGi", "JScript", "VBScript",
     "PackageInfo",
     "NetCDF", "AnnData", "MathWorks", "NeXus", "GeoParquet", "RoPE", "SavedModel", "TensorFlow", "TorchScript", "TFRecord", "FileMetaData", "KeyValue",

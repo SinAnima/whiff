@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="https://idp.saltmere.example/saml" validUntil="2030-01-01T00:00:00Z">
+  <md:IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+    <md:KeyDescriptor use="signing"><ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIIBtjCCAVygAwIBAgIBATAKBggqhkjOPQQDAjA6MR0wGwYDVQQDDBRpZHAuc2FsdG1lcmUuZXhhbXBsZTEZMBcGA1UECgwQU2FsdG1lcmUgSGFyYm91cjAeFw0yNjExMDkyMTIyNDNaFw0zNjExMDYyMTIyNDNaMDoxHTAbBgNVBAMMFGlkcC5zYWx0bWVyZS5leGFtcGxlMRkwFwYDVQQKDBBTYWx0bWVyZSBIYXJib3VyMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA1zonLpQ946lsZsQGOhWOllA1zMyntZfnwXt1J+AABG2zIdHMw1vvbiGhgToc/B8pF48QD0vH3tgefeEKv6By6NTMFEwHQYDVR0OBBYEFDyOtAT1ZMyc93JFJIOad7PKdhSUMB8GA1UdIwQYMBaAFDyOtAT1ZMyc93JFJIOad7PKdhSUMA8GA1UdEwEB/wQFMAMBAf8wCgYIKoZIzj0EAwIDSAAwRQIhAPFabg4ADUsFTH0q6Rb9kP8w2Co64KNBd8O2QvyMOL/tAiAv16NtYjAUksHfJP9wN14MTGSt9EaijzW5boAP4vh1gQ==</ds:X509Certificate></ds:X509Data></ds:KeyInfo></md:KeyDescriptor>
+    <md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</md:NameIDFormat>
+    <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://idp.saltmere.example/sso"/>
+    <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://idp.saltmere.example/sso"/>
+    <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://idp.saltmere.example/slo"/>
+  </md:IDPSSODescriptor>
+</md:EntityDescriptor>

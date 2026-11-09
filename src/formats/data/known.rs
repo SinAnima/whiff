@@ -1241,8 +1241,7 @@ mod tests {
         let strict = crate::plugin::testing::report_for("a.tfstate", state);
         let text = serde_json::to_string(&strict).unwrap();
         assert!(!text.contains("alpha") && !text.contains("example.org"));
-        let engine = crate::Engine::builder().privacy(crate::Privacy::Off).build();
-        let off = engine.extract_bytes(Some("a.tfstate"), state.to_vec());
+        let off = crate::plugin::testing::report_without_privacy("a.tfstate", state);
         let k = &off.format["json"]["known_schema"];
         assert_eq!(k["resource_list"][0]["address"], "t_user.u");
         let attrs = &k["resource_list"][0]["instances"][0]["attributes"];

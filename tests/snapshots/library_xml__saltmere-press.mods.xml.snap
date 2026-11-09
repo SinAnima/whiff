@@ -1,0 +1,151 @@
+---
+source: src/formats/text/dialects.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-press.mods.xml",
+    "stem": "saltmere-press.mods",
+    "extension": "xml"
+  },
+  "identification": {
+    "format": "library_xml",
+    "name": "METS / MODS / EAD record",
+    "mime": "application/xml",
+    "family": "text.xml",
+    "confidence": 0.93,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "library_xml",
+        "confidence": 0.93
+      },
+      {
+        "format": "xml",
+        "confidence": 0.65
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "text.dialects"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 775
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 775,
+    "entropy": 4.788,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 775,
+      "chars": 775,
+      "words": 29,
+      "lines": 17,
+      "max_line_length": 115,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "4156a6bb8286c9d3df2ab4cfac916aecea4a935aa79d548ec82e7210f09a190b",
+    "blake3": "294120a904e6c843c9120bca01888d00f3f5d6a0c9b4ad5e1dbfee68e8d2899b"
+  },
+  "content": {
+    "title": "The Harbour Bell"
+  },
+  "metadata": {},
+  "format": {
+    "library_xml": {
+      "dialect": "MODS",
+      "titles": [
+        "The Harbour Bell",
+        "Tides of Saltmere"
+      ],
+      "dates": [
+        "1925",
+        "1931"
+      ],
+      "names": [
+        "Gull, Ben",
+        "Lighthouse, Ana"
+      ],
+      "genres": [
+        "almanac",
+        "poetry"
+      ],
+      "identifiers": [
+        "salt-0001",
+        "salt-0002"
+      ],
+      "counts": {
+        "records": 2
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.dialects",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

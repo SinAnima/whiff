@@ -1,0 +1,148 @@
+---
+source: src/formats/text/dialects.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "ferry-boarding.xosc",
+    "stem": "ferry-boarding",
+    "extension": "xosc"
+  },
+  "identification": {
+    "format": "openscenario",
+    "name": "ASAM OpenSCENARIO scenario",
+    "mime": "application/xml",
+    "family": "text.xml",
+    "confidence": 0.98,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "openscenario",
+        "confidence": 0.98
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "text.dialects"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2170
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2170,
+    "entropy": 5.076,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 2170,
+      "chars": 2170,
+      "words": 96,
+      "lines": 27,
+      "max_line_length": 426,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "3028993c66d7bbc8e360d58dfbe60b47f055888a4a7f9e68c1154de061252204",
+    "blake3": "c2e632ea5067993d4328ca7e4639c46f981a0922995ec3aa431aea934ffcc6ec"
+  },
+  "content": {
+    "title": "Ferry boarding at Saltmere"
+  },
+  "metadata": {},
+  "format": {
+    "openscenario": {
+      "revision": "1.2",
+      "description": "Ferry boarding at Saltmere",
+      "author": "Saltmere Harbour",
+      "date": "2025-09-01T12:00:00",
+      "road_network": "saltmere-quay.xodr",
+      "entities": [
+        "Ferry",
+        "Car"
+      ],
+      "catalogs": [
+        "VehicleCatalog"
+      ],
+      "counts": {
+        "actions": 1,
+        "acts": 1,
+        "events": 1,
+        "maneuver_groups": 1,
+        "maneuvers": 1,
+        "parameters": 1,
+        "stories": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.dialects",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

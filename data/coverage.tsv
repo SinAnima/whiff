@@ -102,3 +102,9 @@ Cypher / GQL	cypher
 Server-side templates (PHP/ERB/JSP/ASP mixed HTML)	erb
 Windows theme / desktop.ini	ini
 Web archive (Safari)	plist
+Qt translation	qt_ts
+Dublin Core XML / OAI-PMH	dublin_core
+Apple Health export	apple_health
+Android manifest (text)	android_manifest
+TNEF winmail.dat	tnef
+Lotus Notes database	lotus_notes

@@ -1,0 +1,111 @@
+---
+source: src/formats/email/stores.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-offline.ost",
+    "stem": "saltmere-offline",
+    "extension": "ost"
+  },
+  "identification": {
+    "format": "pst",
+    "name": "Outlook data file (PST / OST)",
+    "mime": "application/vnd.ms-outlook-pst",
+    "family": "email",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "email.stores"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4096
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4096,
+    "entropy": 0.376,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "0ba69d2e820f27c49ed99055e39b5d9e9bcf95a5556a9fc08a7df25d32fbbb5b",
+    "blake3": "251113f9702017b6377a0c0ef22af10ab51e7df501321d69ef70040c445ef0b6"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pst": {
+      "content_type": "OST (offline folders)",
+      "data_version": 14,
+      "layout": "ANSI (32-bit)",
+      "content_version": 19,
+      "declared_size_bytes": 4096,
+      "encryption": "none",
+      "header_valid": true
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "email.stores",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

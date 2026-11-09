@@ -127,9 +127,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1008 formats** in total: tier 1 = 139, tier 2 = 122, tier 3 = 747.
-* Formats with an extractor in this build: **934** of 1008.
+* Formats with an extractor in this build: **951** of 1008.
 * Formats by family status: crate = 183, mixed = 365, impl = 460.
-* Formats by target stage: S1 = 202, S1/S6 = 102, S2 = 99, S3 = 63, S3/S8 = 22, S4 = 71, S5 = 89, S6 = 107, S6/S8 = 17, S7 = 140, S8 = 96.
+* Formats by target stage: S1 = 202, S1/S6 = 102, S2 = 99, S3 = 65, S3/S8 = 22, S4 = 71, S5 = 89, S6 = 107, S6/S8 = 17, S7 = 140, S8 = 94.
 * By feature: `common` = 818, `cad` = 45, `forensics` = 38, `science` = 36, `geo` = 34, `data` = 20, `games` = 17.
 * By category: Code 167, Data 157, Image 95, Media 88, Document 71, Archive 47, Scientific 36, Executable 34, Geospatial 34, Text 32, Package 30, 3D 28, Web 27, Forensics 24, Database 21, Security 20, CAD 17, Game 17, Personal 16, Disk 14, Platform 11, Font 10, Fallback 8, Block 4.
 
@@ -414,7 +414,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 273 | Quarto | `qmd` | text/x-quarto | 3 | `text.markdown` | `common` | `text.markdown` | pulldown-cmark, gray_matter | S1 | — |
 | 274 | Server-side templates (PHP/ERB/JSP/ASP mixed HTML) | `jsp` `asp` `aspx` `erb` `ejs` `hbs` `mustache` `njk` `jinja` `j2` `twig` `liquid` | — | 3 | `text.html` | `common` | `code.source` | html5ever + scraper | S1 | template engine detection, HTML part analysed |
 | 275 | Web archive (Safari) | `webarchive` | application/x-webarchive | 3 | `text.html` | `common` | `apple.plist` | html5ever + scraper | S1 | binary plist with WebMainResource |
-| 276 | DTD | `dtd` | application/xml-dtd | 3 | `text.xml` | `common` | — | quick-xml | S1 | element declarations |
+| 276 | DTD | `dtd` | application/xml-dtd | 3 | `text.xml` | `common` | `text.dialects` | quick-xml | S1 | element declarations |
 | 277 | RELAX NG | `rng` `rnc` | application/xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | — |
 | 278 | DocBook | `dbk` `docbook` | application/docbook+xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | title, chapters |
 | 279 | TEI XML | `tei` | application/tei+xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | teiHeader fileDesc |
@@ -422,24 +422,24 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 281 | WSDL | `wsdl` | application/wsdl+xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | services, operations |
 | 282 | XLIFF translation | `xlf` `xliff` | application/xliff+xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | source/target languages, unit count |
 | 283 | Android strings / .resx | `resx` | text/microsoft-resx | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | key count |
-| 284 | Qt translation | `ts` | application/x-linguist | 3 | `text.xml` | `common` | — | quick-xml | S1 | — |
-| 285 | SAML / XML-DSig | `saml` | application/samlmetadata+xml | 3 | `text.xml` | `common` | — | quick-xml | S1 | entity ids, certs |
+| 284 | Qt translation | `ts` | application/x-linguist | 3 | `text.xml` | `common` | `text.dialects` | quick-xml | S1 | — |
+| 285 | SAML / XML-DSig | `saml` | application/samlmetadata+xml | 3 | `text.xml` | `common` | `text.dialects` | quick-xml | S1 | entity ids, certs |
 | 286 | MathML | `mml` | application/mathml+xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | — |
 | 287 | SMIL | `smil` `smi` | application/smil+xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | — |
 | 288 | XBRL financial report | `xbrl` | application/xbrl+xml | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | entity, period, concept count |
-| 289 | ONIX book metadata | `onix` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | — |
-| 290 | METS / MODS / EAD library XML | `mets` `mods` `ead` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | — |
-| 291 | Dublin Core XML / OAI-PMH | `dc` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | — |
+| 289 | ONIX book metadata | `onix` | — | 3 | `text.xml` | `common` | `text.dialects` | quick-xml | S1 | — |
+| 290 | METS / MODS / EAD library XML | `mets` `mods` `ead` | — | 3 | `text.xml` | `common` | `text.dialects` | quick-xml | S1 | — |
+| 291 | Dublin Core XML / OAI-PMH | `dc` | — | 3 | `text.xml` | `common` | `text.dialects` | quick-xml | S1 | — |
 | 292 | JUnit / xUnit test report | `xml` | — | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | suites, tests, failures, errors, time |
 | 293 | Cobertura / JaCoCo / Clover coverage | `xml` | — | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | line/branch coverage % |
 | 294 | Checkstyle / PMD / SpotBugs reports | `xml` | — | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | violations by severity |
-| 295 | Apple Health export | `export.xml` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | record types histogram, date range, sources |
-| 296 | Android manifest (text) | `AndroidManifest.xml` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | package, permissions, components |
+| 295 | Apple Health export | `export.xml` | — | 3 | `text.xml` | `common` | `text.dialects` | quick-xml | S1 | record types histogram, date range, sources |
+| 296 | Android manifest (text) | `AndroidManifest.xml` | — | 3 | `text.xml` | `common` | `text.dialects` | quick-xml | S1 | package, permissions, components |
 | 297 | SVG sprite / icon sets | `svg` | — | 3 | `text.xml` | `common` | `image.svg` | quick-xml | S1 | symbol count |
 | 298 | Office custom XML / content types | `xml` | — | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | — |
-| 299 | ClickOnce / app manifests | `application` `manifest` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | identity, dependencies |
+| 299 | ClickOnce / app manifests | `application` `manifest` | — | 3 | `text.xml` | `common` | `text.dialects` | quick-xml | S1 | identity, dependencies |
 | 300 | Nmap XML / Nessus reports | `xml` `nessus` | — | 3 | `text.xml` | `common` | `text.xml` | quick-xml | S1 | hosts, open ports, findings by severity |
-| 301 | OpenSCENARIO / OpenDRIVE | `xosc` `xodr` | — | 3 | `text.xml` | `common` | — | quick-xml | S1 | roads, junctions |
+| 301 | OpenSCENARIO / OpenDRIVE | `xosc` `xodr` | — | 3 | `text.xml` | `common` | `text.dialects` | quick-xml | S1 | roads, junctions |
 | 302 | GPX-like Garmin TCX | `tcx` | — | 3 | `text.xml` | `common` | `geo.xml` | quick-xml | S1 | -&gt; geo |
 | 303 | JSON Feed | `json` | application/feed+json | 3 | `text.feed` | `common` | `text.feed` | feed-rs | S1 | — |
 | 304 | OPML outline | `opml` | text/x-opml | 3 | `text.feed` | `common` | `text.feed` | feed-rs | S1 | outline titles, feed URLs |
@@ -689,14 +689,14 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 548 | vCalendar 1.0 | `vcs` | text/x-vcalendar | 3 | `text.calendar` | `common` | `text.calendar` | impl | S3 | — |
 | 549 | JSCalendar | `json` | — | 3 | `text.calendar` | `common` | `data.json` | impl | S3 | — |
 | 550 | JSContact / LDIF | `ldif` | text/directory | 3 | `text.contact` | `common` | `data.records` | impl | S3 | — |
-| 551 | Outlook data file | `pst` `ost` | application/vnd.ms-outlook-pst | 3 | `email` | `common` | — | mail-parser | S3 | folder tree, item counts, date range |
+| 551 | Outlook data file | `pst` `ost` | application/vnd.ms-outlook-pst | 3 | `email` | `common` | `email.stores` | mail-parser | S3 | folder tree, item counts, date range |
 | 552 | Maildir message | `(maildir` `file)` | — | 3 | `email` | `common` | `email.mime` | mail-parser | S3 | — |
 | 553 | Thunderbird / EMLX | `emlx` | — | 3 | `email` | `common` | `email.mime` | mail-parser | S3 | Apple Mail plist trailer |
 | 554 | Usenet / NNTP article | `nws` | — | 3 | `email` | `common` | `email.mime` | mail-parser | S3 | — |
-| 555 | TNEF winmail.dat | `dat` | application/ms-tnef | 3 | `email` | `common` | — | mail-parser | S8 | attachments (impl) |
-| 556 | Lotus Notes database | `nsf` | — | 3 | `email` | `common` | — | mail-parser | S8 | title, replica id (header) |
-| 557 | Outlook for Mac archive / Outlook Express DBX | `olm` `dbx` | — | 3 | `email` | `common` | — | mail-parser | S3 | folders, message count |
-| 558 | Mork address book / mail summary | `mab` `msf` | — | 3 | `email` | `common` | — | mail-parser | S3 | — |
+| 555 | TNEF winmail.dat | `dat` | application/ms-tnef | 3 | `email` | `common` | `email.tnef` | mail-parser | S3 | attachments (impl) |
+| 556 | Lotus Notes database | `nsf` | — | 3 | `email` | `common` | `email.stores` | mail-parser | S3 | title, replica id (header) |
+| 557 | Outlook for Mac archive / Outlook Express DBX | `olm` `dbx` | — | 3 | `email` | `common` | `email.stores` | mail-parser | S3 | folders, message count |
+| 558 | Mork address book / mail summary | `mab` `msf` | — | 3 | `email` | `common` | `email.stores` | mail-parser | S3 | — |
 | 559 | PDF/A, PDF/X, PDF/UA variants | `pdf` | application/pdf | 3 | `doc.pdf` | `common` | `doc.pdf` | impl | S3 | conformance from XMP pdfaid/pdfx/pdfuaid |
 | 560 | Adobe Illustrator (PDF-based) | `ai` | application/illustrator | 3 | `doc.pdf` | `common` | `doc.pdf` | impl | S3 | AI private data present, artboards |
 | 561 | Forms Data Format | `fdf` `xfdf` | application/vnd.fdf | 3 | `doc.pdf` | `common` | `doc.pdf` | impl | S3 | field names/values |
@@ -982,7 +982,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 841 | Apple Shortcuts / Automator | `shortcut` `workflow` | — | 3 | `apple` | `common` | `apple.plist` | plist | S6 | actions |
 | 842 | macOS alias / bookmark data | `alias` | — | 3 | `apple` | `common` | `apple.bookmark` | plist | S6 | target path |
 | 843 | Apple configuration profile | `mobileconfig` | — | 3 | `apple` | `common` | `apple.plist` | plist | S6 | payload types (CMS-signed) |
-| 844 | Apple Watch face / Siri / misc plists | `watchface` | — | 3 | `apple` | `common` | — | plist | S6 | — |
+| 844 | Apple Watch face / Siri / misc plists | `watchface` | — | 3 | `apple` | `common` | `apple.watchface` | plist | S6 | — |
 | 845 | iOS backup Info.plist / Manifest.plist | `plist` | — | 3 | `apple` | `common` | `apple.plist` | plist | S6 | device, iOS version |
 | 846 | AppleDouble resource forks / xattr dumps | `._*` | — | 3 | `apple` | `common` | `apple.appledouble` | plist | S6 | -&gt; archive |
 | 847 | Apache ORC | `orc` | application/x-orc | 3 | `columnar` | `data` | `columnar.orc` | impl: Parquet footer | S7 | — |
@@ -1126,7 +1126,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 985 | HTTP Archive (HAR) | `har` | — | 3 | `web.misc` | `common` | `forensic.logs` | swf, lava_torrent | S8 | -&gt; forensic |
 | 986 | Wget / curl config, .netrc | `wgetrc` `curlrc` `netrc` | — | 3 | `web.misc` | `common` | `web.misc` | swf, lava_torrent | S8 | credentials redacted |
 | 987 | PAC proxy auto-config | `pac` | application/x-ns-proxy-autoconfig | 3 | `web.misc` | `common` | `web.misc` | swf, lava_torrent | S8 | — |
-| 988 | Web bundle / signed exchange | `wbn` `sxg` | — | 3 | `web.misc` | `common` | — | swf, lava_torrent | S8 | — |
+| 988 | Web bundle / signed exchange | `wbn` `sxg` | — | 3 | `web.misc` | `common` | `web.bundle` | swf, lava_torrent | S8 | — |
 | 989 | Google Earth / Maps link files | `kmz` `url` | — | 3 | `web.misc` | `common` | `geo.xml` | swf, lava_torrent | S8 | -&gt; geo |
 | 990 | Shortcut-like: .desktop / .lnk / .website | `desktop` `website` | — | 3 | `web.misc` | `common` | `data.ini` | swf, lava_torrent | S8 | target |
 | 991 | Proxy lists / Adblock filter lists | `txt` | — | 3 | `web.misc` | `common` | `web.misc` | swf, lava_torrent | S8 | rule count |

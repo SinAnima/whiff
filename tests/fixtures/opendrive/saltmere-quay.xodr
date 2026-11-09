@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenDRIVE>
+  <header revMajor="1" revMinor="6" name="Saltmere quay" version="1.00" date="2025-09-01T12:00:00" vendor="Saltmere Harbour">
+    <geoReference><![CDATA[+proj=tmerc +lat_0=50 +lon_0=-5 +k=1 +x_0=0 +y_0=0 +ellps=WGS84 +units=m +no_defs]]></geoReference>
+  </header>
+  <road name="Long Wall" length="120.5" id="1" junction="-1">
+    <planView><geometry s="0" x="0" y="0" hdg="0" length="120.5"><line/></geometry></planView>
+    <lanes><laneSection s="0"><center><lane id="0" type="none" level="false"/></center>
+      <right><lane id="-1" type="driving" level="false"><width sOffset="0" a="3.5" b="0" c="0" d="0"/></lane></right></laneSection></lanes>
+    <signals><signal s="50" t="-4" id="10" name="Stop" dynamic="no" orientation="+" type="206"/></signals>
+  </road>
+  <road name="East Quay" length="80" id="2" junction="-1">
+    <planView><geometry s="0" x="120.5" y="0" hdg="1.57" length="80"><line/></geometry></planView>
+    <lanes><laneSection s="0"><center><lane id="0" type="none" level="false"/></center></laneSection></lanes>
+    <objects><object id="20" name="Bollard" s="10" t="-5" type="pole"/></objects>
+  </road>
+  <junction id="100" name="Bell corner"/>
+</OpenDRIVE>

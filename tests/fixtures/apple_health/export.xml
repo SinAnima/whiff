@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HealthData [
+<!ELEMENT HealthData (ExportDate,Me,(Record|Workout|ActivitySummary)*)>
+]>
+<HealthData locale="en_GB">
+ <ExportDate value="2025-09-01 12:00:00 +0100"/>
+ <Me HKCharacteristicTypeIdentifierDateOfBirth="1900-01-01" HKCharacteristicTypeIdentifierBiologicalSex="HKBiologicalSexNotSet"/>
+ <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Harbour Watch" unit="count" startDate="2025-08-01 08:00:00 +0100" endDate="2025-08-01 08:10:00 +0100" value="812"/>
+ <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Harbour Watch" unit="count" startDate="2025-08-02 08:00:00 +0100" endDate="2025-08-02 08:10:00 +0100" value="640"/>
+ <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Harbour Watch" unit="count/min" startDate="2025-08-02 09:00:00 +0100" endDate="2025-08-02 09:00:00 +0100" value="62"/>
+ <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="Tide Phone" startDate="2025-08-03 23:00:00 +0100" endDate="2025-08-04 06:00:00 +0100" value="HKCategoryValueSleepAnalysisAsleepCore"/>
+ <Workout workoutActivityType="HKWorkoutActivityTypeRowing" duration="30" durationUnit="min" sourceName="Harbour Watch" startDate="2025-08-05 07:00:00 +0100" endDate="2025-08-05 07:30:00 +0100"/>
+ <ActivitySummary dateComponents="2025-08-01" activeEnergyBurned="300"/>
+</HealthData>

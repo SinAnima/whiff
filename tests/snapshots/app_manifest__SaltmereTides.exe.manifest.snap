@@ -1,0 +1,138 @@
+---
+source: src/formats/text/dialects.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "SaltmereTides.exe.manifest",
+    "stem": "SaltmereTides.exe",
+    "extension": "manifest"
+  },
+  "identification": {
+    "format": "app_manifest",
+    "name": "ClickOnce / application manifest",
+    "mime": "application/x-ms-application",
+    "family": "text.xml",
+    "confidence": 0.98,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "app_manifest",
+        "confidence": 0.98
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "text.dialects"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 946
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 946,
+    "entropy": 5.081,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 946,
+      "chars": 946,
+      "words": 37,
+      "lines": 16,
+      "max_line_length": 170,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "9e2ab8f2a5d6e38eee775452954fe5e92729a6bc44e458be0dba3fc362b9d68a",
+    "blake3": "95a67a639a6eac0b5b53084219bf345ea846c36cb4e7b4c4f9ef1d1ca14cd474"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "app_manifest": {
+      "name": "Saltmere.Tides",
+      "version": "1.3.0.0",
+      "architecture": "amd64",
+      "type": "win32",
+      "execution_level": "asInvoker",
+      "ui_access": false,
+      "dpi_awareness": "true/pm",
+      "kind": "application manifest",
+      "dependencies": [
+        "Microsoft.Windows.Common-Controls 6.0.0.0"
+      ],
+      "files": 0,
+      "signed": false
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.dialects",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

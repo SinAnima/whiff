@@ -10,6 +10,7 @@ pub(crate) mod car;
 pub(crate) mod ds_store;
 pub(crate) mod plists;
 pub(crate) mod strings;
+pub(crate) mod watchface;
 pub(crate) mod xcode;
 
 use plist::Value as Plist;

@@ -697,3 +697,32 @@ uncompressed (and ALZip's deflated entries); nothing else is decompressed.
 - **Known schemas:** recognised inside the JSON / YAML report
   (`format.json.known_schema`); a Scratch `.sb3` is a ZIP whose
   `project.json` is recognised as it is handed on.
+
+### XML vocabularies, mail stores and the web (long tail, batch 5c)
+
+- **Mail stores, header only:** PST / OST / PAB report their header
+  (content type, layout, encryption, declared size); the node and block
+  B-trees, folders and messages are not read. Lotus Notes databases
+  report their on-disk structure version and declared size; the title and
+  replica id live in parts of the file whose layout is not published.
+  Outlook Express DBX files report their kind and item count; messages
+  are not extracted.
+- **OLM:** folders and messages are counted from the archive's entry
+  names, and message dates come from the first 500 messages; contacts,
+  calendar items, tasks and notes are counted as files.
+- **Mork:** cells are resolved from the dictionaries and rows; table
+  scopes, row deletions inside transaction groups and cut-and-paste
+  updates are not replayed.
+- **TNEF:** OEM-code-page strings are read as Latin-1; embedded messages
+  (attachments of type 5) are listed but not opened; MAPI properties
+  beyond those listed in the reader are skipped.
+- **SAML:** signatures are reported, not verified; encrypted assertions
+  are counted as elements only.
+- **Apple Health:** record dates give a range; values and units are not
+  aggregated. Large exports are read up to the parse limit.
+- **Watch faces:** there is no published layout; face type, complications
+  and customisations are read from `face.json` and `metadata.json` as
+  watchOS writes them.
+- **Web Bundles / signed exchanges:** the bundle index and response
+  headers are read; signatures and integrity proofs are not verified,
+  and payloads are not handed on.

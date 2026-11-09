@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<samlp:Response xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" ID="_r1" Version="2.0" IssueInstant="2025-09-01T12:00:00Z" Destination="https://tides.saltmere.example/acs">
+  <saml:Issuer>https://idp.saltmere.example/saml</saml:Issuer>
+  <samlp:Status><samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success"/></samlp:Status>
+  <saml:Assertion ID="_a1" Version="2.0" IssueInstant="2025-09-01T12:00:00Z">
+    <saml:Issuer>https://idp.saltmere.example/saml</saml:Issuer>
+    <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256"/><ds:Reference URI="#_a1"><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>AAAA</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>AAAA</ds:SignatureValue></ds:Signature>
+    <saml:Subject><saml:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent">harbourmaster-0001</saml:NameID></saml:Subject>
+    <saml:AttributeStatement>
+      <saml:Attribute Name="urn:oid:2.5.4.3" FriendlyName="cn"><saml:AttributeValue>Ana Lighthouse</saml:AttributeValue></saml:Attribute>
+      <saml:Attribute Name="role"><saml:AttributeValue>harbourmaster</saml:AttributeValue></saml:Attribute>
+    </saml:AttributeStatement>
+  </saml:Assertion>
+</samlp:Response>

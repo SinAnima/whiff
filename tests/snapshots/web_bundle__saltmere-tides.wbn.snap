@@ -1,0 +1,123 @@
+---
+source: src/formats/web/bundle.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.wbn",
+    "stem": "saltmere-tides",
+    "extension": "wbn"
+  },
+  "identification": {
+    "format": "web_bundle",
+    "name": "Web Bundle",
+    "mime": "application/webbundle",
+    "family": "web.misc",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "web.bundle"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 363
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 363,
+    "entropy": 5.272,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "d4ff3ad794274f6a119529f32604949399040d1a8104232682cac8274d2e4f17",
+    "blake3": "87c3339f93a305f89c7540455169a417476fdec694c46c65179f410394ef807e"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "web_bundle": {
+      "version": "b2",
+      "sections": [
+        "index",
+        "responses",
+        "primary"
+      ],
+      "primary_url": "https://tides.saltmere.example/",
+      "resources": 2,
+      "urls": [
+        "https://tides.saltmere.example/",
+        "https://tides.saltmere.example/tides.css"
+      ],
+      "content_types": {
+        "text/css": 1,
+        "text/html": 1
+      },
+      "statuses": {
+        "200": 2
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "web.bundle",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

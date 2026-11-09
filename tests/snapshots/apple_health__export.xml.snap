@@ -1,0 +1,143 @@
+---
+source: src/formats/text/dialects.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "export.xml",
+    "stem": "export",
+    "extension": "xml"
+  },
+  "identification": {
+    "format": "apple_health",
+    "name": "Apple Health export",
+    "mime": "application/xml",
+    "family": "text.xml",
+    "confidence": 0.93,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "apple_health",
+        "confidence": 0.93
+      },
+      {
+        "format": "xml",
+        "confidence": 0.65
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "text.dialects"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1365
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1365,
+    "entropy": 5.269,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1365,
+      "chars": 1365,
+      "words": 82,
+      "lines": 14,
+      "max_line_length": 200,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "a6e2df86d0117a9993a76abea3a46b738eb0afe9a3ace10dc1e38c316e8a3ec9",
+    "blake3": "629eda4652f317d6d7ee8429e613ddcb6ed7935c25f7c4a9fd1c58e7a7ae7906"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "apple_health": {
+      "locale": "en_GB",
+      "export_date": "2025-09-01 12:00:00 +0100",
+      "records": 4,
+      "record_types": {
+        "StepCount": 2,
+        "HeartRate": 1,
+        "SleepAnalysis": 1
+      },
+      "workouts": {
+        "Rowing": 1
+      },
+      "activity_summaries": 1,
+      "clinical_records": 0,
+      "date_range": [
+        "2025-08-01",
+        "2025-08-05"
+      ],
+      "sources": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.dialects",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

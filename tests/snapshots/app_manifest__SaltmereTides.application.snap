@@ -1,0 +1,141 @@
+---
+source: src/formats/text/dialects.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "SaltmereTides.application",
+    "stem": "SaltmereTides",
+    "extension": "application"
+  },
+  "identification": {
+    "format": "app_manifest",
+    "name": "ClickOnce / application manifest",
+    "mime": "application/x-ms-application",
+    "family": "text.xml",
+    "confidence": 0.98,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "app_manifest",
+        "confidence": 0.98
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "text.dialects"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1247
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1247,
+    "entropy": 5.027,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1247,
+      "chars": 1247,
+      "words": 51,
+      "lines": 13,
+      "max_line_length": 256,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "dc3772b825daf61fb6968676c8cce6de84a688d59156be60389e243072aa86e8",
+    "blake3": "45f841dadd3d5d3533899a795b58757fd143a22359714f8a37a965fd0a01e341"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "app_manifest": {
+      "name": "SaltmereTides.application",
+      "version": "1.3.0.7",
+      "architecture": "msil",
+      "public_key_token": "0000000000000000",
+      "language": "neutral",
+      "publisher": "Saltmere Harbour",
+      "product": "Saltmere Tides",
+      "install": "true",
+      "minimum_required_version": "1.3.0.0",
+      "deployment_url": "https://apps.saltmere.example/tides/SaltmereTides.application",
+      "kind": "ClickOnce deployment manifest",
+      "dependencies": [
+        "SaltmereTides.exe 1.3.0.7"
+      ],
+      "files": 0,
+      "signed": false
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.dialects",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

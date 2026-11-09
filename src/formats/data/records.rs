@@ -1198,11 +1198,10 @@ mod tests {
     fn people_follow_privacy() {
         let ged = b"0 HEAD\n1 GEDC\n2 VERS 5.5.1\n0 @I1@ INDI\n1 NAME Alpha /Beta/\n1 BIRT\n2 DATE 1900\n0 TRLR\n";
         let ldif = b"version: 1\n\ndn: uid=a,dc=example\nobjectClass: person\ncn: Gamma Delta\n";
-        let engine = crate::Engine::builder().privacy(crate::Privacy::Off).build();
         for (name, bytes, needle) in [("t.ged", &ged[..], "Alpha Beta"), ("t.ldif", &ldif[..], "Gamma Delta")] {
             let strict = serde_json::to_string(&crate::plugin::testing::report_for(name, bytes)).unwrap();
             assert!(!strict.contains(needle.split(' ').next().unwrap()), "{name}: name in a strict report");
-            let off = serde_json::to_string(&engine.extract_bytes(Some(name), bytes.to_vec())).unwrap();
+            let off = serde_json::to_string(&crate::plugin::testing::report_without_privacy(name, bytes)).unwrap();
             assert!(off.contains(needle), "{name}: name missing with privacy off");
         }
     }
@@ -1217,8 +1216,7 @@ mod tests {
         assert_eq!(r.format["ofx"]["accounts"][0], "•••••••5678");
         assert!(r.format["ofx"].get("transaction_list").is_none());
         // `--privacy off`: the account whole, and the transactions.
-        let engine = crate::Engine::builder().privacy(crate::Privacy::Off).build();
-        let r = engine.extract_bytes(Some("statement.ofx"), ofx.to_vec());
+        let r = crate::plugin::testing::report_without_privacy("statement.ofx", ofx);
         assert_eq!(r.format["ofx"]["accounts"][0], "00012345678");
         assert_eq!(r.format["ofx"]["transaction_list"][0]["amount"], "-1.00");
     }

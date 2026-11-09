@@ -1,0 +1,152 @@
+---
+source: src/formats/text/dialects.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-charts.mets.xml",
+    "stem": "saltmere-charts.mets",
+    "extension": "xml"
+  },
+  "identification": {
+    "format": "library_xml",
+    "name": "METS / MODS / EAD record",
+    "mime": "application/xml",
+    "family": "text.xml",
+    "confidence": 0.93,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "library_xml",
+        "confidence": 0.93
+      },
+      {
+        "format": "xml",
+        "confidence": 0.65
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "text.dialects"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1247
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1247,
+    "entropy": 5.256,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1247,
+      "chars": 1247,
+      "words": 53,
+      "lines": 18,
+      "max_line_length": 210,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "a028e658beac9f54a173262823fac0bd82e00614aa1021357e57f9c4e24953d2",
+    "blake3": "a5b61a259a5ab3a08b067d392d918aeaf3dbb475d5238eb2d02098d03c91240c"
+  },
+  "content": {
+    "title": "Saltmere harbour charts"
+  },
+  "metadata": {},
+  "format": {
+    "library_xml": {
+      "object_id": "saltmere-charts-1890",
+      "label": "Saltmere harbour charts, 1890",
+      "type": "Map",
+      "dialect": "METS",
+      "titles": [
+        "Saltmere harbour charts"
+      ],
+      "dates": [
+        "1890",
+        "1890"
+      ],
+      "names": [
+        "Saltmere Harbour Archive"
+      ],
+      "genres": [
+        "map"
+      ],
+      "counts": {
+        "agents": 1,
+        "descriptive_sections": 1,
+        "file_groups": 1,
+        "files": 2,
+        "records": 1,
+        "structure_divisions": 3
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.dialects",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

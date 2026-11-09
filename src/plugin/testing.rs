@@ -76,6 +76,16 @@ pub fn report_for(name: &str, bytes: &[u8]) -> Report {
     engine.extract_bytes(Some(name), bytes.to_vec())
 }
 
+/// [`report_for`] with `--privacy off`: for tests that check what the
+/// strict mode keeps back.
+pub fn report_without_privacy(name: &str, bytes: &[u8]) -> Report {
+    let engine = Engine::builder()
+        .limits(crate::engine::Limits::default().max_depth(1))
+        .privacy(crate::engine::Privacy::Off)
+        .build();
+    engine.extract_bytes(Some(name), bytes.to_vec())
+}
+
 /// A ZIP archive of `(name, data, deflate?)` entries, for unit tests of
 /// ZIP-based formats.
 #[cfg(test)]

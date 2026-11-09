@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Saltmere tide table -->
+<!ELEMENT tides (tide+)>
+<!ATTLIST tides harbour CDATA #REQUIRED>
+<!ELEMENT tide (#PCDATA)>
+<!ATTLIST tide kind (high|low) #REQUIRED time CDATA #REQUIRED>
+<!ENTITY harbour "Saltmere">
+<!ENTITY % common "INCLUDE">
+<!ENTITY chart SYSTEM "chart.xml">
+<!NOTATION png SYSTEM "image/png">

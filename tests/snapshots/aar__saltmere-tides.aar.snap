@@ -140,15 +140,25 @@ expression: report
         "extension": "xml"
       },
       "identification": {
-        "format": "xml",
-        "name": "XML document",
+        "format": "android_manifest",
+        "name": "Android manifest",
         "mime": "application/xml",
         "family": "text.xml",
-        "confidence": 0.65,
+        "confidence": 0.93,
         "detected_by": "sniff",
         "extension_matches": true,
+        "candidates": [
+          {
+            "format": "android_manifest",
+            "confidence": 0.93
+          },
+          {
+            "format": "xml",
+            "confidence": 0.65
+          }
+        ],
         "encoding": "us-ascii",
-        "extractor": "text.xml"
+        "extractor": "text.dialects"
       },
       "system": {
         "kind": "memory",
@@ -181,34 +191,20 @@ expression: report
       "content": {},
       "metadata": {},
       "format": {
-        "xml": {
-          "declaration": {
-            "version": "1.0",
-            "encoding": "utf-8"
-          },
-          "root": "manifest",
-          "root_attributes": {
-            "package": "org.saltmere.tides.lib"
-          },
-          "namespaces": {
-            "android": "http://schemas.android.com/apk/res/android"
-          },
-          "well_formed": true,
-          "elements": 2,
-          "attributes": 4,
-          "max_depth": 1,
-          "distinct_elements": 2,
-          "top_elements": {
-            "manifest": 1,
-            "uses-sdk": 1
-          },
-          "text_bytes": 8
+        "android_manifest": {
+          "package": "org.saltmere.tides.lib",
+          "min_sdk": "24",
+          "target_sdk": "36",
+          "permissions": [],
+          "components": {},
+          "exported_components": [],
+          "intent_actions": []
         }
       },
       "diagnostics": {
         "extractors": [
           {
-            "id": "text.xml",
+            "id": "text.dialects",
             "version": 1,
             "ms": 0.0,
             "status": "ok"
