@@ -1,0 +1,410 @@
+---
+source: src/formats/archive/encoded.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "berth-log-base64-sharutils.uue",
+    "stem": "berth-log-base64-sharutils",
+    "extension": "uue"
+  },
+  "identification": {
+    "format": "uuencode",
+    "name": "uuencoded file",
+    "mime": "text/x-uuencode",
+    "family": "archive",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "archive.encoded"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 160
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 160,
+    "entropy": 5.609,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 160,
+      "chars": 160,
+      "words": 7,
+      "lines": 5,
+      "max_line_length": 60,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "container": {
+      "entries": 1,
+      "uncompressed_bytes": 91,
+      "ratio": 0.56875
+    }
+  },
+  "integrity": {
+    "sha256": "0521c7c1a0b9162c0b02e61dab3642a41024541f40926d740e1c7044c72689d7",
+    "blake3": "aeb33ef1f57bd444a81d83b0001e290bdb256b7b5916ae3a9c6a0b5074e880fd"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "uuencode": {
+      "files": 1,
+      "methods": {
+        "base64": 1
+      },
+      "file_types": {
+        "gz": 1
+      },
+      "top_level": [
+        "log.csv.gz"
+      ],
+      "entries": [
+        {
+          "path": "log.csv.gz",
+          "size_bytes": 91,
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "log.csv.gz",
+        "stem": "log.csv",
+        "extension": "gz"
+      },
+      "identification": {
+        "format": "gzip",
+        "name": "gzip",
+        "mime": "application/gzip",
+        "family": "compress",
+        "confidence": 0.77,
+        "detected_by": "magic",
+        "extension_matches": true,
+        "extractor": "compress.gzip"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 91
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 91,
+        "entropy": 5.459,
+        "entropy_scope": "file",
+        "container": {
+          "uncompressed_bytes": 92,
+          "ratio": 1.010989010989011
+        }
+      },
+      "integrity": {
+        "sha256": "42be98f284e97f7f18f0fdc21e9bc32ac1cf1566e56a569ecf8a51e244819db5",
+        "blake3": "eb532674e4133960e96f13f8aac8543485e725e7a9eebcdca805dfa30e84ecd5"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "gzip": {
+          "method": "deflate",
+          "level": "maximum",
+          "os": "Unix",
+          "declared_size_bytes": 92
+        }
+      },
+      "embedded": [
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "log.csv",
+            "stem": "log",
+            "extension": "csv"
+          },
+          "identification": {
+            "format": "csv",
+            "name": "CSV table",
+            "mime": "text/csv",
+            "family": "data.csv",
+            "confidence": 0.35,
+            "detected_by": "extension",
+            "extension_matches": true,
+            "encoding": "us-ascii",
+            "extractor": "data.csv"
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 92
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {
+            "size_bytes": 92,
+            "entropy": 4.518,
+            "entropy_scope": "file",
+            "text": {
+              "bytes": 92,
+              "chars": 92,
+              "words": 7,
+              "lines": 4,
+              "max_line_length": 25,
+              "line_endings": "crlf",
+              "bom": false,
+              "blank_lines": 0
+            }
+          },
+          "integrity": {
+            "sha256": "5953af5166cb6e827496d33482f8bfb416be929af54791d4297b0718bafe89f6",
+            "blake3": "054b89583a7e8461375044852048bb7a91c0ea6b1fb73d6f8b6f57138dd29188"
+          },
+          "content": {},
+          "metadata": {},
+          "format": {
+            "csv": {
+              "dialect": {
+                "delimiter": "comma",
+                "quote": "\"",
+                "header": true
+              },
+              "rows": 3,
+              "columns": 3,
+              "column_profile": [
+                {
+                  "name": "date",
+                  "type": "date",
+                  "null_ratio": 0.0,
+                  "distinct": 2,
+                  "min": "2025-09-01",
+                  "max": "2025-09-02"
+                },
+                {
+                  "name": "boat",
+                  "type": "string",
+                  "null_ratio": 0.0,
+                  "distinct": 3,
+                  "max_length": 12
+                },
+                {
+                  "name": "berth",
+                  "type": "integer",
+                  "null_ratio": 0.0,
+                  "distinct": 3,
+                  "min": 1.0,
+                  "max": 5.0,
+                  "mean": 3.0
+                }
+              ],
+              "sample_rows": [
+                [
+                  "2025-09-01",
+                  "Harbour Bell",
+                  "3"
+                ],
+                [
+                  "2025-09-01",
+                  "Grey Tern",
+                  "5"
+                ],
+                [
+                  "2025-09-02",
+                  "Low Water",
+                  "1"
+                ]
+              ]
+            }
+          },
+          "diagnostics": {
+            "extractors": [
+              {
+                "id": "data.csv",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "meta.mwg",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.language",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.excerpt",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.keywords",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.summary",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "temporal.range",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "privacy.scan",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              }
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        }
+      ],
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "compress.gzip",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.encoded",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

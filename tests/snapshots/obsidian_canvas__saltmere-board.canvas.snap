@@ -1,0 +1,140 @@
+---
+source: src/formats/doc/writing.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-board.canvas",
+    "stem": "saltmere-board",
+    "extension": "canvas"
+  },
+  "identification": {
+    "format": "obsidian_canvas",
+    "name": "Obsidian / JSON Canvas",
+    "mime": "application/json",
+    "family": "doc.other",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "obsidian_canvas",
+        "confidence": 0.95
+      },
+      {
+        "format": "json",
+        "confidence": 0.55
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "doc.writing"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 587
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 587,
+    "entropy": 4.372,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 587,
+      "chars": 587,
+      "words": 84,
+      "lines": 11,
+      "max_line_length": 136,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "5cd7d5a7336dc5fe19fbd2a8ed0b87367ed2973ce02630314bcb7e2abdeabeae",
+    "blake3": "96b5632308e71686b57824068e751e0c61892dc47b55a303db7dfa3d4e23d966"
+  },
+  "content": {
+    "excerpt": "Saltmere: the harbour bell rings at high tide. Grey Tern, berth 5"
+  },
+  "metadata": {},
+  "format": {
+    "obsidian_canvas": {
+      "nodes": 4,
+      "node_types": {
+        "file": 1,
+        "group": 1,
+        "text": 2
+      },
+      "edges": 1,
+      "files": [
+        "Harbour/Tides.md"
+      ],
+      "groups": [
+        "Berths"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.writing",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

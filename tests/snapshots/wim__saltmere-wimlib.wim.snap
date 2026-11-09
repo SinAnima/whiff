@@ -1,0 +1,159 @@
+---
+source: src/formats/archive/wim.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-wimlib.wim",
+    "stem": "saltmere-wimlib",
+    "extension": "wim"
+  },
+  "identification": {
+    "format": "wim",
+    "name": "Windows Imaging (WIM / SWM / ESD)",
+    "mime": "application/x-ms-wim",
+    "family": "archive",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "archive.wim"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4582
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "archive.wim",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4582,
+    "entropy": 4.604,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 4
+    }
+  },
+  "integrity": {
+    "sha256": "134b279866b3080e694fbaed55700589d258d13c0432d8af718ac3200f9e11e8",
+    "blake3": "387ae6cbecf15a71f7e6e545f14e1e1366e61c4624fc49652cbc7974b70fc24a"
+  },
+  "content": {
+    "title": "Saltmere"
+  },
+  "metadata": {},
+  "format": {
+    "wim": {
+      "version": "1.13",
+      "compression": "LZX",
+      "chunk_bytes": 32768,
+      "guid": "3c4cce66daa437214243f74aabf4ec41",
+      "part": "1/1",
+      "images": 2,
+      "relative_path_fix": true,
+      "image_list": [
+        {
+          "index": 1,
+          "name": "Saltmere",
+          "directories": 2,
+          "files": 3,
+          "total_bytes": 692,
+          "created": "2025-09-01T12:00:00Z",
+          "modified": "2025-09-01T12:00:00Z",
+          "description": "Harbour notes and charts",
+          "display_name": "Saltmere Harbour Workstation",
+          "edition_flags": "Harbour",
+          "windows": {
+            "architecture": "x64",
+            "product": "Saltmere Harbour Workstation",
+            "edition": "Harbour",
+            "installation_type": "Client",
+            "version": "10.0.26100.1",
+            "languages": [
+              "en-GB"
+            ]
+          }
+        },
+        {
+          "index": 2,
+          "name": "Saltmere charts",
+          "directories": 1,
+          "files": 1,
+          "total_bytes": 438,
+          "created": "2025-09-01T12:00:00Z",
+          "modified": "2025-09-01T12:00:00Z"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.wim",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

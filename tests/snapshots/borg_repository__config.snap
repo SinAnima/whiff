@@ -1,0 +1,121 @@
+---
+source: src/formats/archive/backups.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "config",
+    "stem": "config"
+  },
+  "identification": {
+    "format": "borg_repository",
+    "name": "Borg Backup repository",
+    "mime": "text/x-borg-repository",
+    "family": "archive",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "encoding": "us-ascii",
+    "extractor": "archive.backups"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 209
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 209,
+    "entropy": 4.884,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 209,
+      "chars": 209,
+      "words": 22,
+      "lines": 9,
+      "max_line_length": 69,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "1ba10f9010e19d3245e2ead36cbbb7cf90fb342a7f14cf4978e7c9eb23b2191f",
+    "blake3": "c69b636dbe0551859479b0faf6a84d4fc30b58878c576c3f5b024076df049886"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "borg_repository": {
+      "file": "config",
+      "version": 1,
+      "segments_per_dir": 1000,
+      "max_segment_size": 524288000,
+      "append_only": false,
+      "storage_quota": 0,
+      "additional_free_space": 0,
+      "repository_id": "25b6e18f34bdc2df0c4bb4e6a42ed8e5a0acb2227e93a7ff8bc904da3a579df9"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.backups",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

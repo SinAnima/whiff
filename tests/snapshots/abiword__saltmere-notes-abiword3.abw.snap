@@ -1,0 +1,133 @@
+---
+source: src/formats/doc/writing.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-notes-abiword3.abw",
+    "stem": "saltmere-notes-abiword3",
+    "extension": "abw"
+  },
+  "identification": {
+    "format": "abiword",
+    "name": "AbiWord document",
+    "mime": "application/x-abiword",
+    "family": "doc.other",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "abiword",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "doc.writing"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2739
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2739,
+    "entropy": 5.151,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 2739,
+      "chars": 2739,
+      "words": 174,
+      "lines": 32,
+      "max_line_length": 783,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "5bb160c24823de3f6c81bb7afb65e2697660eb53e704d8d143d9445229bdad98",
+    "blake3": "2a877d65a5e72fa69082df9e25f5a49061392fafa5d339d16a2683f4a778f2bb"
+  },
+  "content": {
+    "excerpt": "Saltmere harbour notes High water 06:12, low water 12:31. The bell rings at high tide."
+  },
+  "metadata": {},
+  "format": {
+    "abiword": {
+      "abiword_version": "3.0.6",
+      "metadata": {
+        "generator": "AbiWord",
+        "format": "application/x-abiword"
+      },
+      "sections": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.writing",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "nodes": [
+    {"id": "a1", "type": "text", "text": "Saltmere: the harbour bell rings at high tide.", "x": 0, "y": 0, "width": 300, "height": 120},
+    {"id": "a2", "type": "file", "file": "Harbour/Tides.md", "x": 400, "y": 0, "width": 300, "height": 200},
+    {"id": "a3", "type": "group", "label": "Berths", "x": -20, "y": 200, "width": 760, "height": 300},
+    {"id": "a4", "type": "text", "text": "Grey Tern, berth 5", "x": 0, "y": 240, "width": 200, "height": 60}
+  ],
+  "edges": [
+    {"id": "e1", "fromNode": "a1", "fromSide": "right", "toNode": "a2", "toSide": "left"}
+  ]
+}

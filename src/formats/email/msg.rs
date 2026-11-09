@@ -26,7 +26,8 @@ static META: ExtractorMeta = ExtractorMeta {
         name: "Outlook message",
         family: "email",
         mimes: &["application/vnd.ms-outlook"],
-        extensions: &["msg"],
+        // `.oft`: an Outlook template, the same format.
+        extensions: &["msg", "oft"],
         magic: &[],
         parent: Some("cfb"),
     }],

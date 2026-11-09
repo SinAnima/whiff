@@ -1,0 +1,188 @@
+---
+source: src/formats/doc/writing.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "the-saltmere-bell.fountain",
+    "stem": "the-saltmere-bell",
+    "extension": "fountain"
+  },
+  "identification": {
+    "format": "fountain",
+    "name": "Fountain screenplay",
+    "mime": "text/x-fountain",
+    "family": "doc.other",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "doc.writing"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 356
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 356,
+    "entropy": 4.973,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 356,
+      "chars": 356,
+      "words": 62,
+      "lines": 24,
+      "max_line_length": 57,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 9
+    }
+  },
+  "integrity": {
+    "sha256": "f702e7812aab38e027804b799a43be9ffd1a3c36ca5bdcc1e97f35a3d4391c6d",
+    "blake3": "e236fd13ba05c083e6b3331e6ff06e9d2843d1e448fc78b02ec73ee0efbff43e"
+  },
+  "content": {
+    "title": "The Saltmere Bell",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "BELL TOWER",
+      "DAWN",
+      "BEN GULL climbs",
+      "TIDE TABLE",
+      "TOWER",
+      "bell",
+      "EXT",
+      "tide",
+      "CONTINUOUS",
+      "harbour bell"
+    ],
+    "keyword_frequency": [
+      [
+        "bell",
+        2
+      ],
+      [
+        "harbour",
+        2
+      ],
+      [
+        "tide",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 2,
+        "text": "INT. BELL TOWER - DAWN"
+      },
+      {
+        "level": 2,
+        "text": "EXT. LONG WALL - CONTINUOUS"
+      },
+      {
+        "level": 2,
+        "text": "THE TIDE TABLE"
+      }
+    ],
+    "excerpt": "The harbour bell hangs still. BEN GULL climbs the stairs. It rings at high tide. Then we have an hour. The pilot launch leaves the harbour. CUT TO: Grey Tern rounds the buoy.",
+    "tags": [
+      "BELL TOWER",
+      "DAWN",
+      "BEN GULL climbs",
+      "TIDE TABLE",
+      "TOWER"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "fountain": {
+      "title_page": {
+        "title": "The Saltmere Bell",
+        "credit": "Written by",
+        "author": "Ana Lighthouse",
+        "draft_date": "2025-09-01"
+      },
+      "scenes": 3,
+      "scene_headings": [
+        "INT. BELL TOWER - DAWN",
+        "EXT. LONG WALL - CONTINUOUS",
+        "THE TIDE TABLE"
+      ],
+      "characters": {
+        "ANA": 1,
+        "BEN": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.writing",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

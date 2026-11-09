@@ -1,0 +1,168 @@
+---
+source: src/formats/doc/odf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-talk-ooo11.sxi",
+    "stem": "saltmere-talk-ooo11",
+    "extension": "sxi"
+  },
+  "identification": {
+    "format": "sxi",
+    "name": "OpenOffice.org 1.x / StarOffice presentation",
+    "mime": "application/vnd.sun.xml.impress",
+    "family": "doc.odf",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "sxi",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "doc.odf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1213
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00",
+        "source": "odf.meta.creation-date",
+        "tz_known": false
+      },
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00",
+        "source": "odf.meta.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ana Lighthouse",
+      "Ben Gull"
+    ]
+  },
+  "physical": {
+    "size_bytes": 1213,
+    "entropy": 7.142,
+    "entropy_scope": "file",
+    "document": {
+      "slides": 2
+    }
+  },
+  "integrity": {
+    "sha256": "313562556b021b569e239f6f2475d7d376fd8457d928c9a0c0ddcd78555bddb8",
+    "blake3": "5382436a47ca260538f4cb8584e38b3f483cfeb1456d32aac544bd2dbfad0709"
+  },
+  "content": {
+    "title": "Saltmere harbour",
+    "authors": [
+      "Ana Lighthouse",
+      "Ben Gull"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "excerpt": "Saltmere harbour High water 06:12"
+  },
+  "metadata": {
+    "odf": {
+      "generator": "OpenOffice.org 1.1.5 (Linux)",
+      "title": "Saltmere harbour",
+      "initial-creator": "Ana Lighthouse",
+      "creator": "Ben Gull",
+      "creation-date": "2025-09-01T12:00:00",
+      "date": "2025-09-01T12:00:00",
+      "language": "en-GB",
+      "document-statistic": {
+        "object-count": 2
+      }
+    }
+  },
+  "format": {
+    "sxi": {
+      "mimetype": "application/vnd.sun.xml.impress",
+      "parts": 4,
+      "manifest_entries": 3,
+      "paragraphs": 2,
+      "pages": [
+        "Saltmere",
+        "Tides"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.odf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

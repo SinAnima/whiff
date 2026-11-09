@@ -1,0 +1,152 @@
+---
+source: src/formats/archive/dos.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-arc521.arc",
+    "stem": "saltmere-arc521",
+    "extension": "arc"
+  },
+  "identification": {
+    "format": "arc",
+    "name": "ARC / PAK archive",
+    "mime": "application/x-arc",
+    "family": "archive",
+    "confidence": 0.85,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "archive.dos"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 544
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00",
+        "source": "archive.dos",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 544,
+    "entropy": 7.283,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 3,
+      "uncompressed_bytes": 692,
+      "ratio": 1.2720588235294117
+    }
+  },
+  "integrity": {
+    "sha256": "5fe61d8ddcd94ddce4665c4656f163eb40af0f71b482d7feba89ae103fd60864",
+    "blake3": "ce82c87eba17b0da0dd62cbf4cc7adb14dca4f6937b3637100cd5b2212170680"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "arc": {
+      "files": 3,
+      "compressed_bytes": 455,
+      "methods": {
+        "crunched": 3
+      },
+      "file_types": {
+        "txt": 2,
+        "csv": 1
+      },
+      "top_level": [
+        "BAY.TXT",
+        "LOG.CSV",
+        "NOTES.TXT"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00",
+        "2025-09-01T12:00:00"
+      ],
+      "entries": [
+        {
+          "path": "BAY.TXT",
+          "size_bytes": 438,
+          "modified": "2025-09-01T12:00:00"
+        },
+        {
+          "path": "LOG.CSV",
+          "size_bytes": 92,
+          "modified": "2025-09-01T12:00:00"
+        },
+        {
+          "path": "NOTES.TXT",
+          "size_bytes": 162,
+          "modified": "2025-09-01T12:00:00"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.dos",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

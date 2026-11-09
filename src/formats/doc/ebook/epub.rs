@@ -151,6 +151,68 @@ pub(super) fn extract(src: &mut dyn Source, cx: &mut Context<'_>, book: &mut Boo
     Ok(())
 }
 
+/// A package file on its own (an OEB 1.x / EPUB `.opf` outside its book):
+/// its metadata, and the manifest and spine sizes.
+pub(super) fn standalone_opf(opf: &str, cx: &mut Context<'_>, book: &mut Book) -> Result<(), ExtractError> {
+    // OEB 1.x capitalises the Dublin Core elements (`dc:Title`).
+    let mut lowered = opf.to_string();
+    for name in [
+        "Title",
+        "Creator",
+        "Subject",
+        "Description",
+        "Publisher",
+        "Contributor",
+        "Date",
+        "Type",
+        "Format",
+        "Identifier",
+        "Source",
+        "Language",
+        "Relation",
+        "Coverage",
+        "Rights",
+    ] {
+        let lower = name.to_ascii_lowercase();
+        lowered = lowered
+            .replace(&format!("<dc:{name}"), &format!("<dc:{lower}"))
+            .replace(&format!("</dc:{name}>"), &format!("</dc:{lower}>"));
+    }
+    let opf = lowered.as_str();
+    let pkg = package(opf, cx, book)?;
+    cx.format_set("manifest_items", pkg.manifest.len());
+    cx.format_set("spine_items", pkg.spine.len());
+    if opf.contains("http://openebook.org/namespaces/oeb-package/1.0/") || opf.contains("OEB 1.") {
+        cx.format_set("oeb_version", "1.x");
+    }
+    Ok(())
+}
+
+/// A DAISY / EPUB 2 navigation control file (`.ncx`) on its own: its
+/// title, authors and table of contents.
+pub(super) fn standalone_ncx(xml: &str, cx: &mut Context<'_>, book: &mut Book) {
+    book.toc = ncx_toc(xml, cx);
+    let between = |open: &str, close: &str| -> Option<String> {
+        let a = xml.find(open)? + open.len();
+        let b = xml[a..].find(close)? + a;
+        let inner = &xml[a..b];
+        let t = inner.find("<text>").map_or(inner, |p| &inner[p + 6..]);
+        Some(t.split('<').next().unwrap_or("").trim().to_string()).filter(|t| !t.is_empty())
+    };
+    book.title = book.title.take().or_else(|| between("<docTitle>", "</docTitle>"));
+    if let Some(a) = between("<docAuthor>", "</docAuthor>") {
+        book.creators.push((a, "aut".into()));
+    }
+    for (key, name) in [("dtb:uid", "uid"), ("dtb:depth", "depth"), ("dtb:totalPageCount", "page_count")] {
+        let needle = format!("name=\"{key}\" content=\"");
+        if let Some(p) = xml.find(&needle) {
+            let v = &xml[p + needle.len()..];
+            cx.format_set(name, v.split('"').next().unwrap_or(""));
+        }
+    }
+    cx.format_set("nav_points", xml.matches("<navPoint").count());
+}
+
 /// An open metadata element: (name, id or refines target, text, role / scheme, property).
 type OpenMeta = (String, Option<String>, String, Option<String>, Option<String>);
 

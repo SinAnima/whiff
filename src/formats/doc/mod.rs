@@ -16,4 +16,5 @@ pub(crate) mod other;
 pub(crate) mod pdf;
 pub(crate) mod rtf;
 pub(crate) mod vba;
+pub(crate) mod writing;
 pub(crate) mod xml;

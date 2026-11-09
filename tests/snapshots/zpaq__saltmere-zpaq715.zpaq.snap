@@ -1,0 +1,132 @@
+---
+source: src/formats/archive/dos.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-zpaq715.zpaq",
+    "stem": "saltmere-zpaq715",
+    "extension": "zpaq"
+  },
+  "identification": {
+    "format": "zpaq",
+    "name": "ZPAQ archive",
+    "mime": "application/x-zpaq",
+    "family": "archive",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "archive.dos"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2553
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "archive.dos",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:01Z",
+        "source": "archive.dos",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:01Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2553,
+    "entropy": 6.473,
+    "entropy_scope": "file",
+    "container": {
+      "uncompressed_bytes": 692,
+      "ratio": 0.2710536623580102
+    }
+  },
+  "integrity": {
+    "sha256": "ea404b20d4a0a089a08bb91487b86cf8207563900d57ba0ef34b73aa410afdcc",
+    "blake3": "7e6a329d61f449bbb3726ad94257d7c59a4a6b54040e4a03b1c67bab21e6505d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "zpaq": {
+      "level": 2,
+      "journaling": true,
+      "transactions": 2,
+      "first_transaction": "2025-09-01T12:00:00Z",
+      "last_transaction": "2025-09-01T12:00:01Z",
+      "fragments": 3,
+      "deduplicated_bytes": 692,
+      "compressed_bytes": 1142
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.dos",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

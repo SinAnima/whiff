@@ -49,3 +49,16 @@ Raw editor sidecars	xmp
 Thumbnails cache (Windows thumbcache)	thumbcache
 Unreal / Unity textures (raw headers)	uasset
 VRA Core 4 XML record	vra
+Self-extracting archives (SFX)	pe
+Windows installers (NSIS / Inno Setup / InstallShield / WiX burn)	pe
+Backup repositories (restic / borg / duplicity)	borg_repository
+Windows minidump	minidump
+Windows driver package / CAT	ms_catalog
+Go binary buildinfo	elf
+PDB debug database	ms_pdb
+Marp / reveal.js slide markdown	marp
+Mailing labels / Mail merge data	csv
+Outlook template / item	msg
+SolidWorks / Inventor (OLE-based)	cfb
+WordPad / RTFD bundle	rtf
+XML Paper / StarOffice legacy	sxw

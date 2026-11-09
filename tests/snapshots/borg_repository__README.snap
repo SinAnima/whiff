@@ -1,0 +1,124 @@
+---
+source: src/formats/archive/backups.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "README",
+    "stem": "README"
+  },
+  "identification": {
+    "format": "borg_repository",
+    "name": "Borg Backup repository",
+    "mime": "text/x-borg-repository",
+    "family": "archive",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "candidates": [
+      {
+        "format": "borg_repository",
+        "confidence": 0.95
+      },
+      {
+        "format": "text",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "archive.backups"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 73
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 73,
+    "entropy": 4.397,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 73,
+      "chars": 73,
+      "words": 8,
+      "lines": 2,
+      "max_line_length": 38,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "2032b905ae9c36a17a955533d48c512a0c5759ef9c7d70e0c931a3026a3278fe",
+    "blake3": "ebe6cedf0e86fbe92ddb19d84c086994a3b0a6f8dd9f14daad1fc982c24c5d8f"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "borg_repository": {
+      "file": "README"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.backups",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,118 @@
+---
+source: src/formats/exec/misc.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "vmlinuz-6.12.0-saltmere",
+    "stem": "vmlinuz-6.12",
+    "extension": "0-saltmere"
+  },
+  "identification": {
+    "format": "linux_kernel",
+    "name": "Linux kernel image",
+    "mime": "application/x-linux-kernel",
+    "family": "exec",
+    "confidence": 0.76,
+    "detected_by": "magic",
+    "extension_matches": false,
+    "extractor": "exec.misc"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2699
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2699,
+    "entropy": 0.893,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "de5cf3831029f32c27428705f4afbc19692076519c0aa2bf14d78d25ff6f977e",
+    "blake3": "8b1555cc2fd7cf9bfb8beb52eb9aec17541890c02cb5bb7d81fe233fb861792f"
+  },
+  "content": {
+    "title": "Linux 6.12.0-saltmere"
+  },
+  "metadata": {},
+  "format": {
+    "linux_kernel": {
+      "architecture": "x86",
+      "boot_protocol": "2.15",
+      "version_string_present": true,
+      "release": "6.12.0-saltmere",
+      "build": "1",
+      "flags": [
+        "SMP",
+        "PREEMPT_DYNAMIC"
+      ],
+      "build_date": "Mon Sep 1 12:00:00 UTC 2025",
+      "loads_high": true,
+      "compression": "gzip"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.misc",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

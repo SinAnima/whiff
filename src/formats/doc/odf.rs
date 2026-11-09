@@ -95,6 +95,28 @@ static META: ExtractorMeta = ExtractorMeta {
             Some("zip")
         ),
         spec!("odf", "OpenDocument formula", "application/vnd.oasis.opendocument.formula", ["odf"], Some("zip")),
+        spec!(
+            "sxw",
+            "OpenOffice.org 1.x / StarOffice text",
+            "application/vnd.sun.xml.writer",
+            ["sxw", "sxg"],
+            Some("zip")
+        ),
+        spec!(
+            "sxc",
+            "OpenOffice.org 1.x / StarOffice spreadsheet",
+            "application/vnd.sun.xml.calc",
+            ["sxc"],
+            Some("zip")
+        ),
+        spec!(
+            "sxi",
+            "OpenOffice.org 1.x / StarOffice presentation",
+            "application/vnd.sun.xml.impress",
+            ["sxi"],
+            Some("zip")
+        ),
+        spec!("sxd", "OpenOffice.org 1.x / StarOffice drawing", "application/vnd.sun.xml.draw", ["sxd"], Some("zip")),
         spec!("odb", "OpenDocument database", "application/vnd.oasis.opendocument.base", ["odb"], Some("zip")),
         spec!("odc", "OpenDocument chart", "application/vnd.oasis.opendocument.chart", ["odc"], Some("zip")),
         spec!(
@@ -133,6 +155,17 @@ const MAX_LISTED: usize = 200;
 
 /// The format of an ODF media type (`mimetype` entry or `office:mimetype`).
 fn format_for(mime: &str, flat: bool) -> Option<&'static str> {
+    // OpenOffice.org 1.x / StarOffice 6–7 packages: the same layout, with
+    // the `vnd.sun.xml` types.
+    if let Some(old) = mime.trim().strip_prefix("application/vnd.sun.xml.") {
+        return match old {
+            "writer" | "writer.global" => Some("sxw"),
+            "calc" => Some("sxc"),
+            "impress" => Some("sxi"),
+            "draw" => Some("sxd"),
+            _ => None,
+        };
+    }
     let base = mime.trim().strip_prefix("application/vnd.oasis.opendocument.")?;
     Some(match (base, flat) {
         ("text", false) => "odt",
@@ -555,9 +588,9 @@ impl Scan {
             cx.security().active_content("ole_objects");
         }
         let id = cx.format_id().to_string();
-        if id.starts_with("ods") || id == "ots" || id == "fods" {
+        if id.starts_with("ods") || matches!(id.as_str(), "ots" | "fods" | "sxc") {
             cx.physical().sheets(c.tables.len() as u64);
-        } else if matches!(id.as_str(), "odp" | "otp" | "fodp") {
+        } else if matches!(id.as_str(), "odp" | "otp" | "fodp" | "sxi") {
             cx.physical().slides(c.pages.len() as u64);
         }
         self.listeners = c.listeners;
@@ -790,6 +823,6 @@ mod tests {
 
     crate::fixture_tests!(
         "odt", "ott", "odm", "ods", "ots", "odp", "otp", "odg", "otg", "odf", "odb", "odc", "fodt", "fods", "fodp",
-        "fodg"
+        "fodg", "sxw", "sxc", "sxi", "sxd"
     );
 }

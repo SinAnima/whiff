@@ -135,13 +135,14 @@ expression: report
             "extension": "out"
           },
           "identification": {
-            "format": "binary",
-            "name": "Binary data",
-            "mime": "application/octet-stream",
-            "family": "binary.unknown",
-            "confidence": 0.1,
-            "detected_by": "heuristic",
-            "extractor": "binary.unknown"
+            "format": "linux_kernel",
+            "name": "Linux kernel image",
+            "mime": "application/x-linux-kernel",
+            "family": "exec",
+            "confidence": 0.95,
+            "detected_by": "sniff",
+            "extension_matches": false,
+            "extractor": "exec.misc"
           },
           "system": {
             "kind": "memory",
@@ -150,11 +151,7 @@ expression: report
           "temporal": {
             "filesystem": {}
           },
-          "security": {
-            "personal_data": {
-              "email": 1
-            }
-          },
+          "security": {},
           "rights": {},
           "physical": {
             "size_bytes": 4096,
@@ -165,33 +162,29 @@ expression: report
             "sha256": "eab79b7b24ea9e04946c55424a1ad289e5707610ec776e2d1dc39631bfce5534",
             "blake3": "5d39e0c811fb0bbd00a73ce587729099f2c81f81f9246437965b1e27fdb5d61d"
           },
-          "content": {},
+          "content": {
+            "title": "Linux 6.1.0-saltmere"
+          },
           "metadata": {},
           "format": {
-            "binary": {
-              "bytes_examined": 4096,
-              "strings": {
-                "ascii": 1,
-                "utf16le": 0
-              },
-              "strings_sample": [
-                "Linux version 6.1.0-saltmere (builder@example.org) #1 SMP PREEMPT"
-              ],
-              "entropy_profile": {
-                "block_bytes": 65536,
-                "blocks": 1,
-                "min": 0.209,
-                "max": 0.209,
-                "mean": 0.209,
-                "high_entropy_blocks": 0,
-                "likely_compressed_or_encrypted": false
-              }
+            "linux_kernel": {
+              "architecture": "arm64",
+              "text_offset": 0,
+              "image_bytes": 0,
+              "byte_order": "little-endian",
+              "version_string_present": true,
+              "release": "6.1.0-saltmere",
+              "build": "1",
+              "flags": [
+                "SMP",
+                "PREEMPT"
+              ]
             }
           },
           "diagnostics": {
             "extractors": [
               {
-                "id": "binary.unknown",
+                "id": "exec.misc",
                 "version": 1,
                 "ms": 0.0,
                 "status": "ok"

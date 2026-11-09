@@ -1,0 +1,162 @@
+---
+source: src/formats/doc/ebook/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-of-saltmere-oeb12.opf",
+    "stem": "tides-of-saltmere-oeb12",
+    "extension": "opf"
+  },
+  "identification": {
+    "format": "opf",
+    "name": "Open eBook / EPUB package file",
+    "mime": "application/oebps-package+xml",
+    "family": "doc.ebook",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "opf",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "doc.ebook"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 927
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "published",
+        "value": "2025-09-01",
+        "source": "ebook.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ana Lighthouse"
+    ]
+  },
+  "physical": {
+    "size_bytes": 927,
+    "entropy": 5.123,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 927,
+      "chars": 927,
+      "words": 44,
+      "lines": 18,
+      "max_line_length": 129,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "c6f92c44b79d77574b2df5b3fc57d3363ba8a335400ec250a74fdf4913e734b2",
+    "blake3": "6d124e22f83202920fab72206c1fd7d13b708699126a11eef1aa294492c243b5"
+  },
+  "content": {
+    "title": "Tides of Saltmere",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "excerpt": "Tides of Saltmere"
+  },
+  "metadata": {},
+  "format": {
+    "opf": {
+      "manifest_items": 2,
+      "spine_items": 2,
+      "oeb_version": "1.x",
+      "creators": [
+        {
+          "name": "Ana Lighthouse",
+          "role": "aut"
+        }
+      ],
+      "identifiers": [
+        {
+          "scheme": "uuid",
+          "value": "5a17e2e0-0000-4000-8000-000000000003"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ebook",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

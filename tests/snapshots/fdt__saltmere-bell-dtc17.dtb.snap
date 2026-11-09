@@ -1,0 +1,112 @@
+---
+source: src/formats/exec/misc.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-bell-dtc17.dtb",
+    "stem": "saltmere-bell-dtc17",
+    "extension": "dtb"
+  },
+  "identification": {
+    "format": "fdt",
+    "name": "Device tree blob",
+    "mime": "application/x-dtb",
+    "family": "exec",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "exec.misc"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 431
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 431,
+    "entropy": 3.755,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "766be6f1a444bccdca15c3f57bc2b4fc5d02b7cdda47afbed5cd7900292fcb13",
+    "blake3": "e593a016fa5284cba2ef97546c9a853fa96eebf69549b5b4d9702583f1c67bd6"
+  },
+  "content": {
+    "title": "Saltmere Harbour Bell Controller"
+  },
+  "metadata": {},
+  "format": {
+    "fdt": {
+      "version": 17,
+      "last_compatible_version": 16,
+      "model": "Saltmere Harbour Bell Controller",
+      "compatible": "saltmere,bell-controller, saltmere,harbour",
+      "nodes": 3,
+      "properties": 9
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.misc",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

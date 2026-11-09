@@ -42,6 +42,9 @@ static META: ExtractorMeta = ExtractorMeta {
     priority: 0,
     formats: &[
         spec!("epub", "EPUB ebook", ["application/epub+zip"], ["epub"], [], Some("zip")),
+        spec!("ibooks", "Apple iBooks Author book", ["application/x-ibooks+zip"], ["ibooks"], [], Some("zip")),
+        spec!("opf", "Open eBook / EPUB package file", ["application/oebps-package+xml"], ["opf"], [], Some("xml")),
+        spec!("ncx", "DAISY / EPUB navigation (NCX)", ["application/x-dtbncx+xml"], ["ncx"], [], Some("xml")),
         spec!(
             "mobi",
             "Mobipocket / Kindle ebook",
@@ -65,7 +68,11 @@ impl Extractor for Ebook {
 
     fn sniff(&self, probe: &Probe<'_>) -> Option<Sniff> {
         if let Some(m) = zip_first_stored(probe.head, "mimetype") {
-            return (m.trim_ascii() == b"application/epub+zip").then_some(Sniff { format: "epub", confidence: 0.98 });
+            return match m.trim_ascii() {
+                b"application/epub+zip" => Some(Sniff { format: "epub", confidence: 0.98 }),
+                b"application/x-ibooks+zip" => Some(Sniff { format: "ibooks", confidence: 0.98 }),
+                _ => None,
+            };
         }
         if probe.head.starts_with(b"PK\x03\x04") {
             let ext = probe.extension.unwrap_or_default();
@@ -88,13 +95,31 @@ impl Extractor for Ebook {
             return mobi::is_kf8(probe.head).then_some(Sniff { format: "azw3", confidence: 0.9 });
         }
         let root = super::xml::root(probe.head)?;
-        (root.name == "FictionBook").then_some(Sniff { format: "fb2", confidence: 0.95 })
+        let head = String::from_utf8_lossy(&probe.head[..probe.head.len().min(4096)]);
+        match root.name.as_str() {
+            "FictionBook" => Some(Sniff { format: "fb2", confidence: 0.95 }),
+            "package" if head.contains("http://www.idpf.org/2007/opf") || head.contains("oeb-package") => {
+                Some(Sniff { format: "opf", confidence: 0.95 })
+            }
+            "ncx" => Some(Sniff { format: "ncx", confidence: 0.95 }),
+            _ => None,
+        }
     }
 
     fn extract(&self, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
         let mut book = Book::default();
         match cx.format_id() {
-            "epub" => epub::extract(src, cx, &mut book)?,
+            // An iBooks Author book is an EPUB 3 with its own media type.
+            "epub" | "ibooks" => epub::extract(src, cx, &mut book)?,
+            "opf" | "ncx" => {
+                let (bytes, _) = cx.read_bytes(src)?;
+                let xml = crate::plugin::decode_text(&bytes).text;
+                if cx.format_id() == "opf" {
+                    epub::standalone_opf(&xml, cx, &mut book)?;
+                } else {
+                    epub::standalone_ncx(&xml, cx, &mut book);
+                }
+            }
             "mobi" | "azw3" | "palmdoc" => mobi::extract(src, cx, &mut book)?,
             "fb2" => {
                 let (bytes, _) = cx.read_bytes(src)?;
@@ -338,5 +363,5 @@ mod tests {
         assert!(!isbn_valid("9780306406158"));
     }
 
-    crate::fixture_tests!("epub", "mobi", "azw3", "palmdoc", "fb2", "fbz", "cbz");
+    crate::fixture_tests!("epub", "ibooks", "opf", "ncx", "mobi", "azw3", "palmdoc", "fb2", "fbz", "cbz");
 }

@@ -1,0 +1,655 @@
+---
+source: src/formats/archive/encoded.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-sharutils.shar",
+    "stem": "saltmere-sharutils",
+    "extension": "shar"
+  },
+  "identification": {
+    "format": "shar",
+    "name": "Shell archive (shar)",
+    "mime": "application/x-shar",
+    "family": "archive",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "shar",
+        "confidence": 0.99
+      },
+      {
+        "format": "shell",
+        "confidence": 0.9
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "archive.encoded"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 6451
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00",
+        "source": "archive.encoded",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 6451,
+    "entropy": 5.656,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 6451,
+      "chars": 6451,
+      "words": 800,
+      "lines": 234,
+      "max_line_length": 83,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 13
+    },
+    "container": {
+      "entries": 3,
+      "uncompressed_bytes": 692,
+      "ratio": 0.10727019066811347
+    }
+  },
+  "integrity": {
+    "sha256": "31e3b5ad78473443ead266c05b0887b6e2a31a5b53ad80aff06e1e9b18351caf",
+    "blake3": "1510b6774ae9ee4d39682d1e491bc85b47f71fdb978ad17d89f57749902b17ae"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "shar": {
+      "generator": "GNU sharutils 4.15.2",
+      "created": "2025-09-01 12:00 UTC",
+      "md5_checked": true,
+      "files": 3,
+      "methods": {
+        "uuencode": 3
+      },
+      "file_types": {
+        "txt": 2,
+        "csv": 1
+      },
+      "top_level": [
+        "charts/",
+        "log.csv",
+        "notes.txt"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00",
+        "2025-09-01T12:00:00"
+      ],
+      "entries": [
+        {
+          "path": "notes.txt",
+          "size_bytes": 162,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "log.csv",
+          "size_bytes": 92,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "charts/bay.txt",
+          "size_bytes": 438,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "notes.txt",
+        "stem": "notes",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 162
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 162,
+        "entropy": 4.578,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 162,
+          "chars": 162,
+          "words": 27,
+          "lines": 3,
+          "max_line_length": 67,
+          "line_endings": "crlf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "e6b203e7a38e6ce19947099817d6a96dc2ba85956e8766e69be14063f349f7d6",
+        "blake3": "c2d8d75137ea76b145fb422597f23e31fdd69348e885dee5d10f5a202ca0aca8"
+      },
+      "content": {
+        "language": {
+          "code": "en",
+          "confidence": 1.0
+        },
+        "keywords": [
+          "Saltmere harbour notes",
+          "Ana Lighthouse",
+          "notes",
+          "Saltmere",
+          "harbour",
+          "Ben Gull",
+          "water",
+          "Ana",
+          "leaves at dawn",
+          "Gull"
+        ],
+        "keyword_frequency": [
+          [
+            "water",
+            2
+          ]
+        ],
+        "excerpt": "Saltmere harbour notes High water 06:12, low water 12:31. The pilot launch leaves at dawn. Ben Gull keeps the bell tower log; Ana Lighthouse keeps the charts.",
+        "tags": [
+          "Saltmere harbour notes",
+          "Ana Lighthouse",
+          "notes",
+          "Saltmere",
+          "harbour"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "log.csv",
+        "stem": "log",
+        "extension": "csv"
+      },
+      "identification": {
+        "format": "csv",
+        "name": "CSV table",
+        "mime": "text/csv",
+        "family": "data.csv",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.csv"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 92
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 92,
+        "entropy": 4.518,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 92,
+          "chars": 92,
+          "words": 7,
+          "lines": 4,
+          "max_line_length": 25,
+          "line_endings": "crlf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "5953af5166cb6e827496d33482f8bfb416be929af54791d4297b0718bafe89f6",
+        "blake3": "054b89583a7e8461375044852048bb7a91c0ea6b1fb73d6f8b6f57138dd29188"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "csv": {
+          "dialect": {
+            "delimiter": "comma",
+            "quote": "\"",
+            "header": true
+          },
+          "rows": 3,
+          "columns": 3,
+          "column_profile": [
+            {
+              "name": "date",
+              "type": "date",
+              "null_ratio": 0.0,
+              "distinct": 2,
+              "min": "2025-09-01",
+              "max": "2025-09-02"
+            },
+            {
+              "name": "boat",
+              "type": "string",
+              "null_ratio": 0.0,
+              "distinct": 3,
+              "max_length": 12
+            },
+            {
+              "name": "berth",
+              "type": "integer",
+              "null_ratio": 0.0,
+              "distinct": 3,
+              "min": 1.0,
+              "max": 5.0,
+              "mean": 3.0
+            }
+          ],
+          "sample_rows": [
+            [
+              "2025-09-01",
+              "Harbour Bell",
+              "3"
+            ],
+            [
+              "2025-09-01",
+              "Grey Tern",
+              "5"
+            ],
+            [
+              "2025-09-02",
+              "Low Water",
+              "1"
+            ]
+          ]
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.csv",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "bay.txt",
+        "stem": "bay",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 438
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 438,
+        "entropy": 4.328,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 438,
+          "chars": 438,
+          "words": 72,
+          "lines": 6,
+          "max_line_length": 71,
+          "line_endings": "crlf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "3dd6eba895242c281c875e40f8fb88b9b85939fbe1ca51bcea9d32a206bfe87a",
+        "blake3": "8d5eecc2314bb489e44d741f50dd8d4ff0c576d46bfe2b39bebb9e7bc5f7a6b1"
+      },
+      "content": {
+        "language": {
+          "code": "en",
+          "confidence": 1.0
+        },
+        "keywords": [
+          "Saltmere bay chart",
+          "soundings in fathoms",
+          "bell buoy",
+          "buoy",
+          "chart",
+          "fathoms",
+          "Saltmere",
+          "soundings",
+          "wall",
+          "bay"
+        ],
+        "keyword_frequency": [
+          [
+            "bay",
+            6
+          ],
+          [
+            "bell",
+            6
+          ],
+          [
+            "buoy",
+            6
+          ],
+          [
+            "chart",
+            6
+          ],
+          [
+            "fathoms",
+            6
+          ],
+          [
+            "saltmere",
+            6
+          ],
+          [
+            "soundings",
+            6
+          ],
+          [
+            "wall",
+            6
+          ]
+        ],
+        "excerpt": "Saltmere bay chart: soundings in fathoms, the long wall, the bell buoy. Saltmere bay chart: soundings in fathoms, the long wall, the bell buoy. Saltmere bay chart: soundings in fathoms, the long wall, the bell buoy. Saltmere bay chart: soundings in fathoms, the long wall, the bell buoy. Saltmere bay chart: soundings in fathoms, the long wall, the bell buoy. Saltmere bay chart: soundings in…",
+        "tags": [
+          "Saltmere bay chart",
+          "soundings in fathoms",
+          "bell buoy",
+          "buoy",
+          "chart"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.encoded",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

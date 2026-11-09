@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+  <head>
+    <meta name="dtb:uid" content="urn:uuid:5a17e2e0-0000-4000-8000-000000000003"/>
+    <meta name="dtb:depth" content="2"/>
+    <meta name="dtb:totalPageCount" content="0"/>
+  </head>
+  <docTitle><text>Tides of Saltmere</text></docTitle>
+  <docAuthor><text>Ana Lighthouse</text></docAuthor>
+  <navMap>
+    <navPoint id="n1" playOrder="1"><navLabel><text>High water</text></navLabel><content src="ch1.html"/>
+      <navPoint id="n2" playOrder="2"><navLabel><text>The bell</text></navLabel><content src="ch1.html#bell"/></navPoint>
+    </navPoint>
+    <navPoint id="n3" playOrder="3"><navLabel><text>Low water</text></navLabel><content src="ch2.html"/></navPoint>
+  </navMap>
+</ncx>

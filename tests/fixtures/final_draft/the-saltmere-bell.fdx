@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<FinalDraft DocumentType="Script" Template="No" Version="5">
+  <Content>
+    <Paragraph Type="Scene Heading"><Text>INT. BELL TOWER - DAWN</Text></Paragraph>
+    <Paragraph Type="Action"><Text>The harbour bell hangs still.</Text></Paragraph>
+    <Paragraph Type="Character"><Text>BEN</Text></Paragraph>
+    <Paragraph Type="Dialogue"><Text>It rings at high tide.</Text></Paragraph>
+    <Paragraph Type="Scene Heading"><Text>EXT. LONG WALL - CONTINUOUS</Text></Paragraph>
+    <Paragraph Type="Character"><Text>ANA (V.O.)</Text></Paragraph>
+    <Paragraph Type="Dialogue"><Text>Then we have an hour.</Text></Paragraph>
+  </Content>
+  <TitlePage>
+    <Content>
+      <Paragraph Type="Text"><Text>The Saltmere Bell</Text></Paragraph>
+    </Content>
+  </TitlePage>
+</FinalDraft>

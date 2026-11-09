@@ -231,6 +231,9 @@ expression: report
       },
       "overlay_bytes": 724,
       "overlay": "nsis",
+      "nsis_uninstaller": false,
+      "nsis_header_bytes": 3918,
+      "nsis_data_bytes": 724,
       "toolchain": {
         "compilers": [
           "GCC: (GNU) 14-win32",

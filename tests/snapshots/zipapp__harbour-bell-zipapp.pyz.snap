@@ -1,0 +1,296 @@
+---
+source: src/formats/archive/bundles.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-bell-zipapp.pyz",
+    "stem": "harbour-bell-zipapp",
+    "extension": "pyz"
+  },
+  "identification": {
+    "format": "zipapp",
+    "name": "Python zip application",
+    "mime": "application/x-python-zipapp",
+    "family": "archive",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "zipapp",
+        "confidence": 0.95
+      },
+      {
+        "format": "python",
+        "confidence": 0.9
+      }
+    ],
+    "extractor": "archive.bundles"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 475
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00",
+        "source": "archive.bundles",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 475,
+    "entropy": 4.617,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 3,
+      "uncompressed_bytes": 126,
+      "ratio": 0.26526315789473687
+    }
+  },
+  "integrity": {
+    "sha256": "d65d6ad43a276a9b4281227ab9de9d73bb18282ed9624c4bdd1661544b37d5ee",
+    "blake3": "8cf5abf24fb37894799f72ef22b2d42c2a08b4f750346f211ac895fc623033d1"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "zipapp": {
+      "interpreter": "/usr/bin/env python3",
+      "packages": [
+        "harbour"
+      ],
+      "files": 2,
+      "directories": 1,
+      "compressed_bytes": 126,
+      "methods": {
+        "stored": 2
+      },
+      "file_types": {
+        "py": 2
+      },
+      "top_level": [
+        "harbour/",
+        "__main__.py"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00",
+        "2025-09-01T12:00:00"
+      ],
+      "entries": [
+        {
+          "path": "__main__.py",
+          "size_bytes": 33,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "harbour/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00",
+          "mode": "755"
+        },
+        {
+          "path": "harbour/__init__.py",
+          "size_bytes": 93,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        }
+      ],
+      "main": "__main__.py"
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "__main__.py",
+        "stem": "__main__",
+        "extension": "py"
+      },
+      "identification": {
+        "format": "python",
+        "name": "Python source",
+        "mime": "text/x-python",
+        "family": "code.source",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "code.source"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 33
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 33,
+        "entropy": 3.779,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 33,
+          "chars": 33,
+          "words": 5,
+          "lines": 3,
+          "max_line_length": 24,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 1
+        }
+      },
+      "integrity": {
+        "sha256": "e7f042c7a47bfda0f14b887a2aaed5a25efc24782a55f1b3123c8e85cdfcfcd6",
+        "blake3": "0a25eb892a0b4e0936da7f8878c3ad0196720eccbfb4c2ba9c3b3bb69ac7f56f"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "python": {
+          "language": "Python",
+          "loc": {
+            "code": 2,
+            "comment": 0,
+            "blank": 1,
+            "total": 3
+          },
+          "imports": [
+            "harbour"
+          ],
+          "import_count": 1,
+          "is_test": false,
+          "generated": false,
+          "longest_line": 24
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.source",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.bundles",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

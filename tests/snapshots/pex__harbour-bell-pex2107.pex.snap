@@ -1,0 +1,353 @@
+---
+source: src/formats/archive/bundles.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-bell-pex2107.pex",
+    "stem": "harbour-bell-pex2107",
+    "extension": "pex"
+  },
+  "identification": {
+    "format": "pex",
+    "name": "PEX (Python EXecutable)",
+    "mime": "application/x-pex",
+    "family": "archive",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "pex",
+        "confidence": 0.95
+      },
+      {
+        "format": "python",
+        "confidence": 0.9
+      }
+    ],
+    "extractor": "archive.bundles"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 7385
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00",
+        "source": "archive.bundles",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 7385,
+    "entropy": 7.876,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 6,
+      "uncompressed_bytes": 21250,
+      "ratio": 2.877454299255247
+    }
+  },
+  "integrity": {
+    "sha256": "4280effd76cfcea86aa5fd0c904a3f9a80ea403fa2eb0a5377b1f28d36a00041",
+    "blake3": "6c3ba1de5f517722b3e4f1a960e1569b0983603d9f9aa833bd723ee67a359948"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pex": {
+      "interpreter": "/usr/bin/env python3",
+      "entry_point": "harbour:main",
+      "pex_version": "2.107.1",
+      "requirements": [],
+      "distributions": 0,
+      "venv": false,
+      "code_hash": "80e32daca08ec3fca4b75afa200e13dff4283f95",
+      "packages": [
+        "__pex__",
+        "harbour"
+      ],
+      "files": 4,
+      "directories": 2,
+      "compressed_bytes": 6738,
+      "methods": {
+        "deflate": 4
+      },
+      "file_types": {
+        "py": 3,
+        "(none)": 1
+      },
+      "top_level": [
+        "__pex__/",
+        "harbour/",
+        "PEX-INFO",
+        "__main__.py"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00",
+        "2025-09-01T12:00:00"
+      ],
+      "entries": [
+        {
+          "path": "PEX-INFO",
+          "size_bytes": 807,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "__main__.py",
+          "size_bytes": 10187,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "__pex__/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00",
+          "mode": "755"
+        },
+        {
+          "path": "__pex__/__init__.py",
+          "size_bytes": 10163,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        },
+        {
+          "path": "harbour/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00",
+          "mode": "755"
+        },
+        {
+          "path": "harbour/__init__.py",
+          "size_bytes": 93,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        }
+      ],
+      "main": "__main__.py"
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "__main__.py",
+        "stem": "__main__",
+        "extension": "py"
+      },
+      "identification": {
+        "format": "python",
+        "name": "Python source",
+        "mime": "text/x-python",
+        "family": "code.source",
+        "confidence": 0.95,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "code.source"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 10187
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {
+        "copyright": "Copyright 2014 Pex project contributors.",
+        "license": {
+          "name": "Apache-2.0"
+        }
+      },
+      "physical": {
+        "size_bytes": 10187,
+        "entropy": 4.652,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 10187,
+          "chars": 10187,
+          "words": 957,
+          "lines": 293,
+          "max_line_length": 99,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 54
+        }
+      },
+      "integrity": {
+        "sha256": "98aa402a790d6fafcf23c2ea27ea67ad88e5d507e3bfe4e4887b56a42a26599e",
+        "blake3": "2492642fc47d21f52012de5374a59dac1ca8fd61d42b0de33e599f6592f0f83c"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "python": {
+          "license_header": "Apache-2.0",
+          "language": "Python",
+          "loc": {
+            "code": 206,
+            "comment": 33,
+            "blank": 54,
+            "total": 293
+          },
+          "interpreter": "python3",
+          "imports": [
+            "os",
+            "sys",
+            "ctypes",
+            "subprocess",
+            "typing",
+            "pex.os",
+            "pex.layout",
+            "pex.tracer",
+            "pex.variables",
+            "pex.globals",
+            "pex.pex_bootstrapper"
+          ],
+          "import_count": 15,
+          "symbols": {
+            "function": [
+              "__re_exec__",
+              "__entry_point_from_filename__",
+              "__ensure_pex_installed__",
+              "__maybe_run_venv__",
+              "boot"
+            ]
+          },
+          "symbol_counts": {
+            "function": 5
+          },
+          "is_test": false,
+          "generated": false,
+          "longest_line": 99
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "code.source",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.bundles",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

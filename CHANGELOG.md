@@ -6,10 +6,11 @@ keep the schema version.
 
 ## Unreleased
 
-Games (Stage 8, part 1) and three batches of the long tail (parts 2 to
-4): every tier 1 and tier 2 catalogue format now has an extractor, and so
-does every programming language, package manifest, image and metadata
-format in the catalogue.
+Games (Stage 8, part 1) and the long tail (parts 2 to 4, and the
+archives and executables of part 6): every tier 1 and tier 2 catalogue
+format now has an extractor, and so does every programming language,
+package manifest, image, metadata, archive and executable format in the
+catalogue.
 
 - **Games** (feature `games`, which now includes `common`), all in-house;
   read from headers, directories and indexes (nothing is extracted, run
@@ -217,6 +218,82 @@ format in the catalogue.
   `image.slide`: Aperio SVS, Hamamatsu NDPI and VMS, Leica SCN:
   magnification, microns per pixel, scanner, pyramid levels, label and
   macro images).
+- **Older and less common archives** (`common`, batch 4 part 1, in-house,
+  no new crates), each listed as the other archive formats are and with
+  stored entries handed on:
+  - `archive.dos`: ARC (and PAK-method entries), Zoo 2 (long names and
+    folders, deleted entries), ACE 1 / 2 (version, host, solid,
+    multivolume, locked, recovery record), ZPAQ journaling archives
+    (transactions and their dates, deduplicated size and fragment count,
+    from the uncompressed `c` and `h` blocks; the compressed index is not
+    read) and KGB Archiver (file list and level);
+  - `archive.mac`: StuffIt 1.5–4.5 (folders, Finder type and creator,
+    methods, resource forks), BinHex 4.0 (decoded; name, type, creator,
+    fork sizes, CRCs) and MacBinary I–III, each with the resource fork's
+    types listed and the data fork handed on;
+  - `archive.encoded`: uuencode (and `begin-base64`), yEnc (size and CRC-32
+    checked) and bare base64 files, decoded and handed on; shell archives
+    (each member's name, size, mode and time, from GNU sharutils and plain
+    here-document shars) and Makeself installers (label, startup script,
+    checksums, compression, and the payload handed on);
+  - `archive.wim`: WIM, split SWM and solid ESD (version, compression,
+    GUID, parts, and per image the name, description, counts, size, times
+    and the Windows edition, architecture, build and languages);
+  - `archive.bundles`: Python zip applications and PEX files (interpreter,
+    entry point, pex version, requirements), Java modules (sections;
+    `module-info.class` handed on), Android OBB expansion files (package
+    and version from the name and the `obbtool` footer) and split archive
+    volumes (`.7z.002`, `.z01`, `.r00`, `.part2.rar`: set and number);
+  - `archive.backups`: Apple Archive (`AA01` entries listed; the `pbz*`
+    compressed form summarised), Android backups (version, compression,
+    encryption and PBKDF2 rounds; an unencrypted backup's tar handed on),
+    `dump` tapes (dates, level, label, file system, device; the host only
+    without strict privacy) and Borg repository `config` / `README` files;
+  - `archive.alzip`: ALZip (stored and deflated entries handed on).
+  Self-extracting archives and Windows installers are credited to the PE
+  reader, which already hands on the archive in the overlay; for NSIS it
+  now also reports the installer / uninstaller flag and the sizes from the
+  first header.
+- **Executables and related images** (`common`, batch 4 part 2, in-house,
+  no new crates):
+  - `exec.debug`: Microsoft PDB files (version, signature, age and GUID,
+    machine, toolchain, type count, and the modules with their object
+    files; home folders shortened as elsewhere) and split DWARF (`.dwo`:
+    per unit the DWARF version, DWO id, producer, language and source
+    name; `.dwp`: the unit index);
+  - `exec.misc`: Linux kernel images (x86 boot protocol, release, build
+    number, flags and date from the version string, payload compression;
+    arm64 size, page size, byte order, EFI stub and the version banner;
+    the builder's `user@host` only without strict privacy), Android OAT /
+    ODEX (version, compiler filter), VDEX (version, sections, DEX count)
+    and ART images (version), AIX XCOFF (kind, sections, symbols, time),
+    device tree blobs and overlays (model, compatible, nodes, properties,
+    fragments, memory reservations) and sources, and Xilinx bitstreams
+    (design, user id, tool version, part, date and time);
+  - `exec.scripting`: HTML applications, Windows Script Files and
+    scriptlets (the HTA settings, jobs, COM registration and members,
+    script languages, external scripts and COM objects created, flagged
+    as active content, external references and shell actions; nothing is
+    run), compiled AppleScript (version) and Rust `rlib` / `rmeta` files
+    (crate, rustc version, metadata version, codegen units).
+  Windows minidumps, security catalogs and Go build information were
+  already read and are now credited to their rows. Kernels, device trees
+  and the like inside U-Boot, FIT and Android boot images are now
+  identified instead of being reported as binary data.
+- **Writing and older office files** (`common`, batch 4 part 3, in-house,
+  no new crates):
+  - `doc.writing`: RIS, EndNote and MEDLINE citations (entries, types,
+    years, DOIs, distinct authors, titles) and CSL styles; Typst, LyX and
+    Scribus documents (title, authors, outline, imports, pages and
+    frames); Evernote exports (notes, tags, dates) and Obsidian canvases
+    (nodes, edges, linked files); Fountain, Final Draft and Scrivener
+    (title page, scenes, characters, binder); AbiWord and Gnumeric files;
+    Marp slide decks (slides and their titles);
+  - OpenOffice.org 1.x / StarOffice 6–7 packages (`.sxw`, `.sxc`, `.sxi`,
+    `.sxd`), read by the OpenDocument reader;
+  - iBooks Author books (read as EPUB 3), and Open eBook / EPUB package
+    files and DAISY NCX files on their own;
+  - Outlook templates (`.oft`) go to the `.msg` reader.
 - **Detection:** `.csproj`, `.fsproj` and `.vbproj` files moved from the
   generic XML reader to the manifest reader; `build.gradle` is a Gradle
   manifest, not Groovy source. A VCD header now needs a `$end` (Smithy
@@ -230,8 +307,8 @@ format in the catalogue.
 - **Catalogue:** `data/coverage.tsv` credits rows that another family's
   extractor handles (SVG, LaTeX, MHTML, sitemaps, `.tar.*`, torrents,
   known JSON and YAML schemas, Snort rules, dbt models …); an unknown row
-  or format there is an error. 606 → 674 → 767 → 824 of 1008 formats have
-  an extractor.
+  or format there is an error. 606 → 674 → 767 → 824 → 842 → 855 → 870 of 1008 formats
+  have an extractor.
 - **Shared code:** the Unity class-ID names (from the Unity YAML reader)
   and the strings of the pickle walker are reused by the games readers.
   The code page 437 decoder moved from the ZIP reader to
@@ -262,6 +339,17 @@ format in the catalogue.
   compares the reports with exiftool, ImageMagick, Pillow, olefile,
   ffprobe, djvudump, Graphviz `gc`, fig2dev, psd-tools, libmagic and the
   Python standard library.
+  `scripts/fixtures/legacy.sh` makes the batch 4 fixtures in a podman
+  container (arc, kgb, zpaq, macutils, sharutils, Makeself, wimlib, pex,
+  the JDK, dump, Borg, clang, lld, GCC, llvm-dwp, dtc, bibutils,
+  AbiWord, Gnumeric, under faketime
+  where they record the time; on the host `aa`, `osacompile` and rustc;
+  the rest written from the specifications);
+  `legacy_oracle.py` compares the reports with nomarch, lsar, acefile,
+  `zpaq l`, hexbin, uudecode, the shar scripts run in a scratch folder,
+  Makeself's `--info`, `wimlib-imagex info`, `jmod list`, `restore -t`,
+  llvm-pdbutil, llvm-dwarfdump, llvm-objdump, fdtget, bibutils, libmagic
+  and the Python standard library.
 - **Speed:** detection no longer guesses the character set of every
   file several times. The text sniffers (playlists, cue sheets, subtitles,
   text scores) read UTF-8 and binary heads directly and run the guess only

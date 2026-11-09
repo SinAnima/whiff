@@ -1,0 +1,277 @@
+---
+source: src/formats/archive/bundles.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "org.saltmere.harbour-jdk21.jmod",
+    "stem": "org.saltmere.harbour-jdk21",
+    "extension": "jmod"
+  },
+  "identification": {
+    "format": "jmod",
+    "name": "Java module (JMOD)",
+    "mime": "application/x-java-jmod",
+    "family": "archive",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "archive.bundles"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 785
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00",
+        "source": "archive.bundles",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 785,
+    "entropy": 6.916,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 2,
+      "uncompressed_bytes": 681,
+      "ratio": 0.867515923566879
+    }
+  },
+  "integrity": {
+    "sha256": "deee1f957c79cb910b614daabbccd047fc63f5bede42de098ba62bce470eea81",
+    "blake3": "12a68bb5350793def1ac97eff38b999cd73f9524d0e38db18072ca2c25c55a15"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "jmod": {
+      "jmod_version": "1.0",
+      "sections": {
+        "classes": 2
+      },
+      "files": 2,
+      "compressed_bytes": 473,
+      "methods": {
+        "deflate": 2
+      },
+      "file_types": {
+        "class": 2
+      },
+      "top_level": [
+        "classes/"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00",
+        "2025-09-01T12:00:00"
+      ],
+      "entries": [
+        {
+          "path": "classes/module-info.class",
+          "size_bytes": 265,
+          "modified": "2025-09-01T12:00:00"
+        },
+        {
+          "path": "classes/harbour/Bell.class",
+          "size_bytes": 416,
+          "modified": "2025-09-01T12:00:00"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "module-info.class",
+        "stem": "module-info",
+        "extension": "class"
+      },
+      "identification": {
+        "format": "class",
+        "name": "Java class",
+        "mime": "application/java-vm",
+        "family": "bytecode",
+        "confidence": 0.95,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "extractor": "bytecode.java"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 265
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 265,
+        "entropy": 4.728,
+        "entropy_scope": "file"
+      },
+      "integrity": {
+        "sha256": "54b45a69f4a7a2dbeed5d932e2a886b93cddffdddd682546138dc64bef324fe4",
+        "blake3": "4fd6b6f2224acad0fb63531799d5ed7378d017fd08144406c7c0672412704a1b"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "class": {
+          "version": "65.0",
+          "java_release": "21",
+          "constant_pool_entries": 17,
+          "kind": "module",
+          "fields": 0,
+          "methods": 0,
+          "code_bytes": 0,
+          "source_file": "module-info.java",
+          "module": {
+            "name": "org.saltmere.harbour",
+            "version": "1.0",
+            "requires": [],
+            "exports": [
+              "harbour"
+            ]
+          },
+          "main_class": "harbour.Bell",
+          "module_packages": 1,
+          "referenced_classes": 2,
+          "referenced_packages": [
+            "harbour"
+          ],
+          "debug": {
+            "source_file": true,
+            "line_numbers": false,
+            "local_variables": false
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "bytecode.java",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.bundles",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

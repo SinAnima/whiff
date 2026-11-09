@@ -1,0 +1,173 @@
+---
+source: src/formats/doc/writing.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.lyx",
+    "stem": "saltmere-tides",
+    "extension": "lyx"
+  },
+  "identification": {
+    "format": "lyx",
+    "name": "LyX document",
+    "mime": "application/x-lyx",
+    "family": "doc.other",
+    "confidence": 0.85,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "doc.writing"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 600
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 600,
+    "entropy": 4.646,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 600,
+      "chars": 600,
+      "words": 71,
+      "lines": 37,
+      "max_line_length": 69,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 8
+    }
+  },
+  "integrity": {
+    "sha256": "a3ca6cc00001d5b1c38bc6f2137c166515a639a8003509c9f3322d55bc732aab",
+    "blake3": "6080cea849a0d68c75e9326d2ed4ed4e4e1a5b0ae43c3ece6fc149bb038ef3fb"
+  },
+  "content": {
+    "title": "Saltmere tides",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "keywords": [
+      "wall",
+      "water",
+      "Ana Lighthouse",
+      "Lighthouse",
+      "Saltmere tides",
+      "Grey Tern",
+      "Tern berths",
+      "Tern",
+      "Saltmere",
+      "tides"
+    ],
+    "keyword_frequency": [
+      [
+        "wall",
+        3
+      ],
+      [
+        "tide",
+        2
+      ],
+      [
+        "water",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 2,
+        "text": "High water"
+      },
+      {
+        "level": 2,
+        "text": "The long wall"
+      }
+    ],
+    "excerpt": "Saltmere tides Ana Lighthouse High water The harbour bell rings at high tide; the pilot launch leaves at dawn. The long wall Grey Tern berths at the long wall.",
+    "tags": [
+      "wall",
+      "water",
+      "Ana Lighthouse",
+      "Lighthouse",
+      "Saltmere tides"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "lyx": {
+      "created_by": "2.4",
+      "lyx_format": "620",
+      "document_class": "article",
+      "language": "british",
+      "title": "Saltmere tides",
+      "sections": [
+        "High water",
+        "The long wall"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.writing",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

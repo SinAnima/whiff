@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SCRIBUSUTF8NEW Version="1.6.3">
+  <DOCUMENT ANZPAGES="2" PAGEWIDTH="420" PAGEHEIGHT="595" TITLE="Saltmere harbour leaflet" AUTHOR="Ben Gull" COMMENTS="Tide times for visitors" LANGUAGE="en_GB">
+    <PAGE NUM="0" PAGEXPOS="100" PAGEYPOS="20" PAGEWIDTH="420" PAGEHEIGHT="595"/>
+    <PAGE NUM="1" PAGEXPOS="100" PAGEYPOS="635" PAGEWIDTH="420" PAGEHEIGHT="595"/>
+    <PAGEOBJECT PTYPE="4" XPOS="130" YPOS="60" WIDTH="360" HEIGHT="80" OwnPage="0">
+      <StoryText>
+        <ITEXT CH="Saltmere harbour"/>
+        <para/>
+        <ITEXT CH="High water 06:12, low water 12:31."/>
+      </StoryText>
+    </PAGEOBJECT>
+    <PAGEOBJECT PTYPE="2" XPOS="130" YPOS="200" WIDTH="360" HEIGHT="240" OwnPage="0" PFILE="harbour.png"/>
+    <PAGEOBJECT PTYPE="4" XPOS="130" YPOS="700" WIDTH="360" HEIGHT="80" OwnPage="1">
+      <StoryText><ITEXT CH="The bell rings at high tide."/></StoryText>
+    </PAGEOBJECT>
+  </DOCUMENT>
+</SCRIBUSUTF8NEW>

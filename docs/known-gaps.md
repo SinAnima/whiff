@@ -18,10 +18,10 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   PPMd and BCJ2 folders. Their names, sizes, times and methods are listed.
 - **Headers only:** lzop and LZFSE files are described but not
   decompressed.
-- **Not read:** ZOO, ACE, StuffIt, ARC, WIM and shell archives (`shar`),
-  for lack of a writer or reader to check against.
+- **Read since the long tail (batch 4):** ZOO, ACE, StuffIt, ARC, WIM and
+  shell archives; see "Older archives" below.
 - **Multi-volume sets** (`.z01`, `.part2.rar`, `.7z.002` …): only the
-  volume given is read.
+  volume given is read; a later volume reports its set name and number.
 - **Self-extractors inside executables:** ZIP, 7z, RAR and CAB archives
   appended to a PE image are handed on; NSIS and Inno Setup installers
   are recognised, but their payload is not unpacked.
@@ -513,3 +513,111 @@ header; it never evaluates, expands or follows anything.
     readers (exiftool, ImageMagick, Pillow, olefile, ffprobe, djvudump,
     Graphviz, fig2dev, psd-tools, libmagic), and the rest are covered by
     their fixtures only.
+
+### Older archives (long tail, batch 4)
+
+Each reader lists entries from headers and hands on what is stored
+uncompressed (and ALZip's deflated entries); nothing else is decompressed.
+
+- **Compressed entries:** ARC (squeezed, crunched, squashed), Zoo (LZW,
+  LZH), ACE (LZ77, blocked), StuffIt (all methods but stored), KGB (PAQ6)
+  and ALZip bzip2 entries are listed, not decoded.
+- **ZPAQ:** only the transactions (dates), fragment count and
+  deduplicated size: the file list lives in a compressed index block.
+  Streaming (non-journaling) archives give only the block level.
+- **Not read:** PEA and EGG (no writer or published specification to
+  check against), StuffIt 5 and StuffIt X (`.sitx`, undocumented), Java
+  runtime images (`jimage`, the `lib/modules` file: no writer for a small
+  sample), restic repositories (their `config` is encrypted) and
+  duplicity manifests.
+- **Apple Archive:** LZFSE-compressed archives (the default of `aa`) give
+  their algorithm and sizes only, since LZFSE is not decoded; raw (`-a
+  raw`) archives are listed. Fields whose size whiff does not know (hashes)
+  end the reading of that entry's header.
+- **dump:** the tape header only; the inode and directory records that
+  list the files are not walked.
+- **Shell archives and Makeself:** members are found from here-documents
+  and `uudecode` blocks; shars that build files with other commands
+  (`echo`, `printf`, compressed members) are not unpacked. Makeself's
+  payload is handed on as one compressed tar; scripts are never run.
+- **WIM:** split sets give the XML of the part that carries it; the
+  directory trees inside the images (compressed metadata resources) are
+  not listed, only the counts the XML records. The SWM form is covered by
+  the same reader, without a fixture of its own (a split part is at least
+  1 MiB).
+- **PEX:** the fixture is pex 2.107.1 output with its `.bootstrap/`
+  runtime removed (1 MB), which whiff counts but does not read anyway.
+- **NSIS installers:** the product name, version and file list sit in the
+  compressed installer header, which is not decoded; Inno Setup gives its
+  version only.
+- **Fixtures written from specifications:** Zoo, ACE, StuffIt, MacBinary,
+  yEnc, ALZip and the OBB footer had no writer in the container; each is
+  checked against an independent reader (lsar, acefile, macunpack,
+  hexbin) or decoder.
+
+### Executables and related images (long tail, batch 4)
+
+- **PDB:** the PDB information, DBI and TPI headers and the module list;
+  symbols, types and line tables are counted at most, never listed. Only
+  MSF 7.00 files (Visual C++ 7 and later) are read.
+- **Split DWARF:** a unit's first entry gives the producer, language and
+  name; nothing below it is read. A `.dwp` package gives its index only.
+  dSYM bundles are folders; their DWARF file is a Mach-O file, which the
+  Mach-O reader describes.
+- **Linux kernels:** the x86 setup header and the arm64 image header; the
+  banner of an arm64 kernel is looked for in its first 8 MiB. Kernels
+  for other architectures, and a compressed kernel's contents, are not
+  read; an initramfs goes through the cpio and compression readers.
+- **Android runtime files:** the version only, plus the VDEX section
+  table and the OAT compiler filter. The OAT header's other fields move
+  between Android versions; the fixtures are headers written from AOSP's
+  sources, as no Android build was available.
+- **XCOFF:** the file and section headers; the loader section (imports)
+  and symbols are not listed.
+- **Device trees:** the root's `model` and `compatible`; other nodes are
+  counted. Sources are read line by line; macros and includes are not
+  expanded.
+- **Xilinx bitstreams:** the header fields; the configuration frames are
+  not decoded. The fixture is written from the header layout (no
+  open-source tool writes Xilinx 7-series bitstreams).
+- **Script hosts:** tags are found by a tolerant scanner, not an HTML or
+  XML parser; COM objects are found by their `CreateObject`,
+  `GetObject` and `ActiveXObject` calls only, and obfuscated scripts
+  are not decoded. The risk signals are tested with in-memory samples;
+  the fixtures only show text.
+- **Rust libraries:** the crate name comes from the member or file names,
+  the rustc version from the metadata header; the crate's items and
+  dependencies (in rustc's internal encoding) are not read.
+- **AppleScript:** the format version only; script bundles (`.scptd`) are
+  folders.
+
+### Writing and older office files (long tail, batch 4)
+
+- **Citations:** RIS, EndNote and MEDLINE records give type, title,
+  authors, year and DOI; other tags are not kept. CSL-JSON (`.json`) is
+  read by the JSON reader, not as citations. A `.csl` file is a style,
+  not a list of citations.
+- **Typst:** the `#set document(...)` title and authors, headings and
+  imports; Typst code is not evaluated, so computed titles are missed.
+  There was no Typst compiler to make fixtures with; the fixture is
+  written by hand.
+- **LyX and Scribus:** the fixtures are written by hand (`tex2lyx` needs
+  a configured LyX, and Scribus is a GUI application); their layouts
+  follow LyX 2.4 and Scribus 1.6.
+- **Screenplays:** Fountain characters are found by the uppercase-line
+  rule; boneyard and notes are not removed. Final Draft's title page is
+  read as text, not as fields.
+- **Scrivener:** the `.scrivx` binder only; the documents inside the
+  `.scriv` folder are separate RTF files.
+- **AbiWord / Gnumeric:** metadata, sections, sheets and cell counts;
+  formulas, styles and cell values are not listed.
+- **Marp:** slides are split on `---`; reveal.js decks in plain HTML go
+  through the HTML reader.
+- **StarOffice:** only the XML-based 6.0–7 packages (`.sxw`, `.sxc`,
+  `.sxi`, `.sxd`); the older binary StarWriter files (`.sdw`) are not
+  read. The fixtures are packages written from the OpenOffice.org 1.x
+  layout, checked with libmagic.
+- **iBooks:** read as EPUB 3; Apple's widgets and the `iTunesMetadata.plist`
+  of purchased books are not read.
+- **Mail merge data** is credited to the CSV reader; label layouts are not
+  recognised.

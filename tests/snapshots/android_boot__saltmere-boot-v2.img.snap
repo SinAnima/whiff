@@ -84,14 +84,24 @@ expression: report
         "extension": "img"
       },
       "identification": {
-        "format": "raw_disk",
-        "name": "Raw disk image",
-        "mime": "application/x-raw-disk-image",
-        "family": "disk",
-        "confidence": 0.35,
-        "detected_by": "extension",
-        "extension_matches": true,
-        "extractor": "disk.raw"
+        "format": "linux_kernel",
+        "name": "Linux kernel image",
+        "mime": "application/x-linux-kernel",
+        "family": "exec",
+        "confidence": 0.95,
+        "detected_by": "sniff",
+        "extension_matches": false,
+        "candidates": [
+          {
+            "format": "linux_kernel",
+            "confidence": 0.95
+          },
+          {
+            "format": "raw_disk",
+            "confidence": 0.35
+          }
+        ],
+        "extractor": "exec.misc"
       },
       "system": {
         "kind": "memory",
@@ -111,17 +121,29 @@ expression: report
         "sha256": "eab79b7b24ea9e04946c55424a1ad289e5707610ec776e2d1dc39631bfce5534",
         "blake3": "5d39e0c811fb0bbd00a73ce587729099f2c81f81f9246437965b1e27fdb5d61d"
       },
-      "content": {},
+      "content": {
+        "title": "Linux 6.1.0-saltmere"
+      },
       "metadata": {},
       "format": {
-        "raw_disk": {
-          "disk_bytes": 4096
+        "linux_kernel": {
+          "architecture": "arm64",
+          "text_offset": 0,
+          "image_bytes": 0,
+          "byte_order": "little-endian",
+          "version_string_present": true,
+          "release": "6.1.0-saltmere",
+          "build": "1",
+          "flags": [
+            "SMP",
+            "PREEMPT"
+          ]
         }
       },
       "diagnostics": {
         "extractors": [
           {
-            "id": "disk.raw",
+            "id": "exec.misc",
             "version": 1,
             "ms": 0.0,
             "status": "ok"
@@ -168,9 +190,6 @@ expression: report
             "ms": 0.0,
             "status": "ok"
           }
-        ],
-        "warnings": [
-          "disk.raw: no partition table or file system recognised"
         ],
         "truncated": false,
         "elapsed_ms": 0.0
@@ -493,14 +512,24 @@ expression: report
         "extension": "img"
       },
       "identification": {
-        "format": "raw_disk",
-        "name": "Raw disk image",
-        "mime": "application/x-raw-disk-image",
-        "family": "disk",
-        "confidence": 0.35,
-        "detected_by": "extension",
-        "extension_matches": true,
-        "extractor": "disk.raw"
+        "format": "fdt",
+        "name": "Device tree blob",
+        "mime": "application/x-dtb",
+        "family": "exec",
+        "confidence": 0.76,
+        "detected_by": "magic",
+        "extension_matches": false,
+        "candidates": [
+          {
+            "format": "fdt",
+            "confidence": 0.76
+          },
+          {
+            "format": "raw_disk",
+            "confidence": 0.35
+          }
+        ],
+        "extractor": "exec.misc"
       },
       "system": {
         "kind": "memory",
@@ -520,17 +549,24 @@ expression: report
         "sha256": "ddc0c6414addd4ba13d6f4e1c332194d2755e8af6b5cf64ebbeca26c3390d2e7",
         "blake3": "c77894d23022876f1aaee6086017c26555447c0ae322760fa898573408e2bb04"
       },
-      "content": {},
+      "content": {
+        "title": "Saltmere tide gauge"
+      },
       "metadata": {},
       "format": {
-        "raw_disk": {
-          "disk_bytes": 149
+        "fdt": {
+          "version": 17,
+          "last_compatible_version": 16,
+          "model": "Saltmere tide gauge",
+          "compatible": "saltmere,tg1",
+          "nodes": 1,
+          "properties": 2
         }
       },
       "diagnostics": {
         "extractors": [
           {
-            "id": "disk.raw",
+            "id": "exec.misc",
             "version": 1,
             "ms": 0.0,
             "status": "ok"
@@ -577,9 +613,6 @@ expression: report
             "ms": 0.0,
             "status": "ok"
           }
-        ],
-        "warnings": [
-          "disk.raw: no partition table or file system recognised"
         ],
         "limits_hit": [
           "max_depth"

@@ -1,0 +1,164 @@
+---
+source: src/formats/doc/odf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-chart-ooo11.sxd",
+    "stem": "saltmere-chart-ooo11",
+    "extension": "sxd"
+  },
+  "identification": {
+    "format": "sxd",
+    "name": "OpenOffice.org 1.x / StarOffice drawing",
+    "mime": "application/vnd.sun.xml.draw",
+    "family": "doc.odf",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "sxd",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "doc.odf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1177
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00",
+        "source": "odf.meta.creation-date",
+        "tz_known": false
+      },
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00",
+        "source": "odf.meta.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ana Lighthouse",
+      "Ben Gull"
+    ]
+  },
+  "physical": {
+    "size_bytes": 1177,
+    "entropy": 7.137,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "11c6f540dcbe2cba97961e86cc38d737194ada87e4285559da4e19d241708cc7",
+    "blake3": "a48d516ef05a0ff80da17ace568c1f4c2524f8632c13495726f56dad13f0d124"
+  },
+  "content": {
+    "title": "Saltmere harbour",
+    "authors": [
+      "Ana Lighthouse",
+      "Ben Gull"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "excerpt": "Saltmere harbour"
+  },
+  "metadata": {
+    "odf": {
+      "generator": "OpenOffice.org 1.1.5 (Linux)",
+      "title": "Saltmere harbour",
+      "initial-creator": "Ana Lighthouse",
+      "creator": "Ben Gull",
+      "creation-date": "2025-09-01T12:00:00",
+      "date": "2025-09-01T12:00:00",
+      "language": "en-GB",
+      "document-statistic": {
+        "object-count": 1
+      }
+    }
+  },
+  "format": {
+    "sxd": {
+      "mimetype": "application/vnd.sun.xml.draw",
+      "parts": 4,
+      "manifest_entries": 3,
+      "paragraphs": 0,
+      "pages": [
+        "Chart"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.odf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

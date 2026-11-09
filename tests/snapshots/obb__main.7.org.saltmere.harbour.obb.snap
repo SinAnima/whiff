@@ -1,0 +1,352 @@
+---
+source: src/formats/archive/bundles.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "main.7.org.saltmere.harbour.obb",
+    "stem": "main.7.org.saltmere.harbour",
+    "extension": "obb"
+  },
+  "identification": {
+    "format": "obb",
+    "name": "Android opaque binary blob (OBB)",
+    "mime": "application/x-android-obb",
+    "family": "archive",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "obb",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "archive.bundles"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 480
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 480,
+    "entropy": 6.005,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "6ab6b3c6971d0e17915d8f58d77da7947b6e591c43e6c361d088a433361ae3f7",
+    "blake3": "ce9d00a5e2c954c3c3f283a176124762077a5eba4c5ed64909fb585c6df02628"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "obb": {
+      "expansion_kind": "main",
+      "package_version": 7,
+      "package": "org.saltmere.harbour",
+      "footer_version": 1
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "content",
+        "stem": "content"
+      },
+      "identification": {
+        "format": "zip",
+        "name": "ZIP archive",
+        "mime": "application/zip",
+        "family": "archive",
+        "confidence": 0.51,
+        "detected_by": "magic",
+        "extractor": "archive.zip"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 428
+      },
+      "temporal": {
+        "filesystem": {},
+        "content": [
+          {
+            "field": "modified",
+            "value": "2025-09-01T12:00:00",
+            "source": "archive.zip",
+            "tz_known": false
+          }
+        ]
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 428,
+        "entropy": 6.139,
+        "entropy_scope": "file",
+        "container": {
+          "entries": 2,
+          "uncompressed_bytes": 600,
+          "ratio": 1.4018691588785046
+        }
+      },
+      "integrity": {
+        "sha256": "bfa2ae17036bbd77e6b1356cd9c446c660563e54ecccb53a455e204cbe21d434",
+        "blake3": "a9111de933e59d85b37d0841829d2d8c13bcd6d958a86590b2fc3d843fa838c2"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "zip": {
+          "created_on": "Unix",
+          "files": 2,
+          "compressed_bytes": 208,
+          "methods": {
+            "deflate": 2
+          },
+          "file_types": {
+            "txt": 2
+          },
+          "top_level": [
+            "charts/",
+            "notes.txt"
+          ],
+          "modified_range": [
+            "2025-09-01T12:00:00",
+            "2025-09-01T12:00:00"
+          ],
+          "entries": [
+            {
+              "path": "charts/bay.txt",
+              "size_bytes": 438,
+              "modified": "2025-09-01T12:00:00",
+              "mode": "644"
+            },
+            {
+              "path": "notes.txt",
+              "size_bytes": 162,
+              "modified": "2025-09-01T12:00:00",
+              "mode": "644"
+            }
+          ]
+        }
+      },
+      "embedded": [
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "bay.txt",
+            "stem": "bay",
+            "extension": "txt"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 438
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "notes.txt",
+            "stem": "notes",
+            "extension": "txt"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 162
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        }
+      ],
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "archive.zip",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.bundles",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "limits_hit": [
+      "max_depth"
+    ],
+    "truncated": true,
+    "elapsed_ms": 0.0
+  }
+}

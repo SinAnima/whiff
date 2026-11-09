@@ -1,0 +1,155 @@
+---
+source: src/formats/exec/scripting.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tide-board.hta",
+    "stem": "saltmere-tide-board",
+    "extension": "hta"
+  },
+  "identification": {
+    "format": "hta",
+    "name": "HTML application (HTA)",
+    "mime": "application/hta",
+    "family": "exec",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "hta",
+        "confidence": 0.99
+      },
+      {
+        "format": "html",
+        "confidence": 0.85
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "exec.scripting"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 417
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "active_content": [
+      "hta"
+    ],
+    "risks": [
+      {
+        "kind": "script",
+        "category": "active_content",
+        "severity": "medium",
+        "detail": "1 script block(s)",
+        "source": "exec.scripting"
+      }
+    ],
+    "risk_level": "medium"
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 417,
+    "entropy": 5.327,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 417,
+      "chars": 417,
+      "words": 32,
+      "lines": 13,
+      "max_line_length": 83,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "6ec5f1fd5a725f578148944377a170c4bd6f411e67a912e523664a4f25a7d8a2",
+    "blake3": "a2ec7cbc74f3ce7f86905e58528f5c55443eb80a268a71d6eb95f89192db8d2c"
+  },
+  "content": {
+    "title": "Saltmere Tide Board"
+  },
+  "metadata": {},
+  "format": {
+    "hta": {
+      "application": {
+        "id": "tideBoard",
+        "applicationname": "Saltmere Tide Board",
+        "version": "1.0",
+        "border": "thin",
+        "singleinstance": "yes",
+        "windowstate": "normal",
+        "showintaskbar": "yes"
+      },
+      "title": "Saltmere tide board",
+      "script_languages": {
+        "VBScript": 1
+      },
+      "inline_scripts": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.scripting",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

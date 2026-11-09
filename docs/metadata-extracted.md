@@ -127,9 +127,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1008 formats** in total: tier 1 = 139, tier 2 = 122, tier 3 = 747.
-* Formats with an extractor in this build: **824** of 1008.
+* Formats with an extractor in this build: **870** of 1008.
 * Formats by family status: crate = 183, mixed = 365, impl = 460.
-* Formats by target stage: S1 = 197, S1/S6 = 102, S2 = 99, S3 = 49, S3/S8 = 2, S4 = 69, S5 = 68, S6 = 90, S6/S8 = 17, S7 = 140, S8 = 175.
+* Formats by target stage: S1 = 197, S1/S6 = 102, S2 = 99, S3 = 54, S3/S8 = 12, S4 = 69, S5 = 86, S6 = 103, S6/S8 = 17, S7 = 140, S8 = 129.
 * By feature: `common` = 818, `cad` = 45, `forensics` = 38, `science` = 36, `geo` = 34, `data` = 20, `games` = 17.
 * By category: Code 167, Data 157, Image 95, Media 88, Document 71, Archive 47, Scientific 36, Executable 34, Geospatial 34, Text 32, Package 30, 3D 28, Web 27, Forensics 24, Database 21, Security 20, CAD 17, Game 17, Personal 16, Disk 14, Platform 11, Font 10, Fallback 8, Block 4.
 
@@ -713,38 +713,38 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 572 | Visio legacy | `vsd` `vss` `vst` | application/vnd.visio | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | — |
 | 573 | Microsoft Publisher | `pub` | application/x-mspublisher | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | — |
 | 574 | Microsoft Project | `mpp` | application/vnd.ms-project | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | — |
-| 575 | Outlook template / item | `oft` | application/vnd.ms-outlook | 3 | `doc.ole` | `common` | — | impl | S8 | -&gt; email |
+| 575 | Outlook template / item | `oft` | application/vnd.ms-outlook | 3 | `doc.ole` | `common` | `email.msg` | impl | S3 | -&gt; email |
 | 576 | Thumbs.db | `db` | — | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | thumbnail count |
 | 577 | Hangul HWP 5 | `hwp` | application/x-hwp | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | — |
 | 578 | Generic OLE2 Compound File | `cfb` `ole` | — | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | storage tree |
-| 579 | SolidWorks / Inventor (OLE-based) | `sldprt` `sldasm` `slddrw` `ipt` `iam` `idw` | — | 3 | `doc.ole` | `common` | — | impl | S8 | -&gt; cad, summary info |
+| 579 | SolidWorks / Inventor (OLE-based) | `sldprt` `sldasm` `slddrw` `ipt` `iam` `idw` | — | 3 | `doc.ole` | `common` | `doc.ole` | impl | S3 | -&gt; cad, summary info |
 | 580 | Microsoft Works / WordPerfect | `wps` `wks` `wpd` `wp` | application/vnd.wordperfect | 3 | `doc.ole` | `common` | — | impl | S8 | header + prefix packet |
-| 581 | WordPad / RTFD bundle | `rtfd` | — | 3 | `doc.rtf` | `common` | — | impl | S8 | — |
+| 581 | WordPad / RTFD bundle | `rtfd` | — | 3 | `doc.rtf` | `common` | `doc.rtf` | impl | S3 | — |
 | 582 | Kindle KFX | `kfx` | — | 3 | `doc.ebook` | `common` | — | impl | S8 | header only; DRM flag |
 | 583 | FictionBook | `fb2` `fbz` | application/x-fictionbook+xml | 3 | `doc.ebook` | `common` | `doc.ebook` | impl | S3 | — |
-| 584 | Apple iBooks | `ibooks` | — | 3 | `doc.ebook` | `common` | — | impl | S8 | — |
+| 584 | Apple iBooks | `ibooks` | — | 3 | `doc.ebook` | `common` | `doc.ebook` | impl | S3 | — |
 | 585 | Microsoft Reader / eReader | `lit` `pdb` | — | 3 | `doc.ebook` | `common` | `doc.ebook` | impl | S3 | — |
-| 586 | DAISY / Open eBook | `opf` `ncx` | — | 3 | `doc.ebook` | `common` | — | impl | S8 | — |
+| 586 | DAISY / Open eBook | `opf` `ncx` | — | 3 | `doc.ebook` | `common` | `doc.ebook` | impl | S3 | — |
 | 587 | DjVu | `djvu` `djv` | image/vnd.djvu | 3 | `doc.other` | `common` | `doc.djvu` | impl | S3/S8 | — |
 | 588 | Compiled HTML Help | `chm` | application/vnd.ms-htmlhelp | 3 | `doc.other` | `common` | — | impl | S8 | ITSF header, topics list (impl) |
 | 589 | WinHelp | `hlp` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
-| 590 | RIS / EndNote / CSL-JSON citations | `ris` `enw` `nbib` `csl` | — | 3 | `doc.other` | `common` | — | impl | S8 | entry count, titles, DOIs |
-| 591 | Typst | `typ` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
-| 592 | Groff/Scribus/LyX | `lyx` `sla` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 590 | RIS / EndNote / CSL-JSON citations | `ris` `enw` `nbib` `csl` | — | 3 | `doc.other` | `common` | `doc.writing` | impl | S3/S8 | entry count, titles, DOIs |
+| 591 | Typst | `typ` | — | 3 | `doc.other` | `common` | `doc.writing` | impl | S3/S8 | — |
+| 592 | Groff/Scribus/LyX | `lyx` `sla` | — | 3 | `doc.other` | `common` | `doc.writing` | impl | S3/S8 | — |
 | 593 | Microsoft OneNote | `one` `onetoc2` | application/onenote | 3 | `doc.other` | `common` | — | impl | S8 | section/page titles (impl, revision store) |
-| 594 | Evernote export | `enex` | application/enex+xml | 3 | `doc.other` | `common` | — | impl | S8 | note titles, tags, dates |
-| 595 | Obsidian canvas | `canvas` | — | 3 | `doc.other` | `common` | — | impl | S8 | nodes, text |
-| 596 | Scrivener / Final Draft / Fountain | `scriv` `fdx` `fountain` | — | 3 | `doc.other` | `common` | — | impl | S8 | title page, scene headings |
+| 594 | Evernote export | `enex` | application/enex+xml | 3 | `doc.other` | `common` | `doc.writing` | impl | S3/S8 | note titles, tags, dates |
+| 595 | Obsidian canvas | `canvas` | — | 3 | `doc.other` | `common` | `doc.writing` | impl | S3/S8 | nodes, text |
+| 596 | Scrivener / Final Draft / Fountain | `scriv` `fdx` `fountain` | — | 3 | `doc.other` | `common` | `doc.writing` | impl | S3/S8 | title page, scene headings |
 | 597 | Lotus 1-2-3 / Quattro | `wk1` `wk3` `wk4` `123` `qpw` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
 | 598 | Apple ClarisWorks / AppleWorks | `cwk` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
 | 599 | PDF-like: Adobe FrameMaker / InDesign | `fm` `mif` `indd` `idml` | — | 3 | `doc.other` | `common` | — | impl | S8 | IDML (zip+xml): stories text |
-| 600 | XML Paper / StarOffice legacy | `sxw` `sxc` `sxi` `sdw` | — | 3 | `doc.other` | `common` | — | impl | S8 | -&gt; doc.odf mapping |
-| 601 | Mailing labels / Mail merge data | `mdb-merge` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 600 | XML Paper / StarOffice legacy | `sxw` `sxc` `sxi` `sdw` | — | 3 | `doc.other` | `common` | `doc.odf` | impl | S3/S8 | -&gt; doc.odf mapping |
+| 601 | Mailing labels / Mail merge data | `mdb-merge` | — | 3 | `doc.other` | `common` | `data.csv` | impl | S3/S8 | — |
 | 602 | PCL / PJL print job | `pcl` `prn` `pjl` | application/vnd.hp-pcl | 3 | `doc.other` | `common` | — | impl | S8 | PJL JOB NAME, user, page count |
 | 603 | Windows spool files | `spl` `shd` | — | 3 | `doc.other` | `common` | — | impl | S8 | document name, user, printer, submit time |
-| 604 | AbiWord / Gnumeric / Calligra | `abw` `gnumeric` `kwd` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
+| 604 | AbiWord / Gnumeric / Calligra | `abw` `gnumeric` `kwd` | — | 3 | `doc.other` | `common` | `doc.writing` | impl | S3/S8 | — |
 | 605 | Microsoft Write / Ami Pro / Ichitaro | `wri` `sam` `jtd` | — | 3 | `doc.other` | `common` | — | impl | S8 | — |
-| 606 | Marp / reveal.js slide markdown | `md` | — | 3 | `doc.other` | `common` | — | impl | S8 | slide count, titles |
+| 606 | Marp / reveal.js slide markdown | `md` | — | 3 | `doc.other` | `common` | `doc.writing` | impl | S3/S8 | slide count, titles |
 | 607 | Notion / Confluence export bundles | `zip` | — | 3 | `doc.other` | `common` | — | impl | S8 | page tree, titles |
 | 608 | TTML / DFXP | `ttml` `dfxp` `xml` | application/ttml+xml | 3 | `text.subtitle` | `common` | `subtitle.markup` | impl | S4 | — |
 | 609 | MicroDVD / SubViewer | `sub` `sbv` | — | 3 | `text.subtitle` | `common` | `subtitle.timed` | impl | S4 | — |
@@ -811,28 +811,28 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 670 | ARJ | `arj` | application/x-arj | 3 | `archive` | `common` | `archive.legacy` | impl | S5 | — |
 | 671 | CPIO | `cpio` | application/x-cpio | 3 | `archive` | `common` | `archive.cpio` | impl | S5 | newc/odc/bin |
 | 672 | Unix ar | `a` `ar` | application/x-archive | 3 | `archive` | `common` | `archive.ar` | impl | S5 | -&gt; also static libraries (exec members) |
-| 673 | ACE / ZOO / ARC / PAK (DOS) | `ace` `zoo` `arc` `pak` | — | 3 | `archive` | `common` | — | impl | S8 | headers only |
-| 674 | StuffIt | `sit` `sitx` | application/x-stuffit | 3 | `archive` | `common` | — | impl | S8 | header only |
-| 675 | WIM Windows imaging | `wim` `swm` `esd` | application/x-ms-wim | 3 | `archive` | `common` | — | impl | S8 | images + XML metadata |
+| 673 | ACE / ZOO / ARC / PAK (DOS) | `ace` `zoo` `arc` `pak` | — | 3 | `archive` | `common` | `archive.dos` | impl | S5 | headers only |
+| 674 | StuffIt | `sit` `sitx` | application/x-stuffit | 3 | `archive` | `common` | `archive.mac` | impl | S5 | header only |
+| 675 | WIM Windows imaging | `wim` `swm` `esd` | application/x-ms-wim | 3 | `archive` | `common` | `archive.wim` | impl | S5 | images + XML metadata |
 | 676 | XAR | `xar` `pkg` | application/x-xar | 3 | `archive` | `common` | `package.xar` | impl | S5 | TOC XML |
-| 677 | Split / multipart archives | `001` `z01` `r00` `part1.rar` | — | 3 | `archive` | `common` | — | impl | S8 | volume detection |
-| 678 | Shell archive (shar) / makeself | `shar` `run` | — | 3 | `archive` | `common` | — | impl | S8 | — |
+| 677 | Split / multipart archives | `001` `z01` `r00` `part1.rar` | — | 3 | `archive` | `common` | `archive.bundles` | impl | S5 | volume detection |
+| 678 | Shell archive (shar) / makeself | `shar` `run` | — | 3 | `archive` | `common` | `archive.encoded` | impl | S5 | — |
 | 679 | Java/Android archive (generic zip) | `jar` `war` `ear` `aar` | application/java-archive | 3 | `archive` | `common` | `package.java` | impl | S5 | -&gt; package |
 | 680 | Squashfs | `squashfs` `sqsh` `sfs` | application/vnd.squashfs | 3 | `archive` | `common` | `archive.squashfs` | impl | S5 | -&gt; disk |
-| 681 | PEA / ZPAQ / KGB | `pea` `zpaq` `kgb` | — | 3 | `archive` | `common` | — | impl | S8 | headers only |
-| 682 | Apple Archive / AAR | `aar` | — | 3 | `archive` | `common` | — | impl | S8 | — |
+| 681 | PEA / ZPAQ / KGB | `pea` `zpaq` `kgb` | — | 3 | `archive` | `common` | `archive.dos` | impl | S5 | headers only |
+| 682 | Apple Archive / AAR | `aar` | — | 3 | `archive` | `common` | `archive.backups` | impl | S5 | — |
 | 683 | Bundle formats: .app/.framework zipped | `ipa` | — | 3 | `archive` | `common` | `package.ios` | impl | S5 | -&gt; package |
-| 684 | Self-extracting archives (SFX) | `exe` | — | 3 | `archive` | `common` | — | impl | S8 | embedded zip/rar/7z offset, then archive listing |
-| 685 | Windows installers (NSIS / Inno Setup / InstallShield / WiX burn) | `exe` | — | 3 | `archive` | `common` | — | impl | S8 | installer type, product name, version, files (NSIS/Inno headers) |
-| 686 | Python zipapp / PEX | `pyz` `pex` | — | 3 | `archive` | `common` | — | impl | S8 | __main__, PEX-INFO |
-| 687 | Java JMOD / JIMAGE | `jmod` | — | 3 | `archive` | `common` | — | impl | S8 | module-info |
-| 688 | Android OBB | `obb` | — | 3 | `archive` | `common` | — | impl | S8 | — |
-| 689 | ALZip / EGG | `alz` `egg` | — | 3 | `archive` | `common` | — | impl | S8 | — |
-| 690 | Unix dump / restore | `dump` | — | 3 | `archive` | `common` | — | impl | S8 | — |
-| 691 | BinHex / MacBinary / AppleSingle / AppleDouble | `hqx` `bin` `as` `._*` | — | 3 | `archive` | `common` | — | impl | S8 | finder info, resource fork types, xattrs |
-| 692 | uuencode / base64 / yEnc wrappers | `uue` `b64` `yenc` | — | 3 | `archive` | `common` | — | impl | S8 | decoded filename, recurse |
-| 693 | Backup repositories (restic / borg / duplicity) | `config` `README` | — | 3 | `archive` | `common` | — | impl | S8 | repo version, encryption |
-| 694 | Android backup | `ab` | — | 3 | `archive` | `common` | — | impl | S8 | version, compressed, encrypted |
+| 684 | Self-extracting archives (SFX) | `exe` | — | 3 | `archive` | `common` | `exec.pe` | impl | S5 | embedded zip/rar/7z offset, then archive listing |
+| 685 | Windows installers (NSIS / Inno Setup / InstallShield / WiX burn) | `exe` | — | 3 | `archive` | `common` | `exec.pe` | impl | S5 | installer type, product name, version, files (NSIS/Inno headers) |
+| 686 | Python zipapp / PEX | `pyz` `pex` | — | 3 | `archive` | `common` | `archive.bundles` | impl | S5 | __main__, PEX-INFO |
+| 687 | Java JMOD / JIMAGE | `jmod` | — | 3 | `archive` | `common` | `archive.bundles` | impl | S5 | module-info |
+| 688 | Android OBB | `obb` | — | 3 | `archive` | `common` | `archive.bundles` | impl | S5 | — |
+| 689 | ALZip / EGG | `alz` `egg` | — | 3 | `archive` | `common` | `archive.alzip` | impl | S5 | — |
+| 690 | Unix dump / restore | `dump` | — | 3 | `archive` | `common` | `archive.backups` | impl | S5 | — |
+| 691 | BinHex / MacBinary / AppleSingle / AppleDouble | `hqx` `bin` `as` `._*` | — | 3 | `archive` | `common` | `archive.mac` | impl | S5 | finder info, resource fork types, xattrs |
+| 692 | uuencode / base64 / yEnc wrappers | `uue` `b64` `yenc` | — | 3 | `archive` | `common` | `archive.encoded` | impl | S5 | decoded filename, recurse |
+| 693 | Backup repositories (restic / borg / duplicity) | `config` `README` | — | 3 | `archive` | `common` | `archive.backups` | impl | S5 | repo version, encryption |
+| 694 | Android backup | `ab` | — | 3 | `archive` | `common` | `archive.backups` | impl | S5 | version, compressed, encrypted |
 | 695 | ZIP-based OCI / Docker save archive | `tar` | — | 3 | `archive` | `common` | `archive.tar` | impl | S5 | -&gt; package |
 | 696 | LZMA (alone) | `lzma` | application/x-lzma | 3 | `compress` | `common` | `compress.lzma` | miniz_oxide | S5 | — |
 | 697 | LZ4 | `lz4` | application/x-lz4 | 3 | `compress` | `common` | `compress.lz4` | miniz_oxide | S5 | — |
@@ -896,22 +896,22 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 755 | Java .properties-like binary: Android resources.arsc | `arsc` | — | 3 | `data.binser` | `common` | `data.android` | plist | S6 | packages, string pool size |
 | 756 | Android binary XML | `xml` `(binary)` | — | 3 | `data.binser` | `common` | `data.android` | plist | S6 | decoded via axmldecoder -&gt; text.xml |
 | 757 | ELF core dump | `core` | application/x-coredump | 3 | `exec` | `common` | `exec.elf` | impl | S6 | signal, process name, threads |
-| 758 | Windows minidump | `dmp` `mdmp` | application/x-dmp | 3 | `exec` | `common` | — | impl | S8 | -&gt; forensic |
+| 758 | Windows minidump | `dmp` `mdmp` | application/x-dmp | 3 | `exec` | `common` | `forensic.dump` | impl | S6 | -&gt; forensic |
 | 759 | MS-DOS / NE / LE executables | `com` `exe` | — | 3 | `exec` | `common` | `exec.pe` | impl | S6 | header only |
-| 760 | PDB debug database | `pdb` | application/x-ms-pdb | 3 | `exec` | `common` | — | impl | S8 | GUID, age, modules |
-| 761 | DWARF split / dSYM | `dwo` `dwp` `dSYM` | — | 3 | `exec` | `common` | — | impl | S8 | compile units, producers |
-| 762 | Linux kernel image / initramfs | `vmlinuz` `bzImage` `initrd` | — | 3 | `exec` | `common` | — | impl | S8 | version string |
+| 760 | PDB debug database | `pdb` | application/x-ms-pdb | 3 | `exec` | `common` | `exec.debug` | impl | S6 | GUID, age, modules |
+| 761 | DWARF split / dSYM | `dwo` `dwp` `dSYM` | — | 3 | `exec` | `common` | `exec.debug` | impl | S6 | compile units, producers |
+| 762 | Linux kernel image / initramfs | `vmlinuz` `bzImage` `initrd` | — | 3 | `exec` | `common` | `exec.misc` | impl | S6 | version string |
 | 763 | eBPF object | `bpf.o` | — | 3 | `exec` | `common` | `exec.elf` | impl | S6 | programs, maps |
-| 764 | Android ART / OAT / ODEX | `oat` `odex` `vdex` `art` | — | 3 | `exec` | `common` | — | impl | S8 | — |
-| 765 | Windows driver package / CAT | `cat` | — | 3 | `exec` | `common` | — | impl | S8 | signed catalog hashes count |
-| 766 | Rust rlib / rmeta | `rlib` `rmeta` | — | 3 | `exec` | `common` | — | impl | S8 | crate name, rustc version (rustc metadata header) |
-| 767 | Go binary buildinfo | `(ELF/PE/Mach-O)` | — | 3 | `exec` | `common` | — | impl | S8 | module path, deps, Go version (impl buildinfo parser) |
+| 764 | Android ART / OAT / ODEX | `oat` `odex` `vdex` `art` | — | 3 | `exec` | `common` | `exec.misc` | impl | S6 | — |
+| 765 | Windows driver package / CAT | `cat` | — | 3 | `exec` | `common` | `crypto.pki` | impl | S6 | signed catalog hashes count |
+| 766 | Rust rlib / rmeta | `rlib` `rmeta` | — | 3 | `exec` | `common` | `exec.scripting` | impl | S6 | crate name, rustc version (rustc metadata header) |
+| 767 | Go binary buildinfo | `(ELF/PE/Mach-O)` | — | 3 | `exec` | `common` | `exec.elf` | impl | S6 | module path, deps, Go version (impl buildinfo parser) |
 | 768 | PyInstaller / py2exe bundle | `exe` `(ELF)` | — | 3 | `exec` | `common` | `exec.pe` | impl | S6 | archive cookie, Python version, bundled modules |
-| 769 | Windows script hosts (HTA, WSF, SCT, WSC) | `hta` `wsf` `sct` `wsc` | application/hta | 3 | `exec` | `common` | — | impl | S8 | script languages, external refs (risk) |
-| 770 | AppleScript compiled | `scpt` `scptd` | — | 3 | `exec` | `common` | — | impl | S8 | — |
-| 771 | AIX XCOFF | `xcoff` | — | 3 | `exec` | `common` | — | impl | S8 | — |
-| 772 | Device tree blob / source | `dtb` `dtbo` `dts` | — | 3 | `exec` | `common` | — | impl | S8 | model, compatible, nodes |
-| 773 | FPGA bitstream (Xilinx .bit) | `bit` `bin` | — | 3 | `exec` | `common` | — | impl | S8 | design name, part, date, time |
+| 769 | Windows script hosts (HTA, WSF, SCT, WSC) | `hta` `wsf` `sct` `wsc` | application/hta | 3 | `exec` | `common` | `exec.scripting` | impl | S6 | script languages, external refs (risk) |
+| 770 | AppleScript compiled | `scpt` `scptd` | — | 3 | `exec` | `common` | `exec.scripting` | impl | S6 | — |
+| 771 | AIX XCOFF | `xcoff` | — | 3 | `exec` | `common` | `exec.misc` | impl | S6 | — |
+| 772 | Device tree blob / source | `dtb` `dtbo` `dts` | — | 3 | `exec` | `common` | `exec.misc` | impl | S6 | model, compatible, nodes |
+| 773 | FPGA bitstream (Xilinx .bit) | `bit` `bin` | — | 3 | `exec` | `common` | `exec.misc` | impl | S6 | design name, part, date, time |
 | 774 | Lua bytecode / LuaJIT | `luac` | — | 3 | `bytecode` | `common` | `bytecode.vm` | impl | S6 | — |
 | 775 | Erlang BEAM | `beam` | — | 3 | `bytecode` | `common` | `bytecode.vm` | impl | S6 | module, exports, attributes |
 | 776 | Hermes / V8 snapshot / QuickJS | `hbc` `bin` | — | 3 | `bytecode` | `common` | — | impl | S8 | — |
@@ -958,7 +958,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 817 | Windows Registry hive | `dat` `hiv` `NTUSER.DAT` `SYSTEM` `SOFTWARE` `SAM` | — | 3 | `forensic` | `forensics` | `forensic.registry` | impl | S6/S8 | — |
 | 818 | Windows Prefetch | `pf` | — | 3 | `forensic` | `forensics` | `forensic.shell` | impl | S6/S8 | exe name, run count, last run times |
 | 819 | NTFS $MFT / $UsnJrnl | `mft` | — | 3 | `forensic` | `forensics` | `forensic.mft` | impl | S6/S8 | — |
-| 820 | Windows minidump | `dmp` `mdmp` | — | 3 | `forensic` | `forensics` | `forensic.capture` | impl | S6/S8 | — |
+| 820 | Windows minidump | `dmp` `mdmp` | — | 3 | `forensic` | `forensics` | `forensic.dump` | impl | S6/S8 | — |
 | 821 | Linux utmp/wtmp/btmp / journal | `wtmp` `btmp` `journal` | — | 3 | `forensic` | `forensics` | `forensic.logs` | impl | S6/S8 | — |
 | 822 | macOS unified log / ASL | `tracev3` `asl` | — | 3 | `forensic` | `forensics` | — | impl | S8 | — |
 | 823 | Jump lists / recycle bin ($I) | `automaticDestinations-ms` `customDestinations-ms` | — | 3 | `forensic` | `forensics` | `forensic.shell` | impl | S6/S8 | — |
