@@ -1,0 +1,116 @@
+---
+source: src/formats/doc/packages.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-manual-crafted.fm",
+    "stem": "saltmere-manual-crafted",
+    "extension": "fm"
+  },
+  "identification": {
+    "format": "framemaker",
+    "name": "Adobe FrameMaker document",
+    "mime": "application/vnd.framemaker",
+    "family": "doc.other",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "framemaker",
+        "confidence": 0.97
+      },
+      {
+        "format": "xml",
+        "confidence": 0.32
+      }
+    ],
+    "extractor": "doc.packages"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2070
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2070,
+    "entropy": 0.116,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "370b715f18f1f4f283eb6d334ac7956d7c38028bbdfbddaa6e26a71ace2948c2",
+    "blake3": "8aa8268e93bdd4c1fb2ae9cc77c745cb2eada1cc1ec7dc83333f23220fbfe8ef"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "framemaker": {
+      "kind": "document",
+      "version": "9.0"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.packages",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

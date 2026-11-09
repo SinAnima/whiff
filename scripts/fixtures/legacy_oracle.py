@@ -361,8 +361,82 @@ def books(fx):
             want(fx / f.relative_to(fx), "format.ibooks.entries", len(z.infolist()), "zipfile")
 
 
+def packages(fx):
+    import plistlib
+    import zipfile
+    from xml.etree import ElementTree as ET
+
+    def rel(f):
+        return fx / f.relative_to(fx)
+
+    for f in sorted((fx / "xps").glob("*.xps")):
+        with zipfile.ZipFile(f) as z:
+            pages = [n for n in z.namelist() if n.endswith(".fpage")]
+            title = ET.fromstring(z.read("docProps/core.xml")).findtext("{http://purl.org/dc/elements/1.1/}title")
+        want(rel(f), "physical.document.pages", len(pages), "zipfile")
+        want(rel(f), "content.title", title, "ElementTree")
+    for f in sorted((fx / "idml").glob("*.idml")):
+        with zipfile.ZipFile(f) as z:
+            want(rel(f), "format.idml.stories", len([n for n in z.namelist() if n.startswith("Stories/")]), "zipfile")
+        libmagic(fx, f.relative_to(fx), "InDesign")
+    for f in sorted((fx / "hwpx").glob("*.hwpx")):
+        with zipfile.ZipFile(f) as z:
+            want(rel(f), "format.hwpx.sections", len([n for n in z.namelist() if n.startswith("Contents/section")]), "zipfile")
+        libmagic(fx, f.relative_to(fx), "Hancom")
+    for kind in ("iwork_pages", "iwork_numbers", "iwork_keynote"):
+        for f in sorted((fx / kind).glob("*")):
+            if f.name == "SOURCE.md":
+                continue
+            with zipfile.ZipFile(f) as z:
+                hist = plistlib.loads(z.read("Metadata/BuildVersionHistory.plist"))
+            want(rel(f), f"format.{kind}.saved_with", hist[-1], "plistlib")
+    for f in sorted((fx / "wiki_export").glob("*.zip")):
+        with zipfile.ZipFile(f) as z:
+            pages = [n for n in z.namelist() if n.endswith(".md") or (n.endswith(".html") and not n.endswith("index.html"))]
+        want(rel(f), "format.wiki_export.pages", len(pages), "zipfile")
+    for f in sorted((fx / "flat_opc").glob("*.xml")):
+        root = ET.parse(f).getroot()
+        want(rel(f), "format.flat_opc.parts", len(root.findall("{http://schemas.microsoft.com/office/2006/xmlPackage}part")), "ElementTree")
+    for kind, needle in (("indesign", "InDesign"), ("framemaker", "FrameMaker"), ("framemaker_mif", "FrameMaker MIF")):
+        for f in sorted((fx / kind).glob("*")):
+            if f.name != "SOURCE.md":
+                libmagic(fx, f.relative_to(fx), needle)
+    for f in sorted((fx / "pdf").glob("*.ai")):
+        libmagic(fx, f.relative_to(fx), "PDF document")
+
+
+def legacy_docs(fx):
+    import csv
+    import io
+
+    def rel(f):
+        return fx / f.relative_to(fx)
+
+    for f in sorted((fx / "lotus123").glob("*.wk1")):
+        rows = list(csv.reader(io.StringIO(out("wks2csv", str(f)))))[1:]
+        numbers = sum(1 for r in rows for c in r if c.replace(".", "", 1).isdigit())
+        labels = sum(1 for r in rows for c in r if c and not c.replace(".", "", 1).isdigit())
+        want(rel(f), "format.lotus123.cells.label", labels, "wks2csv")
+        want(rel(f), "format.lotus123.cells.number", numbers, "wks2csv")
+    for f in sorted((fx / "chm").glob("*.chm")):
+        listing = out("enum_chmLib", str(f))
+        topics = [l.split()[-1].lstrip("/") for l in listing.splitlines() if "normal file" in l and l.rstrip().endswith((".html", ".htm"))]
+        want(rel(f), "format.chm.topic_list", topics, "enum_chmLib")
+        libmagic(fx, f.relative_to(fx), "HtmlHelp")
+    for f in sorted((fx / "winhelp").glob("*.hlp")):
+        m = re.search(r'title "([^"]*)"', out("file", "-b", str(f)))
+        want(rel(f), "content.title", m.group(1), "file")
+    for kind, needle in (("wordperfect", "WordPerfect"), ("clarisworks", "AppleWorks"), ("ms_write", "Microsoft Write"),
+                         ("onenote", "OneNote"), ("pcl", "Printer Job Language")):
+        for f in sorted((fx / kind).glob("*")):
+            if f.name != "SOURCE.md":
+                libmagic(fx, f.relative_to(fx), needle)
+
+
 def expect(root):
     fx = Path(root)
+    legacy_docs(fx)
+    packages(fx)
     books(fx)
     writing(fx)
     executables(fx)

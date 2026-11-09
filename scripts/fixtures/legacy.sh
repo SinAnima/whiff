@@ -17,7 +17,8 @@
 # legacy_oracle.py then reads every fixture with an independent tool:
 #
 #     scripts/fixtures/legacy.sh [STEP ...]
-#         (dos mac encoded wim bundles backups debug exec scripts writing books)
+#         (dos mac encoded wim bundles backups debug exec scripts writing books
+#          packages legacy_docs)
 #     podman run --rm -v "$PWD:/whiff" -w /whiff whiff-legacy \
 #         python3 scripts/fixtures/legacy_oracle.py expect tests/fixtures > target/legacy-expect.json
 #     python3 scripts/fixtures/legacy_oracle.py check target/legacy-expect.json
@@ -32,6 +33,7 @@
 #     RUN apt-get install -y --no-install-recommends faketime
 #     RUN apt-get install -y --no-install-recommends clang lld llvm device-tree-compiler
 #     RUN apt-get install -y --no-install-recommends bibutils abiword gnumeric lyx pandoc libchm-bin libwpd-tools libwps-tools
+#     RUN apt-get install -y --no-install-recommends fp-utils ghostscript
 #
 # (nomarch, unar, file and acefile are for legacy_oracle.py; gcc builds
 # acefile's optional C module.)
@@ -120,6 +122,9 @@ origin() {
         endnote/*) echo "bibutils 7.2 (\`bib2xml\`, \`xml2end\`)" ;;
         abiword/*) echo "AbiWord 3.0 (\`abiword --to=abw\`)" ;;
         gnumeric/*) echo "Gnumeric 1.12 (\`ssconvert\`)" ;;
+        flat_opc/*) echo "pandoc 3.1 \`.docx\`, its parts folded into one Flat OPC file (the theme part left out)" ;;
+        chm/*) echo "Free Pascal \`chmcmd\` 3.2.2" ;;
+        pcl/*) echo "Ghostscript 10.05 (\`-sDEVICE=ljet4\`) in a hand-written PJL job" ;;
         *) echo "written by hand from the format's specification (craft_legacy.py)" ;;
     esac
 }
@@ -144,6 +149,8 @@ cargo run -q --manifest-path "$root/Cargo.toml" --features full --bin whiff -- f
 for d in "$work"/*/; do
     id=$(basename "$d")
     [ "$id" = _work ] || [ "$id" = host ] || [ "$id" = aar ] || [ -z "$(ls -A "$d")" ] && continue
+    # Shared with other fixture scripts: its SOURCE.md is kept by hand.
+    [ "$id" = pdf ] && continue
     name=$(python3 -c 'import json,sys; print({f["id"]: f["name"] for f in json.load(open(sys.argv[1]))}[sys.argv[2]])' "$work/formats.json" "$id")
     source_md "$id" "$name"
 done

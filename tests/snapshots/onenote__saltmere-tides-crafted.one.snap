@@ -1,0 +1,112 @@
+---
+source: src/formats/doc/legacy.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides-crafted.one",
+    "stem": "saltmere-tides-crafted",
+    "extension": "one"
+  },
+  "identification": {
+    "format": "onenote",
+    "name": "Microsoft OneNote",
+    "mime": "application/onenote",
+    "family": "doc.other",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "doc.legacy"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1024
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1024,
+    "entropy": 0.506,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "3f7cb74d50914cbf741dfad92d58ffdf7218f53cfc1e780057eade678d2bf7fd",
+    "blake3": "76d94ffd7b3123a52850e9932e8e70675ae71df2f9fc441a501dde721d68e9cc"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "onenote": {
+      "kind": "section",
+      "file_id": "{5A17E2E0-0000-4000-8000-000000000008}",
+      "last_written_by": "OneNote 2010",
+      "oldest_writer": "OneNote 2010",
+      "newest_writer": "OneNote 2010",
+      "transactions": 3,
+      "file_version_generation": 7,
+      "created_by_build": 3853
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.legacy",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

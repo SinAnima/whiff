@@ -7,10 +7,10 @@ keep the schema version.
 ## Unreleased
 
 Games (Stage 8, part 1) and the long tail (parts 2 to 4, and the
-archives and executables of part 6): every tier 1 and tier 2 catalogue
-format now has an extractor, and so does every programming language,
-package manifest, image, metadata, archive and executable format in the
-catalogue.
+archives, executables and documents of part 6): every tier 1 and tier 2
+catalogue format now has an extractor, and so does every programming
+language, package manifest, image, metadata, archive, executable and
+document format in the catalogue.
 
 - **Games** (feature `games`, which now includes `common`), all in-house;
   read from headers, directories and indexes (nothing is extracted, run
@@ -294,6 +294,29 @@ catalogue.
   - iBooks Author books (read as EPUB 3), and Open eBook / EPUB package
     files and DAISY NCX files on their own;
   - Outlook templates (`.oft`) go to the `.msg` reader.
+- **Document packages and older binary documents** (`common`, batch 4
+  part 4, in-house, no new crates; with it every document row has an
+  extractor):
+  - `doc.packages`: XPS and OpenXPS (documents, pages, fonts, core
+    properties, glyph text), Word 2003 XML and Flat OPC, Apple Pages,
+    Numbers and Keynote (document properties and the versions that saved
+    them; IWA content not decoded), Hancom HWPX (application, title,
+    creator, sections, text), InDesign IDML (DOM version, spreads,
+    stories, fonts, text) and `.indd` headers, FrameMaker files and MIF,
+    Notion and Confluence exports (page tree), Kindle KFX containers
+    (version, DRM wrapper);
+  - `doc.legacy`: WordPerfect (product, file type, version, encryption),
+    Lotus 1-2-3 WKS to WK4 and Quattro WQ1 (version, cells by kind, label
+    text), ClarisWorks / AppleWorks, Microsoft Write and Ami Pro (text),
+    CHM (language, file directory, topics, and the `#SYSTEM` title,
+    compiler and default topic), WinHelp (version, title, copyright,
+    internal files, macros flagged), OneNote (kind, file id, writing
+    versions), PJL / PCL print jobs (job name, language, copies, paper,
+    resolution, pages; user names only without strict privacy) and Windows
+    spool files (`.spl` document and port; `.shd` job, document, printer,
+    driver, data type);
+  - the PDF reader flags Illustrator's PDF-compatible files (the
+    `/Illustrator` page piece, `/AIPrivateData` streams).
 - **Detection:** `.csproj`, `.fsproj` and `.vbproj` files moved from the
   generic XML reader to the manifest reader; `build.gradle` is a Gradle
   manifest, not Groovy source. A VCD header now needs a `$end` (Smithy
@@ -307,7 +330,7 @@ catalogue.
 - **Catalogue:** `data/coverage.tsv` credits rows that another family's
   extractor handles (SVG, LaTeX, MHTML, sitemaps, `.tar.*`, torrents,
   known JSON and YAML schemas, Snort rules, dbt models …); an unknown row
-  or format there is an error. 606 → 674 → 767 → 824 → 842 → 855 → 870 of 1008 formats
+  or format there is an error. 606 → 674 → 767 → 824 → 842 → 855 → 870 → 887 of 1008 formats
   have an extractor.
 - **Shared code:** the Unity class-ID names (from the Unity YAML reader)
   and the strings of the pickle walker are reused by the games readers.
@@ -342,14 +365,14 @@ catalogue.
   `scripts/fixtures/legacy.sh` makes the batch 4 fixtures in a podman
   container (arc, kgb, zpaq, macutils, sharutils, Makeself, wimlib, pex,
   the JDK, dump, Borg, clang, lld, GCC, llvm-dwp, dtc, bibutils,
-  AbiWord, Gnumeric, under faketime
+  AbiWord, Gnumeric, pandoc, chmcmd, Ghostscript, under faketime
   where they record the time; on the host `aa`, `osacompile` and rustc;
   the rest written from the specifications);
   `legacy_oracle.py` compares the reports with nomarch, lsar, acefile,
   `zpaq l`, hexbin, uudecode, the shar scripts run in a scratch folder,
   Makeself's `--info`, `wimlib-imagex info`, `jmod list`, `restore -t`,
-  llvm-pdbutil, llvm-dwarfdump, llvm-objdump, fdtget, bibutils, libmagic
-  and the Python standard library.
+  llvm-pdbutil, llvm-dwarfdump, llvm-objdump, fdtget, bibutils, libwps
+  `wks2csv`, chmlib `enum_chmLib`, libmagic and the Python standard library.
 - **Speed:** detection no longer guesses the character set of every
   file several times. The text sniffers (playlists, cue sheets, subtitles,
   text scores) read UTF-8 and binary heads directly and run the guess only

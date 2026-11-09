@@ -1,0 +1,126 @@
+---
+source: src/formats/doc/packages.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-notes-crafted.pages",
+    "stem": "saltmere-notes-crafted",
+    "extension": "pages"
+  },
+  "identification": {
+    "format": "iwork_pages",
+    "name": "Apple Pages document",
+    "mime": "application/vnd.apple.pages",
+    "family": "doc.odf",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "iwork_pages",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "doc.packages"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1014
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1014,
+    "entropy": 6.249,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "688a7b95f3f42fce3a2a8b7e38ccd1ac86733de91cef9e0319b4e59d37cf7cb2",
+    "blake3": "63df9d370f8a5fd54918725053cf93ee123a6b563f79e5510da16aea9934e0a2"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "iwork_pages": {
+      "file_format_version": "14.0.1",
+      "revision": "0::5A17E2E0-0000-4000-8000-000000000006",
+      "multi_page": false,
+      "document_uuid": "5A17E2E0-0000-4000-8000-000000000005",
+      "saved_with": "Pages 14.0 (7037.0.101)",
+      "build_history": [
+        "Pages 14.0 (7037.0.101)"
+      ],
+      "iwa_objects": 1,
+      "media": {
+        "png": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.packages",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

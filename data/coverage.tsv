@@ -62,3 +62,6 @@ Outlook template / item	msg
 SolidWorks / Inventor (OLE-based)	cfb
 WordPad / RTFD bundle	rtf
 XML Paper / StarOffice legacy	sxw
+Word XML 2003 / Flat OPC	wordml_2003
+Notion / Confluence export bundles	wiki_export
+Adobe Illustrator (PDF-based)	pdf

@@ -1,0 +1,191 @@
+---
+source: src/formats/doc/pdf/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-chart-illustrator-crafted.ai",
+    "stem": "saltmere-chart-illustrator-crafted",
+    "extension": "ai"
+  },
+  "identification": {
+    "format": "pdf",
+    "name": "PDF document",
+    "mime": "application/pdf",
+    "family": "doc.pdf",
+    "confidence": 0.8,
+    "detected_by": "magic",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "pdf",
+        "confidence": 0.8
+      },
+      {
+        "format": "ai",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "gbk",
+    "extractor": "doc.pdf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1871
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "digitized",
+        "value": "2025-09-01T12:00:00+00:00",
+        "source": "xmp.xmp:CreateDate",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ben Gull"
+    ]
+  },
+  "physical": {
+    "size_bytes": 1871,
+    "entropy": 5.271,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1871,
+      "chars": 1869,
+      "words": 250,
+      "lines": 66,
+      "max_line_length": 204,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "document": {
+      "pages": 1
+    }
+  },
+  "integrity": {
+    "sha256": "f18dbb3650443008f4b95ddd6fd427cd29849b626c86985d08ef8298d468702e",
+    "blake3": "160912ecdac49ebcf2b468b33fa83a1b70115dd24031acc1750765a26de7b701"
+  },
+  "content": {
+    "title": "Saltmere harbour leaflet",
+    "authors": [
+      "Ben Gull"
+    ],
+    "excerpt": "Saltmere harbour chart"
+  },
+  "metadata": {
+    "xmp": {
+      "dc": {
+        "title": "Saltmere harbour leaflet",
+        "creator": [
+          "Ben Gull"
+        ]
+      },
+      "xmp": {
+        "CreatorTool": "Adobe Illustrator 29.0 (Macintosh)",
+        "CreateDate": "2025-09-01T12:00:00Z"
+      }
+    }
+  },
+  "format": {
+    "pdf": {
+      "version": "1.6",
+      "objects": 10,
+      "page_sizes": [
+        {
+          "width_pt": 595.0,
+          "height_pt": 842.0,
+          "width_mm": 209.9,
+          "height_mm": 297.0,
+          "paper": "A4",
+          "orientation": "portrait",
+          "pages": 1
+        }
+      ],
+      "pages_with_text": 1,
+      "fonts": {
+        "Helvetica": {
+          "type": "Type1",
+          "embedded": false
+        }
+      },
+      "illustrator": {
+        "page_piece": true,
+        "private_data_streams": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.pdf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.xmp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

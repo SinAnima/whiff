@@ -1,0 +1,114 @@
+---
+source: src/formats/doc/legacy.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "00007-crafted.shd",
+    "stem": "00007-crafted",
+    "extension": "shd"
+  },
+  "identification": {
+    "format": "spool_shd",
+    "name": "Windows spool shadow file (SHD)",
+    "mime": "application/x-windows-spool-shadow",
+    "family": "doc.other",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "doc.legacy"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 294
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 294,
+    "entropy": 2.822,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "8833da8a7c968c4a47261459580c6637471b6fef90bbc97a9606aaeed6695fb6",
+    "blake3": "3b7bfb76c9ca91a8502b908b7636765bc73f6aed1ba34b2962887031128a70d3"
+  },
+  "content": {
+    "title": "Saltmere tides"
+  },
+  "metadata": {},
+  "format": {
+    "spool_shd": {
+      "windows": "Windows XP or later",
+      "job_id": 7,
+      "document": "Saltmere tides",
+      "port": "NUL:",
+      "printer": "Saltmere Harbour Printer",
+      "driver": "Generic / Text Only",
+      "print_processor": "WinPrint",
+      "data_type": "NT EMF 1.008"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.legacy",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

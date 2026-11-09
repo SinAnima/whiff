@@ -1,0 +1,108 @@
+---
+source: src/formats/doc/legacy.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-notes-crafted.wri",
+    "stem": "saltmere-notes-crafted",
+    "extension": "wri"
+  },
+  "identification": {
+    "format": "ms_write",
+    "name": "Microsoft Write document",
+    "mime": "application/x-mswrite",
+    "family": "doc.other",
+    "confidence": 0.89,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "doc.legacy"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 384
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 384,
+    "entropy": 2.071,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "79424da5343ce211d24a9e96ed6c72ffa956ecf7bb0215442506e94001997326",
+    "blake3": "95e7a6ca2165dfe2eefaa2f03ae101007f1753ba3cb456d153120fc5bd7a11d3"
+  },
+  "content": {
+    "excerpt": "Saltmere harbour notes High water 06:12, low water 12:31. The bell rings at high tide."
+  },
+  "metadata": {},
+  "format": {
+    "ms_write": {
+      "characters": 90,
+      "paragraphs": 3
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.legacy",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

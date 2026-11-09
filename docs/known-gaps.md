@@ -621,3 +621,47 @@ uncompressed (and ALZip's deflated entries); nothing else is decompressed.
   of purchased books are not read.
 - **Mail merge data** is credited to the CSV reader; label layouts are not
   recognised.
+
+### Document packages and older binary documents (long tail, batch 4)
+
+- **Written from specifications, not by the applications:** the XPS,
+  Word 2003 XML, iWork, HWPX, IDML, InDesign, FrameMaker, MIF, KFX,
+  WordPerfect, Lotus, ClarisWorks, Write, Ami Pro, WinHelp, OneNote and
+  spool fixtures; none of those applications runs here. libmagic, libwps
+  (`wks2csv`) and Python's zip / XML / plist modules check what they can.
+  The Windows `.shd` layout follows forensic write-ups and was not checked
+  against a Windows spooler.
+- **XPS:** text comes from the glyph runs' `UnicodeString`; glyph indices
+  without one are not mapped back to characters. Fonts are listed, not
+  read.
+- **iWork:** the IWA objects (Snappy-compressed protobuf) are not decoded,
+  so there is no text, title or page count; the Metadata property lists
+  and file names give what is reported. iWork '09 (XML) files are not
+  recognised.
+- **HWPX / IDML / Flat OPC:** text is gathered from the run elements only;
+  tables, footnotes and styles are not distinguished. Binary HWP (5.x,
+  OLE) files go through the compound-file reader.
+- **InDesign `.indd`, FrameMaker `.fm`:** the header (and the embedded XMP
+  packet); the documents themselves are not decoded. MIF gives pages,
+  paragraphs and strings, not the full markup.
+- **Exports:** Notion and Confluence are recognised from their file names;
+  other wiki exports are plain ZIP files. Page text goes through the
+  Markdown and HTML readers only when a member is handed on.
+- **KFX:** the container header; the Ion entities (and the book inside)
+  are not decoded, and a DRM-wrapped file gives only that it is wrapped.
+- **WordPerfect, ClarisWorks, OneNote:** headers only; document text and
+  OneNote section / page titles (in the revision store) are not read.
+  Works documents, Ichitaro and Quattro Pro `.qpw` files (OLE) go through
+  the compound-file reader.
+- **Lotus 1-2-3:** cell counts and label text; numbers, formulas and
+  named ranges are not listed. WK3 and later sheet names are not read.
+- **CHM:** the directory and the uncompressed `#SYSTEM` file; the topics
+  (LZX-compressed) are listed, not decompressed, so there is no topic
+  text.
+- **WinHelp:** the directory and `|SYSTEM`; topic text (`|TOPIC`,
+  phrase-compressed) is not decoded. Macros are flagged as active content,
+  never run.
+- **PCL:** pages are counted from form feeds outside data blocks (PCL 5);
+  PCL XL and PostScript jobs give their language only.
+- **Illustrator:** the PDF-compatible part is read as a PDF; the native
+  artwork in `/AIPrivateData` (compressed) is counted, not decoded.

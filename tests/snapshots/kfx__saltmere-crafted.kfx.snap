@@ -1,0 +1,109 @@
+---
+source: src/formats/doc/packages.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-crafted.kfx",
+    "stem": "saltmere-crafted",
+    "extension": "kfx"
+  },
+  "identification": {
+    "format": "kfx",
+    "name": "Kindle KFX container",
+    "mime": "application/x-kfx-ebook",
+    "family": "doc.ebook",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "doc.packages"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 124
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 124,
+    "entropy": 0.523,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "068d5586b97d8bbcb3cbc9ec0c8aeb55709844b4324ce39c2dc8e7bd03001955",
+    "blake3": "857e02dcd546547334dba7a7a48232b9debcaccb37d08475a385c20d83d2f050"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "kfx": {
+      "container_version": 2,
+      "header_bytes": 18,
+      "container_info_offset": 18,
+      "container_info_bytes": 42,
+      "drm": "none"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.packages",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

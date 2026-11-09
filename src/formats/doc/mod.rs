@@ -9,10 +9,12 @@
 pub(crate) mod djvu;
 pub(crate) mod ebook;
 pub(crate) mod field;
+pub(crate) mod legacy;
 pub(crate) mod odf;
 pub(crate) mod ole;
 pub(crate) mod ooxml;
 pub(crate) mod other;
+pub(crate) mod packages;
 pub(crate) mod pdf;
 pub(crate) mod rtf;
 pub(crate) mod vba;

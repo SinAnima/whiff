@@ -1,0 +1,110 @@
+---
+source: src/formats/doc/legacy.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "00007-crafted.spl",
+    "stem": "00007-crafted",
+    "extension": "spl"
+  },
+  "identification": {
+    "format": "spool_spl",
+    "name": "Windows spool file (SPL)",
+    "mime": "application/x-windows-spool",
+    "family": "doc.other",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "doc.legacy"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 172
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 172,
+    "entropy": 1.433,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "f465eba8faa8153fce6f011f9091d9a076e2cb9bdb0fcf6057509006d115b395",
+    "blake3": "9a2bd86a66e24fa3adbcc8ea9210efb7dfb222e47d158f04f0a8a35814f0c21d"
+  },
+  "content": {
+    "title": "Saltmere tides"
+  },
+  "metadata": {},
+  "format": {
+    "spool_spl": {
+      "header_bytes": 56,
+      "document": "Saltmere tides",
+      "port": "NUL:",
+      "emf_data": true
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.legacy",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
