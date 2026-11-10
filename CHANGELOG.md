@@ -345,6 +345,18 @@ document format in the catalogue.
   dumps, NetCDF geodata, Unreal / Unity scenes, Office add-ins, GIFV,
   SolidWorks, memory dumps, encrypted volumes, Maildir and Usenet
   messages, format-patch mails, MSU, bottles, AAX).
+- **Databases, logs and caches long tail** (batch 5 part e3, in-house,
+  no new crates):
+  - new `db.stores` (`common`): Realm and Firebird / InterBase headers,
+    SQL Server backups (Microsoft Tape Format: media, software, backup
+    sets; the user only with `--privacy off`), Kafka log segments
+    (batches, records, offset and timestamp ranges, compression) and
+    indexes, Prometheus TSDB index and chunk files, and Anki decks (media,
+    with the collection handed on to the SQLite reader); a TSDB block's
+    `meta.json` is recognised as a known JSON schema;
+  - new `forensic.longtail` (`forensics`): macOS unified log (`tracev3`)
+    and ASL files, nfdump and IPFIX captures, Firefox `cache2` and Chrome
+    cache files (URLs as their host unless `--privacy off`).
 - **Science and medical long tail** (`science`, `geo`, batch 5 part e2,
   in-house, no new crates):
   - new `science.longtail`: HDF4 / HDF-EOS 2 (library version,
@@ -432,7 +444,7 @@ document format in the catalogue.
 - **Catalogue:** `data/coverage.tsv` credits rows that another family's
   extractor handles (SVG, LaTeX, MHTML, sitemaps, `.tar.*`, torrents,
   known JSON and YAML schemas, Snort rules, dbt models …); an unknown row
-  or format there is an error. 606 → 674 → 767 → 824 → 842 → 855 → 870 → 887 → 934 → 951 → 967 → 978 → 982 of 1008 formats
+  or format there is an error. 606 → 674 → 767 → 824 → 842 → 855 → 870 → 887 → 934 → 951 → 967 → 978 → 982 → 991 of 1008 formats
   have an extractor.
 - **Shared code:** the Unity class-ID names (from the Unity YAML reader)
   and the strings of the pickle walker are reused by the games readers.
@@ -475,7 +487,7 @@ document format in the catalogue.
   Makeself's `--info`, `wimlib-imagex info`, `jmod list`, `restore -t`,
   llvm-pdbutil, llvm-dwarfdump, llvm-objdump, fdtget, bibutils, libwps
   `wks2csv`, chmlib `enum_chmLib`, ofxparse, mt-940, python-gedcom, tap.py,
-  prometheus_client, beancount, tnef, cbor2, ffprobe, sf2utils, OpenTimelineIO,
+  prometheus_client, beancount, tnef, cbor2, kafka-python, ffprobe, sf2utils, OpenTimelineIO,
   libmagic and the Python standard library.
 - **Speed:** detection no longer guesses the character set of every
   file several times. The text sniffers (playlists, cue sheets, subtitles,

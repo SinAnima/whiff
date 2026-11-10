@@ -1,0 +1,117 @@
+---
+source: src/formats/db/stores.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "index",
+    "stem": "index"
+  },
+  "identification": {
+    "format": "prometheus_tsdb",
+    "name": "Prometheus TSDB index / chunks",
+    "mime": "application/x-prometheus-tsdb",
+    "family": "db",
+    "confidence": 0.76,
+    "detected_by": "magic",
+    "extractor": "db.stores"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 154
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 154,
+    "entropy": 4.241,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "471948744e23129fc495cc800e0ad0fe2b457a607d4c369c76bd5e8c50d2d273",
+    "blake3": "101edef57febacc01e60a116f4f62b6fc35792d0fa2ab873583ec4f694cfe5c7"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "prometheus_tsdb": {
+      "kind": "index",
+      "version": 2,
+      "symbols": 9,
+      "first_symbols": [
+        "__name__",
+        "harbour_boats_moored",
+        "instance",
+        "job",
+        "quay",
+        "east",
+        "long_wall",
+        "saltmere:9100",
+        "harbour"
+      ],
+      "series_offset": 102
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "db.stores",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

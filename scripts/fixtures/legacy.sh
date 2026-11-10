@@ -37,6 +37,7 @@
 #     RUN pip install --no-cache-dir ofxparse mt-940 python-gedcom tap.py prometheus_client beancount
 #     RUN apt-get update && apt-get install -y --no-install-recommends tnef && rm -rf /var/lib/apt/lists/*
 #     RUN pip install --no-cache-dir cbor2
+#     RUN pip install --no-cache-dir kafka-python
 #
 # (nomarch, unar, file and acefile are for legacy_oracle.py; gcc builds
 # acefile's optional C module.)

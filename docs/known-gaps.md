@@ -798,3 +798,28 @@ uncompressed (and ALZip's deflated entries); nothing else is decompressed.
 - **Not read:** JMP and Minitab files, Wolfram `.mx` dumps and ECW
   rasters (no published layout); MrSID is identified by its signature
   only (size, bands and CRS need the vendor's decoder).
+
+### Databases, logs and caches long tail (batch 5e part 3)
+
+- **Realm / Firebird:** headers only; tables and records are not read.
+- **SQL Server:** backups (MTF) give their TAPE and SSET blocks; the
+  database name, pages and log in the MSSQL streams are not read. Data
+  files (`.mdf`, `.ldf`) are not read (the boot page layout is not
+  published).
+- **Kafka:** record batches are framed and counted; records are not
+  decompressed or decoded, and CRCs are not checked.
+- **Prometheus TSDB:** the index gives its symbol table; series and
+  postings are not walked. Chunks are counted by encoding, not decoded.
+- **Anki:** `.anki21b` collections (zstd) are not handed on.
+- **Unified log:** the header and chunk tags; firehose entries, catalogs
+  and compressed chunksets are not decoded (no message text is read).
+- **ASL:** records are walked through their `next` pointers; keys and
+  messages are not copied.
+- **nfdump / IPFIX:** headers and IPFIX sets; flow records are counted,
+  not decoded. NetFlow v5 / v9 exports in pcap files are left to the
+  packet-capture reader.
+- **ETW traces (`.etl`):** not read (the buffer and header layout is not
+  published).
+- **Browser caches:** Firefox cache2 entries, Chrome block files, index
+  and simple-cache entries; Chrome entry blocks inside `data_*` files are
+  not walked, and cached bodies are not handed on.

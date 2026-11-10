@@ -55,7 +55,8 @@ pub(crate) fn detect(docs: &[Value], name: Option<&str>, cx: &mut Context<'_>) -
     if let Some(v) = conda(first, &name) {
         return Some(v);
     }
-    let more: [Detector; 16] = [
+    let more: [Detector; 17] = [
+        tsdb_block_meta,
         terraform_state,
         data_package,
         dbt_artifact,
@@ -110,6 +111,29 @@ pub(crate) fn schema_for(mut schema: Value, known: Option<&Value>, cx: &Context<
         }
     }
     schema
+}
+
+/// A Prometheus TSDB block's `meta.json`: the time range, series, samples
+/// and chunks, the compaction level and sources.
+fn tsdb_block_meta(v: &Value, _: &str, _: &mut Context<'_>) -> Option<Value> {
+    let (min, max) = (v.get("minTime")?.as_i64()?, v.get("maxTime")?.as_i64()?);
+    v.get("ulid")?.as_str()?;
+    let ms = |t: i64| {
+        let ticks = t.checked_mul(10_000)?.checked_add(116_444_736_000_000_000)?;
+        crate::plugin::filetime(u64::try_from(ticks).ok()?)
+    };
+    Some(json!({
+        "id": "prometheus_tsdb_block",
+        "name": "Prometheus TSDB block metadata",
+        "ulid": v.get("ulid"),
+        "time_range": [ms(min), ms(max)],
+        "series": get(v, &["stats", "numSeries"]),
+        "samples": get(v, &["stats", "numSamples"]),
+        "chunks": get(v, &["stats", "numChunks"]),
+        "compaction_level": get(v, &["compaction", "level"]),
+        "sources": len(get(v, &["compaction", "sources"])),
+        "version": v.get("version"),
+    }))
 }
 
 /// Terraform state: resources by type, providers, serial and versions.

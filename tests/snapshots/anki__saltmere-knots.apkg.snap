@@ -1,0 +1,495 @@
+---
+source: src/formats/db/stores.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-knots.apkg",
+    "stem": "saltmere-knots",
+    "extension": "apkg"
+  },
+  "identification": {
+    "format": "anki",
+    "name": "Anki deck package",
+    "mime": "application/x-anki",
+    "family": "db",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "anki",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "db.stores"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 24996
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 24996,
+    "entropy": 0.755,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "53e0e81e09a000aba3d7b6199b7b713d5c54184b8980254c30c29b313a972e6b",
+    "blake3": "ac0bad3c5993b9e4b7f7f251adb645e36d74299fc257e5b707f69525bf826362"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "anki": {
+      "collection": "anki2 (legacy)",
+      "media_files": 2,
+      "media_types": {
+        "mp3": 1,
+        "png": 1
+      }
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "collection.anki2",
+        "stem": "collection",
+        "extension": "anki2"
+      },
+      "identification": {
+        "format": "sqlite",
+        "name": "SQLite database",
+        "mime": "application/vnd.sqlite3",
+        "family": "db",
+        "confidence": 0.97,
+        "detected_by": "magic",
+        "extension_matches": true,
+        "extractor": "db.sqlite"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 24576
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 24576,
+        "entropy": 0.651,
+        "entropy_scope": "file"
+      },
+      "integrity": {
+        "sha256": "62a9443d23adaf93050dc2d86820130a4f3fcb9f1ce328f8fb90283050b8b36b",
+        "blake3": "48ad96b8766c88494903f41f5ed4cd84238f52cb1908b0f3c54b7128bf0704a0"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "sqlite": {
+          "sqlite_version": "3.46.1",
+          "page_size": 4096,
+          "page_count": 6,
+          "encoding": "utf-8",
+          "journal_mode": "rollback",
+          "schema_format": 4,
+          "user_version": 0,
+          "free_pages": 0,
+          "object_counts": {
+            "tables": 5,
+            "indexes": 0,
+            "views": 0,
+            "triggers": 0
+          },
+          "total_rows": 8,
+          "tables": [
+            {
+              "name": "col",
+              "columns": [
+                {
+                  "name": "id",
+                  "type": "INTEGER",
+                  "primary_key": true
+                },
+                {
+                  "name": "crt",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "mod",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "scm",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "ver",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "dty",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "usn",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "ls",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "conf",
+                  "type": "TEXT"
+                },
+                {
+                  "name": "models",
+                  "type": "TEXT"
+                },
+                {
+                  "name": "decks",
+                  "type": "TEXT"
+                },
+                {
+                  "name": "dconf",
+                  "type": "TEXT"
+                },
+                {
+                  "name": "tags",
+                  "type": "TEXT"
+                }
+              ],
+              "rows": 1
+            },
+            {
+              "name": "notes",
+              "columns": [
+                {
+                  "name": "id",
+                  "type": "INTEGER",
+                  "primary_key": true
+                },
+                {
+                  "name": "guid",
+                  "type": "TEXT"
+                },
+                {
+                  "name": "mid",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "mod",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "usn",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "tags",
+                  "type": "TEXT"
+                },
+                {
+                  "name": "flds",
+                  "type": "TEXT"
+                },
+                {
+                  "name": "sfld",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "csum",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "flags",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "data",
+                  "type": "TEXT"
+                }
+              ],
+              "rows": 3
+            },
+            {
+              "name": "cards",
+              "columns": [
+                {
+                  "name": "id",
+                  "type": "INTEGER",
+                  "primary_key": true
+                },
+                {
+                  "name": "nid",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "did",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "ord",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "mod",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "usn",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "type",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "queue",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "due",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "ivl",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "factor",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "reps",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "lapses",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "left",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "odue",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "odid",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "flags",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "data",
+                  "type": "TEXT"
+                }
+              ],
+              "rows": 3
+            },
+            {
+              "name": "revlog",
+              "columns": [
+                {
+                  "name": "id",
+                  "type": "INTEGER",
+                  "primary_key": true
+                },
+                {
+                  "name": "cid",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "usn",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "ease",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "ivl",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "lastIvl",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "factor",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "time",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "type",
+                  "type": "INTEGER"
+                }
+              ],
+              "rows": 1
+            },
+            {
+              "name": "graves",
+              "columns": [
+                {
+                  "name": "usn",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "oid",
+                  "type": "INTEGER"
+                },
+                {
+                  "name": "type",
+                  "type": "INTEGER"
+                }
+              ],
+              "rows": 0
+            }
+          ],
+          "application": {
+            "name": "anki_collection",
+            "notes": 3,
+            "cards": 3,
+            "reviews": 1
+          }
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "db.sqlite",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "db.stores",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

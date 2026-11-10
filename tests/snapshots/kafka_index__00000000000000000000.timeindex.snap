@@ -1,0 +1,111 @@
+---
+source: src/formats/db/stores.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "00000000000000000000.timeindex",
+    "stem": "00000000000000000000",
+    "extension": "timeindex"
+  },
+  "identification": {
+    "format": "kafka_index",
+    "name": "Kafka offset / time index",
+    "mime": "application/x-kafka-index",
+    "family": "db",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "extractor": "db.stores"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 60
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 60,
+    "entropy": 0.814,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "e0ab819ffcb54a022da954fcf5a94dc151e2b496b83589e55d856209184d3b2f",
+    "blake3": "a33690cae006480bb0ecca1c0eb668fd875ec0d52e8355c6a097c3e3826468c8"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "kafka_index": {
+      "segment_base_offset": 0,
+      "kind": "time index",
+      "entries": 1,
+      "timestamp_range": [
+        "2025-09-01T12:00:02Z",
+        "2025-09-01T12:00:02Z"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "db.stores",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

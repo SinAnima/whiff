@@ -127,9 +127,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1008 formats** in total: tier 1 = 139, tier 2 = 122, tier 3 = 747.
-* Formats with an extractor in this build: **982** of 1008.
+* Formats with an extractor in this build: **991** of 1008.
 * Formats by family status: crate = 183, mixed = 365, impl = 460.
-* Formats by target stage: S1 = 202, S1/S6 = 102, S2 = 99, S3 = 65, S3/S8 = 22, S4 = 87, S5 = 89, S6 = 107, S6/S8 = 17, S7 = 143, S8 = 75.
+* Formats by target stage: S1 = 202, S1/S6 = 102, S2 = 99, S3 = 65, S3/S8 = 22, S4 = 87, S5 = 89, S6 = 112, S6/S8 = 21, S7 = 143, S8 = 66.
 * By feature: `common` = 818, `cad` = 45, `forensics` = 38, `science` = 36, `geo` = 34, `data` = 20, `games` = 17.
 * By category: Code 167, Data 157, Image 95, Media 88, Document 71, Archive 47, Scientific 36, Executable 34, Geospatial 34, Text 32, Package 30, 3D 28, Web 27, Forensics 24, Database 21, Security 20, CAD 17, Game 17, Personal 16, Disk 14, Platform 11, Font 10, Fallback 8, Block 4.
 
@@ -940,8 +940,8 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 799 | DuckDB database | `duckdb` `ddb` | — | 3 | `db` | `common` | `db.engines` | impl | S6 | header version |
 | 800 | LMDB / Berkeley DB | `mdb` `db` | — | 3 | `db` | `common` | `db.access` | impl | S6 | page size, entries |
 | 801 | LevelDB / RocksDB SST & logs | `ldb` `sst` `log` | — | 3 | `db` | `common` | `db.engines` | impl | S6 | table properties (RocksDB properties block) |
-| 802 | Realm / Firebird / H2 / HSQLDB | `realm` `fdb` `gdb` `mv.db` | — | 3 | `db` | `common` | — | impl | S8 | header |
-| 803 | Microsoft SQL Server backup / MDF | `bak` `mdf` `ldf` | — | 3 | `db` | `common` | — | impl | S8 | header: database name, version |
+| 802 | Realm / Firebird / H2 / HSQLDB | `realm` `fdb` `gdb` `mv.db` | — | 3 | `db` | `common` | `db.stores` | impl | S6 | header |
+| 803 | Microsoft SQL Server backup / MDF | `bak` `mdf` `ldf` | — | 3 | `db` | `common` | `db.stores` | impl | S6 | header: database name, version |
 | 804 | PostgreSQL custom dump | `dump` `backup` | application/octet-stream | 3 | `db` | `common` | `db.engines` | impl | S6 | pg_dump header: db name, version, TOC entries |
 | 805 | MySQL / MariaDB table files | `frm` `ibd` `myd` `myi` | — | 3 | `db` | `common` | `db.engines` | impl | S6 | — |
 | 806 | Browser profile databases (History, Cookies, Places) | `sqlite` | — | 3 | `db` | `common` | `db.sqlite` | impl | S6 | known schema -&gt; summary (counts, date range; no URLs by default) |
@@ -950,27 +950,27 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 809 | MongoDB dump (BSON dir) | `bson` | — | 3 | `db` | `common` | `data.binser` | impl | S6 | -&gt; data.binser |
 | 810 | Mobile backups (iTunes Manifest.db / Android .ab) | `db` `ab` | — | 3 | `db` | `common` | `db.engines` | impl | S6 | — |
 | 811 | Adobe Lightroom catalog | `lrcat` `lrdata` | — | 3 | `db` | `common` | `db.sqlite` | impl | S6 | image count, collections, keywords (SQLite) |
-| 812 | Anki deck | `apkg` `colpkg` | — | 3 | `db` | `common` | — | impl | S8 | decks, note/card counts |
+| 812 | Anki deck | `apkg` `colpkg` | — | 3 | `db` | `common` | `db.stores` | impl | S6 | decks, note/card counts |
 | 813 | Windows ESE database | `edb` `dat` | — | 3 | `db` | `common` | `forensic.ese` | impl | S6 | tables (SRUM, WebCache, Windows Search) -&gt; forensic |
-| 814 | Kafka log segment | `log` `index` `timeindex` | — | 3 | `db` | `common` | — | impl | S8 | base offset, record batches |
-| 815 | Prometheus TSDB block | `meta.json` `chunks` | — | 3 | `db` | `common` | — | impl | S8 | time range, series count |
+| 814 | Kafka log segment | `log` `index` `timeindex` | — | 3 | `db` | `common` | `db.stores` | impl | S6 | base offset, record batches |
+| 815 | Prometheus TSDB block | `meta.json` `chunks` | — | 3 | `db` | `common` | `db.stores` | impl | S6 | time range, series count |
 | 816 | Windows Event Log | `evtx` `evt` | application/x-ms-evtx | 3 | `forensic` | `forensics` | `forensic.evtx` | impl | S6/S8 | — |
 | 817 | Windows Registry hive | `dat` `hiv` `NTUSER.DAT` `SYSTEM` `SOFTWARE` `SAM` | — | 3 | `forensic` | `forensics` | `forensic.registry` | impl | S6/S8 | — |
 | 818 | Windows Prefetch | `pf` | — | 3 | `forensic` | `forensics` | `forensic.shell` | impl | S6/S8 | exe name, run count, last run times |
 | 819 | NTFS $MFT / $UsnJrnl | `mft` | — | 3 | `forensic` | `forensics` | `forensic.mft` | impl | S6/S8 | — |
 | 820 | Windows minidump | `dmp` `mdmp` | — | 3 | `forensic` | `forensics` | `forensic.dump` | impl | S6/S8 | — |
 | 821 | Linux utmp/wtmp/btmp / journal | `wtmp` `btmp` `journal` | — | 3 | `forensic` | `forensics` | `forensic.logs` | impl | S6/S8 | — |
-| 822 | macOS unified log / ASL | `tracev3` `asl` | — | 3 | `forensic` | `forensics` | — | impl | S8 | — |
+| 822 | macOS unified log / ASL | `tracev3` `asl` | — | 3 | `forensic` | `forensics` | `forensic.longtail` | impl | S6/S8 | — |
 | 823 | Jump lists / recycle bin ($I) | `automaticDestinations-ms` `customDestinations-ms` | — | 3 | `forensic` | `forensics` | `forensic.shell` | impl | S6/S8 | — |
 | 824 | Zeek / Suricata / Whiff logs | `log` `json` | — | 3 | `forensic` | `forensics` | `forensic.capture` | impl | S6/S8 | — |
-| 825 | NetFlow / IPFIX dumps | `nfcapd` `ipfix` | — | 3 | `forensic` | `forensics` | — | impl | S8 | — |
+| 825 | NetFlow / IPFIX dumps | `nfcapd` `ipfix` | — | 3 | `forensic` | `forensics` | `forensic.longtail` | impl | S6/S8 | — |
 | 826 | Syslog / journal export | `log` | — | 3 | `forensic` | `forensics` | `forensic.capture` | impl | S6/S8 | -&gt; text.plain log detector |
 | 827 | Crash reports (.ips, .crash, Breakpad) | `ips` `crash` `dmp` | — | 3 | `forensic` | `forensics` | `forensic.logs` | impl | S6/S8 | app, version, exception, frames |
 | 828 | Snort unified2 alerts | `u2` `unified2` | application/octet-stream | 3 | `forensic` | `forensics` | `forensic.logs` | impl | S6/S8 | alert count, sig ids, time range |
 | 829 | Windows ETW trace | `etl` | — | 3 | `forensic` | `forensics` | — | impl | S8 | provider GUIDs, events count |
-| 830 | macOS FSEvents | `fseventsd` | — | 3 | `forensic` | `forensics` | — | impl | S8 | records, path count |
+| 830 | macOS FSEvents | `fseventsd` | — | 3 | `forensic` | `forensics` | `forensic.logs` | impl | S6/S8 | records, path count |
 | 831 | Memory image (LiME / crash dump / hiberfil) | `lime` `dmp` `hiberfil.sys` | — | 3 | `forensic` | `forensics` | `forensic.dump` | impl | S6/S8 | OS hints, size, profile |
-| 832 | Browser cache entries | `data_0` `cache2` `f_000001` | — | 3 | `forensic` | `forensics` | — | impl | S8 | URLs count, content types |
+| 832 | Browser cache entries | `data_0` `cache2` `f_000001` | — | 3 | `forensic` | `forensics` | `forensic.longtail` | impl | S6/S8 | URLs count, content types |
 | 833 | Windows Timeline / SRUM / Amcache | `db` `hve` `dat` | — | 3 | `forensic` | `forensics` | `forensic.shell` | impl | S6/S8 | -&gt; db / registry |
 | 834 | Kubernetes / cloud audit logs | `jsonl` `log` | — | 3 | `forensic` | `forensics` | `forensic.capture` | impl | S6/S8 | verbs, resources, users count |
 | 835 | Sysmon / auditd logs | `log` `evtx` | — | 3 | `forensic` | `forensics` | `forensic.capture` | impl | S6/S8 | event types histogram |

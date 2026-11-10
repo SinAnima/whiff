@@ -1,0 +1,107 @@
+---
+source: src/formats/db/stores.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.realm",
+    "stem": "saltmere-tides",
+    "extension": "realm"
+  },
+  "identification": {
+    "format": "realm",
+    "name": "Realm database",
+    "mime": "application/x-realm",
+    "family": "db",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "db.stores"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4096
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4096,
+    "entropy": 0.022,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "5e544da7e8d1c0ae6069376d8f08708a5ad9ded1a83f677a243d5678a550c2e3",
+    "blake3": "93609e80d76271ecba9cae5a4078171b31a0440f05302fe1981a0989b15506d9"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "realm": {
+      "file_format_version": 23,
+      "top_ref": 4096,
+      "selected_slot": 0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "db.stores",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

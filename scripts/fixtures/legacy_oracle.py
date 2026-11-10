@@ -555,6 +555,36 @@ def batch5e(fx):
         want(rel(f), "format.materialx.version", root.get("version"), "ElementTree")
         want(rel(f), "format.materialx.materials", [e.get("name") for e in root.iter("surfacematerial")], "ElementTree")
         want(rel(f), "format.materialx.node_graphs", [e.get("name") for e in root.iter("nodegraph")], "ElementTree")
+    for f, needle in (("mssql_backup/saltmere-harbour.bak", "NTbackup archive"), ("anki/saltmere-knots.apkg", "Anki APKG")):
+        if (fx / f).exists():
+            libmagic(fx, f, needle)
+    # Kafka: kafka-python's own batch reader.
+    from kafka.record.default_records import DefaultRecordBatch
+    for f in sorted((fx / "kafka_log").glob("*.log")):
+        b, at, batches, records, codecs = f.read_bytes(), 0, 0, 0, {}
+        while at + 12 <= len(b):
+            length = int.from_bytes(b[at + 8:at + 12], "big")
+            batch = DefaultRecordBatch(b[at:at + 12 + length])
+            batches += 1
+            records += sum(1 for _ in batch)
+            name = {0: "none", 1: "gzip", 2: "snappy", 3: "lz4", 4: "zstd"}[batch.compression_type]
+            codecs[name] = codecs.get(name, 0) + 1
+            at += 12 + length
+        want(rel(f), "format.kafka_log.batches", batches, "kafka-python")
+        want(rel(f), "format.kafka_log.records", records, "kafka-python")
+        want(rel(f), "format.kafka_log.compression", dict(sorted(codecs.items())), "kafka-python")
+    # Anki: the collection's tables through sqlite3; the media map through zipfile.
+    import sqlite3
+    import tempfile
+    for f in sorted((fx / "anki").glob("*.apkg")):
+        z = zipfile.ZipFile(f)
+        with tempfile.NamedTemporaryFile(suffix=".anki2") as t:
+            t.write(z.read("collection.anki2"))
+            t.flush()
+            db = sqlite3.connect(t.name)
+            want(rel(f), "embedded.0.format.sqlite.application.notes", db.execute("select count(*) from notes").fetchone()[0], "sqlite3")
+            want(rel(f), "embedded.0.format.sqlite.application.cards", db.execute("select count(*) from cards").fetchone()[0], "sqlite3")
+        want(rel(f), "format.anki.media_files", len(json.loads(z.read("media"))), "zipfile")
     ns = {"h": "urn:hl7-org:v3"}
     for f in sorted((fx / "aecg").glob("*.xml")):
         codes = [c.get("code") for c in ET.parse(f).getroot().iterfind(".//h:sequence/h:code", ns)]

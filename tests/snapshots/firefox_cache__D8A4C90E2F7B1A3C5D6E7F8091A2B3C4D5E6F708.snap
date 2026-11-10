@@ -1,0 +1,129 @@
+---
+source: src/formats/forensic/longtail.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "D8A4C90E2F7B1A3C5D6E7F8091A2B3C4D5E6F708",
+    "stem": "D8A4C90E2F7B1A3C5D6E7F8091A2B3C4D5E6F708"
+  },
+  "identification": {
+    "format": "firefox_cache",
+    "name": "Firefox cache2 entry",
+    "mime": "application/x-firefox-cache",
+    "family": "forensic",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "candidates": [
+      {
+        "format": "firefox_cache",
+        "confidence": 0.9
+      },
+      {
+        "format": "html",
+        "confidence": 0.9
+      },
+      {
+        "format": "xml",
+        "confidence": 0.32
+      }
+    ],
+    "extractor": "forensic.longtail"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 265
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 265,
+    "entropy": 5.144,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "0e1f58f32393a7f45b38b7f76d6e9a559f8b6b621d489807ea688219c3ad9e5f",
+    "blake3": "2351b7dff083895de54c4ceb801be72cbb2a498f42856540c1a44e130a7657d9"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "firefox_cache": {
+      "data_bytes": 67,
+      "version": 3,
+      "fetch_count": 2,
+      "last_fetched": "2025-09-01T12:00:00Z",
+      "last_modified": "2025-09-01T11:00:00Z",
+      "expires": "2025-09-02T12:00:00Z",
+      "url": {
+        "host": "tides.saltmere.example"
+      },
+      "method": "GET",
+      "status": "HTTP/1.1 200 OK",
+      "content_type": "text/html; charset=utf-8",
+      "server": "harbour"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.longtail",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

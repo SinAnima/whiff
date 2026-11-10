@@ -14,6 +14,7 @@ pub(crate) mod dbf;
 pub(crate) mod engines;
 pub(crate) mod schema;
 pub(crate) mod sqlite;
+pub(crate) mod stores;
 
 // Helpers shared with the archive extractors.
 pub(crate) use super::archive::unix_time;

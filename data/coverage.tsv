@@ -113,3 +113,6 @@ HDF4 / HDF-EOS	hdf4
 Wolfram / Maple / Mathcad files	maple_mw
 SCP-ECG / aECG	scp_ecg
 MrSID / ECW rasters	mrsid
+Prometheus TSDB block	prometheus_tsdb
+macOS FSEvents	fsevents
+Browser cache entries	chrome_cache
