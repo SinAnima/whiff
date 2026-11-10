@@ -187,11 +187,14 @@ impl Extractor for Records {
         }
         // Beancount directives, or Ledger transactions (a date, then
         // indented postings).
+        // (`get`: the head is decoded lossily, so byte 10 may fall inside
+        // a replacement character.)
         let beancount = lines.iter().any(|l| {
             l.len() > 11
                 && l.as_bytes()[4] == b'-'
                 && l.as_bytes()[7] == b'-'
-                && (l[10..].starts_with(" open ") || l[10..].starts_with(" * ") || l[10..].starts_with(" txn "))
+                && l.get(10..)
+                    .is_some_and(|r| r.starts_with(" open ") || r.starts_with(" * ") || r.starts_with(" txn "))
         }) || t.starts_with("option \"");
         let ledger = lines.windows(2).any(|w| {
             let d = w[0].as_bytes();
@@ -658,8 +661,11 @@ fn ledger(cx: &mut Context<'_>, text: &str) {
     for line in text.lines() {
         let l = line.trim_end();
         let bytes = l.as_bytes();
-        let starts_with_date =
-            bytes.len() >= 10 && bytes[..4].iter().all(u8::is_ascii_digit) && matches!(bytes[4], b'-' | b'/' | b'.');
+        // The first ten bytes all ASCII, so slicing at 10 is on a character boundary.
+        let starts_with_date = bytes.len() >= 10
+            && bytes[..10].is_ascii()
+            && bytes[..4].iter().all(u8::is_ascii_digit)
+            && matches!(bytes[4], b'-' | b'/' | b'.');
         if starts_with_date {
             let date = l[..10].replace(['/', '.'], "-");
             let rest = l[10..].trim_start();
@@ -955,8 +961,11 @@ fn gtfs(src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> 
     if let Some(cal) = read(src, cx, "calendar.txt") {
         let mut d: Vec<String> = column(&cal, "start_date");
         d.extend(column(&cal, "end_date"));
-        let dates: Vec<String> =
-            d.into_iter().filter(|v| v.len() == 8).map(|v| format!("{}-{}-{}", &v[..4], &v[4..6], &v[6..])).collect();
+        let dates: Vec<String> = d
+            .into_iter()
+            .filter(|v| v.len() == 8 && v.bytes().all(|b| b.is_ascii_digit()))
+            .map(|v| format!("{}-{}-{}", &v[..4], &v[4..6], &v[6..]))
+            .collect();
         cx.format_set("service_range", range(dates));
     }
     let files: Vec<String> = zip.entries.iter().map(|e| e.name.clone()).collect();
@@ -1063,7 +1072,11 @@ fn mathematica(cx: &mut Context<'_>, text: &str) {
     let mut styles: BTreeMap<String, u64> = BTreeMap::new();
     let (mut titles, mut prose) = (Vec::new(), String::new());
     for (p, _) in text.match_indices("Cell[") {
-        let rest = &text[p + 5..text.len().min(p + 5 + 4096)];
+        let mut end = text.len().min(p + 5 + 4096);
+        while !text.is_char_boundary(end) {
+            end -= 1;
+        }
+        let rest = &text[p + 5..end];
         let (first, after) = if let Some(r) = rest.strip_prefix('"') {
             let e = r.find('"').unwrap_or(r.len());
             (Some(&r[..e]), &r[e.saturating_add(1).min(r.len())..])
@@ -1204,6 +1217,19 @@ mod tests {
             let off = serde_json::to_string(&crate::plugin::testing::report_without_privacy(name, bytes)).unwrap();
             assert!(off.contains(needle), "{name}: name missing with privacy off");
         }
+    }
+
+    /// Fuzzer input (2026-11-09): a lossily decoded line whose byte 10
+    /// falls inside a replacement character must not panic the sniff or
+    /// the readers.
+    #[test]
+    fn lossy_dates_do_not_panic() {
+        let crash: &[u8] = b"date;boat;speie;mackerel;120,5\n2026-10-01;Swift;sardine;80\n2026-10-\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff02;Mari\0\0\0\x80d ane;95\n";
+        crate::plugin::testing::report_for("catch", crash);
+        let ledger = "2025-0\u{e9}-01 * \"x\"\n  Assets:A  1 GBP\n  Equity:B\n";
+        crate::plugin::testing::report_for("j.ledger", ledger.as_bytes());
+        let nb = format!("Notebook[{{Cell[\"{}\u{e9}\", \"Text\"]}}]", "a".repeat(4094));
+        crate::plugin::testing::report_for("n.nb", nb.as_bytes());
     }
 
     /// Account numbers never reach the report whole (neutral sample).

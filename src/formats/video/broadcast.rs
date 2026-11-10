@@ -685,8 +685,9 @@ fn nsv(cx: &mut Context<'_>, b: &[u8], len: u64) {
                 let key = rest[..eq].trim();
                 let after = &rest[eq + 1..];
                 let Some(q) = after.chars().next() else { break };
-                let Some(end) = after[1..].find(q) else { break };
-                let value = &after[1..=end];
+                let open = q.len_utf8();
+                let Some(end) = after[open..].find(q).map(|e| e + open) else { break };
+                let value = &after[open..end];
                 match key.to_ascii_lowercase().as_str() {
                     "title" => {
                         cx.content().title(value.to_string());
@@ -697,7 +698,7 @@ fn nsv(cx: &mut Context<'_>, b: &[u8], len: u64) {
                     "aspect" => cx.format_set("aspect", value),
                     _ => {}
                 }
-                rest = &after[end + 2..];
+                rest = &after[end + q.len_utf8()..];
             }
         }
         sync = header;
@@ -772,6 +773,21 @@ mod tests {
     use super::*;
 
     crate::fixture_tests!("dv", "mxf", "amv", "flic", "bink", "smacker", "nsv", "r3d", "arriraw");
+
+    /// NSV metadata quoted with a multi-byte character must not panic.
+    #[test]
+    fn nsv_odd_quotes() {
+        let meta = "Title=\u{e9}Saltmere\u{e9} URL='x'";
+        let mut b = b"NSVf".to_vec();
+        b.extend(28u32.to_le_bytes());
+        b.extend([0u8; 8]);
+        b.extend(u32::try_from(meta.len()).unwrap().to_le_bytes());
+        b.extend([0u8; 8]);
+        b.extend(meta.as_bytes());
+        b.extend(b"NSVsVP62MP3 \x40\x01\xf0\x00\x19\0\0");
+        let r = crate::plugin::testing::report_for("cam.nsv", &b);
+        assert_eq!(r.format["nsv"]["title"], "Saltmere");
+    }
 
     #[test]
     fn mxf_helpers() {
