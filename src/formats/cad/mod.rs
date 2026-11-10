@@ -9,9 +9,11 @@
 
 pub(crate) mod drawing;
 pub(crate) mod eda;
+pub(crate) mod exchange;
 pub(crate) mod gcode;
 pub(crate) mod gltf;
 pub(crate) mod mesh;
+pub(crate) mod models;
 pub(crate) mod scene;
 pub(crate) mod step;
 

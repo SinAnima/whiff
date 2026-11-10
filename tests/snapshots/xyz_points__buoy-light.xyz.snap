@@ -1,0 +1,144 @@
+---
+source: src/formats/cad/models.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy-light.xyz",
+    "stem": "buoy-light",
+    "extension": "xyz"
+  },
+  "identification": {
+    "format": "xyz_points",
+    "name": "XYZ point cloud",
+    "mime": "text/x-xyz-points",
+    "family": "3d",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "xyz_points",
+        "confidence": 0.9
+      },
+      {
+        "format": "xyz",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "cad.models"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 220
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 220,
+    "entropy": 3.507,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 220,
+      "chars": 220,
+      "words": 36,
+      "lines": 12,
+      "max_line_length": 19,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "218c581dd0cea540a993f637b418706733edcd4890cc85d45fadfd626f839ae5",
+    "blake3": "e241a7e8a64b9ea5df7a1423939e8f0356ed7564af599943322f496607d37862"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "xyz_points": {
+      "points": 12,
+      "columns": 3,
+      "bounds": {
+        "min": [
+          -0.594,
+          -0.5865,
+          0.0
+        ],
+        "max": [
+          0.6,
+          0.5985,
+          1.1
+        ],
+        "size": [
+          1.194,
+          1.185,
+          1.1
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.models",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

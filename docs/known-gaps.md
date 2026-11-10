@@ -759,3 +759,24 @@ uncompressed (and ALZip's deflated entries); nothing else is decompressed.
   event counts and the duration.
 - **Insta360 `.insv` / `.osv`:** read as MP4; the camera's trailer
   (serial number, gyro, GPS) is not read.
+
+### 3D and CAD long tail (batch 5e part 1)
+
+- **Header-level readers:** Parasolid, ACIS, JT, PRC, U3D and DWF report
+  their headers, tables of contents or block lists; geometry (B-rep
+  topology, tessellations, U3D meshes) is not decoded. Binary ACIS
+  (`.sab`) gives its version and body count only.
+- **Alembic:** the archive metadata and object schemas are read from the
+  Ogawa blocks (or the raw HDF5 file); sample data, time sampling and the
+  object hierarchy are not.
+- **Point clouds:** PCD bounds come from ASCII data only (binary and
+  compressed PCD report the header); PTS and XYZ are read as text.
+- **Maya:** ASCII scenes only; Maya binary (`.mb`), Cinema 4D, Houdini
+  (`.hip`, `.bgeo`) and Modo files are not read.
+- **SketchUp:** the version and thumbnail; the model itself is not read.
+- **MMD / Valve:** PMX is read up to the bone count; PMD names are
+  decoded with the generic text detector (Shift-JIS models may need it);
+  Valve MDL gives header counts, not the bones or sequences themselves.
+- **Revit:** only `BasicFileInfo` and PartAtom; elements are not read.
+- **Not read:** Fusion 360 archives (`.f3d`, `.f3z`) and Substance
+  archives (`.sbsar`).

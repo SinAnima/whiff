@@ -1,0 +1,137 @@
+---
+source: src/formats/cad/models.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-buoy.ma",
+    "stem": "saltmere-buoy",
+    "extension": "ma"
+  },
+  "identification": {
+    "format": "maya",
+    "name": "Maya ASCII scene",
+    "mime": "application/x-maya-ascii",
+    "family": "3d",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "cad.models"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 620
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 620,
+    "entropy": 4.897,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 620,
+      "chars": 620,
+      "words": 76,
+      "lines": 18,
+      "max_line_length": 58,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "2b53a9543d064d3053237ad5dc387d936fd99f6ed64c160a8e5d224fa852a636",
+    "blake3": "d3484ad18a687ddd22521a87e49a7ca52bebb4db241edc178fb84be10f548a70"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "maya": {
+      "header": "Maya ASCII 2024 scene",
+      "linear_unit": "centimeter",
+      "angular_unit": "degree",
+      "time_unit": "film",
+      "file_info": {
+        "application": "maya",
+        "product": "Maya 2024",
+        "version": "2024",
+        "osv": "Linux"
+      },
+      "requires": [
+        "2024",
+        "mtoa 5.3.1"
+      ],
+      "nodes": 6,
+      "node_types": {
+        "aiStandardSurface": 1,
+        "mesh": 2,
+        "shadingEngine": 1,
+        "transform": 2
+      },
+      "references": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.models",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -345,6 +345,19 @@ document format in the catalogue.
   dumps, NetCDF geodata, Unreal / Unity scenes, Office add-ins, GIFV,
   SolidWorks, memory dumps, encrypted volumes, Maildir and Usenet
   messages, format-patch mails, MSU, bottles, AAX).
+- **3D and CAD long tail** (`cad`, batch 5 part e1, in-house, no new
+  crates):
+  - new `cad.models`: Alembic (Ogawa / HDF5: version, application,
+    schemas), PCD / PTS / XYZ point clouds (points, fields, bounds), Maya
+    ASCII (version, requires, units, node types), SketchUp (version,
+    thumbnail), MikuMikuDance PMX / PMD, Valve MDL / SMD, Gaussian splats
+    (`.splat`, SPZ), MaterialX and Substance Designer packages;
+  - new `cad.exchange`: Parasolid and ACIS headers, Revit
+    (`BasicFileInfo`, PartAtom; the user and full save path only with
+    `--privacy off`), JT, PRC, U3D and DWF / DWFx.
+- **Detection:** a file that starts with a UTF-16 byte-order mark is
+  text only if what follows decodes to text; binary formats that begin
+  with `FF FE` (SketchUp models) no longer get text statistics.
 - **Audio and video long tail** (`common`, batch 5 part d, in-house, no
   new crates):
   - new `audio.raw`: AC-3 / E-AC-3 sync frames (rate, layout, LFE, frames
@@ -410,7 +423,7 @@ document format in the catalogue.
 - **Catalogue:** `data/coverage.tsv` credits rows that another family's
   extractor handles (SVG, LaTeX, MHTML, sitemaps, `.tar.*`, torrents,
   known JSON and YAML schemas, Snort rules, dbt models …); an unknown row
-  or format there is an error. 606 → 674 → 767 → 824 → 842 → 855 → 870 → 887 → 934 → 951 → 967 of 1008 formats
+  or format there is an error. 606 → 674 → 767 → 824 → 842 → 855 → 870 → 887 → 934 → 951 → 967 → 978 of 1008 formats
   have an extractor.
 - **Shared code:** the Unity class-ID names (from the Unity YAML reader)
   and the strings of the pickle walker are reused by the games readers.

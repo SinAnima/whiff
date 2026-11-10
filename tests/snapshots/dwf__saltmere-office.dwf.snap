@@ -1,0 +1,113 @@
+---
+source: src/formats/cad/exchange.rs
+assertion_line: 502
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-office.dwf",
+    "stem": "saltmere-office",
+    "extension": "dwf"
+  },
+  "identification": {
+    "format": "dwf",
+    "name": "DWF / DWFx",
+    "mime": "model/vnd.dwf",
+    "family": "cad",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "cad.exchange"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 472
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 472,
+    "entropy": 4.857,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "bf0460204d9f6d77da18ad35e7e8e8d4f3f558ca024156500f328ceb1863c681",
+    "blake3": "7ea08b94e9fd8636432dee4857651f41cc895bb8e6e632624f682302660a1f6e"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "dwf": {
+      "version": "06.00",
+      "packaging": "DWF 6 (ZIP)",
+      "entries": 3,
+      "pages": 1,
+      "by_extension": {
+        "w2d": 1,
+        "xml": 2
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.exchange",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

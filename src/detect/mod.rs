@@ -264,11 +264,25 @@ pub fn text_encoding(head: &[u8], complete: bool) -> Option<String> {
     if head.starts_with(&[0xEF, 0xBB, 0xBF]) {
         return Some("utf-8".into());
     }
+    // A UTF-16 byte-order mark, then mostly text: binary formats that start
+    // with `FF FE` (SketchUp models, …) are not text.
+    let utf16_text = |little: bool| {
+        let units: Vec<u16> = head[2..]
+            .as_chunks::<2>()
+            .0
+            .iter()
+            .map(|c| if little { u16::from_le_bytes(*c) } else { u16::from_be_bytes(*c) })
+            .collect();
+        let control = char::decode_utf16(units.iter().copied())
+            .filter(|c| c.as_ref().map_or(true, |c| (*c as u32) < 0x20 && !matches!(c, '\t' | '\n' | '\r' | '\x0c')))
+            .count();
+        control * 100 <= units.len()
+    };
     if head.starts_with(&[0xFF, 0xFE]) {
-        return Some("utf-16le".into());
+        return utf16_text(true).then(|| "utf-16le".into());
     }
     if head.starts_with(&[0xFE, 0xFF]) {
-        return Some("utf-16be".into());
+        return utf16_text(false).then(|| "utf-16be".into());
     }
     if head.contains(&0) {
         return None;
@@ -300,6 +314,8 @@ mod tests {
         assert_eq!(enc(b"hello\n", true).as_deref(), Some("us-ascii"));
         assert_eq!(enc("héllo".as_bytes(), true).as_deref(), Some("utf-8"));
         assert_eq!(enc(&[0xFF, 0xFE, b'h', 0], true).as_deref(), Some("utf-16le"));
+        // A BOM followed by binary data is not text.
+        assert_eq!(enc(&[0xFF, 0xFE, b'h', 0, 0, 0, 0, 0, 1, 0, 2, 0], true), None);
         assert_eq!(enc(&[0x7f, b'E', b'L', b'F', 0, 1], true), None);
         // Cut multi-byte char at the end of a partial head is still text.
         assert_eq!(enc(&"é".as_bytes()[..1], false).as_deref(), Some("utf-8"));

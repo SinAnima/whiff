@@ -1,0 +1,121 @@
+---
+source: src/formats/cad/models.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-office.skp",
+    "stem": "saltmere-office",
+    "extension": "skp"
+  },
+  "identification": {
+    "format": "sketchup",
+    "name": "SketchUp model",
+    "mime": "application/vnd.sketchup.skp",
+    "family": "3d",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "sketchup",
+        "confidence": 0.97
+      },
+      {
+        "format": "mp2",
+        "confidence": 0.68
+      }
+    ],
+    "extractor": "cad.models"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 245
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 245,
+    "entropy": 3.466,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "0bfaf3162132648720c2078d0159bb64df9d82e04ac03fe43b432e49ddd57595",
+    "blake3": "038ba9bb8cb336d5cabce1257777454ccea95020e628eb001c069d33e2863570"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "sketchup": {
+      "version": "23.1.340",
+      "release": "SketchUp 2023",
+      "thumbnail": {
+        "format": "png",
+        "width": 32,
+        "height": 24
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.models",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

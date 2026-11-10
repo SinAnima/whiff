@@ -536,8 +536,31 @@ def batch5c(fx):
              [e.get("name") for e in ET.parse(f).iter() if local(e.tag) == "ScenarioObject"], "ElementTree")
 
 
+def batch5e(fx):
+    """Batch 5e: libmagic, ElementTree and zipfile on the long-tail 3D / CAD,
+    science, database and system fixtures that exist."""
+    import xml.etree.ElementTree as ET
+    import zipfile
+
+    def rel(f):
+        return fx / f.relative_to(fx)
+
+    for f, needle in (("sketchup/saltmere-office.skp", "SketchUp Model"), ("u3d/buoy.u3d", "Universal 3D"),
+                      ("pcd/buoy-light.pcd", "Point Cloud Data"), ("revit/saltmere-office.rvt", "Composite Document File")):
+        if (fx / f).exists():
+            libmagic(fx, f, needle)
+    for f in sorted((fx / "materialx").glob("*.mtlx")):
+        root = ET.parse(f).getroot()
+        want(rel(f), "format.materialx.version", root.get("version"), "ElementTree")
+        want(rel(f), "format.materialx.materials", [e.get("name") for e in root.iter("surfacematerial")], "ElementTree")
+        want(rel(f), "format.materialx.node_graphs", [e.get("name") for e in root.iter("nodegraph")], "ElementTree")
+    for f in sorted((fx / "dwf").glob("*.dwfx")):
+        want(rel(f), "format.dwf.entries", len(zipfile.ZipFile(f).namelist()), "zipfile")
+
+
 def expect(root):
     fx = Path(root)
+    batch5e(fx)
     batch5c(fx)
     records(fx)
     legacy_docs(fx)

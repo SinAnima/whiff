@@ -1,0 +1,129 @@
+---
+source: src/formats/cad/exchange.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy.sat",
+    "stem": "buoy",
+    "extension": "sat"
+  },
+  "identification": {
+    "format": "acis",
+    "name": "ACIS solid model",
+    "mime": "application/x-acis",
+    "family": "cad",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "cad.exchange"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 350
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 350,
+    "entropy": 4.32,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 350,
+      "chars": 350,
+      "words": 84,
+      "lines": 9,
+      "max_line_length": 75,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "fa7a97ce316c90adfaa0e5bca717b51bc0273765b34a4b03d1b478c6f6b79f32",
+    "blake3": "2e6449cfef13bd26185927a2ef61e7b3acf338d33751364485c9f3b307e9b7d4"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "acis": {
+      "encoding": "text",
+      "version": 700,
+      "bodies": 1,
+      "product": "saltmere-cad 1.0",
+      "acis_build": "ASM 230.0.0.1300 NT",
+      "date": "Mon Sep 01 12:00:00 2025",
+      "units": "mm",
+      "entities": {
+        "body": 1,
+        "cone-surface": 1,
+        "face": 1,
+        "lump": 1,
+        "shell": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.exchange",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

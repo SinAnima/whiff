@@ -1,0 +1,123 @@
+---
+source: src/formats/cad/models.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy-light.splat",
+    "stem": "buoy-light",
+    "extension": "splat"
+  },
+  "identification": {
+    "format": "gaussian_splat",
+    "name": "Gaussian splat",
+    "mime": "application/x-gaussian-splat",
+    "family": "3d",
+    "confidence": 0.85,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "cad.models"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 384
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 384,
+    "entropy": 4.611,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "40ad6e3de06fc353e7c92d69759a2561e825a32ea4bfe0731643306309b1f74b",
+    "blake3": "fe2ae5d661a0156613dc307947564c69db7f534851a84b795d189c35d28b5fb7"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "gaussian_splat": {
+      "variant": "splat",
+      "points": 12,
+      "bounds": {
+        "min": [
+          -0.594,
+          -0.5865,
+          0.0
+        ],
+        "max": [
+          0.6,
+          0.5985,
+          1.1
+        ],
+        "size": [
+          1.194,
+          1.185,
+          1.1
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.models",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

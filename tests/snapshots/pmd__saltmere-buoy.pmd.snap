@@ -1,0 +1,113 @@
+---
+source: src/formats/cad/models.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-buoy.pmd",
+    "stem": "saltmere-buoy",
+    "extension": "pmd"
+  },
+  "identification": {
+    "format": "pmd",
+    "name": "MikuMikuDance PMD model",
+    "mime": "application/x-pmd",
+    "family": "3d",
+    "confidence": 0.77,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "cad.models"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 526
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 526,
+    "entropy": 0.925,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "66cc2d15f5c8e24504db01c6eb6a8ca35391d4a57773186a5a5acd6bb7a708a4",
+    "blake3": "971cc1f618bbab446620ec06cd190cf8cbd486357d948516693d3304f42d8be7"
+  },
+  "content": {
+    "title": "Buoy"
+  },
+  "metadata": {},
+  "format": {
+    "pmd": {
+      "version": 1.0,
+      "name": "Buoy",
+      "comment": "Saltmere harbour buoy",
+      "vertices": 3,
+      "faces": 1,
+      "materials": 1,
+      "bones": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.models",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

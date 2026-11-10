@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.38" colorspace="lin_rec709">
+  <nodegraph name="NG_buoy_paint">
+    <noise2d name="weathering" type="float"><input name="amplitude" type="float" value="0.2" /></noise2d>
+    <mix name="paint" type="color3"><input name="fg" type="color3" value="0.8, 0.1, 0.1" /><input name="bg" type="color3" value="0.5, 0.1, 0.1" /><input name="mix" type="float" nodename="weathering" /></mix>
+    <output name="out" type="color3" nodename="paint" />
+  </nodegraph>
+  <standard_surface name="SR_buoy_red" type="surfaceshader">
+    <input name="base_color" type="color3" nodegraph="NG_buoy_paint" output="out" />
+    <input name="specular_roughness" type="float" value="0.4" />
+  </standard_surface>
+  <surfacematerial name="M_buoy_red" type="material"><input name="surfaceshader" type="surfaceshader" nodename="SR_buoy_red" /></surfacematerial>
+</materialx>
