@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<worksheet version="3.0.3" xmlns="http://schemas.mathsoft.com/worksheet30" xmlns:ml="http://schemas.mathsoft.com/math30">
+  <pointReleaseData/>
+  <metadata>
+    <generator>Mathcad (TM) 15</generator>
+    <userData><title>Mooring loads</title><description>Line tension for the Saltmere moorings</description><author>Ana Lighthouse</author><company>Saltmere Harbour</company></userData>
+  </metadata>
+  <settings/>
+  <regions>
+    <region region-id="1" left="24" top="12"><text><p>Mooring line tension</p></text></region>
+    <region region-id="2" left="24" top="48"><math><ml:define><ml:id>F</ml:id><ml:real>1200</ml:real></ml:define></math></region>
+    <region region-id="3" left="24" top="84"><math><ml:eval><ml:id>F</ml:id></ml:eval></math></region>
+  </regions>
+</worksheet>

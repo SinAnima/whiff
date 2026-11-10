@@ -12,6 +12,7 @@ pub(crate) mod grib;
 pub(crate) mod h5;
 pub(crate) mod hdf5;
 pub(crate) mod instruments;
+pub(crate) mod longtail;
 pub(crate) mod netcdf;
 pub(crate) mod ome;
 pub(crate) mod stats;

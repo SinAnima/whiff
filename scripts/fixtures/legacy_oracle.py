@@ -546,7 +546,8 @@ def batch5e(fx):
         return fx / f.relative_to(fx)
 
     for f, needle in (("sketchup/saltmere-office.skp", "SketchUp Model"), ("u3d/buoy.u3d", "Universal 3D"),
-                      ("pcd/buoy-light.pcd", "Point Cloud Data"), ("revit/saltmere-office.rvt", "Composite Document File")):
+                      ("pcd/buoy-light.pcd", "Point Cloud Data"), ("revit/saltmere-office.rvt", "Composite Document File"),
+                      ("hdf4/saltmere-depths.hdf", "Hierarchical Data Format (version 4)")):
         if (fx / f).exists():
             libmagic(fx, f, needle)
     for f in sorted((fx / "materialx").glob("*.mtlx")):
@@ -554,6 +555,10 @@ def batch5e(fx):
         want(rel(f), "format.materialx.version", root.get("version"), "ElementTree")
         want(rel(f), "format.materialx.materials", [e.get("name") for e in root.iter("surfacematerial")], "ElementTree")
         want(rel(f), "format.materialx.node_graphs", [e.get("name") for e in root.iter("nodegraph")], "ElementTree")
+    ns = {"h": "urn:hl7-org:v3"}
+    for f in sorted((fx / "aecg").glob("*.xml")):
+        codes = [c.get("code") for c in ET.parse(f).getroot().iterfind(".//h:sequence/h:code", ns)]
+        want(rel(f), "format.aecg.leads", [c.removeprefix("MDC_ECG_LEAD_") for c in codes if c.startswith("MDC_ECG_LEAD_")], "ElementTree")
     for f in sorted((fx / "dwf").glob("*.dwfx")):
         want(rel(f), "format.dwf.entries", len(zipfile.ZipFile(f).namelist()), "zipfile")
 

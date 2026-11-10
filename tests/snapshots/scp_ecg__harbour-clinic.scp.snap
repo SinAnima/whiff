@@ -1,0 +1,150 @@
+---
+source: src/formats/science/longtail.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-clinic.scp",
+    "stem": "harbour-clinic",
+    "extension": "scp"
+  },
+  "identification": {
+    "format": "scp_ecg",
+    "name": "SCP-ECG",
+    "mime": "application/x-scp-ecg",
+    "family": "sci",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "science.longtail"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 12539
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 12539,
+    "entropy": 4.288,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.0
+    }
+  },
+  "integrity": {
+    "sha256": "f1b36b58dcef72299adffd5bfb1ee38cdd9cc02406ce4517534d91449eded564",
+    "blake3": "6a17f1ef5d4909c02aceec0abeba59d5273ee89021f2597841688720482de515"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "scp_ecg": {
+      "declared_size_bytes": 12539,
+      "protocol_version": 20,
+      "sections": [
+        0,
+        1,
+        3,
+        6
+      ],
+      "acquiring_institution": "Saltmere Harbour Clinic",
+      "acquisition_date": "2025-09-01",
+      "acquisition_time": "12:00:00",
+      "baseline_filter_hz": 0.05,
+      "low_pass_filter_hz": 150,
+      "device": {
+        "institution": 1,
+        "department": 2,
+        "device_id": 7,
+        "manufacturer_code": 255,
+        "model": "SALT1",
+        "serial_number": "SN-0001",
+        "system_software": "harbour-ecg 1.0",
+        "scp_software": "craft 1.0",
+        "manufacturer": "Saltmere Instruments"
+      },
+      "leads": [
+        "I",
+        "II",
+        "III",
+        "aVR",
+        "aVL",
+        "aVF",
+        "V1",
+        "V2",
+        "V3",
+        "V4",
+        "V5",
+        "V6"
+      ],
+      "simultaneous": true,
+      "amplitude_nv": 5000,
+      "sampling_rate_hz": 500.0,
+      "encoding": "real",
+      "bimodal_compression": false
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.longtail",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

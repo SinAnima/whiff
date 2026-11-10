@@ -127,9 +127,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1008 formats** in total: tier 1 = 139, tier 2 = 122, tier 3 = 747.
-* Formats with an extractor in this build: **978** of 1008.
+* Formats with an extractor in this build: **982** of 1008.
 * Formats by family status: crate = 183, mixed = 365, impl = 460.
-* Formats by target stage: S1 = 202, S1/S6 = 102, S2 = 99, S3 = 65, S3/S8 = 22, S4 = 87, S5 = 89, S6 = 107, S6/S8 = 17, S7 = 141, S8 = 77.
+* Formats by target stage: S1 = 202, S1/S6 = 102, S2 = 99, S3 = 65, S3/S8 = 22, S4 = 87, S5 = 89, S6 = 107, S6/S8 = 17, S7 = 143, S8 = 75.
 * By feature: `common` = 818, `cad` = 45, `forensics` = 38, `science` = 36, `geo` = 34, `data` = 20, `games` = 17.
 * By category: Code 167, Data 157, Image 95, Media 88, Document 71, Archive 47, Scientific 36, Executable 34, Geospatial 34, Text 32, Package 30, 3D 28, Web 27, Forensics 24, Database 21, Security 20, CAD 17, Game 17, Personal 16, Disk 14, Platform 11, Font 10, Fallback 8, Block 4.
 
@@ -1006,7 +1006,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 865 | FITS | `fits` `fit` `fts` | application/fits | 3 | `sci` | `science` | `science.fits` | hdf5-reader | S7 | — |
 | 866 | Zarr | `zarr` `.zarray` `.zattrs` `zarr.json` | — | 3 | `sci` | `science` | `science.zarr` | hdf5-reader | S7 | — |
 | 867 | GRIB 1/2 | `grb` `grib` `grb2` `grib2` | application/x-grib | 3 | `sci` | `science` | `science.fields` | hdf5-reader | S7 | — |
-| 868 | HDF4 / HDF-EOS | `hdf` `hdf4` `he4` | — | 3 | `sci` | `science` | — | hdf5-reader | S8 | header |
+| 868 | HDF4 / HDF-EOS | `hdf` `hdf4` `he4` | — | 3 | `sci` | `science` | `science.longtail` | hdf5-reader | S7 | header |
 | 869 | SPSS data | `sav` `zsav` `por` | application/x-spss-sav | 3 | `sci` | `science` | `science.stats` | hdf5-reader | S7 | — |
 | 870 | Stata data | `dta` | application/x-stata-dta | 3 | `sci` | `science` | `science.stats` | hdf5-reader | S7 | — |
 | 871 | SAS dataset / transport | `sas7bdat` `xpt` | application/x-sas | 3 | `sci` | `science` | `science.stats` | hdf5-reader | S7 | — |
@@ -1022,7 +1022,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 881 | SPICE / Touchstone / LTspice | `cir` `sp` `s2p` `asc` | — | 3 | `sci` | `science` | `science.tooltext` | hdf5-reader | S7 | — |
 | 882 | Origin / Igor / LabVIEW / TDMS | `opj` `ibw` `pxp` `tdms` `vi` | — | 3 | `sci` | `science` | `science.instruments` | hdf5-reader | S7 | — |
 | 883 | ENVI / ERDAS / PCIDSK rasters | `hdr` `img` `pix` | — | 3 | `sci` | `science` | `science.tooltext` | hdf5-reader | S7 | -&gt; geo |
-| 884 | Wolfram / Maple / Mathcad files | `mx` `mw` `xmcd` | — | 3 | `sci` | `science` | — | hdf5-reader | S7 | — |
+| 884 | Wolfram / Maple / Mathcad files | `mx` `mw` `xmcd` | — | 3 | `sci` | `science` | `science.longtail` | hdf5-reader | S7 | — |
 | 885 | Bruker / Varian NMR / microscopy (CZI, ND2, LIF, OME-TIFF) | `czi` `nd2` `lif` `ome.tif` | — | 3 | `sci` | `science` | `science.ome` | hdf5-reader | S7 | instrument, channels, dims |
 | 886 | VCD waveform | `vcd` `fst` | — | 3 | `sci` | `science` | `science.instruments` | hdf5-reader | S7 | timescale, signals, end time, scope tree |
 | 887 | Sigrok session | `sr` | — | 3 | `sci` | `science` | `science.instruments` | hdf5-reader | S7 | channels, samplerate |
@@ -1031,7 +1031,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 890 | Analyze 7.5 | `hdr` `img` | — | 3 | `medical` | `science` | `medical.volumes` | dicom-object, nifti | S7 | — |
 | 891 | MINC / NRRD / MetaImage | `mnc` `nrrd` `nhdr` `mha` `mhd` | — | 3 | `medical` | `science` | `medical.volumes` | dicom-object, nifti | S7 | — |
 | 892 | HL7 v2 message / FHIR JSON | `hl7` `fhir.json` | — | 3 | `medical` | `science` | `medical.clinical` | dicom-object, nifti | S7 | message type, segments (PHI REDACTED) |
-| 893 | SCP-ECG / aECG | `scp` | — | 3 | `medical` | `science` | — | dicom-object, nifti | S7 | — |
+| 893 | SCP-ECG / aECG | `scp` | — | 3 | `medical` | `science` | `science.longtail` | dicom-object, nifti | S7 | — |
 | 894 | FlatGeobuf | `fgb` | application/vnd.flatgeobuf | 3 | `geo` | `geo` | `geo.vector` | geojson, shapefile | S7 | — |
 | 895 | GeoParquet | `parquet` | — | 3 | `geo` | `geo` | `columnar.parquet` | geojson, shapefile | S7 | — |
 | 896 | LAS / LAZ point cloud | `las` `laz` | application/vnd.las | 3 | `geo` | `geo` | `geo.points` | geojson, shapefile | S7 | — |
@@ -1056,7 +1056,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 915 | NetCDF-CF / Zarr geodata | `nc` `zarr` | — | 3 | `geo` | `geo` | `science.hdf5` | geojson, shapefile | S7 | -&gt; sci |
 | 916 | OGC 3D Tiles / I3S | `b3dm` `i3dm` `pnts` `slpk` | — | 3 | `geo` | `geo` | `geo.tiles` | geojson, shapefile | S7 | — |
 | 917 | CZML / world file / .prj | `czml` `tfw` `jgw` `pgw` `wld` `prj` | — | 3 | `geo` | `geo` | `geo.text` | geojson, shapefile | S7 | CRS WKT, affine transform |
-| 918 | MrSID / ECW rasters | `sid` `ecw` `jp2` | — | 3 | `geo` | `geo` | — | geojson, shapefile | S8 | header: size, bands, CRS |
+| 918 | MrSID / ECW rasters | `sid` `ecw` `jp2` | — | 3 | `geo` | `geo` | `geo.mrsid` | geojson, shapefile | S7 | header: size, bands, CRS |
 | 919 | OSM change / diff | `osc` `osc.gz` | — | 3 | `geo` | `geo` | `geo.xml` | geojson, shapefile | S7 | create/modify/delete counts |
 | 920 | Map styles (Mapbox style JSON / SLD / lyrx) | `style.json` `sld` `lyrx` | — | 3 | `geo` | `geo` | `geo.json` | geojson, shapefile | S7 | layers, sources |
 | 921 | Geocaching LOC / GeoRSS | `loc` `georss` | — | 3 | `geo` | `geo` | `geo.xml` | geojson, shapefile | S7 | — |

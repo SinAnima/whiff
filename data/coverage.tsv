@@ -109,3 +109,7 @@ Android manifest (text)	android_manifest
 TNEF winmail.dat	tnef
 Lotus Notes database	lotus_notes
 Alembic	alembic
+HDF4 / HDF-EOS	hdf4
+Wolfram / Maple / Mathcad files	maple_mw
+SCP-ECG / aECG	scp_ecg
+MrSID / ECW rasters	mrsid

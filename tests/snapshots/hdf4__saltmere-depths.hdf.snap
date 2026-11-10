@@ -1,0 +1,139 @@
+---
+source: src/formats/science/longtail.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-depths.hdf",
+    "stem": "saltmere-depths",
+    "extension": "hdf"
+  },
+  "identification": {
+    "format": "hdf4",
+    "name": "HDF4 / HDF-EOS",
+    "mime": "application/x-hdf",
+    "family": "sci",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "hdf4",
+        "confidence": 0.81
+      },
+      {
+        "format": "adf",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "science.longtail"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4711
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4711,
+    "entropy": 3.707,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "31a48b9a1d281d8627216adeb1326acdfff6fd5c45b6eb93c2befde527804fc3",
+    "blake3": "8dc6a70fb371e2070bd53409ae4b3ad7e45d063d3d198283037cbf4ef446bb3a"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "hdf4": {
+      "descriptors": 30,
+      "tags": {
+        "SD dimensions": 1,
+        "number type": 1,
+        "numeric data group": 1,
+        "scientific data": 1,
+        "vdata": 10,
+        "vdata header": 10,
+        "version": 1,
+        "vgroup": 5
+      },
+      "library_version": "4.3.0",
+      "library_string": "HDF Version 4.3 Release 0, February 29, 2024",
+      "datasets": [
+        "3-dimensional Scientific Dataset"
+      ],
+      "dimensions": 3,
+      "attributes": {
+        "Signature": "Created with GDAL (http://www.remotesensing.org/gdal/)",
+        "TransformationMatrix": "-5.100000, 0.008333, 0.000000, 50.100000, 0.000000, -0.012500",
+        "Projection": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.017453292519…",
+        "AREA_OR_POINT": "Area",
+        "INSTITUTION": "Saltmere Harbour",
+        "TITLE": "Saltmere harbour depths"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.longtail",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

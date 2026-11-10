@@ -1,0 +1,105 @@
+---
+source: src/formats/geo/mrsid.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-ortho.sid",
+    "stem": "saltmere-ortho",
+    "extension": "sid"
+  },
+  "identification": {
+    "format": "mrsid",
+    "name": "MrSID raster",
+    "mime": "image/x-mrsid",
+    "family": "geo",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "geo.mrsid"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 64
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 64,
+    "entropy": 0.577,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "d356c9624080a366ba6cc03c4b7cf79e0b9a33dfdfa19fd56416a2e7058ccdcb",
+    "blake3": "4f0510acd5eb9fd70112eef1e70e873198f11d2bb45e223c7f409c693a162676"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "mrsid": {
+      "version_byte": 4
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "geo.mrsid",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

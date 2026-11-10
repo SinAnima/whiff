@@ -12,6 +12,7 @@
 #![allow(clippy::many_single_char_names, clippy::similar_names)] // coordinates and field offsets
 
 pub(crate) mod json;
+pub(crate) mod mrsid;
 pub(crate) mod points;
 pub(crate) mod raster;
 pub(crate) mod shape;

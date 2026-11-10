@@ -780,3 +780,21 @@ uncompressed (and ALZip's deflated entries); nothing else is decompressed.
 - **Revit:** only `BasicFileInfo` and PartAtom; elements are not read.
 - **Not read:** Fusion 360 archives (`.f3d`, `.f3z`) and Substance
   archives (`.sbsar`).
+
+### Science and medical long tail (batch 5e part 2)
+
+- **HDF4:** data descriptors, vgroups and attribute vdatas are read;
+  data set shapes and types (in the SD descriptors) are not decoded, and
+  only character attributes give their values. HDF-EOS structures are
+  named from `StructMetadata`, not walked.
+- **Maple / Mathcad:** element and region counts and the metadata; the
+  mathematics is not evaluated or transcribed. Old binary Mathcad
+  (`.mcd`) and Maple classic worksheets (`.mws`) are not read.
+- **SCP-ECG:** sections 0, 1, 3 and 6; Huffman-coded and bimodally
+  compressed rhythm data is not decoded, and measurements and
+  interpretations (sections 7 – 11) are not read. CRCs are not checked.
+- **aECG:** the first rhythm series' leads and sampling; annotations are
+  counted, not interpreted.
+- **Not read:** JMP and Minitab files, Wolfram `.mx` dumps and ECW
+  rasters (no published layout); MrSID is identified by its signature
+  only (size, bands and CRS need the vendor's decoder).

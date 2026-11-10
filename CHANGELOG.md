@@ -345,6 +345,15 @@ document format in the catalogue.
   dumps, NetCDF geodata, Unreal / Unity scenes, Office add-ins, GIFV,
   SolidWorks, memory dumps, encrypted volumes, Maildir and Usenet
   messages, format-patch mails, MSU, bottles, AAX).
+- **Science and medical long tail** (`science`, `geo`, batch 5 part e2,
+  in-house, no new crates):
+  - new `science.longtail`: HDF4 / HDF-EOS 2 (library version,
+    descriptors by tag, data sets, dimensions, global attributes,
+    swaths / grids / points), Maple and Mathcad worksheets, SCP-ECG
+    (sections, acquisition date, device, leads, sampling rate, duration)
+    and HL7 aECG (time range, leads, sampling rate, device); patient,
+    subject and author details only with `--privacy off`;
+  - new `geo.mrsid`: MrSID rasters identified by their signature.
 - **3D and CAD long tail** (`cad`, batch 5 part e1, in-house, no new
   crates):
   - new `cad.models`: Alembic (Ogawa / HDF5: version, application,
@@ -423,7 +432,7 @@ document format in the catalogue.
 - **Catalogue:** `data/coverage.tsv` credits rows that another family's
   extractor handles (SVG, LaTeX, MHTML, sitemaps, `.tar.*`, torrents,
   known JSON and YAML schemas, Snort rules, dbt models …); an unknown row
-  or format there is an error. 606 → 674 → 767 → 824 → 842 → 855 → 870 → 887 → 934 → 951 → 967 → 978 of 1008 formats
+  or format there is an error. 606 → 674 → 767 → 824 → 842 → 855 → 870 → 887 → 934 → 951 → 967 → 978 → 982 of 1008 formats
   have an extractor.
 - **Shared code:** the Unity class-ID names (from the Unity YAML reader)
   and the strings of the pickle walker are reused by the games readers.

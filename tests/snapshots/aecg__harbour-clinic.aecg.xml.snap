@@ -1,0 +1,146 @@
+---
+source: src/formats/science/longtail.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-clinic.aecg.xml",
+    "stem": "harbour-clinic.aecg",
+    "extension": "xml"
+  },
+  "identification": {
+    "format": "aecg",
+    "name": "HL7 annotated ECG",
+    "mime": "application/hl7-aecg+xml",
+    "family": "sci",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "aecg",
+        "confidence": 0.95
+      },
+      {
+        "format": "xml",
+        "confidence": 0.65
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "science.longtail"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 7046
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 7046,
+    "entropy": 4.426,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 7046,
+      "chars": 7046,
+      "words": 1568,
+      "lines": 20,
+      "max_line_length": 5339,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "media": {
+      "duration_s": 1.0
+    }
+  },
+  "integrity": {
+    "sha256": "fbf1a5ea971bfe584a85dc36ae081171b2b29054298bca00c45cb6ac39f7cc01",
+    "blake3": "d7d3896c3dc7c563c286b7bb7600fbf8523b4ff1ba31f2108f89d9e0d954e5f0"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "aecg": {
+      "time_range": [
+        "20250901120000",
+        "20250901120001"
+      ],
+      "series": 1,
+      "leads": [
+        "I",
+        "II",
+        "V1"
+      ],
+      "sampling_rate_hz": 500.0,
+      "samples_per_lead": 500,
+      "annotations": 1,
+      "device": {
+        "manufacturerModelName": "Harbour ECG 1",
+        "softwareName": "harbour-ecg 1.0",
+        "manufacturer": "Saltmere Instruments"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.longtail",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
