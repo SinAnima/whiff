@@ -55,7 +55,8 @@ pub(crate) fn detect(docs: &[Value], name: Option<&str>, cx: &mut Context<'_>) -
     if let Some(v) = conda(first, &name) {
         return Some(v);
     }
-    let more: [Detector; 17] = [
+    let more: [Detector; 18] = [
+        oci,
         tsdb_block_meta,
         terraform_state,
         data_package,
@@ -111,6 +112,95 @@ pub(crate) fn schema_for(mut schema: Value, known: Option<&Value>, cx: &Context<
         }
     }
     schema
+}
+
+/// OCI image layouts (`oci-layout`), image indexes (`index.json`, Docker
+/// manifest lists) and manifests, ORAS artifacts among them: platforms,
+/// references, layers with their media types and sizes, the artifact type.
+fn oci(v: &Value, _: &str, _: &mut Context<'_>) -> Option<Value> {
+    if let Some(version) = v.get("imageLayoutVersion").and_then(Value::as_str) {
+        return Some(json!({ "id": "oci_layout", "name": "OCI image layout", "version": version }));
+    }
+    if v.get("schemaVersion")?.as_i64()? != 2 {
+        return None;
+    }
+    let media = v.get("mediaType").and_then(Value::as_str).unwrap_or("");
+    let docker = media.starts_with("application/vnd.docker.");
+    let annotation = |o: &Value, k: &str| o.pointer(&format!("/annotations/{}", k.replace('/', "~1"))).cloned();
+    let mut out = Map::new();
+    if let Some(list) = v.get("manifests").and_then(Value::as_array) {
+        out.insert("id".into(), json!("oci_index"));
+        out.insert("name".into(), json!(if docker { "Docker manifest list" } else { "OCI image index" }));
+        out.insert("manifests".into(), json!(list.len()));
+        let platforms: Vec<String> = list
+            .iter()
+            .filter_map(|m| {
+                let p = m.get("platform")?;
+                let mut s = format!("{}/{}", p.get("os")?.as_str()?, p.get("architecture")?.as_str()?);
+                if let Some(var) = p.get("variant").and_then(Value::as_str) {
+                    s = format!("{s}/{var}");
+                }
+                Some(s)
+            })
+            .take(50)
+            .collect();
+        if !platforms.is_empty() {
+            out.insert("platforms".into(), json!(platforms));
+        }
+        let refs: Vec<Value> =
+            list.iter().filter_map(|m| annotation(m, "org.opencontainers.image.ref.name")).take(50).collect();
+        if !refs.is_empty() {
+            out.insert("references".into(), json!(refs));
+        }
+        let types = histogram(list.iter(), "artifactType");
+        if !types.is_empty() {
+            out.insert("artifact_types".into(), json!(types));
+        }
+    } else if v.get("config").is_some() || v.get("layers").is_some() || v.get("blobs").is_some() {
+        let layers = v.get("layers").or_else(|| v.get("blobs")).and_then(Value::as_array);
+        let config_type = v.pointer("/config/mediaType").and_then(Value::as_str);
+        let artifact = v
+            .get("artifactType")
+            .and_then(Value::as_str)
+            .or(config_type.filter(|t| !t.ends_with(".image.config.v1+json") && !t.contains("container.image")));
+        out.insert("id".into(), json!("oci_manifest"));
+        out.insert(
+            "name".into(),
+            json!(match (docker, artifact.is_some()) {
+                (true, _) => "Docker image manifest",
+                (false, true) => "OCI artifact manifest (ORAS)",
+                (false, false) => "OCI image manifest",
+            }),
+        );
+        if let Some(a) = artifact {
+            out.insert("artifact_type".into(), json!(a));
+        }
+        if let Some(c) = config_type {
+            out.insert("config_media_type".into(), json!(c));
+        }
+        let list = layers.map(Vec::as_slice).unwrap_or_default();
+        out.insert("layers".into(), json!(list.len()));
+        let size: u64 = list.iter().filter_map(|l| l.get("size").and_then(Value::as_u64)).sum();
+        out.insert("layer_bytes".into(), json!(size));
+        let types = histogram(list.iter(), "mediaType");
+        if !types.is_empty() {
+            out.insert("layer_media_types".into(), json!(types));
+        }
+        let titles: Vec<Value> =
+            list.iter().filter_map(|l| annotation(l, "org.opencontainers.image.title")).take(50).collect();
+        if !titles.is_empty() {
+            out.insert("files".into(), json!(titles));
+        }
+        if v.get("subject").is_some() {
+            out.insert("refers_to".into(), json!(v.pointer("/subject/digest")));
+        }
+    } else {
+        return None;
+    }
+    if let Some(t) = annotation(v, "org.opencontainers.image.created") {
+        out.insert("created".into(), t);
+    }
+    Some(Value::Object(out))
 }
 
 /// A Prometheus TSDB block's `meta.json`: the time range, series, samples

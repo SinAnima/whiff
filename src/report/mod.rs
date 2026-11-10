@@ -177,6 +177,24 @@ pub struct Identification {
     /// Cargo feature that would add an extractor for this format, when known.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub available_with_feature: Option<String>,
+    /// The name marks a partial download, backup copy or temporary file
+    /// (`report.pdf.crdownload`, `notes.txt.bak`): detection used the
+    /// extension underneath.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub wrapper: Option<Wrapper>,
+}
+
+/// A wrapper named by a file's last extension.
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize, JsonSchema)]
+#[serde(default)]
+pub struct Wrapper {
+    /// `partial_download`, `backup_copy` or `temporary`.
+    pub kind: String,
+    /// The wrapper's extension (`crdownload`, `bak`, `~` for an editor backup).
+    pub extension: String,
+    /// The extension underneath, used for detection.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub inner_extension: Option<String>,
 }
 
 /// Kind of filesystem object.
@@ -216,6 +234,10 @@ pub struct System {
     /// Bytes actually allocated on disk.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub allocated_bytes: Option<u64>,
+    /// Fewer bytes allocated than the logical size: a sparse file (or one
+    /// the filesystem compresses).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sparse: Option<bool>,
     /// Device id.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub device: Option<u64>,

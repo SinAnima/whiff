@@ -257,7 +257,7 @@ impl Extractor for Pki {
 
     fn sniff(&self, probe: &Probe<'_>) -> Option<Sniff> {
         if let Some(rest) = probe.head.strip_prefix(b"-----BEGIN ") {
-            let others: [&[u8]; 4] = [b"PGP ", b"OPENSSH ", b"AGE ", b"SSH2 "];
+            let others: [&[u8]; 6] = [b"PGP ", b"OPENSSH ", b"AGE ", b"SSH2 ", b"TSS2 ", b"TSS KEY"];
             let theirs = others.iter().any(|o| rest.starts_with(o));
             return (!theirs).then_some(Sniff { format: "pem", confidence: 0.9 });
         }

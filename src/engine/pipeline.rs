@@ -172,8 +172,11 @@ fn extract_source(engine: &Engine, report: &mut Report, src: &mut dyn Source, le
     let mut text = TextStore::with_limit(options.limits.max_text_bytes);
 
     let name = src.name_hint().map(str::to_string);
-    let extension =
-        name.as_deref().and_then(|n| Path::new(n).extension()).map(|e| e.to_string_lossy().to_ascii_lowercase());
+    let wrapper = name.as_deref().and_then(detect::wrapper_of);
+    // `report.pdf.crdownload` is detected as a PDF.
+    let extension = wrapper.as_ref().and_then(|w| w.inner_extension.clone()).or_else(|| {
+        name.as_deref().and_then(|n| Path::new(n).extension()).map(|e| e.to_string_lossy().to_ascii_lowercase())
+    });
     let probe = Probe {
         head: src.head(),
         tail: src.tail(),
@@ -183,6 +186,13 @@ fn extract_source(engine: &Engine, report: &mut Report, src: &mut dyn Source, le
     };
     let detection = detect::detect(registry, &probe, options.format.as_deref());
     report.identification = detection.identification;
+    // `.bak` is SQL Server's own extension: not a wrapper there.
+    let native = |w: &crate::report::Wrapper| {
+        detection.spec.is_some_and(|s| s.extensions.iter().any(|e| e.eq_ignore_ascii_case(&w.extension)))
+    };
+    report.identification.wrapper = wrapper.filter(|w| {
+        !native(w) || matches!(detection.spec.map(|s| s.id), Some("partial_download" | "backup_copy"))
+    });
     if let Some(forced) = options.format.as_deref()
         && detection.spec.is_none_or(|s| s.id != forced)
     {

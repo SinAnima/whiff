@@ -823,3 +823,35 @@ uncompressed (and ALZip's deflated entries); nothing else is decompressed.
 - **Browser caches:** Firefox cache2 entries, Chrome block files, index
   and simple-cache entries; Chrome entry blocks inside `data_*` files are
   not walked, and cached bodies are not handed on.
+
+### Packages, bytecode, keys, big data and wrappers long tail (batch 5e part 4)
+
+- **Hermes:** the header, function headers and string table; bytecode
+  is not disassembled, and the version-dependent fields after the string
+  storage size are read for bytecode version 87 and later only. Delta
+  (`~MAGIC`) files give their header. V8 snapshots and QuickJS bytecode
+  are not recognised (neither has a stable signature).
+- **Smalltalk:** image headers only (no object memory is walked);
+  `.image` and `.changes` are not claimed by extension (disk images and
+  Debian upload files share them). Change logs are split on `!` chunks
+  without handling doubled `!!` escapes.
+- **ActionScript bytecode:** classes and counts; method code is not
+  disassembled, and traits are counted, not listed.
+- **TPM:** TPM 1.2 key blobs are recognised but not decoded; the private
+  part of a TPM 2.0 key is never read. The TPM name is computed only for
+  SHA-256 name algorithms. Context files written by newer `tpm2-tools`
+  carry ESYS metadata after the context blob, which is not read.
+- **SequenceFile / RCFile:** records are framed and counted, not
+  decoded; compressed RCFile keys are inflated only for the zlib
+  `DefaultCodec` (other codecs: row groups without the row count).
+- **Hudi:** `hoodie.properties` and commit files; the timeline is not
+  walked as a folder, and Kudu and CarbonData files are not recognised.
+- **OCI layouts:** the `oci-layout`, `index.json` and manifest JSON are
+  recognised one file at a time; a layout folder is not read as a whole
+  (image tarballs are, by `package.tarball`).
+- **Wrappers:** a partial download is not checked for completeness
+  beyond its trailing zeros; `.tmp` names count only over another
+  extension. Safari's `.download` bundles are folders and are not read.
+- **Sparse files:** `system.sparse` compares allocated blocks with the
+  size (filesystem compression gives the same answer); holes are not
+  located (`SEEK_HOLE` is not available in the standard library).

@@ -13,7 +13,8 @@ MacBinary), the `acefile` module (ACE), `zpaq l` (ZPAQ), `wimlib-imagex info` (W
 themselves (run in a scratch folder) and Makeself's `--info`, `jmod list`,
 Python's zipfile and json (zip applications, PEX-INFO), `restore -t` (dump),
 configparser (Borg), zlib and tarfile (Android backups), libmagic
-`file`, and the Python standard library where the format is plain text
+`file`, `tpm2_print` from tpm2-tools (TPM keys and contexts), and the
+Python standard library where the format is plain text
 (the KGB header; yEnc, decoded separately from whiff).
 Each expectation is (fixture, report path, value).
 """
@@ -593,8 +594,114 @@ def batch5e(fx):
         want(rel(f), "format.dwf.entries", len(zipfile.ZipFile(f).namelist()), "zipfile")
 
 
+def der_items(b):
+    """The elements of the first DER SEQUENCE in `b`: (tag, body)."""
+    def tlv(b, i):
+        tag, n = b[i], b[i + 1]
+        i += 2
+        if n & 0x80:
+            k = n & 0x7F
+            n, i = int.from_bytes(b[i:i + k], "big"), i + k
+        return tag, b[i:i + n], i + n
+    _, body, _ = tlv(b, 0)
+    items, i = [], 0
+    while i < len(body):
+        tag, v, i = tlv(body, i)
+        items.append((tag, v))
+    return items
+
+
+def tpm_public(fx, f, area_file):
+    """tpm2_print's view of a TPM2B_PUBLIC, and the TPM name from hashlib."""
+    import hashlib
+    text = out("tpm2_print", "-t", "TPM2B_PUBLIC", str(area_file))
+    fields = dict(re.findall(r"^(name-alg|type|bits|exponent):\n?\s*(?:value: )?(\S+)", text, re.M))
+    attrs = re.search(r"^attributes:\n\s*value: (\S+)", text, re.M).group(1).split("|")
+    names = {"fixedtpm": "fixed_tpm", "stclear": "st_clear", "fixedparent": "fixed_parent",
+             "sensitivedataorigin": "sensitive_data_origin", "userwithauth": "user_with_auth",
+             "adminwithpolicy": "admin_with_policy", "noda": "no_dictionary_attack",
+             "encryptedduplication": "encrypted_duplication", "restricted": "restricted", "decrypt": "decrypt", "sign": "sign"}
+    order = list(names.values())
+    want(fx / f, "format.tpm2_key.attributes", sorted((names[a] for a in attrs), key=order.index), "tpm2_print")
+    want(fx / f, "format.tpm2_key.name_algorithm", fields.get("name-alg"), "tpm2_print")
+    want(fx / f, "format.tpm2_key.key_algorithm", fields.get("type"), "tpm2_print")
+    if "bits" in fields:
+        want(fx / f, "format.tpm2_key.key_bits", int(fields["bits"]), "tpm2_print")
+    if "exponent" in fields:
+        want(fx / f, "format.tpm2_key.rsa_exponent", int(fields["exponent"]), "tpm2_print")
+    curve = re.search(r"^curve-id:\n\s*value: (.+)$", text, re.M)
+    if curve:
+        want(fx / f, "format.tpm2_key.key_curve", curve.group(1).strip().lower().replace(" ", "_"), "tpm2_print")
+    area = Path(area_file).read_bytes()[2:]
+    want(fx / f, "format.tpm2_key.tpm_name", "000b" + hashlib.sha256(area).hexdigest(), "hashlib")
+
+
+def batch5e4(fx):
+    """Batch 5e part 4: tpm2-tools on the TPM files, libmagic on bytecode
+    and Hadoop files, tarfile on the Unity package, json on Hudi and OCI."""
+    import base64
+    import tarfile
+    import tempfile
+    for f in sorted((fx / "tpm2_context").glob("*.ctx")):
+        text = out("tpm2_print", "-t", "TPMS_CONTEXT", str(f))
+        get = lambda k: re.search(rf"^{k}: (\S+)", text, re.M).group(1)
+        rel = f.relative_to(fx)
+        want(fx / rel, "format.tpm2_context.file_version", int(get("version")), "tpm2_print")
+        want(fx / rel, "format.tpm2_context.hierarchy", get("hierarchy"), "tpm2_print")
+        want(fx / rel, "format.tpm2_context.saved_handle.handle", get("handle"), "tpm2_print")
+        want(fx / rel, "format.tpm2_context.sequence", int(get("sequence")), "tpm2_print")
+        want(fx / rel, "format.tpm2_context.context_blob_bytes", int(re.search(r"size: (\d+)", text).group(1)), "tpm2_print")
+    for f in sorted((fx / "tpm2_key").iterdir()):
+        raw = f.read_bytes()
+        if raw.startswith(b"-----BEGIN"):
+            # The whole key through tpm2-tools' own TSS2 PEM reader.
+            text = out("tpm2_print", "-t", "TSSPRIVKEY_OBJ", str(f))
+            want(f, "format.tpm2_key.key_algorithm", re.search(r"^type:\n\s*value: (\S+)", text, re.M).group(1), "tpm2_print")
+            raw = base64.b64decode("".join(l for l in raw.decode().splitlines() if not l.startswith("-----")))
+        items = der_items(raw)
+        want(f, "format.tpm2_key.parent", "owner" if [v for t, v in items if t == 0x02] == [b"\x40\x00\x00\x01"] else "other", "DER")
+        with tempfile.NamedTemporaryFile(suffix=".pub") as t:
+            t.write([v for t, v in items if t == 0x04][0])
+            t.flush()
+            tpm_public(fx, f.relative_to(fx), t.name)
+    for f, needle, path, value in (
+        ("hermes_bytecode/saltmere-tides.hbc", "Hermes JavaScript bytecode, version 96", "format.hermes_bytecode.bytecode_version", 96),
+        ("sequencefile/saltmere-berths.seq", "Hadoop Sequence file version 6", "format.sequencefile.version", 6),
+        ("sequencefile/saltmere-berths-block.seq", "Hadoop Sequence file version 6", "format.sequencefile.version", 6),
+        ("rcfile/saltmere-readings.rc", "Hive RC file version 1", "format.rcfile.version", 1),
+        ("rcfile/saltmere-readings-seqform.rc", "Hive RC file", None, None),
+        ("swf/saltmere-abc.swf", "Macromedia Flash data, version 10", "format.swf.version", 10),
+    ):
+        if (fx / f).exists():
+            libmagic(fx, f, needle)
+            if path:
+                want(fx / f, path, value, "file")
+    for f in sorted((fx / "unity_package").glob("*.unitypackage")):
+        with tarfile.open(f) as t:
+            paths = sorted(t.extractfile(m).read().decode().splitlines()[0] for m in t.getmembers() if m.name.endswith("/pathname"))
+        want(f, "format.unity_package.assets", len(paths), "tarfile")
+        want(f, "format.unity_package.asset_paths", paths, "tarfile")
+    for f in sorted((fx / "hudi_commit").iterdir()):
+        stats = [s for v in json.loads(f.read_text())["partitionToWriteStats"].values() for s in v]
+        for key, path in (("numWrites", "records_written"), ("numInserts", "inserts"), ("numUpdateWrites", "updates"), ("totalWriteBytes", "bytes_written")):
+            want(f, f"format.hudi_commit.{path}", sum(s[key] for s in stats), "json")
+        want(f, "format.hudi_commit.files_written", len(stats), "json")
+    for f in sorted((fx / "hudi_table").iterdir()):
+        props = dict(l.split("=", 1) for l in f.read_text().splitlines() if l and not l.startswith("#"))
+        want(f, "format.hudi_table.table_name", props["hoodie.table.name"], "properties")
+        want(f, "format.hudi_table.table_type", props["hoodie.table.type"], "properties")
+        want(f, "format.hudi_table.properties", len(props), "properties")
+    f = fx / "json/oras-artifact.json"
+    if f.exists():
+        m = json.loads(f.read_text())
+        want(f, "format.json.known_schema.artifact_type", m["artifactType"], "json")
+        want(f, "format.json.known_schema.layers", len(m["layers"]), "json")
+        want(f, "format.json.known_schema.layer_bytes", sum(l["size"] for l in m["layers"]), "json")
+
+
 def expect(root):
     fx = Path(root)
+    batch5e4(fx)
     batch5e(fx)
     batch5c(fx)
     records(fx)

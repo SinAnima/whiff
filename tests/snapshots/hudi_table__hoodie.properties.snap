@@ -1,0 +1,152 @@
+---
+source: src/formats/columnar/table.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "hoodie.properties",
+    "stem": "hoodie",
+    "extension": "properties"
+  },
+  "identification": {
+    "format": "hudi_table",
+    "name": "Apache Hudi table properties",
+    "mime": "application/octet-stream",
+    "family": "columnar",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "hudi_table",
+        "confidence": 0.95
+      },
+      {
+        "format": "properties",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "columnar.table"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1001
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1001,
+    "entropy": 4.979,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1001,
+      "chars": 1001,
+      "words": 25,
+      "lines": 18,
+      "max_line_length": 347,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "8c9d1e2d78d453fb7421c78806e9279cf83f7f2102c966a99467bb0acaafea01",
+    "blake3": "6671e17eb558996b6f041d056e5e6697745c94bdffe0ef8d0df420f0e28d6699"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "hudi_table": {
+      "table_name": "saltmere_tides",
+      "database": "harbour",
+      "table_type": "MERGE_ON_READ",
+      "table_version": "6",
+      "timeline_layout_version": "1",
+      "base_file_format": "PARQUET",
+      "precombine_field": "observed_at",
+      "key_generator": "org.apache.hudi.keygen.SimpleKeyGenerator",
+      "record_key_fields": [
+        "reading_id"
+      ],
+      "partition_fields": [
+        "berth"
+      ],
+      "metadata_partitions": [
+        "files",
+        "column_stats"
+      ],
+      "populate_meta_fields": true,
+      "hive_style_partitioning": true,
+      "schema": {
+        "reading_id": "string",
+        "berth": "string",
+        "height_m": "double?",
+        "observed_at": "timestamp-micros"
+      },
+      "properties": 16
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "columnar.table",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

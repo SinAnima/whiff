@@ -116,3 +116,8 @@ MrSID / ECW rasters	mrsid
 Prometheus TSDB block	prometheus_tsdb
 macOS FSEvents	fsevents
 Browser cache entries	chrome_cache
+Sparse / zero-filled files	binary
+OCI layout / ORAS artifact	docker_image
+Smalltalk image / Pharo	smalltalk_image
+Flash ActionScript ABC	flash_abc
+Apache Hudi / Kudu / CarbonData	hudi_table

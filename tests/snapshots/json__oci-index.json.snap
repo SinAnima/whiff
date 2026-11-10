@@ -1,0 +1,275 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "oci-index.json",
+    "stem": "oci-index",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 858
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 858,
+    "entropy": 4.755,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 858,
+      "chars": 858,
+      "words": 51,
+      "lines": 31,
+      "max_line_length": 90,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "1ca2c5659fa85cdadc468a33d849ee5467ea14337ced7c9de4298f5abf7216bd",
+    "blake3": "c356eb848c801ddc13a2b7963d5f96c23fa9e8f9fd32228d9bd3fe04916ec448"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "schemaVersion",
+        "mediaType",
+        "manifests",
+        "annotations"
+      ],
+      "key_count": 4,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.schemaVersion": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              2
+            ]
+          },
+          "$.mediaType": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "application/vnd.oci.image.index.v1+json"
+            ]
+          },
+          "$.manifests": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.manifests[]": {
+            "types": [
+              "object"
+            ],
+            "count": 2
+          },
+          "$.manifests[].mediaType": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "application/vnd.oci.image.manifest.v1+json"
+            ]
+          },
+          "$.manifests[].size": {
+            "types": [
+              "integer"
+            ],
+            "count": 2,
+            "examples": [
+              1013
+            ]
+          },
+          "$.manifests[].digest": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "sha256:5861314d7fccb39c2192173240eab44fa35ca66426201ca2acd06…",
+              "sha256:f69162950f235e3cdbbad33f1f912d1a504be90d8a37d002c735d…"
+            ]
+          },
+          "$.manifests[].platform": {
+            "types": [
+              "object"
+            ],
+            "count": 2
+          },
+          "$.manifests[].platform.architecture": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "amd64",
+              "arm64"
+            ]
+          },
+          "$.manifests[].platform.os": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "linux"
+            ]
+          },
+          "$.manifests[].annotations": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.manifests[].annotations.[\"org.opencontainers.image.ref.name\"]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "saltmere/tides:1.4"
+            ]
+          },
+          "$.manifests[].platform.variant": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "v8"
+            ]
+          },
+          "$.annotations": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.annotations.[\"org.opencontainers.image.created\"]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "2025-09-01T12:00:00Z"
+            ]
+          }
+        },
+        "max_depth": 4
+      },
+      "known_schema": {
+        "id": "oci_index",
+        "name": "OCI image index",
+        "manifests": 2,
+        "platforms": [
+          "linux/amd64",
+          "linux/arm64/v8"
+        ],
+        "references": [
+          "saltmere/tides:1.4"
+        ],
+        "created": "2025-09-01T12:00:00Z"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

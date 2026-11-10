@@ -15,6 +15,7 @@ pub fn redact(report: &mut Report) {
     s.inode = None;
     s.links = None;
     s.allocated_bytes = None;
+    s.sparse = None;
     s.readonly = None;
     s.hidden = None;
     report.temporal.filesystem = FsTimes::default();

@@ -1,0 +1,162 @@
+---
+source: src/formats/web/swf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-abc.swf",
+    "stem": "saltmere-abc",
+    "extension": "swf"
+  },
+  "identification": {
+    "format": "swf",
+    "name": "Shockwave Flash",
+    "mime": "application/x-shockwave-flash",
+    "family": "web.misc",
+    "confidence": 0.77,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "web.swf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 321
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "active_content": [
+      "actionscript"
+    ]
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 321,
+    "entropy": 4.417,
+    "entropy_scope": "file",
+    "image": {
+      "width": 550,
+      "height": 400,
+      "frames": 1
+    },
+    "media": {
+      "duration_s": 0.042
+    },
+    "container": {
+      "uncompressed_bytes": 321,
+      "ratio": 1.0
+    }
+  },
+  "integrity": {
+    "sha256": "93f97d1fc45583bf093b59876e266b15133b9c3f4508a9243767d55a1f850b37",
+    "blake3": "37fd25fbe42c71ec13400cc03ec1bfbcb6458668440d86bfbfb69eb1a0672672"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "swf": {
+      "version": 10,
+      "compression": "none",
+      "file_length": 321,
+      "stage": {
+        "width": 550,
+        "height": 400
+      },
+      "frame_rate": 24.0,
+      "frame_count": 1,
+      "tags": 4,
+      "attributes": {
+        "use_direct_blit": false,
+        "use_gpu": false,
+        "has_metadata": false,
+        "actionscript3": true,
+        "use_network": false
+      },
+      "scripts": {
+        "abc_blocks": 1,
+        "abc_names": [
+          "saltmere/harbour"
+        ],
+        "language": "ActionScript 3",
+        "classes": 3,
+        "class_list": [
+          {
+            "name": "saltmere.harbour.Tide",
+            "extends": "Object"
+          },
+          {
+            "name": "saltmere.harbour.Bell",
+            "extends": "Object"
+          },
+          {
+            "name": "saltmere.harbour.IRinger",
+            "interface": true
+          }
+        ],
+        "packages": [
+          "saltmere.harbour"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "web.swf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

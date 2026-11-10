@@ -1,0 +1,327 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "oras-artifact.json",
+    "stem": "oras-artifact",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1120
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1120,
+    "entropy": 4.953,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1120,
+      "chars": 1120,
+      "words": 60,
+      "lines": 36,
+      "max_line_length": 90,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "26ad0015a4d2cdd1d73a5a1abb7bd9af03882e7123afd69d315b94efd3938a0e",
+    "blake3": "7e19cae716b5091c2bf52ce8e6ff67258dfd8fd05bb3a4dcdd9dee15b249262b"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "schemaVersion",
+        "mediaType",
+        "artifactType",
+        "config",
+        "layers",
+        "subject",
+        "annotations"
+      ],
+      "key_count": 7,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.schemaVersion": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              2
+            ]
+          },
+          "$.mediaType": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "application/vnd.oci.image.manifest.v1+json"
+            ]
+          },
+          "$.artifactType": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "application/vnd.saltmere.tide-table.v1"
+            ]
+          },
+          "$.config": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.config.mediaType": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "application/vnd.oci.empty.v1+json"
+            ]
+          },
+          "$.config.size": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              2
+            ]
+          },
+          "$.config.digest": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c06…"
+            ]
+          },
+          "$.layers": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.layers[]": {
+            "types": [
+              "object"
+            ],
+            "count": 2
+          },
+          "$.layers[].mediaType": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "text/csv",
+              "application/pdf"
+            ]
+          },
+          "$.layers[].size": {
+            "types": [
+              "integer"
+            ],
+            "count": 2,
+            "examples": [
+              4210,
+              88120
+            ]
+          },
+          "$.layers[].digest": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "sha256:0e714fd92f7538e3531b61c0eeb7f9c70e44475be7557df873b13…",
+              "sha256:cc57fc1903e444cf6a726490b43b27ee9f87facc037f868722018…"
+            ]
+          },
+          "$.layers[].annotations": {
+            "types": [
+              "object"
+            ],
+            "count": 2
+          },
+          "$.layers[].annotations.[\"org.opencontainers.image.title\"]": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "tides-2025-09.csv",
+              "harbour-chart.pdf"
+            ]
+          },
+          "$.subject": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.subject.mediaType": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "application/vnd.oci.image.manifest.v1+json"
+            ]
+          },
+          "$.subject.size": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              1013
+            ]
+          },
+          "$.subject.digest": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "sha256:5861314d7fccb39c2192173240eab44fa35ca66426201ca2acd06…"
+            ]
+          },
+          "$.annotations": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.annotations.[\"org.opencontainers.image.created\"]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "2025-09-01T12:00:00Z"
+            ]
+          }
+        },
+        "max_depth": 4
+      },
+      "known_schema": {
+        "id": "oci_manifest",
+        "name": "OCI artifact manifest (ORAS)",
+        "artifact_type": "application/vnd.saltmere.tide-table.v1",
+        "config_media_type": "application/vnd.oci.empty.v1+json",
+        "layers": 2,
+        "layer_bytes": 92330,
+        "layer_media_types": {
+          "application/pdf": 1,
+          "text/csv": 1
+        },
+        "files": [
+          "tides-2025-09.csv",
+          "harbour-chart.pdf"
+        ],
+        "refers_to": "sha256:5861314d7fccb39c2192173240eab44fa35ca66426201ca2acd0630a6258dd51",
+        "created": "2025-09-01T12:00:00Z"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

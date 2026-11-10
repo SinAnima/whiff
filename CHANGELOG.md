@@ -345,6 +345,35 @@ document format in the catalogue.
   dumps, NetCDF geodata, Unreal / Unity scenes, Office add-ins, GIFV,
   SolidWorks, memory dumps, encrypted volumes, Maildir and Usenet
   messages, format-patch mails, MSU, bottles, AAX).
+- **Packages, bytecode, keys, big data and wrappers long tail** (batch 5
+  part e4, in-house, no new crates):
+  - new `bytecode.longtail` (`common`): Hermes bytecode (version, form,
+    source hash, function, string and identifier counts, tables, debug
+    information, function names), Smalltalk images (format, word size,
+    Spur / Sista, byte order, heap, window, VM parameters) and change logs
+    (system, chunks, method categories, classes; author stamps only with
+    `--privacy off`), ActionScript bytecode (ABC version, constant pool,
+    methods, metadata, classes with super classes and packages, scripts,
+    method bodies); SWF files now list the classes of their `DoABC` tags;
+  - new `crypto.tpm` (`common`): TPM 2.0 key files (`TSS2 PRIVATE KEY`,
+    PEM or DER: kind, empty auth, policies, parent, description, the
+    public area's algorithm, size or curve, scheme, attributes and TPM
+    name), TPM 1.2 key blobs (recognised), `tpm2-tools` context files;
+  - new `columnar.hadoop` (`data`): Hadoop SequenceFile (classes,
+    compression and codec, metadata, records, blocks, sync markers) and
+    Hive RCFile (both forms: columns, codec, row groups, rows);
+    `columnar.table` reads Apache Hudi `hoodie.properties` and timeline
+    commits;
+  - `package.tarball` reads Unity asset packages (assets, paths, kinds,
+    folders); OCI image layouts, indexes and manifests (ORAS artifacts
+    among them) are recognised as known JSON schemas;
+  - partial downloads and backup copies (`report.pdf.crdownload`,
+    `notes.txt.bak`, `notes.txt~`) are detected by the extension
+    underneath and named in the new `identification.wrapper`; unrecognised
+    ones go to the new `binary.wrapper` (text handed on); `binary.unknown`
+    reports zero ratios, empty 4 KiB blocks and trailing zeros, and
+    `system.sparse` says when a file has fewer bytes allocated than its
+    size.
 - **Databases, logs and caches long tail** (batch 5 part e3, in-house,
   no new crates):
   - new `db.stores` (`common`): Realm and Firebird / InterBase headers,

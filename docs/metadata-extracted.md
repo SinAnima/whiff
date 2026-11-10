@@ -127,9 +127,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1008 formats** in total: tier 1 = 139, tier 2 = 122, tier 3 = 747.
-* Formats with an extractor in this build: **991** of 1008.
+* Formats with an extractor in this build: **1002** of 1008.
 * Formats by family status: crate = 183, mixed = 365, impl = 460.
-* Formats by target stage: S1 = 202, S1/S6 = 102, S2 = 99, S3 = 65, S3/S8 = 22, S4 = 87, S5 = 89, S6 = 112, S6/S8 = 21, S7 = 143, S8 = 66.
+* Formats by target stage: S1 = 205, S1/S6 = 102, S2 = 99, S3 = 65, S3/S8 = 22, S4 = 87, S5 = 91, S6 = 116, S6/S8 = 21, S7 = 145, S8 = 55.
 * By feature: `common` = 818, `cad` = 45, `forensics` = 38, `science` = 36, `geo` = 34, `data` = 20, `games` = 17.
 * By category: Code 167, Data 157, Image 95, Media 88, Document 71, Archive 47, Scientific 36, Executable 34, Geospatial 34, Text 32, Package 30, 3D 28, Web 27, Forensics 24, Database 21, Security 20, CAD 17, Game 17, Personal 16, Disk 14, Platform 11, Font 10, Fallback 8, Block 4.
 
@@ -608,9 +608,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 467 | Mathematica notebook | `nb` `cdf` | application/mathematica | 3 | `code.notebook` | `common` | `data.records` | serde_json | S1 | — |
 | 468 | Memory / swap dumps | `mem` `raw` `vmem` `swap` | — | 3 | `binary.unknown` | `common` | `forensic.dump` | aho-corasick + impl | S1 | strings + embedded signatures only |
 | 469 | Firmware blob | `fw` `bin` `rom` | — | 3 | `binary.unknown` | `common` | `binary.unknown` | aho-corasick + impl | S1 | binwalk-style signature scan |
-| 470 | Temporary / partial download | `part` `crdownload` `tmp` `download` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | underlying format re-detected |
-| 471 | Backup copies | `bak` `old` `orig` `swp` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | detect underlying format; Vim swap -&gt; original filename |
-| 472 | Sparse / zero-filled files | `*` | — | 3 | `binary.unknown` | `common` | — | aho-corasick + impl | S8 | hole detection (SEEK_DATA), zero ratio |
+| 470 | Temporary / partial download | `part` `crdownload` `tmp` `download` | — | 3 | `binary.unknown` | `common` | `binary.wrapper` | aho-corasick + impl | S1 | underlying format re-detected |
+| 471 | Backup copies | `bak` `old` `orig` `swp` | — | 3 | `binary.unknown` | `common` | `binary.wrapper` | aho-corasick + impl | S1 | detect underlying format; Vim swap -&gt; original filename |
+| 472 | Sparse / zero-filled files | `*` | — | 3 | `binary.unknown` | `common` | `binary.unknown` | aho-corasick + impl | S1 | hole detection (SEEK_DATA), zero ratio |
 | 473 | Core Foundation / NSKeyedArchiver blobs | `plist` | — | 3 | `binary.unknown` | `common` | `apple.plist` | aho-corasick + impl | S1 | -&gt; apple |
 | 474 | QOI | `qoi` | image/qoi | 3 | `image.raster` | `common` | `image.qoi` | imagesize | S2 | — |
 | 475 | Farbfeld | `ff` | — | 3 | `image.raster` | `common` | `image.retro` | imagesize | S2 | — |
@@ -853,11 +853,11 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 712 | VS Code extension / JetBrains plugin | `vsix` | application/zip | 3 | `package` | `common` | `package.zipped` | impl | S5 | package.json / plugin.xml |
 | 713 | Helm chart archive | `tgz` | — | 3 | `package` | `common` | `package.tarball` | impl | S5 | Chart.yaml |
 | 714 | Docker / OCI image tarball | `tar` | — | 3 | `package` | `common` | `package.tarball` | impl | S5 | manifest.json, config: layers, env, entrypoint, labels |
-| 715 | OCI layout / ORAS artifact | `oci-layout` | — | 3 | `package` | `common` | — | impl | S8 | — |
+| 715 | OCI layout / ORAS artifact | `oci-layout` | — | 3 | `package` | `common` | `package.tarball` | impl | S5 | — |
 | 716 | Windows CAB update / MSU | `msu` | — | 3 | `package` | `common` | `archive.cab` | impl | S5 | — |
 | 717 | Solaris / BSD / Slackware packages | `pkg` `txz` `tgz` | — | 3 | `package` | `common` | `package.tarball` | impl | S5 | — |
 | 718 | Haiku / Homebrew bottle | `hpkg` `bottle.tar.gz` | — | 3 | `package` | `common` | `compress.gzip` | impl | S5 | — |
-| 719 | Unity package | `unitypackage` | — | 3 | `package` | `common` | — | impl | S8 | asset paths |
+| 719 | Unity package | `unitypackage` | — | 3 | `package` | `common` | `package.tarball` | impl | S5 | asset paths |
 | 720 | Office add-in / VBA add-in | `xla` `ppa` | — | 3 | `package` | `common` | `doc.ole` | impl | S5 | -&gt; doc.ole |
 | 721 | Electron asar | `asar` | — | 3 | `package` | `common` | `package.asar` | impl | S5 | header JSON file list |
 | 722 | Apple sparse disk image (UDIF variants: UDZO/ULFO/UDRW) | `dmg` | — | 3 | `package` | `common` | `package.dmg` | impl | S5 | compression type, partition names |
@@ -914,12 +914,12 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 773 | FPGA bitstream (Xilinx .bit) | `bit` `bin` | — | 3 | `exec` | `common` | `exec.misc` | impl | S6 | design name, part, date, time |
 | 774 | Lua bytecode / LuaJIT | `luac` | — | 3 | `bytecode` | `common` | `bytecode.vm` | impl | S6 | — |
 | 775 | Erlang BEAM | `beam` | — | 3 | `bytecode` | `common` | `bytecode.vm` | impl | S6 | module, exports, attributes |
-| 776 | Hermes / V8 snapshot / QuickJS | `hbc` `bin` | — | 3 | `bytecode` | `common` | — | impl | S8 | — |
+| 776 | Hermes / V8 snapshot / QuickJS | `hbc` `bin` | — | 3 | `bytecode` | `common` | `bytecode.longtail` | impl | S6 | — |
 | 777 | Emacs / Guile compiled | `elc` `go` | — | 3 | `bytecode` | `common` | `bytecode.vm` | impl | S6 | — |
 | 778 | Ruby YARV / mruby | `mrb` | — | 3 | `bytecode` | `common` | `bytecode.vm` | impl | S6 | — |
 | 779 | OCaml / Haskell interface | `cmi` `cmo` `hi` | — | 3 | `bytecode` | `common` | `bytecode.vm` | impl | S6 | — |
-| 780 | Smalltalk image / Pharo | `image` `changes` | — | 3 | `bytecode` | `common` | — | impl | S8 | — |
-| 781 | Flash ActionScript ABC | `abc` | — | 3 | `bytecode` | `common` | — | impl | S8 | -&gt; web.misc SWF |
+| 780 | Smalltalk image / Pharo | `image` `changes` | — | 3 | `bytecode` | `common` | `bytecode.longtail` | impl | S6 | — |
+| 781 | Flash ActionScript ABC | `abc` | — | 3 | `bytecode` | `common` | `bytecode.longtail` | impl | S6 | -&gt; web.misc SWF |
 | 782 | PKCS#7 / CMS signed data | `p7b` `p7c` `p7s` `p7m` | application/pkcs7-mime | 3 | `crypto` | `common` | `crypto.pki` | impl | S6 | signers, certs |
 | 783 | Certificate signing request | `csr` `req` | application/pkcs10 | 3 | `crypto` | `common` | `crypto.pki` | impl | S6 | — |
 | 784 | Certificate revocation list | `crl` | application/pkix-crl | 3 | `crypto` | `common` | `crypto.pki` | impl | S6 | issuer, entries, next update |
@@ -927,7 +927,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 786 | JSON Web Key / JWT / JWS | `jwk` `jwks` `jwt` | — | 3 | `crypto` | `common` | `crypto.token` | impl | S6 | header + claims, sig unverified |
 | 787 | age / minisign / signify | `age` `minisig` `sig` | — | 3 | `crypto` | `common` | `crypto.token` | impl | S6 | recipients/key ids |
 | 788 | KeePass / password vault | `kdbx` `kdb` `1pif` | — | 3 | `crypto` | `common` | `crypto.store` | impl | S6 | header only: cipher, KDF (never decrypt) |
-| 789 | TPM / FIDO / misc keys | `tss` | — | 3 | `crypto` | `common` | — | impl | S8 | — |
+| 789 | TPM / FIDO / misc keys | `tss` | — | 3 | `crypto` | `common` | `crypto.tpm` | impl | S6 | — |
 | 790 | Encrypted container (VeraCrypt/LUKS/BitLocker header) | `hc` `luks` `bek` | — | 3 | `crypto` | `common` | `disk.raw` | impl | S6 | header: cipher, version, UUID (LUKS) |
 | 791 | S/MIME email | `p7m` | — | 3 | `crypto` | `common` | `crypto.pki` | impl | S6 | -&gt; email |
 | 792 | Apple signed artifacts (.mobileprovision) | `mobileprovision` `provisionprofile` | — | 3 | `crypto` | `common` | `apple.plist` | impl | S6 | -&gt; apple |
@@ -991,8 +991,8 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 850 | Vortex | `vortex` `vtx` | — | 3 | `columnar` | `data` | `columnar.store` | impl: Parquet footer | S7 | feature-gated |
 | 851 | Delta Lake / Iceberg table metadata | `_delta_log/*.json` `metadata.json` | — | 3 | `columnar` | `data` | `columnar.table` | impl: Parquet footer | S7 | — |
 | 852 | GeoParquet | `parquet` | — | 3 | `columnar` | `data` | `columnar.parquet` | impl: Parquet footer | S7 | geo metadata -&gt; geo |
-| 853 | Apache Hudi / Kudu / CarbonData | `hoodie` | — | 3 | `columnar` | `data` | — | impl: Parquet footer | S8 | — |
-| 854 | Spark / Hadoop SequenceFile / RCFile | `seq` `rc` | — | 3 | `columnar` | `data` | — | impl: Parquet footer | S8 | key/value classes, codec |
+| 853 | Apache Hudi / Kudu / CarbonData | `hoodie` | — | 3 | `columnar` | `data` | `columnar.table` | impl: Parquet footer | S7 | — |
+| 854 | Spark / Hadoop SequenceFile / RCFile | `seq` `rc` | — | 3 | `columnar` | `data` | `columnar.hadoop` | impl: Parquet footer | S7 | key/value classes, codec |
 | 855 | pandas DataFrame pickle | `pkl` | — | 3 | `columnar` | `data` | `data.pickle` | impl: Parquet footer | S7 | -&gt; data.binser (never unpickle) |
 | 856 | Feather v1 / R fst / qs | `fst` `qs` | — | 3 | `columnar` | `data` | `columnar.rdata` | impl: Parquet footer | S7 | header |
 | 857 | TFRecord / RecordIO | `tfrecord` `tfrec` `rec` | — | 3 | `columnar` | `data` | `columnar.records` | impl: Parquet footer | S7 | record count, feature keys (protobuf Example) |

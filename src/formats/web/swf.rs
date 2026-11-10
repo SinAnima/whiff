@@ -14,6 +14,8 @@ use std::collections::BTreeMap;
 
 use serde_json::{Map, Value, json};
 
+use super::super::bytecode::longtail;
+
 use crate::plugin::{
     BlockKind, Codec, Context, Cost, DateField, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Source,
     truncate_chars,
@@ -154,6 +156,7 @@ fn tags(b: &[u8], cx: &mut Context<'_>) -> Result<(), ExtractError> {
     let (mut actions, mut binary_bytes) = (0u64, 0u64);
     let mut flags = Map::new();
     let mut main_class = None;
+    let mut classes = Vec::new();
     while pos + 2 <= b.len() {
         if count % 4096 == 0 {
             cx.checkpoint()?;
@@ -258,8 +261,17 @@ fn tags(b: &[u8], cx: &mut Context<'_>) -> Result<(), ExtractError> {
                 cx.emit_block(BlockKind::XMP, xmp.into_bytes());
             }
             72 | 82 => {
-                let name = if code == 82 { cstr(t.get(4..).unwrap_or(&[])).0 } else { String::new() };
+                let (name, body) = if code == 82 {
+                    let rest = t.get(4..).unwrap_or(&[]);
+                    let (name, used) = cstr(rest);
+                    (name, &rest[used..])
+                } else {
+                    (String::new(), t)
+                };
                 abc.push(truncate_chars(&name, 200));
+                if let Some(parsed) = longtail::abc(body) {
+                    classes.extend(parsed.classes);
+                }
             }
             86 => {
                 if let Some(scenes) = scenes(t) {
@@ -311,6 +323,10 @@ fn tags(b: &[u8], cx: &mut Context<'_>) -> Result<(), ExtractError> {
             s.insert("action_blocks".into(), json!(actions));
         }
         s.insert("language".into(), json!(if abc.is_empty() { "ActionScript 1/2" } else { "ActionScript 3" }));
+        if !classes.is_empty() {
+            classes.truncate(100);
+            longtail::Abc::with_classes(classes).write_classes(&mut s);
+        }
         cx.format_set("scripts", Value::Object(s));
     }
     if binary_bytes > 0 {

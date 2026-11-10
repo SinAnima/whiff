@@ -1,0 +1,151 @@
+---
+source: src/formats/columnar/table.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "20250901120000123.deltacommit",
+    "stem": "20250901120000123",
+    "extension": "deltacommit"
+  },
+  "identification": {
+    "format": "hudi_commit",
+    "name": "Apache Hudi timeline commit",
+    "mime": "application/octet-stream",
+    "family": "columnar",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "hudi_commit",
+        "confidence": 0.95
+      },
+      {
+        "format": "json",
+        "confidence": 0.55
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "columnar.table"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1413
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "instant",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1413,
+    "entropy": 4.721,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1413,
+      "chars": 1413,
+      "words": 96,
+      "lines": 39,
+      "max_line_length": 405,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "c7b93a83fc157b08572a2f0578f1c255f3a369629cd61820a82a7c12dc4d5f55",
+    "blake3": "59da54dc7e46de5c96c7a8c0f20e8d1f65ddeb99a45fc06ca2bfe21e7abe7028"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "hudi_commit": {
+      "action": "deltacommit",
+      "instant": "2025-09-01T12:00:00Z",
+      "operation": "UPSERT",
+      "compacted": false,
+      "partitions": 2,
+      "files_written": 2,
+      "records_written": 168,
+      "inserts": 148,
+      "updates": 20,
+      "deletes": 0,
+      "bytes_written": 645552,
+      "write_errors": 0,
+      "schema": {
+        "reading_id": "string",
+        "berth": "string",
+        "height_m": "double?",
+        "observed_at": "timestamp-micros"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "columnar.table",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

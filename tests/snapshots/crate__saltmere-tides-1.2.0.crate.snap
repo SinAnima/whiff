@@ -425,14 +425,20 @@ expression: report
         "extension": "orig"
       },
       "identification": {
-        "format": "text",
-        "name": "Plain text",
-        "mime": "text/plain",
-        "family": "text.plain",
-        "confidence": 0.3,
-        "detected_by": "heuristic",
+        "format": "toml",
+        "name": "TOML",
+        "mime": "application/toml",
+        "family": "data.toml",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
         "encoding": "us-ascii",
-        "extractor": "text.plain"
+        "extractor": "data.toml",
+        "wrapper": {
+          "kind": "backup_copy",
+          "extension": "orig",
+          "inner_extension": "toml"
+        }
       },
       "system": {
         "kind": "memory",
@@ -466,61 +472,138 @@ expression: report
         "sha256": "fe686bded347232a2e096c55a6564c9522867f1b8ad178704ff4c1cba88739d5",
         "blake3": "78e3cd4462d63c8c5a8c9ba71c1b57e2fb6d23d4c3aff122c3c39dcb0ead2be5"
       },
-      "content": {
-        "keywords": [
-          "tides",
-          "package",
-          "MIT OR Apache",
-          "example.org",
-          "saltmere",
-          "ana",
-          "Ana Lighthouse",
-          "harbour",
-          "Tide tables",
-          "Apache"
-        ],
-        "keyword_frequency": [
-          [
-            "tides",
-            4
-          ],
-          [
-            "saltmere",
-            3
-          ],
-          [
-            "ana",
-            2
-          ],
-          [
-            "example.org",
-            2
-          ],
-          [
-            "harbour",
-            2
-          ]
-        ],
-        "excerpt": "[package] name = \"saltmere-tides\" version = \"1.2.0\" edition = \"2021\" description = \"Tide tables for Saltmere harbour\" license = \"MIT OR Apache-2.0\" authors = [\"Ana Lighthouse <[redacted:email]>\"] repository = \"https://example.org/saltmere/tides\" keywords = [\"tides\", \"harbour\"] [dependencies]",
-        "tags": [
-          "tides",
-          "package",
-          "MIT OR Apache",
-          "example.org",
-          "saltmere"
-        ]
-      },
+      "content": {},
       "metadata": {},
       "format": {
-        "text": {
-          "paragraphs": 2,
-          "urls": 1
+        "toml": {
+          "valid": true,
+          "tables": [
+            "dependencies",
+            "package"
+          ],
+          "top_level_keys": 2,
+          "schema": {
+            "paths": {
+              "$": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.dependencies": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.package": {
+                "types": [
+                  "object"
+                ],
+                "count": 1
+              },
+              "$.package.authors": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  1,
+                  1
+                ]
+              },
+              "$.package.authors[]": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "Ana Lighthouse <[redacted:email]>"
+                ]
+              },
+              "$.package.description": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "Tide tables for Saltmere harbour"
+                ]
+              },
+              "$.package.edition": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "2021"
+                ]
+              },
+              "$.package.keywords": {
+                "types": [
+                  "array"
+                ],
+                "count": 1,
+                "items": [
+                  2,
+                  2
+                ]
+              },
+              "$.package.keywords[]": {
+                "types": [
+                  "string"
+                ],
+                "count": 2,
+                "examples": [
+                  "tides",
+                  "harbour"
+                ]
+              },
+              "$.package.license": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "MIT OR Apache-2.0"
+                ]
+              },
+              "$.package.name": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "saltmere-tides"
+                ]
+              },
+              "$.package.repository": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "https://example.org/saltmere/tides"
+                ]
+              },
+              "$.package.version": {
+                "types": [
+                  "string"
+                ],
+                "count": 1,
+                "examples": [
+                  "1.2.0"
+                ]
+              }
+            },
+            "max_depth": 3
+          }
         }
       },
       "diagnostics": {
         "extractors": [
           {
-            "id": "text.plain",
+            "id": "data.toml",
             "version": 1,
             "ms": 0.0,
             "status": "ok"

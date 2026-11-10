@@ -21,6 +21,16 @@ expression: report
     "confidence": 0.81,
     "detected_by": "magic",
     "extension_matches": true,
+    "candidates": [
+      {
+        "format": "mssql_backup",
+        "confidence": 0.81
+      },
+      {
+        "format": "backup_copy",
+        "confidence": 0.35
+      }
+    ],
     "extractor": "db.stores"
   },
   "system": {

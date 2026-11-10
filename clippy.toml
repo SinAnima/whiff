@@ -1,6 +1,7 @@
 # Product and format names that appear in docs as plain words. `..` keeps
 # clippy's default list.
 doc-valid-idents = [
+    "SequenceFile", "SequenceFiles", "RCFile", "RCFiles", "KeyBuffer","CommonJS", "ActionScript", "OpenSmalltalk", 
     "..",
     "DjVu", "DjVu3", "FlashPix", "PixInsight", "OpenRaster", "RawTherapee", "GoPro", "SOFn",
     "RelatedPerson", "NIfTI", "MetaImage", "MetaIO", "PDBx", "CTfile", "TFile", "TDirectory", "TKey", "BioSemi", "BrainVision",

@@ -35,3 +35,5 @@ Names, e-mail addresses (`example.org`, `example.com`) and phone numbers are fic
 | `harbourmaster.jscontact.json` | Written for whiff's test suite (`scripts/fixtures/legacy.sh`, step configs; fictitious values) | CC0-1.0 |
 | `tides.zpln` | Written for whiff's test suite (`scripts/fixtures/legacy.sh`, step configs; fictitious values) | CC0-1.0 |
 | `tsdb-block-meta.json` | written by craft_systems5e.py (a Prometheus TSDB block's meta.json, fictitious) | CC0-1.0 |
+| `oci-index.json` | written by craft_packages5e.py (an OCI image index, fictitious) | CC0-1.0 |
+| `oras-artifact.json` | written by craft_packages5e.py (an ORAS artifact manifest, fictitious) | CC0-1.0 |

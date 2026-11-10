@@ -38,8 +38,9 @@
 #     RUN apt-get update && apt-get install -y --no-install-recommends tnef && rm -rf /var/lib/apt/lists/*
 #     RUN pip install --no-cache-dir cbor2
 #     RUN pip install --no-cache-dir kafka-python
+#     RUN apt-get update && apt-get install -y --no-install-recommends tpm2-tools && rm -rf /var/lib/apt/lists/*
 #
-# (nomarch, unar, file and acefile are for legacy_oracle.py; gcc builds
+# (nomarch, unar, file, acefile and tpm2-tools are for legacy_oracle.py; gcc builds
 # acefile's optional C module.)
 
 set -euo pipefail

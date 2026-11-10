@@ -1,0 +1,119 @@
+---
+source: src/formats/bytecode/longtail.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-spur64.image",
+    "stem": "saltmere-spur64",
+    "extension": "image"
+  },
+  "identification": {
+    "format": "smalltalk_image",
+    "name": "Smalltalk image",
+    "mime": "application/x-smalltalk-image",
+    "family": "bytecode",
+    "confidence": 0.85,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "bytecode.longtail"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4224
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4224,
+    "entropy": 7.903,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "c42ac066f6eef611f2bcae1fdeeaea303f962ee6f7024bccc32d977e977522e0",
+    "blake3": "085cfe05e7322f1c4d49261ebf7392add78d742ee078443bef46fedb9714c205"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "smalltalk_image": {
+      "image_format": 68021,
+      "word_bits": 64,
+      "object_memory": "Spur",
+      "byte_order": "little_endian",
+      "heap_bytes": 4096,
+      "window": {
+        "width": 1024,
+        "height": 768
+      },
+      "fullscreen": false,
+      "vm_parameters": {
+        "stack_pages": 50,
+        "eden_bytes": 10485760,
+        "first_segment_bytes": 4096
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "bytecode.longtail",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

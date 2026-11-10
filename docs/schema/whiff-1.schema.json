@@ -250,6 +250,17 @@
             "string",
             "null"
           ]
+        },
+        "wrapper": {
+          "description": "The name marks a partial download, backup copy or temporary file\n(`report.pdf.crdownload`, `notes.txt.bak`): detection used the\nextension underneath.",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Wrapper"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       }
     },
@@ -310,6 +321,29 @@
         }
       }
     },
+    "Wrapper": {
+      "description": "A wrapper named by a file's last extension.",
+      "type": "object",
+      "properties": {
+        "kind": {
+          "description": "`partial_download`, `backup_copy` or `temporary`.",
+          "type": "string",
+          "default": ""
+        },
+        "extension": {
+          "description": "The wrapper's extension (`crdownload`, `bak`, `~` for an editor backup).",
+          "type": "string",
+          "default": ""
+        },
+        "inner_extension": {
+          "description": "The extension underneath, used for detection.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
     "System": {
       "description": "`system` section.",
       "type": "object",
@@ -336,6 +370,13 @@
           ],
           "format": "uint64",
           "minimum": 0
+        },
+        "sparse": {
+          "description": "Fewer bytes allocated than the logical size: a sparse file (or one\nthe filesystem compresses).",
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "device": {
           "description": "Device id.",

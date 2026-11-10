@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.saltmere.tide-table.v1",
+  "config": {
+    "mediaType": "application/vnd.oci.empty.v1+json",
+    "size": 2,
+    "digest": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  "layers": [
+    {
+      "mediaType": "text/csv",
+      "size": 4210,
+      "digest": "sha256:0e714fd92f7538e3531b61c0eeb7f9c70e44475be7557df873b13df3af34225f",
+      "annotations": {
+        "org.opencontainers.image.title": "tides-2025-09.csv"
+      }
+    },
+    {
+      "mediaType": "application/pdf",
+      "size": 88120,
+      "digest": "sha256:cc57fc1903e444cf6a726490b43b27ee9f87facc037f86872201847c565b45fb",
+      "annotations": {
+        "org.opencontainers.image.title": "harbour-chart.pdf"
+      }
+    }
+  ],
+  "subject": {
+    "mediaType": "application/vnd.oci.image.manifest.v1+json",
+    "size": 1013,
+    "digest": "sha256:5861314d7fccb39c2192173240eab44fa35ca66426201ca2acd0630a6258dd51"
+  },
+  "annotations": {
+    "org.opencontainers.image.created": "2025-09-01T12:00:00Z"
+  }
+}
