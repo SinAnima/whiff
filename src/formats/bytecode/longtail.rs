@@ -163,9 +163,7 @@ fn hermes(b: &[u8], size: u64, cx: &mut Context<'_>) -> Result<(), ExtractError>
     // bytecode version 87 (BigInt support).
     if version >= 87 {
         let mut counts = Map::new();
-        for (name, at) in
-            [("bigints", 64), ("regexps", 72), ("commonjs_modules", 96), ("function_sources", 100)]
-        {
+        for (name, at) in [("bigints", 64), ("regexps", 72), ("commonjs_modules", 96), ("function_sources", 100)] {
             let v = field(at);
             if v > 0 {
                 counts.insert(name.into(), v.into());
@@ -278,7 +276,11 @@ fn image_header(h: &[u8]) -> Option<(usize, bool, u32, u8, &'static str)> {
             let v = if little { u32::from_le_bytes(raw) } else { u32::from_be_bytes(raw) };
             if let Some((bits, what)) = image_format(v) {
                 let hs = h.get(at + 4..at + 8)?;
-                let hs = if little { u32::from_le_bytes(hs.try_into().ok()?) } else { u32::from_be_bytes(hs.try_into().ok()?) };
+                let hs = if little {
+                    u32::from_le_bytes(hs.try_into().ok()?)
+                } else {
+                    u32::from_be_bytes(hs.try_into().ok()?)
+                };
                 if hs == if bits == 32 { 64 } else { 128 } {
                     return Some((at, little, v, bits, what));
                 }
@@ -328,7 +330,9 @@ fn image(h: &[u8], size: u64, cx: &mut Context<'_>) -> Result<(), ExtractError> 
     }
     let rest = 8 + 6 * w;
     let mut vm = Map::new();
-    for (name, off, n) in [("extra_vm_memory", 0, 4), ("stack_pages", 4, 2), ("jit_code_kib", 6, 2), ("eden_bytes", 8, 4)] {
+    for (name, off, n) in
+        [("extra_vm_memory", 0, 4), ("stack_pages", 4, 2), ("jit_code_kib", 6, 2), ("eden_bytes", 8, 4)]
+    {
         if let Some(v) = int(rest + off, n).filter(|&v| v > 0) {
             vm.insert(name.into(), v.into());
         }

@@ -218,7 +218,9 @@ pub fn wrapper_of(name: &str) -> Option<Wrapper> {
     let file = name.rsplit(['/', '\\']).next()?;
     let inner = |stem: &str| {
         stem.rsplit_once('.')
-            .filter(|(s, e)| !s.is_empty() && (1..=10).contains(&e.len()) && e.bytes().all(|b| b.is_ascii_alphanumeric()))
+            .filter(|(s, e)| {
+                !s.is_empty() && (1..=10).contains(&e.len()) && e.bytes().all(|b| b.is_ascii_alphanumeric())
+            })
             .map(|(_, e)| e.to_ascii_lowercase())
     };
     if let Some(stem) = file.strip_suffix('~').filter(|s| !s.is_empty() && !s.ends_with('~')) {

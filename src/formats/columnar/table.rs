@@ -506,15 +506,7 @@ fn hudi_commit(cx: &mut Context<'_>, v: &Value, name: Option<&str>) {
         }
         if (instant.len() == 14 || instant.len() == 17) && instant.bytes().all(|b| b.is_ascii_digit()) {
             let t = &instant[..14];
-            let when = format!(
-                "{}-{}-{}T{}:{}:{}Z",
-                &t[..4],
-                &t[4..6],
-                &t[6..8],
-                &t[8..10],
-                &t[10..12],
-                &t[12..14]
-            );
+            let when = format!("{}-{}-{}T{}:{}:{}Z", &t[..4], &t[4..6], &t[6..8], &t[8..10], &t[10..12], &t[12..14]);
             if when.parse::<jiff::Timestamp>().is_ok() {
                 cx.format_set("instant", when.clone());
                 cx.temporal().source("instant".to_string()).content_date(DateField::Modified, when, false);
@@ -559,7 +551,6 @@ fn hudi_commit(cx: &mut Context<'_>, v: &Value, name: Option<&str>) {
 #[cfg(test)]
 mod tests {
     use super::*;
-
 
     #[test]
     fn properties_escapes() {

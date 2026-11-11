@@ -22,7 +22,9 @@ use serde_json::{Map, Value, json};
 use sha2::{Digest, Sha256};
 
 use super::{comment, hex, pem_blocks};
-use crate::plugin::{Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Probe, Sniff, Source, der};
+use crate::plugin::{
+    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Probe, Sniff, Source, der,
+};
 
 /// Extractor for TPM key files.
 pub struct Tpm;

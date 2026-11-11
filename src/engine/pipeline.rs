@@ -190,9 +190,8 @@ fn extract_source(engine: &Engine, report: &mut Report, src: &mut dyn Source, le
     let native = |w: &crate::report::Wrapper| {
         detection.spec.is_some_and(|s| s.extensions.iter().any(|e| e.eq_ignore_ascii_case(&w.extension)))
     };
-    report.identification.wrapper = wrapper.filter(|w| {
-        !native(w) || matches!(detection.spec.map(|s| s.id), Some("partial_download" | "backup_copy"))
-    });
+    report.identification.wrapper = wrapper
+        .filter(|w| !native(w) || matches!(detection.spec.map(|s| s.id), Some("partial_download" | "backup_copy")));
     if let Some(forced) = options.format.as_deref()
         && detection.spec.is_none_or(|s| s.id != forced)
     {

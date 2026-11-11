@@ -34,11 +34,7 @@ static META: ExtractorMeta = ExtractorMeta {
             family: "columnar",
             mimes: &["application/x-hadoop-sequencefile"],
             extensions: &["seq"],
-            magic: &[
-                Magic::prefix(b"SEQ\x04"),
-                Magic::prefix(b"SEQ\x05"),
-                Magic::prefix(b"SEQ\x06"),
-            ],
+            magic: &[Magic::prefix(b"SEQ\x04"), Magic::prefix(b"SEQ\x05"), Magic::prefix(b"SEQ\x06")],
             parent: None,
         },
         FormatSpec {
@@ -91,7 +87,8 @@ impl<'a> Cur<'a> {
         if first >= -112 {
             return Some(i64::from(first));
         }
-        let (negative, len) = if first < -120 { (true, -120 - i32::from(first)) } else { (false, -112 - i32::from(first)) };
+        let (negative, len) =
+            if first < -120 { (true, -120 - i32::from(first)) } else { (false, -112 - i32::from(first)) };
         let mut v = 0i64;
         for _ in 0..len {
             v = v << 8 | i64::from(self.u8()?);
@@ -122,7 +119,8 @@ impl Extractor for Hadoop {
         if h.starts_with(b"RCF\x01") {
             return Some(Sniff { format: "rcfile", confidence: 0.95 });
         }
-        let rc = h.starts_with(b"SEQ\x06") && h.get(4..80).is_some_and(|w| w.windows(RC_KEY.len()).any(|x| x == RC_KEY));
+        let rc =
+            h.starts_with(b"SEQ\x06") && h.get(4..80).is_some_and(|w| w.windows(RC_KEY.len()).any(|x| x == RC_KEY));
         rc.then_some(Sniff { format: "rcfile", confidence: 0.95 })
     }
 
