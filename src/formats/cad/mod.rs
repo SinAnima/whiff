@@ -10,6 +10,7 @@
 pub(crate) mod drawing;
 pub(crate) mod eda;
 pub(crate) mod exchange;
+pub(crate) mod fusion;
 pub(crate) mod gcode;
 pub(crate) mod gltf;
 pub(crate) mod mesh;

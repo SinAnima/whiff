@@ -1,7 +1,12 @@
-//! CSV, TSV and other delimiter-separated tables: dialect (delimiter, quote,
-//! header), columns with inferred types, null ratio, distinct counts,
+//! CSV, TSV and other delimiter-separated tables, and fixed-width text
+//! tables: dialect (delimiter, quote, header; column spans for fixed-width
+//! tables), columns with inferred types, null ratio, distinct counts,
 //! numeric and date ranges, and a few sample rows with personal data
 //! redacted.
+//!
+//! Fixed-width columns are found the way pandas' `read_fwf` infers them:
+//! the runs of character positions that hold a non-blank character in any
+//! of the first 100 lines.
 //!
 //! Specification: <https://www.rfc-editor.org/rfc/rfc4180>
 
@@ -10,8 +15,8 @@ use std::collections::HashSet;
 use serde_json::{Map, Value, json};
 
 use crate::plugin::{
-    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Source, TextRole, parse_date, redact_sensitive,
-    truncate_chars,
+    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, TextRole, parse_date,
+    redact_sensitive, truncate_chars,
 };
 
 /// Extractor for delimiter-separated tables.
@@ -41,6 +46,15 @@ static META: ExtractorMeta = ExtractorMeta {
             magic: &[],
             parent: Some("text"),
         },
+        FormatSpec {
+            id: "fixed_width",
+            name: "Fixed-width text table",
+            family: "data.csv",
+            mimes: &["text/x-fixed-width"],
+            extensions: &["fwf"],
+            magic: &[],
+            parent: Some("text"),
+        },
     ],
 };
 
@@ -49,16 +63,39 @@ const MAX_DISTINCT: usize = 1000;
 const SAMPLE_ROWS: usize = 5;
 /// Rows whose values are profiled; later rows are only counted.
 const PROFILE_ROWS: u64 = 100_000;
+/// Lines whose blank positions decide fixed-width columns (as pandas).
+const INFER_LINES: usize = 100;
 
 impl Extractor for Csv {
     fn meta(&self) -> &'static ExtractorMeta {
         &META
     }
 
+    fn sniff(&self, probe: &Probe<'_>) -> Option<Sniff> {
+        // Only by name: aligned text is common and rarely a table. `.prn`
+        // is also a print file, which carries no such layout.
+        let ext = probe.extension?.to_ascii_lowercase();
+        let confidence = match ext.as_str() {
+            "fwf" => 0.9,
+            "prn" => 0.6,
+            _ => return None,
+        };
+        let head = &probe.head[..probe.head.len().min(16_384)];
+        let text = std::str::from_utf8(head).ok().or_else(|| {
+            let e = std::str::from_utf8(head).err()?;
+            (e.error_len().is_none()).then(|| std::str::from_utf8(&head[..e.valid_up_to()]).ok()).flatten()
+        })?;
+        let lines = table_lines(text);
+        tabular(&lines).then_some(Sniff { format: "fixed_width", confidence })
+    }
+
     fn extract(&self, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
         let (bytes, cut) = cx.read_bytes(src)?;
         let text = crate::plugin::decode_text(&bytes).text;
         cx.emit_text(TextRole::Data, &text);
+        if cx.format_id() == "fixed_width" {
+            return fixed_width(&text, cut, cx);
+        }
         let delimiter = if cx.format_id() == "tsv" { b'\t' } else { sniff_delimiter(&text) };
         let mut reader = csv::ReaderBuilder::new()
             .delimiter(delimiter)
@@ -90,12 +127,111 @@ impl Extractor for Csv {
             table.rows -= 1;
             cx.format_set("rows_counted_until_cut", true);
         }
-        table.finish(&rows, delimiter, errors, cx);
+        table.finish(&rows, Dialect::Delimited(delimiter), errors, cx);
         Ok(())
     }
 }
 
 crate::register_extractor!(Csv);
+
+/// The non-blank lines of a fixed-width table (form feeds and trailing
+/// carriage returns dropped).
+fn table_lines(text: &str) -> Vec<&str> {
+    text.lines().map(|l| l.trim_end_matches(['\r', '\x0c'])).filter(|l| !l.trim().is_empty()).collect()
+}
+
+/// Column spans `(start, end)` in characters, `end` open for a last column
+/// that reaches the end of its longest line: the runs of positions that
+/// hold a non-blank character in any of the first lines.
+fn infer_spans(lines: &[&str]) -> Vec<(usize, Option<usize>)> {
+    let mut mask: Vec<bool> = Vec::new();
+    for line in lines.iter().take(INFER_LINES) {
+        for (i, c) in line.chars().enumerate() {
+            if i >= mask.len() {
+                mask.resize(i + 1, false);
+            }
+            if !matches!(c, ' ' | '\t') {
+                mask[i] = true;
+            }
+        }
+    }
+    let mut spans = Vec::new();
+    let mut start = None;
+    for (i, &on) in mask.iter().enumerate() {
+        match (on, start) {
+            (true, None) => start = Some(i),
+            (false, Some(s)) => {
+                spans.push((s, Some(i)));
+                start = None;
+            }
+            _ => {}
+        }
+    }
+    if let Some(s) = start {
+        spans.push((s, None));
+    }
+    spans
+}
+
+/// Whether `lines` read as a fixed-width table: several lines, no tabs, and
+/// at least two columns that most lines fill (prose fills nearly every
+/// position and gives one column).
+fn tabular(lines: &[&str]) -> bool {
+    if lines.len() < 3 || lines.iter().take(INFER_LINES).any(|l| l.contains('\t')) {
+        return false;
+    }
+    let spans = infer_spans(lines);
+    if !(2..=MAX_COLUMNS).contains(&spans.len()) {
+        return false;
+    }
+    let sample: Vec<Vec<String>> = lines.iter().take(INFER_LINES).map(|l| split_fixed(l, &spans)).collect();
+    // Most lines fill most columns.
+    let filled = sample.iter().filter(|r| r.iter().filter(|v| !v.is_empty()).count() * 2 > spans.len()).count();
+    filled * 10 >= sample.len() * 8
+}
+
+/// The fields of `line` cut at `spans`, trimmed.
+fn split_fixed(line: &str, spans: &[(usize, Option<usize>)]) -> Vec<String> {
+    let chars: Vec<char> = line.chars().collect();
+    spans
+        .iter()
+        .map(|&(s, e)| {
+            let e = e.unwrap_or(chars.len()).min(chars.len());
+            chars.get(s..e.max(s)).map_or_else(String::new, |f| f.iter().collect::<String>().trim().to_string())
+        })
+        .collect()
+}
+
+fn fixed_width(text: &str, cut: bool, cx: &mut Context<'_>) -> Result<(), ExtractError> {
+    let lines = table_lines(text);
+    let spans = infer_spans(&lines);
+    let mut rows: Vec<Vec<String>> = Vec::new();
+    let mut table = Table::default();
+    for (n, line) in lines.iter().enumerate() {
+        if n % 8192 == 0 {
+            cx.checkpoint()?;
+        }
+        let row = split_fixed(line, &spans);
+        table.row(&row);
+        if rows.len() < 50 {
+            rows.push(row);
+        }
+    }
+    if cut && table.rows > 0 {
+        table.rows -= 1;
+        cx.format_set("rows_counted_until_cut", true);
+    }
+    let spans_json: Vec<Value> = spans.iter().map(|&(s, e)| json!([s, e])).collect();
+    table.finish(&rows, Dialect::Fixed(spans_json), 0, cx);
+    Ok(())
+}
+
+/// How fields are separated.
+enum Dialect {
+    Delimited(u8),
+    /// Column spans `[start, end]` in characters (`end` null: to the line end).
+    Fixed(Vec<Value>),
+}
 
 /// The delimiter giving the most consistent field count over the first lines.
 fn sniff_delimiter(text: &str) -> u8 {
@@ -178,7 +314,7 @@ impl Table {
         }
     }
 
-    fn finish(&self, rows: &[Vec<String>], delimiter: u8, errors: u64, cx: &mut Context<'_>) {
+    fn finish(&self, rows: &[Vec<String>], dialect: Dialect, errors: u64, cx: &mut Context<'_>) {
         let header = has_header(rows);
         let names: Vec<String> = match (header, rows.first()) {
             (true, Some(h)) => h.iter().map(|s| s.trim().to_string()).collect(),
@@ -203,13 +339,19 @@ impl Table {
                 json!(r.iter().take(MAX_COLUMNS).map(|v| truncate_chars(&redact_sensitive(v), 80)).collect::<Vec<_>>())
             })
             .collect();
-        let delimiter_name = match delimiter {
-            b'\t' => "tab",
-            b';' => "semicolon",
-            b'|' => "pipe",
-            _ => "comma",
+        let dialect = match dialect {
+            Dialect::Delimited(d) => {
+                let name = match d {
+                    b'\t' => "tab",
+                    b';' => "semicolon",
+                    b'|' => "pipe",
+                    _ => "comma",
+                };
+                json!({ "delimiter": name, "quote": "\"", "header": header })
+            }
+            Dialect::Fixed(spans) => json!({ "layout": "fixed_width", "column_spans": spans, "header": header }),
         };
-        cx.format_set("dialect", json!({ "delimiter": delimiter_name, "quote": "\"", "header": header }));
+        cx.format_set("dialect", dialect);
         cx.format_set("rows", data_rows);
         cx.format_set("columns", self.width);
         if self.ragged > 0 {
@@ -364,5 +506,16 @@ mod tests {
         assert!(!has_header(&[vec!["1".to_string(), "2".to_string()]]));
     }
 
-    crate::fixture_tests!("csv", "tsv");
+    #[test]
+    fn fixed_width_columns() {
+        let t = "harbour   tide  height\nSaltmere  high    4.10\nSaltmere  low     0.72\nBrackwell high    3.95\n";
+        let lines = table_lines(t);
+        assert_eq!(infer_spans(&lines), vec![(0, Some(9)), (10, Some(14)), (16, None)]);
+        assert!(tabular(&lines));
+        assert_eq!(split_fixed(lines[2], &infer_spans(&lines)), vec!["Saltmere", "low", "0.72"]);
+        // Prose fills every position: one column, not a table.
+        assert!(!tabular(&table_lines("The tide came in.\nIt went out again.\nGulls followed.\n")));
+    }
+
+    crate::fixture_tests!("csv", "tsv", "fixed_width");
 }

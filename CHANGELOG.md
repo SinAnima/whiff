@@ -345,6 +345,41 @@ document format in the catalogue.
   dumps, NetCDF geodata, Unreal / Unity scenes, Office add-ins, GIFV,
   SolidWorks, memory dumps, encrypted volumes, Maildir and Usenet
   messages, format-patch mails, MSU, bottles, AAX).
+- **The last catalogue rows** (batch 5 part f, in-house, no new crates):
+  every one of the 1008 catalogue rows now has an extractor.
+  - `data.csv` reads fixed-width text tables (`.fwf`, and `.prn` print
+    files laid out as a table): column spans found the way pandas'
+    `read_fwf` infers them, then the same column profile as CSV;
+  - new `data.xdr` (`common`): XDR data (RFC 4506), which has no schema:
+    words and alignment, the strings it holds, a census of the other
+    words, ONC RPC calls and replies with or without record marking, and
+    base64 text decoded first;
+  - new `forensic.etw` (`forensics`): Windows ETW trace logs (`.etl`):
+    session and log file names (the user name hidden under strict
+    privacy), Windows version, processors, CPU speed, clock, time zone,
+    boot, start and end times, buffers and events lost, the logging mode,
+    then every buffer's records by header kind, providers (GUID, the
+    TraceLogging name or a well-known one, events, event IDs), kernel
+    event groups and processes; compressed buffers are counted;
+  - new `science.statapps` (`science`): JMP data tables (JMP version and
+    build, save time, character set, rows, columns, column names, hidden
+    columns, compression) and Minitab worksheets, projects and portable
+    worksheets (release range from the text or compound-file signature,
+    streams, document properties); `doc.ole` hands Minitab 14+ compound
+    files on;
+  - new `audio.session` (`common`): Pro Tools sessions (`.ptx`, `.ptf`,
+    `.pts`; the XOR obfuscation undone: version, byte order, sample rate,
+    audio files, audio and MIDI tracks, regions, plug-in entries) and
+    GarageBand / Logic Pro `ProjectData` (format version, chunks by kind);
+    `apple.plist` reads GarageBand's `MetaData.plist` (tempo, key, time
+    signature, tracks, sample rate, files used) and
+    `ProjectInformation.plist` (the version that saved it);
+  - new `cad.fusion` (`cad`): Autodesk Fusion designs (`.f3d`: manifest,
+    display name, description, document ID, offline save or cloud lineage,
+    part or assembly design, asset folders and types, B-rep streams and
+    their encoding, meshes, T-spline forms, configuration tables,
+    previews, referenced documents) and archives (`.f3z`: root member,
+    design description, design objects).
 - **Packages, bytecode, keys, big data and wrappers long tail** (batch 5
   part e4, in-house, no new crates):
   - new `bytecode.longtail` (`common`): Hermes bytecode (version, form,

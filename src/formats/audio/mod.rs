@@ -27,6 +27,7 @@ pub(crate) mod other;
 pub(crate) mod projects;
 pub(crate) mod raw;
 pub(crate) mod riff;
+pub(crate) mod sessions;
 pub(crate) mod vorbis;
 pub(crate) mod wavpack;
 

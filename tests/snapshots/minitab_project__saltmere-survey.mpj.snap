@@ -1,0 +1,137 @@
+---
+source: src/formats/science/statapps.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-survey.mpj",
+    "stem": "saltmere-survey",
+    "extension": "mpj"
+  },
+  "identification": {
+    "format": "minitab_project",
+    "name": "Minitab project",
+    "mime": "application/x-minitab-project",
+    "family": "sci",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "minitab_project",
+        "confidence": 0.99
+      },
+      {
+        "format": "cfb",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "science.statapps"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2560
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2560,
+    "entropy": 1.351,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "bf5c888a4d870d4ff470cdf9dcd0b3caa623307d4dfb8d71fd751099369a4f0d",
+    "blake3": "d8dc06a3d186ea43d5c3282ed9d757bec7ed7634f4b7343a0d030bf847b29543"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "minitab_project": {
+      "release_range": "14",
+      "version": 3,
+      "streams": 3,
+      "storages": 0,
+      "entries": [
+        {
+          "name": "ProjectInfo",
+          "size_bytes": 64
+        },
+        {
+          "name": "SessionWindow",
+          "size_bytes": 32
+        },
+        {
+          "name": "Worksheet1",
+          "size_bytes": 64
+        }
+      ],
+      "top_level_streams": [
+        "ProjectInfo",
+        "SessionWindow",
+        "Worksheet1"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.statapps",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

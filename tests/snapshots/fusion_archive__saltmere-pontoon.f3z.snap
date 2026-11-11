@@ -1,0 +1,139 @@
+---
+source: src/formats/cad/fusion.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-pontoon.f3z",
+    "stem": "saltmere-pontoon",
+    "extension": "f3z"
+  },
+  "identification": {
+    "format": "fusion_archive",
+    "name": "Autodesk Fusion archive",
+    "mime": "application/x-autodesk-fusion-archive",
+    "family": "cad",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "fusion_archive",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "cad.fusion"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 6389
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 6389,
+    "entropy": 5.265,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "48eed0f8d813642f97283fd84d00a6bc9e4c3c1cab45d1ae0956290508e4bf35",
+    "blake3": "e95ce801aeb944c22bd09e7992ec5b8222fd75661c591dc695fe786389a6c73d"
+  },
+  "content": {
+    "title": "Saltmere pontoon"
+  },
+  "metadata": {},
+  "format": {
+    "fusion_archive": {
+      "entries": 4,
+      "members_by_extension": {
+        "f3d": 2,
+        "json": 2
+      },
+      "root": "Saltmere pontoon.f3d",
+      "name": "Saltmere pontoon",
+      "current_version": 4,
+      "creating_service": "Fusion",
+      "created": "2025-09-01T12:00:00Z",
+      "design_graphs": 1,
+      "design_objects": [
+        {
+          "name": "Saltmere pontoon",
+          "member": "Saltmere pontoon.f3d",
+          "content_type": "f3d"
+        },
+        {
+          "name": "Saltmere bollard",
+          "member": "Saltmere bollard.f3d",
+          "content_type": "f3d"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.fusion",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

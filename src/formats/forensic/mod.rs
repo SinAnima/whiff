@@ -10,6 +10,7 @@
 pub(crate) mod capture;
 pub(crate) mod dump;
 pub(crate) mod ese;
+pub(crate) mod etw;
 pub(crate) mod evtx;
 pub(crate) mod logs;
 pub(crate) mod longtail;

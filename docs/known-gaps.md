@@ -177,7 +177,7 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 - **Captures:** the protocol histogram needs the `full` profile and reads
   128 bytes per packet (Ethernet, Linux cooked, raw IP); no reassembly,
   no endpoints.
-- **Not read:** ETW `.etl`, macOS unified logs (`tracev3`) and ASL,
+- **Not read:** macOS unified logs (`tracev3`) and ASL,
   NetFlow / IPFIX, browser caches, `$UsnJrnl`, `$LogFile`, SRUM and other
   ESE tables (the header only), Suricata `eve.json` (read as JSON lines),
   legacy `.crash` text reports and hibernation file contents.
@@ -230,7 +230,7 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 - **FlatBuffers and Cap'n Proto messages:** only FlatBuffers binary
   schemas (`.bfbs`) are read; other FlatBuffers and Cap'n Proto messages
   cannot be read without their schema.
-- **Not read:** XDR (no self-description), Thrift binary and compact
+- **Not read:** Thrift binary and compact
   protocols, Hessian, Bond, Kryo, .NET `BinaryFormatter` streams, Ruby
   Marshal, R `.rds` (Stage 7), the contents of compressed Godot resources
   (`RSCC`), Unity binary asset bundles.
@@ -363,7 +363,7 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 
 - **Not read:** AutoCAD DWG and Alembic (no free writer in the fixture
   toolchain), Maya, Cinema 4D, Houdini, Modo, SketchUp, SolidWorks,
-  Inventor, Creo, CATIA, NX, Fusion 360, Revit, JT, PRC / U3D, DWF / DWFx,
+  Inventor, Creo, CATIA, NX, Revit, JT, PRC / U3D, DWF / DWFx,
   Parasolid and ACIS (proprietary), Substance and MaterialX, PCD / PTS
   point clouds, Gaussian splats, MikuMikuDance and Valve models, Altium,
   Eagle and FreeCAD documents. Unreal and Unity assets belong to the games
@@ -692,8 +692,6 @@ uncompressed (and ALZip's deflated entries); nothing else is decompressed.
 - **Notebooks:** Mathematica cells are classified by their style string;
   Livebook dependencies come from `Mix.install`. Databricks `.dbc`
   archives are plain ZIP files.
-- **Fixed-width tables, XDR:** not recognised (no reliable signature);
-  they read as plain text or binary data.
 - **Known schemas:** recognised inside the JSON / YAML report
   (`format.json.known_schema`); a Scratch `.sb3` is a ZIP whose
   `project.json` is recognised as it is handed on.
@@ -739,9 +737,9 @@ uncompressed (and ALZip's deflated entries); nothing else is decompressed.
 - **Instruments:** SoundFont generators and modulators, DLS articulation
   and EXS zone parameters are not interpreted; EXS24 follows the layout
   open-source converters read (there is no published specification).
-- **Projects:** Audacity's `.aup3` (SQLite) is read as SQLite; Logic
-  (`.logicx` bundles) and Pro Tools / Cubase / GarageBand sessions are
-  not read. FL Studio event coverage follows PyFLP's notes; automation,
+- **Projects:** Audacity's `.aup3` (SQLite) is read as SQLite; Pro Tools
+  and GarageBand / Logic sessions are covered in batch 5 part f below;
+  Cubase / Nuendo projects are not read. FL Studio event coverage follows PyFLP's notes; automation,
   playlists and mixer routing are not reported. Ableton and REAPER
   devices and plug-ins are named, not their parameters.
 - **DV / MXF:** DV reads the first frame's packs (SD only; DVCPRO HD and
@@ -778,8 +776,7 @@ uncompressed (and ALZip's deflated entries); nothing else is decompressed.
   decoded with the generic text detector (Shift-JIS models may need it);
   Valve MDL gives header counts, not the bones or sequences themselves.
 - **Revit:** only `BasicFileInfo` and PartAtom; elements are not read.
-- **Not read:** Fusion 360 archives (`.f3d`, `.f3z`) and Substance
-  archives (`.sbsar`).
+- **Not read:** Substance archives (`.sbsar`).
 
 ### Science and medical long tail (batch 5e part 2)
 
@@ -795,7 +792,7 @@ uncompressed (and ALZip's deflated entries); nothing else is decompressed.
   interpretations (sections 7 – 11) are not read. CRCs are not checked.
 - **aECG:** the first rhythm series' leads and sampling; annotations are
   counted, not interpreted.
-- **Not read:** JMP and Minitab files, Wolfram `.mx` dumps and ECW
+- **Not read:** Wolfram `.mx` dumps and ECW
   rasters (no published layout); MrSID is identified by its signature
   only (size, bands and CRS need the vendor's decoder).
 
@@ -818,8 +815,6 @@ uncompressed (and ALZip's deflated entries); nothing else is decompressed.
 - **nfdump / IPFIX:** headers and IPFIX sets; flow records are counted,
   not decoded. NetFlow v5 / v9 exports in pcap files are left to the
   packet-capture reader.
-- **ETW traces (`.etl`):** not read (the buffer and header layout is not
-  published).
 - **Browser caches:** Firefox cache2 entries, Chrome block files, index
   and simple-cache entries; Chrome entry blocks inside `data_*` files are
   not walked, and cached bodies are not handed on.
@@ -855,3 +850,51 @@ uncompressed (and ALZip's deflated entries); nothing else is decompressed.
 - **Sparse files:** `system.sparse` compares allocated blocks with the
   size (filesystem compression gives the same answer); holes are not
   located (`SEEK_HOLE` is not available in the standard library).
+
+### The last catalogue rows (batch 5 part f)
+
+- **Fixed-width tables:** recognised by name only (`.fwf`, and `.prn`
+  files whose lines form columns): aligned text is too common to claim by
+  content. Columns are the runs of positions that hold a character in any
+  of the first 100 lines, as pandas infers them; a column whose values
+  touch the next one merges with it, and a value that spills into a gap
+  merges two columns.
+- **XDR:** there is no schema, so strings are found greedily (a length
+  word, printable UTF-8, zero padding) and the other words are only
+  classified; integers that look like string lengths can hide data.
+  Record-marked ONC RPC calls and replies are recognised; their arguments
+  are not decoded. Stellar and other XDR-based formats are not named.
+- **ETW:** event payloads are not decoded (that needs each provider's
+  manifest or TraceLogging metadata); providers are named from their
+  TraceLogging traits or a short list of well-known GUIDs. Compressed
+  buffers (Windows 8 and later, `EVENT_TRACE_COMPRESSED_MODE`) are counted
+  but not decompressed. Checked against libmagic, Airbus CERT's
+  etl-parser structures and two etl-parser sample traces (not committed:
+  they come from real machines).
+- **JMP:** column names come from the same search JMPReader.jl uses (a
+  `07 00 08 00 00 00` mark and the column index lists); tables written
+  before JMP's current layout give their layout only. Column data,
+  formulas, scripts and row states are not read. Checked against
+  JMPReader.jl's 19 test tables (rows, columns and names); its own reader
+  was not run (no Julia toolchain in the fixture images).
+- **Minitab:** release ranges from PRONOM's signatures (fmt/1430 –
+  fmt/1438); worksheet columns, constants and project contents are not
+  read (no published layout). Minitab 19+ `.mwx` / `.mpx` files are not
+  recognised.
+- **Pro Tools:** version, sample rate, files, tracks and regions as
+  ptformat reads them; track lists include tracks without regions
+  (ptformat's sample outputs list only placed tracks). Fades, playlists,
+  automation and plug-in names are not read. Checked against ptformat's
+  expected outputs for its sample sessions (41 / 42; the difference is
+  that empty-track choice); the samples are LGPL and not committed.
+- **GarageBand / Logic:** `ProjectData` gives chunk kinds only (chunk
+  bodies are not decoded); `.band` / `.logicx` bundles are folders, read
+  file by file (`MetaData.plist`, `ProjectInformation.plist`). The
+  framing was checked on the six project templates GarageBand installs.
+- **Cubase / Nuendo:** `.cpr` / `.npr` projects are not read (no
+  published layout and no redistributable sample).
+- **Fusion:** manifests, document structure, part counts and references;
+  B-rep, mesh and T-spline geometry is not decoded, and per-asset
+  manifests give their asset type only. Onshape exports are STEP,
+  Parasolid or other exchange files and are read as such.
+

@@ -124,6 +124,11 @@ fn kind_of(names: &[String]) -> Option<&'static str> {
     } else if has("DestList") {
         // A Windows jump list (`forensics` feature).
         "jump_list"
+    } else if has("WorksheetInfo") {
+        // Minitab 14 and later (`science` feature).
+        "minitab_worksheet"
+    } else if has("ProjectInfo") {
+        "minitab_project"
     } else if has("Catalog") {
         "thumbs_db"
     } else if has("Data Object Store 000001") && names.iter().any(|n| n.starts_with("Resolution 0")) {
@@ -257,7 +262,7 @@ fn read(cfb: &Cfb, src: &mut dyn Source, path: &str, max: usize) -> Option<Vec<u
 }
 
 /// Property sets, class id, stream listing, VBA projects, embedded objects.
-fn common(cfb: &Cfb, src: &mut dyn Source, cx: &mut Context<'_>) {
+pub(crate) fn common(cfb: &Cfb, src: &mut dyn Source, cx: &mut Context<'_>) {
     if let Some(id) = cfb.root_clsid() {
         let mut c = json!({ "id": id });
         if let Some(n) = clsid_name(id) {

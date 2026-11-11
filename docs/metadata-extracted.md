@@ -127,9 +127,9 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 ## 4. Coverage summary
 
 * **1008 formats** in total: tier 1 = 139, tier 2 = 122, tier 3 = 747.
-* Formats with an extractor in this build: **1002** of 1008.
+* Formats with an extractor in this build: **1008** of 1008.
 * Formats by family status: crate = 183, mixed = 365, impl = 460.
-* Formats by target stage: S1 = 205, S1/S6 = 102, S2 = 99, S3 = 65, S3/S8 = 22, S4 = 87, S5 = 91, S6 = 116, S6/S8 = 21, S7 = 145, S8 = 55.
+* Formats by target stage: S1 = 205, S1/S6 = 102, S2 = 99, S3 = 65, S3/S8 = 22, S4 = 88, S5 = 91, S6 = 116, S6/S8 = 22, S7 = 145, S8 = 53.
 * By feature: `common` = 818, `cad` = 45, `forensics` = 38, `science` = 36, `geo` = 34, `data` = 20, `games` = 17.
 * By category: Code 167, Data 157, Image 95, Media 88, Document 71, Archive 47, Scientific 36, Executable 34, Geospatial 34, Text 32, Package 30, 3D 28, Web 27, Forensics 24, Database 21, Security 20, CAD 17, Game 17, Personal 16, Disk 14, Platform 11, Font 10, Fallback 8, Block 4.
 
@@ -491,7 +491,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 350 | Windows theme / desktop.ini | `theme` `desktop.ini` | — | 3 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | — |
 | 351 | Kerberos krb5.conf / Samba smb.conf | `conf` | — | 3 | `data.ini` | `common` | `data.ini` | rust-ini, java-properties | S1 | realms, shares |
 | 352 | PSV / pipe separated | `psv` | — | 3 | `data.csv` | `common` | `data.csv` | csv | S1 | — |
-| 353 | Fixed-width text table | `fwf` `prn` | — | 3 | `data.csv` | `common` | — | csv | S1 | column boundaries guess |
+| 353 | Fixed-width text table | `fwf` `prn` | — | 3 | `data.csv` | `common` | `data.csv` | csv | S1 | column boundaries guess |
 | 354 | vCalendar-like CSV exports (Outlook/Google contacts) | `csv` | — | 3 | `data.csv` | `common` | `data.csv` | csv | S1 | — |
 | 355 | LCOV coverage | `info` `lcov` | — | 3 | `data.csv` | `common` | `data.records` | csv | S1 | files, line coverage |
 | 356 | GTFS transit feed (zip of CSV) | `zip` | — | 3 | `data.csv` | `common` | `data.records` | csv | S1 | agency, routes, stops, service date range |
@@ -774,7 +774,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 633 | Sampler / instrument (SFZ, EXS) | `sfz` `exs` | — | 3 | `audio` | `common` | `audio.instrument` | impl | S4 | — |
 | 634 | Audio project: Audacity / Ableton / FL / Logic / Reaper | `aup3` `aup` `als` `flp` `logicx` `rpp` | — | 3 | `audio` | `common` | `audio.project` | impl | S4 | tracks, tempo, plugins (sqlite/xml/gzip-xml) |
 | 635 | Qualcomm PureVoice / ATRAC / Shorten / VQF | `qcp` `oma` `aa3` `shn` `vqf` | — | 3 | `audio` | `common` | `audio.raw` | impl | S4 | — |
-| 636 | DAW sessions (Pro Tools, Cubase, GarageBand) | `ptx` `cpr` `band` | — | 3 | `audio` | `common` | — | impl | S8 | tracks, tempo |
+| 636 | DAW sessions (Pro Tools, Cubase, GarageBand) | `ptx` `cpr` `band` | — | 3 | `audio` | `common` | `audio.session` | impl | S4 | tracks, tempo |
 | 637 | Podcast RSS enclosure-tagged MP3 (chapters ID3 CHAP/CTOC) | `mp3` | — | 3 | `audio` | `common` | `audio.mpeg` | impl | S4 | chapters with titles + URLs |
 | 638 | MusicXML | `musicxml` `mxl` `xml` | application/vnd.recordare.musicxml+xml | 3 | `audio.score` | `common` | `score.notation` | impl | S4 | — |
 | 639 | MEI / ABC / LilyPond / Guitar Pro / MuseScore | `mei` `abc` `ly` `gp` `gp5` `gpx` `mscz` | — | 3 | `audio.score` | `common` | `score.notation` | impl | S4 | — |
@@ -889,7 +889,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 748 | EDN | `edn` | application/edn | 3 | `data.binser` | `common` | `data.text` | plist | S6 | — |
 | 749 | S-expressions data | `sexp` | — | 3 | `data.binser` | `common` | `data.text` | plist | S6 | — |
 | 750 | ASN.1 BER/DER blob | `der` `ber` | application/octet-stream | 3 | `data.binser` | `common` | `data.asn1` | plist | S6 | tag tree (asn1-rs) |
-| 751 | XDR | `xdr` | — | 3 | `data.binser` | `common` | — | plist | S6 | — |
+| 751 | XDR | `xdr` | — | 3 | `data.binser` | `common` | `data.xdr` | plist | S6 | — |
 | 752 | NBT (Minecraft) | `nbt` `dat` | application/x-minecraft-nbt | 3 | `data.binser` | `common` | `data.binser` | plist | S6 | — |
 | 753 | Godot resource | `tres` `res` | — | 3 | `data.binser` | `common` | `data.godot` | plist | S6 | — |
 | 754 | Unity YAML asset | `unity` `prefab` `asset` `meta` | — | 3 | `data.binser` | `common` | `data.unity` | plist | S6 | GUIDs, component types |
@@ -967,7 +967,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 826 | Syslog / journal export | `log` | — | 3 | `forensic` | `forensics` | `forensic.capture` | impl | S6/S8 | -&gt; text.plain log detector |
 | 827 | Crash reports (.ips, .crash, Breakpad) | `ips` `crash` `dmp` | — | 3 | `forensic` | `forensics` | `forensic.logs` | impl | S6/S8 | app, version, exception, frames |
 | 828 | Snort unified2 alerts | `u2` `unified2` | application/octet-stream | 3 | `forensic` | `forensics` | `forensic.logs` | impl | S6/S8 | alert count, sig ids, time range |
-| 829 | Windows ETW trace | `etl` | — | 3 | `forensic` | `forensics` | — | impl | S8 | provider GUIDs, events count |
+| 829 | Windows ETW trace | `etl` | — | 3 | `forensic` | `forensics` | `forensic.etw` | impl | S6/S8 | provider GUIDs, events count |
 | 830 | macOS FSEvents | `fseventsd` | — | 3 | `forensic` | `forensics` | `forensic.logs` | impl | S6/S8 | records, path count |
 | 831 | Memory image (LiME / crash dump / hiberfil) | `lime` `dmp` `hiberfil.sys` | — | 3 | `forensic` | `forensics` | `forensic.dump` | impl | S6/S8 | OS hints, size, profile |
 | 832 | Browser cache entries | `data_0` `cache2` `f_000001` | — | 3 | `forensic` | `forensics` | `forensic.longtail` | impl | S6/S8 | URLs count, content types |
@@ -1011,7 +1011,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 870 | Stata data | `dta` | application/x-stata-dta | 3 | `sci` | `science` | `science.stats` | hdf5-reader | S7 | — |
 | 871 | SAS dataset / transport | `sas7bdat` `xpt` | application/x-sas | 3 | `sci` | `science` | `science.stats` | hdf5-reader | S7 | — |
 | 872 | R data | `rds` `rdata` `rda` | — | 3 | `sci` | `science` | `science.stats` | hdf5-reader | S7 | serialization version, object type |
-| 873 | Excel-free stats: JMP / Minitab | `jmp` `mtw` | — | 3 | `sci` | `science` | — | hdf5-reader | S7 | — |
+| 873 | Excel-free stats: JMP / Minitab | `jmp` `mtw` | — | 3 | `sci` | `science` | `science.statapps` | hdf5-reader | S7 | — |
 | 874 | ROOT (CERN) | `root` | — | 3 | `sci` | `science` | `science.fields` | hdf5-reader | S7 | keys/trees |
 | 875 | PDB / mmCIF / MOL / SDF chemistry | `pdb` `cif` `mmcif` `mol` `sdf` `mol2` `xyz` | chemical/x-pdb | 3 | `sci` | `science` | `science.chem` | hdf5-reader | S7 | title, compound, atom counts, formula |
 | 876 | FASTA / FASTQ / SAM / BAM / VCF / BED / GFF genomics | `fa` `fasta` `fq` `fastq` `sam` `bam` `cram` `vcf` `bcf` `bed` `gff` `gtf` | text/x-fasta | 3 | `sci` | `science` | `science.genomics` | hdf5-reader | S7 | sequence count, lengths, read count, reference, samples |
@@ -1087,7 +1087,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 946 | IGES | `igs` `iges` | model/iges | 3 | `cad` | `cad` | `cad.step` | dxf | S7 | — |
 | 947 | Parasolid / ACIS | `x_t` `x_b` `sat` `sab` | — | 3 | `cad` | `cad` | `cad.exchange` | dxf | S7 | header |
 | 948 | SolidWorks / Inventor / Creo / CATIA / NX | `sldprt` `sldasm` `ipt` `iam` `prt` `asm` `catpart` `catproduct` | — | 3 | `cad` | `cad` | `doc.ole` | dxf | S7 | OLE/zip summary info, version |
-| 949 | Fusion 360 / Onshape exports | `f3d` `f3z` | — | 3 | `cad` | `cad` | — | dxf | S7 | — |
+| 949 | Fusion 360 / Onshape exports | `f3d` `f3z` | — | 3 | `cad` | `cad` | `cad.fusion` | dxf | S7 | — |
 | 950 | Revit | `rvt` `rfa` | — | 3 | `cad` | `cad` | `cad.exchange` | dxf | S7 | OLE BasicFileInfo stream: version, path |
 | 951 | MicroStation DGN | `dgn` | — | 3 | `cad` | `cad` | `cad.drawing` | dxf | S7 | — |
 | 952 | Gerber / Excellon PCB | `gbr` `ger` `gtl` `gbl` `drl` `xln` | — | 3 | `cad` | `cad` | `cad.eda` | dxf | S7 | — |

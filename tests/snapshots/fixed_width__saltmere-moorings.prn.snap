@@ -1,0 +1,223 @@
+---
+source: src/formats/data/csv.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-moorings.prn",
+    "stem": "saltmere-moorings",
+    "extension": "prn"
+  },
+  "identification": {
+    "format": "fixed_width",
+    "name": "Fixed-width text table",
+    "mime": "text/x-fixed-width",
+    "family": "data.csv",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "encoding": "us-ascii",
+    "extractor": "data.csv"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 205
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 205,
+    "entropy": 3.731,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 205,
+      "chars": 205,
+      "words": 27,
+      "lines": 5,
+      "max_line_length": 39,
+      "line_endings": "crlf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "a3c48120b41b2f7db38c79ca5da1165a302c61ec82788eca317a350bc1cb7d25",
+    "blake3": "e36ee61d81e0f7a9c8f950820d7fc71051ce6c5d82b27397445aece0a7638964"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "fixed_width": {
+      "dialect": {
+        "layout": "fixed_width",
+        "column_spans": [
+          [
+            0,
+            3
+          ],
+          [
+            6,
+            18
+          ],
+          [
+            22,
+            26
+          ],
+          [
+            29,
+            32
+          ],
+          [
+            35,
+            null
+          ]
+        ],
+        "header": false
+      },
+      "rows": 5,
+      "columns": 5,
+      "column_profile": [
+        {
+          "name": "column_1",
+          "type": "string",
+          "null_ratio": 0.0,
+          "distinct": 5,
+          "max_length": 3
+        },
+        {
+          "name": "column_2",
+          "type": "string",
+          "null_ratio": 0.0,
+          "distinct": 5,
+          "max_length": 12
+        },
+        {
+          "name": "column_3",
+          "type": "number",
+          "null_ratio": 0.0,
+          "distinct": 5,
+          "min": 6.1,
+          "max": 11.3,
+          "mean": 8.56
+        },
+        {
+          "name": "column_4",
+          "type": "number",
+          "null_ratio": 0.0,
+          "distinct": 5,
+          "min": 0.9,
+          "max": 1.7,
+          "mean": 1.26
+        },
+        {
+          "name": "column_5",
+          "type": "integer",
+          "null_ratio": 0.0,
+          "distinct": 5,
+          "min": 2016.0,
+          "max": 2023.0,
+          "mean": 2019.4
+        }
+      ],
+      "sample_rows": [
+        [
+          "A01",
+          "Kittiwake",
+          "7.2",
+          "1.1",
+          "2019"
+        ],
+        [
+          "A02",
+          "Grey Seal",
+          "9.8",
+          "1.4",
+          "2021"
+        ],
+        [
+          "B01",
+          "Lugworm",
+          "6.1",
+          "0.9",
+          "2016"
+        ],
+        [
+          "B02",
+          "Sea Thrift",
+          "11.3",
+          "1.7",
+          "2023"
+        ],
+        [
+          "C01",
+          "Bladderwrack",
+          "8.4",
+          "1.2",
+          "2018"
+        ]
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.csv",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

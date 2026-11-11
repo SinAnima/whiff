@@ -15,6 +15,7 @@ pub(crate) mod protobuf;
 pub(crate) mod selfdesc;
 pub(crate) mod textdata;
 pub(crate) mod unity;
+pub(crate) mod xdr;
 
 use std::collections::BTreeMap;
 
@@ -25,6 +26,7 @@ use crate::plugin::{Context, MAX_NESTING, TextRole, truncate_chars};
 
 // Helpers shared with other groups.
 pub(crate) use super::super::archive::unix_time;
+pub(crate) use super::super::audio::vorbis::base64;
 pub(crate) use super::super::exec::hex;
 pub(crate) use super::super::package::android::{Element, binary_xml, string_pool};
 

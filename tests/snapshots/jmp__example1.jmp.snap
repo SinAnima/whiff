@@ -1,0 +1,145 @@
+---
+source: src/formats/science/statapps.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "example1.jmp",
+    "stem": "example1",
+    "extension": "jmp"
+  },
+  "identification": {
+    "format": "jmp",
+    "name": "JMP data table",
+    "mime": "application/x-jmp",
+    "family": "sci",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "jmp",
+        "confidence": 0.97
+      },
+      {
+        "format": "mp2",
+        "confidence": 0.68
+      }
+    ],
+    "extractor": "science.statapps"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2108
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2024-03-02T08:06:26Z",
+        "source": "jmp",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-03-02T08:06:26Z",
+    "latest": "2024-03-02T08:06:26Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2108,
+    "entropy": 4.135,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "a93b5ff882d99b045fcc5e10af03d8f558be5ba0653b5a0f2f6a465200f2b468",
+    "blake3": "eedf1ae1c2c98caa2e6946b9ffa88c27ab52d4725775e8a9f255506484534165"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "jmp": {
+      "layout": "current",
+      "jmp_version": "17.2.0",
+      "build": "Jul 23 2023, 19:09:15, Release, JMP, Version 17.2.0",
+      "saved": "2024-03-02T08:06:26Z",
+      "charset": "utf-8",
+      "rows": 4,
+      "columns": 12,
+      "column_names": [
+        "ints",
+        "floats",
+        "charconstwidth",
+        "time",
+        "date",
+        "duration",
+        "charconstwidth2",
+        "charvariable16",
+        "formula",
+        "pressures",
+        "char utf8",
+        "charvariable8"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.statapps",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
