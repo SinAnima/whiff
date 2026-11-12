@@ -1,0 +1,149 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "build.gradle.kts",
+    "stem": "build.gradle",
+    "extension": "kts"
+  },
+  "identification": {
+    "format": "gradle_build",
+    "name": "Gradle build",
+    "mime": "text/x-groovy",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "gradle_build",
+        "confidence": 0.97
+      },
+      {
+        "format": "kotlin",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 344
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 344,
+    "entropy": 4.716,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 344,
+      "chars": 344,
+      "words": 27,
+      "lines": 21,
+      "max_line_length": 73,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "8ac016ed5aa90f44d83d3c5eed4b8484f2b40af1189ba342da28bbf0bbd576e7",
+    "blake3": "43ff308cdca38fb36399ca154378dc737dd40520e1ba3fe375b76d5d7c86e1ba"
+  },
+  "content": {
+    "title": "test.harbour 1.4.0"
+  },
+  "metadata": {},
+  "format": {
+    "gradle_build": {
+      "ecosystem": "gradle",
+      "name": "test.harbour",
+      "version": "1.4.0",
+      "group": "test.harbour",
+      "plugins": [
+        "org.jetbrains.kotlin.jvm 2.0.21",
+        "application"
+      ],
+      "dependencies": {
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core": "1.9.0"
+      },
+      "dependencies_count": 1,
+      "configurations": {
+        "implementation": 1
+      },
+      "project_dependencies": [
+        ":model"
+      ],
+      "java_version": "21",
+      "repositories": [
+        "mavenCentral"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

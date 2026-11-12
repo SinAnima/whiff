@@ -153,7 +153,8 @@ fn is_wc_space(c: char) -> bool {
     c.is_whitespace() && !matches!(c, '\u{a0}' | '\u{2007}' | '\u{202f}')
 }
 
-/// Count `bytes` in one go.
+/// Count `bytes` in one go (for the tests).
+#[cfg(test)]
 pub fn count(bytes: &[u8]) -> TextPhysical {
     let (encoding, _) = super::decode::detect(bytes);
     let mut wc = WcCounter::new(encoding);

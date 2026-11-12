@@ -1,0 +1,127 @@
+---
+source: src/formats/audio/sessions.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-shanty-pt8.ptf",
+    "stem": "saltmere-shanty-pt8",
+    "extension": "ptf"
+  },
+  "identification": {
+    "format": "protools_session",
+    "name": "Pro Tools session",
+    "mime": "application/x-protools-session",
+    "family": "audio",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "audio.session"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 791
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 791,
+    "entropy": 7.827,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "c3d6a3d0094e7b9458a50415e6fe5c7d1224415dfe1d7d75946330ff03b945ee",
+    "blake3": "839e0065895f343d7554ce4eb6242ce28f004d6ca2e755d9724bd831657bffd5"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "protools_session": {
+      "byte_order": "big",
+      "obfuscation": "pro_tools_5_9",
+      "pro_tools_version": 8,
+      "blocks": 20,
+      "sample_rate": 48000,
+      "audio_files": 3,
+      "audio_tracks": 3,
+      "midi_tracks": 1,
+      "regions": 4,
+      "plugin_entries": 1,
+      "audio_file_names": [
+        "harbour-bell.wav",
+        "gulls-dawn.wav",
+        "foghorn.aif"
+      ],
+      "audio_track_names": [
+        "Harbour Bell",
+        "Gulls",
+        "Foghorn"
+      ],
+      "midi_track_names": [
+        "Shanty Melody"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.session",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

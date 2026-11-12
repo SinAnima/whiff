@@ -32,7 +32,7 @@ static META: ExtractorMeta = ExtractorMeta {
         mimes: &["application/xml", "text/xml"],
         extensions: &[
             "xml", "xsd", "xsl", "xslt", "xaml", "rng", "wsdl", "xlf", "xliff", "resx", "dbk", "docbook", "tei",
-            "nxml", "mml", "smil", "xbrl", "csproj", "fsproj", "vbproj", "props", "targets", "xul", "rdf",
+            "nxml", "mml", "smil", "xbrl", "props", "targets", "xul", "rdf",
         ],
         magic: &[],
         parent: Some("text"),

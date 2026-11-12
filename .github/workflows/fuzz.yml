@@ -1,0 +1,73 @@
+name: Fuzz (nightly)
+
+# Every extractor, every night: eight shards of about 30 extractors each
+# (`whiff-dev fuzz --shard I/8`), seeded from their fixtures and from the
+# corpus the previous night kept. A crash fails the shard and uploads the
+# input; turn it into an in-memory unit test of the extractor (CONTRIBUTING,
+# "Fuzzing").
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+    inputs:
+      minutes:
+        description: Minutes per shard
+        default: "20"
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  fuzz:
+    name: shard ${{ matrix.shard }}/8
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: dtolnay/rust-toolchain@nightly
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-fuzz
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: |
+            .
+            fuzz
+      - name: Restore the corpus
+        uses: actions/cache/restore@v4
+        with:
+          path: fuzz/corpus/shard-${{ matrix.shard }}-of-8
+          key: fuzz-corpus-${{ matrix.shard }}-of-8-${{ github.run_id }}
+          restore-keys: fuzz-corpus-${{ matrix.shard }}-of-8-
+      # whiff-dev runs directly, not through `cargo run`, so the environment
+      # cargo sets for it does not reach the nightly cargo-fuzz build.
+      - run: cargo +stable build --features dev --bin whiff-dev
+      - name: Fuzz
+        env:
+          MINUTES: ${{ inputs.minutes || '20' }}
+          SHARD: ${{ matrix.shard }}
+        run: >-
+          target/debug/whiff-dev fuzz --shard "$SHARD/8" --seconds "$(( MINUTES * 60 ))"
+          --target x86_64-unknown-linux-gnu
+      - name: Save the corpus
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: fuzz/corpus/shard-${{ matrix.shard }}-of-8
+          key: fuzz-corpus-${{ matrix.shard }}-of-8-${{ github.run_id }}
+      - name: Upload crashes
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fuzz-crashes-shard-${{ matrix.shard }}
+          path: fuzz/artifacts/extract/
+          if-no-files-found: ignore

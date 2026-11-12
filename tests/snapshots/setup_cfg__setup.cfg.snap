@@ -1,0 +1,172 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "setup.cfg",
+    "stem": "setup",
+    "extension": "cfg"
+  },
+  "identification": {
+    "format": "setup_cfg",
+    "name": "setuptools setup.cfg",
+    "mime": "text/plain",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "setup_cfg",
+        "confidence": 0.97
+      },
+      {
+        "format": "ini",
+        "confidence": 0.95
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 541
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Harbour Office"
+    ],
+    "license": {
+      "name": "CC0-1.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 541,
+    "entropy": 4.872,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 541,
+      "chars": 541,
+      "words": 67,
+      "lines": 25,
+      "max_line_length": 67,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "dc69f819ccc06befe952caa8f5cd2a090c39a03fbc196c9c23fc2eaade0817f1",
+    "blake3": "a1b9bd2ab71a312303b9346eee3871545230647fe04fda346d9b6f81375f8649"
+  },
+  "content": {
+    "title": "saltmere-gauge 2.1.0",
+    "description": "Gauge daemon for Saltmere Harbour",
+    "authors": [
+      "Harbour Office"
+    ],
+    "keywords": [
+      "tides",
+      "harbour"
+    ],
+    "excerpt": "Gauge daemon for Saltmere Harbour",
+    "tags": [
+      "tides",
+      "harbour"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "setup_cfg": {
+      "ecosystem": "python",
+      "name": "saltmere-gauge",
+      "version": "2.1.0",
+      "license": "CC0-1.0",
+      "repository": "https://git.harbour.test/gauge",
+      "build_tool": "setuptools",
+      "sections": [
+        "metadata",
+        "options",
+        "options.extras_require",
+        "options.entry_points"
+      ],
+      "requires_python": ">=3.10",
+      "dependencies": {
+        "pyserial": ">=3.5",
+        "click": "*"
+      },
+      "dependencies_count": 2,
+      "classifiers": 2,
+      "console_scripts": [
+        "gauged"
+      ],
+      "optional_dependency_groups": [
+        "plot"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

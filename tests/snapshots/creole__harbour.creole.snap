@@ -1,0 +1,168 @@
+---
+source: src/formats/text/lightmarkup.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.creole",
+    "stem": "harbour",
+    "extension": "creole"
+  },
+  "identification": {
+    "format": "creole",
+    "name": "Creole",
+    "mime": "text/x-creole",
+    "family": "text.lightmarkup",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.lightmarkup"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 269
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 1
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 269,
+    "entropy": 4.81,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 269,
+      "chars": 269,
+      "words": 39,
+      "lines": 15,
+      "max_line_length": 72,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "b72e4ff7696a22b092ac337a602db03624d7c29407ebcf3e15624f4ef7310e8d",
+    "blake3": "43438a62eb840c436227e06cc518cca66575d02990a734fa65c92e2c66457e6e"
+  },
+  "content": {
+    "title": "Saltmere Harbour",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Saltmere Harbour",
+      "Harbour",
+      "Saltmere",
+      "Moorings",
+      "Fees",
+      "pontoon",
+      "Visitors",
+      "night",
+      "east",
+      "east pontoon"
+    ],
+    "keyword_frequency": [
+      [
+        "harbour",
+        2
+      ],
+      [
+        "moor",
+        2
+      ],
+      [
+        "saltmere",
+        2
+      ]
+    ],
+    "excerpt": "Visitors moor on the east pontoon. See and . =Length =Per night Under 10 m 18.00",
+    "tags": [
+      "Saltmere Harbour",
+      "Harbour",
+      "Saltmere",
+      "Moorings",
+      "Fees"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "creole": {
+      "headings": 3,
+      "links": {
+        "internal": 1,
+        "external": 1
+      },
+      "top_link_hosts": {
+        "board.example.org": 1
+      },
+      "images": 1,
+      "code_blocks": 1,
+      "tables": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.lightmarkup",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

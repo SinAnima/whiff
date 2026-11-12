@@ -6,3 +6,4 @@ Names, e-mail addresses (`example.org`, `example.com`) and phone numbers are fic
 | File | Origin | Licence |
 |---|---|---|
 | `BoatView.mm` | Written for whiff's test suite | CC0-1.0 |
+| `Harbour.m` | Written for whiff's test suite (`scripts/fixtures/longtail.sh`) | CC0-1.0 |

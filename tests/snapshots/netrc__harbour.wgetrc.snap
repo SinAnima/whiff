@@ -1,0 +1,137 @@
+---
+source: src/formats/web/misc.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.wgetrc",
+    "stem": "harbour",
+    "extension": "wgetrc"
+  },
+  "identification": {
+    "format": "netrc",
+    "name": "Wget / curl config, .netrc",
+    "mime": "text/plain",
+    "family": "web.misc",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "web.misc"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 152
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "embedded_secret",
+        "category": "data_exposure",
+        "severity": "high",
+        "detail": "1 passwords in the wget configuration",
+        "source": "web.misc"
+      }
+    ],
+    "risk_level": "high"
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 152,
+    "entropy": 4.64,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 152,
+      "chars": 152,
+      "words": 18,
+      "lines": 6,
+      "max_line_length": 48,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "5f2aa8af13b2c265324f59c630d5ec8c74e2857ac3e13d79845f46df6c4d8c36",
+    "blake3": "39f4334d2d527af6b426a34d1fde2f8bb633d261cdaae292f3bc80c56dcb608d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "netrc": {
+      "tool": "wget",
+      "options": {
+        "check_certificate": 1,
+        "http_password": 1,
+        "http_proxy": 1,
+        "http_user": 1,
+        "timeout": 1,
+        "tries": 1
+      },
+      "tls_verification_off": true,
+      "proxy": true
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "web.misc",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

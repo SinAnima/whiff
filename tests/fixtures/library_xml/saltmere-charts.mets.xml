@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mets:mets xmlns:mets="http://www.loc.gov/METS/" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xlink="http://www.w3.org/1999/xlink" OBJID="saltmere-charts-1890" LABEL="Saltmere harbour charts, 1890" TYPE="Map">
+  <mets:metsHdr CREATEDATE="2025-09-01T12:00:00">
+    <mets:agent ROLE="CREATOR" TYPE="ORGANIZATION"><mets:name>Saltmere Harbour Archive</mets:name></mets:agent>
+  </mets:metsHdr>
+  <mets:dmdSec ID="dmd1"><mets:mdWrap MDTYPE="MODS"><mets:xmlData>
+    <mods:mods><mods:titleInfo><mods:title>Saltmere harbour charts</mods:title></mods:titleInfo>
+      <mods:originInfo><mods:dateIssued>1890</mods:dateIssued></mods:originInfo>
+      <mods:genre>map</mods:genre></mods:mods>
+  </mets:xmlData></mets:mdWrap></mets:dmdSec>
+  <mets:fileSec>
+    <mets:fileGrp USE="master">
+      <mets:file ID="f1" MIMETYPE="image/tiff"><mets:FLocat LOCTYPE="URL" xlink:href="chart-1.tif"/></mets:file>
+      <mets:file ID="f2" MIMETYPE="image/tiff"><mets:FLocat LOCTYPE="URL" xlink:href="chart-2.tif"/></mets:file>
+    </mets:fileGrp>
+  </mets:fileSec>
+  <mets:structMap><mets:div TYPE="atlas" LABEL="Charts"><mets:div TYPE="sheet" ORDER="1"/><mets:div TYPE="sheet" ORDER="2"/></mets:div></mets:structMap>
+</mets:mets>

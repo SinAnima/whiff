@@ -1,0 +1,145 @@
+---
+source: src/formats/text/dialects.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-response.xml",
+    "stem": "saltmere-response",
+    "extension": "xml"
+  },
+  "identification": {
+    "format": "saml",
+    "name": "SAML / XML Signature",
+    "mime": "application/samlmetadata+xml",
+    "family": "text.xml",
+    "confidence": 0.93,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "saml",
+        "confidence": 0.93
+      },
+      {
+        "format": "xml",
+        "confidence": 0.65
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "text.dialects"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1526
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1526,
+    "entropy": 5.131,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1526,
+      "chars": 1526,
+      "words": 36,
+      "lines": 14,
+      "max_line_length": 465,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "796aa0f1b21885c267c59461435aaddb07f6c21d8390c645f0655d485c51c345",
+    "blake3": "a05244f1cb74df5b757f83bac1281d71af0e81d9b8e3313e95f28e94c9119bba"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "saml": {
+      "kind": "SAML response",
+      "message_id": "_r1",
+      "issued": "2025-09-01T12:00:00Z",
+      "destination": "https://tides.saltmere.example/acs",
+      "issuer": "https://idp.saltmere.example/saml",
+      "status": "Success",
+      "name_id_formats": [
+        "persistent"
+      ],
+      "attribute_names": [
+        "cn",
+        "role"
+      ],
+      "signatures": 1,
+      "signature_algorithms": [
+        "ecdsa-sha256"
+      ],
+      "digest_algorithms": [
+        "sha256"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.dialects",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

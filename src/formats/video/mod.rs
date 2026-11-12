@@ -16,7 +16,9 @@
 #![allow(clippy::many_single_char_names, clippy::similar_names)]
 pub(crate) mod asf;
 pub(crate) mod avi;
+pub(crate) mod broadcast;
 pub(crate) mod codec;
+pub(crate) mod edit;
 pub(crate) mod elementary;
 pub(crate) mod flv;
 pub(crate) mod matroska;

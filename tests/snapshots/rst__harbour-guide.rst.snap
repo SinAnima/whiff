@@ -1,0 +1,207 @@
+---
+source: src/formats/text/lightmarkup.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-guide.rst",
+    "stem": "harbour-guide",
+    "extension": "rst"
+  },
+  "identification": {
+    "format": "rst",
+    "name": "reStructuredText",
+    "mime": "text/x-rst",
+    "family": "text.lightmarkup",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.lightmarkup"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1035
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-11-05",
+        "source": "text.lightmarkup",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {
+    "external_references": 2
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 1035,
+    "entropy": 4.837,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1035,
+      "chars": 1035,
+      "words": 126,
+      "lines": 56,
+      "max_line_length": 66,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 18
+    }
+  },
+  "integrity": {
+    "sha256": "094f57b5b7c1ace209913fcba0fda7bc273b45db80c4a7e11d1bb52c11dd3f60",
+    "blake3": "d6ac3a87608d68a1f2b861ea8f4f88a2e4e76d7ca9b80227ab4f358b14b2e5ac"
+  },
+  "content": {
+    "title": "Saltmere Harbour",
+    "description": "Moorings, tides and services at Saltmere Harbour.",
+    "authors": [
+      "Ada Quayside"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "harbour",
+      "moorings",
+      "tides",
+      "Saltmere Harbour",
+      "saltmere",
+      "VHF",
+      "harbour master",
+      "services at saltmere",
+      "master on vhf",
+      "VHF channel"
+    ],
+    "keyword_frequency": [
+      [
+        "harbour",
+        5
+      ],
+      [
+        "saltmere",
+        5
+      ],
+      [
+        "moorings",
+        4
+      ],
+      [
+        "tide",
+        4
+      ]
+    ],
+    "excerpt": ":description: Moorings, tides and services at Saltmere Harbour. :keywords: harbour, moorings, tides Call the harbour master on VHF channel 12 before entering. See the tide tables <https://tides.example.org/saltmere>_ and the :ref:moorings section. :alt: The approach to Saltmere Visitor moorings are on the east pontoon. #fees_ :header-rows: 1 - Length - Per night - Under 10 m - 18.00 Checking the…",
+    "tags": [
+      "harbour",
+      "moorings",
+      "tides",
+      "Saltmere Harbour",
+      "saltmere"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "rst": {
+      "subtitle": "A guide for visiting sailors",
+      "version": "1.4",
+      "headings": 4,
+      "links": {
+        "internal": 0,
+        "external": 2
+      },
+      "top_link_hosts": {
+        "board.example.org": 1,
+        "tides.example.org": 1
+      },
+      "images": 1,
+      "code_blocks": 2,
+      "tables": 1,
+      "code_languages": {
+        "python": 1
+      },
+      "includes": [
+        "services.rst"
+      ],
+      "directives": {
+        "meta": 1,
+        "image": 1,
+        "list-table": 1,
+        "code-block": 1,
+        "include": 1
+      },
+      "footnotes": 1,
+      "fields": {
+        "author": "Ada Quayside",
+        "copyright": "2025 Saltmere Harbour Board",
+        "date": "2025-11-05",
+        "version": "1.4"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.lightmarkup",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

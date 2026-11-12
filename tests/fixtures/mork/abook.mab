@@ -1,0 +1,11 @@
+// <!-- <mdb:mork:z v="1.4"/> -->
+< <(a=c)> // (f=iso-8859-1)
+  (B8=Custom3)(80=ns:addrbk:db:row:scope:card:all)(81=ns:addrbk:db:table:kind:pab)
+  (82=FirstName)(83=LastName)(84=DisplayName)(85=PrimaryEmail)(86=WorkPhone)>
+
+<(90=Ben)(91=Gull)(92=Ben Gull)(93=ben@saltmere.example)(94=Ana)(95=Lighthouse)
+  (96=Ana Lighthouse)(97=ana@saltmere.example)>
+
+{1:^80 {(k^81:c)(s=9)}
+  [1(^82^90)(^83^91)(^84^92)(^85^93)]
+  [2(^82^94)(^83^95)(^84^96)(^85^97)(^86=+44 0000 000000)]}

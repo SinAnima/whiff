@@ -1,0 +1,150 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "berths.cairo",
+    "stem": "berths",
+    "extension": "cairo"
+  },
+  "identification": {
+    "format": "cairo",
+    "name": "Cairo source",
+    "mime": "text/x-cairo",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 258
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 258,
+    "entropy": 4.718,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 258,
+      "chars": 258,
+      "words": 38,
+      "lines": 16,
+      "max_line_length": 38,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "958f080014a1b4a993e0e6421f1b0c7d1850d96730fcbba02de730ea6d2c2658",
+    "blake3": "c784677a0d9dec0b2e1d872e516cf1664523ef856aaf50c95cd05923c43cf5f2"
+  },
+  "content": {
+    "description": "Berth counter for Saltmere Harbour.",
+    "excerpt": "Berth counter for Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "cairo": {
+      "language": "Cairo",
+      "loc": {
+        "code": 12,
+        "comment": 1,
+        "blank": 3,
+        "total": 16
+      },
+      "imports": [
+        "core::num::traits::Zero"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "function": [
+          "is_inner",
+          "main"
+        ],
+        "struct": [
+          "Berth"
+        ],
+        "trait": [
+          "BerthTrait"
+        ]
+      },
+      "symbol_counts": {
+        "function": 2,
+        "struct": 1,
+        "trait": 1
+      },
+      "module_doc": "Berth counter for Saltmere Harbour.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 38
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

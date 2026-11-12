@@ -1,0 +1,128 @@
+---
+source: src/formats/image/film.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "reel1_000100.cin",
+    "stem": "reel1_000100",
+    "extension": "cin"
+  },
+  "identification": {
+    "format": "cineon",
+    "name": "Kodak Cineon film scan",
+    "mime": "image/cineon",
+    "family": "image.raster",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.film"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 11264
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2024-05-01T19:42:10",
+        "source": "cineon.creation_date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 11264,
+    "entropy": 5.019,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48,
+      "bit_depth": 8,
+      "channels": 3
+    }
+  },
+  "integrity": {
+    "sha256": "c9a2c15192302024177c85daae0a154d50b73688462fac8a6a0a6ff82689880f",
+    "blake3": "113400e6f5d2a196d88d6e2618b3bc673f716051cc5992f4482aadc9d86bc572"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "cineon": {
+      "version": "V4.5",
+      "original_file_name": "reel1_000100.cin",
+      "channels": [
+        "B&W",
+        "B&W",
+        "B&W"
+      ],
+      "film": {
+        "frame_position": 0
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.film",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

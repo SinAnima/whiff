@@ -1,0 +1,161 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Harbour.Tides.csproj",
+    "stem": "Harbour.Tides",
+    "extension": "csproj"
+  },
+  "identification": {
+    "format": "dotnet_project",
+    "name": ".NET project",
+    "mime": "application/xml",
+    "family": "code.manifest",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "dotnet_project",
+        "confidence": 0.35
+      },
+      {
+        "format": "xml",
+        "confidence": 0.32
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 920
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Harbour Office"
+    ],
+    "license": {
+      "name": "CC0-1.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 920,
+    "entropy": 5.081,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 920,
+      "chars": 920,
+      "words": 41,
+      "lines": 28,
+      "max_line_length": 83,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "5ff4a98e0a4b8aaa0a3d9a5043d42cf734f54597a64770d5e998482adce6b1dd",
+    "blake3": "a882c3e57742e432756e9c34d0a928b381d9e57cbf86b33686ac6489199f69c5"
+  },
+  "content": {
+    "title": "Saltmere.Tides 1.4.0",
+    "description": "Tide predictions for Saltmere Harbour.",
+    "authors": [
+      "Harbour Office"
+    ],
+    "excerpt": "Tide predictions for Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "dotnet_project": {
+      "ecosystem": "nuget",
+      "name": "Saltmere.Tides",
+      "version": "1.4.0",
+      "license": "CC0-1.0",
+      "sdk": "Microsoft.NET.Sdk",
+      "target_framework": "net8.0",
+      "output_type": "Exe",
+      "root_namespace": "Saltmere.Tides",
+      "nullable": "enable",
+      "implicit_usings": "enable",
+      "dependencies": {
+        "System.CommandLine": "2.0.0-beta4.22272.1",
+        "Serilog": "4.0.2"
+      },
+      "dependencies_count": 2,
+      "project_references": [
+        "..\\Harbour.Model\\Harbour.Model.csproj"
+      ],
+      "targets": [
+        "PrintVersion"
+      ],
+      "exec_tasks": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

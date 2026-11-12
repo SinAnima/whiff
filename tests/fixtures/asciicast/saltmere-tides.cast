@@ -1,0 +1,6 @@
+{"version": 2, "width": 100, "height": 30, "timestamp": 1756728000, "title": "Saltmere tide table", "command": "tides --harbour saltmere", "env": {"SHELL": "/bin/bash", "TERM": "xterm-256color"}}
+[0.5, "o", "$ tides --harbour saltmere\r\n"]
+[1.2, "o", "High water 06:12\r\n"]
+[1.4, "o", "Low water 12:31\r\n"]
+[2.0, "m", "done"]
+[3.25, "o", "$ exit\r\n"]

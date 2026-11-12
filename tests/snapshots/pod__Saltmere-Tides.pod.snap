@@ -1,0 +1,200 @@
+---
+source: src/formats/text/lightmarkup.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Saltmere-Tides.pod",
+    "stem": "Saltmere-Tides",
+    "extension": "pod"
+  },
+  "identification": {
+    "format": "pod",
+    "name": "Perl POD",
+    "mime": "text/x-pod",
+    "family": "text.lightmarkup",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.lightmarkup"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 771
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 1
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 771,
+    "entropy": 5.012,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 771,
+      "chars": 771,
+      "words": 97,
+      "lines": 52,
+      "max_line_length": 71,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 23
+    }
+  },
+  "integrity": {
+    "sha256": "27901a99fc38301ba2d8433a5f176c59a8c7846ef6bd894b871f38077b49f0fb",
+    "blake3": "d3738adcd75c5254f60c802712d205ad18418f5afc6adde2e654e9b9e92b2d73"
+  },
+  "content": {
+    "title": "Saltmere::Tides",
+    "description": "tide predictions for Saltmere Harbour",
+    "authors": [
+      "Ada Quayside"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Tides",
+      "Saltmere",
+      "VERSION",
+      "SYNOPSIS",
+      "DESCRIPTION",
+      "AUTHOR",
+      "LICENSE",
+      "Saltmere Harbour",
+      "water",
+      "Tides predicts"
+    ],
+    "keyword_frequency": [
+      [
+        "saltmere",
+        5
+      ],
+      [
+        "tides",
+        5
+      ],
+      [
+        "harbour",
+        2
+      ],
+      [
+        "predictions",
+        2
+      ],
+      [
+        "version",
+        2
+      ],
+      [
+        "water",
+        2
+      ]
+    ],
+    "excerpt": "Saltmere::Tides - tide predictions for Saltmere Harbour Version 0.42 Saltmere::Tides predicts high and low water from the harbour's harmonic constants. See Saltmere::Charts and the boardhttps://board.example.org/. Creates a predictor. Returns the next high water as an epoch. <p>Tide <em>tables</em>.</p> Ada Quayside This library is free software; you can redistribute it and/or modify it under the…",
+    "tags": [
+      "Tides",
+      "Saltmere",
+      "VERSION",
+      "SYNOPSIS",
+      "DESCRIPTION"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "pod": {
+      "version": "0.42",
+      "headings": 7,
+      "links": {
+        "internal": 1,
+        "external": 1
+      },
+      "top_link_hosts": {
+        "board.example.org": 1
+      },
+      "images": 0,
+      "code_blocks": 1,
+      "tables": 0,
+      "commands": {
+        "encoding": 1,
+        "head1": 6,
+        "head2": 1,
+        "over": 1,
+        "item": 2,
+        "back": 1,
+        "begin": 1,
+        "end": 1,
+        "cut": 1
+      },
+      "encoding": "utf8",
+      "formats": {
+        "html": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.lightmarkup",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

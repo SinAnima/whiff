@@ -1,0 +1,19 @@
+opam-version: "2.0"
+name: "saltmere-tides"
+version: "1.4.0"
+synopsis: "Tide predictions for Saltmere Harbour"
+maintainer: ["Harbour Office <office@harbour.example.org>"]
+authors: ["Harbour Office" "Ada Harbour"]
+license: "CC0-1.0"
+homepage: "https://harbour.test/tides"
+bug-reports: "https://git.harbour.test/tides/issues"
+dev-repo: "git+https://git.harbour.test/tides.git"
+depends: [
+  "ocaml" {>= "4.14"}
+  "dune" {>= "3.0"}
+  "ptime"
+  "alcotest" {with-test}
+]
+build: [
+  ["dune" "build" "-p" name "-j" jobs]
+]

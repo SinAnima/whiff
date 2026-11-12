@@ -5,7 +5,8 @@
 //! * Unity serialized files (`.assets`, `globalgamemanagers`, `level0`,
 //!   bundle members): format version, Unity version, target platform, type
 //!   tree, classes and objects per class;
-//! * Unreal Engine packages (`.uasset`, `.umap`): legacy, UE4 and UE5
+//! * Unreal Engine packages (`.uasset`, `.umap`, and the UE1–3 `.upk` /
+//!   `.utx` header: versions, flags, table sizes): legacy, UE4 and UE5
 //!   versions, licensee version, custom versions, folder name, flags,
 //!   names, exports, imports, the engine version that saved it;
 //! * `GameMaker` projects (`.yyp`): name, IDE version, resources by kind,
@@ -64,7 +65,7 @@ static META: ExtractorMeta = ExtractorMeta {
             name: "Unreal Engine package",
             family: "game",
             mimes: &[],
-            extensions: &["uasset", "umap"],
+            extensions: &["uasset", "umap", "upk", "utx"],
             magic: &[Magic::prefix(&[0xC1, 0x83, 0x2A, 0x9E])],
             parent: None,
         },
@@ -384,10 +385,44 @@ fn engine_version(r: &mut ByteReader<'_>) -> Result<Option<String>, ExtractError
     }))
 }
 
+/// Unreal Engine 1–3 packages (`.utx`, `.upk`, `.u`): file and licensee
+/// versions, flags, and the name / export / import table sizes.
+fn classic_package(cx: &mut Context<'_>, b: &[u8]) -> Result<(), ExtractError> {
+    let mut r = ByteReader::new(b).skip(4)?;
+    let (version, licensee) = (r.le_u16()?, r.le_u16()?);
+    cx.format_set("engine_generation", if version >= 249 { "Unreal Engine 3" } else { "Unreal Engine 1 / 2" });
+    cx.format_set("file_version", version);
+    cx.format_set("licensee_version", licensee);
+    if version >= 249 {
+        // Header size, then the folder name (an FString).
+        r.advance(4)?;
+        let n = r.le_i32()?;
+        let len = usize::try_from(n.unsigned_abs()).unwrap_or(0) * if n < 0 { 2 } else { 1 };
+        let folder = r.bytes(len)?;
+        let folder = String::from_utf8_lossy(folder).trim_end_matches('\0').to_string();
+        if !folder.is_empty() && folder != "None" {
+            cx.format_set("folder", folder);
+        }
+    }
+    let flags = r.le_u32()?;
+    let (names, _) = (r.le_u32()?, r.le_u32()?);
+    let (exports, _) = (r.le_u32()?, r.le_u32()?);
+    let (imports, _) = (r.le_u32()?, r.le_u32()?);
+    cx.format_set("package_flags", flags);
+    cx.format_set("names", names);
+    cx.format_set("exports", exports);
+    cx.format_set("imports", imports);
+    Ok(())
+}
+
+#[allow(clippy::too_many_lines)] // the package summary, field by field
 fn uasset(cx: &mut Context<'_>, b: &[u8]) -> Result<(), ExtractError> {
     let mut r = ByteReader::new(b);
     r.advance(4)?;
     let legacy = r.le_i32()?;
+    if legacy > 0 {
+        return classic_package(cx, b);
+    }
     if !(-9..=-1).contains(&legacy) {
         return Err(ExtractError::Unsupported(format!("package file version {legacy}")));
     }

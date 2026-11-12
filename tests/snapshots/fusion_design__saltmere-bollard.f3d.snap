@@ -1,0 +1,140 @@
+---
+source: src/formats/cad/fusion.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-bollard.f3d",
+    "stem": "saltmere-bollard",
+    "extension": "f3d"
+  },
+  "identification": {
+    "format": "fusion_design",
+    "name": "Autodesk Fusion design",
+    "mime": "application/x-autodesk-fusion-design",
+    "family": "cad",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "fusion_design",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "cad.fusion"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2746
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2746,
+    "entropy": 4.918,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "5982409e33e479bf401a61b0c2e7f4bb476c326282d4f76df6e46dc3b558e32b",
+    "blake3": "ef9fde898c8a8be1b4411c63f47d031be67dfdbbea915fb77a66c345fdb621e6"
+  },
+  "content": {
+    "title": "Saltmere bollard",
+    "description": "Cast-iron mooring bollard, quay type B"
+  },
+  "metadata": {},
+  "format": {
+    "fusion_design": {
+      "entries": 10,
+      "manifest_version": "3-2-0-0",
+      "document_type": ".f3d",
+      "display_name": "Saltmere bollard",
+      "description": "Cast-iron mooring bollard, quay type B",
+      "document_id": "5a17c0de-0001-4000-8000-000000000001",
+      "saved_offline": true,
+      "design_type": "part-design",
+      "design_subtype": "part-standard",
+      "docstruct_version": "1.0.0",
+      "asset_folders": 1,
+      "asset_types": {
+        "FusionAssetType": 1
+      },
+      "parts_by_role": {
+        "brep_streams": 2,
+        "design_segments": 1,
+        "images": 1,
+        "tspline_forms": 1
+      },
+      "brep_encoding": "ASM BinaryFile4",
+      "file_version": 12,
+      "references": 0
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.fusion",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

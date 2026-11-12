@@ -1,0 +1,213 @@
+---
+source: src/formats/doc/packages.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-notes-pandoc-flatopc.xml",
+    "stem": "saltmere-notes-pandoc-flatopc",
+    "extension": "xml"
+  },
+  "identification": {
+    "format": "flat_opc",
+    "name": "Flat OPC (single-file OOXML)",
+    "mime": "application/vnd.ms-office.flatopc",
+    "family": "doc.ooxml",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "flat_opc",
+        "confidence": 0.95
+      },
+      {
+        "format": "xml",
+        "confidence": 0.65
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "doc.packages"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 36996
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-11-09T05:12:06Z",
+        "source": "flat_opc.core.created",
+        "tz_known": true
+      },
+      {
+        "field": "modified",
+        "value": "2026-11-09T05:12:06Z",
+        "source": "flat_opc.core.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-11-09T05:12:06Z",
+    "latest": "2026-11-09T05:12:06Z"
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ben Gull"
+    ]
+  },
+  "physical": {
+    "size_bytes": 36996,
+    "entropy": 5.133,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 36996,
+      "chars": 36996,
+      "words": 2116,
+      "lines": 572,
+      "max_line_length": 8395,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "232522848e2ba629599718a4bb8f163607e608a6e2690bedbd2ef34dcd3ddab4",
+    "blake3": "8d86cb109ddc9d809cb05e1e6f2405d8c8312009cf9790356a4b4095819e210a"
+  },
+  "content": {
+    "title": "Saltmere harbour notes",
+    "authors": [
+      "Ben Gull"
+    ],
+    "keywords": [
+      "Saltmere harbour notes",
+      "Gull Saltmere harbour",
+      "Ben Gull Saltmere",
+      "harbour notes ben",
+      "notes ben gull",
+      "harbour",
+      "Saltmere",
+      "notes",
+      "Ben",
+      "Gull"
+    ],
+    "keyword_frequency": [
+      [
+        "harbour",
+        3
+      ],
+      [
+        "notes",
+        3
+      ],
+      [
+        "saltmere",
+        3
+      ],
+      [
+        "water",
+        2
+      ]
+    ],
+    "excerpt": "Saltmere harbour notes Ben Gull Saltmere harbour notes High water 06:12, low water 12:31. The bell rings at high tide.",
+    "tags": [
+      "Saltmere harbour notes",
+      "Gull Saltmere harbour",
+      "Ben Gull Saltmere",
+      "harbour notes ben",
+      "notes ben gull"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "flat_opc": {
+      "parts": 15,
+      "part_names": [
+        "/[Content_Types].xml",
+        "/_rels/.rels",
+        "/word/document.xml",
+        "/word/_rels/document.xml.rels",
+        "/word/_rels/footnotes.xml.rels",
+        "/word/numbering.xml",
+        "/word/styles.xml",
+        "/word/footnotes.xml",
+        "/word/comments.xml",
+        "/docProps/core.xml",
+        "/docProps/app.xml",
+        "/docProps/custom.xml",
+        "/word/settings.xml",
+        "/word/webSettings.xml",
+        "/word/fontTable.xml"
+      ],
+      "application": "Word",
+      "core_properties": {
+        "title": "Saltmere harbour notes",
+        "creator": "Ben Gull",
+        "created": "2026-11-09T05:12:06Z",
+        "modified": "2026-11-09T05:12:06Z"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.packages",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

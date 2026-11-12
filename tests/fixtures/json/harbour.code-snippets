@@ -1,0 +1,15 @@
+{
+  "Tide row": {
+    "prefix": "tide",
+    "body": [
+      "| ${1:06:12} | ${2:12:31} |"
+    ],
+    "description": "A tide table row",
+    "scope": "markdown"
+  },
+  "Bell": {
+    "prefix": "bell",
+    "body": "The bell rings at high tide.",
+    "scope": "markdown"
+  }
+}

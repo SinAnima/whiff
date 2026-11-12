@@ -1,0 +1,10 @@
+@startuml booking
+title Ferry booking
+actor Passenger
+participant "Ticket office" as T
+database Schedule
+Passenger -> T : ask for a crossing
+T -> Schedule : check tides
+Schedule --> T : 06:12
+T --> Passenger : ticket
+@enduml

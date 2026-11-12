@@ -374,7 +374,8 @@ fn group<'m>(out: &'m mut Map<String, Value>, prefix: &str) -> &'m mut Map<Strin
     }
 }
 
-/// Parse a packet into `metadata.xmp` form (for other decoders and tests).
+/// Parse a packet into `metadata.xmp` form (for the tests).
+#[cfg(test)]
 pub fn parse(text: &str) -> Result<Map<String, Value>, String> {
     Ok(Tree::parse(text)?.properties())
 }
@@ -418,6 +419,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg_attr(miri, ignore = "10,000 nested elements: 3 min under Miri")]
     fn hostile_input() {
         assert!(parse("not xml at all").map_or(true, |p| p.is_empty()));
         let deep = format!(

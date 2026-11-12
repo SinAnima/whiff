@@ -1,0 +1,111 @@
+---
+source: src/formats/image/retro.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.ras",
+    "stem": "harbour",
+    "extension": "ras"
+  },
+  "identification": {
+    "format": "sun_raster",
+    "name": "Sun Raster image",
+    "mime": "image/x-sun-raster",
+    "family": "image.raster",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.retro"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 9248
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 9248,
+    "entropy": 5.31,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48,
+      "bit_depth": 8,
+      "channels": 3
+    }
+  },
+  "integrity": {
+    "sha256": "f8640feaec363bfd957b0eff23fbf792d15706fea402f86a9a9f88c701fdec24",
+    "blake3": "ca707b2b734c48533df8cdafe660cbdda84fd47e7b2f1a96e54ff63efa670b81"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "sun_raster": {
+      "type": "standard"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.retro",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

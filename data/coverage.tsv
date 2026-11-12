@@ -1,0 +1,123 @@
+# Catalogue rows handled by a format of another family, or whose file
+# names (`schema.json`, `docker-compose.yml`) no extension can match.
+# `whiff-dev catalogue` credits the row to the extractor of the format;
+# an unknown format id is an error.
+# row name	format id
+SVG	svg
+LaTeX document	latex
+MHTML web archive	mhtml
+Sitemap XML	sitemap
+tar.gz / tgz	gzip
+tar.bz2 / tar.xz / tar.zst	xz
+BitTorrent metainfo	bencode
+Internet shortcut / webloc	ini
+JSON Schema	json
+OpenAPI / Swagger (JSON)	json
+Postman collection	json
+Chrome extension manifest	json
+Docker Compose	yaml
+GitHub Actions workflow	yaml
+OpenAPI (YAML)	yaml
+Helm chart	yaml
+CloudFormation / SAM	yaml
+GitLab CI	yaml
+conda environment	yaml
+Lottie / Bodymovin	json
+SVG sprite / icon sets	svg
+GPX-like Garmin TCX	tcx
+HTTP Archive (HAR)	har
+FITS image	fits
+3D Manufacturing Format (OPC)	3mf
+Java/Android archive (generic zip)	jar
+Bundle formats: .app/.framework zipped	ipa
+Google Earth / Maps link files	kmz
+Shortcut-like: .desktop / .lnk / .website	ini
+WebM audio	webm
+Sitemap index / sitemap text	sitemap
+Kindle clippings	kindle_clippings
+GNU info	gnu_info
+README / LICENSE (extensionless)	text
+Puppet / Chef	puppet
+Kotlin Multiplatform / Compose scripts	kotlin
+SQL notebooks / dbt models	sql
+Snort / Suricata rules	ids_rules
+Debian source control files	debian_control
+DjVu single page	djvu
+Krita / Procreate	krita
+OpenRaster	openraster
+Raw editor sidecars	xmp
+Thumbnails cache (Windows thumbcache)	thumbcache
+Unreal / Unity textures (raw headers)	uasset
+VRA Core 4 XML record	vra
+Self-extracting archives (SFX)	pe
+Windows installers (NSIS / Inno Setup / InstallShield / WiX burn)	pe
+Backup repositories (restic / borg / duplicity)	borg_repository
+Windows minidump	minidump
+Windows driver package / CAT	ms_catalog
+Go binary buildinfo	elf
+PDB debug database	ms_pdb
+Marp / reveal.js slide markdown	marp
+Mailing labels / Mail merge data	csv
+Outlook template / item	msg
+SolidWorks / Inventor (OLE-based)	cfb
+WordPad / RTFD bundle	rtf
+XML Paper / StarOffice legacy	sxw
+Word XML 2003 / Flat OPC	wordml_2003
+Notion / Confluence export bundles	wiki_export
+Adobe Illustrator (PDF-based)	pdf
+Core Foundation / NSKeyedArchiver blobs	plist
+Apple signed artifacts (.mobileprovision)	mobileprovision
+Authenticode detached signature / catalog	pkcs7
+MongoDB dump (BSON dir)	bson
+NetCDF-CF / Zarr geodata	netcdf4
+Unreal / Unity scene & package	uasset
+Office add-in / VBA add-in	xls
+Animated GIF video replacement (GIFV)	mp4
+SolidWorks / Inventor / Creo / CATIA / NX	cfb
+Memory / swap dumps	lime
+Encrypted container (VeraCrypt/LUKS/BitLocker header)	luks
+Maildir message	eml
+Usenet / NNTP article	eml
+Git commit message / mbox patch	diff
+Windows CAB update / MSU	cab
+Haiku / Homebrew bottle	gzip
+Audible AA / AAX	mp4
+Terraform state	json
+Frictionless datapackage / CSVW	json
+dbt manifest / catalog	json
+ESLint / Prettier / Babel / tsconfig	json
+Google Takeout location history	json
+Google Drive shortcuts	json
+Scratch project	json
+Jupyter-adjacent: VS Code .code-snippets / launch.json	json
+Kustomize / Argo / Tekton / Serverless	yaml
+Dependabot / Renovate / pre-commit configs	yaml
+OpenAPI 3.1 / AsyncAPI	yaml
+JSCalendar	json
+Zeppelin / Databricks notebook	json
+TAP test output	tap
+GTFS transit feed (zip of CSV)	gtfs
+PRQL	prql
+Cypher / GQL	cypher
+Server-side templates (PHP/ERB/JSP/ASP mixed HTML)	erb
+Windows theme / desktop.ini	ini
+Web archive (Safari)	plist
+Qt translation	qt_ts
+Dublin Core XML / OAI-PMH	dublin_core
+Apple Health export	apple_health
+Android manifest (text)	android_manifest
+TNEF winmail.dat	tnef
+Lotus Notes database	lotus_notes
+Alembic	alembic
+HDF4 / HDF-EOS	hdf4
+Wolfram / Maple / Mathcad files	maple_mw
+SCP-ECG / aECG	scp_ecg
+MrSID / ECW rasters	mrsid
+Prometheus TSDB block	prometheus_tsdb
+macOS FSEvents	fsevents
+Browser cache entries	chrome_cache
+Sparse / zero-filled files	binary
+OCI layout / ORAS artifact	docker_image
+Smalltalk image / Pharo	smalltalk_image
+Flash ActionScript ABC	flash_abc
+Apache Hudi / Kudu / CarbonData	hudi_table

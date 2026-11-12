@@ -1,0 +1,110 @@
+---
+source: src/formats/db/stores.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-harbour.fdb",
+    "stem": "saltmere-harbour",
+    "extension": "fdb"
+  },
+  "identification": {
+    "format": "firebird",
+    "name": "Firebird / InterBase database",
+    "mime": "application/x-firebird",
+    "family": "db",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "db.stores"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 8192
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 8192,
+    "entropy": 0.019,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "51fcf4746c9915951f947574060d5c6464849864fc6078e5cf7a30a0a0600c9c",
+    "blake3": "3607e3e00568277dcdaacff65f9ebf3f6956125187576a32dfff436550a9c179"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "firebird": {
+      "engine": "Firebird",
+      "page_size": 8192,
+      "ods_version": "13.1",
+      "release": "Firebird 5",
+      "next_transaction": 42,
+      "created": "2025-09-01T12:00:00Z"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "db.stores",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,355 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "scratch-project.json",
+    "stem": "scratch-project",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 936
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 936,
+    "entropy": 3.572,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 936,
+      "chars": 936,
+      "words": 93,
+      "lines": 61,
+      "max_line_length": 43,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "6d090392d02aca40a33c1f027243818cbe42b865baa91b6085378b5fa0cfacd9",
+    "blake3": "ead39e651bea5e4aba1fed086defa33b920e6eea4812496f1cf95e8a46a3e4eb"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "targets",
+        "monitors",
+        "extensions",
+        "meta"
+      ],
+      "key_count": 4,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.targets": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              3,
+              3
+            ]
+          },
+          "$.targets[]": {
+            "types": [
+              "object"
+            ],
+            "count": 3
+          },
+          "$.targets[].isStage": {
+            "types": [
+              "boolean"
+            ],
+            "count": 3,
+            "examples": [
+              true,
+              false
+            ]
+          },
+          "$.targets[].name": {
+            "types": [
+              "string"
+            ],
+            "count": 3,
+            "examples": [
+              "Stage",
+              "Bell",
+              "Boat"
+            ]
+          },
+          "$.targets[].blocks": {
+            "types": [
+              "object"
+            ],
+            "count": 3
+          },
+          "$.targets[].costumes": {
+            "types": [
+              "array"
+            ],
+            "count": 3,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.targets[].costumes[]": {
+            "types": [
+              "object"
+            ],
+            "count": 3
+          },
+          "$.targets[].costumes[].name": {
+            "types": [
+              "string"
+            ],
+            "count": 3,
+            "examples": [
+              "backdrop1",
+              "bell",
+              "boat"
+            ]
+          },
+          "$.targets[].sounds": {
+            "types": [
+              "array"
+            ],
+            "count": 3,
+            "items": [
+              0,
+              1
+            ]
+          },
+          "$.targets[].blocks.a": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.targets[].blocks.a.opcode": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "event_whenflagclicked"
+            ]
+          },
+          "$.targets[].blocks.b": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.targets[].blocks.b.opcode": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "sound_play"
+            ]
+          },
+          "$.targets[].sounds[]": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.targets[].sounds[].name": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "ring"
+            ]
+          },
+          "$.targets[].blocks.c": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.targets[].blocks.c.opcode": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "motion_movesteps"
+            ]
+          },
+          "$.monitors": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              0,
+              0
+            ]
+          },
+          "$.extensions": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.extensions[]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "pen"
+            ]
+          },
+          "$.meta": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.meta.semver": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "3.0.0"
+            ]
+          },
+          "$.meta.vm": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "11.1.0"
+            ]
+          },
+          "$.meta.agent": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Saltmere"
+            ]
+          }
+        },
+        "max_depth": 5
+      },
+      "known_schema": {
+        "id": "scratch",
+        "name": "Scratch project",
+        "semver": "3.0.0",
+        "vm": "11.1.0",
+        "sprites": 2,
+        "sprite_names": [
+          "Bell",
+          "Boat"
+        ],
+        "blocks": 3,
+        "costumes": 3,
+        "sounds": 1,
+        "extensions": [
+          "pen"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

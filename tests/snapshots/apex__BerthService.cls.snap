@@ -1,0 +1,141 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "BerthService.cls",
+    "stem": "BerthService",
+    "extension": "cls"
+  },
+  "identification": {
+    "format": "apex",
+    "name": "Apex source",
+    "mime": "text/x-apex",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 265
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 265,
+    "entropy": 4.549,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 265,
+      "chars": 265,
+      "words": 39,
+      "lines": 11,
+      "max_line_length": 54,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "ad9d90e8ae5b10b4c98d18434d5ee3b818d2a3ea81c1b7cc1fbbe4ba463c9b26",
+    "blake3": "757fe4eb03c5c42609f23016e393fddb5498647b557c5ced687dfe19c4d6d1d8"
+  },
+  "content": {
+    "description": "Berth bookings for Saltmere Harbour.",
+    "excerpt": "Berth bookings for Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "apex": {
+      "language": "Apex",
+      "loc": {
+        "code": 6,
+        "comment": 4,
+        "blank": 1,
+        "total": 11
+      },
+      "symbols": {
+        "class": [
+          "BerthService"
+        ],
+        "method": [
+          "freeBerths"
+        ]
+      },
+      "symbol_counts": {
+        "class": 1,
+        "method": 1
+      },
+      "module_doc": "Berth bookings for Saltmere Harbour.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 54
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

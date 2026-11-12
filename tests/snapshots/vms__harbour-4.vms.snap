@@ -1,0 +1,128 @@
+---
+source: src/formats/image/slide.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-4.vms",
+    "stem": "harbour-4",
+    "extension": "vms"
+  },
+  "identification": {
+    "format": "vms",
+    "name": "Hamamatsu VMS slide index",
+    "mime": "application/octet-stream",
+    "family": "image.raster",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "image.slide"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 309
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 309,
+    "entropy": 5.175,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 309,
+      "chars": 309,
+      "words": 15,
+      "lines": 13,
+      "max_line_length": 32,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "6f7aa10a1598e9d7d60815cf45a3f1fa2f83cfd01457b33711c9e7d87002b9cc",
+    "blake3": "a071ebb219bd03a3722f95f1e86bbf896535d0b41a2b123eafda809616a31adb"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "vms": {
+      "slide": {
+        "layers": 1.0,
+        "tile_columns": 4.0,
+        "tile_rows": 3.0,
+        "image_file": "harbour-4.jpg",
+        "map_file": "harbour-4_map.jpg",
+        "optimisation_file": "harbour-4.opt",
+        "macro_image": "harbour-4_macro.jpg",
+        "magnification": 20.0,
+        "physical_width_nm": 25000000.0,
+        "physical_height_nm": 18750000.0,
+        "extra_image_files": 2
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.slide",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

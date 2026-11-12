@@ -1,0 +1,112 @@
+---
+source: src/formats/columnar/hadoop.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-berths-block.seq",
+    "stem": "saltmere-berths-block",
+    "extension": "seq"
+  },
+  "identification": {
+    "format": "sequencefile",
+    "name": "Hadoop SequenceFile",
+    "mime": "application/x-hadoop-sequencefile",
+    "family": "columnar",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "columnar.hadoop"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 544
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 544,
+    "entropy": 7.092,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "acdcab147f8fbf0f08eef0e07c62ff2c8126bb3ea846838356984464862ac02a",
+    "blake3": "36a0b72869d4b6caa89b518328108fa2eceecae0c441c2ea303a52ce7541d2c8"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "sequencefile": {
+      "version": 6,
+      "key_class": "org.apache.hadoop.io.Text",
+      "value_class": "org.apache.hadoop.io.IntWritable",
+      "compression": "block",
+      "codec": "org.apache.hadoop.io.compress.DefaultCodec",
+      "records": 30,
+      "blocks": 2,
+      "sync_markers": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "columnar.hadoop",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

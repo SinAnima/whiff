@@ -1,0 +1,6 @@
+%{
+  "credo": {:hex, :credo, "1.7.8", "9722ba1681e973025908d542ec3d95db5f9c549251ba5b028e251ad8c24ab8c5", [:mix], [], "hexpm", "cb9e87cc64f152f3ed1c6e325e7b894dea8f5ef2e41123bd864e3cd5ceb44968"},
+  "jason": {:hex, :jason, "1.4.4", "b9226785a9aa77b6857ca22832cffa5d5011a667207eb2a0ad56adb5db443b8a", [:mix], [], "hexpm", "c5eb0cab91f094599f94d55bc63409236a8ec69a21a67814529e8d5f6cc90b3b"},
+  "phoenix": {:hex, :phoenix, "1.7.14", "a7d0b3f1bc95987044ddada111e77bd7f75646a08518942c72a8440278ae7825", [:mix], [], "hexpm", "c7859bc56cc5dfef19ecfc240775dae358cbaa530231118a9e014df392ace61a"},
+  "tide_model": {:git, "https://git.harbour.test/tide_model.git", "4f1c2e9a7b3d5c6e8f0a1b2c3d4e5f6a7b8c9d0e", [tag: "v0.3.0"]},
+}

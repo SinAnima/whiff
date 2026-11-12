@@ -1,0 +1,9 @@
+[repository]
+version = 1
+segments_per_dir = 1000
+max_segment_size = 524288000
+append_only = 0
+storage_quota = 0
+additional_free_space = 0
+id = 25b6e18f34bdc2df0c4bb4e6a42ed8e5a0acb2227e93a7ff8bc904da3a579df9
+

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE package PUBLIC "+//ISBN 0-9673008-1-9//DTD OEB 1.2 Package//EN" "http://openebook.org/dtds/oeb-1.2/oebpkg12.dtd">
+<package unique-identifier="bookid" xmlns="http://openebook.org/namespaces/oeb-package/1.0/">
+  <metadata>
+    <dc-metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:oebpackage="http://openebook.org/namespaces/oeb-package/1.0/">
+      <dc:Title>Tides of Saltmere</dc:Title>
+      <dc:Creator role="aut">Ana Lighthouse</dc:Creator>
+      <dc:Identifier id="bookid">urn:uuid:5a17e2e0-0000-4000-8000-000000000003</dc:Identifier>
+      <dc:Language>en</dc:Language>
+      <dc:Date>2025-09-01</dc:Date>
+    </dc-metadata>
+  </metadata>
+  <manifest>
+    <item id="ch1" href="ch1.html" media-type="text/x-oeb1-document"/>
+    <item id="ch2" href="ch2.html" media-type="text/x-oeb1-document"/>
+  </manifest>
+  <spine><itemref idref="ch1"/><itemref idref="ch2"/></spine>
+</package>

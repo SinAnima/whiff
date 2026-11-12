@@ -44,6 +44,17 @@ static META: ExtractorMeta = ExtractorMeta {
             parent: Some("ps"),
         },
         FormatSpec {
+            id: "ai",
+            name: "Adobe Illustrator drawing (PostScript)",
+            family: "image.vector",
+            mimes: &["application/illustrator"],
+            extensions: &["ai"],
+            // PostScript with Illustrator's DSC comments, told apart by `sniff`;
+            // PDF-based files (Illustrator 9 and later) are read as PDF.
+            magic: &[],
+            parent: Some("ps"),
+        },
+        FormatSpec {
             id: "bib",
             name: "BibTeX bibliography",
             family: "doc.other",
@@ -68,6 +79,12 @@ impl Extractor for Other {
             return Some(Sniff { format: "eps", confidence: 0.97 });
         }
         if head.starts_with(b"%!PS") {
+            if probe.extension == Some("ai")
+                || head.windows(18).any(|w| w == b"Adobe Illustrator(")
+                || head.windows(4).any(|w| w == b"%AI5" || w == b"%AI3")
+            {
+                return Some(Sniff { format: "ai", confidence: 0.96 });
+            }
             let first = head.split(|&b| b == b'\n' || b == b'\r').next().unwrap_or_default();
             let eps =
                 first.windows(4).any(|w| w == b"EPSF") || matches!(probe.extension, Some("eps" | "epsf" | "epsi"));
@@ -83,6 +100,12 @@ impl Extractor for Other {
     fn extract(&self, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
         match cx.format_id() {
             "ps" | "eps" => postscript(src, cx),
+            "ai" => {
+                let head = String::from_utf8_lossy(&src.head()[..src.head().len().min(16_384)]).into_owned();
+                postscript(src, cx)?;
+                illustrator(&head, cx);
+                Ok(())
+            }
             "bib" => {
                 let text = cx.read_text(src)?.text;
                 bibtex(&text, cx)
@@ -93,6 +116,24 @@ impl Extractor for Other {
 }
 
 crate::register_extractor!(Other);
+
+/// Illustrator's own header comments: the creator version and file format.
+fn illustrator(head: &str, cx: &mut Context<'_>) {
+    for line in head.lines().take(400) {
+        let line = line.trim_end();
+        let Some(rest) = line.strip_prefix("%%AI").or_else(|| line.strip_prefix("%AI")) else { continue };
+        let Some((key, value)) = rest.split_once(':').or_else(|| rest.split_once(' ')) else { continue };
+        let key = key.trim_start_matches(|c: char| c.is_ascii_digit()).trim_start_matches('_');
+        let value = value.trim();
+        match key {
+            "CreatorVersion" => cx.format_set("illustrator_version", value),
+            "FileFormat" => cx.format_set("illustrator_file_format", value),
+            "ColorUsage" => cx.format_set("color_usage", value),
+            "ArtSize" => cx.format_set("art_size", value),
+            _ => {}
+        }
+    }
+}
 
 fn bib_like(text: &str) -> bool {
     let entries = ["@article{", "@book{", "@inproceedings{", "@misc{", "@incollection{", "@phdthesis{", "@techreport{"];
@@ -196,7 +237,8 @@ fn postscript(src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractE
     let clean = |v: &str| -> String {
         let v = v.trim();
         let v = v.strip_prefix('(').and_then(|x| x.strip_suffix(')')).unwrap_or(v);
-        v.replace("\\(", "(").replace("\\)", ")").trim().to_string()
+        // Several text values, `(5/1/24) (7:42 PM)`, are joined with a space.
+        v.replace(") (", " ").replace("\\(", "(").replace("\\)", ")").trim().to_string()
     };
     if let Some(t) = dsc.get("Title").map(|v| clean(v)).filter(|t| !t.is_empty()) {
         cx.content().source("ps.dsc.Title").title(&t);
@@ -599,5 +641,5 @@ mod tests {
         assert!(r.content.excerpt.as_deref().unwrap_or_default().contains("High water"));
     }
 
-    crate::fixture_tests!("ps", "eps", "bib");
+    crate::fixture_tests!("ps", "eps", "ai", "bib");
 }

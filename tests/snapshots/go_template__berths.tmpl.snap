@@ -1,0 +1,145 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "berths.tmpl",
+    "stem": "berths",
+    "extension": "tmpl"
+  },
+  "identification": {
+    "format": "go_template",
+    "name": "Go template",
+    "mime": "text/x-go-template",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 220
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 220,
+    "entropy": 4.652,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 220,
+      "chars": 220,
+      "words": 21,
+      "lines": 6,
+      "max_line_length": 58,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "11bb6eae118387151952e4fbb08fca998155922a931f6d1baf310c2c538412d4",
+    "blake3": "705a46323a541e073cea3c71a97b88c8232e6da5adb1cc97d547e6f6c5799781"
+  },
+  "content": {
+    "description": "{{/* Berth list page for Saltmere Harbour. */}}",
+    "excerpt": "{{/* Berth list page for Saltmere Harbour. */}}"
+  },
+  "metadata": {},
+  "format": {
+    "go_template": {
+      "language": "Go template",
+      "loc": {
+        "code": 5,
+        "comment": 1,
+        "blank": 0,
+        "total": 6
+      },
+      "imports": [
+        "berth"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "block": [
+          "footer"
+        ],
+        "define": [
+          "berth"
+        ]
+      },
+      "symbol_counts": {
+        "block": 1,
+        "define": 1
+      },
+      "module_doc": "{{/* Berth list page for Saltmere Harbour. */}}",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 58
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

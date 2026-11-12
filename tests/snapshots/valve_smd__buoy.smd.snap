@@ -1,0 +1,126 @@
+---
+source: src/formats/cad/models.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy.smd",
+    "stem": "buoy",
+    "extension": "smd"
+  },
+  "identification": {
+    "format": "valve_smd",
+    "name": "Valve StudioMDL data",
+    "mime": "text/x-smd",
+    "family": "3d",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "cad.models"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 295
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 295,
+    "entropy": 3.246,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 295,
+      "chars": 295,
+      "words": 102,
+      "lines": 23,
+      "max_line_length": 19,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "9470ea40bce14e394fd2a725459daa7e18b88db3dc7148a749b5f0de7ca2e532",
+    "blake3": "ca91dffb987b5286aa95cfe2ffb6084386fc07947c0e1ddafecef4f2e27ba354"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "valve_smd": {
+      "smd_version": "1",
+      "nodes": 2,
+      "node_names": [
+        "root",
+        "light"
+      ],
+      "frames": 2,
+      "triangles": 2,
+      "materials": [
+        "buoy_red"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.models",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,146 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.groovy",
+    "stem": "harbour",
+    "extension": "groovy"
+  },
+  "identification": {
+    "format": "groovy",
+    "name": "Groovy / Gradle script",
+    "mime": "text/x-groovy",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 258
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 258,
+    "entropy": 4.708,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 258,
+      "chars": 258,
+      "words": 30,
+      "lines": 15,
+      "max_line_length": 46,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "49da313f7511201b2ce8302cae4b488f0e2cd04c21e9e6b6f718cd274da8cc6e",
+    "blake3": "c7d73eda0a773108bb29ee26d8cec2055439bebc6a181df380d4532f198baf5c"
+  },
+  "content": {
+    "description": "Berth report for Saltmere Harbour.",
+    "excerpt": "Berth report for Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "groovy": {
+      "language": "Groovy / Gradle script",
+      "loc": {
+        "code": 10,
+        "comment": 1,
+        "blank": 4,
+        "total": 15
+      },
+      "package": "saltmere",
+      "imports": [
+        "groovy.json.JsonOutput"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "function": [
+          "report"
+        ],
+        "type": [
+          "Berth"
+        ]
+      },
+      "symbol_counts": {
+        "function": 1,
+        "type": 1
+      },
+      "module_doc": "Berth report for Saltmere Harbour.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 46
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

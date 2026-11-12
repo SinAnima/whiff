@@ -1,0 +1,106 @@
+---
+source: src/formats/video/broadcast.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "A001_C001_0901AB_001.R3D",
+    "stem": "A001_C001_0901AB_001",
+    "extension": "R3D"
+  },
+  "identification": {
+    "format": "r3d",
+    "name": "RED R3D",
+    "mime": "video/x-red-r3d",
+    "family": "video",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "video.broadcast"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 512
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 512,
+    "entropy": 0.102,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "efe8bc84f7eb9e8608a5b93e7b1a3029f013a10b689f198ea9599e0b332edb2d",
+    "blake3": "2697e2e0c109e876fa2e2749defd1fe5b241429382df11312d7f3c1a8dab565c"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "r3d": {
+      "version": "RED1",
+      "header_bytes": 512
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.broadcast",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

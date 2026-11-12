@@ -1,0 +1,159 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.spec",
+    "stem": "saltmere-tides",
+    "extension": "spec"
+  },
+  "identification": {
+    "format": "rpm_spec",
+    "name": "RPM spec file",
+    "mime": "text/x-rpm-spec",
+    "family": "code.manifest",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 845
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2026-03-14",
+        "source": "code.manifest",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {
+    "personal_data": {
+      "email": 2
+    }
+  },
+  "rights": {
+    "license": {
+      "name": "CC0-1.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 845,
+    "entropy": 4.928,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 845,
+      "chars": 845,
+      "words": 86,
+      "lines": 40,
+      "max_line_length": 74,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 9
+    }
+  },
+  "integrity": {
+    "sha256": "ff03141fe8c4f3ef0390a7f6c0b7d15df3954bbc9b7d7225b99a78f24654f672",
+    "blake3": "38c53e9a3928d1cf37f28825d19a9ff88f69062c4e8537d5fcd2ff62eac708d4"
+  },
+  "content": {
+    "title": "saltmere-tides 1.4.0-2",
+    "description": "Tide predictions for Saltmere Harbour",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "excerpt": "Tide predictions for Saltmere Harbour Harmonic tide predictions for the gauges of the fictitious Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "rpm_spec": {
+      "ecosystem": "rpm",
+      "name": "saltmere-tides",
+      "version": "1.4.0-2",
+      "license": "CC0-1.0",
+      "repository": "https://harbour.test/tides",
+      "build_dependencies": {
+        "meson": "*",
+        "gcc": "*",
+        "glib2-devel": ">= 2.76"
+      },
+      "build_dependencies_count": 3,
+      "dependencies": {
+        "glib2": "*"
+      },
+      "dependencies_count": 1,
+      "sources": 2,
+      "patches": 1,
+      "macro_definitions": 1,
+      "changelog_entries": 2,
+      "latest_changelog_version": "1.4.0-2"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,18 @@
+Package: saltmeretides
+Type: Package
+Title: Tide Predictions for Saltmere Harbour
+Version: 1.4.0
+Authors@R: c(
+    person("Ada", "Harbour", role = c("aut", "cre"), email = "ada@harbour.example.org"),
+    person("Ben", "Quay", role = "ctb"))
+Maintainer: Ada Harbour <ada@harbour.example.org>
+Description: Harmonic tide predictions for the gauges of the fictitious
+    Saltmere Harbour, with plots of a day's tides.
+License: CC0
+URL: https://git.harbour.test/saltmeretides
+Depends: R (>= 4.1.0)
+Imports: ggplot2 (>= 3.5.0), lubridate
+Suggests: testthat (>= 3.0.0)
+Encoding: UTF-8
+RoxygenNote: 7.3.2
+NeedsCompilation: no

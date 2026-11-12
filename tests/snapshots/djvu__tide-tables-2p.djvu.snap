@@ -1,0 +1,132 @@
+---
+source: src/formats/doc/djvu.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide-tables-2p.djvu",
+    "stem": "tide-tables-2p",
+    "extension": "djvu"
+  },
+  "identification": {
+    "format": "djvu",
+    "name": "DjVu document",
+    "mime": "image/vnd.djvu",
+    "family": "doc.other",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "doc.djvu"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 403
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 403,
+    "entropy": 6.632,
+    "entropy_scope": "file",
+    "image": {
+      "width": 128,
+      "height": 96,
+      "dpi": [
+        300.0,
+        300.0
+      ]
+    },
+    "document": {
+      "pages": 2
+    }
+  },
+  "integrity": {
+    "sha256": "bc41f07687a80e9d072e293df2d74e8cf337ed167e44c8b6b572ef624bbbd281",
+    "blake3": "0bf65ad5beb195ab4a02b254fea1235a09afd3847dcf255bb63bac889c8a979b"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "djvu": {
+      "bundled": true,
+      "directory_files": 3,
+      "kind": "multi-page",
+      "version": "0.24",
+      "rotation": 0,
+      "text_layer": false,
+      "annotations": true,
+      "bookmarks": false,
+      "chunks": {
+        "ANTz": 1,
+        "DIRM": 1,
+        "FORM:DJVI": 1,
+        "FORM:DJVU": 2,
+        "INCL": 1,
+        "INFO": 2,
+        "Sjbz": 2
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.djvu",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

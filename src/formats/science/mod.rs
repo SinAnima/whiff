@@ -12,8 +12,10 @@ pub(crate) mod grib;
 pub(crate) mod h5;
 pub(crate) mod hdf5;
 pub(crate) mod instruments;
+pub(crate) mod longtail;
 pub(crate) mod netcdf;
 pub(crate) mod ome;
+pub(crate) mod statapps;
 pub(crate) mod stats;
 pub(crate) mod textfmt;
 pub(crate) mod zarr;
@@ -22,6 +24,7 @@ use serde_json::Value;
 
 // Shared with the other groups.
 pub(crate) use super::archive::unix_time;
+pub(crate) use super::doc::ole::common as ole_common;
 
 /// A float as JSON (non-finite values have no JSON number).
 pub(crate) fn number(v: f64) -> Value {

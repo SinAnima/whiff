@@ -1,0 +1,249 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "high-tide.jscalendar.json",
+    "stem": "high-tide.jscalendar",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 295
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T06:12:00",
+        "source": "jscalendar.start",
+        "tz_known": true
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 295,
+    "entropy": 4.605,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 295,
+      "chars": 295,
+      "words": 26,
+      "lines": 14,
+      "max_line_length": 48,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "59ffcd51c96de12ffa74c4009cef23d46f87016db281f87fc7b06df95bdc9b4b",
+    "blake3": "ae2114e6228364f49338247ed5338718bc005f68f4bf7d27388950123acd75d9"
+  },
+  "content": {
+    "title": "High tide at Saltmere",
+    "excerpt": "High tide at Saltmere"
+  },
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "@type",
+        "uid",
+        "title",
+        "start",
+        "timeZone",
+        "duration",
+        "recurrenceRules"
+      ],
+      "key_count": 7,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.[\"@type\"]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Event"
+            ]
+          },
+          "$.uid": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "5a17e2e0-0000-4000-8000-00000000000a"
+            ]
+          },
+          "$.title": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "High tide at Saltmere"
+            ]
+          },
+          "$.start": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "2025-09-01T06:12:00"
+            ]
+          },
+          "$.timeZone": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Europe/London"
+            ]
+          },
+          "$.duration": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "PT1H"
+            ]
+          },
+          "$.recurrenceRules": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.recurrenceRules[]": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.recurrenceRules[].[\"@type\"]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "RecurrenceRule"
+            ]
+          },
+          "$.recurrenceRules[].frequency": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "daily"
+            ]
+          }
+        },
+        "max_depth": 3
+      },
+      "known_schema": {
+        "id": "jscalendar",
+        "name": "JSCalendar object",
+        "type": "Event",
+        "start": "2025-09-01T06:12:00",
+        "duration": "PT1H",
+        "time_zone": "Europe/London",
+        "entries": null,
+        "entry_types": null,
+        "recurrence": true
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

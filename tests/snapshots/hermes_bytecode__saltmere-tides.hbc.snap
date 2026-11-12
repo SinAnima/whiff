@@ -1,0 +1,128 @@
+---
+source: src/formats/bytecode/longtail.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.hbc",
+    "stem": "saltmere-tides",
+    "extension": "hbc"
+  },
+  "identification": {
+    "format": "hermes_bytecode",
+    "name": "Hermes JavaScript bytecode",
+    "mime": "application/x-hermes-bytecode",
+    "family": "bytecode",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "bytecode.longtail"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 348
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 348,
+    "entropy": 3.956,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "90d5ab8bc30ca77e8c3f8cb4452fa5f381cc66f4e3f6d92dc9389df976cdcde4",
+    "blake3": "d6a892358fee0dffba208926ad8e821806e3de3629313dd23997addc2b50ce0a"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "hermes_bytecode": {
+      "implementation": "Hermes",
+      "bytecode_version": 96,
+      "form": "execution",
+      "source_hash": "b106203f1dbf4b0e8886dedf00f2c6f83b7f7c3b",
+      "file_length": 348,
+      "functions": 3,
+      "strings": 5,
+      "identifiers": 4,
+      "string_storage_bytes": 38,
+      "tables": {
+        "regexps": 1
+      },
+      "segment": 0,
+      "debug_info": true,
+      "options": [
+        "static_builtins",
+        "async"
+      ],
+      "global_function": "global",
+      "function_names": [
+        "global",
+        "tideHeight",
+        "bellRings"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "bytecode.longtail",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

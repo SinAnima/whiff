@@ -1,0 +1,146 @@
+---
+source: src/formats/image/codecs.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "ferry.bpg",
+    "stem": "ferry",
+    "extension": "bpg"
+  },
+  "identification": {
+    "format": "bpg",
+    "name": "BPG image",
+    "mime": "image/bpg",
+    "family": "image.raster",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.codecs"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 484
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Mira Castell"
+    ]
+  },
+  "physical": {
+    "size_bytes": 484,
+    "entropy": 5.279,
+    "entropy_scope": "file",
+    "image": {
+      "width": 48,
+      "height": 32,
+      "bit_depth": 8,
+      "channels": 4,
+      "color_space": "YCbCr (BT.709)"
+    }
+  },
+  "integrity": {
+    "sha256": "0cfda1d90f46e50a01211fcc5b3c23865aeb154ca9556cbdcfdaeb5b4a6e684c",
+    "blake3": "b91824ee9b48ac70748b1dec0694d7b6d0988418a297f3b4913d6416f53130ee"
+  },
+  "content": {
+    "title": "Saltmere ferry",
+    "authors": [
+      "Mira Castell"
+    ],
+    "excerpt": "Saltmere ferry"
+  },
+  "metadata": {
+    "xmp": {
+      "dc": {
+        "title": "Saltmere ferry",
+        "creator": [
+          "Mira Castell"
+        ]
+      }
+    }
+  },
+  "format": {
+    "bpg": {
+      "pixel_format": "4:2:0 (JPEG)",
+      "alpha": "straight",
+      "limited_range": false,
+      "animated": true,
+      "loops": 0,
+      "frame_period_s": 0.04,
+      "extensions": [
+        "XMP",
+        "animation control"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.codecs",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.xmp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

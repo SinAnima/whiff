@@ -1,0 +1,109 @@
+---
+source: src/formats/cad/drawing.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pier-r2000.dwg",
+    "stem": "pier-r2000",
+    "extension": "dwg"
+  },
+  "identification": {
+    "format": "dwg",
+    "name": "AutoCAD DWG",
+    "mime": "image/vnd.dwg",
+    "family": "cad",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "cad.drawing"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 608
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 608,
+    "entropy": 0.187,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "98aab741ebc26b3bbd3aa18372a804b27872cedb2bf03c35c8be4399c8a1409e",
+    "blake3": "94f670d478b06525c14d476930c1dcff341aff05e7bf6bd4e7ab1ced5e7e3718"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "dwg": {
+      "version": "AC1015",
+      "release": "2000",
+      "maintenance_version": 15,
+      "thumbnail": true,
+      "codepage": "ANSI_1252"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.drawing",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

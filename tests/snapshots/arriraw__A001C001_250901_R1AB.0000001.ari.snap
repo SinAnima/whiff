@@ -1,0 +1,110 @@
+---
+source: src/formats/video/broadcast.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "A001C001_250901_R1AB.0000001.ari",
+    "stem": "A001C001_250901_R1AB.0000001",
+    "extension": "ari"
+  },
+  "identification": {
+    "format": "arriraw",
+    "name": "ARRIRAW",
+    "mime": "image/x-arriraw",
+    "family": "video",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "video.broadcast"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4096
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4096,
+    "entropy": 0.045,
+    "entropy_scope": "file",
+    "image": {
+      "width": 2880,
+      "height": 1620
+    }
+  },
+  "integrity": {
+    "sha256": "6eaf2aaf08afd36e307eebcb8a93cb547e81dea4de50a9728813f235c64d37b3",
+    "blake3": "6d6203be865066db2da3c2b296506d80d5f55321cc4d1ed0b2eaa2e4a59315ef"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "arriraw": {
+      "byte_order": "little-endian",
+      "version": 3
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.broadcast",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

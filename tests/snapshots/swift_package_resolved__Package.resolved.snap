@@ -1,0 +1,132 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Package.resolved",
+    "stem": "Package",
+    "extension": "resolved"
+  },
+  "identification": {
+    "format": "swift_package_resolved",
+    "name": "SwiftPM Package.resolved",
+    "mime": "application/json",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "swift_package_resolved",
+        "confidence": 0.97
+      },
+      {
+        "format": "json",
+        "confidence": 0.55
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 396
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 396,
+    "entropy": 4.442,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 396,
+      "chars": 396,
+      "words": 24,
+      "lines": 15,
+      "max_line_length": 83,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "96754040e7f4c96e38e0de35e8fdd2fc0cd6b9b6477a752b88e42d5441a34854",
+    "blake3": "b68284ae2bc85731e5469f0ce707745bc7e1a7d31c7c9c59e1d8c0c0109303f7"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "swift_package_resolved": {
+      "ecosystem": "swiftpm",
+      "lockfile_version": 3,
+      "packages": {
+        "swift-argument-parser": "1.5.0"
+      },
+      "packages_count": 1,
+      "resolved_packages": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

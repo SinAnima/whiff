@@ -18,7 +18,7 @@ expression: report
     "name": "GDSII / OASIS chip layout",
     "mime": "application/octet-stream",
     "family": "cad",
-    "confidence": 0.81,
+    "confidence": 0.97,
     "detected_by": "magic",
     "extension_matches": true,
     "extractor": "cad.eda"

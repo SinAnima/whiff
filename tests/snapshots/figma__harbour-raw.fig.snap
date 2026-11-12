@@ -1,0 +1,106 @@
+---
+source: src/formats/image/layered.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-raw.fig",
+    "stem": "harbour-raw",
+    "extension": "fig"
+  },
+  "identification": {
+    "format": "figma",
+    "name": "Figma document",
+    "mime": "application/octet-stream",
+    "family": "image.layered",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "image.layered"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 24
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 24,
+    "entropy": 2.166,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "b3a3844ab7908ffd590905241c42deefa9e5e84bbb5dd5ccb3e09e8d088f37db",
+    "blake3": "e55ee68d44566d4362a1adcc3c1805f272f8f301c272a4dab77092540c41fa52"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "figma": {
+      "canvas_version": 20,
+      "canvas_bytes": 24
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.layered",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

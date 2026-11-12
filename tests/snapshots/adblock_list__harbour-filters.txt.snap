@@ -1,0 +1,142 @@
+---
+source: src/formats/web/misc.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-filters.txt",
+    "stem": "harbour-filters",
+    "extension": "txt"
+  },
+  "identification": {
+    "format": "adblock_list",
+    "name": "Proxy lists / Adblock filter lists",
+    "mime": "text/plain",
+    "family": "web.misc",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "adblock_list",
+        "confidence": 0.95
+      },
+      {
+        "format": "text",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "web.misc"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 385
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 385,
+    "entropy": 5.127,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 385,
+      "chars": 385,
+      "words": 36,
+      "lines": 14,
+      "max_line_length": 44,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "b319dbe11c650dd6103772d50ac5f7cfd69e156f982150a5c2071ce25617784e",
+    "blake3": "e007704d057344c903775275777f22914687ebcecd4f16090aa8e30e5e639fe1"
+  },
+  "content": {
+    "title": "Saltmere Harbour filters"
+  },
+  "metadata": {},
+  "format": {
+    "adblock_list": {
+      "header": {
+        "title": "Saltmere Harbour filters",
+        "version": "202511050800",
+        "last_modified": "05 Nov 2025 08:00 UTC",
+        "expires": "4 days",
+        "homepage": "https://saltmere.example/filters",
+        "license": "CC0-1.0"
+      },
+      "rules": {
+        "network": 3,
+        "exceptions": 1,
+        "element_hiding": 1,
+        "element_hiding_exceptions": 1,
+        "scriptlets": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "web.misc",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

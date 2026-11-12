@@ -1,0 +1,201 @@
+---
+source: src/formats/text/lightmarkup.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere.texi",
+    "stem": "saltmere",
+    "extension": "texi"
+  },
+  "identification": {
+    "format": "texinfo",
+    "name": "Texinfo",
+    "mime": "application/x-texinfo",
+    "family": "text.lightmarkup",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.lightmarkup"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1010
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-11-05",
+        "source": "text.lightmarkup",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {
+    "external_references": 1
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 1010,
+    "entropy": 4.902,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1010,
+      "chars": 1010,
+      "words": 129,
+      "lines": 55,
+      "max_line_length": 82,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 14
+    }
+  },
+  "integrity": {
+    "sha256": "aa89dd30d443f8dd37e21dcdba13d70e9a4f94eac5f4ed88702670d40c8d74bb",
+    "blake3": "baf66116034c90618e01ca003e534005534d87b478ea2ef6f8ab63837fab3ef9"
+  },
+  "content": {
+    "title": "Saltmere Harbour Handbook",
+    "authors": [
+      "Ada Quayside"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Saltmere Harbour",
+      "harbour",
+      "saltmere",
+      "Harbour Handbook",
+      "handbook",
+      "Harbour Board",
+      "Entering the harbour",
+      "version",
+      "Arriving",
+      "Moorings"
+    ],
+    "keyword_frequency": [
+      [
+        "harbour",
+        8
+      ],
+      [
+        "saltmere",
+        7
+      ],
+      [
+        "handbook",
+        4
+      ],
+      [
+        "moorings",
+        3
+      ],
+      [
+        "arriving",
+        2
+      ],
+      [
+        "version",
+        2
+      ]
+    ],
+    "excerpt": "\\input texinfo This handbook is for Saltmere Harbour, version VERSION. Copyright 2025 Saltmere Harbour Board. Saltmere: (saltmere). The Saltmere Harbour handbook. This handbook describes the harbour. Arriving:: Entering the harbour. Moorings:: Where to moor. Call the harbour master on VHF 12. See https://board.example.org/.",
+    "tags": [
+      "Saltmere Harbour",
+      "harbour",
+      "saltmere",
+      "Harbour Handbook",
+      "handbook"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "texinfo": {
+      "subtitle": "For visiting sailors",
+      "version": "1.4",
+      "headings": 4,
+      "links": {
+        "internal": 0,
+        "external": 1
+      },
+      "top_link_hosts": {
+        "board.example.org": 1
+      },
+      "images": 0,
+      "code_blocks": 1,
+      "tables": 1,
+      "output_file": "saltmere.info",
+      "encoding": "UTF-8",
+      "dir_category": "Harbours",
+      "nodes": 3,
+      "flags": {
+        "VERSION": "1.4",
+        "UPDATED": "5 November 2025"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.lightmarkup",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

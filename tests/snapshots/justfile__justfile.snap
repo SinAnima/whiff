@@ -1,0 +1,131 @@
+---
+source: src/formats/code/config.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "justfile",
+    "stem": "justfile"
+  },
+  "identification": {
+    "format": "justfile",
+    "name": "Justfile",
+    "mime": "text/x-just",
+    "family": "code.infra",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "encoding": "us-ascii",
+    "extractor": "code.config"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 270
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 270,
+    "entropy": 4.805,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 270,
+      "chars": 270,
+      "words": 37,
+      "lines": 19,
+      "max_line_length": 40,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 6
+    }
+  },
+  "integrity": {
+    "sha256": "8cae4006dcba62e8c46e8c0152a2add6eb1bef8c9edfb70637876c6a66910470",
+    "blake3": "e5e047af7f9a3628e712ef4ff018385b1ccb60bfee638c873bf4572214eb6585"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "justfile": {
+      "default_recipe": "default",
+      "recipe_count": 3,
+      "recipes": [
+        "default",
+        "deploy",
+        "build"
+      ],
+      "variables": [
+        "port",
+        "RUST_LOG"
+      ],
+      "settings": {
+        "shell": "[\"bash\", \"-c\"]",
+        "dotenv-load": "true"
+      },
+      "imports": [
+        "ci.just"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.config",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

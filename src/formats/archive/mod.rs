@@ -11,14 +11,21 @@
 //! decompression limits) where the format stores or compresses them in a
 //! way whiff reads; only listings are produced otherwise.
 
+pub(crate) mod alzip;
 pub(crate) mod ar;
+pub(crate) mod backups;
+pub(crate) mod bundles;
 pub(crate) mod cab;
 pub(crate) mod cpio;
+pub(crate) mod dos;
+pub(crate) mod encoded;
 pub(crate) mod legacy;
+pub(crate) mod mac;
 pub(crate) mod rar;
 pub(crate) mod sevenz;
 pub(crate) mod squashfs;
 pub(crate) mod tar;
+pub(crate) mod wim;
 pub(crate) mod zip;
 
 use std::collections::BTreeMap;

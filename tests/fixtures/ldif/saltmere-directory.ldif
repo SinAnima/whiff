@@ -1,0 +1,19 @@
+version: 1
+
+dn: ou=harbour,dc=saltmere,dc=example
+objectClass: top
+objectClass: organizationalUnit
+ou: harbour
+
+dn: uid=ben,ou=harbour,dc=saltmere,dc=example
+objectClass: top
+objectClass: inetOrgPerson
+uid: ben
+cn: Ben Gull
+sn: Gull
+mail: ben@saltmere.example
+
+dn: uid=ana,ou=harbour,dc=saltmere,dc=example
+changetype: modify
+replace: telephoneNumber
+telephoneNumber: +44 0000 000000

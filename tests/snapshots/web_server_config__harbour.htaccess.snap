@@ -1,0 +1,129 @@
+---
+source: src/formats/code/config.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.htaccess",
+    "stem": "harbour",
+    "extension": "htaccess"
+  },
+  "identification": {
+    "format": "web_server_config",
+    "name": "nginx / Apache config",
+    "mime": "text/plain",
+    "family": "code.infra",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.config"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 159
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 159,
+    "entropy": 5.078,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 159,
+      "chars": 159,
+      "words": 17,
+      "lines": 6,
+      "max_line_length": 45,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "54a3e7b49bfd855d984fad4b67d4613709b933ca4a4aa70b04e289e794bddf60",
+    "blake3": "9bf7c304f89ba47f894b90dba22fe5ed9ca7556de2b24d12164fa37f3ebe82b3"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "web_server_config": {
+      "server": "apache",
+      "kind": "htaccess",
+      "rewrite_rules": 1,
+      "redirects": 1,
+      "tls": false,
+      "auth_type": "Basic",
+      "directives": {
+        "AuthName": 1,
+        "AuthType": 1,
+        "Redirect": 1,
+        "Require": 1,
+        "RewriteEngine": 1,
+        "RewriteRule": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.config",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

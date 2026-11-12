@@ -1,7 +1,9 @@
 //! Binary data of no known format: printable strings (ASCII and UTF-16LE),
 //! URLs among them, signatures of embedded files (ZIP, PDF, PNG, ELF, PE,
 //! gzip, …) and a per-block entropy profile that separates structured data
-//! from compressed or encrypted payloads.
+//! from compressed or encrypted payloads, and the zero bytes (ratio,
+//! all-zero 4 KiB blocks, trailing zeros) that show sparse, preallocated
+//! or wiped regions.
 
 use std::collections::BTreeMap;
 
@@ -120,6 +122,19 @@ impl Extractor for Unknown {
             f.insert("embedded_signatures".into(), Value::Object(embedded));
         }
         f.insert("entropy_profile".into(), profile);
+        if !data.is_empty() {
+            let zeros = data.iter().fold(0usize, |n, &b| n + usize::from(b == 0));
+            f.insert("zero_ratio".into(), json!((zeros as f64 / data.len() as f64 * 1000.0).round() / 1000.0));
+            let blocks = data.as_chunks::<4096>().0;
+            let empty = blocks.iter().filter(|b| b.iter().all(|&x| x == 0)).count();
+            if empty > 0 {
+                f.insert("zero_blocks".into(), json!({ "empty": empty, "of": blocks.len(), "block_bytes": 4096 }));
+            }
+            let trailing = data.iter().rev().take_while(|&&b| b == 0).count();
+            if !cut && trailing >= 512 {
+                f.insert("trailing_zero_bytes".into(), json!(trailing));
+            }
+        }
         let fmt = cx.format();
         for (k, v) in f {
             fmt.insert(k, v);

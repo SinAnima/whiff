@@ -1,0 +1,134 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "pubspec.lock",
+    "stem": "pubspec",
+    "extension": "lock"
+  },
+  "identification": {
+    "format": "pubspec_lock",
+    "name": "Dart pubspec.lock",
+    "mime": "application/yaml",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 704
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 704,
+    "entropy": 4.748,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 704,
+      "chars": 704,
+      "words": 55,
+      "lines": 28,
+      "max_line_length": 80,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "27bbc955b7dcb6a0766a4c3e707ebbecf7a113a5a4a0d6323fed5e2abd51f261",
+    "blake3": "e58cd937ed8c57de680ee06d585b4c132d2d3b5803394c144eb93412f325d36d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pubspec_lock": {
+      "ecosystem": "pub",
+      "resolved_packages": 3,
+      "sources": {
+        "hosted": 2,
+        "path": 1
+      },
+      "dependency_kinds": {
+        "direct_dev": 1,
+        "direct_main": 2
+      },
+      "packages": {
+        "http": "1.2.2",
+        "lints": "4.0.0",
+        "tide_model": "0.3.0"
+      },
+      "packages_count": 3,
+      "sdks": {
+        "dart": ">=3.5.0 <4.0.0"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

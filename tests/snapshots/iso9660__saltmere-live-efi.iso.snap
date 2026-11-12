@@ -442,7 +442,9 @@ expression: report
             "mean": 0.054,
             "high_entropy_blocks": 0,
             "likely_compressed_or_encrypted": false
-          }
+          },
+          "zero_ratio": 0.996,
+          "trailing_zero_bytes": 2007
         }
       },
       "diagnostics": {

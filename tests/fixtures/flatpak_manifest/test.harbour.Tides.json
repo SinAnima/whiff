@@ -1,0 +1,35 @@
+{
+  "app-id": "test.harbour.Tides",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "47",
+  "sdk": "org.gnome.Sdk",
+  "command": "tides",
+  "finish-args": [
+    "--share=network",
+    "--socket=wayland",
+    "--filesystem=home"
+  ],
+  "modules": [
+    {
+      "name": "tide-model",
+      "buildsystem": "meson",
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://git.harbour.test/tide-model.git",
+          "tag": "v0.3.0"
+        }
+      ]
+    },
+    {
+      "name": "saltmere-tides",
+      "buildsystem": "meson",
+      "sources": [
+        {
+          "type": "dir",
+          "path": "."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+---
+source: src/formats/data/binser/xdr.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-gauge-base64.xdr",
+    "stem": "saltmere-gauge-base64",
+    "extension": "xdr"
+  },
+  "identification": {
+    "format": "xdr",
+    "name": "XDR data",
+    "mime": "application/x-xdr",
+    "family": "data.binser",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.xdr"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 193
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 193,
+    "entropy": 4.8,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 193,
+      "chars": 193,
+      "words": 1,
+      "lines": 1,
+      "max_line_length": 192,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "87869d925ef0965275e614cb409872335882bf1dde1921ac78615b37fd497b4c",
+    "blake3": "534819eb1809a0bbf44d3f683cd6a55b42814acaac91396b8fe3d254ecc763eb"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "xdr": {
+      "encoding": "base64",
+      "bytes": 144,
+      "words": 36,
+      "aligned": true,
+      "string_count": 3,
+      "strings": [
+        "Saltmere Quay tide gauge",
+        "metres above chart datum",
+        "harbourmaster"
+      ],
+      "word_kinds": {
+        "float": 4,
+        "negative_integer": 1,
+        "other": 6,
+        "small_integer": 3,
+        "zero": 3
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.xdr",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,155 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Tides.v",
+    "stem": "Tides",
+    "extension": "v"
+  },
+  "identification": {
+    "format": "coq",
+    "name": "Coq / Rocq source",
+    "mime": "text/x-coq",
+    "family": "code.source",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "coq",
+        "confidence": 0.9
+      },
+      {
+        "format": "verilog",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 222
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 222,
+    "entropy": 4.707,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 222,
+      "chars": 222,
+      "words": 37,
+      "lines": 9,
+      "max_line_length": 55,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "b59d5bdb7731c90e1eb6d40c12b30065da954632002f62cca9a8de6b02e48007",
+    "blake3": "6929aa3996d773af9271a77c5f8d89f2cee57814b642cb2d76cc956c1041dc9e"
+  },
+  "content": {
+    "description": "Tide arithmetic for Saltmere Harbour.",
+    "excerpt": "Tide arithmetic for Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "coq": {
+      "language": "Coq / Rocq",
+      "loc": {
+        "code": 6,
+        "comment": 1,
+        "blank": 2,
+        "total": 9
+      },
+      "imports": [
+        "Arith"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "definition": [
+          "high_water"
+        ],
+        "theorem": [
+          "high_water_gt"
+        ]
+      },
+      "symbol_counts": {
+        "definition": 1,
+        "theorem": 1
+      },
+      "module_doc": "Tide arithmetic for Saltmere Harbour.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 55
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

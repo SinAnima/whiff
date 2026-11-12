@@ -1,0 +1,147 @@
+---
+source: src/formats/doc/writing.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-notes.enex",
+    "stem": "saltmere-notes",
+    "extension": "enex"
+  },
+  "identification": {
+    "format": "enex",
+    "name": "Evernote export",
+    "mime": "application/enex+xml",
+    "family": "doc.other",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "enex",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "doc.writing"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 847
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 847,
+    "entropy": 5.091,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 847,
+      "chars": 847,
+      "words": 47,
+      "lines": 19,
+      "max_line_length": 196,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "5e833af8ce42b796906f20d0088eed7feae43c33102fc9d0e42f1be800d6754f",
+    "blake3": "40a0c057273aeaa0f183abe773e743448ec9b28c60d9c17a73fc3d4399312ee8"
+  },
+  "content": {
+    "language": {
+      "code": "en",
+      "confidence": 0.702
+    },
+    "excerpt": "Harbour bell Berths The bell rings at high tide. Grey Tern at berth 5, Harbour Bell at berth 3."
+  },
+  "metadata": {},
+  "format": {
+    "enex": {
+      "application": "Evernote",
+      "application_version": "10.105.4",
+      "exported": "2025-09-01T12:00:00Z",
+      "notes": 2,
+      "tags": {
+        "bell": 1,
+        "harbour": 2
+      },
+      "date_range": [
+        "2025-08-30T08:00:00Z",
+        "2025-09-01T11:00:00Z"
+      ],
+      "titles": [
+        "Harbour bell",
+        "Berths"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.writing",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

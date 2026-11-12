@@ -4,17 +4,18 @@
 //! blocks: EXIF (APP1), XMP with extended XMP reassembled by GUID (APP1),
 //! ICC reassembled from its chunks (APP2), MPF multi-picture index (APP2),
 //! Photoshop resources (APP13) and C2PA Content Credentials (APP11 JUMBF).
-//! Ultra HDR gain maps are recognised from the XMP and MPF.
+//! Ultra HDR gain maps are recognised from the XMP and MPF. JPEG-LS files
+//! (SOF55 frame header) are a format of their own with the same report.
 //!
-//! Specifications: ITU-T T.81, JFIF 1.02, CIPA DC-007 (MPF), ISO 21496-1 gain maps.
+//! Specifications: ITU-T T.81, T.87 (JPEG-LS), JFIF 1.02, CIPA DC-007 (MPF), ISO 21496-1 gain maps.
 
 use std::collections::BTreeMap;
 
 use serde_json::{Value, json};
 
 use crate::plugin::{
-    BlockKind, ByteReader, Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Source, TextRole,
-    squash_whitespace, truncate_chars,
+    BlockKind, ByteReader, Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Probe, Sniff,
+    Source, TextRole, squash_whitespace, truncate_chars,
 };
 
 /// Extractor for JPEG.
@@ -25,15 +26,27 @@ static META: ExtractorMeta = ExtractorMeta {
     version: 1,
     cost: Cost::Header,
     priority: 0,
-    formats: &[FormatSpec {
-        id: "jpeg",
-        name: "JPEG image",
-        family: "image.raster",
-        mimes: &["image/jpeg"],
-        extensions: &["jpg", "jpeg", "jpe", "jfif", "jif", "mpo"],
-        magic: &[Magic::prefix(b"\xFF\xD8\xFF")],
-        parent: None,
-    }],
+    formats: &[
+        FormatSpec {
+            id: "jpeg",
+            name: "JPEG image",
+            family: "image.raster",
+            mimes: &["image/jpeg"],
+            extensions: &["jpg", "jpeg", "jpe", "jfif", "jif", "mpo"],
+            magic: &[Magic::prefix(b"\xFF\xD8\xFF")],
+            parent: None,
+        },
+        // Told apart from JPEG by its SOF55 frame header (`sniff`).
+        FormatSpec {
+            id: "jls",
+            name: "JPEG-LS image",
+            family: "image.raster",
+            mimes: &["image/jls"],
+            extensions: &["jls"],
+            magic: &[],
+            parent: Some("jpeg"),
+        },
+    ],
 };
 
 /// Segments examined before the scan starts.
@@ -44,6 +57,10 @@ const MAX_SEGMENT: usize = 65_535;
 impl Extractor for Jpeg {
     fn meta(&self) -> &'static ExtractorMeta {
         &META
+    }
+
+    fn sniff(&self, probe: &Probe<'_>) -> Option<Sniff> {
+        (frame_marker(probe.head)? == 0xF7).then_some(Sniff { format: "jls", confidence: 0.95 })
     }
 
     fn extract(&self, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
@@ -91,6 +108,28 @@ impl Extractor for Jpeg {
 
 crate::register_extractor!(Jpeg);
 
+/// The first frame-header marker (`SOFn` or JPEG-LS `SOF55`) in the head window.
+fn frame_marker(h: &[u8]) -> Option<u8> {
+    if !h.starts_with(b"\xFF\xD8\xFF") {
+        return None;
+    }
+    let mut at = 2;
+    for _ in 0..MAX_SEGMENTS {
+        let m = *h.get(at + 1)?;
+        if h[at] != 0xFF {
+            return None;
+        }
+        if matches!(m, 0xC0..=0xCF | 0xF7) && !matches!(m, 0xC4 | 0xC8 | 0xCC) {
+            return Some(m);
+        }
+        if m == 0xDA || m == 0xD9 {
+            return None;
+        }
+        at += 2 + usize::from(u16::from_be_bytes([*h.get(at + 2)?, *h.get(at + 3)?]));
+    }
+    None
+}
+
 /// Start of frame: marker, width, height, (sampling h, v) per component, precision.
 type Sof = (u8, u16, u16, Vec<(u8, u8)>, u8);
 
@@ -121,7 +160,7 @@ impl Scan {
             self.segments.push(segment_name(marker, b));
         }
         match marker {
-            0xC0..=0xCF if !matches!(marker, 0xC4 | 0xC8 | 0xCC) => self.sof(marker, b),
+            0xC0..=0xCF | 0xF7 if !matches!(marker, 0xC4 | 0xC8 | 0xCC) => self.sof(marker, b),
             0xC4 => self.huffman_tables += 1,
             0xDB => self.dqt(b),
             0xDD if b.len() >= 2 => self.restart_interval = Some(u16::from_be_bytes([b[0], b[1]])),
@@ -307,6 +346,8 @@ fn segment_name(marker: u8, b: &[u8]) -> String {
     match marker {
         0xC0..=0xC3 | 0xC5..=0xC7 | 0xC9..=0xCB | 0xCD..=0xCF => format!("SOF{}", marker - 0xC0),
         0xC4 => "DHT".into(),
+        0xF7 => "SOF55".into(),
+        0xF8 => "LSE".into(),
         0xDA => "SOS".into(),
         0xDB => "DQT".into(),
         0xDD => "DRI".into(),
@@ -328,6 +369,7 @@ fn process(marker: u8) -> &'static str {
         0xC3 => "lossless",
         0xC5..=0xC7 => "hierarchical",
         0xC9..=0xCB => "arithmetic",
+        0xF7 => "JPEG-LS",
         _ => "other",
     }
 }
@@ -427,5 +469,5 @@ mod tests {
         assert_eq!(subsampling(&[(1, 1), (1, 1), (1, 1)]), Some("4:4:4"));
     }
 
-    crate::fixture_tests!("jpeg");
+    crate::fixture_tests!("jpeg", "jls");
 }

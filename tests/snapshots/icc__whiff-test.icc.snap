@@ -1,0 +1,128 @@
+---
+source: src/formats/image/sidecar.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "whiff-test.icc",
+    "stem": "whiff-test",
+    "extension": "icc"
+  },
+  "identification": {
+    "format": "icc",
+    "name": "ICC colour profile",
+    "mime": "application/vnd.iccprofile",
+    "family": "meta.icc",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.sidecar"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 440
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 440,
+    "entropy": 3.609,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "d618501ddcf140e2cff1da72f3c270b1cf8100a980bdd49420eee8332c656c9e",
+    "blake3": "f1a39536cbf97459f8766710737e8352c2359f19df6928e42c9a09771ba6e3ed"
+  },
+  "content": {},
+  "metadata": {
+    "icc": {
+      "version": "4.3.0",
+      "class": "display",
+      "color_space": "RGB",
+      "pcs": "XYZ",
+      "cmm": "none",
+      "platform": "APPL",
+      "manufacturer": "none",
+      "model": "none",
+      "created": "2024-01-01T00:00:00",
+      "rendering_intent": "perceptual",
+      "size_bytes": 440,
+      "description": "whiff test sRGB-like profile",
+      "copyright": "CC0-1.0, whiff project",
+      "white_point": [
+        0.9642,
+        1.0,
+        0.8249
+      ]
+    }
+  },
+  "format": {},
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.sidecar",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.icc",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

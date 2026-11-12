@@ -1,0 +1,20 @@
+.{
+    .name = .saltmere_tides,
+    .version = "1.4.0",
+    .fingerprint = 0x9c2a7f1d3e5b8046,
+    .minimum_zig_version = "0.14.0",
+    .dependencies = .{
+        .tide_model = .{
+            .url = "https://git.harbour.test/tide_model/archive/v0.3.0.tar.gz",
+            .hash = "1220aa11bb22cc33dd44ee55ff6600778899aabbccddeeff00112233445566778899",
+        },
+        .gauge = .{
+            .path = "../gauge",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+}

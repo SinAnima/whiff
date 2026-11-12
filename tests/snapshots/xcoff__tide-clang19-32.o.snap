@@ -1,0 +1,128 @@
+---
+source: src/formats/exec/misc.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide-clang19-32.o",
+    "stem": "tide-clang19-32",
+    "extension": "o"
+  },
+  "identification": {
+    "format": "xcoff",
+    "name": "AIX XCOFF",
+    "mime": "application/x-xcoff",
+    "family": "exec",
+    "confidence": 0.68,
+    "detected_by": "magic",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "xcoff",
+        "confidence": 0.68
+      },
+      {
+        "format": "macho",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "exec.misc"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 597
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 597,
+    "entropy": 3.215,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "e876f108c126dec5d542359f60ef29f85152908fee554a47996320560c452c56",
+    "blake3": "bddf0571c9ca647b7e3826690f988804802e90342ffb0653b7300749cc52f8c2"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "xcoff": {
+      "bits": 32,
+      "architecture": "PowerPC",
+      "kind": "object",
+      "symbols": 15,
+      "sections": [
+        {
+          "name": ".text",
+          "size_bytes": 132
+        },
+        {
+          "name": ".data",
+          "size_bytes": 24
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.misc",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

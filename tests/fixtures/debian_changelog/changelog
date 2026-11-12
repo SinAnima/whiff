@@ -1,0 +1,11 @@
+saltmere-tides (1.4.0-2) unstable; urgency=medium
+
+  * Fix gauge units.
+
+ -- Harbour Office <office@harbour.example.org>  Sat, 14 Mar 2026 09:30:00 +0000
+
+saltmere-tides (1.4.0-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Ada Harbour <ada@harbour.example.org>  Mon, 05 Jan 2026 10:00:00 +0000

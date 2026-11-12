@@ -1,0 +1,107 @@
+---
+source: src/formats/doc/packages.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-drmion-crafted.kfx",
+    "stem": "saltmere-drmion-crafted",
+    "extension": "kfx"
+  },
+  "identification": {
+    "format": "kfx",
+    "name": "Kindle KFX container",
+    "mime": "application/x-kfx-ebook",
+    "family": "doc.ebook",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "doc.packages"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 72
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "encrypted": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 72,
+    "entropy": 0.837,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "c95d9423f200f5b5cf4f88cf135c9353c6138d35463919231bb5e4b0eb15c2bd",
+    "blake3": "3eb17292960932ca65bc59c04cbdfc2e35a7b4167d6854e562f83515142fa6be"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "kfx": {
+      "drm": "DRMION"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.packages",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

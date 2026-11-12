@@ -15,16 +15,23 @@
 //! [`plugin`] API; see `CONTRIBUTING.md`. Extractors from other crates are
 //! added with [`Registry::with`].
 
-pub mod container;
-pub mod detect;
+// Internal modules (not part of the stable API). Extractors behind cargo
+// features use parts of them, so smaller builds leave some helpers unused;
+// the `full` build still reports real dead code.
+#[cfg_attr(not(feature = "full"), allow(dead_code, unused_imports))]
+pub(crate) mod container;
+#[cfg_attr(not(feature = "full"), allow(dead_code, unused_imports))]
+pub(crate) mod detect;
 pub mod engine;
 mod error;
-pub mod formats;
+pub(crate) mod formats;
 pub mod io;
-pub mod meta;
+#[cfg_attr(not(feature = "full"), allow(dead_code, unused_imports))]
+pub(crate) mod meta;
 pub mod plugin;
 pub mod report;
-pub mod text;
+#[cfg_attr(not(feature = "full"), allow(dead_code, unused_imports))]
+pub(crate) mod text;
 
 pub use engine::{Engine, EngineBuilder, Hashes, Limits, Options, Privacy, Profile};
 pub use error::{Error, ExtractError};

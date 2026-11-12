@@ -1,0 +1,135 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "copyright",
+    "stem": "copyright"
+  },
+  "identification": {
+    "format": "debian_copyright",
+    "name": "Debian copyright file",
+    "mime": "text/plain",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 499
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "personal_data": {
+      "email": 1
+    }
+  },
+  "rights": {
+    "copyright": "2026 Saltmere Harbour Office",
+    "license": {
+      "name": "CC0-1.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 499,
+    "entropy": 5.038,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 499,
+      "chars": 499,
+      "words": 49,
+      "lines": 19,
+      "max_line_length": 74,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "3a9b73ecbfc4dc5a351f0cc7384ee2d26dc22310d47941dd6f04eb5625cdbadf",
+    "blake3": "583844c6a3c2f08c29eb4cb841b7881302cafffd8802d9e7941ba189e5d584eb"
+  },
+  "content": {
+    "title": "saltmere-tides"
+  },
+  "metadata": {},
+  "format": {
+    "debian_copyright": {
+      "ecosystem": "debian",
+      "format": "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/",
+      "upstream_name": "saltmere-tides",
+      "upstream_contact": "Harbour Office",
+      "source": "https://harbour.test/releases",
+      "files_paragraphs": 3,
+      "licenses": {
+        "CC-BY-4.0": 1,
+        "CC0-1.0": 2
+      },
+      "license_paragraphs": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

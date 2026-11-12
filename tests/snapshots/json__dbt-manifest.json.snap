@@ -1,0 +1,276 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "dbt-manifest.json",
+    "stem": "dbt-manifest",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 550
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 550,
+    "entropy": 4.436,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 550,
+      "chars": 550,
+      "words": 43,
+      "lines": 26,
+      "max_line_length": 77,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "6793ddd0798d66a892b49983e98abcf91d8405af6be6fa2b2c17b7868b02d8fb",
+    "blake3": "31b9bc24465b1d8722045aa0802c140b348d3c3ea13a50687e18721482fc8f96"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "metadata",
+        "nodes",
+        "sources",
+        "exposures",
+        "metrics"
+      ],
+      "key_count": 5,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.metadata": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.metadata.dbt_schema_version": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "https://schemas.getdbt.com/dbt/manifest/v12.json"
+            ]
+          },
+          "$.metadata.dbt_version": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "1.8.7"
+            ]
+          },
+          "$.metadata.adapter_type": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "duckdb"
+            ]
+          },
+          "$.nodes": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.nodes.[\"model.harbour.berths\"]": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.nodes.[\"model.harbour.berths\"].resource_type": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "model"
+            ]
+          },
+          "$.nodes.[\"model.harbour.tides\"]": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.nodes.[\"model.harbour.tides\"].resource_type": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "model"
+            ]
+          },
+          "$.nodes.[\"test.harbour.not_null_berths_boat\"]": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.nodes.[\"test.harbour.not_null_berths_boat\"].resource_type": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "test"
+            ]
+          },
+          "$.nodes.[\"seed.harbour.boats\"]": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.nodes.[\"seed.harbour.boats\"].resource_type": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "seed"
+            ]
+          },
+          "$.sources": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.sources.[\"source.harbour.raw.landings\"]": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.exposures": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.metrics": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          }
+        },
+        "max_depth": 3
+      },
+      "known_schema": {
+        "id": "dbt_artifact",
+        "name": "dbt artifact",
+        "artifact": "v12",
+        "dbt_version": "1.8.7",
+        "adapter": "duckdb",
+        "nodes": 4,
+        "node_types": {
+          "model": 2,
+          "seed": 1,
+          "test": 1
+        },
+        "sources": 1,
+        "exposures": 0,
+        "metrics": 0
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

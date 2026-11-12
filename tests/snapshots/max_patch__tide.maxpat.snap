@@ -1,0 +1,144 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide.maxpat",
+    "stem": "tide",
+    "extension": "maxpat"
+  },
+  "identification": {
+    "format": "max_patch",
+    "name": "Max patch",
+    "mime": "application/x-max-patch",
+    "family": "code.source",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "max_patch",
+        "confidence": 0.99
+      },
+      {
+        "format": "json",
+        "confidence": 0.55
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 446
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 446,
+    "entropy": 4.509,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 446,
+      "chars": 446,
+      "words": 92,
+      "lines": 14,
+      "max_line_length": 103,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "f8881dcd66b633d93a4106fdc1f52fbd8d377294d2b355f2dc7f5ca61e2f0d62",
+    "blake3": "d82e043fbc4f129796c13ce25b516c2e3a8bc9af12d27da5bc8c0219c5ab39ff"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "max_patch": {
+      "language": "Max patch",
+      "loc": {
+        "code": 14,
+        "comment": 0,
+        "blank": 0,
+        "total": 14
+      },
+      "symbols": {
+        "object": [
+          "newobj",
+          "comment"
+        ]
+      },
+      "symbol_counts": {
+        "object": 2
+      },
+      "is_test": false,
+      "generated": false,
+      "longest_line": 82
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

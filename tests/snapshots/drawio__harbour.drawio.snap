@@ -1,0 +1,158 @@
+---
+source: src/formats/image/diagram.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.drawio",
+    "stem": "harbour",
+    "extension": "drawio"
+  },
+  "identification": {
+    "format": "drawio",
+    "name": "draw.io diagram",
+    "mime": "application/vnd.jgraph.mxfile",
+    "family": "image.vector",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "drawio",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.32
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "image.diagram"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 698
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2024-05-01T17:42:10.000Z",
+        "source": "drawio.modified",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-05-01T17:42:10Z",
+    "latest": "2024-05-01T17:42:10Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 698,
+    "entropy": 5.619,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 698,
+      "chars": 698,
+      "words": 28,
+      "lines": 0,
+      "max_line_length": 698,
+      "bom": false,
+      "blank_lines": 0
+    },
+    "document": {
+      "pages": 2
+    }
+  },
+  "integrity": {
+    "sha256": "6e3209e7887c635c972fe72c1ad29568bb88e81505d3e6242d6907988490d7b8",
+    "blake3": "f3015601b981998eeb4fafe2ab0c5f9cdb3e35512933d37b9c23f97a40c20727"
+  },
+  "content": {
+    "excerpt": "Lighthouse Breakwater guides Ferry terminal Car park"
+  },
+  "metadata": {},
+  "format": {
+    "drawio": {
+      "editor": {
+        "host": "app.diagrams.net",
+        "agent": "whiff fixture",
+        "version": "24.4.0",
+        "type": "device"
+      },
+      "pages": [
+        "Harbour",
+        "Landside"
+      ],
+      "vertices": 4,
+      "edges": 2,
+      "labels": [
+        "Lighthouse",
+        "Breakwater",
+        "guides",
+        "Ferry terminal",
+        "Car park"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.diagram",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

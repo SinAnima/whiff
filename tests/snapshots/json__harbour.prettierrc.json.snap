@@ -1,0 +1,182 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.prettierrc.json",
+    "stem": "harbour.prettierrc",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 81
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 81,
+    "entropy": 4.404,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 81,
+      "chars": 81,
+      "words": 10,
+      "lines": 6,
+      "max_line_length": 22,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "abd20406fa495cd68c80c1affed65e83da9dcfcbf24470d71fa47b86bd9139b3",
+    "blake3": "6bdd597018df0ace4710ea5c56ca7d2b786996eebe8464e6495b95325edc7f4a"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "semi",
+        "singleQuote",
+        "tabWidth",
+        "printWidth"
+      ],
+      "key_count": 4,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.semi": {
+            "types": [
+              "boolean"
+            ],
+            "count": 1,
+            "examples": [
+              false
+            ]
+          },
+          "$.singleQuote": {
+            "types": [
+              "boolean"
+            ],
+            "count": 1,
+            "examples": [
+              true
+            ]
+          },
+          "$.tabWidth": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              2
+            ]
+          },
+          "$.printWidth": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              100
+            ]
+          }
+        },
+        "max_depth": 1
+      },
+      "known_schema": {
+        "id": "prettier",
+        "name": "Prettier configuration",
+        "options": [
+          "semi",
+          "singleQuote",
+          "tabWidth",
+          "printWidth"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

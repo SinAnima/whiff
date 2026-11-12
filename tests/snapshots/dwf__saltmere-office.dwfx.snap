@@ -1,0 +1,124 @@
+---
+source: src/formats/cad/exchange.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-office.dwfx",
+    "stem": "saltmere-office",
+    "extension": "dwfx"
+  },
+  "identification": {
+    "format": "dwf",
+    "name": "DWF / DWFx",
+    "mime": "model/vnd.dwf",
+    "family": "cad",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "dwf",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "cad.exchange"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 907
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 907,
+    "entropy": 4.904,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "d5acf3dbbb0df84cafda63bfb47c3a9c0ecb96fd83f6d9d6739224ee5e46ad68",
+    "blake3": "1bbfc7eb0c6625f62b0b3aa8c9e483be5a045c6e4ee26b914e08ce417579decc"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "dwf": {
+      "packaging": "DWFx (OPC)",
+      "entries": 6,
+      "pages": 3,
+      "by_extension": {
+        "dwfseq": 1,
+        "fdoc": 1,
+        "fpage": 2,
+        "rels": 1,
+        "xml": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.exchange",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

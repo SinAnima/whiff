@@ -1,0 +1,159 @@
+---
+source: src/formats/text/plain.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "README",
+    "stem": "README"
+  },
+  "identification": {
+    "format": "text",
+    "name": "Plain text",
+    "mime": "text/plain",
+    "family": "text.plain",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "encoding": "us-ascii",
+    "extractor": "text.plain"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 183
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 183,
+    "entropy": 4.55,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 183,
+      "chars": 183,
+      "words": 24,
+      "lines": 6,
+      "max_line_length": 73,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "65f50e6069353cd006b173363f9078b082b97b8c29d408de103a0700279ba34f",
+    "blake3": "13b390008f0200574b2289692623a5c3bfffe8731431ceef721babe0f047667a"
+  },
+  "content": {
+    "title": "Saltmere Harbour tools",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Saltmere Harbour",
+      "harbour",
+      "Saltmere",
+      "harbour lights",
+      "Harbour tools",
+      "tools",
+      "Command",
+      "install",
+      "gates and tide",
+      "tide gauge"
+    ],
+    "keyword_frequency": [
+      [
+        "harbour",
+        2
+      ],
+      [
+        "install",
+        2
+      ],
+      [
+        "saltmere",
+        2
+      ],
+      [
+        "tools",
+        2
+      ]
+    ],
+    "excerpt": "Saltmere Harbour tools ====================== Command-line tools for the Saltmere harbour lights, gates and tide gauge. Install with `make install`. See CHANGELOG for what changed.",
+    "tags": [
+      "Saltmere Harbour",
+      "harbour",
+      "Saltmere",
+      "harbour lights",
+      "Harbour tools"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "text": {
+      "paragraphs": 3,
+      "document_kind": "readme"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.plain",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

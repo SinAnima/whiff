@@ -1,0 +1,17 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+requests = ">=2.31"
+tide-model = {version = "*", index = "pypi"}
+
+[dev-packages]
+pytest = "*"
+
+[requires]
+python_version = "3.12"
+
+[scripts]
+report = "python -m tides.report"

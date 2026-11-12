@@ -1,0 +1,147 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "BUILD.bazel",
+    "stem": "BUILD",
+    "extension": "bazel"
+  },
+  "identification": {
+    "format": "starlark",
+    "name": "Starlark / Bazel",
+    "mime": "text/x-starlark",
+    "family": "code.source",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 247
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 247,
+    "entropy": 4.613,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 247,
+      "chars": 247,
+      "words": 29,
+      "lines": 13,
+      "max_line_length": 65,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "37824f4f59c47fb1bd55ca7c66192be2ca8e83f9f819500bf205a0cd6b45b707",
+    "blake3": "c3aab29f8667ed4f752ff982da512a28df39a1731ce80e60c5e322f4066a0663"
+  },
+  "content": {
+    "description": "Build rules for the harbour tools.",
+    "excerpt": "Build rules for the harbour tools."
+  },
+  "metadata": {},
+  "format": {
+    "starlark": {
+      "language": "Starlark / Bazel",
+      "loc": {
+        "code": 10,
+        "comment": 1,
+        "blank": 2,
+        "total": 13
+      },
+      "imports": [
+        "@rules_python//python:defs.bzl"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "rule": [
+          "py_library",
+          "py_binary"
+        ],
+        "target": [
+          "tides",
+          "report"
+        ]
+      },
+      "symbol_counts": {
+        "rule": 4,
+        "target": 2
+      },
+      "module_doc": "Build rules for the harbour tools.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 65
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

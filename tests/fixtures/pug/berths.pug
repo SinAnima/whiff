@@ -1,0 +1,12 @@
+//- Berth list for Saltmere Harbour.
+extends layout.pug
+include mixins/berth.pug
+
+mixin berth(b)
+  li= b.number + ': ' + b.vessel
+
+block content
+  h1 Berths
+  ul
+    each b in berths
+      +berth(b)

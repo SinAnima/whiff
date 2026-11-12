@@ -1,0 +1,202 @@
+---
+source: src/formats/web/swf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-as2.swf",
+    "stem": "tides-as2",
+    "extension": "swf"
+  },
+  "identification": {
+    "format": "swf",
+    "name": "Shockwave Flash",
+    "mime": "application/x-shockwave-flash",
+    "family": "web.misc",
+    "confidence": 0.77,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "web.swf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 381
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-11-05T08:00:00Z",
+        "source": "web.swf",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-11-05T08:00:00Z",
+    "latest": "2025-11-05T08:00:00Z"
+  },
+  "security": {
+    "active_content": [
+      "actionscript"
+    ]
+  },
+  "rights": {
+    "creators": [
+      "Ada Quayside"
+    ]
+  },
+  "physical": {
+    "size_bytes": 381,
+    "entropy": 7.38,
+    "entropy_scope": "file",
+    "image": {
+      "width": 550,
+      "height": 400,
+      "frames": 2
+    },
+    "media": {
+      "duration_s": 0.083
+    },
+    "container": {
+      "uncompressed_bytes": 550,
+      "ratio": 1.4435695538057742
+    }
+  },
+  "integrity": {
+    "sha256": "bddd2072b9fd98c2a5c1957179d8d543b15028be77312caaa08e031d4e89a3e6",
+    "blake3": "cc988f87284a512a73eefc063fb4af8737417a3676f48584874287fa89f6a4c8"
+  },
+  "content": {
+    "title": "Saltmere Tides",
+    "authors": [
+      "Ada Quayside"
+    ],
+    "excerpt": "Saltmere Tides"
+  },
+  "metadata": {
+    "xmp": {
+      "dc": {
+        "title": "Saltmere Tides",
+        "creator": [
+          "Ada Quayside"
+        ]
+      }
+    }
+  },
+  "format": {
+    "swf": {
+      "version": 13,
+      "compression": "lzma",
+      "file_length": 550,
+      "stage": {
+        "width": 550,
+        "height": 400
+      },
+      "frame_rate": 24.0,
+      "frame_count": 2,
+      "script_limits": {
+        "max_recursion_depth": 1000,
+        "timeout_s": 60
+      },
+      "background_color": "#104070",
+      "product": {
+        "name": "Adobe Flex",
+        "edition": "None",
+        "version": "4.6.23201"
+      },
+      "scenes": [
+        "Harbour"
+      ],
+      "tags": 16,
+      "attributes": {
+        "use_direct_blit": false,
+        "use_gpu": false,
+        "has_metadata": true,
+        "actionscript3": false,
+        "use_network": true
+      },
+      "definitions": {
+        "binary_data": 1,
+        "shapes": 1,
+        "sprites": 1
+      },
+      "exports": [
+        "Boat"
+      ],
+      "frame_labels": [
+        "start",
+        "harbour"
+      ],
+      "scripts": {
+        "action_blocks": 1,
+        "language": "ActionScript 1/2"
+      },
+      "binary_data_bytes": 9
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "web.swf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.xmp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

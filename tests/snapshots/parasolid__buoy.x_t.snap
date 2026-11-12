@@ -1,0 +1,125 @@
+---
+source: src/formats/cad/exchange.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy.x_t",
+    "stem": "buoy",
+    "extension": "x_t"
+  },
+  "identification": {
+    "format": "parasolid",
+    "name": "Parasolid transmit file",
+    "mime": "application/x-parasolid",
+    "family": "cad",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "cad.exchange"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 643
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 643,
+    "entropy": 5.451,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 643,
+      "chars": 643,
+      "words": 40,
+      "lines": 24,
+      "max_line_length": 80,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "137430d74c7e94077164d4570abefff8fdec82fdc79ca0310ee750d5e26a5ebd",
+    "blake3": "3a21f89e17be1aada5411b1ab0b83de855b22394358b8019eabe9190c04f9d0a"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "parasolid": {
+      "encoding": "text",
+      "parasolid_version": "36.0",
+      "application": "saltmere-cad",
+      "format": "text",
+      "guise": "transmit",
+      "key": "buoy",
+      "file": "buoy.x_t",
+      "date": "Mon Sep  1 12:00:00 2025",
+      "schema": "SCH_3600274_36001",
+      "user_field_size": "0"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.exchange",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

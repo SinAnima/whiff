@@ -1,5 +1,5 @@
 ---
-source: src/formats/code/manifest.rs
+source: src/formats/code/manifest/mod.rs
 expression: report
 ---
 {
@@ -18,13 +18,13 @@ expression: report
     "name": "Maven POM",
     "mime": "application/xml",
     "family": "code.manifest",
-    "confidence": 0.95,
+    "confidence": 0.97,
     "detected_by": "sniff",
     "extension_matches": true,
     "candidates": [
       {
         "format": "maven_pom",
-        "confidence": 0.95
+        "confidence": 0.97
       },
       {
         "format": "xml",
@@ -105,7 +105,7 @@ expression: report
     "extractors": [
       {
         "id": "code.manifest",
-        "version": 1,
+        "version": 2,
         "ms": 0.0,
         "status": "ok"
       },

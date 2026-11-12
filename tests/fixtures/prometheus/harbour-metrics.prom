@@ -1,0 +1,13 @@
+# HELP harbour_boats_moored Boats moored in the harbour.
+# TYPE harbour_boats_moored gauge
+harbour_boats_moored{quay="long_wall"} 12
+harbour_boats_moored{quay="east"} 4
+# HELP harbour_bell_rings_total Times the bell has rung.
+# TYPE harbour_bell_rings_total counter
+harbour_bell_rings_total 1432
+# HELP harbour_tide_height_metres Tide height.
+# TYPE harbour_tide_height_metres histogram
+harbour_tide_height_metres_bucket{le="1"} 3
+harbour_tide_height_metres_bucket{le="+Inf"} 9
+harbour_tide_height_metres_sum 21.5
+harbour_tide_height_metres_count 9

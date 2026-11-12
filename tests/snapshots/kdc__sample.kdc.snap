@@ -1,0 +1,201 @@
+---
+source: src/formats/image/raw.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "sample.kdc",
+    "stem": "sample",
+    "extension": "kdc"
+  },
+  "identification": {
+    "format": "kdc",
+    "name": "Kodak KDC raw image",
+    "mime": "image/x-kodak-kdc",
+    "family": "image.raw",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "kdc",
+        "confidence": 0.99
+      },
+      {
+        "format": "tiff",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "image.raw"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1390
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "captured",
+        "value": "2024-06-01T09:30:00+02:00",
+        "source": "exif.DateTimeOriginal",
+        "tz_known": true
+      },
+      {
+        "field": "digitized",
+        "value": "2024-06-01T09:30:00",
+        "source": "exif.DateTimeDigitized",
+        "tz_known": false
+      },
+      {
+        "field": "modified",
+        "value": "2024-06-01T09:30:00",
+        "source": "exif.DateTime",
+        "tz_known": false
+      }
+    ],
+    "earliest": "2024-06-01T07:30:00Z",
+    "latest": "2024-06-01T07:30:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1390,
+    "entropy": 2.614,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48,
+      "bit_depth": 14,
+      "color_space": "raw",
+      "orientation": 1,
+      "dpi": [
+        300.0,
+        300.0
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "d3819b8b48698dcf567e2dbc831eb3a8377bc4943a547c47e69724f76961286a",
+    "blake3": "ced9e5333a71f0b67a31470e889d6922d9771b9c8b910cd6313dc16a34d344e9"
+  },
+  "content": {},
+  "metadata": {
+    "exif": {
+      "ImageWidth": 16,
+      "ImageLength": 12,
+      "BitsPerSample": [
+        8,
+        8,
+        8
+      ],
+      "Compression": "uncompressed",
+      "PhotometricInterpretation": "RGB",
+      "Make": "EASTMAN KODAK COMPANY",
+      "Model": "KODAK EXAMPLE DIGITAL CAMERA",
+      "Orientation": 1,
+      "SamplesPerPixel": 3,
+      "RowsPerStrip": 12,
+      "XResolution": 300.0,
+      "YResolution": 300.0,
+      "ResolutionUnit": "inch",
+      "Software": "whiff fixture generator",
+      "DateTime": "2024:06:01 09:30:00",
+      "ExposureTime": "1/250",
+      "FNumber": 5.6,
+      "PhotographicSensitivity": 200,
+      "ExifVersion": "0232",
+      "DateTimeOriginal": "2024:06:01 09:30:00",
+      "DateTimeDigitized": "2024:06:01 09:30:00",
+      "OffsetTimeOriginal": "+02:00",
+      "FocalLength": 35.0,
+      "LensModel": "KODAK EXAMPLE DIGITAL CAMERA lens 24-70mm",
+      "unknown_tags": 1
+    }
+  },
+  "format": {
+    "kdc": {
+      "byte_order": "little-endian",
+      "raw": {
+        "make": "EASTMAN KODAK COMPANY",
+        "model": "KODAK EXAMPLE DIGITAL CAMERA",
+        "previews": [
+          {
+            "ifd": "ifd0",
+            "width": 16,
+            "height": 12,
+            "bytes": 576
+          }
+        ],
+        "ifds": 2,
+        "cfa_pattern": "RGGB",
+        "software": "whiff fixture generator"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.raw",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.exif",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

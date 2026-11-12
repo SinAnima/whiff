@@ -1,0 +1,131 @@
+---
+source: src/formats/audio/raw.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-bell.dts",
+    "stem": "harbour-bell",
+    "extension": "dts"
+  },
+  "identification": {
+    "format": "dts_audio",
+    "name": "DTS audio",
+    "mime": "audio/vnd.dts",
+    "family": "audio",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "dts_audio",
+        "confidence": 0.9
+      },
+      {
+        "format": "dts",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "audio.raw"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 177096
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 177096,
+    "entropy": 6.753,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.002667,
+      "bitrate_bps": 1413000,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "dts",
+          "sample_rate_hz": 48000,
+          "channels": 2,
+          "channel_layout": "stereo",
+          "bitrate_bps": 1411200,
+          "samples": 48128
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "a66493be2e33b2bef1a2f43ea2e02e578116b30b0ef4c66aaa6d9a9e8e75457c",
+    "blake3": "17019d9d05411a7165ceee1e4abf2490ec782386f7d7cb4884784400fa913ed5"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "dts_audio": {
+      "frames": 94,
+      "frame_bytes": 1884
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.raw",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

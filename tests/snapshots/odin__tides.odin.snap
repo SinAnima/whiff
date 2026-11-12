@@ -1,0 +1,148 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.odin",
+    "stem": "tides",
+    "extension": "odin"
+  },
+  "identification": {
+    "format": "odin",
+    "name": "Odin source",
+    "mime": "text/x-odin",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 291
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 291,
+    "entropy": 5.002,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 291,
+      "chars": 291,
+      "words": 44,
+      "lines": 18,
+      "max_line_length": 52,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "13fef784a17575d91c72a869a49d8d08dab337f514e9fb89ed2edcfd2202209b",
+    "blake3": "cec646484f2c31b11ba522591dbac21af4125659b678b11d1b94f00d9772f555"
+  },
+  "content": {
+    "description": "Tide model for Saltmere Harbour.",
+    "excerpt": "Tide model for Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "odin": {
+      "language": "Odin",
+      "loc": {
+        "code": 13,
+        "comment": 1,
+        "blank": 4,
+        "total": 18
+      },
+      "package": "tides",
+      "imports": [
+        "core:fmt",
+        "core:math"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "procedure": [
+          "high_water",
+          "main"
+        ],
+        "type": [
+          "Gauge"
+        ]
+      },
+      "symbol_counts": {
+        "procedure": 2,
+        "type": 1
+      },
+      "module_doc": "Tide model for Saltmere Harbour.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 45
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

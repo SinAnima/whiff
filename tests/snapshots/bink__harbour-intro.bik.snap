@@ -1,0 +1,133 @@
+---
+source: src/formats/video/broadcast.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-intro.bik",
+    "stem": "harbour-intro",
+    "extension": "bik"
+  },
+  "identification": {
+    "format": "bink",
+    "name": "Bink video",
+    "mime": "video/x-bink",
+    "family": "video",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "video.broadcast"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 132
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 132,
+    "entropy": 1.265,
+    "entropy_scope": "file",
+    "image": {
+      "width": 320,
+      "height": 240,
+      "frames": 2
+    },
+    "media": {
+      "duration_s": 0.08,
+      "bitrate_bps": 13200,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "binkvideo",
+          "width": 320,
+          "height": 240,
+          "display_aspect_ratio": "4:3",
+          "frame_rate": 25.0,
+          "frames": 2
+        },
+        {
+          "type": "audio",
+          "codec": "binkaudio_dct",
+          "sample_rate_hz": 44100,
+          "channels": 2,
+          "channel_layout": "stereo"
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "bec0a56f79393ecf852813f3e12bb2cfabe6365d10c20da20079e90da2b8a0c0",
+    "blake3": "a4de5b478f5608ebf0d907b647832530334f59733d90b01b0eb5c6b8bd485f92"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "bink": {
+      "revision": "BIKi",
+      "audio_tracks": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.broadcast",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

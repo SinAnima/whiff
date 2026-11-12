@@ -1,0 +1,114 @@
+---
+source: src/formats/bytecode/longtail.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-classic.image",
+    "stem": "saltmere-classic",
+    "extension": "image"
+  },
+  "identification": {
+    "format": "smalltalk_image",
+    "name": "Smalltalk image",
+    "mime": "application/x-smalltalk-image",
+    "family": "bytecode",
+    "confidence": 0.85,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "bytecode.longtail"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2112
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2112,
+    "entropy": 7.859,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "54218e3b84156b06bdb4507535b14615cf03af3afbc8e250a2dbf65951c898b5",
+    "blake3": "17a9f1c322316b48f2743c69651e2fcce6f0bd43a1cafc58a3c9e466b472ca2f"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "smalltalk_image": {
+      "image_format": 6505,
+      "word_bits": 32,
+      "object_memory": "classic, closures, native float order",
+      "byte_order": "big_endian",
+      "heap_bytes": 2048,
+      "window": {
+        "width": 800,
+        "height": 600
+      },
+      "fullscreen": true
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "bytecode.longtail",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

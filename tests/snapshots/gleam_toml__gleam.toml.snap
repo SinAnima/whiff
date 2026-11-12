@@ -1,0 +1,148 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "gleam.toml",
+    "stem": "gleam",
+    "extension": "toml"
+  },
+  "identification": {
+    "format": "gleam_toml",
+    "name": "Gleam gleam.toml",
+    "mime": "application/toml",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "gleam_toml",
+        "confidence": 0.97
+      },
+      {
+        "format": "toml",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 354
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "license": {
+      "name": "CC0-1.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 354,
+    "entropy": 4.721,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 354,
+      "chars": 354,
+      "words": 55,
+      "lines": 13,
+      "max_line_length": 67,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "86fa798df32e31c5ed7442ffb0587b1d377b06a76a7b5c75757b807e327dc84d",
+    "blake3": "dba48de5343486f71e5a037c9ba0dd073de484c427cbc7d5c526cb48c21dc6e5"
+  },
+  "content": {
+    "title": "saltmere_tides 1.4.0",
+    "description": "Tide predictions for Saltmere Harbour",
+    "excerpt": "Tide predictions for Saltmere Harbour"
+  },
+  "metadata": {},
+  "format": {
+    "gleam_toml": {
+      "ecosystem": "hex",
+      "name": "saltmere_tides",
+      "version": "1.4.0",
+      "license": "CC0-1.0",
+      "repository": "github:saltmere/tides",
+      "target": "erlang",
+      "dependencies": {
+        "gleam_stdlib": ">= 0.40.0 and < 2.0.0",
+        "tide_model": "path: ../tide_model"
+      },
+      "dependencies_count": 2,
+      "dev_dependencies": {
+        "gleeunit": ">= 1.0.0 and < 2.0.0"
+      },
+      "dev_dependencies_count": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

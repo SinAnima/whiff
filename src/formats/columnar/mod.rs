@@ -1,6 +1,7 @@
 //! `columnar` extractors (feature `data`): columnar and table formats
 //! (Parquet and GeoParquet, Arrow IPC and Feather, ORC, Lance, Vortex,
-//! Delta Lake and Iceberg table metadata, TFRecord, R `fst` and `qs`) and
+//! Delta Lake, Iceberg and Hudi table metadata, Hadoop SequenceFile and
+//! Hive RCFile, TFRecord, R `fst` and `qs`) and
 //! machine-learning artefacts (safetensors, GGUF / GGML, ONNX, PyTorch,
 //! Keras, TensorFlow Lite and SavedModel, Core ML).
 //!
@@ -9,6 +10,7 @@
 //! the data or the weights.
 
 pub(crate) mod arrow;
+pub(crate) mod hadoop;
 pub(crate) mod ml;
 pub(crate) mod orc;
 pub(crate) mod parquet;

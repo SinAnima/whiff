@@ -1,0 +1,122 @@
+---
+source: src/formats/text/special.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "hosts",
+    "stem": "hosts"
+  },
+  "identification": {
+    "format": "hosts",
+    "name": "Hosts file",
+    "mime": "text/plain",
+    "family": "text.plain",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "encoding": "us-ascii",
+    "extractor": "text.special"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 256
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 256,
+    "entropy": 4.318,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 256,
+      "chars": 256,
+      "words": 19,
+      "lines": 8,
+      "max_line_length": 48,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "2c8f26cdf6f33627f561056cf79d7a2af2b87ca2795508581b1cde3f91813761",
+    "blake3": "ee4503b45d8ea2dbd835bd3d46caee4c9a81fd21f3435bb5ef1a460351e108a4"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "hosts": {
+      "entries": 10,
+      "names": 9,
+      "addresses": 5,
+      "ip_versions": {
+        "ipv4": 6,
+        "ipv6": 1
+      },
+      "blocked_names": 3,
+      "blocklist": false
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.special",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

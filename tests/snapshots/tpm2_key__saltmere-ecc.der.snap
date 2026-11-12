@@ -1,0 +1,141 @@
+---
+source: src/formats/crypto/tpm.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-ecc.der",
+    "stem": "saltmere-ecc",
+    "extension": "der"
+  },
+  "identification": {
+    "format": "tpm2_key",
+    "name": "TPM 2.0 key file",
+    "mime": "application/x-tpm2-key",
+    "family": "crypto",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "tpm2_key",
+        "confidence": 0.95
+      },
+      {
+        "format": "asn1",
+        "confidence": 0.55
+      },
+      {
+        "format": "der_key",
+        "confidence": 0.35
+      },
+      {
+        "format": "x509",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "crypto.tpm"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 273
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 273,
+    "entropy": 6.989,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "4a7a22831309a202c11c1f23b11de4f0ae8e9c1b7a426a42bf38ad575fee5a8f",
+    "blake3": "7ef2e13c2998cfa4593700c490f497749d91298a103764b939f34daf532e8b43"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "tpm2_key": {
+      "encoding": "der",
+      "tpm_version": "2.0",
+      "key_kind": "loadable",
+      "description": "Saltmere harbour signing key",
+      "empty_auth": false,
+      "parent": "owner",
+      "key_algorithm": "ecc",
+      "name_algorithm": "sha256",
+      "attributes": [
+        "fixed_tpm",
+        "fixed_parent",
+        "sensitive_data_origin",
+        "user_with_auth",
+        "sign"
+      ],
+      "tpm_name": "000b6c29c9f99ae23b7b944286996075f2669bb18ddfe81bc2c415b8be6d7bee87d5",
+      "scheme": "ecdsa_sha256",
+      "key_curve": "nist_p256",
+      "key_bits": 256
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.tpm",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

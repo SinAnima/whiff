@@ -1,0 +1,148 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Harbour.m",
+    "stem": "Harbour",
+    "extension": "m"
+  },
+  "identification": {
+    "format": "objective_c",
+    "name": "Objective-C++ source",
+    "mime": "text/x-objective-c++",
+    "family": "code.source",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "objective_c",
+        "confidence": 0.9
+      },
+      {
+        "format": "matlab",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 133
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 133,
+    "entropy": 4.635,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 133,
+      "chars": 133,
+      "words": 14,
+      "lines": 10,
+      "max_line_length": 33,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "b5cb82a34df3e0e618cd7d8ce49dc0e3646826183ec5bf8d009c236c79995228",
+    "blake3": "d0412163a2b263271d167fb4bde2df64472232eb8bce959d3f7c1b0c2e406c8b"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "objective_c": {
+      "language": "Objective-C++",
+      "loc": {
+        "code": 7,
+        "comment": 0,
+        "blank": 3,
+        "total": 10
+      },
+      "imports": [
+        "Foundation/Foundation.h",
+        "Harbour.h"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "class": [
+          "Harbour"
+        ]
+      },
+      "symbol_counts": {
+        "class": 1
+      },
+      "is_test": false,
+      "generated": false,
+      "longest_line": 33
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

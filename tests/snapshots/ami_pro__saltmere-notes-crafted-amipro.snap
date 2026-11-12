@@ -1,0 +1,122 @@
+---
+source: src/formats/doc/legacy.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-notes-crafted-amipro",
+    "stem": "saltmere-notes-crafted-amipro"
+  },
+  "identification": {
+    "format": "ami_pro",
+    "name": "Ami Pro document",
+    "mime": "application/vnd.lotus-wordpro",
+    "family": "doc.other",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "encoding": "us-ascii",
+    "extractor": "doc.legacy"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 142
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 142,
+    "entropy": 4.87,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 142,
+      "chars": 142,
+      "words": 23,
+      "lines": 13,
+      "max_line_length": 34,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "0d232a2ab47b04674da9d59dcdc9c2bbdb6e8f8109011731efdef4379cbe8e73",
+    "blake3": "efa85c5e4bdc1a76b5fc6c99866efad8ab61b0bb12c362235e56f17cffbe7041"
+  },
+  "content": {
+    "excerpt": "High water 06:12, low water 12:31. The bell rings at high tide."
+  },
+  "metadata": {},
+  "format": {
+    "ami_pro": {
+      "version": "4",
+      "sections": [
+        "ver",
+        "sty",
+        "lay",
+        "edoc"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.legacy",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

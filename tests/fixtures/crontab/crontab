@@ -1,0 +1,8 @@
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=harbour
+
+# m h dom mon dow user  command
+17 *    * * *   root    cd / && run-parts --report /etc/cron.hourly
+*/5 *   * * *   harbour /usr/local/bin/tidewatch --poll
+30 4    * * 1   root    /usr/sbin/logrotate /etc/logrotate.conf

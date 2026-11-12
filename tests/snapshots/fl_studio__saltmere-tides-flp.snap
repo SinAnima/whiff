@@ -1,0 +1,125 @@
+---
+source: src/formats/audio/projects.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides-flp",
+    "stem": "saltmere-tides-flp"
+  },
+  "identification": {
+    "format": "fl_studio",
+    "name": "FL Studio project",
+    "mime": "application/x-flp",
+    "family": "audio",
+    "confidence": 0.92,
+    "detected_by": "magic",
+    "extractor": "audio.project"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 326
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 326,
+    "entropy": 3.889,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "cc0a432178971cdc15c9a631cc6e7dccadcddea5e93514e99aa4f5dcfebfc6f3",
+    "blake3": "aef2d3035266d082a8fc44ed24eb0c7b1e395bea22f57648a01f1298eb44d870"
+  },
+  "content": {
+    "title": "Saltmere Tides",
+    "authors": [
+      "Saltmere Harbour"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "fl_studio": {
+      "format": 0,
+      "channels": 2,
+      "ppq": 96,
+      "fl_version": "20.8.4.2576",
+      "tempo_bpm": 96.0,
+      "title": "Saltmere Tides",
+      "artists": "Saltmere Harbour",
+      "genre": "Ambient",
+      "events": 15,
+      "patterns": 2,
+      "plugins": [
+        "FLEX",
+        "Fog horn",
+        "Sampler"
+      ],
+      "sample_files": [
+        "bell.wav"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.project",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

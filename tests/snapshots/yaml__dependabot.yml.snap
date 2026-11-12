@@ -1,0 +1,203 @@
+---
+source: src/formats/data/yaml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "dependabot.yml",
+    "stem": "dependabot",
+    "extension": "yml"
+  },
+  "identification": {
+    "format": "yaml",
+    "name": "YAML",
+    "mime": "application/yaml",
+    "family": "data.yaml",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.yaml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 196
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 196,
+    "entropy": 4.231,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 196,
+      "chars": 196,
+      "words": 19,
+      "lines": 10,
+      "max_line_length": 37,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "bbbb56bf96f7bc6431c350a539056b8f4b184a372cf1a1d8cd0db3307e6ed2cb",
+    "blake3": "db47953e66ba9eaccecaf7701467c1fc1db957d9d493f0889f69ca61646f792e"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "yaml": {
+      "anchors": 0,
+      "aliases": 0,
+      "valid": true,
+      "documents": 1,
+      "top_level": "object",
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.version": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              2
+            ]
+          },
+          "$.updates": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.updates[]": {
+            "types": [
+              "object"
+            ],
+            "count": 2
+          },
+          "$.updates[].package-ecosystem": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "cargo",
+              "github-actions"
+            ]
+          },
+          "$.updates[].directory": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "/"
+            ]
+          },
+          "$.updates[].schedule": {
+            "types": [
+              "object"
+            ],
+            "count": 2
+          },
+          "$.updates[].schedule.interval": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "weekly",
+              "monthly"
+            ]
+          }
+        },
+        "max_depth": 4
+      },
+      "known_schema": {
+        "id": "dependabot",
+        "name": "Dependabot configuration",
+        "ecosystems": {
+          "cargo": 1,
+          "github-actions": 1
+        },
+        "intervals": [
+          "monthly",
+          "weekly"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.yaml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

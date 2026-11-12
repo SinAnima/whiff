@@ -1,6 +1,6 @@
 [package]
 name = "whiff"
-version = "0.7.0"
+version = "0.8.0"
 edition = "2024"
 rust-version = "1.89"
 license = "MIT"
@@ -11,7 +11,7 @@ description = "Sniff any file and get one JSON document describing it: identity,
 readme = "README.md"
 keywords = ["metadata", "file-format", "exif", "detection", "llm"]
 categories = ["parser-implementations", "filesystem", "command-line-utilities", "multimedia", "email"]
-exclude = ["/baoulo", "/fuzz", "/tests", "/.github", "/packaging", "/scripts", "/Sastri.toml"]
+exclude = ["/baoulo", "/benches", "/fuzz", "/tests", "/.github", "/packaging", "/scripts", "/Sastri.toml"]
 autobins = false
 build = "build.rs"
 
@@ -30,6 +30,11 @@ required-features = ["cli"]
 name = "whiff-dev"
 path = "src/bin/whiff-dev/main.rs"
 required-features = ["dev"]
+
+[[bench]]
+name = "families"
+harness = false
+required-features = ["full"]
 
 [features]
 default = ["common", "cli"]
@@ -107,6 +112,9 @@ uzers = { version = "0.12", default-features = false }
 xattr = "1.6"
 
 [dev-dependencies]
+# Without plotters / rayon: `cargo bench` prints the estimates. 0.7, not 0.8:
+# 0.8 adds `alloca`, which compiles C for every test build.
+criterion = { version = "0.7", default-features = false, features = ["cargo_bench_support"] }
 insta = { version = "1.49", features = ["json"] }
 miniz_oxide = "0.8"
 tempfile = "3.27"

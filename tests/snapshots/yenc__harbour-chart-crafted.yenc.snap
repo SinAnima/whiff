@@ -1,0 +1,281 @@
+---
+source: src/formats/archive/encoded.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-chart-crafted.yenc",
+    "stem": "harbour-chart-crafted",
+    "extension": "yenc"
+  },
+  "identification": {
+    "format": "yenc",
+    "name": "yEnc encoded file",
+    "mime": "text/x-yenc",
+    "family": "archive",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "archive.encoded"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 517
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 517,
+    "entropy": 4.934,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "4492bc82cc0eaf363b25e1a40e7f2e90b8f557497520e0b01a84a77743c113c2",
+    "blake3": "2ff32005468b1b05ca612cf38cdac46f7de2148e9075960951e5069444961433"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "yenc": {
+      "name": "bay.txt",
+      "decoded_bytes": 438,
+      "declared_bytes": 438,
+      "crc32_ok": true
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "bay.txt",
+        "stem": "bay",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 438
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 438,
+        "entropy": 4.328,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 438,
+          "chars": 438,
+          "words": 72,
+          "lines": 6,
+          "max_line_length": 71,
+          "line_endings": "crlf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "3dd6eba895242c281c875e40f8fb88b9b85939fbe1ca51bcea9d32a206bfe87a",
+        "blake3": "8d5eecc2314bb489e44d741f50dd8d4ff0c576d46bfe2b39bebb9e7bc5f7a6b1"
+      },
+      "content": {
+        "language": {
+          "code": "en",
+          "confidence": 1.0
+        },
+        "keywords": [
+          "Saltmere bay chart",
+          "soundings in fathoms",
+          "bell buoy",
+          "buoy",
+          "chart",
+          "fathoms",
+          "Saltmere",
+          "soundings",
+          "wall",
+          "bay"
+        ],
+        "keyword_frequency": [
+          [
+            "bay",
+            6
+          ],
+          [
+            "bell",
+            6
+          ],
+          [
+            "buoy",
+            6
+          ],
+          [
+            "chart",
+            6
+          ],
+          [
+            "fathoms",
+            6
+          ],
+          [
+            "saltmere",
+            6
+          ],
+          [
+            "soundings",
+            6
+          ],
+          [
+            "wall",
+            6
+          ]
+        ],
+        "excerpt": "Saltmere bay chart: soundings in fathoms, the long wall, the bell buoy. Saltmere bay chart: soundings in fathoms, the long wall, the bell buoy. Saltmere bay chart: soundings in fathoms, the long wall, the bell buoy. Saltmere bay chart: soundings in fathoms, the long wall, the bell buoy. Saltmere bay chart: soundings in fathoms, the long wall, the bell buoy. Saltmere bay chart: soundings in…",
+        "tags": [
+          "Saltmere bay chart",
+          "soundings in fathoms",
+          "bell buoy",
+          "buoy",
+          "chart"
+        ]
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.encoded",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

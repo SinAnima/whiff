@@ -1,0 +1,146 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.elv",
+    "stem": "tides",
+    "extension": "elv"
+  },
+  "identification": {
+    "format": "elvish",
+    "name": "Elvish script",
+    "mime": "text/x-elvish",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 143
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 143,
+    "entropy": 4.686,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 143,
+      "chars": 143,
+      "words": 24,
+      "lines": 11,
+      "max_line_length": 35,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "0fcef9a4306fa84fdc8893dacdeff0fd166d21f2cd9c140e1a32187e7a966d10",
+    "blake3": "3b083b6f073da8035e0c7f4a118fa932999c52a0afadd1f7766b65ceeec421ff"
+  },
+  "content": {
+    "description": "Tide report for Saltmere Harbour.",
+    "excerpt": "Tide report for Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "elvish": {
+      "language": "Elvish script",
+      "loc": {
+        "code": 7,
+        "comment": 1,
+        "blank": 3,
+        "total": 11
+      },
+      "imports": [
+        "str",
+        "math"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "function": [
+          "high-water"
+        ],
+        "variable": [
+          "amplitude"
+        ]
+      },
+      "symbol_counts": {
+        "function": 1,
+        "variable": 1
+      },
+      "module_doc": "Tide report for Saltmere Harbour.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 35
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

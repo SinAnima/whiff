@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?mso-application progid="Word.Document"?>
+<w:wordDocument xmlns:w="http://schemas.microsoft.com/office/word/2003/wordml" xmlns:o="urn:schemas-microsoft-com:office:office" w:macrosPresent="no" w:embeddedObjPresent="no">
+  <o:DocumentProperties>
+    <o:Title>Saltmere harbour notes</o:Title>
+    <o:Author>Ben Gull</o:Author>
+    <o:LastAuthor>Ana Lighthouse</o:LastAuthor>
+    <o:Revision>2</o:Revision>
+    <o:Created>2025-09-01T12:00:00Z</o:Created>
+    <o:Pages>1</o:Pages>
+    <o:Words>18</o:Words>
+    <o:Company>Saltmere Harbour</o:Company>
+    <o:Version>11.5604</o:Version>
+  </o:DocumentProperties>
+  <w:body>
+    <w:p><w:r><w:t>Saltmere harbour notes</w:t></w:r></w:p>
+    <w:p><w:r><w:t>High water 06:12, low water 12:31. The bell rings at high tide.</w:t></w:r></w:p>
+  </w:body>
+</w:wordDocument>

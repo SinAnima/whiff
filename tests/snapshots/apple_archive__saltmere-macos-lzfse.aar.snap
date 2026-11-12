@@ -1,0 +1,124 @@
+---
+source: src/formats/archive/backups.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-macos-lzfse.aar",
+    "stem": "saltmere-macos-lzfse",
+    "extension": "aar"
+  },
+  "identification": {
+    "format": "apple_archive",
+    "name": "Apple Archive",
+    "mime": "application/x-apple-archive",
+    "family": "archive",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "apple_archive",
+        "confidence": 0.81
+      },
+      {
+        "format": "aar",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "archive.backups"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 177
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 177,
+    "entropy": 5.204,
+    "entropy_scope": "file",
+    "container": {
+      "uncompressed_bytes": 210,
+      "ratio": 1.1864406779661016
+    }
+  },
+  "integrity": {
+    "sha256": "0495ca37afc479ba0792ea5c2a9c7d257a7f22fe861fc98a72aba5712e6cd3f9",
+    "blake3": "ff9f3599318085c4301718160863c37a1c8105bf3be89831d8c9fbd55fa425ee"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "apple_archive": {
+      "compression": "LZFSE",
+      "chunk_bytes": 4194304,
+      "chunks": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.backups",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "warnings": [
+      "archive.backups: the LZFSE-compressed entries are not listed"
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

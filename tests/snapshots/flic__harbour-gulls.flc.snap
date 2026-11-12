@@ -1,0 +1,128 @@
+---
+source: src/formats/video/broadcast.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-gulls.flc",
+    "stem": "harbour-gulls",
+    "extension": "flc"
+  },
+  "identification": {
+    "format": "flic",
+    "name": "FLIC animation",
+    "mime": "video/x-flic",
+    "family": "video",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "video.broadcast"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 172
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 172,
+    "entropy": 1.813,
+    "entropy_scope": "file",
+    "image": {
+      "width": 320,
+      "height": 200,
+      "frames": 2
+    },
+    "media": {
+      "duration_s": 0.2,
+      "bitrate_bps": 6880,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "flic",
+          "width": 320,
+          "height": 200,
+          "display_aspect_ratio": "8:5",
+          "frame_rate": 10.0,
+          "frames": 2,
+          "bit_depth": 8
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "97605844f1ec4a653df2a35fad15b606ab138574c9eab99799872fa4f830764d",
+    "blake3": "c02184ed324ab8b57b0d1813a62806d02157f5e9fb0316f4c1f14eaf360847c8"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "flic": {
+      "variant": "FLC (Animator Pro)",
+      "created": "2025-09-01T12:00:00",
+      "creator_id": "45444153"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.broadcast",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

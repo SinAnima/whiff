@@ -7,7 +7,9 @@
 //! ZIP of zstd tarballs), FreeBSD packages (`+COMPACT_MANIFEST` /
 //! `+MANIFEST`: origin, ABI, licences, dependencies, scripts), Slackware
 //! packages (`install/slack-desc`, `install/doinst.sh`; name and version
-//! from the file name) and Docker / OCI image tarballs (`manifest.json`,
+//! from the file name), Unity asset packages (one `<guid>/` folder per
+//! asset with its `pathname`: asset count, paths, kinds and top folders)
+//! and Docker / OCI image tarballs (`manifest.json`,
 //! `index.json`, the image config: platform, entry point, environment,
 //! ports, labels, layers). The payload is listed and handed on.
 //!
@@ -62,6 +64,7 @@ static META: ExtractorMeta = ExtractorMeta {
         spec!("freebsd_package", "FreeBSD package", ["application/x-tar"], ["pkg"]),
         spec!("slackware_package", "Slackware package", ["application/gzip"], []),
         spec!("docker_image", "Docker / OCI image tarball", ["application/x-tar"], []),
+        spec!("unity_package", "Unity asset package", ["application/gzip"], ["unitypackage"]),
     ],
 };
 
@@ -70,7 +73,9 @@ fn kind_from_names(names: &[String], ext: Option<&str>) -> Option<&'static str> 
     let depth2 =
         |file: &str| names.iter().any(|n| n.split_once('/').is_some_and(|(top, rest)| !top.is_empty() && rest == file));
     let has = |n: &str| names.iter().any(|x| bare(x) == n);
-    Some(if names.iter().any(|n| n == "package/package.json") {
+    Some(if names.iter().any(|n| unity_pathname(bare(n))) {
+        "unity_package"
+    } else if names.iter().any(|n| n == "package/package.json") {
         "npm_tarball"
     } else if has("metadata.gz") && has("data.tar.gz")
         || ext == Some("gem") && (has("metadata.gz") || has("data.tar.gz") || has("checksums.yaml.gz"))
@@ -169,6 +174,7 @@ impl Extractor for Tarballs {
             "conda_package" => Package::new("conda"),
             "freebsd_package" => Package::new("freebsd"),
             "slackware_package" => Package::new("slackware"),
+            "unity_package" => Package::new("unity"),
             _ => Package::new("oci"),
         };
         if let Some(c) = codec {
@@ -177,7 +183,12 @@ impl Extractor for Tarballs {
         if cut {
             pkg.set("payload_truncated", true);
         }
-        let mut ball = Tarball::read(cx, "package.tar", tar, |p| wanted(&format, bare(p)))?;
+        let mut assets = 0u64;
+        let mut ball = Tarball::read(cx, "package.tar", tar, |p| {
+            let w = wanted(&format, bare(p));
+            assets += u64::from(w && format == "unity_package");
+            w
+        })?;
         match format.as_str() {
             "npm_tarball" => {
                 // The manifest mapping is shared with `code.manifest`.
@@ -214,6 +225,7 @@ impl Extractor for Tarballs {
                 ball.inventory.allow_absolute();
             }
             "slackware_package" => slackware(&ball, src.name_hint(), &mut pkg),
+            "unity_package" => unity(&ball, assets, &mut pkg),
             _ => docker(cx, &ball, &mut pkg),
         }
         if matches!(format.as_str(), "npm_tarball" | "crate") {
@@ -250,11 +262,64 @@ fn wanted(format: &str, p: &str) -> bool {
         "conda_package" => matches!(p, "info/index.json" | "info/about.json" | "info/paths.json"),
         "freebsd_package" => matches!(p, "+COMPACT_MANIFEST" | "+MANIFEST"),
         "slackware_package" => matches!(p, "install/slack-desc" | "install/doinst.sh"),
+        "unity_package" => unity_pathname(p),
         _ => {
             matches!(p, "manifest.json" | "index.json" | "repositories")
                 || p.starts_with("blobs/") && !p.ends_with('/')
                 || ext_is(p, "json")
         }
+    }
+}
+
+/// `<32 hex digits>/pathname`: where a Unity package names an asset.
+fn unity_pathname(p: &str) -> bool {
+    p.split_once('/').is_some_and(|(guid, rest)| {
+        rest == "pathname" && guid.len() == 32 && guid.bytes().all(|b| b.is_ascii_hexdigit())
+    })
+}
+
+/// Paths listed from a Unity package.
+const MAX_ASSET_PATHS: usize = 50;
+
+/// A Unity package's assets: their project paths (the first line of each
+/// `pathname`), kinds by extension and top folders.
+fn unity(ball: &Tarball, assets: u64, pkg: &mut Package) {
+    use std::collections::BTreeMap;
+    let mut paths: Vec<String> = ball
+        .files
+        .iter()
+        .filter(|(p, _)| unity_pathname(bare(p)))
+        .filter_map(|(_, d)| text(d).lines().next().map(|l| crate::plugin::truncate_chars(l.trim(), 300)))
+        .filter(|l| !l.is_empty())
+        .collect();
+    paths.sort();
+    let mut kinds: BTreeMap<String, u64> = BTreeMap::new();
+    let mut folders: BTreeMap<String, u64> = BTreeMap::new();
+    for p in &paths {
+        let file = p.rsplit('/').next().unwrap_or(p);
+        let kind = file.rsplit_once('.').map_or("(folder or none)", |(_, e)| e).to_ascii_lowercase();
+        *kinds.entry(kind).or_default() += 1;
+        let mut parts = p.split('/');
+        let top = match (parts.next(), parts.next()) {
+            (Some(a), Some(b)) if parts.next().is_some() => format!("{a}/{b}"),
+            (Some(a), _) => a.to_string(),
+            _ => continue,
+        };
+        *folders.entry(top).or_default() += 1;
+    }
+    pkg.set("assets", assets);
+    if (paths.len() as u64) < assets {
+        pkg.set("asset_paths_read", paths.len());
+    }
+    if !kinds.is_empty() {
+        pkg.set("asset_kinds", serde_json::json!(kinds));
+    }
+    if !folders.is_empty() {
+        pkg.set("folders", serde_json::json!(folders));
+    }
+    paths.truncate(MAX_ASSET_PATHS);
+    if !paths.is_empty() {
+        pkg.set("asset_paths", paths);
     }
 }
 

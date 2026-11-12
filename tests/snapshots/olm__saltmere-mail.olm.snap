@@ -1,0 +1,133 @@
+---
+source: src/formats/email/stores.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-mail.olm",
+    "stem": "saltmere-mail",
+    "extension": "olm"
+  },
+  "identification": {
+    "format": "olm",
+    "name": "Outlook for Mac archive (OLM)",
+    "mime": "application/zip",
+    "family": "email",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "olm",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "email.stores"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1894
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1894,
+    "entropy": 6.116,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "ffd68fe8df003ba6b4817038c971eae0c7bfe27ed306cd5451bb37c45821a3f3",
+    "blake3": "37348724e9ac1cc17a2c503a0e873fc0ffa1ef42ed18708805d222b84dc7682d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "olm": {
+      "accounts": [
+        {
+          "domain": "saltmere.example"
+        }
+      ],
+      "folders": 2,
+      "folder_names": [
+        "Inbox",
+        "Sent Items"
+      ],
+      "messages": 3,
+      "other": {
+        "calendar_files": 1,
+        "contact_files": 1
+      },
+      "date_range": [
+        "2025-08-01",
+        "2025-08-20"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "email.stores",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

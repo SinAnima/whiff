@@ -1,0 +1,147 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "berths.move",
+    "stem": "berths",
+    "extension": "move"
+  },
+  "identification": {
+    "format": "move",
+    "name": "Move source",
+    "mime": "text/x-move",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 308
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 308,
+    "entropy": 4.291,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 308,
+      "chars": 308,
+      "words": 39,
+      "lines": 15,
+      "max_line_length": 39,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "5e19ebe63ecb9d0bdeef60c976129dad09b70ce1d405af517f783d241fd1d853",
+    "blake3": "b6c5b2550174362b57d213c4c39d98ec4de217cedefd89cb0c7825c1af733152"
+  },
+  "content": {
+    "description": "Berth registry for Saltmere Harbour.",
+    "excerpt": "Berth registry for Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "move": {
+      "language": "Move",
+      "loc": {
+        "code": 11,
+        "comment": 2,
+        "blank": 2,
+        "total": 15
+      },
+      "package": "saltmere::berths",
+      "imports": [
+        "std::string::String",
+        "sui::table::Table"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "function": [
+          "number"
+        ],
+        "struct": [
+          "Berth"
+        ]
+      },
+      "symbol_counts": {
+        "function": 1,
+        "struct": 1
+      },
+      "module_doc": "Berth registry for Saltmere Harbour.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 39
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

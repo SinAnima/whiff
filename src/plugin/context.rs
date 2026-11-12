@@ -11,6 +11,7 @@ use crate::report::{
 
 /// Compressed-data framing understood by [`Context::inflate`].
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[non_exhaustive]
 pub enum Compression {
     /// zlib (RFC 1950): PNG `zTXt` / `iCCP`, PDF `FlateDecode`.
     Zlib,
@@ -265,9 +266,11 @@ impl Context<'_> {
         crate::container::codec::decode(data, codec, max, self.budget)
     }
 
-    /// Decompress the MSZIP blocks of a cabinet folder (see
-    /// [`codec::mszip`](crate::container::codec::mszip)) into at most `max` bytes.
-    pub fn decompress_mszip(
+    /// Decompress the MSZIP blocks of a cabinet folder (each block a
+    /// `CK`-prefixed deflate stream sharing the previous block's window) into
+    /// at most `max` bytes.
+    #[cfg_attr(not(feature = "full"), allow(dead_code))]
+    pub(crate) fn decompress_mszip(
         &mut self,
         blocks: &[&[u8]],
         max: usize,

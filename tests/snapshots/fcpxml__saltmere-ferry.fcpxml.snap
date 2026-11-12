@@ -1,0 +1,153 @@
+---
+source: src/formats/video/edit.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-ferry.fcpxml",
+    "stem": "saltmere-ferry",
+    "extension": "fcpxml"
+  },
+  "identification": {
+    "format": "fcpxml",
+    "name": "Final Cut Pro XML",
+    "mime": "application/x-fcpxml",
+    "family": "video",
+    "confidence": 0.98,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "fcpxml",
+        "confidence": 0.98
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "video.edit"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1444
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1444,
+    "entropy": 4.659,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1444,
+      "chars": 1444,
+      "words": 83,
+      "lines": 26,
+      "max_line_length": 157,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "media": {
+      "duration_s": 9.0
+    }
+  },
+  "integrity": {
+    "sha256": "bc41a4b9c7fb7ecdfb3bd30234f5e41b9474e765fccd2e9c3106aa05e43f010c",
+    "blake3": "1b9a32bfc118c2fd11f313e0fc85c0f50b940b873dbdbac772e679c568c6f802"
+  },
+  "content": {
+    "title": "Saltmere ferry"
+  },
+  "metadata": {},
+  "format": {
+    "fcpxml": {
+      "version": "1.10",
+      "formats": [
+        {
+          "name": "FFVideoFormat1080p25",
+          "size": "1920x1080",
+          "frame_rate": 25.0
+        }
+      ],
+      "assets": 2,
+      "events": [
+        "Saltmere 2025-09-01"
+      ],
+      "projects": [
+        "Saltmere ferry"
+      ],
+      "timeline_items": {
+        "asset-clip": 2,
+        "gap": 1
+      },
+      "media": [
+        "ferry-arrives.mov",
+        "quay-wide.mov"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.edit",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

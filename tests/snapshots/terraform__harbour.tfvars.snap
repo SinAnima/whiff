@@ -1,0 +1,122 @@
+---
+source: src/formats/code/config.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.tfvars",
+    "stem": "harbour",
+    "extension": "tfvars"
+  },
+  "identification": {
+    "format": "terraform",
+    "name": "Terraform / HCL",
+    "mime": "text/x-hcl",
+    "family": "code.infra",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.config"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 62
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 62,
+    "entropy": 4.399,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 62,
+      "chars": 62,
+      "words": 9,
+      "lines": 3,
+      "max_line_length": 25,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "56b5406e78a9eb8fd8c5bc8b2debe93b1f44f08e5e0e3f62494426cccc997b04",
+    "blake3": "9a00280cdb9389e43b844fa0fb68737723b112d526354e89d06b64222f36de00"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "terraform": {
+      "kind": "variable values",
+      "variable_count": 3,
+      "variables": [
+        "region",
+        "moorings",
+        "harbour_name"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.config",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

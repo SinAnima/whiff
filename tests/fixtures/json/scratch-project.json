@@ -1,0 +1,61 @@
+{
+  "targets": [
+    {
+      "isStage": true,
+      "name": "Stage",
+      "blocks": {},
+      "costumes": [
+        {
+          "name": "backdrop1"
+        }
+      ],
+      "sounds": []
+    },
+    {
+      "isStage": false,
+      "name": "Bell",
+      "blocks": {
+        "a": {
+          "opcode": "event_whenflagclicked"
+        },
+        "b": {
+          "opcode": "sound_play"
+        }
+      },
+      "costumes": [
+        {
+          "name": "bell"
+        }
+      ],
+      "sounds": [
+        {
+          "name": "ring"
+        }
+      ]
+    },
+    {
+      "isStage": false,
+      "name": "Boat",
+      "blocks": {
+        "c": {
+          "opcode": "motion_movesteps"
+        }
+      },
+      "costumes": [
+        {
+          "name": "boat"
+        }
+      ],
+      "sounds": []
+    }
+  ],
+  "monitors": [],
+  "extensions": [
+    "pen"
+  ],
+  "meta": {
+    "semver": "3.0.0",
+    "vm": "11.1.0",
+    "agent": "Saltmere"
+  }
+}

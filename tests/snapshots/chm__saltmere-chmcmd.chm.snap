@@ -1,0 +1,123 @@
+---
+source: src/formats/doc/legacy.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-chmcmd.chm",
+    "stem": "saltmere-chmcmd",
+    "extension": "chm"
+  },
+  "identification": {
+    "format": "chm",
+    "name": "Compiled HTML Help",
+    "mime": "application/vnd.ms-htmlhelp",
+    "family": "doc.other",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "doc.legacy"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 10731
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 10731,
+    "entropy": 2.828,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "216ac1f1e712d2e5f0f7afd8a25be90b2336073933930d2baaea3298059160f3",
+    "blake3": "e0f523d0ae1bb89846192217cce29a05fd6da869459557b9c46d24c2e9f532ab"
+  },
+  "content": {
+    "title": "Saltmere Harbour Help",
+    "language": {
+      "code": "en",
+      "confidence": 0.9
+    }
+  },
+  "metadata": {},
+  "format": {
+    "chm": {
+      "version": 3,
+      "lcid": "0x0809",
+      "directory_entries": 17,
+      "files": 4,
+      "topics": 2,
+      "topic_list": [
+        "index.html",
+        "tides.html"
+      ],
+      "compiler": "HHA Version 4.74.8702",
+      "default_topic": "index.html",
+      "title": "Saltmere Harbour Help",
+      "contents_file": "toc.hhc"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.legacy",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

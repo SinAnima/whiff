@@ -4,6 +4,7 @@ use encoding_rs::{Encoding, UTF_8};
 
 /// Decoded text and how it was decoded.
 #[derive(Debug, Clone, PartialEq, Eq)]
+#[non_exhaustive]
 pub struct Decoded {
     /// The text, with any byte-order mark removed.
     pub text: String,
@@ -42,10 +43,54 @@ pub fn detect(bytes: &[u8]) -> (&'static Encoding, usize) {
 }
 
 /// `chardetng`'s guess for non-UTF-8 text.
+///
+/// The text sniffers each look at the same head of every file, so the last
+/// guess is kept per thread, keyed by a hash of the input: hashing costs a
+/// small fraction of the guess.
 pub fn guess_legacy(bytes: &[u8]) -> &'static Encoding {
+    use std::hash::{Hash, Hasher};
+    thread_local! {
+        static LAST: std::cell::Cell<Option<(u64, &'static Encoding)>> = const { std::cell::Cell::new(None) };
+    }
+    let bytes = &bytes[..bytes.len().min(256 * 1024)];
+    let mut h = std::hash::DefaultHasher::new();
+    bytes.hash(&mut h);
+    let key = h.finish();
+    if let Some((k, enc)) = LAST.get()
+        && k == key
+    {
+        return enc;
+    }
     let mut det = chardetng::EncodingDetector::new(chardetng::Iso2022JpDetection::Deny);
-    det.feed(&bytes[..bytes.len().min(256 * 1024)], true);
-    det.guess(None, chardetng::Utf8Detection::Allow)
+    det.feed(bytes, true);
+    let enc = det.guess(None, chardetng::Utf8Detection::Allow);
+    LAST.set(Some((key, enc)));
+    enc
+}
+
+/// The upper half of code page 437, sixteen to a row.
+const CP437_HIGH: [&str; 8] = [
+    "ÇüéâäàåçêëèïîìÄÅ",
+    "ÉæÆôöòûùÿÖÜ¢£¥₧ƒ",
+    "áíóúñÑªº¿⌐¬½¼¡«»",
+    "░▒▓│┤╡╢╖╕╣║╗╝╜╛┐",
+    "└┴┬├─┼╞╟╚╔╩╦╠═╬╧",
+    "╨╤╥╙╘╒╓╫╪┘┌█▄▌▐▀",
+    "αßΓπΣσµτΦΘΩδ∞φε∩",
+    "≡±≥≤⌠⌡÷≈°∙·√ⁿ²■ ",
+];
+
+/// Text in code page 437 (IBM PC: DOS file names, NFO and ANSI art).
+pub fn cp437(raw: &[u8]) -> String {
+    raw.iter()
+        .map(|&b| {
+            if b < 0x80 {
+                char::from(b)
+            } else {
+                CP437_HIGH[usize::from(b - 0x80) / 16].chars().nth(usize::from(b % 16)).unwrap_or('?')
+            }
+        })
+        .collect()
 }
 
 #[cfg(test)]

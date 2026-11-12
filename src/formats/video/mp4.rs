@@ -35,7 +35,7 @@ static META: ExtractorMeta = ExtractorMeta {
             name: "MPEG-4 video",
             family: "video",
             mimes: &["video/mp4", "video/x-m4v", "video/x-f4v", "video/iso.segment"],
-            extensions: &["mp4", "m4v", "f4v", "m4s", "cmfv", "ismv", "mp4v"],
+            extensions: &["mp4", "m4v", "f4v", "m4s", "cmfv", "ismv", "mp4v", "insv", "osv"],
             magic: &[
                 Magic::at(4, b"ftypisom"),
                 Magic::at(4, b"ftypiso2"),

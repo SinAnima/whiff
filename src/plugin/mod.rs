@@ -28,20 +28,36 @@ pub use spec::{BlockKind, Cost, ExtractorMeta, FormatSpec, Magic, Probe, Sniff};
 pub use text::{TextChunk, TextRole, TextStore};
 pub use values::{AnyValue, MAX_NESTING, dotted_key_depth, nesting_depth};
 
-pub use crate::container::cfb::{Cfb, CfbEntry, CfbKind, filetime, guid};
-pub use crate::container::codec::{Codec, End};
-pub use crate::container::zip::{
+// Types that `Context`'s methods take or return.
+pub use crate::container::codec::{Codec, Decoded as Decompressed, End};
+pub use crate::engine::{Options, Privacy, Profile};
+pub use crate::text::Decoded;
+
+// Helpers for the built-in extractors (container readers, text utilities).
+// Crate-private: not part of the stable plugin API. Builds without every
+// feature leave some of them unused.
+#[cfg_attr(not(feature = "full"), allow(unused_imports))]
+pub(crate) use crate::container::cfb::{Cfb, CfbEntry, CfbKind, filetime, guid};
+#[cfg_attr(not(feature = "full"), allow(unused_imports))]
+pub(crate) use crate::container::zip::{
     Zip, ZipEntry, first_stored as zip_first_stored, method_name as zip_method_name, names as zip_names,
 };
-pub use crate::container::{asf, codec, der, flatbuf, mp4, oleps, proplist, protowire, volume, xmlwalk};
-pub use crate::engine::{Options, Privacy, Profile};
-pub use crate::meta::latin1_or_utf8;
-pub use crate::text::decode::decode as decode_text;
-pub use crate::text::latex::{latex_argument, latex_option, latex_text};
-pub use crate::text::license::{find_copyright, identify_license, spdx_identifier};
-pub use crate::text::markup::{decode_entities, html_text, risky_file_name};
-pub use crate::text::sensitive::is_secret_key;
-pub use crate::text::{Decoded, parse_date, squash_whitespace, truncate_chars};
+#[cfg_attr(not(feature = "full"), allow(unused_imports))]
+pub(crate) use crate::container::{asf, codec, der, flatbuf, mp4, oleps, proplist, protowire, volume, xmlwalk};
+#[cfg_attr(not(feature = "full"), allow(unused_imports))]
+pub(crate) use crate::meta::latin1_or_utf8;
+#[cfg_attr(not(feature = "full"), allow(unused_imports))]
+pub(crate) use crate::text::decode::{cp437 as decode_cp437, decode as decode_text};
+#[cfg_attr(not(feature = "full"), allow(unused_imports))]
+pub(crate) use crate::text::latex::{latex_argument, latex_option, latex_text};
+#[cfg_attr(not(feature = "full"), allow(unused_imports))]
+pub(crate) use crate::text::license::{find_copyright, identify_license, spdx_identifier};
+#[cfg_attr(not(feature = "full"), allow(unused_imports))]
+pub(crate) use crate::text::markup::{decode_entities, html_text, risky_file_name};
+#[cfg_attr(not(feature = "full"), allow(unused_imports))]
+pub(crate) use crate::text::sensitive::is_secret_key;
+#[cfg_attr(not(feature = "full"), allow(unused_imports))]
+pub(crate) use crate::text::{parse_date, squash_whitespace, truncate_chars};
 
 /// Replace secrets (keys, tokens, credentials in URLs) in `text` with
 /// `[redacted:<kind>]`. Use it for values written to `format` or `metadata`
@@ -131,6 +147,7 @@ pub trait BlockDecoder: Send + Sync + 'static {
 
 /// When an analyzer runs relative to the others.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
+#[non_exhaustive]
 pub enum AnalyzerStage {
     /// Normalising embedded metadata (EXIF / IPTC / XMP by MWG rules) into
     /// title, creators, rights and dates, before the text analyzers read them.

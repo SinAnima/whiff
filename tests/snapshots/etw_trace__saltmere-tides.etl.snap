@@ -1,0 +1,166 @@
+---
+source: src/formats/forensic/etw.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.etl",
+    "stem": "saltmere-tides",
+    "extension": "etl"
+  },
+  "identification": {
+    "format": "etw_trace",
+    "name": "Windows event trace log (ETL)",
+    "mime": "application/x-ms-etl",
+    "family": "forensic",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "forensic.etw"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 12288
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 12288,
+    "entropy": 0.487,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "b9aacb7230f1afddf2f4cddf080a24335cf9695920b8e97eaf47dda3b71097be",
+    "blake3": "60bfa2160bc5cfd89a20f974fcb93512e41af3410cacb21c6a40d5b10c735e26"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "etw_trace": {
+      "buffer_size": 4096,
+      "os_version": "10.0.26100",
+      "processors": 4,
+      "end_time": "2025-09-01T12:30:00Z",
+      "timer_resolution_ns": 15625000,
+      "maximum_file_size_bytes": 67108864,
+      "log_file_mode": {
+        "value": "0x00000001",
+        "flags": [
+          "file_sequential"
+        ]
+      },
+      "buffers_written": 3,
+      "pointer_size": 8,
+      "events_lost": 0,
+      "cpu_hz": 2400000000,
+      "time_zone": {
+        "bias_minutes": 0,
+        "standard_name": "GMT Standard Time"
+      },
+      "boot_time": "2025-09-01T06:00:00Z",
+      "performance_frequency": 10000000,
+      "start_time": "2025-09-01T12:00:00Z",
+      "clock": "query_performance_counter",
+      "buffers_lost": 0,
+      "session": "SaltmereTides",
+      "log_file_name": "C:\\Users\\[user]\\Traces\\saltmere-tides.etl",
+      "buffers": 3,
+      "records": 9,
+      "records_by_kind": {
+        "event": 5,
+        "perfinfo": 1,
+        "system": 3
+      },
+      "kernel_groups": {
+        "file": 1,
+        "header": 1,
+        "perfinfo": 1,
+        "process": 1
+      },
+      "processes": 3,
+      "provider_count": 2,
+      "providers": [
+        {
+          "guid": "6F3A2B1C-5D4E-4F60-8A71-B2C3D4E5F601",
+          "name": "Saltmere.Harbour.Tides",
+          "events": 3,
+          "event_ids": [
+            1,
+            2
+          ]
+        },
+        {
+          "guid": "22FB2CD6-0E7B-422B-A0C7-2FAD1FD0E716",
+          "name": "Microsoft-Windows-Kernel-Process",
+          "events": 2,
+          "event_ids": [
+            1,
+            2
+          ]
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.etw",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

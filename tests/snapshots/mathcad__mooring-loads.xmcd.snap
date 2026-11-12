@@ -1,0 +1,139 @@
+---
+source: src/formats/science/longtail.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "mooring-loads.xmcd",
+    "stem": "mooring-loads",
+    "extension": "xmcd"
+  },
+  "identification": {
+    "format": "mathcad",
+    "name": "Mathcad worksheet",
+    "mime": "application/x-mathcad",
+    "family": "sci",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "mathcad",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "science.longtail"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 818
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 818,
+    "entropy": 4.904,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 818,
+      "chars": 818,
+      "words": 40,
+      "lines": 14,
+      "max_line_length": 184,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "482ae8f9c239b795297323a8de1d97e767aa4898d631484e139e3438673ef7ab",
+    "blake3": "cba73e6c14d05fa42852bbf989d201c5237ff65c4ebfc863111b5d8c85218259"
+  },
+  "content": {
+    "title": "Mooring loads"
+  },
+  "metadata": {},
+  "format": {
+    "mathcad": {
+      "schema_version": "3.0.3",
+      "metadata": {
+        "generator": "Mathcad (TM) 15",
+        "title": "Mooring loads",
+        "description": "Line tension for the Saltmere moorings",
+        "company": "Saltmere Harbour"
+      },
+      "regions": 3,
+      "region_kinds": {
+        "math": 2,
+        "text": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.longtail",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

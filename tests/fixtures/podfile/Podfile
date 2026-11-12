@@ -1,0 +1,14 @@
+platform :ios, '15.0'
+use_frameworks!
+
+source 'https://cdn.cocoapods.org/'
+
+target 'HarbourTides' do
+  pod 'Alamofire', '~> 5.9'
+  pod 'SnapKit'
+
+  target 'HarbourTidesTests' do
+    inherit! :search_paths
+    pod 'Quick', '~> 7.0'
+  end
+end

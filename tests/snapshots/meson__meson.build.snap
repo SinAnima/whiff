@@ -1,0 +1,150 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "meson.build",
+    "stem": "meson",
+    "extension": "build"
+  },
+  "identification": {
+    "format": "meson",
+    "name": "Meson build file",
+    "mime": "text/x-meson",
+    "family": "code.source",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 355
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 355,
+    "entropy": 4.804,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 355,
+      "chars": 355,
+      "words": 41,
+      "lines": 11,
+      "max_line_length": 70,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "915ed967f786eaf187f261b16baf0570b0afe08be12a7e186e6e84bf87afe65d",
+    "blake3": "2b51ecba1a727e8e8eb2cb47efd072183039a2fd41f2eb5827d60c3de8287c6f"
+  },
+  "content": {
+    "description": "Build file for the harbour gauge daemon.",
+    "excerpt": "Build file for the harbour gauge daemon."
+  },
+  "metadata": {},
+  "format": {
+    "meson": {
+      "language": "Meson build file",
+      "loc": {
+        "code": 7,
+        "comment": 1,
+        "blank": 3,
+        "total": 11
+      },
+      "package": "saltmere-gauge",
+      "imports": [
+        "glib-2.0",
+        "m",
+        "docs"
+      ],
+      "import_count": 3,
+      "symbols": {
+        "target": [
+          "gauged",
+          "tides",
+          "test-tides"
+        ],
+        "test": [
+          "tides"
+        ]
+      },
+      "symbol_counts": {
+        "target": 3,
+        "test": 1
+      },
+      "module_doc": "Build file for the harbour gauge daemon.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 70
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

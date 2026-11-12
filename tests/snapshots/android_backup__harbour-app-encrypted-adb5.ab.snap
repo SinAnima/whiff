@@ -1,0 +1,110 @@
+---
+source: src/formats/archive/backups.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-app-encrypted-adb5.ab",
+    "stem": "harbour-app-encrypted-adb5",
+    "extension": "ab"
+  },
+  "identification": {
+    "format": "android_backup",
+    "name": "Android backup",
+    "mime": "application/x-android-backup",
+    "family": "archive",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "archive.backups"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 645
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "encrypted": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 645,
+    "entropy": 6.161,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "6130330679cab24bd55f8173b8d0eebb5e7501f84de0b7c379df892d8be95519",
+    "blake3": "7c5f7c9ae30689c3c091d676189fe466b7e5baef802d0c812ff6c61d12ca364f"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "android_backup": {
+      "backup_version": "5",
+      "compressed": true,
+      "encryption": "AES-256",
+      "pbkdf2_rounds": 10000
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.backups",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

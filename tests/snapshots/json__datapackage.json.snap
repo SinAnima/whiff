@@ -1,0 +1,282 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "datapackage.json",
+    "stem": "datapackage",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 471
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 471,
+    "entropy": 3.689,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 471,
+      "chars": 471,
+      "words": 44,
+      "lines": 28,
+      "max_line_length": 37,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "1422ee91020199ab2c0b383d88cf163906a63a2e0db3951e951b09e360a77d9e",
+    "blake3": "c39ae69871af316406556a45a84b8f4792957d43afcc056880b2356c1c4c5730"
+  },
+  "content": {
+    "title": "Saltmere berth register",
+    "excerpt": "Saltmere berth register"
+  },
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "name",
+        "title",
+        "profile",
+        "licenses",
+        "resources"
+      ],
+      "key_count": 5,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.name": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "saltmere-berths"
+            ]
+          },
+          "$.title": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Saltmere berth register"
+            ]
+          },
+          "$.profile": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "tabular-data-package"
+            ]
+          },
+          "$.licenses": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.licenses[]": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.licenses[].name": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "CC0-1.0"
+            ]
+          },
+          "$.resources": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.resources[]": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.resources[].name": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "berths"
+            ]
+          },
+          "$.resources[].path": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "berths.csv"
+            ]
+          },
+          "$.resources[].schema": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.resources[].schema.fields": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.resources[].schema.fields[]": {
+            "types": [
+              "object"
+            ],
+            "count": 2
+          },
+          "$.resources[].schema.fields[].name": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "boat",
+              "berth"
+            ]
+          },
+          "$.resources[].schema.fields[].type": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "string",
+              "integer"
+            ]
+          }
+        },
+        "max_depth": 6
+      },
+      "known_schema": {
+        "id": "datapackage",
+        "name": "Frictionless data package",
+        "package": "saltmere-berths",
+        "profile": "tabular-data-package",
+        "resources": 1,
+        "resource_names": [
+          "berths"
+        ],
+        "fields": 2,
+        "licenses": [
+          "CC0-1.0"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

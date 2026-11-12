@@ -1,0 +1,134 @@
+---
+source: src/formats/cad/models.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-rust.sbs",
+    "stem": "harbour-rust",
+    "extension": "sbs"
+  },
+  "identification": {
+    "format": "substance",
+    "name": "Substance Designer package",
+    "mime": "application/x-substance",
+    "family": "3d",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "substance",
+        "confidence": 0.95
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "cad.models"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 566
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 566,
+    "entropy": 4.961,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 566,
+      "chars": 566,
+      "words": 21,
+      "lines": 5,
+      "max_line_length": 219,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "790ecedfb054debfb04be48f25ef7b68de52e63b65d29af7cba86d62be39045a",
+    "blake3": "0c984a57f8d59fe6e890d5f764af1ce8b2f6e7bc5db216cc9202c64c4dbbf9b7"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "substance": {
+      "format_version": "1.1.0.202301",
+      "updater_version": "1.1.0.202301",
+      "graphs": [
+        "harbour_rust"
+      ],
+      "nodes": 3,
+      "dependencies": [
+        "pattern_perlin_noise.sbs"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.models",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

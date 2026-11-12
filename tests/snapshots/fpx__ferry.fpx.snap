@@ -1,0 +1,161 @@
+---
+source: src/formats/doc/ole.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "ferry.fpx",
+    "stem": "ferry",
+    "extension": "fpx"
+  },
+  "identification": {
+    "format": "fpx",
+    "name": "FlashPix image",
+    "mime": "image/vnd.fpx",
+    "family": "image.raster",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "fpx",
+        "confidence": 0.99
+      },
+      {
+        "format": "cfb",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "doc.ole"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3584
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Mira Castell"
+    ]
+  },
+  "physical": {
+    "size_bytes": 3584,
+    "entropy": 1.822,
+    "entropy_scope": "file",
+    "image": {
+      "width": 640,
+      "height": 480
+    }
+  },
+  "integrity": {
+    "sha256": "f41164e6822d19d43b60d270abdddfae63463e4d47bac8630f8f53efc4d248f2",
+    "blake3": "7b8bc4169d48f4a7d76aaf002362af32d1bebb7ab9f0a72a536fba68dbfa30d1"
+  },
+  "content": {
+    "title": "Saltmere ferry",
+    "authors": [
+      "Mira Castell"
+    ],
+    "excerpt": "Saltmere ferry"
+  },
+  "metadata": {
+    "ole": {
+      "Title": "Saltmere ferry",
+      "Author": "Mira Castell"
+    }
+  },
+  "format": {
+    "fpx": {
+      "clsid": {
+        "id": "56616700-C154-11CE-8553-00AA00A1F95B",
+        "name": "FlashPix image"
+      },
+      "version": 3,
+      "streams": 5,
+      "storages": 3,
+      "entries": [
+        {
+          "name": "SummaryInformation",
+          "size_bytes": 136
+        },
+        {
+          "name": "Data Object Store 000001/"
+        },
+        {
+          "name": "Data Object Store 000001/Image Contents",
+          "size_bytes": 120
+        },
+        {
+          "name": "Data Object Store 000001/Resolution 0000/"
+        },
+        {
+          "name": "Data Object Store 000001/Resolution 0001/"
+        }
+      ],
+      "resolutions": 2,
+      "subimages": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ole",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

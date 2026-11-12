@@ -2,6 +2,8 @@
 //! columns and references, rows inserted per table, views, indexes and
 //! routines. `CREATE TABLE` statements are parsed with `sqlparser`; the rest
 //! are classified by their leading keywords, which keeps large dumps fast.
+//! dbt models (SQL with Jinja) also report their `ref()` models, `source()`
+//! tables, macros called and the `config()` materialisation.
 
 use std::collections::BTreeMap;
 use std::sync::LazyLock;
@@ -72,6 +74,7 @@ impl Extractor for Sql {
             s.statement(stmt, parser_dialect.as_ref());
         }
         header_facts(&text, cx);
+        dbt(&text, cx);
         s.report(dialect, cx);
         Ok(())
     }
@@ -419,6 +422,44 @@ fn value_rows(body: &str) -> u64 {
 }
 
 /// Facts from dump headers: database name, server version.
+/// dbt models: `{{ ref('orders') }}`, `{{ source('raw', 'tides') }}`,
+/// `{{ config(materialized='table') }}` and other `{{ macro(…) }}` calls.
+fn dbt(text: &str, cx: &mut Context<'_>) {
+    static CALL: LazyLock<Regex> =
+        LazyLock::new(|| Regex::new(r"\{\{-?\s*([\w.]+)\s*\(([^}]*)\)\s*-?\}\}").expect("valid"));
+    static ARG: LazyLock<Regex> = LazyLock::new(|| Regex::new(r#"['"]([^'"]+)['"]"#).expect("valid"));
+    static MATERIALIZED: LazyLock<Regex> =
+        LazyLock::new(|| Regex::new(r#"materialized\s*=\s*['"](\w+)['"]"#).expect("valid"));
+    if !text.contains("{{") {
+        return;
+    }
+    let (mut refs, mut sources, mut macros) = (Vec::new(), Vec::new(), std::collections::BTreeSet::new());
+    for c in CALL.captures_iter(text) {
+        let args: Vec<&str> = ARG.captures_iter(&c[2]).filter_map(|a| a.get(1)).map(|m| m.as_str()).collect();
+        match &c[1] {
+            "ref" => refs.extend(args.last().map(|a| (*a).to_string())),
+            "source" => sources.push(args.join(".")),
+            "config" => {}
+            m => {
+                macros.insert(m.to_string());
+            }
+        }
+    }
+    if refs.is_empty() && sources.is_empty() && !text.contains("{{ config(") {
+        return;
+    }
+    let mut d = serde_json::Map::new();
+    d.insert("refs".into(), json!(refs));
+    d.insert("sources".into(), json!(sources));
+    if !macros.is_empty() {
+        d.insert("macros".into(), json!(macros));
+    }
+    if let Some(m) = MATERIALIZED.captures(text) {
+        d.insert("materialized".into(), json!(&m[1]));
+    }
+    cx.format_set("dbt", Value::Object(d));
+}
+
 fn header_facts(text: &str, cx: &mut Context<'_>) {
     for line in text.lines().take(40).filter(|l| l.starts_with("--")) {
         let l = line.trim_start_matches('-').trim();
@@ -449,6 +490,19 @@ fn floor(text: &str, max: usize) -> usize {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn dbt_models() {
+        let model = b"{{ config(materialized='table') }}\nselect * from {{ ref('stg_tides') }} t\njoin {{ source('raw', 'gauges') }} g using (id)\nwhere {{ is_recent('t.read_at') }}\n";
+        let r = crate::plugin::testing::report_for("tides.sql", model);
+        let d = &r.format["sql"]["dbt"];
+        assert_eq!(d["refs"], json!(["stg_tides"]));
+        assert_eq!(d["sources"], json!(["raw.gauges"]));
+        assert_eq!(d["macros"], json!(["is_recent"]));
+        assert_eq!(d["materialized"], "table");
+        let plain = crate::plugin::testing::report_for("t.sql", b"select 1;\n");
+        assert!(plain.format["sql"].get("dbt").is_none());
+    }
 
     #[test]
     fn splitting() {

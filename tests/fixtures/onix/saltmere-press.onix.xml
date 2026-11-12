@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ONIXMessage release="3.0" xmlns="http://ns.editeur.org/onix/3.0/reference">
+  <Header>
+    <Sender><SenderName>Saltmere Harbour Press</SenderName></Sender>
+    <SentDateTime>20250901</SentDateTime>
+  </Header>
+  <Product>
+    <RecordReference>saltmere.press.0001</RecordReference>
+    <NotificationType>03</NotificationType>
+    <ProductIdentifier><ProductIDType>15</ProductIDType><IDValue>9780000000002</IDValue></ProductIdentifier>
+    <DescriptiveDetail>
+      <ProductComposition>00</ProductComposition>
+      <ProductForm>BC</ProductForm>
+      <TitleDetail><TitleType>01</TitleType><TitleElement><TitleElementLevel>01</TitleElementLevel><TitleText>Tides of Saltmere</TitleText></TitleElement></TitleDetail>
+      <Contributor><SequenceNumber>1</SequenceNumber><ContributorRole>A01</ContributorRole><PersonName>Ana Lighthouse</PersonName></Contributor>
+    </DescriptiveDetail>
+    <PublishingDetail><Publisher><PublishingRole>01</PublishingRole><PublisherName>Saltmere Harbour Press</PublisherName></Publisher></PublishingDetail>
+  </Product>
+  <Product>
+    <RecordReference>saltmere.press.0002</RecordReference>
+    <NotificationType>03</NotificationType>
+    <ProductIdentifier><ProductIDType>15</ProductIDType><IDValue>9780000000019</IDValue></ProductIdentifier>
+    <DescriptiveDetail>
+      <ProductComposition>00</ProductComposition>
+      <ProductForm>ED</ProductForm>
+      <TitleDetail><TitleType>01</TitleType><TitleElement><TitleElementLevel>01</TitleElementLevel><TitleText>The Harbour Bell</TitleText></TitleElement></TitleDetail>
+      <Contributor><SequenceNumber>1</SequenceNumber><ContributorRole>A01</ContributorRole><PersonName>Ben Gull</PersonName></Contributor>
+    </DescriptiveDetail>
+    <PublishingDetail><Publisher><PublishingRole>01</PublishingRole><PublisherName>Saltmere Harbour Press</PublisherName></Publisher></PublishingDetail>
+  </Product>
+</ONIXMessage>

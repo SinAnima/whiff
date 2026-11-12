@@ -1,0 +1,139 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "composer.lock",
+    "stem": "composer",
+    "extension": "lock"
+  },
+  "identification": {
+    "format": "composer_lock",
+    "name": "Composer lockfile",
+    "mime": "application/json",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "composer_lock",
+        "confidence": 0.97
+      },
+      {
+        "format": "json",
+        "confidence": 0.55
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 556
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 556,
+    "entropy": 4.106,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 556,
+      "chars": 556,
+      "words": 47,
+      "lines": 24,
+      "max_line_length": 75,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "b0dcdf2bc3b88dc169f367962cfc86bff1c044867654bca5b804827f9f883a39",
+    "blake3": "f5e978589f73d0458a2e928ccabdfcac2368aca1fd30ff0811f131e47ca16070"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "composer_lock": {
+      "ecosystem": "composer",
+      "packages": {
+        "guzzlehttp/guzzle": "7.9.2",
+        "psr/http-message": "2.0"
+      },
+      "packages_count": 2,
+      "dev_packages": {
+        "phpunit/phpunit": "11.3.6"
+      },
+      "dev_packages_count": 1,
+      "resolved_packages": 3,
+      "plugin_api_version": "2.6.0",
+      "minimum_stability": "stable",
+      "content_hash": true
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

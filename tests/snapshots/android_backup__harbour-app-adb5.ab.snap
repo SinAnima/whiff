@@ -1,0 +1,390 @@
+---
+source: src/formats/archive/backups.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-app-adb5.ab",
+    "stem": "harbour-app-adb5",
+    "extension": "ab"
+  },
+  "identification": {
+    "format": "android_backup",
+    "name": "Android backup",
+    "mime": "application/x-android-backup",
+    "family": "archive",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "archive.backups"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 385
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 385,
+    "entropy": 7.302,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "f83c20d10cbc3b3581ac16e2e0a1fd47a420054c04a3584eb534a1c519ba0459",
+    "blake3": "cf8b50bded72c3681519135987217f59d8b3b87ab170426b5c4c1f1f6ac2acc2"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "android_backup": {
+      "backup_version": "5",
+      "compressed": true,
+      "encryption": "none",
+      "tar_bytes": 10240
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "backup.tar",
+        "stem": "backup",
+        "extension": "tar"
+      },
+      "identification": {
+        "format": "tar",
+        "name": "tar archive",
+        "mime": "application/x-tar",
+        "family": "archive",
+        "confidence": 0.9,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "extractor": "archive.tar"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 10240
+      },
+      "temporal": {
+        "filesystem": {},
+        "content": [
+          {
+            "field": "modified",
+            "value": "2025-09-01T12:00:00Z",
+            "source": "archive.tar",
+            "tz_known": true
+          }
+        ],
+        "earliest": "2025-09-01T12:00:00Z",
+        "latest": "2025-09-01T12:00:00Z"
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 10240,
+        "entropy": 0.565,
+        "entropy_scope": "file",
+        "container": {
+          "entries": 3,
+          "uncompressed_bytes": 272,
+          "ratio": 0.0265625
+        }
+      },
+      "integrity": {
+        "sha256": "16c6d5c07f2fb739f37569802b93ebf70a73556279a017919150c563fef555d0",
+        "blake3": "e5512dee82400b1de16cc0f5fe594d51d6321f566da8789cc455627a83ddc85e"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "tar": {
+          "variant": "ustar",
+          "files": 3,
+          "compressed_bytes": 272,
+          "file_types": {
+            "(none)": 1,
+            "txt": 1,
+            "xml": 1
+          },
+          "top_level": [
+            "apps/"
+          ],
+          "modified_range": [
+            "2025-09-01T12:00:00Z",
+            "2025-09-01T12:00:00Z"
+          ],
+          "entries": [
+            {
+              "path": "apps/org.saltmere.harbour/_manifest",
+              "size_bytes": 28,
+              "modified": "2025-09-01T12:00:00Z",
+              "mode": "600"
+            },
+            {
+              "path": "apps/org.saltmere.harbour/f/notes.txt",
+              "size_bytes": 162,
+              "modified": "2025-09-01T12:00:00Z",
+              "mode": "600"
+            },
+            {
+              "path": "apps/org.saltmere.harbour/sp/settings.xml",
+              "size_bytes": 82,
+              "modified": "2025-09-01T12:00:00Z",
+              "mode": "600"
+            }
+          ]
+        }
+      },
+      "embedded": [
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "_manifest",
+            "stem": "_manifest"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 28
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "notes.txt",
+            "stem": "notes",
+            "extension": "txt"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 162
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        },
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "settings.xml",
+            "stem": "settings",
+            "extension": "xml"
+          },
+          "identification": {
+            "format": "",
+            "name": "",
+            "mime": "",
+            "confidence": 0.0,
+            "detected_by": "none",
+            "extractor": null
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 82
+          },
+          "temporal": {
+            "filesystem": {}
+          },
+          "security": {},
+          "rights": {},
+          "physical": {},
+          "integrity": {},
+          "content": {},
+          "metadata": {},
+          "format": {},
+          "diagnostics": {
+            "warnings": [
+              "not analysed: max_depth reached"
+            ],
+            "truncated": false,
+            "elapsed_ms": 0.0
+          }
+        }
+      ],
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "archive.tar",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.backups",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "limits_hit": [
+      "max_depth"
+    ],
+    "truncated": true,
+    "elapsed_ms": 0.0
+  }
+}

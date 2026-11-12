@@ -80,14 +80,24 @@ expression: report
         "extension": "img"
       },
       "identification": {
-        "format": "raw_disk",
-        "name": "Raw disk image",
-        "mime": "application/x-raw-disk-image",
-        "family": "disk",
-        "confidence": 0.35,
-        "detected_by": "extension",
-        "extension_matches": true,
-        "extractor": "disk.raw"
+        "format": "linux_kernel",
+        "name": "Linux kernel image",
+        "mime": "application/x-linux-kernel",
+        "family": "exec",
+        "confidence": 0.95,
+        "detected_by": "sniff",
+        "extension_matches": false,
+        "candidates": [
+          {
+            "format": "linux_kernel",
+            "confidence": 0.95
+          },
+          {
+            "format": "raw_disk",
+            "confidence": 0.35
+          }
+        ],
+        "extractor": "exec.misc"
       },
       "system": {
         "kind": "memory",
@@ -107,17 +117,29 @@ expression: report
         "sha256": "eab79b7b24ea9e04946c55424a1ad289e5707610ec776e2d1dc39631bfce5534",
         "blake3": "5d39e0c811fb0bbd00a73ce587729099f2c81f81f9246437965b1e27fdb5d61d"
       },
-      "content": {},
+      "content": {
+        "title": "Linux 6.1.0-saltmere"
+      },
       "metadata": {},
       "format": {
-        "raw_disk": {
-          "disk_bytes": 4096
+        "linux_kernel": {
+          "architecture": "arm64",
+          "text_offset": 0,
+          "image_bytes": 0,
+          "byte_order": "little-endian",
+          "version_string_present": true,
+          "release": "6.1.0-saltmere",
+          "build": "1",
+          "flags": [
+            "SMP",
+            "PREEMPT"
+          ]
         }
       },
       "diagnostics": {
         "extractors": [
           {
-            "id": "disk.raw",
+            "id": "exec.misc",
             "version": 1,
             "ms": 0.0,
             "status": "ok"
@@ -164,9 +186,6 @@ expression: report
             "ms": 0.0,
             "status": "ok"
           }
-        ],
-        "warnings": [
-          "disk.raw: no partition table or file system recognised"
         ],
         "truncated": false,
         "elapsed_ms": 0.0

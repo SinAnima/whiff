@@ -1,0 +1,140 @@
+---
+source: src/formats/text/dialects.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere_fr.ts",
+    "stem": "saltmere_fr",
+    "extension": "ts"
+  },
+  "identification": {
+    "format": "qt_ts",
+    "name": "Qt Linguist translation",
+    "mime": "application/x-linguist",
+    "family": "text.xml",
+    "confidence": 0.93,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "qt_ts",
+        "confidence": 0.93
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      },
+      {
+        "format": "typescript",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "utf-8",
+    "extractor": "text.dialects"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 890
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 890,
+    "entropy": 4.586,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 890,
+      "chars": 888,
+      "words": 54,
+      "lines": 30,
+      "max_line_length": 67,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "422d6a036b83cf94a850b5ec051f9450dd8362fe205c22dcd5029773d38e33ed",
+    "blake3": "12c63ac26adf1c93cb046e96cae76169c3310583b6ffe70d5fc9929cede06198"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "qt_ts": {
+      "ts_version": "2.1",
+      "language": "fr_FR",
+      "source_language": "en_GB",
+      "contexts": 2,
+      "messages": 4,
+      "plural_messages": 1,
+      "translations": {
+        "finished": 2,
+        "obsolete": 1,
+        "unfinished": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.dialects",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

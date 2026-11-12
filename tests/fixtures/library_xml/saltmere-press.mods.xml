@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modsCollection xmlns="http://www.loc.gov/mods/v3">
+  <mods>
+    <titleInfo><title>The Harbour Bell</title></titleInfo>
+    <name type="personal"><namePart>Gull, Ben</namePart><role><roleTerm type="text">author</roleTerm></role></name>
+    <originInfo><dateIssued>1931</dateIssued></originInfo>
+    <genre>poetry</genre>
+    <recordInfo><recordIdentifier>salt-0001</recordIdentifier></recordInfo>
+  </mods>
+  <mods>
+    <titleInfo><title>Tides of Saltmere</title></titleInfo>
+    <name type="personal"><namePart>Lighthouse, Ana</namePart></name>
+    <originInfo><dateIssued>1925</dateIssued></originInfo>
+    <genre>almanac</genre>
+    <recordInfo><recordIdentifier>salt-0002</recordIdentifier></recordInfo>
+  </mods>
+</modsCollection>

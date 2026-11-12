@@ -1,0 +1,148 @@
+---
+source: src/formats/exec/scripting.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.wsf",
+    "stem": "saltmere-tides",
+    "extension": "wsf"
+  },
+  "identification": {
+    "format": "wsf",
+    "name": "Windows Script File",
+    "mime": "text/xml",
+    "family": "exec",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "wsf",
+        "confidence": 0.95
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "exec.scripting"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 317
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "active_content": [
+      "wsf"
+    ],
+    "risks": [
+      {
+        "kind": "script",
+        "category": "active_content",
+        "severity": "medium",
+        "detail": "2 script block(s)",
+        "source": "exec.scripting"
+      }
+    ],
+    "risk_level": "medium"
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 317,
+    "entropy": 4.846,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 317,
+      "chars": 317,
+      "words": 31,
+      "lines": 13,
+      "max_line_length": 67,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "d0a9a030598bafe12e46d7a4826994ffa39b43b099682c2a2506506c1387fa12",
+    "blake3": "e8ba218c5bf32a692206547f270b044b4f68a79aa70adb0e85f128f2fadb9ae8"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "wsf": {
+      "jobs": [
+        "tides",
+        "bell"
+      ],
+      "script_languages": {
+        "JScript": 1,
+        "VBScript": 1
+      },
+      "inline_scripts": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.scripting",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

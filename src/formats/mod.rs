@@ -76,3 +76,5 @@ pub(crate) mod subtitle;
 pub(crate) mod text;
 #[cfg(feature = "common")]
 pub(crate) mod video;
+#[cfg(feature = "common")]
+pub(crate) mod web;

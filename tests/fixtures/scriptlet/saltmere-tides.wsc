@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<component>
+  <registration description="Saltmere tide table" progid="Saltmere.Tides" version="1.00"
+    classid="{5A17E2E0-0000-4000-8000-000000000001}"/>
+  <public>
+    <property name="Harbour"/>
+    <method name="NextHighWater"/>
+  </public>
+  <script language="JScript">
+    var Harbour = "Saltmere";
+    function NextHighWater() { return "06:12"; }
+  </script>
+</component>

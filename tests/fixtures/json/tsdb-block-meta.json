@@ -1,0 +1,17 @@
+{
+	"ulid": "01J6Z0000000000000SALTMERE",
+	"minTime": 1756728000000,
+	"maxTime": 1756735200000,
+	"stats": {
+		"numSamples": 1440,
+		"numSeries": 2,
+		"numChunks": 2
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01J6Z0000000000000SALTMERE"
+		]
+	},
+	"version": 1
+}

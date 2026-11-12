@@ -1,8 +1,9 @@
 //! Generic fuzz target. With `WHIFF_FUZZ_EXTRACTOR=<id>` only that extractor
-//! runs, with its format forced; otherwise the whole engine (detection
-//! included) is fuzzed, and the first input byte picks the file extension of
-//! one registered format so every extractor gets reached. Run via
-//! `whiff-dev fuzz [<id>]`.
+//! runs, with its format forced. With `WHIFF_FUZZ_EXTRACTORS=<id>,<id>,…`
+//! only those extractors are registered (a shard of the nightly job), with
+//! detection. Otherwise the whole engine (detection included) is fuzzed. The
+//! first input byte picks the file extension of one registered format so
+//! every extractor gets reached. Run via `whiff-dev fuzz`.
 #![no_main]
 
 use std::sync::LazyLock;
@@ -27,6 +28,11 @@ static ENGINE: LazyLock<Engine> = LazyLock::new(|| {
             .unwrap_or_else(|| panic!("no extractor `{id}` in this build"))
             .id;
         builder = builder.registry(registry).format(format);
+    } else if let Ok(ids) = std::env::var("WHIFF_FUZZ_EXTRACTORS") {
+        let ids: Vec<&str> = ids.split(',').map(str::trim).filter(|id| !id.is_empty()).collect();
+        let registry = Registry::builtin().retain_extractors(|e| ids.contains(&e));
+        assert!(registry.extractors().next().is_some(), "none of `{}` in this build", ids.join(","));
+        builder = builder.registry(registry);
     }
     builder.build()
 });

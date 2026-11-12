@@ -1,0 +1,129 @@
+---
+source: src/formats/data/records.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tree.ged",
+    "stem": "saltmere-tree",
+    "extension": "ged"
+  },
+  "identification": {
+    "format": "gedcom",
+    "name": "GEDCOM genealogy",
+    "mime": "text/vnd.familysearch.gedcom",
+    "family": "data.csv",
+    "confidence": 0.89,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.records"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 460
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 460,
+    "entropy": 4.941,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 460,
+      "chars": 460,
+      "words": 103,
+      "lines": 33,
+      "max_line_length": 31,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "ea4aa3a0f6ed4aa9c4bc813ba245a010a07b32b2af8ed32af2fc9a7c72329e9a",
+    "blake3": "039440f7a9f5238eb24ea4112cb00cae272f392f85dddd9fc1785959eb4b5059"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "gedcom": {
+      "source_program": "SALTMERE_TREE",
+      "source_version": "1.0",
+      "gedcom_version": "5.5.1",
+      "character_set": "UTF-8",
+      "language": "English",
+      "records": {
+        "families": 1,
+        "individuals": 3,
+        "sources": 1
+      },
+      "year_range": [
+        1890,
+        1961
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.records",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

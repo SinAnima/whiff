@@ -1,0 +1,1735 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Report",
+  "description": "Everything whiff found out about one file (or one embedded child).",
+  "type": "object",
+  "properties": {
+    "whiff": {
+      "description": "Producer and schema information.",
+      "$ref": "#/$defs/WhiffInfo",
+      "default": {
+        "version": "",
+        "schema": "",
+        "profile": "standard"
+      }
+    },
+    "source": {
+      "description": "How the input was named.",
+      "$ref": "#/$defs/SourceInfo",
+      "default": {}
+    },
+    "identification": {
+      "description": "What the file is.",
+      "$ref": "#/$defs/Identification",
+      "default": {
+        "format": "",
+        "name": "",
+        "mime": "",
+        "confidence": 0.0,
+        "detected_by": "none",
+        "extractor": null
+      }
+    },
+    "system": {
+      "description": "Filesystem identity.",
+      "$ref": "#/$defs/System",
+      "default": {
+        "kind": "memory"
+      }
+    },
+    "temporal": {
+      "description": "Filesystem times and dates found in the content.",
+      "$ref": "#/$defs/Temporal",
+      "default": {
+        "filesystem": {}
+      }
+    },
+    "security": {
+      "description": "Permissions, ownership and risk signals.",
+      "$ref": "#/$defs/Security",
+      "default": {}
+    },
+    "rights": {
+      "description": "Copyright, creators and licence.",
+      "$ref": "#/$defs/Rights",
+      "default": {}
+    },
+    "physical": {
+      "description": "Size, entropy and dimensions.",
+      "$ref": "#/$defs/Physical",
+      "default": {}
+    },
+    "integrity": {
+      "description": "Hashes.",
+      "$ref": "#/$defs/Integrity",
+      "default": {}
+    },
+    "content": {
+      "description": "The LLM-facing view: title, language, keywords, outline, summary.",
+      "$ref": "#/$defs/Content",
+      "default": {}
+    },
+    "metadata": {
+      "description": "Raw metadata, one object per standard (`exif`, `xmp`, `iptc`, `id3`, …).",
+      "type": "object",
+      "additionalProperties": true,
+      "default": {}
+    },
+    "format": {
+      "description": "Technical, format-specific details, keyed by format id.",
+      "type": "object",
+      "additionalProperties": true,
+      "default": {}
+    },
+    "embedded": {
+      "description": "Reports for embedded children (archive entries, attachments, …).",
+      "type": "array",
+      "items": {
+        "$ref": "#"
+      }
+    },
+    "diagnostics": {
+      "description": "What ran, what failed, which limits were hit.",
+      "$ref": "#/$defs/Diagnostics",
+      "default": {
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  },
+  "$defs": {
+    "WhiffInfo": {
+      "description": "`whiff` section.",
+      "type": "object",
+      "properties": {
+        "version": {
+          "description": "whiff version that produced the report.",
+          "type": "string",
+          "default": ""
+        },
+        "schema": {
+          "description": "Schema identifier, e.g. `whiff/1`.",
+          "type": "string",
+          "default": ""
+        },
+        "profile": {
+          "description": "Profile used.",
+          "$ref": "#/$defs/Profile",
+          "default": "standard"
+        }
+      }
+    },
+    "Profile": {
+      "description": "How much work to do per file.",
+      "oneOf": [
+        {
+          "description": "Stat, detection, headers only. No hashing, no text analysis.",
+          "type": "string",
+          "const": "minimal"
+        },
+        {
+          "description": "All metadata extractors, hashes, bounded text analysis.",
+          "type": "string",
+          "const": "standard"
+        },
+        {
+          "description": "Everything, including payload decoding and deeper recursion.",
+          "type": "string",
+          "const": "full"
+        },
+        {
+          "description": "`standard` plus a summary; the CLI prints the compact LLM view\n([`Report::llm_view`](crate::Report::llm_view)) instead of the report.",
+          "type": "string",
+          "const": "llm"
+        }
+      ]
+    },
+    "SourceInfo": {
+      "description": "`source` section.",
+      "type": "object",
+      "properties": {
+        "path": {
+          "description": "Path as given by the caller.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "description": "File name (or entry name for embedded children).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "stem": {
+          "description": "File name without the final extension.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "extension": {
+          "description": "Final extension, without the dot.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Identification": {
+      "description": "`identification` section.",
+      "type": "object",
+      "properties": {
+        "format": {
+          "description": "Stable whiff format id (`jpeg`, `docx`, …; built-ins: `empty`, `text`, `binary`, `directory`, …).",
+          "type": "string",
+          "default": ""
+        },
+        "name": {
+          "description": "Human-readable format name.",
+          "type": "string",
+          "default": ""
+        },
+        "mime": {
+          "description": "MIME type.",
+          "type": "string",
+          "default": ""
+        },
+        "family": {
+          "description": "Parser family (see docs/metadata-extracted.md).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "description": "Confidence in `0.0..=1.0`.",
+          "type": "number",
+          "format": "double",
+          "default": 0.0
+        },
+        "detected_by": {
+          "description": "Which detector decided.",
+          "$ref": "#/$defs/DetectedBy",
+          "default": "none"
+        },
+        "extension_matches": {
+          "description": "`false` when the extension contradicts the detected format.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "candidates": {
+          "description": "Ranked alternatives (best first).",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Candidate"
+          }
+        },
+        "encoding": {
+          "description": "Text encoding, when the content is text.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "extractor": {
+          "description": "Extractor that handled the file, or `null` when none is compiled in.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null
+        },
+        "available_with_feature": {
+          "description": "Cargo feature that would add an extractor for this format, when known.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "wrapper": {
+          "description": "The name marks a partial download, backup copy or temporary file\n(`report.pdf.crdownload`, `notes.txt.bak`): detection used the\nextension underneath.",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Wrapper"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "DetectedBy": {
+      "description": "How the format was determined.",
+      "oneOf": [
+        {
+          "description": "A magic signature matched.",
+          "type": "string",
+          "const": "magic"
+        },
+        {
+          "description": "An extractor's content sniffer recognised it.",
+          "type": "string",
+          "const": "sniff"
+        },
+        {
+          "description": "Only the file extension matched.",
+          "type": "string",
+          "const": "extension"
+        },
+        {
+          "description": "Built-in text/binary heuristics.",
+          "type": "string",
+          "const": "heuristic"
+        },
+        {
+          "description": "The caller forced the format.",
+          "type": "string",
+          "const": "forced"
+        },
+        {
+          "description": "A container's extractor looked inside (a compound file's streams, a\nZIP's parts) and named the real format.",
+          "type": "string",
+          "const": "content"
+        },
+        {
+          "description": "Not applicable (directories, special files).",
+          "type": "string",
+          "const": "none"
+        }
+      ]
+    },
+    "Candidate": {
+      "description": "One detection candidate.",
+      "type": "object",
+      "properties": {
+        "format": {
+          "description": "Format id.",
+          "type": "string",
+          "default": ""
+        },
+        "confidence": {
+          "description": "Confidence in `0.0..=1.0`.",
+          "type": "number",
+          "format": "double",
+          "default": 0.0
+        }
+      }
+    },
+    "Wrapper": {
+      "description": "A wrapper named by a file's last extension.",
+      "type": "object",
+      "properties": {
+        "kind": {
+          "description": "`partial_download`, `backup_copy` or `temporary`.",
+          "type": "string",
+          "default": ""
+        },
+        "extension": {
+          "description": "The wrapper's extension (`crdownload`, `bak`, `~` for an editor backup).",
+          "type": "string",
+          "default": ""
+        },
+        "inner_extension": {
+          "description": "The extension underneath, used for detection.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "System": {
+      "description": "`system` section.",
+      "type": "object",
+      "properties": {
+        "kind": {
+          "description": "Kind of object.",
+          "$ref": "#/$defs/FileKind",
+          "default": "memory"
+        },
+        "size_bytes": {
+          "description": "Logical size.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        },
+        "allocated_bytes": {
+          "description": "Bytes actually allocated on disk.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        },
+        "sparse": {
+          "description": "Fewer bytes allocated than the logical size: a sparse file (or one\nthe filesystem compresses).",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "device": {
+          "description": "Device id.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        },
+        "inode": {
+          "description": "Inode number.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        },
+        "links": {
+          "description": "Hard-link count.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        },
+        "hidden": {
+          "description": "Hidden (dot-file on Unix, hidden attribute on Windows).",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "readonly": {
+          "description": "Read-only flag.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "symlink_target": {
+          "description": "Target of a symbolic link.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "FileKind": {
+      "description": "Kind of filesystem object.",
+      "oneOf": [
+        {
+          "description": "A regular file.",
+          "type": "string",
+          "const": "regular"
+        },
+        {
+          "description": "A directory.",
+          "type": "string",
+          "const": "directory"
+        },
+        {
+          "description": "A symbolic link.",
+          "type": "string",
+          "const": "symlink"
+        },
+        {
+          "description": "A named pipe.",
+          "type": "string",
+          "const": "fifo"
+        },
+        {
+          "description": "A Unix socket.",
+          "type": "string",
+          "const": "socket"
+        },
+        {
+          "description": "A block device.",
+          "type": "string",
+          "const": "block_device"
+        },
+        {
+          "description": "A character device.",
+          "type": "string",
+          "const": "char_device"
+        },
+        {
+          "description": "In-memory input (bytes, stdin, embedded child).",
+          "type": "string",
+          "const": "memory"
+        },
+        {
+          "description": "Unknown.",
+          "type": "string",
+          "const": "other"
+        }
+      ]
+    },
+    "Temporal": {
+      "description": "`temporal` section.",
+      "type": "object",
+      "properties": {
+        "filesystem": {
+          "description": "Filesystem times.",
+          "$ref": "#/$defs/FsTimes",
+          "default": {}
+        },
+        "content": {
+          "description": "Dates found in the content.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ContentDate"
+          }
+        },
+        "earliest": {
+          "description": "Earliest zone-aware content date (UTC).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "latest": {
+          "description": "Latest zone-aware content date (UTC).",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "FsTimes": {
+      "description": "Filesystem timestamps (RFC 3339, UTC).",
+      "type": "object",
+      "properties": {
+        "modified": {
+          "description": "Last modification (mtime).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "accessed": {
+          "description": "Last access (atime).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "changed": {
+          "description": "Last status change (ctime, Unix only).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "created": {
+          "description": "Creation (birth time, where the platform provides it).",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "ContentDate": {
+      "description": "A date found inside the content.",
+      "type": "object",
+      "properties": {
+        "field": {
+          "description": "What the date means.",
+          "$ref": "#/$defs/DateField",
+          "default": "created"
+        },
+        "value": {
+          "description": "RFC 3339 timestamp (or civil date-time when `tz_known` is false).",
+          "type": "string",
+          "default": ""
+        },
+        "source": {
+          "description": "Where it came from, e.g. `exif.DateTimeOriginal`.",
+          "type": "string",
+          "default": ""
+        },
+        "tz_known": {
+          "description": "Whether the source carried a time-zone offset.",
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "DateField": {
+      "description": "Which date a content timestamp describes.",
+      "oneOf": [
+        {
+          "description": "Creation of the content.",
+          "type": "string",
+          "const": "created"
+        },
+        {
+          "description": "Last modification.",
+          "type": "string",
+          "const": "modified"
+        },
+        {
+          "description": "Capture (photo/video).",
+          "type": "string",
+          "const": "captured"
+        },
+        {
+          "description": "Digitisation (scan).",
+          "type": "string",
+          "const": "digitized"
+        },
+        {
+          "description": "Publication.",
+          "type": "string",
+          "const": "published"
+        },
+        {
+          "description": "Expiry (certificates, licences).",
+          "type": "string",
+          "const": "expires"
+        },
+        {
+          "description": "Last printed (office documents).",
+          "type": "string",
+          "const": "printed"
+        },
+        {
+          "description": "Sent (e-mail `Date`, Outlook submit time).",
+          "type": "string",
+          "const": "sent"
+        },
+        {
+          "description": "Received (e-mail delivery, `Received` hops).",
+          "type": "string",
+          "const": "received"
+        },
+        {
+          "description": "Anything else (see `source`).",
+          "type": "string",
+          "const": "other"
+        }
+      ]
+    },
+    "Security": {
+      "description": "`security` section.",
+      "type": "object",
+      "properties": {
+        "mode": {
+          "description": "Octal permission bits, e.g. `0644`.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "permissions": {
+          "description": "`ls`-style permission string, e.g. `rw-r--r--`.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "owner": {
+          "description": "Owner.",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Owner"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "setuid": {
+          "description": "Set-user-id bit.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "setgid": {
+          "description": "Set-group-id bit.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "sticky": {
+          "description": "Sticky bit.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "acl": {
+          "description": "Access-control list present.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "xattrs": {
+          "description": "Extended attributes of interest.",
+          "type": "object",
+          "additionalProperties": true
+        },
+        "encrypted": {
+          "description": "Content is encrypted.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "signed": {
+          "description": "Content carries a signature.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "active_content": {
+          "description": "Kinds of active content found (`macros`, `javascript`, …).",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "external_references": {
+          "description": "Number of external references (links, remote resources).",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        },
+        "risks": {
+          "description": "Risk signals.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Risk"
+          }
+        },
+        "risk_level": {
+          "description": "The highest severity among `risks` and every embedded file's risks;\nabsent when there are none.",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Severity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "embedded_risks": {
+          "description": "Risks of embedded files (attachments, archive entries, embedded\nobjects, at any depth), counted by kind.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "uint64",
+            "minimum": 0
+          }
+        },
+        "secrets": {
+          "description": "Secrets found in the content, by kind (`aws_access_key_id`, `private_key`, …).\nOnly counts: values are redacted from the report.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "uint64",
+            "minimum": 0
+          }
+        },
+        "personal_data": {
+          "description": "Personal data found in the content, by kind (`email`, `phone`, `iban`, …). Only counts.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "uint64",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "Owner": {
+      "description": "File owner.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "description": "Numeric user id.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint32",
+          "minimum": 0
+        },
+        "user": {
+          "description": "User name.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gid": {
+          "description": "Numeric group id.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint32",
+          "minimum": 0
+        },
+        "group": {
+          "description": "Group name.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Risk": {
+      "description": "A risk signal (macro present, script in SVG, extension mismatch, …).",
+      "type": "object",
+      "properties": {
+        "kind": {
+          "description": "Stable `snake_case` kind, e.g. `macros`, `javascript`, `link_text_mismatch`;\nthe vocabulary is listed in `docs/risks.md`.",
+          "type": "string",
+          "default": ""
+        },
+        "category": {
+          "description": "What kind of threat it points to (decided by the kind).",
+          "$ref": "#/$defs/RiskCategory",
+          "default": "other"
+        },
+        "severity": {
+          "description": "How much it should worry the reader (decided by the kind).",
+          "$ref": "#/$defs/Severity",
+          "default": "medium"
+        },
+        "detail": {
+          "description": "Human-readable detail.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "description": "Who reported it.",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "RiskCategory": {
+      "description": "What kind of threat a risk signal points to.",
+      "oneOf": [
+        {
+          "description": "Code that can run: macros, scripts, actions, DDE.",
+          "type": "string",
+          "const": "active_content"
+        },
+        {
+          "description": "Deceiving the reader: spoofed senders, misleading links, credential forms.",
+          "type": "string",
+          "const": "phishing"
+        },
+        {
+          "description": "Content fetched from elsewhere when the file is opened.",
+          "type": "string",
+          "const": "external_reference"
+        },
+        {
+          "description": "Constructs tied to known exploitation techniques.",
+          "type": "string",
+          "const": "exploit"
+        },
+        {
+          "description": "Content hidden from a casual look.",
+          "type": "string",
+          "const": "obfuscation"
+        },
+        {
+          "description": "Secrets or credentials in the content.",
+          "type": "string",
+          "const": "data_exposure"
+        },
+        {
+          "description": "Installs, fetches or trusts code from elsewhere.",
+          "type": "string",
+          "const": "supply_chain"
+        },
+        {
+          "description": "Operations that change or destroy state with broad privileges.",
+          "type": "string",
+          "const": "unsafe_operation"
+        },
+        {
+          "description": "Where the content came from (e.g. generated by AI).",
+          "type": "string",
+          "const": "provenance"
+        },
+        {
+          "description": "A kind outside the vocabulary (from a third-party extractor).",
+          "type": "string",
+          "const": "other"
+        }
+      ]
+    },
+    "Severity": {
+      "description": "How much a risk signal should worry the reader.",
+      "oneOf": [
+        {
+          "description": "Worth knowing; not a threat by itself.",
+          "type": "string",
+          "const": "info"
+        },
+        {
+          "description": "Common in benign files; a threat only together with other signals.",
+          "type": "string",
+          "const": "low"
+        },
+        {
+          "description": "Can act on the reader's behalf or reach out, but is also used legitimately.",
+          "type": "string",
+          "const": "medium"
+        },
+        {
+          "description": "Rarely legitimate, or a known exploitation or deception technique.",
+          "type": "string",
+          "const": "high"
+        }
+      ]
+    },
+    "Rights": {
+      "description": "`rights` section.",
+      "type": "object",
+      "properties": {
+        "copyright": {
+          "description": "Copyright notice.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "creators": {
+          "description": "Creators / authors / artists.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "credit": {
+          "description": "Credit line.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "license": {
+          "description": "Licence.",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/License"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "usage_terms": {
+          "description": "Usage terms.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "marked": {
+          "description": "Marked as rights-managed.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "embedding": {
+          "description": "Embedding permission (fonts).",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "License": {
+      "description": "A licence.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name, e.g. `CC BY 4.0` or an SPDX id.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "description": "Licence URL.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Physical": {
+      "description": "`physical` section.",
+      "type": "object",
+      "properties": {
+        "size_bytes": {
+          "description": "Size in bytes.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        },
+        "entropy": {
+          "description": "Shannon entropy in bits per byte (0–8).",
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "entropy_scope": {
+          "description": "Bytes the entropy covers.",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EntropyScope"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "text": {
+          "description": "Text properties.",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TextPhysical"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "image": {
+          "description": "Image properties.",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ImagePhysical"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "media": {
+          "description": "Audio/video properties.",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MediaPhysical"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "document": {
+          "description": "Document properties.",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DocumentPhysical"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "container": {
+          "description": "Container properties.",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ContainerPhysical"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "EntropyScope": {
+      "description": "Which bytes an entropy value was computed over.",
+      "oneOf": [
+        {
+          "description": "The whole file.",
+          "type": "string",
+          "const": "file"
+        },
+        {
+          "description": "Only the first bytes (minimal profile, or file too large to hash).",
+          "type": "string",
+          "const": "head"
+        }
+      ]
+    },
+    "TextPhysical": {
+      "description": "Text physical properties (`wc` parity).",
+      "type": "object",
+      "properties": {
+        "bytes": {
+          "description": "Bytes.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        },
+        "chars": {
+          "description": "Unicode scalar values.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        },
+        "words": {
+          "description": "Words.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        },
+        "lines": {
+          "description": "Newline count (`wc -l`).",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        },
+        "max_line_length": {
+          "description": "Longest line (`wc -L`).",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        },
+        "line_endings": {
+          "description": "`lf`, `crlf`, `cr` or `mixed`.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bom": {
+          "description": "Byte-order mark present.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "blank_lines": {
+          "description": "Lines containing only whitespace.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        }
+      }
+    },
+    "ImagePhysical": {
+      "description": "Image physical properties.",
+      "type": "object",
+      "properties": {
+        "width": {
+          "description": "Width in pixels.",
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0,
+          "default": 0
+        },
+        "height": {
+          "description": "Height in pixels.",
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0,
+          "default": 0
+        },
+        "bit_depth": {
+          "description": "Bits per channel.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint8",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "channels": {
+          "description": "Channel count.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint8",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "color_space": {
+          "description": "Colour space, e.g. `sRGB`.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "orientation": {
+          "description": "EXIF orientation (1–8).",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint8",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "dpi": {
+          "description": "Horizontal and vertical resolution in dots per inch.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "number",
+            "format": "double"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "frames": {
+          "description": "Frame count (animations, multi-page).",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint32",
+          "minimum": 0
+        }
+      }
+    },
+    "MediaPhysical": {
+      "description": "Audio/video physical properties.",
+      "type": "object",
+      "properties": {
+        "duration_s": {
+          "description": "Duration in seconds.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "bitrate_bps": {
+          "description": "Overall bitrate.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        },
+        "streams": {
+          "description": "Streams (codec, type, …), one object each.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      }
+    },
+    "DocumentPhysical": {
+      "description": "Document physical properties.",
+      "type": "object",
+      "properties": {
+        "pages": {
+          "description": "Pages.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        },
+        "words": {
+          "description": "Words (as declared by the document).",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        },
+        "slides": {
+          "description": "Slides.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        },
+        "sheets": {
+          "description": "Sheets.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        }
+      }
+    },
+    "ContainerPhysical": {
+      "description": "Container (archive) physical properties.",
+      "type": "object",
+      "properties": {
+        "entries": {
+          "description": "Entry count.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        },
+        "uncompressed_bytes": {
+          "description": "Total uncompressed size.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        },
+        "ratio": {
+          "description": "Uncompressed / compressed.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "encrypted_entries": {
+          "description": "Encrypted entries.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0
+        }
+      }
+    },
+    "Integrity": {
+      "description": "`integrity` section.",
+      "type": "object",
+      "properties": {
+        "sha256": {
+          "description": "SHA-256, lowercase hex.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "blake3": {
+          "description": "BLAKE3, lowercase hex.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "phash": {
+          "description": "Perceptual hash (images, `full` profile).",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "skipped": {
+          "description": "Why hashing was skipped, if it was.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Content": {
+      "description": "`content` section: the LLM-facing view.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "Title.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "description": "Description / caption / abstract.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "authors": {
+          "description": "Authors.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "language": {
+          "description": "Natural language.",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Language"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "keywords": {
+          "description": "Keywords (declared or extracted).",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "keyword_frequency": {
+          "description": "Top terms with counts.",
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer",
+                "format": "uint64",
+                "minimum": 0
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "outline": {
+          "description": "Heading outline in document order.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Heading"
+          }
+        },
+        "summary": {
+          "description": "Extractive summary.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "excerpt": {
+          "description": "Text excerpt.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tags": {
+          "description": "Merged tags.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "location": {
+          "description": "Location the content refers to (e.g. photo GPS).",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Location"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "extent": {
+          "description": "Area the content covers (e.g. a map's bounding box), in WGS84.",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Extent"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "Language": {
+      "description": "Detected natural language.",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "ISO 639 code.",
+          "type": "string",
+          "default": ""
+        },
+        "confidence": {
+          "description": "Confidence in `0.0..=1.0`.",
+          "type": "number",
+          "format": "double",
+          "default": 0.0
+        }
+      }
+    },
+    "Heading": {
+      "description": "One heading of the document outline.",
+      "type": "object",
+      "properties": {
+        "level": {
+          "description": "Level, 1 = top.",
+          "type": "integer",
+          "format": "uint8",
+          "minimum": 0,
+          "maximum": 255,
+          "default": 0
+        },
+        "text": {
+          "description": "Heading text.",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "Location": {
+      "description": "A geographic location.",
+      "type": "object",
+      "properties": {
+        "lat": {
+          "description": "Latitude, decimal degrees.",
+          "type": "number",
+          "format": "double",
+          "default": 0.0
+        },
+        "lon": {
+          "description": "Longitude, decimal degrees.",
+          "type": "number",
+          "format": "double",
+          "default": 0.0
+        },
+        "alt_m": {
+          "description": "Altitude in metres.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "source": {
+          "description": "Where it came from.",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "Extent": {
+      "description": "A geographic extent: a WGS84 bounding box.",
+      "type": "object",
+      "properties": {
+        "west": {
+          "description": "Western longitude, decimal degrees.",
+          "type": "number",
+          "format": "double",
+          "default": 0.0
+        },
+        "south": {
+          "description": "Southern latitude, decimal degrees.",
+          "type": "number",
+          "format": "double",
+          "default": 0.0
+        },
+        "east": {
+          "description": "Eastern longitude, decimal degrees.",
+          "type": "number",
+          "format": "double",
+          "default": 0.0
+        },
+        "north": {
+          "description": "Northern latitude, decimal degrees.",
+          "type": "number",
+          "format": "double",
+          "default": 0.0
+        },
+        "source": {
+          "description": "Where it came from.",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "Diagnostics": {
+      "description": "`diagnostics` section.",
+      "type": "object",
+      "properties": {
+        "extractors": {
+          "description": "Everything that ran, in order.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExtractorRun"
+          }
+        },
+        "warnings": {
+          "description": "Non-fatal problems.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "limits_hit": {
+          "description": "Limits that stopped work early (`read_bytes`, `timeout`, `max_depth`, …).",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "truncated": {
+          "description": "Some output was cut short.",
+          "type": "boolean",
+          "default": false
+        },
+        "undecoded_blocks": {
+          "description": "Metadata blocks emitted that no decoder handled.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "provenance": {
+          "description": "Field path → source, when requested with `--provenance`.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": true
+        },
+        "elapsed_ms": {
+          "description": "Total wall time in milliseconds.",
+          "type": "number",
+          "format": "double",
+          "default": 0.0
+        }
+      }
+    },
+    "ExtractorRun": {
+      "description": "One entry of `diagnostics.extractors`.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Extractor / decoder / analyzer id.",
+          "type": "string",
+          "default": ""
+        },
+        "version": {
+          "description": "Its output version.",
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0,
+          "default": 0
+        },
+        "ms": {
+          "description": "Wall time in milliseconds.",
+          "type": "number",
+          "format": "double",
+          "default": 0.0
+        },
+        "status": {
+          "description": "Outcome.",
+          "$ref": "#/$defs/RunStatus",
+          "default": "ok"
+        },
+        "error_kind": {
+          "description": "Error kind (`malformed`, `timeout`, …) when not `ok`.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "error": {
+          "description": "Error message when not `ok`.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "RunStatus": {
+      "description": "Outcome of one extractor, decoder or analyzer run.",
+      "oneOf": [
+        {
+          "description": "Finished normally.",
+          "type": "string",
+          "const": "ok"
+        },
+        {
+          "description": "Returned an [`ExtractError`](crate::ExtractError) other than `internal`.",
+          "type": "string",
+          "const": "error"
+        },
+        {
+          "description": "Panicked or broke an invariant (a bug).",
+          "type": "string",
+          "const": "internal"
+        }
+      ]
+    }
+  }
+}

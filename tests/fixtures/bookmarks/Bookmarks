@@ -1,0 +1,49 @@
+{
+   "checksum": "",
+   "roots": {
+      "bookmark_bar": {
+         "children": [
+            {
+               "date_added": "13406803200000000",
+               "guid": "",
+               "id": "1",
+               "name": "Saltmere Harbour",
+               "type": "url",
+               "url": "https://saltmere.example/"
+            }
+         ],
+         "name": "Bookmarks bar",
+         "type": "folder",
+         "date_added": "13406803200000000"
+      },
+      "other": {
+         "children": [
+            {
+               "children": [
+                  {
+                     "date_added": "13406806800000000",
+                     "guid": "",
+                     "id": "1",
+                     "name": "Tides",
+                     "type": "url",
+                     "url": "https://tides.example.org/saltmere"
+                  }
+               ],
+               "name": "Harbour",
+               "type": "folder",
+               "date_added": "13406803200000000"
+            }
+         ],
+         "name": "Other bookmarks",
+         "type": "folder",
+         "date_added": "13406803200000000"
+      },
+      "synced": {
+         "children": [],
+         "name": "Mobile bookmarks",
+         "type": "folder",
+         "date_added": "13406803200000000"
+      }
+   },
+   "version": 1
+}

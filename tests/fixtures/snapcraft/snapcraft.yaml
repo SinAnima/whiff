@@ -1,0 +1,27 @@
+name: saltmere-tides
+base: core24
+version: '1.4.0'
+summary: Tide predictions for Saltmere Harbour
+description: |
+  Harmonic tide predictions for the gauges of the fictitious
+  Saltmere Harbour.
+grade: stable
+confinement: strict
+license: CC0-1.0
+
+apps:
+  tides:
+    command: bin/tides
+    plugs: [network]
+  gauged:
+    command: bin/gauged
+    daemon: simple
+    plugs: [network-bind, serial-port]
+
+parts:
+  tides:
+    plugin: meson
+    source: .
+  data:
+    plugin: dump
+    source: data/

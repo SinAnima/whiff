@@ -1,0 +1,131 @@
+---
+source: src/formats/web/misc.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "humans.txt",
+    "stem": "humans",
+    "extension": "txt"
+  },
+  "identification": {
+    "format": "robots_txt",
+    "name": "robots.txt / security.txt / humans.txt",
+    "mime": "text/plain",
+    "family": "web.misc",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "robots_txt",
+        "confidence": 0.97
+      },
+      {
+        "format": "text",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "web.misc"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 167
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 167,
+    "entropy": 4.916,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 167,
+      "chars": 167,
+      "words": 24,
+      "lines": 10,
+      "max_line_length": 30,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "4990beda278636e513758bccd4f9abce518e462ba34c833f08b2faa2844d1487",
+    "blake3": "3fa20a5fd459931ccd2d64a233e643e36eab613aa42de724d43c415ab882ec7b"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "robots_txt": {
+      "kind": "humans.txt",
+      "sections": [
+        "TEAM",
+        "THANKS",
+        "SITE"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "web.misc",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

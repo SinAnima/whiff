@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink version="3.0" xmlns="http://www.metalinker.org/" generator="harbour-mirror/0.9" pubdate="Wed, 05 Nov 2025 08:00:00 GMT">
+  <files>
+    <file name="charts.tar.gz">
+      <size>51200</size>
+      <verification>
+        <hash type="md5">900150983cd24fb0d6963f7d28e17f72</hash>
+      </verification>
+      <resources>
+        <url type="http">https://mirror1.example.org/charts.tar.gz</url>
+        <url type="ftp">ftp://ftp.example.org/charts.tar.gz</url>
+      </resources>
+    </file>
+  </files>
+</metalink>

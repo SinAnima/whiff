@@ -1,0 +1,147 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "berths.hbs",
+    "stem": "berths",
+    "extension": "hbs"
+  },
+  "identification": {
+    "format": "handlebars",
+    "name": "Handlebars / Mustache template",
+    "mime": "text/x-handlebars-template",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 198
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 198,
+    "entropy": 4.599,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 198,
+      "chars": 198,
+      "words": 20,
+      "lines": 8,
+      "max_line_length": 48,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "18b4dbfe472f4a36f08b5bff40a4f6a931070667c0e53df1582d10415b4442fe",
+    "blake3": "dadeff2c4da33ad7973142dbd8e733721de64888ebb20d30e57579d268cb48b4"
+  },
+  "content": {
+    "description": "{{!-- Berth list for Saltmere Harbour --}}",
+    "excerpt": "{{!-- Berth list for Saltmere Harbour --}}"
+  },
+  "metadata": {},
+  "format": {
+    "handlebars": {
+      "language": "Handlebars / Mustache template",
+      "loc": {
+        "code": 7,
+        "comment": 1,
+        "blank": 0,
+        "total": 8
+      },
+      "imports": [
+        "header"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "helper": [
+          "each"
+        ],
+        "variable": [
+          "number",
+          "vessel",
+          "updated"
+        ]
+      },
+      "symbol_counts": {
+        "helper": 1,
+        "variable": 3
+      },
+      "module_doc": "{{!-- Berth list for Saltmere Harbour --}}",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 48
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

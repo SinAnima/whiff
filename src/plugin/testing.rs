@@ -15,6 +15,7 @@ pub fn redact(report: &mut Report) {
     s.inode = None;
     s.links = None;
     s.allocated_bytes = None;
+    s.sparse = None;
     s.readonly = None;
     s.hidden = None;
     report.temporal.filesystem = FsTimes::default();
@@ -73,6 +74,16 @@ pub fn fixture_reports(manifest_dir: &str, format_id: &str) -> Vec<(String, Repo
 /// analysed one level deep: for unit tests over small synthetic inputs.
 pub fn report_for(name: &str, bytes: &[u8]) -> Report {
     let engine = Engine::builder().limits(crate::engine::Limits::default().max_depth(1)).build();
+    engine.extract_bytes(Some(name), bytes.to_vec())
+}
+
+/// [`report_for`] with `--privacy off`: for tests that check what the
+/// strict mode keeps back.
+pub fn report_without_privacy(name: &str, bytes: &[u8]) -> Report {
+    let engine = Engine::builder()
+        .limits(crate::engine::Limits::default().max_depth(1))
+        .privacy(crate::engine::Privacy::Off)
+        .build();
     engine.extract_bytes(Some(name), bytes.to_vec())
 }
 

@@ -1,0 +1,149 @@
+---
+source: src/formats/text/dialects.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-idp-metadata.xml",
+    "stem": "saltmere-idp-metadata",
+    "extension": "xml"
+  },
+  "identification": {
+    "format": "saml",
+    "name": "SAML / XML Signature",
+    "mime": "application/samlmetadata+xml",
+    "family": "text.xml",
+    "confidence": 0.93,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "saml",
+        "confidence": 0.93
+      },
+      {
+        "format": "xml",
+        "confidence": 0.65
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "text.dialects"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1606
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1606,
+    "entropy": 5.824,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1606,
+      "chars": 1606,
+      "words": 24,
+      "lines": 10,
+      "max_line_length": 740,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "b218d57374dcbec418969e834352129152be327ffe4fa975864e17f8567744d6",
+    "blake3": "033d07ab4cf78a84fdd3df9b7d403cc97c4145596b3512a101e26f52be0f02cf"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "saml": {
+      "kind": "SAML metadata",
+      "valid_until": "2030-01-01T00:00:00Z",
+      "entity_ids": [
+        "https://idp.saltmere.example/saml"
+      ],
+      "roles": {
+        "IDPSSO": 1
+      },
+      "endpoints": {
+        "SingleLogoutService": 1,
+        "SingleSignOnService": 2
+      },
+      "signatures": 0,
+      "certificates": [
+        {
+          "subject": "O=Saltmere Harbour, CN=idp.saltmere.example",
+          "issuer": "O=Saltmere Harbour, CN=idp.saltmere.example",
+          "not_before": "2026-11-09T21:22:43Z",
+          "not_after": "2036-11-06T21:22:43Z",
+          "key_algorithm": "ec",
+          "key_bits": 256,
+          "sha256": "af1b6137182d4bceb7fb86bd36876cb0979f9644e906215b63ee7dfc05224df5"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.dialects",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

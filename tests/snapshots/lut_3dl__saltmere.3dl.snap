@@ -1,0 +1,119 @@
+---
+source: src/formats/image/film.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere.3dl",
+    "stem": "saltmere",
+    "extension": "3dl"
+  },
+  "identification": {
+    "format": "lut_3dl",
+    "name": "Autodesk 3DL colour look-up table",
+    "mime": "application/octet-stream",
+    "family": "image.raster",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "image.film"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 849
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 849,
+    "entropy": 3.446,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 849,
+      "chars": 849,
+      "words": 200,
+      "lines": 66,
+      "max_line_length": 17,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "63c8b2d0bd1ea941d2f52080e1d046a7b3a679d07e6d632b12a1512d2e8ce316",
+    "blake3": "377caa8de1473bfb1d11b55b0309fac0c7c1afed7775909066ad1c19fc0b56fc"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "lut_3dl": {
+      "size": 4,
+      "input_bit_depth": 10,
+      "output_bit_depth": 12,
+      "entries": 64
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.film",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

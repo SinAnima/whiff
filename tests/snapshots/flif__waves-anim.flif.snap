@@ -1,0 +1,113 @@
+---
+source: src/formats/image/codecs.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "waves-anim.flif",
+    "stem": "waves-anim",
+    "extension": "flif"
+  },
+  "identification": {
+    "format": "flif",
+    "name": "FLIF image",
+    "mime": "image/flif",
+    "family": "image.raster",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.codecs"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 18
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 18,
+    "entropy": 2.474,
+    "entropy_scope": "file",
+    "image": {
+      "width": 20,
+      "height": 15,
+      "bit_depth": 8,
+      "channels": 3,
+      "frames": 3
+    }
+  },
+  "integrity": {
+    "sha256": "6f000a972c462c7c4eb02e964f0a3a9afac2a384192cbea38aff1727b7997df9",
+    "blake3": "0e6f8c7ab9f13fa805f1c5c5ef00e0277f81af2e548ffcb39d31cc8008007b58"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "flif": {
+      "interlaced": true,
+      "animated": true
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.codecs",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

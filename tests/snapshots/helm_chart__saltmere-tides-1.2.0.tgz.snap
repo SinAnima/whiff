@@ -2035,14 +2035,14 @@ expression: report
         "stem": ".helmignore"
       },
       "identification": {
-        "format": "text",
-        "name": "Plain text",
+        "format": "ignore_file",
+        "name": ".gitignore / .dockerignore",
         "mime": "text/plain",
-        "family": "text.plain",
-        "confidence": 0.3,
-        "detected_by": "heuristic",
+        "family": "code.infra",
+        "confidence": 0.95,
+        "detected_by": "sniff",
         "encoding": "us-ascii",
-        "extractor": "text.plain"
+        "extractor": "code.config"
       },
       "system": {
         "kind": "memory",
@@ -2072,56 +2072,38 @@ expression: report
         "sha256": "bb987e6a8ef45a99255d1d632812482d5f0f3255ea841520b4d90342df5fe2b3",
         "blake3": "06230bb9e9b7803a18e2a4a992dc5fd12efdc90a2a49516690d878c14900402d"
       },
-      "content": {
-        "language": {
-          "code": "en",
-          "confidence": 1.0
-        },
-        "keywords": [
-          "building packages",
-          "Patterns to ignore",
-          "ignore when building",
-          "packages",
-          "Patterns",
-          "matching",
-          "relative path matching",
-          "building",
-          "ignore",
-          "Common"
-        ],
-        "keyword_frequency": [
-          [
-            "common",
-            2
-          ],
-          [
-            "matching",
-            2
-          ],
-          [
-            "pattern",
-            2
-          ]
-        ],
-        "excerpt": "# Patterns to ignore when building packages. # This supports shell glob matching, relative path matching, and # negation (prefixed with !). Only one pattern per line. .DS_Store # Common VCS dirs .git/ .gitignore .bzr/ .bzrignore .hg/ .hgignore .svn/ # Common backup files *.swp *.bak *.tmp *.orig *~ # Various IDEs .project .idea/ *.tmproj .vscode/",
-        "tags": [
-          "building packages",
-          "Patterns to ignore",
-          "ignore when building",
-          "packages",
-          "Patterns"
-        ]
-      },
+      "content": {},
       "metadata": {},
       "format": {
-        "text": {
-          "paragraphs": 1
+        "ignore_file": {
+          "tool": "helm",
+          "pattern_count": 17,
+          "directory_patterns": 6,
+          "patterns": [
+            ".DS_Store",
+            ".git/",
+            ".gitignore",
+            ".bzr/",
+            ".bzrignore",
+            ".hg/",
+            ".hgignore",
+            ".svn/",
+            "*.swp",
+            "*.bak",
+            "*.tmp",
+            "*.orig",
+            "*~",
+            ".project",
+            ".idea/",
+            "*.tmproj",
+            ".vscode/"
+          ]
         }
       },
       "diagnostics": {
         "extractors": [
           {
-            "id": "text.plain",
+            "id": "code.config",
             "version": 1,
             "ms": 0.0,
             "status": "ok"

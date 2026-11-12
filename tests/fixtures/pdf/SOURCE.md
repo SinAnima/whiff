@@ -11,3 +11,4 @@ companies and addresses (Saltmere, `example.org`, `*.example`) are fictitious.
 | `tides-classic.pdf` | Ghostscript `pdfwrite`, classic cross-reference table (`scripts/fixtures/documents.sh`) | CC0-1.0 |
 | `tides-locked.pdf` | Ghostscript `pdfwrite`, RC4-128 with an owner password only (`scripts/fixtures/documents.sh`) | CC0-1.0 |
 | `tides.pdf` | Ghostscript `pdfwrite` from `scripts/fixtures/documents/tides.ps` (`scripts/fixtures/documents.sh`) | CC0-1.0 |
+| `saltmere-chart-illustrator-crafted.ai` | written by hand in the layout of an Illustrator "PDF compatible" file (`scripts/fixtures/legacy.sh`, step packages) | CC0-1.0 |

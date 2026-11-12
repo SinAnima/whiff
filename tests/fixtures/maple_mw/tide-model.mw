@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Worksheet><Version major="2023" minor="0"/><View-Properties presentation="true"/>
+<Styles><Font name="Text" family="Times New Roman" size="12"/></Styles>
+<Group view="presentation"><Input><Text-field style="Title" layout="Heading 1">Saltmere tide model</Text-field></Input></Group>
+<Group view="presentation"><Input><Text-field style="Text">High water follows a sine of period 12.42 hours.</Text-field></Input></Group>
+<Group view="presentation"><Input><Equation executable="true" style="2D Input">tide := t -&gt; 2.1*sin(2*Pi*t/12.42)</Equation></Input>
+<Output><Equation style="2D Output">tide := t -&gt; 2.1 sin(0.5059 t)</Equation></Output></Group>
+<Group view="presentation"><Input><Equation executable="true" style="2D Input">plot(tide(t), t = 0 .. 24)</Equation></Input><Output><Plot height="300" width="500"/></Output></Group>
+</Worksheet>

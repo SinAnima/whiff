@@ -1,0 +1,145 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "berths.pkb",
+    "stem": "berths",
+    "extension": "pkb"
+  },
+  "identification": {
+    "format": "plsql",
+    "name": "PL/SQL / T-SQL source",
+    "mime": "text/x-plsql",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 336
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 336,
+    "entropy": 4.956,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 336,
+      "chars": 336,
+      "words": 51,
+      "lines": 14,
+      "max_line_length": 52,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "9c7b3166676aa7eccf7b8749d6691d4d676003ade2e072d8f5a11310f1307378",
+    "blake3": "990b091e354f20684e80ae61ac207880efa0d8c2434eade4b11fa06d98a9e969"
+  },
+  "content": {
+    "description": "Berth fees for Saltmere Harbour.",
+    "excerpt": "Berth fees for Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "plsql": {
+      "language": "PL/SQL / T-SQL",
+      "loc": {
+        "code": 11,
+        "comment": 2,
+        "blank": 1,
+        "total": 14
+      },
+      "symbols": {
+        "function": [
+          "fee"
+        ],
+        "package": [
+          "berths"
+        ],
+        "procedure": [
+          "book"
+        ]
+      },
+      "symbol_counts": {
+        "function": 1,
+        "package": 1,
+        "procedure": 1
+      },
+      "module_doc": "Berth fees for Saltmere Harbour.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 52
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

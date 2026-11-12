@@ -1,0 +1,11 @@
+<%# Saltmere berth list %>
+<h1><%= @harbour.name %></h1>
+<%= render partial: "shared/tide_banner" %>
+<% content_for :sidebar do %>
+  <p>High water <%= @tide.high %></p>
+<% end %>
+<ul>
+<% @boats.each do |boat| %>
+  <li><%= link_to boat.name, boat_path(boat) %> at berth <%= boat.berth %></li>
+<% end %>
+</ul>

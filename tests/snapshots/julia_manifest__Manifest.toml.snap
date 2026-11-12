@@ -1,0 +1,135 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Manifest.toml",
+    "stem": "Manifest",
+    "extension": "toml"
+  },
+  "identification": {
+    "format": "julia_manifest",
+    "name": "Julia Manifest.toml",
+    "mime": "application/toml",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "julia_manifest",
+        "confidence": 0.97
+      },
+      {
+        "format": "toml",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 478
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 478,
+    "entropy": 5.085,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 478,
+      "chars": 478,
+      "words": 45,
+      "lines": 18,
+      "max_line_length": 69,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "9db25d6408879502b16671e219c78ee4cb16e4b2c41a4f944a459c5a87890238",
+    "blake3": "3eebe60b96f3e748a970e7e77e6d1a376ee9d777cd6561bc3ecacb3d80804425"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "julia_manifest": {
+      "ecosystem": "julia",
+      "julia_version": "1.10.5",
+      "manifest_format": "2.0",
+      "resolved_packages": 3,
+      "packages": {
+        "Dates": "stdlib",
+        "Plots": "1.40.8",
+        "Printf": "stdlib"
+      },
+      "packages_count": 3
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

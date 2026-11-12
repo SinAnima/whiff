@@ -1,0 +1,152 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "control",
+    "stem": "control"
+  },
+  "identification": {
+    "format": "debian_control",
+    "name": "Debian control file",
+    "mime": "text/plain",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 799
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "personal_data": {
+      "email": 2
+    }
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 799,
+    "entropy": 4.866,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 799,
+      "chars": 799,
+      "words": 73,
+      "lines": 25,
+      "max_line_length": 62,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "10402031d3840f978bf65bf680421d95123c357eb4d9b4761ac593de382b1277",
+    "blake3": "2c5a373d04fd5cc0f5802dfa23a45ac072d393faa8e7558863dfd1c647edd1cf"
+  },
+  "content": {
+    "title": "saltmere-tides"
+  },
+  "metadata": {},
+  "format": {
+    "debian_control": {
+      "ecosystem": "debian",
+      "name": "saltmere-tides",
+      "repository": "https://git.harbour.test/debian/saltmere-tides.git",
+      "control_kind": "source",
+      "maintainer": "Harbour Office",
+      "uploaders": 1,
+      "section": "science",
+      "priority": "optional",
+      "standards_version": "4.7.0",
+      "homepage": "https://harbour.test/tides",
+      "rules_requires_root": "no",
+      "build_dependencies": {
+        "debhelper-compat": "= 13",
+        "meson": "*",
+        "libglib2.0-dev": ">= 2.76"
+      },
+      "build_dependencies_count": 3,
+      "dependencies": {
+        "python3": ">= 3.11"
+      },
+      "dependencies_count": 1,
+      "binary_packages": [
+        {
+          "name": "saltmere-tides",
+          "architecture": "any",
+          "synopsis": "tide predictions for Saltmere Harbour"
+        },
+        {
+          "name": "saltmere-tides-data",
+          "architecture": "all",
+          "synopsis": "tide tables for Saltmere Harbour"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

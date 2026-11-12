@@ -1,0 +1,533 @@
+---
+source: src/formats/archive/encoded.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-makeself250.run",
+    "stem": "saltmere-makeself250",
+    "extension": "run"
+  },
+  "identification": {
+    "format": "makeself",
+    "name": "Makeself self-extracting archive",
+    "mime": "application/x-makeself",
+    "family": "archive",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "makeself",
+        "confidence": 0.99
+      },
+      {
+        "format": "shell",
+        "confidence": 0.9
+      }
+    ],
+    "extractor": "archive.encoded"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 19096
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "encrypted": true
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 19096,
+    "entropy": 5.179,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "93e2bdfa94d70c20e95c0e59a0791f21643ac268a5fdbb9f2cbb834fc6641957",
+    "blake3": "7610cb2ac221001b0e90afa06a741a219273ad708f2d17a6b48ddf3319068ab4"
+  },
+  "content": {
+    "title": "Saltmere harbour notes"
+  },
+  "metadata": {},
+  "format": {
+    "makeself": {
+      "makeself_version": "2.5.0",
+      "crc": "3085302896",
+      "md5": "7b950adeaad296bc6069580f63456661",
+      "label": "Saltmere harbour notes",
+      "startup_script": "./notes.txt",
+      "target_directory": "harbour",
+      "payload_bytes": 385,
+      "compression": "gzip",
+      "payload_offset": 18711
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "payload",
+        "stem": "payload"
+      },
+      "identification": {
+        "format": "gzip",
+        "name": "gzip",
+        "mime": "application/gzip",
+        "family": "compress",
+        "confidence": 0.72,
+        "detected_by": "magic",
+        "extractor": "compress.gzip"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 385
+      },
+      "temporal": {
+        "filesystem": {},
+        "content": [
+          {
+            "field": "modified",
+            "value": "2026-11-08T05:49:34Z",
+            "source": "compress.gzip",
+            "tz_known": true
+          }
+        ],
+        "earliest": "2026-11-08T05:49:34Z",
+        "latest": "2026-11-08T05:49:34Z"
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 385,
+        "entropy": 7.304,
+        "entropy_scope": "file",
+        "container": {
+          "uncompressed_bytes": 10240,
+          "ratio": 26.5974025974026
+        }
+      },
+      "integrity": {
+        "sha256": "1db3c5f13c11c027d11cd99617d7667ae7e69cefcbadbbd801f3c52e46ea4b1e",
+        "blake3": "ce80e51d3e433c00add1506f7258940168a75598cefb147029760b97adc553ea"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "gzip": {
+          "method": "deflate",
+          "modified": "2026-11-08T05:49:34Z",
+          "level": "maximum",
+          "os": "Unix",
+          "declared_size_bytes": 10240
+        }
+      },
+      "embedded": [
+        {
+          "whiff": {
+            "version": "[version]",
+            "schema": "whiff/1",
+            "profile": "standard"
+          },
+          "source": {
+            "name": "payload.out",
+            "stem": "payload",
+            "extension": "out"
+          },
+          "identification": {
+            "format": "tar",
+            "name": "tar archive",
+            "mime": "application/x-tar",
+            "family": "archive",
+            "confidence": 0.85,
+            "detected_by": "sniff",
+            "extension_matches": false,
+            "extractor": "archive.tar"
+          },
+          "system": {
+            "kind": "memory",
+            "size_bytes": 10240
+          },
+          "temporal": {
+            "filesystem": {},
+            "content": [
+              {
+                "field": "modified",
+                "value": "2025-09-01T12:00:00Z",
+                "source": "archive.tar",
+                "tz_known": true
+              }
+            ],
+            "earliest": "2025-09-01T12:00:00Z",
+            "latest": "2025-09-01T12:00:00Z"
+          },
+          "security": {},
+          "rights": {},
+          "physical": {
+            "size_bytes": 10240,
+            "entropy": 0.851,
+            "entropy_scope": "file",
+            "container": {
+              "entries": 3,
+              "uncompressed_bytes": 692,
+              "ratio": 0.067578125
+            }
+          },
+          "integrity": {
+            "sha256": "27fe4304151e6cc65b0bfc367a9fdb6d9e6d3b6431ea30921c4c57d07da71c89",
+            "blake3": "d618902a83ab06cc082b6bdb86931e1a181a08fccf5004a547f44dcc9539c5a4"
+          },
+          "content": {},
+          "metadata": {},
+          "format": {
+            "tar": {
+              "variant": "ustar",
+              "files": 3,
+              "compressed_bytes": 692,
+              "file_types": {
+                "txt": 2,
+                "csv": 1
+              },
+              "top_level": [
+                "charts/",
+                "log.csv",
+                "notes.txt"
+              ],
+              "modified_range": [
+                "2025-09-01T12:00:00Z",
+                "2025-09-01T12:00:00Z"
+              ],
+              "entries": [
+                {
+                  "path": "./charts/bay.txt",
+                  "size_bytes": 438,
+                  "modified": "2025-09-01T12:00:00Z",
+                  "mode": "644"
+                },
+                {
+                  "path": "./log.csv",
+                  "size_bytes": 92,
+                  "modified": "2025-09-01T12:00:00Z",
+                  "mode": "644"
+                },
+                {
+                  "path": "./notes.txt",
+                  "size_bytes": 162,
+                  "modified": "2025-09-01T12:00:00Z",
+                  "mode": "644"
+                }
+              ]
+            }
+          },
+          "embedded": [
+            {
+              "whiff": {
+                "version": "[version]",
+                "schema": "whiff/1",
+                "profile": "standard"
+              },
+              "source": {
+                "name": "bay.txt",
+                "stem": "bay",
+                "extension": "txt"
+              },
+              "identification": {
+                "format": "",
+                "name": "",
+                "mime": "",
+                "confidence": 0.0,
+                "detected_by": "none",
+                "extractor": null
+              },
+              "system": {
+                "kind": "memory",
+                "size_bytes": 438
+              },
+              "temporal": {
+                "filesystem": {}
+              },
+              "security": {},
+              "rights": {},
+              "physical": {},
+              "integrity": {},
+              "content": {},
+              "metadata": {},
+              "format": {},
+              "diagnostics": {
+                "warnings": [
+                  "not analysed: max_depth reached"
+                ],
+                "truncated": false,
+                "elapsed_ms": 0.0
+              }
+            },
+            {
+              "whiff": {
+                "version": "[version]",
+                "schema": "whiff/1",
+                "profile": "standard"
+              },
+              "source": {
+                "name": "log.csv",
+                "stem": "log",
+                "extension": "csv"
+              },
+              "identification": {
+                "format": "",
+                "name": "",
+                "mime": "",
+                "confidence": 0.0,
+                "detected_by": "none",
+                "extractor": null
+              },
+              "system": {
+                "kind": "memory",
+                "size_bytes": 92
+              },
+              "temporal": {
+                "filesystem": {}
+              },
+              "security": {},
+              "rights": {},
+              "physical": {},
+              "integrity": {},
+              "content": {},
+              "metadata": {},
+              "format": {},
+              "diagnostics": {
+                "warnings": [
+                  "not analysed: max_depth reached"
+                ],
+                "truncated": false,
+                "elapsed_ms": 0.0
+              }
+            },
+            {
+              "whiff": {
+                "version": "[version]",
+                "schema": "whiff/1",
+                "profile": "standard"
+              },
+              "source": {
+                "name": "notes.txt",
+                "stem": "notes",
+                "extension": "txt"
+              },
+              "identification": {
+                "format": "",
+                "name": "",
+                "mime": "",
+                "confidence": 0.0,
+                "detected_by": "none",
+                "extractor": null
+              },
+              "system": {
+                "kind": "memory",
+                "size_bytes": 162
+              },
+              "temporal": {
+                "filesystem": {}
+              },
+              "security": {},
+              "rights": {},
+              "physical": {},
+              "integrity": {},
+              "content": {},
+              "metadata": {},
+              "format": {},
+              "diagnostics": {
+                "warnings": [
+                  "not analysed: max_depth reached"
+                ],
+                "truncated": false,
+                "elapsed_ms": 0.0
+              }
+            }
+          ],
+          "diagnostics": {
+            "extractors": [
+              {
+                "id": "archive.tar",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "meta.mwg",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.language",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.excerpt",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.keywords",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "text.summary",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "temporal.range",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              },
+              {
+                "id": "privacy.scan",
+                "version": 1,
+                "ms": 0.0,
+                "status": "ok"
+              }
+            ],
+            "limits_hit": [
+              "max_depth"
+            ],
+            "truncated": true,
+            "elapsed_ms": 0.0
+          }
+        }
+      ],
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "compress.gzip",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "limits_hit": [
+          "max_depth"
+        ],
+        "truncated": true,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.encoded",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "limits_hit": [
+      "max_depth"
+    ],
+    "truncated": true,
+    "elapsed_ms": 0.0
+  }
+}

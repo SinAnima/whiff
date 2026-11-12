@@ -1,0 +1,150 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.cypher",
+    "stem": "harbour",
+    "extension": "cypher"
+  },
+  "identification": {
+    "format": "cypher",
+    "name": "Cypher / GQL query",
+    "mime": "application/x-cypher-query",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 382
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 382,
+    "entropy": 5.311,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 382,
+      "chars": 382,
+      "words": 44,
+      "lines": 8,
+      "max_line_length": 94,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "7464df9d65cb822ba6fab0df539a0830f307801b1346e669a0408602d9c0db63",
+    "blake3": "30e1a0d0f3cedb3546deac0e3244ec0485ab09ef3b34c49b8a53b8c97949619a"
+  },
+  "content": {
+    "description": "Saltmere harbour graph",
+    "excerpt": "Saltmere harbour graph"
+  },
+  "metadata": {},
+  "format": {
+    "cypher": {
+      "language": "Cypher / GQL query",
+      "loc": {
+        "code": 6,
+        "comment": 2,
+        "blank": 0,
+        "total": 8
+      },
+      "imports": [
+        "file:///berths.csv"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "index": [
+          "boat_name"
+        ],
+        "label": [
+          "Boat",
+          "Berth"
+        ],
+        "relationship": [
+          "MOORED_AT"
+        ]
+      },
+      "symbol_counts": {
+        "index": 1,
+        "label": 6,
+        "relationship": 3
+      },
+      "module_doc": "Saltmere harbour graph",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 94
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

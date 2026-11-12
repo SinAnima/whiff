@@ -1,0 +1,142 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.au3",
+    "stem": "harbour",
+    "extension": "au3"
+  },
+  "identification": {
+    "format": "autoit",
+    "name": "AutoIt script",
+    "mime": "text/x-autoit",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 209
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 209,
+    "entropy": 5.13,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 209,
+      "chars": 209,
+      "words": 23,
+      "lines": 12,
+      "max_line_length": 43,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "e8dda8297c7f83900b1ee4703d26b7f266abd496983a76035956eff7d7e4f87f",
+    "blake3": "6109f676edde737d1d36f7804f6358842909cc68f4add67b9dda5a166972a14d"
+  },
+  "content": {
+    "description": "Harbour logbook helper.",
+    "excerpt": "Harbour logbook helper."
+  },
+  "metadata": {},
+  "format": {
+    "autoit": {
+      "language": "AutoIt script",
+      "loc": {
+        "code": 6,
+        "comment": 4,
+        "blank": 2,
+        "total": 12
+      },
+      "imports": [
+        "MsgBoxConstants.au3",
+        "Tides.au3"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "function": [
+          "NextHighWater"
+        ]
+      },
+      "symbol_counts": {
+        "function": 1
+      },
+      "module_doc": "Harbour logbook helper.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 43
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

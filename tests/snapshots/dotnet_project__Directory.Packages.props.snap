@@ -1,0 +1,132 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Directory.Packages.props",
+    "stem": "Directory.Packages",
+    "extension": "props"
+  },
+  "identification": {
+    "format": "dotnet_project",
+    "name": ".NET project",
+    "mime": "application/xml",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "dotnet_project",
+        "confidence": 0.97
+      },
+      {
+        "format": "xml",
+        "confidence": 0.37
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 273
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 273,
+    "entropy": 4.798,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 273,
+      "chars": 273,
+      "words": 15,
+      "lines": 9,
+      "max_line_length": 73,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "1f0695b507b7be93f021d54acece22e03a847baa25be0cab964448aa5609fcb3",
+    "blake3": "47d05ee299d636a11cd3e2a3c2562612781ccf7ea282a75a4d55dc67ce03c3d2"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "dotnet_project": {
+      "ecosystem": "nuget",
+      "central_package_management": "true",
+      "dependencies": {
+        "Serilog": "4.0.2",
+        "xunit": "2.9.2"
+      },
+      "dependencies_count": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

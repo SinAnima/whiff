@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Saltmere Tides"
+abstract: "Harmonic tide predictions for the fictitious Saltmere Harbour."
+type: software
+authors:
+  - given-names: Ada
+    family-names: Harbour
+  - name: "Harbour Office"
+version: 1.4.0
+date-released: 2026-03-14
+license: CC0-1.0
+repository-code: "https://git.harbour.test/tides"
+keywords:
+  - tides
+  - harbour
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.0000000

@@ -1,0 +1,123 @@
+---
+source: src/formats/doc/packages.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-notion-export.zip",
+    "stem": "saltmere-notion-export",
+    "extension": "zip"
+  },
+  "identification": {
+    "format": "wiki_export",
+    "name": "Notion / Confluence export",
+    "mime": "application/zip",
+    "family": "doc.other",
+    "confidence": 0.8,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "wiki_export",
+        "confidence": 0.8
+      },
+      {
+        "format": "zip",
+        "confidence": 0.55
+      }
+    ],
+    "extractor": "doc.packages"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 837
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 837,
+    "entropy": 5.065,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "a0f89d6bdc83508f83073fac77aa27a4c89863f52e221cf3a1c7c1a3af6bb240",
+    "blake3": "49b2794d07c6b2e437528c38a4771782c8ab55f668b39d464ed0d2cad4a7560e"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "wiki_export": {
+      "exported_from": "Notion",
+      "pages": 3,
+      "depth": 1,
+      "attachments": 1,
+      "page_titles": [
+        "Saltmere Harbour",
+        "Tides",
+        "Berths"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.packages",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,8 @@
+snapshot: lts-22.36
+packages:
+  - .
+extra-deps:
+  - tide-model-0.3.0@sha256:0f1e2d3c,1024
+flags:
+  saltmere-tides:
+    fast: true

@@ -1,0 +1,185 @@
+---
+source: src/formats/text/lightmarkup.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "annual-report.ms",
+    "stem": "annual-report",
+    "extension": "ms"
+  },
+  "identification": {
+    "format": "roff",
+    "name": "troff / man page",
+    "mime": "text/troff",
+    "family": "text.lightmarkup",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.lightmarkup"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 241
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 0
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 241,
+    "entropy": 4.806,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 241,
+      "chars": 241,
+      "words": 41,
+      "lines": 20,
+      "max_line_length": 45,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "cd2070b67b0fcce850688e8e06ec4209e25bcdb7f532391a1884741309e57057",
+    "blake3": "20fb03896c0653213a9c1e79f2c0fd1251b3a60c283a114f6b6597c05b485e71"
+  },
+  "content": {
+    "title": "Annual Report of the Saltmere Harbour Board",
+    "authors": [
+      "Ada Quayside"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Saltmere Harbour Board",
+      "Annual Report",
+      "Board",
+      "Harbour",
+      "Saltmere",
+      "Report",
+      "Annual",
+      "Ada Quayside",
+      "Cost",
+      "moorings"
+    ],
+    "keyword_frequency": [
+      [
+        "board",
+        3
+      ],
+      [
+        "harbour",
+        3
+      ],
+      [
+        "saltmere",
+        3
+      ],
+      [
+        "annual",
+        2
+      ],
+      [
+        "moorings",
+        2
+      ],
+      [
+        "report",
+        2
+      ]
+    ],
+    "excerpt": "Annual Report of the Saltmere Harbour Board Ada Quayside Saltmere Harbour Board All one hundred and twenty moorings were let. The east pontoon was repainted. tab(;); l l. Job;Cost Paint;400",
+    "tags": [
+      "Saltmere Harbour Board",
+      "Annual Report",
+      "Board",
+      "Harbour",
+      "Saltmere"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "roff": {
+      "headings": 2,
+      "links": {
+        "internal": 0,
+        "external": 0
+      },
+      "images": 0,
+      "code_blocks": 0,
+      "tables": 1,
+      "macro_package": "ms",
+      "sections": [
+        "Moorings",
+        "Works"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.lightmarkup",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

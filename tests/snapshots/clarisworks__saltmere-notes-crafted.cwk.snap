@@ -1,0 +1,106 @@
+---
+source: src/formats/doc/legacy.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-notes-crafted.cwk",
+    "stem": "saltmere-notes-crafted",
+    "extension": "cwk"
+  },
+  "identification": {
+    "format": "clarisworks",
+    "name": "ClarisWorks / AppleWorks document",
+    "mime": "application/x-appleworks",
+    "family": "doc.other",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "doc.legacy"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 512
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 512,
+    "entropy": 0.135,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "783602540c900557080aa9c9e7e280224c61b490b8b66791f4bee3a4652b31a0",
+    "blake3": "153e7b682f3c51e2400bac57b2d026395a27805ed2fb4d2d41766c1f3be23c72"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "clarisworks": {
+      "version": 6,
+      "application": "AppleWorks"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.legacy",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

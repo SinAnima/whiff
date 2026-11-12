@@ -1,0 +1,132 @@
+---
+source: src/formats/archive/dos.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-kgb.kgb",
+    "stem": "saltmere-kgb",
+    "extension": "kgb"
+  },
+  "identification": {
+    "format": "kgb",
+    "name": "KGB Archiver archive",
+    "mime": "application/x-kgb",
+    "family": "archive",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "archive.dos"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 202
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 202,
+    "entropy": 6.851,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 2,
+      "uncompressed_bytes": 254,
+      "ratio": 1.2574257425742574
+    }
+  },
+  "integrity": {
+    "sha256": "2b40a26d6b8ffc8e7130582f46e6f4e3400561e523294cab1daeefcb84d854dd",
+    "blake3": "b70f0e9cf17376c94c300f9aa549be3af563f5443d8580c9332ddfc85e4399b8"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "kgb": {
+      "compression_level": 3,
+      "files": 2,
+      "methods": {
+        "PAQ6": 2
+      },
+      "file_types": {
+        "csv": 1,
+        "txt": 1
+      },
+      "top_level": [
+        "LOG.CSV",
+        "NOTES.TXT"
+      ],
+      "entries": [
+        {
+          "path": "NOTES.TXT",
+          "size_bytes": 162
+        },
+        {
+          "path": "LOG.CSV",
+          "size_bytes": 92
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.dos",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:camt.053.001.08">
+  <BkToCstmrStmt>
+    <GrpHdr><MsgId>SALT-2025-09</MsgId><CreDtTm>2025-09-01T12:00:00</CreDtTm></GrpHdr>
+    <Stmt>
+      <Id>SALT-STMT-1</Id>
+      <Acct><Id><IBAN>GB00SALT00000000012345</IBAN></Id><Ccy>GBP</Ccy></Acct>
+      <Bal><Tp><CdOrPrtry><Cd>OPBD</Cd></CdOrPrtry></Tp><Amt Ccy="GBP">1000.00</Amt><CdtDbtInd>CRDT</CdtDbtInd></Bal>
+      <Ntry><Amt Ccy="GBP">12.50</Amt><CdtDbtInd>DBIT</CdtDbtInd><BookgDt><Dt>2025-08-05</Dt></BookgDt></Ntry>
+      <Ntry><Amt Ccy="GBP">200.00</Amt><CdtDbtInd>CRDT</CdtDbtInd><BookgDt><Dt>2025-08-15</Dt></BookgDt></Ntry>
+    </Stmt>
+  </BkToCstmrStmt>
+</Document>

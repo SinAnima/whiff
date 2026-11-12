@@ -1,0 +1,147 @@
+---
+source: src/formats/text/dialects.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.dtd",
+    "stem": "saltmere-tides",
+    "extension": "dtd"
+  },
+  "identification": {
+    "format": "dtd",
+    "name": "XML document type definition",
+    "mime": "application/xml-dtd",
+    "family": "text.xml",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "dtd",
+        "confidence": 0.95
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "text.dialects"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 351
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 1,
+    "risks": [
+      {
+        "kind": "external_entity",
+        "category": "exploit",
+        "severity": "high",
+        "detail": "1 external entity declaration(s)",
+        "source": "text.dialects"
+      }
+    ],
+    "risk_level": "high"
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 351,
+    "entropy": 5.343,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 351,
+      "chars": 351,
+      "words": 42,
+      "lines": 10,
+      "max_line_length": 62,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "73ad9bf3ce854157894a1385dd08d2b1fbfb03694715aba864e0bc53ff9a32ab",
+    "blake3": "5c9e378499357dc4f49c8d29d362b085f7c6d0ad294675da9b4105a40e06bd56"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "dtd": {
+      "elements": 2,
+      "element_names": [
+        "tides",
+        "tide"
+      ],
+      "attribute_lists": 2,
+      "general_entities": 2,
+      "parameter_entities": 1,
+      "external_entities": 1,
+      "notations": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.dialects",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

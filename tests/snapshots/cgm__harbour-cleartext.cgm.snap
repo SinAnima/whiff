@@ -1,0 +1,138 @@
+---
+source: src/formats/image/diagram.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-cleartext.cgm",
+    "stem": "harbour-cleartext",
+    "extension": "cgm"
+  },
+  "identification": {
+    "format": "cgm",
+    "name": "Computer Graphics Metafile",
+    "mime": "image/cgm",
+    "family": "image.vector",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "image.diagram"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 192
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 192,
+    "entropy": 5.106,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 192,
+      "chars": 192,
+      "words": 26,
+      "lines": 11,
+      "max_line_length": 30,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "document": {
+      "pages": 1
+    }
+  },
+  "integrity": {
+    "sha256": "d2d9e8206a927beedcf58bfd00248d51813b9985ec7a99defb35fb19c9cee895",
+    "blake3": "3ba68ec0d45e03e4b218c24e08947369976f55dc98544232022cbb0fca04310e"
+  },
+  "content": {
+    "excerpt": "North quay"
+  },
+  "metadata": {},
+  "format": {
+    "cgm": {
+      "name": "Harbour plan",
+      "description": "whiff fixture",
+      "version": 1,
+      "encoding": "clear text",
+      "elements": 11,
+      "element_classes": {
+        "delimiter": 5,
+        "graphical primitive": 2,
+        "metafile descriptor": 3,
+        "picture descriptor": 1
+      },
+      "pictures": [
+        "Quay"
+      ],
+      "fonts": [
+        "Helvetica"
+      ],
+      "texts": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.diagram",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

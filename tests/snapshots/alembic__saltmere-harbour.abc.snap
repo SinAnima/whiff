@@ -1,0 +1,116 @@
+---
+source: src/formats/cad/models.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-harbour.abc",
+    "stem": "saltmere-harbour",
+    "extension": "abc"
+  },
+  "identification": {
+    "format": "alembic",
+    "name": "Alembic archive",
+    "mime": "application/x-alembic",
+    "family": "3d",
+    "confidence": 0.8,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "cad.models"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 589
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 589,
+    "entropy": 5.005,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "679cf16be033d9f0723c354ac70468e46cb75472a177eb87a3ea1acd579261b8",
+    "blake3": "26c3d9fe67a259703f6726fb40f7dc3d84227c6dcdb02bc75702eb517b454a40"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "alembic": {
+      "backend": "Ogawa",
+      "frozen": true,
+      "ogawa_version": 1,
+      "alembic_version": "Alembic 1.8.6 (built Sep  1 2025)",
+      "application": "Saltmere harbour exporter 1.0",
+      "written": "Mon Sep  1 12:00:00 2025",
+      "description": "Saltmere harbour buoy and pier",
+      "schemas": {
+        "Camera": 1,
+        "PolyMesh": 2,
+        "Xform": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.models",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

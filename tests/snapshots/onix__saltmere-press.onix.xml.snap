@@ -1,0 +1,146 @@
+---
+source: src/formats/text/dialects.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-press.onix.xml",
+    "stem": "saltmere-press.onix",
+    "extension": "xml"
+  },
+  "identification": {
+    "format": "onix",
+    "name": "ONIX for Books",
+    "mime": "application/xml",
+    "family": "text.xml",
+    "confidence": 0.93,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "onix",
+        "confidence": 0.93
+      },
+      {
+        "format": "xml",
+        "confidence": 0.65
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "text.dialects"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1936
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1936,
+    "entropy": 4.975,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1936,
+      "chars": 1936,
+      "words": 47,
+      "lines": 31,
+      "max_line_length": 168,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "edbeb33cd0e0aa325d9014596a22b37d7493650c79da026e01eee769914e9c96",
+    "blake3": "f7a68b9263c54e9afc4d320fdf4e89afa6d19953c9ff4342c6ed8b0968104503"
+  },
+  "content": {
+    "title": "Tides of Saltmere"
+  },
+  "metadata": {},
+  "format": {
+    "onix": {
+      "release": "3.0",
+      "sender": "Saltmere Harbour Press",
+      "products": 2,
+      "isbns": [
+        "9780000000002",
+        "9780000000019"
+      ],
+      "titles": [
+        "Tides of Saltmere",
+        "The Harbour Bell"
+      ],
+      "contributors": 2,
+      "publishers": [
+        "Saltmere Harbour Press"
+      ],
+      "product_forms": {
+        "BC": 1,
+        "ED": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.dialects",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

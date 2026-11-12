@@ -13,6 +13,7 @@ pub(crate) mod pki;
 pub(crate) mod ssh;
 pub(crate) mod store;
 pub(crate) mod token;
+pub(crate) mod tpm;
 
 // Helpers shared with the audio, archive and executable extractors.
 pub(crate) use super::archive::unix_time;

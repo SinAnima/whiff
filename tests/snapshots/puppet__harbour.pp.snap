@@ -1,0 +1,161 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.pp",
+    "stem": "harbour",
+    "extension": "pp"
+  },
+  "identification": {
+    "format": "puppet",
+    "name": "Puppet manifest",
+    "mime": "text/x-puppet",
+    "family": "code.source",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "puppet",
+        "confidence": 0.9
+      },
+      {
+        "format": "pascal",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 342
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 342,
+    "entropy": 4.595,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 342,
+      "chars": 342,
+      "words": 43,
+      "lines": 19,
+      "max_line_length": 46,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "c221a6b014333cc62cfb76fa5949c9b3b45d54b81d86d3b863b71a2b0153b750",
+    "blake3": "f1cf59d79c81edc3ba0fe4eb8a6e536df357e49e9311ec42dcad934b6b18ccf0"
+  },
+  "content": {
+    "description": "Gauge daemon for the Saltmere Harbour hosts.",
+    "excerpt": "Gauge daemon for the Saltmere Harbour hosts."
+  },
+  "metadata": {},
+  "format": {
+    "puppet": {
+      "language": "Puppet manifest",
+      "loc": {
+        "code": 15,
+        "comment": 1,
+        "blank": 3,
+        "total": 19
+      },
+      "imports": [
+        "harbour::common",
+        "harbour::gauge"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "class": [
+          "harbour::gauge"
+        ],
+        "node": [
+          "gauge01.harbour.test"
+        ],
+        "resource": [
+          "package",
+          "service"
+        ]
+      },
+      "symbol_counts": {
+        "class": 1,
+        "node": 1,
+        "resource": 2
+      },
+      "module_doc": "Gauge daemon for the Saltmere Harbour hosts.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 46
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

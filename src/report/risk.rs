@@ -12,6 +12,7 @@ use super::Risk;
 /// How much a risk signal should worry the reader.
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
+#[non_exhaustive]
 pub enum Severity {
     /// Worth knowing; not a threat by itself.
     Info,
@@ -39,6 +40,7 @@ impl Severity {
 /// What kind of threat a risk signal points to.
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
+#[non_exhaustive]
 pub enum RiskCategory {
     /// Code that can run: macros, scripts, actions, DDE.
     ActiveContent,
@@ -83,6 +85,7 @@ impl RiskCategory {
 
 /// One entry of the vocabulary.
 #[derive(Debug, Clone, Copy)]
+#[non_exhaustive]
 pub struct RiskKind {
     /// The `snake_case` kind.
     pub kind: &'static str,

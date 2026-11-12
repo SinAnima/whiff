@@ -1,0 +1,151 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "TidePump.st",
+    "stem": "TidePump",
+    "extension": "st"
+  },
+  "identification": {
+    "format": "plc_st",
+    "name": "IEC 61131-3 Structured Text",
+    "mime": "text/x-iecst",
+    "family": "code.source",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "plc_st",
+        "confidence": 0.9
+      },
+      {
+        "format": "smalltalk",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 293
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 293,
+    "entropy": 5.11,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 293,
+      "chars": 293,
+      "words": 40,
+      "lines": 17,
+      "max_line_length": 49,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "5873403c72a6e0e4ba0300ea27eaa27a1c9676adf7fa33a07a3ebe636a23ba90",
+    "blake3": "5f78801ac4b98fd93610dd70c3d30445b4a27cec69a08236d26cfb74bf35c2ab"
+  },
+  "content": {
+    "description": "Bilge pump control for the harbour pontoon.",
+    "excerpt": "Bilge pump control for the harbour pontoon."
+  },
+  "metadata": {},
+  "format": {
+    "plc_st": {
+      "language": "IEC 61131-3 Structured Text",
+      "loc": {
+        "code": 15,
+        "comment": 1,
+        "blank": 1,
+        "total": 17
+      },
+      "symbols": {
+        "function_block": [
+          "FB_TidePump"
+        ],
+        "program": [
+          "MAIN"
+        ]
+      },
+      "symbol_counts": {
+        "function_block": 1,
+        "program": 1
+      },
+      "module_doc": "Bilge pump control for the harbour pontoon.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 49
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

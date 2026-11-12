@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "dbt_schema_version": "https://schemas.getdbt.com/dbt/manifest/v12.json",
+    "dbt_version": "1.8.7",
+    "adapter_type": "duckdb"
+  },
+  "nodes": {
+    "model.harbour.berths": {
+      "resource_type": "model"
+    },
+    "model.harbour.tides": {
+      "resource_type": "model"
+    },
+    "test.harbour.not_null_berths_boat": {
+      "resource_type": "test"
+    },
+    "seed.harbour.boats": {
+      "resource_type": "seed"
+    }
+  },
+  "sources": {
+    "source.harbour.raw.landings": {}
+  },
+  "exposures": {},
+  "metrics": {}
+}

@@ -17,8 +17,8 @@ expression: report
     "name": "Plain text",
     "mime": "text/plain",
     "family": "text.plain",
-    "confidence": 0.3,
-    "detected_by": "heuristic",
+    "confidence": 0.6,
+    "detected_by": "sniff",
     "encoding": "us-ascii",
     "extractor": "text.plain"
   },
@@ -124,7 +124,8 @@ expression: report
   "format": {
     "text": {
       "license": "MIT",
-      "paragraphs": 5
+      "paragraphs": 5,
+      "document_kind": "license"
     }
   },
   "diagnostics": {

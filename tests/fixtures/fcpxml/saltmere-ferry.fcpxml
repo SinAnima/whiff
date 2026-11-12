@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fcpxml>
+<fcpxml version="1.10">
+    <resources>
+        <format id="r1" name="FFVideoFormat1080p25" frameDuration="100/2500s" width="1920" height="1080" colorSpace="1-1-1 (Rec. 709)"/>
+        <asset id="r2" name="quay-wide" start="0s" duration="10s" hasVideo="1" format="r1" hasAudio="1" audioSources="1" audioChannels="2" audioRate="48000">
+            <media-rep kind="original-media" src="file:///Users/harbourmaster/Movies/Saltmere/quay-wide.mov"/>
+        </asset>
+        <asset id="r3" name="ferry-arrives" start="0s" duration="8s" hasVideo="1" format="r1">
+            <media-rep kind="original-media" src="file:///Users/harbourmaster/Movies/Saltmere/ferry-arrives.mov"/>
+        </asset>
+    </resources>
+    <library>
+        <event name="Saltmere 2025-09-01">
+            <project name="Saltmere ferry">
+                <sequence format="r1" duration="225/25s" tcStart="0s" tcFormat="NDF" audioLayout="stereo" audioRate="48k">
+                    <spine>
+                        <asset-clip ref="r2" offset="0s" name="quay-wide" duration="5s" format="r1" tcFormat="NDF"/>
+                        <gap name="Gap" offset="5s" duration="1s"/>
+                        <asset-clip ref="r3" offset="6s" name="ferry-arrives" duration="3s" format="r1" tcFormat="NDF"/>
+                    </spine>
+                </sequence>
+            </project>
+        </event>
+    </library>
+</fcpxml>

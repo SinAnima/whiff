@@ -1,0 +1,143 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "fees.awk",
+    "stem": "fees",
+    "extension": "awk"
+  },
+  "identification": {
+    "format": "awk",
+    "name": "AWK script",
+    "mime": "text/x-awk",
+    "family": "code.source",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 203
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 203,
+    "entropy": 4.885,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 203,
+      "chars": 203,
+      "words": 41,
+      "lines": 13,
+      "max_line_length": 43,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "99ca93ca53f84b12394fa1eed7ca133f65c93e07e72c756f8007e6aca41f2fa0",
+    "blake3": "1427219be530098e6de03b1a94f5ea8a2da0c5697ea86dfa8c372ea687f08ba9"
+  },
+  "content": {
+    "description": "Sum berth fees per vessel from a CSV log.",
+    "excerpt": "Sum berth fees per vessel from a CSV log."
+  },
+  "metadata": {},
+  "format": {
+    "awk": {
+      "language": "AWK script",
+      "loc": {
+        "code": 9,
+        "comment": 1,
+        "blank": 3,
+        "total": 13
+      },
+      "interpreter": "awk",
+      "symbols": {
+        "function": [
+          "fee"
+        ],
+        "pattern": [
+          "BEGIN",
+          "END"
+        ]
+      },
+      "symbol_counts": {
+        "function": 1,
+        "pattern": 2
+      },
+      "module_doc": "Sum berth fees per vessel from a CSV log.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 43
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

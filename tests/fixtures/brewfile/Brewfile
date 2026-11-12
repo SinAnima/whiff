@@ -1,0 +1,6 @@
+tap "harbour/tools"
+brew "glib"
+brew "pkgconf"
+cask "harbour-chart"
+mas "Tide Clock", id: 1234567890
+vscode "harbour.tide-syntax"

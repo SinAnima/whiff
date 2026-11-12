@@ -1,0 +1,173 @@
+---
+source: src/formats/doc/writing.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-slides.marp",
+    "stem": "saltmere-slides",
+    "extension": "marp"
+  },
+  "identification": {
+    "format": "marp",
+    "name": "Marp slide deck",
+    "mime": "text/markdown",
+    "family": "doc.other",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "doc.writing"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 211
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 211,
+    "entropy": 4.495,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 211,
+      "chars": 211,
+      "words": 39,
+      "lines": 23,
+      "max_line_length": 27,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 8
+    }
+  },
+  "integrity": {
+    "sha256": "d7b380796f8f76a17fb8da1d47056136ed62fd1bba53d17de9a17d7655f5d1d1",
+    "blake3": "93069cee58e5acdafee08e32a2c7bc150d2e1997e72e8c6f6134b7260568cc8e"
+  },
+  "content": {
+    "title": "Saltmere harbour",
+    "keywords": [
+      "Saltmere harbour",
+      "Saltmere",
+      "Tides",
+      "harbour",
+      "Berths",
+      "water",
+      "Tern",
+      "Grey Tern",
+      "bell",
+      "Grey"
+    ],
+    "keyword_frequency": [
+      [
+        "berth",
+        2
+      ],
+      [
+        "harbour",
+        2
+      ],
+      [
+        "water",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "Saltmere harbour"
+      },
+      {
+        "level": 1,
+        "text": "Tides"
+      },
+      {
+        "level": 1,
+        "text": "Berths"
+      }
+    ],
+    "excerpt": "A small harbour and a bell. - High water 06:12 - Low water 12:31 Grey Tern at berth 5.",
+    "tags": [
+      "Saltmere harbour",
+      "Saltmere",
+      "Tides",
+      "harbour",
+      "Berths"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "marp": {
+      "theme": "gaia",
+      "paginate": "true",
+      "slides": 3,
+      "slide_titles": [
+        "Saltmere harbour",
+        "Tides",
+        "Berths"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.writing",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

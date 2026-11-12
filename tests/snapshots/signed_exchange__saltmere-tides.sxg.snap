@@ -1,0 +1,128 @@
+---
+source: src/formats/web/bundle.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.sxg",
+    "stem": "saltmere-tides",
+    "extension": "sxg"
+  },
+  "identification": {
+    "format": "signed_exchange",
+    "name": "Signed HTTP exchange",
+    "mime": "application/signed-exchange",
+    "family": "web.misc",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "signed_exchange",
+        "confidence": 0.99
+      },
+      {
+        "format": "sxw",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "web.bundle"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 425
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 425,
+    "entropy": 5.184,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "d7be6d8883b401200a48117705fcc5cdc0b27f157abf31ef87fd9fa84ec23b1a",
+    "blake3": "90dd35c21daa93a8c7c9bff554cbe4fa1b9c2a4dfffd6a85451a75b29d19f655"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "signed_exchange": {
+      "fallback_url": "https://tides.saltmere.example/",
+      "certificate_url": "https://tides.saltmere.example/cert.cbor",
+      "validity_url": "https://tides.saltmere.example/validity.msg",
+      "integrity": "digest/mi-sha256-03",
+      "signed": "2025-09-01T12:00:00Z",
+      "expires": "2025-09-08T12:00:00Z",
+      "status": "200",
+      "content_type": "text/html; charset=utf-8",
+      "headers": [
+        "content-encoding",
+        "content-type",
+        "digest"
+      ],
+      "payload_bytes": 52
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "web.bundle",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

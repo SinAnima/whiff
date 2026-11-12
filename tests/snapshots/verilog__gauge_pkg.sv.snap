@@ -1,0 +1,142 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "gauge_pkg.sv",
+    "stem": "gauge_pkg",
+    "extension": "sv"
+  },
+  "identification": {
+    "format": "verilog",
+    "name": "Verilog / SystemVerilog source",
+    "mime": "text/x-verilog",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 219
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 219,
+    "entropy": 4.577,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 219,
+      "chars": 219,
+      "words": 30,
+      "lines": 12,
+      "max_line_length": 52,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "4a98cf2fbd4a726cfc3055a52009da9c7f378ef0fb34fd71579d2f79acb04b2b",
+    "blake3": "6290cc6eed7634ad14c9bd9b208bfff2f91bd9ed498a4e1cf9a9e6babaabc938"
+  },
+  "content": {
+    "description": "Gauge types.",
+    "excerpt": "Gauge types."
+  },
+  "metadata": {},
+  "format": {
+    "verilog": {
+      "language": "Verilog / SystemVerilog",
+      "loc": {
+        "code": 9,
+        "comment": 1,
+        "blank": 2,
+        "total": 12
+      },
+      "package": "gauge_pkg",
+      "symbols": {
+        "class": [
+          "gauge_model"
+        ],
+        "function": [
+          "clamp"
+        ]
+      },
+      "symbol_counts": {
+        "class": 1,
+        "function": 1
+      },
+      "module_doc": "Gauge types.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 52
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

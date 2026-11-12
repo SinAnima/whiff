@@ -1,0 +1,138 @@
+---
+source: src/formats/image/retro.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "lighthouse.lbm",
+    "stem": "lighthouse",
+    "extension": "lbm"
+  },
+  "identification": {
+    "format": "ilbm",
+    "name": "Amiga IFF ILBM image",
+    "mime": "image/x-ilbm",
+    "family": "image.raster",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.retro"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 364
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "(c) 2024 Mira Castell, CC0"
+  },
+  "physical": {
+    "size_bytes": 364,
+    "entropy": 4.561,
+    "entropy_scope": "file",
+    "image": {
+      "width": 32,
+      "height": 16,
+      "bit_depth": 4,
+      "channels": 1
+    }
+  },
+  "integrity": {
+    "sha256": "931364398e5455aa2b7e70895ad7332c371e2161f80c6681503a1f85b4ee476f",
+    "blake3": "434352e8b08fc6fe60fafc4cf57dbb18eb36d58910cfe9d4be63c8a2d86d1705"
+  },
+  "content": {
+    "title": "Saltmere lighthouse",
+    "description": "Painted on an imaginary Amiga",
+    "authors": [
+      "Mira Castell"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "ilbm": {
+      "form": "ILBM",
+      "planes": 4,
+      "masking": "none",
+      "compression": "ByteRun1",
+      "pixel_aspect": [
+        10,
+        11
+      ],
+      "page_size": [
+        320,
+        256
+      ],
+      "palette_colors": 16,
+      "display_mode": {
+        "id": 32772,
+        "flags": [
+          "hires",
+          "interlace"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.retro",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

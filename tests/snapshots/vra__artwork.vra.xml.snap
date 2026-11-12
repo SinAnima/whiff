@@ -1,0 +1,173 @@
+---
+source: src/formats/image/sidecar.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "artwork.vra.xml",
+    "stem": "artwork.vra",
+    "extension": "xml"
+  },
+  "identification": {
+    "format": "vra",
+    "name": "VRA Core 4 record",
+    "mime": "application/xml",
+    "family": "meta.vra",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "vra",
+        "confidence": 0.97
+      },
+      {
+        "format": "xml",
+        "confidence": 0.65
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "image.sidecar"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 937
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 937,
+    "entropy": 4.924,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 937,
+      "chars": 937,
+      "words": 54,
+      "lines": 22,
+      "max_line_length": 102,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "abc6bb87c2b15bdbb08e0d43d9ebbb5d9de517683948ae5ad8efc5e14e72d6ff",
+    "blake3": "e4ba9cf5f914e2044be2b917dc7679a1b6f7c4107ee0e480613224720675e8db"
+  },
+  "content": {
+    "title": "Harbour at Dusk",
+    "authors": [
+      "Halvorsen, Ines"
+    ]
+  },
+  "metadata": {
+    "vra": {
+      "records": [
+        {
+          "kind": "work",
+          "id": "w_0001",
+          "title.display": [
+            "Harbour at Dusk"
+          ],
+          "title": [
+            "Harbour at Dusk"
+          ],
+          "agent.display": [
+            "Ines Halvorsen (Norwegian, born 1981)"
+          ],
+          "agent.name": [
+            "Halvorsen, Ines"
+          ],
+          "agent.role": [
+            "painter"
+          ],
+          "date.display": [
+            "2019"
+          ],
+          "date.earliestDate": [
+            "2019"
+          ],
+          "date.latestDate": [
+            "2019"
+          ],
+          "rights.display": [
+            "(c) Ines Halvorsen; licensed to Example Museum"
+          ],
+          "material.display": [
+            "oil on canvas"
+          ],
+          "measurements.display": [
+            "60 x 90 cm"
+          ]
+        }
+      ]
+    }
+  },
+  "format": {
+    "vra": {
+      "records": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.sidecar",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

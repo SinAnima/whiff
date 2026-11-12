@@ -8,13 +8,17 @@
 //!   with a `DestList` index; `customDestinations-ms`): entry and pinned
 //!   counts, the shortcuts' targets;
 //! * Recycle Bin `$I` files: original path, size and deletion time;
+//! * Windows Vista–11 thumbnail caches (`thumbcache_*.db`, `CMMM`, and the
+//!   `IMMM` index): Windows version, thumbnail size class, entries with
+//!   their image type and pixel size;
 //! * Prefetch (`.pf`, Windows XP to 11, LZXPRESS-compressed since 8): the
 //!   executable, hash, run count, last run times, volumes, how many files
 //!   it loaded.
 //!
 //! User names in paths are hidden when privacy is strict.
 //!
-//! Specifications: Microsoft "MS-SHLLINK"; libyal "Windows Jump List",
+//! Specifications: Microsoft "MS-SHLLINK"; libyal "Windows Explorer
+//! Thumbnail Cache database format"; libyal "Windows Jump List",
 //! "Windows Shell Item" and "Windows Prefetch File (PF) format".
 
 use serde_json::{Map, Value, json};
@@ -78,6 +82,15 @@ static META: ExtractorMeta = ExtractorMeta {
             mimes: &[],
             extensions: &["pf"],
             magic: &[Magic::at(4, b"SCCA"), Magic::prefix(b"MAM\x04"), Magic::prefix(b"MAM\x84")],
+            parent: None,
+        },
+        FormatSpec {
+            id: "thumbcache",
+            name: "Windows thumbnail cache (thumbcache)",
+            family: "forensic",
+            mimes: &[],
+            extensions: &["db"],
+            magic: &[Magic::prefix(b"CMMM"), Magic::prefix(b"IMMM")],
             parent: None,
         },
     ],
@@ -414,6 +427,7 @@ impl Extractor for Shell {
         let b = src.read_vec(0, len)?;
         match cx.format_id() {
             "recycle_bin_info" => recycle(&b, cx),
+            "thumbcache" => thumbcache(&b, cx),
             "custom_jump_list" => {
                 custom(&b, cx);
                 Ok(())
@@ -602,6 +616,111 @@ fn utf16_list(b: &[u8]) -> Vec<String> {
 
 crate::register_extractor!(Shell);
 
+/// The thumbnail size class of a cache type, per format version.
+fn thumbcache_class(version: u32, kind: u32) -> Option<&'static str> {
+    let table: &[&str] = match version {
+        20 | 21 => &["32", "96", "256", "1024", "sr"],
+        30 => &["16", "32", "48", "96", "256", "1024", "sr", "wide", "exif"],
+        31 => &["16", "32", "48", "96", "256", "1024", "1600", "sr", "wide", "exif", "wide_alternate"],
+        _ => &[
+            "16",
+            "32",
+            "48",
+            "96",
+            "256",
+            "768",
+            "1280",
+            "1920",
+            "2560",
+            "sr",
+            "wide",
+            "exif",
+            "wide_alternate",
+            "custom_stream",
+        ],
+    };
+    table.get(kind as usize).copied()
+}
+
+fn thumbcache(b: &[u8], cx: &mut Context<'_>) -> Result<(), ExtractError> {
+    let u = |o: usize| b.get(o..o + 4).map(|x| u32::from_le_bytes([x[0], x[1], x[2], x[3]]));
+    let version = u(4).ok_or_else(|| ExtractError::malformed("thumbcache header"))?;
+    cx.format_set("format_version", version);
+    cx.format_set(
+        "windows",
+        match version {
+            20 => "Vista",
+            21 => "7",
+            30 => "8",
+            31 => "8.1",
+            32 => "10 / 11",
+            _ => "unknown",
+        },
+    );
+    if b.starts_with(b"IMMM") {
+        cx.format_set("kind", "index");
+        if let Some(n) = u(if version >= 30 { 16 } else { 12 }) {
+            cx.format_set("index_entries", n);
+        }
+        return Ok(());
+    }
+    cx.format_set("kind", "cache");
+    let kind = u(8).unwrap_or(0);
+    if let Some(c) = thumbcache_class(version, kind) {
+        cx.format_set("size_class", c);
+    }
+    let first = u(if version >= 30 { 16 } else { 12 }).unwrap_or(0) as usize;
+    let (mut at, mut entries, mut empty) = (first, 0u64, 0u64);
+    let mut types: std::collections::BTreeMap<&str, u64> = std::collections::BTreeMap::new();
+    let mut largest = (0u32, 0u32);
+    while at + 48 <= b.len() && &b[at..at + 4] == b"CMMM" {
+        let size = u(at + 4).unwrap_or(0) as usize;
+        if size < 48 {
+            break;
+        }
+        // Vista keeps a 4-character extension after the hash; 8 and later add width and height.
+        let base = at + 16 + if version == 20 { 8 } else { 0 };
+        let (id_len, pad, data_len) =
+            (u(base).unwrap_or(0) as usize, u(base + 4).unwrap_or(0) as usize, u(base + 8).unwrap_or(0) as usize);
+        let (dims, header) = if version >= 30 {
+            ((u(base + 12).unwrap_or(0), u(base + 16).unwrap_or(0)), base + 40 - at)
+        } else {
+            ((0, 0), base + 32 - at)
+        };
+        entries += 1;
+        if data_len == 0 {
+            empty += 1;
+        } else {
+            let data = b.get(at + header + id_len + pad..).unwrap_or_default();
+            let t = if data.starts_with(b"\x89PNG") {
+                "PNG"
+            } else if data.starts_with(b"\xff\xd8") {
+                "JPEG"
+            } else if data.starts_with(b"BM") {
+                "BMP"
+            } else {
+                "other"
+            };
+            *types.entry(t).or_default() += 1;
+            if u64::from(dims.0) * u64::from(dims.1) > u64::from(largest.0) * u64::from(largest.1) {
+                largest = dims;
+            }
+        }
+        at += size;
+        if entries >= 1_000_000 {
+            break;
+        }
+    }
+    cx.physical().entries(entries);
+    cx.format_set("entries", entries);
+    cx.format_set("empty_entries", empty);
+    cx.format_set("image_types", json!(types));
+    if largest.0 > 0 {
+        cx.format_set("largest_thumbnail", json!([largest.0, largest.1]));
+    }
+    Ok(())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -671,5 +790,5 @@ mod tests {
         assert!(t.unwrap().starts_with("20"));
     }
 
-    crate::fixture_tests!("lnk", "jump_list", "custom_jump_list", "recycle_bin_info", "prefetch");
+    crate::fixture_tests!("lnk", "jump_list", "custom_jump_list", "recycle_bin_info", "prefetch", "thumbcache");
 }

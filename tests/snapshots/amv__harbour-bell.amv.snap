@@ -1,0 +1,126 @@
+---
+source: src/formats/video/broadcast.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-bell.amv",
+    "stem": "harbour-bell",
+    "extension": "amv"
+  },
+  "identification": {
+    "format": "amv",
+    "name": "AMV video",
+    "mime": "video/x-amv",
+    "family": "video",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "video.broadcast"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 52882
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 52882,
+    "entropy": 7.684,
+    "entropy_scope": "file",
+    "image": {
+      "width": 160,
+      "height": 128
+    },
+    "media": {
+      "duration_s": 1.0,
+      "bitrate_bps": 423056,
+      "streams": [
+        {
+          "type": "video",
+          "codec": "amv",
+          "width": 160,
+          "height": 128,
+          "display_aspect_ratio": "5:4",
+          "frame_rate": 15.0
+        },
+        {
+          "type": "audio",
+          "codec": "adpcm_ima_amv",
+          "sample_rate_hz": 22050,
+          "channels": 1,
+          "channel_layout": "mono"
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "028c8414c7c84d0ded723ed9c69ba7c23ee7fef911ce772d67482c474931c6d0",
+    "blake3": "129a7ea1112f1a3bbc31124a6c127ce2f9b762823c9a759e8b5a1cd015fa40b4"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {},
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "video.broadcast",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

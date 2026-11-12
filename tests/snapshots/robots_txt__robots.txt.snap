@@ -1,0 +1,147 @@
+---
+source: src/formats/web/misc.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "robots.txt",
+    "stem": "robots",
+    "extension": "txt"
+  },
+  "identification": {
+    "format": "robots_txt",
+    "name": "robots.txt / security.txt / humans.txt",
+    "mime": "text/plain",
+    "family": "web.misc",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "robots_txt",
+        "confidence": 0.97
+      },
+      {
+        "format": "text",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "web.misc"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 183
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 1
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 183,
+    "entropy": 4.718,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 183,
+      "chars": 183,
+      "words": 19,
+      "lines": 11,
+      "max_line_length": 45,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "eae242d716532cc48cd3f7c4bd23d305d259d8ef8382686423f5435f61d5160e",
+    "blake3": "7aefc4814de20c4c6b099c23d0dd84dca3b9303b1b3b4c8893cdfff0600c17b3"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "robots_txt": {
+      "kind": "robots.txt",
+      "groups": 2,
+      "user_agents": [
+        "*",
+        "ccbot",
+        "gptbot"
+      ],
+      "rules": {
+        "allow": 1,
+        "disallow": 2
+      },
+      "blocks_all_crawlers": false,
+      "ai_crawlers_blocked": [
+        "ccbot",
+        "gptbot"
+      ],
+      "crawl_delay": 2.0,
+      "sitemaps": [
+        "https://saltmere.example/sitemap.xml"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "web.misc",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

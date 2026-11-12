@@ -1,0 +1,117 @@
+---
+source: src/formats/forensic/longtail.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-quay.ipfix",
+    "stem": "saltmere-quay",
+    "extension": "ipfix"
+  },
+  "identification": {
+    "format": "ipfix",
+    "name": "IPFIX file",
+    "mime": "application/ipfix",
+    "family": "forensic",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "forensic.longtail"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 108
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 108,
+    "entropy": 2.677,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "150f7624114defeb1579fa85a1856e8eb987b559f6cf84bd1a09f2c9966fe63f",
+    "blake3": "fb3a7b681c9392104cac882518c24162d319ff43ca7e263aa333c97d60addaf6"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ipfix": {
+      "messages": 2,
+      "observation_domains": [
+        42
+      ],
+      "sets": {
+        "data": 2,
+        "template": 1
+      },
+      "templates": 1,
+      "export_time_range": [
+        "2025-09-01T12:00:00Z",
+        "2025-09-01T12:01:00Z"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.longtail",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

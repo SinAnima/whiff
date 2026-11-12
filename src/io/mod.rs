@@ -17,6 +17,7 @@ pub const WINDOW: usize = 64 * 1024;
 
 /// Why a read failed.
 #[derive(Debug, Clone, PartialEq, Eq, thiserror::Error)]
+#[non_exhaustive]
 pub enum SourceError {
     /// A budget was exhausted (`read_bytes`, `decompressed_bytes`).
     #[error("limit exceeded: {0}")]

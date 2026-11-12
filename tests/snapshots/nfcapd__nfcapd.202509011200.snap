@@ -1,0 +1,112 @@
+---
+source: src/formats/forensic/longtail.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "nfcapd.202509011200",
+    "stem": "nfcapd",
+    "extension": "202509011200"
+  },
+  "identification": {
+    "format": "nfcapd",
+    "name": "nfdump capture",
+    "mime": "application/x-nfdump",
+    "family": "forensic",
+    "confidence": 0.76,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "forensic.longtail"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 104
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 104,
+    "entropy": 1.037,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "a40f9345cc4f0f709f56fd3bc402c69debc8e4afb30029e7ad74b51f0356d99f",
+    "blake3": "ada7eed24664950dca2b22f968896b84deddfe8dc67da221a6788bf1f7a82d27"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "nfcapd": {
+      "layout_version": 2,
+      "nfdump_version": "f1070200",
+      "created": "2025-09-01T12:00:00Z",
+      "compression": "zstd",
+      "encrypted": false,
+      "appendix_blocks": 1,
+      "block_size": 5242880,
+      "blocks": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.longtail",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

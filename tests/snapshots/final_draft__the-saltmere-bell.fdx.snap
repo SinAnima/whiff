@@ -1,0 +1,183 @@
+---
+source: src/formats/doc/writing.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "the-saltmere-bell.fdx",
+    "stem": "the-saltmere-bell",
+    "extension": "fdx"
+  },
+  "identification": {
+    "format": "final_draft",
+    "name": "Final Draft screenplay",
+    "mime": "application/x-final-draft",
+    "family": "doc.other",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "final_draft",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "doc.writing"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 829
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 829,
+    "entropy": 4.913,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 829,
+      "chars": 829,
+      "words": 57,
+      "lines": 17,
+      "max_line_length": 88,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "861da61a604959c43245d526520a52b1bd8359c096693ea2556f93b4a52b5196",
+    "blake3": "edb7366b297b67a3a584f6d1ccc16bdb3745b30b714009b8d4182e5b385bbb13"
+  },
+  "content": {
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "DAWN",
+      "BELL TOWER",
+      "bell",
+      "EXT",
+      "TOWER",
+      "CONTINUOUS",
+      "WALL",
+      "Saltmere Bell",
+      "Saltmere",
+      "tide"
+    ],
+    "keyword_frequency": [
+      [
+        "bell",
+        3
+      ]
+    ],
+    "outline": [
+      {
+        "level": 2,
+        "text": "INT. BELL TOWER - DAWN"
+      },
+      {
+        "level": 2,
+        "text": "EXT. LONG WALL - CONTINUOUS"
+      }
+    ],
+    "excerpt": "The harbour bell hangs still. It rings at high tide. Then we have an hour. The Saltmere Bell",
+    "tags": [
+      "DAWN",
+      "BELL TOWER",
+      "bell",
+      "EXT",
+      "TOWER"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "final_draft": {
+      "document_type": "Script",
+      "version": "5",
+      "paragraph_types": {
+        "Action": 1,
+        "Character": 2,
+        "Dialogue": 2,
+        "Scene Heading": 2
+      },
+      "scenes": 2,
+      "scene_headings": [
+        "INT. BELL TOWER - DAWN",
+        "EXT. LONG WALL - CONTINUOUS"
+      ],
+      "characters": {
+        "ANA": 1,
+        "BEN": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.writing",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

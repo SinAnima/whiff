@@ -1,0 +1,415 @@
+---
+source: src/formats/email/tnef.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "winmail.dat",
+    "stem": "winmail",
+    "extension": "dat"
+  },
+  "identification": {
+    "format": "tnef",
+    "name": "TNEF (winmail.dat)",
+    "mime": "application/ms-tnef",
+    "family": "email",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "candidates": [
+      {
+        "format": "tnef",
+        "confidence": 0.99
+      },
+      {
+        "format": "binary",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "email.tnef"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 689
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "sent",
+        "value": "2025-09-01T12:30:00",
+        "source": "email.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 689,
+    "entropy": 4.98,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "45b34079cb5ab89ff3adc2248cee319f732cd6d68cf7edc1cd76de259595d927",
+    "blake3": "6f73833422299b470df9141c7b1fa51a6bfd32ca9d3b5c21f35f0a31e495e1d4"
+  },
+  "content": {
+    "title": "Tide table for September",
+    "authors": [
+      "Saltmere Harbourmaster"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "excerpt": "The September tide table is attached. High water at 06:12 on the 1st."
+  },
+  "metadata": {},
+  "format": {
+    "tnef": {
+      "tnef_key": 4660,
+      "tnef_version": "1.0",
+      "codepage": 1252,
+      "message_class": "IPM.Microsoft Mail.Note",
+      "attributes": 14,
+      "from": {
+        "name": "Saltmere Harbourmaster",
+        "domain": "saltmere.example"
+      },
+      "attachments": [
+        {
+          "name": "tides-september.txt",
+          "content_type": "text/plain",
+          "size_bytes": 43
+        },
+        {
+          "name": "berths.csv",
+          "content_type": "text/csv",
+          "size_bytes": 38
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "tides-september.txt",
+        "stem": "tides-september",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 43
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 43,
+        "entropy": 3.734,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 43,
+          "chars": 43,
+          "words": 6,
+          "lines": 2,
+          "max_line_length": 21,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "550892ef061a471140aaaee9814cc5df60cb1c3772fbcb12260b25f31d59046f",
+        "blake3": "8e2b592aff3a6020b79ff7825fd398356fe4e39ac0d9b347094d68b94e0f340f"
+      },
+      "content": {
+        "excerpt": "2025-09-01 high 06:12 2025-09-01 low 12:31"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "berths.csv",
+        "stem": "berths",
+        "extension": "csv"
+      },
+      "identification": {
+        "format": "csv",
+        "name": "CSV table",
+        "mime": "text/csv",
+        "family": "data.csv",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.csv"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 38
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 38,
+        "entropy": 4.166,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 38,
+          "chars": 38,
+          "words": 5,
+          "lines": 3,
+          "max_line_length": 14,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "760c960e8c726e667833238674fc0336363ea69417e7362c45e2efe3efbf6f00",
+        "blake3": "b9c44e0ad3296f218e0514fde19507537e1614f654928ab94339f0577fed028f"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "csv": {
+          "dialect": {
+            "delimiter": "comma",
+            "quote": "\"",
+            "header": true
+          },
+          "rows": 2,
+          "columns": 2,
+          "column_profile": [
+            {
+              "name": "berth",
+              "type": "integer",
+              "null_ratio": 0.0,
+              "distinct": 2,
+              "min": 1.0,
+              "max": 2.0,
+              "mean": 1.5
+            },
+            {
+              "name": "boat",
+              "type": "string",
+              "null_ratio": 0.0,
+              "distinct": 2,
+              "max_length": 12
+            }
+          ],
+          "sample_rows": [
+            [
+              "1",
+              "Grey Tern"
+            ],
+            [
+              "2",
+              "Herring Gull"
+            ]
+          ]
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.csv",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "email.tnef",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

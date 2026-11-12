@@ -22,10 +22,11 @@ use std::io::Read;
 use crate::error::ExtractError;
 use crate::io::Budget;
 
-pub use xz::{XzIndex, filter_name as xz_filter_name, lzma2_dict_size, xz_first_filters, xz_index};
+pub use xz::{lzma2_dict_size, xz_first_filters, xz_index};
 
 /// A compression codec.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[non_exhaustive]
 pub enum Codec {
     /// Raw deflate (RFC 1951): ZIP entries.
     Deflate,
@@ -77,6 +78,7 @@ pub enum Codec {
 
 /// How decoding ended.
 #[derive(Debug, Clone, PartialEq, Eq)]
+#[non_exhaustive]
 pub enum End {
     /// The stream ended normally.
     Complete,
@@ -90,6 +92,7 @@ pub enum End {
 
 /// Decoder output.
 #[derive(Debug, Clone)]
+#[non_exhaustive]
 pub struct Decoded {
     /// The decompressed bytes (all of them, or a prefix).
     pub data: Vec<u8>,

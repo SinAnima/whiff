@@ -1,0 +1,127 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "build.zig.zon",
+    "stem": "build.zig",
+    "extension": "zon"
+  },
+  "identification": {
+    "format": "zig_zon",
+    "name": "Zig build.zig.zon",
+    "mime": "text/plain",
+    "family": "code.manifest",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 519
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 519,
+    "entropy": 4.513,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 519,
+      "chars": 519,
+      "words": 42,
+      "lines": 20,
+      "max_line_length": 91,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "ae29df8ee9caf56c17dd9dd61ff2800a6588d456225f51ab9999ecb07bc81693",
+    "blake3": "f245ab100525d552c5df071c22b198336e123b4fbc49e35dd92895374fd04754"
+  },
+  "content": {
+    "title": "saltmere_tides 1.4.0"
+  },
+  "metadata": {},
+  "format": {
+    "zig_zon": {
+      "ecosystem": "zig",
+      "name": "saltmere_tides",
+      "version": "1.4.0",
+      "minimum_zig_version": "0.14.0",
+      "dependencies": {
+        "tide_model": "https://git.harbour.test/tide_model/archive/v0.3.0.tar.gz",
+        "gauge": "path: ../gauge"
+      },
+      "dependencies_count": 2,
+      "paths": 3
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

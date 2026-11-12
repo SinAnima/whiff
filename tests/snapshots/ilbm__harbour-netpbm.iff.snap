@@ -1,0 +1,122 @@
+---
+source: src/formats/image/retro.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-netpbm.iff",
+    "stem": "harbour-netpbm",
+    "extension": "iff"
+  },
+  "identification": {
+    "format": "ilbm",
+    "name": "Amiga IFF ILBM image",
+    "mime": "image/x-ilbm",
+    "family": "image.raster",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.retro"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3600
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 3600,
+    "entropy": 2.65,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48,
+      "bit_depth": 8,
+      "channels": 3
+    }
+  },
+  "integrity": {
+    "sha256": "9d9a0d497ba3f63339046cc38feec51712f7a76081d52b06d31351fcd12ef7c8",
+    "blake3": "3bcd1417789ce6159963ff5f3e0481be0ca6d18f7bcfe2934d9b59b080b0f2b9"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ilbm": {
+      "form": "ILBM",
+      "planes": 24,
+      "masking": "none",
+      "compression": "ByteRun1",
+      "pixel_aspect": [
+        10,
+        10
+      ],
+      "page_size": [
+        64,
+        48
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.retro",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

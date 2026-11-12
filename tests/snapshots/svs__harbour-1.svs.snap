@@ -1,0 +1,169 @@
+---
+source: src/formats/image/slide.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-1.svs",
+    "stem": "harbour-1",
+    "extension": "svs"
+  },
+  "identification": {
+    "format": "svs",
+    "name": "Aperio SVS slide",
+    "mime": "application/octet-stream",
+    "family": "image.raster",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "svs",
+        "confidence": 0.99
+      },
+      {
+        "format": "tiff",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "image.slide"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1176
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "captured",
+        "value": "2024-05-01T19:42:10",
+        "source": "svs.Date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1176,
+    "entropy": 4.495,
+    "entropy_scope": "file",
+    "image": {
+      "width": 46000,
+      "height": 32914,
+      "frames": 2
+    }
+  },
+  "integrity": {
+    "sha256": "6ce10061d6069a1d3b4b624032e54cfd9d1af358ec0dc348a85f5f92f408eee0",
+    "blake3": "91eb0eb78fbced04f5b922e5bfd39fa3850715ea1b2efa39c19266f18db560b5"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "svs": {
+      "slide": {
+        "make": "Aperio",
+        "software": "Aperio Image Library v12.0.15",
+        "scan": "46000x32914 [0,100 46000x32914] (256x256) JPEG/RGB Q=70",
+        "magnification": 20.0,
+        "stripe_width": 2040.0,
+        "scanner_id": "SS0000",
+        "slide_name": "HARBOUR-1",
+        "microns_per_pixel": 0.499,
+        "image_id": 1001.0,
+        "levels": [
+          {
+            "width": 46000,
+            "height": 32914,
+            "tiled": true,
+            "compression": 7
+          },
+          {
+            "width": 11500,
+            "height": 8228,
+            "tiled": true,
+            "compression": 7
+          }
+        ],
+        "associated_images": [
+          {
+            "kind": "thumbnail",
+            "width": 1024,
+            "height": 732
+          },
+          {
+            "kind": "label",
+            "width": 400,
+            "height": 300
+          },
+          {
+            "kind": "macro",
+            "width": 1200,
+            "height": 400
+          }
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.slide",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

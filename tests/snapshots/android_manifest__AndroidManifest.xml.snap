@@ -1,0 +1,155 @@
+---
+source: src/formats/text/dialects.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "AndroidManifest.xml",
+    "stem": "AndroidManifest",
+    "extension": "xml"
+  },
+  "identification": {
+    "format": "android_manifest",
+    "name": "Android manifest",
+    "mime": "application/xml",
+    "family": "text.xml",
+    "confidence": 0.93,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "android_manifest",
+        "confidence": 0.93
+      },
+      {
+        "format": "xml",
+        "confidence": 0.65
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "text.dialects"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1222
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1222,
+    "entropy": 4.777,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1222,
+      "chars": 1222,
+      "words": 45,
+      "lines": 20,
+      "max_line_length": 152,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "8fa34913c7b4395575efbd6db5892200315ccb5e4d565e061cef6335f52d7d00",
+    "blake3": "30184dbe772a829ea8c5558f4740dbf8cd4f09b3eb4b61cf1b80bc238871df42"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "android_manifest": {
+      "package": "example.saltmere.tides",
+      "version_code": "7",
+      "version_name": "1.3",
+      "min_sdk": "24",
+      "target_sdk": "34",
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_COARSE_LOCATION"
+      ],
+      "features": [
+        "android.hardware.location"
+      ],
+      "application": {
+        "label": "Saltmere Tides",
+        "allowBackup": "false",
+        "usesCleartextTraffic": "false"
+      },
+      "components": {
+        "activity": 2,
+        "receiver": 1,
+        "service": 1
+      },
+      "exported_components": [
+        "activity .TideActivity",
+        "receiver .TideAlarm"
+      ],
+      "intent_actions": [
+        "android.intent.action.MAIN",
+        "example.saltmere.tides.ALARM"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.dialects",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

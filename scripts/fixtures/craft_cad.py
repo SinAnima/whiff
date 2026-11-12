@@ -442,6 +442,218 @@ def eda():
         ly.write(out("oasis", name + ".oas"), opt)
 
 
+def longtail():
+    """Batch 5e part 1: Alembic from Blender; the rest written from each
+    format's published layout (Revit with office.py's compound-file writer)."""
+    import gzip
+    import io
+    import math
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from office import cfb_bytes
+
+    def write(fmt, name, data):
+        open(out(fmt, name), "wb").write(data if isinstance(data, bytes) else data.encode())
+
+    # Alembic: Debian's Blender has no Alembic exporter, so an Ogawa
+    # archive is built from the layout: "Ogawa", the frozen flag, version,
+    # the root group's offset; groups list children (data offsets have the
+    # high bit set); data blocks are a size and bytes.
+    blocks = bytearray(b"Ogawa\xff\x00\x01" + bytes(8))
+    def data_block(payload):
+        at = len(blocks)
+        blocks.extend(struct.pack("<Q", len(payload)) + payload)
+        return at | (1 << 63)
+    def group(children):
+        at = len(blocks)
+        blocks.extend(struct.pack("<Q", len(children)) + b"".join(struct.pack("<Q", c) for c in children))
+        return at
+    meta = b"_ai_AlembicVersion=Alembic 1.8.6 (built Sep  1 2025);_ai_Application=Saltmere harbour exporter 1.0;_ai_DateWritten=Mon Sep  1 12:00:00 2025;_ai_Description=Saltmere harbour buoy and pier"
+    objects = [b"schema=AbcGeom_PolyMesh_v1;schemaObjTitle=AbcGeom_PolyMesh_v1:.geom", b"schema=AbcGeom_PolyMesh_v1;schemaObjTitle=AbcGeom_PolyMesh_v1:.geom",
+               b"schema=AbcGeom_Xform_v3;schemaObjTitle=AbcGeom_Xform_v3:.xform", b"schema=AbcGeom_Camera_v1;schemaObjTitle=AbcGeom_Camera_v1:.geom"]
+    kids = [data_block(struct.pack("<i", 10709)), data_block(struct.pack("<I", 1)), data_block(meta)] + [data_block(o) for o in objects]
+    root = group(kids)
+    struct.pack_into("<Q", blocks, 8, root)
+    write("alembic", "saltmere-harbour.abc", bytes(blocks))
+
+    # Point clouds: twelve points around the buoy light.
+    pts = [(round(math.cos(i / 2) * 0.6, 4), round(math.sin(i / 2) * 0.6, 4), round(0.1 * i, 4)) for i in range(12)]
+    rgb = [(200, 30, 30)] * 12
+    pcd = "# .PCD v0.7 - Point Cloud Data file format\nVERSION 0.7\nFIELDS x y z rgb\nSIZE 4 4 4 4\nTYPE F F F U\nCOUNT 1 1 1 1\nWIDTH 12\nHEIGHT 1\nVIEWPOINT 0 0 0 1 0 0 0\nPOINTS 12\nDATA ascii\n"
+    pcd += "".join(f"{x} {y} {z} {(r << 16) | (g << 8) | b}\n" for (x, y, z), (r, g, b) in zip(pts, rgb))
+    write("pcd", "buoy-light.pcd", pcd)
+    write("pts_points", "buoy-light.pts", f"{len(pts)}\n" + "".join(f"{x} {y} {z} -1200 {r} {g} {b}\n" for (x, y, z), (r, g, b) in zip(pts, rgb)))
+    write("xyz_points", "buoy-light.xyz", "".join(f"{x} {y} {z}\n" for x, y, z in pts))
+
+    write("maya", "saltmere-buoy.ma", '''//Maya ASCII 2024 scene
+//Name: saltmere-buoy.ma
+//Codeset: UTF-8
+requires maya "2024";
+requires -nodeType "aiStandardSurface" "mtoa" "5.3.1";
+currentUnit -l centimeter -a degree -t film;
+fileInfo "application" "maya";
+fileInfo "product" "Maya 2024";
+fileInfo "version" "2024";
+fileInfo "osv" "Linux";
+createNode transform -n "Buoy";
+createNode mesh -n "BuoyShape" -p "Buoy";
+createNode transform -n "Pier";
+createNode mesh -n "PierShape" -p "Pier";
+createNode aiStandardSurface -n "BuoyRed";
+createNode shadingEngine -n "BuoyRedSG";
+file -rdi 1 -ns "lamp" -rfn "lampRN" "lighthouse-lamp.ma";
+// End of saltmere-buoy.ma
+''')
+
+    # SketchUp: the UTF-16 signature and version, then an embedded PNG thumbnail.
+    import zlib
+    def png(w, h):
+        def chunk(t, d):
+            return struct.pack(">L", len(d)) + t + d + struct.pack(">L", zlib.crc32(t + d))
+        raw = b"".join(b"\0" + b"\x20\x40\x80" * w for _ in range(h))
+        return b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">LLBBBBB", w, h, 8, 2, 0, 0, 0)) + chunk(b"IDAT", zlib.compress(raw)) + chunk(b"IEND", b"")
+    sig = b"\xff\xfe\xff\x0e" + "SketchUp Model".encode("utf-16-le") + b"\xff\xfe\xff\x0a" + "{23.1.340}".encode("utf-16-le")
+    write("sketchup", "saltmere-office.skp", sig + bytes(32) + png(32, 24) + bytes(64))
+
+    # PMX 2.0 (UTF-16LE): one triangle, one texture, one material, one bone.
+    def t16(s):
+        b = s.encode("utf-16-le")
+        return struct.pack("<i", len(b)) + b
+    pmx = b"PMX " + struct.pack("<f", 2.0) + bytes([8, 0, 0, 1, 1, 1, 1, 1, 1])
+    pmx += t16("ブイ") + t16("Buoy") + t16("Saltmere harbour buoy\nCC0-1.0") + t16("")
+    pmx += struct.pack("<i", 3)
+    for i in range(3):
+        pmx += struct.pack("<8f", float(i), 0.0, float(i % 2), 0, 1, 0, 0, 0) + bytes([0]) + bytes([0]) + struct.pack("<f", 1.0)
+    pmx += struct.pack("<i", 3) + bytes([0, 1, 2])
+    pmx += struct.pack("<i", 1) + t16("tex\\buoy.png")
+    pmx += struct.pack("<i", 1) + t16("赤") + t16("Red") + struct.pack("<4f3ff3f", 1, 0, 0, 1, 0, 0, 0, 5, 0.2, 0, 0) + bytes([0])
+    pmx += struct.pack("<4ff", 0, 0, 0, 1, 1) + bytes([0, 0xff, 0, 0, 0]) + t16("") + struct.pack("<i", 3)
+    pmx += struct.pack("<i", 1) + t16("センター") + t16("center")
+    write("pmx", "saltmere-buoy.pmx", pmx)
+    # PMD 1.0: names in fixed fields, then vertices (38 bytes), indices, materials (70 bytes), bones.
+    pmd = b"Pmd" + struct.pack("<f", 1.0) + b"Buoy".ljust(20, b"\0") + b"Saltmere harbour buoy".ljust(256, b"\0")
+    pmd += struct.pack("<I", 3) + b"".join(struct.pack("<8f", float(i), 0, 0, 0, 1, 0, 0, 0) + struct.pack("<HHBB", 0, 0, 100, 0) for i in range(3))
+    pmd += struct.pack("<I", 3) + struct.pack("<3H", 0, 1, 2)
+    pmd += struct.pack("<I", 1) + bytes(70) + struct.pack("<H", 1) + b"center".ljust(20, b"\0") + bytes(19)
+    write("pmd", "saltmere-buoy.pmd", pmd)
+
+    # Valve Source model header (version 48).
+    mdl = bytearray(408)
+    mdl[0:4] = b"IDST"; struct.pack_into("<ii", mdl, 4, 48, 0x5A17)
+    mdl[12:12 + 32] = b"props/saltmere/buoy.mdl".ljust(32, b"\0")
+    struct.pack_into("<i", mdl, 76, len(mdl))
+    for off, n in ((156, 2), (172, 1), (180, 1), (188, 2), (204, 1), (224, 1), (232, 1)):
+        struct.pack_into("<i", mdl, off, n)
+    write("valve_mdl", "buoy.mdl", bytes(mdl))
+    write("valve_smd", "buoy.smd", '''version 1
+nodes
+  0 "root" -1
+  1 "light" 0
+end
+skeleton
+time 0
+  0 0 0 0 0 0 0
+  1 0 0 1.4 0 0 0
+time 1
+  0 0 0 0 0 0 0
+  1 0 0 1.5 0 0 0
+end
+triangles
+buoy_red
+  0 0 0 0 0 0 1 0 0
+  0 1 0 0 0 0 1 1 0
+  0 0 1 0 0 0 1 0 1
+buoy_red
+  0 1 0 0 0 0 1 1 0
+  0 1 1 0 0 0 1 1 1
+  0 0 1 0 0 0 1 0 1
+end
+''')
+
+    # Gaussian splats: 12 `.splat` records, and the same points as SPZ.
+    rec = b"".join(struct.pack("<3f3f4B4B", x, y, z, 0.05, 0.05, 0.05, 200, 30, 30, 255, 128, 128, 128, 255) for x, y, z in pts)
+    write("gaussian_splat", "buoy-light.splat", rec)
+    spz = b"NGSP" + struct.pack("<II", 2, len(pts)) + bytes([0, 12, 0, 0]) + bytes(len(pts) * 19)
+    write("gaussian_splat", "buoy-light.spz", gzip.compress(spz, mtime=0))
+
+    write("materialx", "buoy-paint.mtlx", '''<?xml version="1.0"?>
+<materialx version="1.38" colorspace="lin_rec709">
+  <nodegraph name="NG_buoy_paint">
+    <noise2d name="weathering" type="float"><input name="amplitude" type="float" value="0.2" /></noise2d>
+    <mix name="paint" type="color3"><input name="fg" type="color3" value="0.8, 0.1, 0.1" /><input name="bg" type="color3" value="0.5, 0.1, 0.1" /><input name="mix" type="float" nodename="weathering" /></mix>
+    <output name="out" type="color3" nodename="paint" />
+  </nodegraph>
+  <standard_surface name="SR_buoy_red" type="surfaceshader">
+    <input name="base_color" type="color3" nodegraph="NG_buoy_paint" output="out" />
+    <input name="specular_roughness" type="float" value="0.4" />
+  </standard_surface>
+  <surfacematerial name="M_buoy_red" type="material"><input name="surfaceshader" type="surfaceshader" nodename="SR_buoy_red" /></surfacematerial>
+</materialx>
+''')
+    write("substance", "harbour-rust.sbs", '''<?xml version="1.0" encoding="UTF-8"?><package><identifier v="Unsaved Package"/><formatVersion v="1.1.0.202301"/><updaterVersion v="1.1.0.202301"/><fileUID v="{00000000-0000-0000-0000-000000000001}"/><versionUID v="0"/>
+<dependencies><dependency><filename v="sbs://pattern_perlin_noise.sbs"/><uid v="1"/><type v="package"/></dependency></dependencies>
+<content><graph><identifier v="harbour_rust"/><uid v="2"/>
+<compNodes><compNode><uid v="10"/></compNode><compNode><uid v="11"/></compNode><compNode><uid v="12"/></compNode></compNodes>
+</graph></content></package>
+''')
+
+    # Parasolid text transmit file (header and an empty body).
+    header = ("**ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz**************************\n"
+              "**PARASOLID !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~0123456789**************************\n"
+              "**PART1;\nMC=x86;\nMC_MODEL=x86_64;\nMC_ID=unknown;\nOS=Linux;\nOS_RELEASE=6;\nFRU=sdl_parasolid_customer_support;\n"
+              "APPL=saltmere-cad;\nSITE=Saltmere Harbour;\nUSER=harbourmaster;\nFORMAT=text;\nGUISE=transmit;\nKEY=buoy;\n"
+              "FILE=/home/harbourmaster/models/buoy.x_t;\nDATE=Mon Sep  1 12:00:00 2025;\n"
+              "**PART2;\nSCH=SCH_3600274_36001;\nUSFLD_SIZE=0;\n**PART3;\n**END_OF_HEADER*****************************************************************\n")
+    write("parasolid", "buoy.x_t", header + "T51 : TRANSMIT FILE created by modeller version 3600274\n1 0 0\n")
+    write("acis", "buoy.sat", '''700 0 1 0
+16 saltmere-cad 1.0 19 ASM 230.0.0.1300 NT 24 Mon Sep 01 12:00:00 2025
+1 9.9999999999999995e-07 1e-10
+body $-1 -1 $-1 $1 $-1 $-1 #
+lump $-1 -1 $-1 $-1 $2 $0 #
+shell $-1 -1 $-1 $-1 $-1 $3 $-1 $1 #
+face $-1 -1 $-1 $-1 $-1 $2 $-1 $4 forward single #
+cone-surface $-1 -1 $-1 0 0 0 0 0 1 0.6 0 0 1 I I 0 1 0.6 forward I I I I #
+End-of-ACIS-data
+''')
+
+    # Revit: BasicFileInfo (UTF-16 text after a small binary prefix), PartAtom, a preview.
+    info = "Worksharing: Not enabled\r\nUsername: harbourmaster\r\nCentral Model Path: \r\nFormat: 2024\r\nBuild: 20230308_1635(x64)\r\nLast Save Path: C:\\Users\\harbourmaster\\Documents\\saltmere-office.rvt\r\nLocale when saved: ENU\r\nUnique Document GUID: 00000000-0000-0000-0000-00000000c0de\r\n"
+    basic = struct.pack("<I", 0x0E) + bytes(8) + info.encode("utf-16-le")
+    atom = b'<?xml version="1.0" encoding="UTF-8"?><entry xmlns="http://www.w3.org/2005/Atom" xmlns:A="urn:schemas-autodesk-com:partatom"><title>saltmere-office</title><updated>2025-09-01T12:00:00Z</updated><A:taxonomy><term>adsk:revit</term><label>Autodesk Revit</label></A:taxonomy></entry>'
+    write("revit", "saltmere-office.rvt", cfb_bytes([("BasicFileInfo", basic), ("PartAtom", atom), ("RevitPreview4.0", png(16, 12)), ("Formats/Latest", bytes(64)), ("Global/ElemTable", bytes(64))]))
+
+    # JT 9.5: header, then a table of contents with two entries.
+    jt = b"Version 9.5 JT".ljust(75, b" ") + b" \n\r\n " + bytes([0]) + struct.pack("<ii", 0, 89)
+    def entry(kind):
+        return bytes(16) + struct.pack("<iiI", 0, 0, kind << 24)
+    jt += struct.pack("<i", 2) + entry(1) + entry(6)
+    write("jt", "buoy.jt", jt)
+    # PRC: versions, two UUIDs, one file structure.
+    write("prc", "buoy.prc", b"PRC" + struct.pack("<II", 8137, 8137) + bytes(32) + struct.pack("<I", 1) + bytes(64))
+    # U3D: file header block, then a group node, a model node and a material.
+    def block(kind, data):
+        return struct.pack("<III", kind, len(data), 0) + data + b"\0" * (-len(data) % 4)
+    body = block(0xFFFFFF21, b"\x04\0Buoy" + bytes(4)) + block(0xFFFFFF22, b"\x04\0Buoy" + bytes(8)) + block(0xFFFFFF54, b"\x03\0Red" + bytes(20))
+    hdr_data = struct.pack("<hhIIQI", 0, 0, 0, 0, 0, 106)
+    total = 12 + len(hdr_data) + len(body)
+    hdr_data = struct.pack("<hhIIQI", 0, 0, 0, 0, total, 106)
+    write("u3d", "buoy.u3d", block(0x00443355, hdr_data) + body)
+
+    # DWF 6: the version string, then a ZIP; DWFx: an OPC package.
+    z = io.BytesIO()
+    with zipfile.ZipFile(z, "w") as f:
+        for n, d in (("manifest.xml", "<dwf:Manifest/>"), ("com.autodesk.dwf.ePlot_0/descriptor.xml", "<ePlot:Page/>"), ("com.autodesk.dwf.ePlot_0/sheet.w2d", "(W2D V06.00)")):
+            info_ = zipfile.ZipInfo(n, (2025, 9, 1, 12, 0, 0))
+            f.writestr(info_, d)
+    write("dwf", "saltmere-office.dwf", b"(DWF V06.00)" + z.getvalue())
+    z = io.BytesIO()
+    with zipfile.ZipFile(z, "w") as f:
+        for n, d in (("[Content_Types].xml", "<Types/>"), ("_rels/.rels", "<Relationships/>"), ("DWFDocumentSequence.dwfseq", "<DocumentSequence/>"),
+                     ("dwf/documents/0001/FixedDocument.fdoc", "<FixedDocument/>"), ("dwf/documents/0001/sections/0001/1.fpage", "<FixedPage/>"),
+                     ("dwf/documents/0001/sections/0002/2.fpage", "<FixedPage/>")):
+            f.writestr(zipfile.ZipInfo(n, (2025, 9, 1, 12, 0, 0)), d)
+    write("dwf", "saltmere-office.dwfx", z.getvalue())
+
+
 if want("meshes"):
     meshes()
 if want("blender"):
@@ -462,5 +674,7 @@ if want("cad"):
     cad()
 if want("eda"):
     eda()
+if want("longtail"):
+    longtail()
 shutil.rmtree(TMP, ignore_errors=True)
 print("cad fixtures written to", OUT)

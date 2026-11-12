@@ -1,0 +1,161 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "CITATION.cff",
+    "stem": "CITATION",
+    "extension": "cff"
+  },
+  "identification": {
+    "format": "citation_cff",
+    "name": "CITATION.cff",
+    "mime": "application/yaml",
+    "family": "code.manifest",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 479
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "published",
+        "value": "2026-03-14",
+        "source": "code.manifest",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ada Harbour",
+      "Harbour Office"
+    ],
+    "license": {
+      "name": "CC0-1.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 479,
+    "entropy": 4.786,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 479,
+      "chars": 479,
+      "words": 56,
+      "lines": 19,
+      "max_line_length": 74,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "be867216ab60016309d319d3f06c393d5c990963773ed0b3e4f7b59ff68e108b",
+    "blake3": "f54ac698082eca5fefce4c50810bf587ffe646da542515131d1b43ea91d59f18"
+  },
+  "content": {
+    "title": "Saltmere Tides 1.4.0",
+    "description": "Harmonic tide predictions for the fictitious Saltmere Harbour.",
+    "authors": [
+      "Ada Harbour",
+      "Harbour Office"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 0.672
+    },
+    "keywords": [
+      "tides",
+      "harbour"
+    ],
+    "excerpt": "Harmonic tide predictions for the fictitious Saltmere Harbour.",
+    "tags": [
+      "tides",
+      "harbour"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "citation_cff": {
+      "ecosystem": "citation",
+      "name": "Saltmere Tides",
+      "version": "1.4.0",
+      "license": "CC0-1.0",
+      "repository": "https://git.harbour.test/tides",
+      "authors_count": 2,
+      "cff_version": "1.2.0",
+      "type": "software",
+      "message": "If you use this software, please cite it as below.",
+      "identifiers": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

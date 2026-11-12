@@ -4,13 +4,19 @@
 //! codec, sample rate and channels), and the content description (title,
 //! author, copyright, comment).
 //!
+//! Standalone RealAudio files (`.ra`, versions 3 – 5) give the same codec
+//! facts plus their title, author, copyright and comment, and RealAudio
+//! metafiles (`.ram`) list the streams they point to.
+//!
 //! Specification: the RealMedia file format (Helix DNA documentation).
 
 use serde_json::json;
 
 use super::super::audio::{Stream, Tags};
 use super::{Video, audio_map, finish, labels, other_map};
-use crate::plugin::{ByteReader, Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Source};
+use crate::plugin::{
+    ByteReader, Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Probe, Sniff, Source,
+};
 
 /// Extractor for RealMedia.
 pub struct RealMedia;
@@ -20,15 +26,35 @@ static META: ExtractorMeta = ExtractorMeta {
     version: 1,
     cost: Cost::Header,
     priority: 0,
-    formats: &[FormatSpec {
-        id: "rm",
-        name: "RealMedia",
-        family: "video",
-        mimes: &["application/vnd.rn-realmedia", "application/vnd.rn-realmedia-vbr"],
-        extensions: &["rm", "rmvb", "rv"],
-        magic: &[Magic::prefix(b".RMF")],
-        parent: None,
-    }],
+    formats: &[
+        FormatSpec {
+            id: "rm",
+            name: "RealMedia",
+            family: "video",
+            mimes: &["application/vnd.rn-realmedia", "application/vnd.rn-realmedia-vbr"],
+            extensions: &["rm", "rmvb", "rv"],
+            magic: &[Magic::prefix(b".RMF")],
+            parent: None,
+        },
+        FormatSpec {
+            id: "realaudio",
+            name: "RealAudio",
+            family: "audio",
+            mimes: &["audio/vnd.rn-realaudio", "audio/x-pn-realaudio"],
+            extensions: &["ra"],
+            magic: &[Magic::prefix(b".ra\xfd")],
+            parent: None,
+        },
+        FormatSpec {
+            id: "ram",
+            name: "RealAudio metafile",
+            family: "audio",
+            mimes: &["audio/x-pn-realaudio"],
+            extensions: &["ram"],
+            magic: &[],
+            parent: None,
+        },
+    ],
 };
 
 const MAX_CHUNK: u32 = 1 << 20;
@@ -39,8 +65,41 @@ impl Extractor for RealMedia {
         &META
     }
 
+    fn sniff(&self, probe: &Probe<'_>) -> Option<Sniff> {
+        let ext = probe.extension.unwrap_or("");
+        let text = std::str::from_utf8(&probe.head[..probe.head.len().min(2048)]).ok()?;
+        let urls = text.lines().filter(|l| !l.trim().is_empty() && !l.starts_with('#')).collect::<Vec<_>>();
+        let streamy =
+            |l: &&str| ["rtsp://", "pnm://", "http://", "https://", "file:"].iter().any(|p| l.trim().starts_with(p));
+        ((ext.eq_ignore_ascii_case("ram") || ext.eq_ignore_ascii_case("rpm"))
+            && !urls.is_empty()
+            && urls.iter().all(streamy))
+        .then_some(Sniff { format: "ram", confidence: 0.9 })
+    }
+
     fn extract(&self, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
         let len = src.len();
+        match cx.format_id() {
+            "realaudio" => {
+                let b = src.read_vec(0, usize::try_from(len.min(4096)).unwrap_or(0))?;
+                standalone(cx, &b, len);
+                return Ok(());
+            }
+            "ram" => {
+                let b = src.read_vec(0, usize::try_from(len.min(65_536)).unwrap_or(0))?;
+                let text = String::from_utf8_lossy(&b);
+                let urls: Vec<&str> =
+                    text.lines().map(str::trim).filter(|l| !l.is_empty() && !l.starts_with('#')).take(100).collect();
+                let mut schemes: Vec<&str> = urls.iter().filter_map(|u| u.split_once(':').map(|p| p.0)).collect();
+                schemes.sort_unstable();
+                schemes.dedup();
+                cx.format_set("streams", urls.len());
+                cx.format_set("schemes", schemes);
+                cx.format_set("urls", urls);
+                return Ok(());
+            }
+            _ => {}
+        }
         let mut pos = 0u64;
         let mut duration = None;
         let mut maps = Vec::new();
@@ -113,6 +172,80 @@ impl Extractor for RealMedia {
 }
 
 crate::register_extractor!(RealMedia);
+
+/// A standalone RealAudio file: the `.ra` stream header, then the data.
+fn standalone(cx: &mut Context<'_>, b: &[u8], len: u64) {
+    let mut tags = Tags::default();
+    let Some((stream, data_bytes, bytes_per_minute)) = standalone_header(b, len, &mut tags) else {
+        cx.warn("the RealAudio header could not be read");
+        return;
+    };
+    if let Some(v) = b.get(4..6) {
+        cx.format_set("ra_version", u16::from_be_bytes([v[0], v[1]]));
+    }
+    #[allow(clippy::cast_precision_loss)]
+    let duration = (bytes_per_minute > 0).then(|| data_bytes as f64 * 60.0 / f64::from(bytes_per_minute));
+    tags.system("realaudio");
+    finish(cx, vec![audio_map(&stream)], duration, len);
+    tags.report(cx);
+}
+
+fn str8(r: &mut ByteReader<'_>) -> Option<String> {
+    pascal(r).map(|t| crate::plugin::latin1_or_utf8(t).trim_matches('\0').trim().to_string())
+}
+
+/// (stream, data bytes, bytes per minute), and the title / author /
+/// copyright / comment into `tags`.
+fn standalone_header(b: &[u8], len: u64, tags: &mut Tags) -> Option<(Stream, u64, u32)> {
+    let mut r = ByteReader::new(b.get(4..)?);
+    let version = r.be_u16().ok()?;
+    let mut text = |r: &mut ByteReader<'_>| {
+        for key in ["title", "artist", "copyright", "comment"] {
+            let Some(t) = str8(r) else { break };
+            if !t.is_empty() {
+                tags.set(key, &t, "realaudio");
+            }
+        }
+    };
+    if version == 3 {
+        let header = r.be_u16().ok()?;
+        r.advance(8).ok()?;
+        let bpm = u32::from(r.be_u16().ok()?);
+        r.advance(4).ok()?;
+        text(&mut r);
+        let mut s = Stream::new("ra_144");
+        s.sample_rate_hz = Some(8000);
+        s.channels = Some(1);
+        s.bitrate_bps = Some(u64::from(bpm) * 8 / 60).filter(|b| *b > 0);
+        // The header size counts from the byte after it; the data follows.
+        return Some((s, len.saturating_sub(8 + u64::from(header)), bpm));
+    }
+    if version != 4 && version != 5 {
+        return None;
+    }
+    let s = real_audio(b)?;
+    // Revision, ".ra4", data size …
+    r.advance(2 + 4).ok()?;
+    let data = u64::from(r.be_u32().ok()?);
+    // Version, header size, flavour, coded frame size, one unknown word.
+    r.advance(2 + 4 + 2 + 4 + 4).ok()?;
+    let bpm = r.be_u32().ok()?;
+    r.advance(4 + 2 + 2 + 2 + 2).ok()?;
+    if version == 5 {
+        r.advance(6).ok()?;
+    }
+    r.advance(2 + 4 + 2).ok()?;
+    if version == 5 {
+        r.advance(8).ok()?;
+    } else {
+        pascal(&mut r)?;
+        pascal(&mut r)?;
+    }
+    if r.advance(3).is_ok() {
+        text(&mut r);
+    }
+    Some((s, data, bpm))
+}
 
 fn pascal<'a>(r: &mut ByteReader<'a>) -> Option<&'a [u8]> {
     let n = r.u8().ok()?;
@@ -212,5 +345,5 @@ fn real_audio(t: &[u8]) -> Option<Stream> {
 
 #[cfg(test)]
 mod tests {
-    crate::fixture_tests!("rm");
+    crate::fixture_tests!("rm", "realaudio", "ram");
 }

@@ -1,0 +1,58 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-03-14T09:30:00Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "harbour-sbom",
+          "version": "1.0"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "harbour-dashboard",
+      "version": "1.4.0"
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "name": "chart.js",
+      "version": "4.4.4",
+      "purl": "pkg:npm/chart.js@4.4.4",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "@std/assert",
+      "version": "1.0.6",
+      "purl": "pkg:generic/jsr/%40std/assert@1.0.6",
+      "licenses": [
+        {
+          "expression": "MIT"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "harbour-dashboard",
+      "dependsOn": [
+        "chart.js"
+      ]
+    }
+  ],
+  "vulnerabilities": []
+}

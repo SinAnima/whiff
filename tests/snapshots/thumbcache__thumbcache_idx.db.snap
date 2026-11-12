@@ -1,0 +1,118 @@
+---
+source: src/formats/forensic/shell.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "thumbcache_idx.db",
+    "stem": "thumbcache_idx",
+    "extension": "db"
+  },
+  "identification": {
+    "format": "thumbcache",
+    "name": "Windows thumbnail cache (thumbcache)",
+    "mime": "application/octet-stream",
+    "family": "forensic",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "thumbcache",
+        "confidence": 0.81
+      },
+      {
+        "format": "thumbs_db",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "forensic.shell"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 88
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 88,
+    "entropy": 0.481,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "054427deb11134886dafbc124b556ba6360fa188abf689771e211d99b2669507",
+    "blake3": "ea4a4279491a6110ed773c2428dde531796dbe6a1fcbd2ea2e9c1278b9c2c84e"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "thumbcache": {
+      "format_version": 32,
+      "windows": "10 / 11",
+      "kind": "index",
+      "index_entries": 3
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.shell",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

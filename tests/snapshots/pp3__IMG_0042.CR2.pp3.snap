@@ -1,0 +1,137 @@
+---
+source: src/formats/image/sidecar.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "IMG_0042.CR2.pp3",
+    "stem": "IMG_0042.CR2",
+    "extension": "pp3"
+  },
+  "identification": {
+    "format": "pp3",
+    "name": "RawTherapee processing profile",
+    "mime": "application/octet-stream",
+    "family": "meta.xmp",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "image.sidecar"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 290
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 290,
+    "entropy": 4.895,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 290,
+      "chars": 290,
+      "words": 26,
+      "lines": 30,
+      "max_line_length": 17,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 5
+    }
+  },
+  "integrity": {
+    "sha256": "be346c5463b2ade08f8ab2775b3eedc4d2592666cc72717fe622a976c8ab7c42",
+    "blake3": "d848b7e36f0a6a37218f2e57b7bf3f443c8e7ecb975e44cdcc6b718be421defd"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pp3": {
+      "app_version": "5.10",
+      "profile_version": 351,
+      "rank": 3,
+      "color_label": 1,
+      "sections": [
+        "Version",
+        "General",
+        "Exposure",
+        "White Balance",
+        "Crop",
+        "Sharpening"
+      ],
+      "settings": 19,
+      "develop": {
+        "Exposure/Auto": "false",
+        "Exposure/Compensation": "0.35",
+        "White Balance/Setting": "Custom",
+        "White Balance/Temperature": "5600",
+        "White Balance/Green": "1.02",
+        "Crop/Enabled": "true",
+        "Sharpening/Enabled": "true"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.sidecar",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

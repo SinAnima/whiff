@@ -1,0 +1,128 @@
+---
+source: src/formats/code/config.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.gitignore",
+    "stem": "harbour",
+    "extension": "gitignore"
+  },
+  "identification": {
+    "format": "ignore_file",
+    "name": ".gitignore / .dockerignore",
+    "mime": "text/plain",
+    "family": "code.infra",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.config"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 72
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 72,
+    "entropy": 4.468,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 72,
+      "chars": 72,
+      "words": 9,
+      "lines": 7,
+      "max_line_length": 14,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "66d49161699f421d7e06da93c3053a628c80b2d1a8812c75dd1812ecaabc4904",
+    "blake3": "1891cee241c5fd86fb7fc7a913950feb49b6ea09615fc085ec79f2dd3af7c555"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ignore_file": {
+      "tool": "git",
+      "pattern_count": 6,
+      "negations": 1,
+      "directory_patterns": 2,
+      "rooted_patterns": 1,
+      "patterns": [
+        "/target/",
+        "*.log",
+        "!keep.log",
+        ".env",
+        "node_modules/",
+        "charts/*.tmp"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.config",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

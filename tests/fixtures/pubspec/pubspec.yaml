@@ -1,0 +1,24 @@
+name: harbour_tides
+description: Tide predictions for Saltmere Harbour.
+version: 1.4.0
+repository: https://git.harbour.test/harbour_tides
+publish_to: none
+
+environment:
+  sdk: ^3.5.0
+  flutter: ">=3.24.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.2
+  tide_model:
+    path: ../tide_model
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  lints: ^4.0.0
+
+flutter:
+  uses-material-design: true

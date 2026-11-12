@@ -9,9 +9,12 @@
 //! (`toolchain`: compilers, Go build information, Rust, installers and
 //! packers found by a bounded scan). Nothing is executed or disassembled.
 
+pub(crate) mod debug;
 pub(crate) mod elf;
 pub(crate) mod macho;
+pub(crate) mod misc;
 pub(crate) mod pe;
+pub(crate) mod scripting;
 pub(crate) mod wasm;
 
 use aho_corasick::AhoCorasick;
@@ -393,12 +396,28 @@ pub(crate) fn report_overlay(
     let head = src.read_vec(start, usize::try_from((end - start).min(64)).unwrap_or(0))?;
     let Some(kind) = overlay_kind(&head) else { return Ok(()) };
     cx.format_set("overlay", kind);
+    if kind == "nsis" {
+        nsis_first_header(cx, &head);
+    }
     if kind != "nsis" && cx.child_room() > 0 {
         let n = (end - start).min(cx.parse_limit() as u64);
         let data = src.read_vec(start, usize::try_from(n).unwrap_or(0))?;
         cx.emit_child(&format!("[overlay].{kind}"), data)?;
     }
     Ok(())
+}
+
+/// NSIS's first header (`fileform.h`): flags, the signature, then the size
+/// of the (compressed) installer header and of everything that follows.
+fn nsis_first_header(cx: &mut Context<'_>, h: &[u8]) {
+    let le = |at: usize| h.get(at..at + 4).map(|b| u32::from_le_bytes([b[0], b[1], b[2], b[3]]));
+    let (Some(flags), Some(header), Some(data)) = (le(0), le(20), le(24)) else { return };
+    cx.format_set("nsis_uninstaller", flags & 1 != 0);
+    if flags & 2 != 0 {
+        cx.format_set("nsis_silent", true);
+    }
+    cx.format_set("nsis_header_bytes", header);
+    cx.format_set("nsis_data_bytes", data);
 }
 
 /// Fixed-width integers of either byte order.
@@ -716,5 +735,10 @@ mod tests {
     fn overlays() {
         assert_eq!(overlay_kind(b"PK\x03\x04rest"), Some("zip"));
         assert_eq!(overlay_kind(b"MZ"), None);
+        let mut nsis = vec![1, 0, 0, 0, 0xef, 0xbe, 0xad, 0xde];
+        nsis.extend(b"NullsoftInst");
+        nsis.extend(0x1234u32.to_le_bytes());
+        nsis.extend(0x5678u32.to_le_bytes());
+        assert_eq!(overlay_kind(&nsis), Some("nsis"));
     }
 }

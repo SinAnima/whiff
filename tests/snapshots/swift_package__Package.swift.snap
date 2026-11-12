@@ -1,0 +1,158 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Package.swift",
+    "stem": "Package",
+    "extension": "swift"
+  },
+  "identification": {
+    "format": "swift_package",
+    "name": "SwiftPM Package.swift",
+    "mime": "text/x-swift",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "swift_package",
+        "confidence": 0.97
+      },
+      {
+        "format": "swift",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 672
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 672,
+    "entropy": 4.802,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 672,
+      "chars": 672,
+      "words": 47,
+      "lines": 20,
+      "max_line_length": 87,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "bf2764adb2b36f2a2696e0751284bfa6834627a3dd7789846af3aa1b828c7951",
+    "blake3": "ef8005d983a45f3054c89f4c4cb40be8cc1a6e1b6321f9d206d0d66c8172260f"
+  },
+  "content": {
+    "title": "HarbourTides"
+  },
+  "metadata": {},
+  "format": {
+    "swift_package": {
+      "tools_version": "5.9",
+      "ecosystem": "swiftpm",
+      "name": "HarbourTides",
+      "platforms": {
+        "macOS": "13",
+        "iOS": "16"
+      },
+      "products": {
+        "executable": [
+          "tides"
+        ],
+        "library": [
+          "HarbourTides"
+        ]
+      },
+      "dependencies": {
+        "swift-argument-parser": "from: 1.5.0",
+        "HarbourModel": "path: ../HarbourModel"
+      },
+      "dependencies_count": 2,
+      "targets": {
+        "executableTarget": [
+          "TidesCLI"
+        ],
+        "target": [
+          "HarbourTides"
+        ],
+        "testTarget": [
+          "HarbourTidesTests"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

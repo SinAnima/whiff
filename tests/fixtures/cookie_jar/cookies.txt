@@ -1,0 +1,8 @@
+# Netscape HTTP Cookie File
+# http://curl.haxx.se/rfc/cookie_spec.html
+# This is a generated file!  Do not edit.
+
+.saltmere.example	TRUE	/	TRUE		session	0000
+.saltmere.example	TRUE	/	FALSE	1793865600	lang	en
+tides.example.org	FALSE	/	TRUE	1764921600	units	metric
+#HttpOnly_.weather.example.net	TRUE	/	FALSE	1762934400	region	coast

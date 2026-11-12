@@ -1,0 +1,114 @@
+---
+source: src/formats/cad/models.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy.mdl",
+    "stem": "buoy",
+    "extension": "mdl"
+  },
+  "identification": {
+    "format": "valve_mdl",
+    "name": "Valve studio model",
+    "mime": "application/x-valve-mdl",
+    "family": "3d",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "cad.models"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 408
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 408,
+    "entropy": 0.878,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "2f2efd8a6228ec432bad736ddf2555bcc566d0c878eb726e4bfac966a23aa3af",
+    "blake3": "592b26f98942cda7f05cea773e36336d30e87a452a94a098d2491d431520f617"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "valve_mdl": {
+      "version": 48,
+      "engine": "Source",
+      "name": "props/saltmere/buoy.mdl",
+      "bones": 2,
+      "hitbox_sets": 1,
+      "animations": 1,
+      "sequences": 2,
+      "textures": 1,
+      "skin_families": 1,
+      "body_parts": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.models",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

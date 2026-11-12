@@ -1,0 +1,219 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbourmaster.jscontact.json",
+    "stem": "harbourmaster.jscontact",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 263
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "personal_data": {
+      "email": 1
+    }
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 263,
+    "entropy": 4.444,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 263,
+      "chars": 263,
+      "words": 26,
+      "lines": 15,
+      "max_line_length": 57,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "74e9a37984bb7b5f5f6769696e7c1e89f3a3c37fd353ec06d0577ebc353a7151",
+    "blake3": "ddda248147d780e21623b4c4aa8cfff6caf5f7de41dd1c7f45acb1ce5f63e941"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "@type",
+        "version",
+        "uid",
+        "kind",
+        "name",
+        "emails",
+        "phones"
+      ],
+      "key_count": 7,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.[\"@type\"]": {
+            "types": [
+              "string"
+            ],
+            "count": 1
+          },
+          "$.version": {
+            "types": [
+              "string"
+            ],
+            "count": 1
+          },
+          "$.uid": {
+            "types": [
+              "string"
+            ],
+            "count": 1
+          },
+          "$.kind": {
+            "types": [
+              "string"
+            ],
+            "count": 1
+          },
+          "$.name": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.name.full": {
+            "types": [
+              "string"
+            ],
+            "count": 1
+          },
+          "$.emails": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.emails.e1": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.emails.e1.address": {
+            "types": [
+              "string"
+            ],
+            "count": 1
+          },
+          "$.phones": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          }
+        },
+        "max_depth": 3
+      },
+      "known_schema": {
+        "id": "jscontact",
+        "name": "JSContact card",
+        "version": "1.0",
+        "kind": "individual",
+        "properties": [
+          "uid",
+          "kind",
+          "name",
+          "emails",
+          "phones"
+        ],
+        "emails": 1,
+        "phones": 0,
+        "addresses": 0
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

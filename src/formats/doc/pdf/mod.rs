@@ -84,6 +84,9 @@ impl Extractor for Pdf {
             return extract_fdf(src, cx);
         }
         let linearized = linearized(src.head());
+        let looks_ai = [src.head(), src.tail()]
+            .iter()
+            .any(|w| doc::find(w, b"Illustrator").is_some() || doc::find(w, b"AIPrivateData").is_some());
         let mut doc = Doc::open(src, cx)?;
         let mut s = Scan::default();
         s.structure(&mut doc, linearized);
@@ -109,11 +112,37 @@ impl Extractor for Pdf {
             doc.cx.warn("encrypted with a user password: text and metadata strings not read");
         }
         s.finish(&mut doc);
+        drop(doc);
+        if looks_ai {
+            illustrator(src, cx)?;
+        }
         Ok(())
     }
 }
 
 crate::register_extractor!(Pdf);
+
+/// Adobe Illustrator's PDF-compatible files: the `/Illustrator` page piece
+/// and the `/AIPrivateData` streams that hold the native artwork.
+fn illustrator(src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
+    const WINDOW: u64 = 1 << 20;
+    let end = src.len().min(64 << 20);
+    let (mut at, mut private, mut piece) = (0u64, 0usize, false);
+    while at < end {
+        let buf = src.read_vec(at, usize::try_from((end - at).min(WINDOW + 64)).unwrap_or(0))?;
+        let slice = &buf[..buf.len().min(usize::try_from(WINDOW).unwrap_or(usize::MAX))];
+        private += slice.windows(14).filter(|w| *w == b"/AIPrivateData").count();
+        piece |= doc::find(slice, b"/Illustrator").is_some();
+        at += WINDOW;
+    }
+    if private > 0 || piece {
+        let mut m = serde_json::Map::new();
+        m.insert("page_piece".into(), piece.into());
+        m.insert("private_data_streams".into(), private.into());
+        cx.format_set("illustrator", serde_json::Value::Object(m));
+    }
+    Ok(())
+}
 
 /// `/Linearized` in the first object.
 fn linearized(head: &[u8]) -> bool {

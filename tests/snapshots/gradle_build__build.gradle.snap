@@ -1,0 +1,146 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "build.gradle",
+    "stem": "build",
+    "extension": "gradle"
+  },
+  "identification": {
+    "format": "gradle_build",
+    "name": "Gradle build",
+    "mime": "text/x-groovy",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "gradle_build",
+        "confidence": 0.97
+      },
+      {
+        "format": "groovy",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 347
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 347,
+    "entropy": 4.731,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 347,
+      "chars": 347,
+      "words": 36,
+      "lines": 17,
+      "max_line_length": 69,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "27382a8c684c6c44782cec133f2d139f52ae2480142e33c2740de85beb4a9640",
+    "blake3": "896d26578a4f5b8c59c2415d9f7e0d1267714a5168ebf83957c2a1d240740b79"
+  },
+  "content": {
+    "title": "org.example 2.3.0"
+  },
+  "metadata": {},
+  "format": {
+    "gradle_build": {
+      "ecosystem": "gradle",
+      "name": "org.example",
+      "version": "2.3.0",
+      "group": "org.example",
+      "plugins": [
+        "java"
+      ],
+      "dependencies": {
+        "org.springframework.boot:spring-boot-starter-web": "*"
+      },
+      "dependencies_count": 1,
+      "dev_dependencies": {
+        "org.junit.jupiter:junit-jupiter": "*"
+      },
+      "dev_dependencies_count": 1,
+      "configurations": {
+        "implementation": 1,
+        "testImplementation": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

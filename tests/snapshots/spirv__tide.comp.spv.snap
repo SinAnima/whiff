@@ -1,0 +1,140 @@
+---
+source: src/formats/code/spirv.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide.comp.spv",
+    "stem": "tide.comp",
+    "extension": "spv"
+  },
+  "identification": {
+    "format": "spirv",
+    "name": "SPIR-V binary",
+    "mime": "application/x-spirv",
+    "family": "code.source",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "code.spirv"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1376
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1376,
+    "entropy": 3.244,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "979ff37618c54e0400465aaf64be622ac01f11cb7695f61ccf3a8ecedd964de4",
+    "blake3": "622115bfea7ab03bab9e5953a6b3f0a6a23e1e5246037478c69c8c639ab842d3"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "spirv": {
+      "version": "1.5",
+      "byte_order": "little",
+      "generator": {
+        "tool_id": 8,
+        "tool": "Khronos Glslang Reference Front End",
+        "tool_version": 11
+      },
+      "id_bound": 51,
+      "addressing_model": "Logical",
+      "memory_model": "GLSL450",
+      "source_language": "GLSL",
+      "source_version": 450,
+      "capabilities": [
+        "Shader"
+      ],
+      "ext_inst_imports": [
+        "GLSL.std.450"
+      ],
+      "source_extensions": [
+        "GL_GOOGLE_cpp_style_line_directive",
+        "GL_GOOGLE_include_directive"
+      ],
+      "entry_points": [
+        {
+          "name": "main",
+          "execution_model": "GLCompute",
+          "local_size": [
+            8,
+            8,
+            1
+          ]
+        }
+      ],
+      "functions": 2,
+      "debug_names": 10,
+      "instructions": 83
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.spirv",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

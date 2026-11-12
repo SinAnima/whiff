@@ -8,6 +8,7 @@ use crate::plugin::Cost;
 /// How much work to do per file.
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Hash, Serialize, Deserialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
+#[non_exhaustive]
 pub enum Profile {
     /// Stat, detection, headers only. No hashing, no text analysis.
     Minimal,
@@ -90,6 +91,7 @@ impl std::str::FromStr for Profile {
 
 /// Resource limits for one root input and everything embedded in it.
 #[derive(Debug, Clone, PartialEq, Eq)]
+#[non_exhaustive]
 pub struct Limits {
     /// Bytes extractors may read in total.
     pub max_read_bytes: u64,
@@ -143,10 +145,41 @@ impl Limits {
         self.extractor_timeout = t;
         self
     }
+    /// Set [`Limits::max_decompressed_bytes`].
+    #[must_use]
+    pub fn max_decompressed_bytes(mut self, n: u64) -> Self {
+        self.max_decompressed_bytes = n;
+        self
+    }
+    /// Set [`Limits::max_children`].
+    #[must_use]
+    pub fn max_children(mut self, n: u32) -> Self {
+        self.max_children = n;
+        self
+    }
+    /// Set [`Limits::max_text_bytes`].
+    #[must_use]
+    pub fn max_text_bytes(mut self, n: usize) -> Self {
+        self.max_text_bytes = n;
+        self
+    }
+    /// Set [`Limits::hash_max_bytes`].
+    #[must_use]
+    pub fn hash_max_bytes(mut self, n: u64) -> Self {
+        self.hash_max_bytes = n;
+        self
+    }
+    /// Set [`Limits::max_parse_bytes`].
+    #[must_use]
+    pub fn max_parse_bytes(mut self, n: u64) -> Self {
+        self.max_parse_bytes = n;
+        self
+    }
 }
 
 /// Which hashes to compute.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[non_exhaustive]
 pub struct Hashes {
     /// SHA-256.
     pub sha256: bool,
@@ -172,14 +205,16 @@ impl Hashes {
 
 /// How personal data found in a file is reported.
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Hash)]
+#[non_exhaustive]
 pub enum Privacy {
     /// Personal data is counted, not listed: e-mail addresses in message
     /// headers, contacts and calendars are reduced to their domain, phone
     /// numbers and birthdays are counted. Names are kept.
     #[default]
     Strict,
-    /// Addresses and phone numbers are listed as found. Secrets are
-    /// redacted either way.
+    /// Full details: addresses and phone numbers as found, whole account
+    /// numbers and transactions, people's names in genealogies and
+    /// directories, infrastructure values. Secrets are redacted either way.
     Off,
 }
 
@@ -196,6 +231,7 @@ impl std::str::FromStr for Privacy {
 
 /// Everything that controls an extraction.
 #[derive(Debug, Clone, Default)]
+#[non_exhaustive]
 pub struct Options {
     /// Profile.
     pub profile: Profile,

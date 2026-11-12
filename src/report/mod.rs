@@ -16,6 +16,7 @@ pub type Map = serde_json::Map<String, serde_json::Value>;
 /// Everything whiff found out about one file (or one embedded child).
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct Report {
     /// Producer and schema information.
     pub whiff: WhiffInfo,
@@ -72,6 +73,7 @@ pub use risk::{RISK_KINDS, RiskCategory, RiskKind, Severity, classify as classif
 /// `whiff` section.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct WhiffInfo {
     /// whiff version that produced the report.
     pub version: String,
@@ -84,6 +86,7 @@ pub struct WhiffInfo {
 /// `source` section.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct SourceInfo {
     /// Path as given by the caller.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -117,6 +120,7 @@ impl SourceInfo {
 /// How the format was determined.
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
+#[non_exhaustive]
 pub enum DetectedBy {
     /// A magic signature matched.
     Magic,
@@ -139,6 +143,7 @@ pub enum DetectedBy {
 /// One detection candidate.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct Candidate {
     /// Format id.
     pub format: String,
@@ -149,6 +154,7 @@ pub struct Candidate {
 /// `identification` section.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct Identification {
     /// Stable whiff format id (`jpeg`, `docx`, …; built-ins: `empty`, `text`, `binary`, `directory`, …).
     pub format: String,
@@ -177,11 +183,31 @@ pub struct Identification {
     /// Cargo feature that would add an extractor for this format, when known.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub available_with_feature: Option<String>,
+    /// The name marks a partial download, backup copy or temporary file
+    /// (`report.pdf.crdownload`, `notes.txt.bak`): detection used the
+    /// extension underneath.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub wrapper: Option<Wrapper>,
+}
+
+/// A wrapper named by a file's last extension.
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize, JsonSchema)]
+#[serde(default)]
+#[non_exhaustive]
+pub struct Wrapper {
+    /// `partial_download`, `backup_copy` or `temporary`.
+    pub kind: String,
+    /// The wrapper's extension (`crdownload`, `bak`, `~` for an editor backup).
+    pub extension: String,
+    /// The extension underneath, used for detection.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub inner_extension: Option<String>,
 }
 
 /// Kind of filesystem object.
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
+#[non_exhaustive]
 pub enum FileKind {
     /// A regular file.
     Regular,
@@ -207,6 +233,7 @@ pub enum FileKind {
 /// `system` section.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct System {
     /// Kind of object.
     pub kind: FileKind,
@@ -216,6 +243,10 @@ pub struct System {
     /// Bytes actually allocated on disk.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub allocated_bytes: Option<u64>,
+    /// Fewer bytes allocated than the logical size: a sparse file (or one
+    /// the filesystem compresses).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sparse: Option<bool>,
     /// Device id.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub device: Option<u64>,
@@ -239,6 +270,7 @@ pub struct System {
 /// Which date a content timestamp describes.
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
+#[non_exhaustive]
 pub enum DateField {
     /// Creation of the content.
     #[default]
@@ -266,6 +298,7 @@ pub enum DateField {
 /// A date found inside the content.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct ContentDate {
     /// What the date means.
     pub field: DateField,
@@ -280,6 +313,7 @@ pub struct ContentDate {
 /// Filesystem timestamps (RFC 3339, UTC).
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct FsTimes {
     /// Last modification (mtime).
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -298,6 +332,7 @@ pub struct FsTimes {
 /// `temporal` section.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct Temporal {
     /// Filesystem times.
     pub filesystem: FsTimes,
@@ -315,6 +350,7 @@ pub struct Temporal {
 /// File owner.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct Owner {
     /// Numeric user id.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -333,6 +369,7 @@ pub struct Owner {
 /// A risk signal (macro present, script in SVG, extension mismatch, …).
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct Risk {
     /// Stable `snake_case` kind, e.g. `macros`, `javascript`, `link_text_mismatch`;
     /// the vocabulary is listed in `docs/risks.md`.
@@ -351,6 +388,7 @@ pub struct Risk {
 /// `security` section.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct Security {
     /// Octal permission bits, e.g. `0644`.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -411,6 +449,7 @@ pub struct Security {
 /// A licence.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct License {
     /// Name, e.g. `CC BY 4.0` or an SPDX id.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -423,6 +462,7 @@ pub struct License {
 /// `rights` section.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct Rights {
     /// Copyright notice.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -450,6 +490,7 @@ pub struct Rights {
 /// Which bytes an entropy value was computed over.
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
+#[non_exhaustive]
 pub enum EntropyScope {
     /// The whole file.
     #[default]
@@ -461,6 +502,7 @@ pub enum EntropyScope {
 /// Text physical properties (`wc` parity).
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct TextPhysical {
     /// Bytes.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -491,6 +533,7 @@ pub struct TextPhysical {
 /// Image physical properties.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct ImagePhysical {
     /// Width in pixels.
     pub width: u32,
@@ -519,6 +562,7 @@ pub struct ImagePhysical {
 /// Audio/video physical properties.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct MediaPhysical {
     /// Duration in seconds.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -534,6 +578,7 @@ pub struct MediaPhysical {
 /// Document physical properties.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct DocumentPhysical {
     /// Pages.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -552,6 +597,7 @@ pub struct DocumentPhysical {
 /// Container (archive) physical properties.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct ContainerPhysical {
     /// Entry count.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -570,6 +616,7 @@ pub struct ContainerPhysical {
 /// `physical` section.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct Physical {
     /// Size in bytes.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -600,6 +647,7 @@ pub struct Physical {
 /// `integrity` section.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct Integrity {
     /// SHA-256, lowercase hex.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -618,6 +666,7 @@ pub struct Integrity {
 /// Detected natural language.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct Language {
     /// ISO 639 code.
     pub code: String,
@@ -628,6 +677,7 @@ pub struct Language {
 /// One heading of the document outline.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct Heading {
     /// Level, 1 = top.
     pub level: u8,
@@ -638,6 +688,7 @@ pub struct Heading {
 /// A geographic location.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct Location {
     /// Latitude, decimal degrees.
     pub lat: f64,
@@ -653,6 +704,7 @@ pub struct Location {
 /// A geographic extent: a WGS84 bounding box.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct Extent {
     /// Western longitude, decimal degrees.
     pub west: f64,
@@ -669,6 +721,7 @@ pub struct Extent {
 /// `content` section: the LLM-facing view.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct Content {
     /// Title.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -711,6 +764,7 @@ pub struct Content {
 /// Outcome of one extractor, decoder or analyzer run.
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
+#[non_exhaustive]
 pub enum RunStatus {
     /// Finished normally.
     #[default]
@@ -724,6 +778,7 @@ pub enum RunStatus {
 /// One entry of `diagnostics.extractors`.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct ExtractorRun {
     /// Extractor / decoder / analyzer id.
     pub id: String,
@@ -744,6 +799,7 @@ pub struct ExtractorRun {
 /// `diagnostics` section.
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize, JsonSchema)]
 #[serde(default)]
+#[non_exhaustive]
 pub struct Diagnostics {
     /// Everything that ran, in order.
     #[serde(skip_serializing_if = "Vec::is_empty")]

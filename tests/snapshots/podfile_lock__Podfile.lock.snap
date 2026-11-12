@@ -1,0 +1,128 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Podfile.lock",
+    "stem": "Podfile",
+    "extension": "lock"
+  },
+  "identification": {
+    "format": "podfile_lock",
+    "name": "CocoaPods Podfile.lock",
+    "mime": "application/yaml",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 349
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 349,
+    "entropy": 5.221,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 349,
+      "chars": 349,
+      "words": 39,
+      "lines": 22,
+      "max_line_length": 58,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 5
+    }
+  },
+  "integrity": {
+    "sha256": "169bf9d650025f8ba1ac0eb271ad35f40927e9ac00aede0e1b398ccb203e7ce0",
+    "blake3": "e65076b45aba284a0176893669f8a14625e645ed0d8ec83acf1942202d7c94e9"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "podfile_lock": {
+      "ecosystem": "cocoapods",
+      "packages": {
+        "Alamofire": "5.9.1",
+        "Quick": "7.6.2",
+        "SnapKit": "5.7.1"
+      },
+      "packages_count": 3,
+      "resolved_packages": 3,
+      "dependencies_count": 3,
+      "spec_repos": [
+        "trunk"
+      ],
+      "cocoapods_version": "1.15.2"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

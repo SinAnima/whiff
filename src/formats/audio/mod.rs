@@ -17,13 +17,17 @@ pub(crate) mod caf;
 pub(crate) mod dsd;
 pub(crate) mod flac;
 pub(crate) mod id3;
+pub(crate) mod instruments;
 pub(crate) mod monkey;
 pub(crate) mod mp4;
 pub(crate) mod mpeg;
 pub(crate) mod musepack;
 pub(crate) mod ogg;
 pub(crate) mod other;
+pub(crate) mod projects;
+pub(crate) mod raw;
 pub(crate) mod riff;
+pub(crate) mod sessions;
 pub(crate) mod vorbis;
 pub(crate) mod wavpack;
 

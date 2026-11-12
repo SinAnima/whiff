@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink xmlns="urn:ietf:params:xml:ns:metalink">
+  <generator>harbour-mirror/1.0</generator>
+  <published>2025-11-05T08:00:00Z</published>
+  <file name="tide-atlas-1.0.zip">
+    <size>1474560</size>
+    <hash type="sha-256">3f79bb7b435b05321651daefd374cdc681dc06faa65e374e38337b88ca046dea</hash>
+    <url location="gb" priority="1">https://mirror1.example.org/atlas/tide-atlas-1.0.zip</url>
+    <url location="fr" priority="2">https://mirror2.example.net/atlas/tide-atlas-1.0.zip</url>
+  </file>
+  <file name="tide-atlas-1.0.pdf">
+    <size>204800</size>
+    <hash type="sha-1">a9993e364706816aba3e25717850c26c9cd0d89d</hash>
+    <url>https://mirror1.example.org/atlas/tide-atlas-1.0.pdf</url>
+  </file>
+</metalink>

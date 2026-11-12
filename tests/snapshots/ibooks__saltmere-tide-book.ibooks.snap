@@ -1,0 +1,154 @@
+---
+source: src/formats/doc/ebook/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tide-book.ibooks",
+    "stem": "saltmere-tide-book",
+    "extension": "ibooks"
+  },
+  "identification": {
+    "format": "ibooks",
+    "name": "Apple iBooks Author book",
+    "mime": "application/x-ibooks+zip",
+    "family": "doc.ebook",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ibooks",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "doc.ebook"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1252
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ben Gull"
+    ]
+  },
+  "physical": {
+    "size_bytes": 1252,
+    "entropy": 6.954,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "e5c51fc6d637710d47855dfd18ff04b9127c4dd9f33b562c1d28f98e0b3ea5ac",
+    "blake3": "e322ad289e29fc5d5b08b618d66a403ff5eea5111d71d94655f0ea08766f885d"
+  },
+  "content": {
+    "title": "Saltmere Tide Book",
+    "authors": [
+      "Ben Gull"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "outline": [
+      {
+        "level": 1,
+        "text": "High water"
+      }
+    ],
+    "excerpt": "High water The harbour bell rings at high tide."
+  },
+  "metadata": {},
+  "format": {
+    "ibooks": {
+      "entries": 5,
+      "epub_version": "3.0",
+      "manifest": {
+        "documents": 2
+      },
+      "spine_items": 1,
+      "toc_source": "nav",
+      "creators": [
+        {
+          "name": "Ben Gull",
+          "role": "aut"
+        }
+      ],
+      "identifiers": [
+        {
+          "scheme": "uuid",
+          "value": "5a17e2e0-0000-4000-8000-000000000004"
+        }
+      ],
+      "toc_entries": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ebook",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

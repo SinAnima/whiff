@@ -1,0 +1,140 @@
+---
+source: src/formats/cad/models.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy-paint.mtlx",
+    "stem": "buoy-paint",
+    "extension": "mtlx"
+  },
+  "identification": {
+    "format": "materialx",
+    "name": "MaterialX document",
+    "mime": "application/x-materialx",
+    "family": "3d",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "materialx",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "cad.models"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 886
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 886,
+    "entropy": 4.824,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 886,
+      "chars": 886,
+      "words": 62,
+      "lines": 13,
+      "max_line_length": 207,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "feaed377a2bbd5e06b24a24ef0c79be7fb318e2f0d9a2500355fa081275b2cf3",
+    "blake3": "4b1535d1d6c522c3af04c93a2103642e9bd1a1ca8c0b88aafaa31cc8f4efecce"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "materialx": {
+      "version": "1.38",
+      "colorspace": "lin_rec709",
+      "materials": [
+        "M_buoy_red"
+      ],
+      "node_graphs": [
+        "NG_buoy_paint"
+      ],
+      "node_types": {
+        "mix": 1,
+        "noise2d": 1,
+        "standard_surface": 1,
+        "surfacematerial": 1
+      },
+      "inputs": 7
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.models",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

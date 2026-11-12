@@ -78,13 +78,13 @@ pub fn boxes(data: &[u8]) -> impl Iterator<Item = BoxRef<'_>> {
 }
 
 /// The first child box of `kind`.
-pub fn find<'a>(data: &'a [u8], kind: &[u8; 4]) -> Option<&'a [u8]> {
-    boxes(data).find(|(k, _)| k == kind).map(|(_, b)| b)
+pub fn find(data: &[u8], kind: [u8; 4]) -> Option<&[u8]> {
+    boxes(data).find(|(k, _)| *k == kind).map(|(_, b)| b)
 }
 
 /// The body of a nested box, following a path of types.
 pub fn path<'a>(data: &'a [u8], kinds: &[&[u8; 4]]) -> Option<&'a [u8]> {
-    kinds.iter().try_fold(data, |d, k| find(d, k))
+    kinds.iter().try_fold(data, |d, k| find(d, **k))
 }
 
 /// A top-level box: type, body offset and body length.
@@ -407,7 +407,7 @@ fn full(b: &[u8]) -> (u8, u32, &[u8]) {
 
 fn track(trak: &[u8]) -> Track {
     let mut t = Track::default();
-    if let Some(tkhd) = find(trak, b"tkhd") {
+    if let Some(tkhd) = find(trak, *b"tkhd") {
         let (v, flags, d) = full(tkhd);
         t.enabled = flags & 1 != 0;
         let mut r = ByteReader::new(d);
@@ -456,8 +456,8 @@ fn track(trak: &[u8]) -> Track {
     if let Some(chap) = path(trak, &[b"tref", b"chap"]) {
         t.chapter_tracks = chap.as_chunks::<4>().0.iter().map(|c| u32::from_be_bytes(*c)).take(16).collect();
     }
-    let Some(mdia) = find(trak, b"mdia") else { return t };
-    if let Some(mdhd) = find(mdia, b"mdhd") {
+    let Some(mdia) = find(trak, *b"mdia") else { return t };
+    if let Some(mdhd) = find(mdia, *b"mdhd") {
         let (v, _, d) = full(mdhd);
         let mut r = ByteReader::new(d);
         let skip = if v == 1 { 16 } else { 8 };
@@ -471,7 +471,7 @@ fn track(trak: &[u8]) -> Track {
             }
         }
     }
-    if let Some(hdlr) = find(mdia, b"hdlr") {
+    if let Some(hdlr) = find(mdia, *b"hdlr") {
         let (_, _, d) = full(hdlr);
         if let Some(h) = d.get(4..8) {
             t.handler = fourcc(h);
@@ -685,10 +685,10 @@ fn sample_entry(entry: BoxRef<'_>, t: &mut Track) {
 /// A protection scheme box (`sinf`): the original format (`frma`) and the
 /// scheme type (`schm`).
 fn protection(sinf: &[u8], t: &mut Track) {
-    if let Some(f) = find(sinf, b"frma") {
+    if let Some(f) = find(sinf, *b"frma") {
         t.original_format = Some(fourcc(f));
     }
-    if let Some(s) = find(sinf, b"schm")
+    if let Some(s) = find(sinf, *b"schm")
         && let Some(kind) = full(s).2.get(..4)
     {
         t.protection = Some(fourcc(kind));
@@ -957,7 +957,7 @@ fn meta(body: &[u8], m: &mut Movie) {
     // ISO `meta` is a full box; QuickTime's is not (its first child follows).
     let body = if body.get(4..8) == Some(b"hdlr") { body } else { full(body).2 };
     let mut keys = Vec::new();
-    if let Some(k) = find(body, b"keys") {
+    if let Some(k) = find(body, *b"keys") {
         let (_, _, d) = full(k);
         let mut r = ByteReader::new(d);
         if let Ok(n) = r.be_u32() {
@@ -968,13 +968,13 @@ fn meta(body: &[u8], m: &mut Movie) {
             }
         }
     }
-    let Some(ilst) = find(body, b"ilst") else { return };
+    let Some(ilst) = find(body, *b"ilst") else { return };
     for (kind, item) in boxes(ilst) {
         if m.items.len() >= MAX_ITEMS {
             break;
         }
         let key = if kind == *b"----" {
-            let text = |k: &[u8; 4]| find(item, k).map(|b| String::from_utf8_lossy(full(b).2).into_owned());
+            let text = |k: &[u8; 4]| find(item, *k).map(|b| String::from_utf8_lossy(full(b).2).into_owned());
             format!("----:{}:{}", text(b"mean").unwrap_or_default(), text(b"name").unwrap_or_default())
         } else if !keys.is_empty() && kind[0] == 0 {
             let i = u32::from_be_bytes(kind) as usize;
@@ -1117,7 +1117,7 @@ fn webvtt_sample(d: &[u8]) -> String {
         if &kind != b"vttc" {
             continue;
         }
-        if let Some(p) = find(body, b"payl") {
+        if let Some(p) = find(body, *b"payl") {
             if !out.is_empty() {
                 out.push('\n');
             }
@@ -1133,7 +1133,7 @@ fn webvtt_sample(d: &[u8]) -> String {
 /// `tfhd` and `trex`).
 fn fragments(src: &mut dyn Source, moofs: &[TopBox], moov: &[u8], m: &mut Movie) -> Result<(), ExtractError> {
     let mut defaults = std::collections::HashMap::new();
-    if let Some(mvex) = find(moov, b"mvex") {
+    if let Some(mvex) = find(moov, *b"mvex") {
         for (kind, body) in boxes(mvex) {
             let (v, _, d) = full(body);
             let mut r = ByteReader::new(d);
@@ -1162,7 +1162,7 @@ fn fragments(src: &mut dyn Source, moofs: &[TopBox], moov: &[u8], m: &mut Movie)
             if kind != *b"traf" {
                 continue;
             }
-            let Some(tfhd) = find(traf, b"tfhd") else { continue };
+            let Some(tfhd) = find(traf, *b"tfhd") else { continue };
             let (_, flags, d) = full(tfhd);
             let mut r = ByteReader::new(d);
             let Ok(id) = r.be_u32() else { continue };
@@ -1177,7 +1177,7 @@ fn fragments(src: &mut dyn Source, moofs: &[TopBox], moov: &[u8], m: &mut Movie)
                 default = r.be_u32().unwrap_or(default);
             }
             let entry = ends.entry(id).or_default();
-            if let Some(tfdt) = find(traf, b"tfdt") {
+            if let Some(tfdt) = find(traf, *b"tfdt") {
                 let (v, _, d) = full(tfdt);
                 let mut r = ByteReader::new(d);
                 if let Ok(t) = if v == 1 { r.be_u64() } else { r.be_u32().map(u64::from) } {

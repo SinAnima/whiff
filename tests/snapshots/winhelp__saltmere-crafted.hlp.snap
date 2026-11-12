@@ -1,0 +1,115 @@
+---
+source: src/formats/doc/legacy.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-crafted.hlp",
+    "stem": "saltmere-crafted",
+    "extension": "hlp"
+  },
+  "identification": {
+    "format": "winhelp",
+    "name": "Windows Help file",
+    "mime": "application/winhlp",
+    "family": "doc.other",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "doc.legacy"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1200
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1200,
+    "entropy": 0.879,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "d5659d2cbcb00f2213d9c62dc0ec25d560d67636f8c768af2e41fc6ff22390dd",
+    "blake3": "ac8c490de0cf4545a87eeea3504016e508a8e451463bf32e259e15986193b206"
+  },
+  "content": {
+    "title": "Saltmere Harbour Help"
+  },
+  "metadata": {},
+  "format": {
+    "winhelp": {
+      "internal_files": 2,
+      "internal_file_list": [
+        "|SYSTEM",
+        "|TOPIC"
+      ],
+      "help_version": "WinHelp 4.0",
+      "generated": "2025-09-01T12:00:00Z",
+      "title": "Saltmere Harbour Help",
+      "copyright": "CC0 Saltmere Harbour"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.legacy",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

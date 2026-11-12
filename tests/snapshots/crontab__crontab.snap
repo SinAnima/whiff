@@ -1,0 +1,125 @@
+---
+source: src/formats/code/config.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "crontab",
+    "stem": "crontab"
+  },
+  "identification": {
+    "format": "crontab",
+    "name": "crontab",
+    "mime": "text/plain",
+    "family": "code.infra",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "encoding": "us-ascii",
+    "extractor": "code.config"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 316
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 316,
+    "entropy": 4.65,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 316,
+      "chars": 316,
+      "words": 39,
+      "lines": 8,
+      "max_line_length": 67,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "05a03bc587872cc1a43b95dee379632bcbb476c8fbbbf1320510416753b918c3",
+    "blake3": "bec236770d497944e0e97d438608ab52af1cb111914e51cd03528b6dbdfbe485"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "crontab": {
+      "jobs": 3,
+      "system_crontab": true,
+      "commands": {
+        "cd": 1,
+        "logrotate": 1,
+        "tidewatch": 1
+      },
+      "variables": [
+        "MAILTO",
+        "PATH",
+        "SHELL"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.config",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

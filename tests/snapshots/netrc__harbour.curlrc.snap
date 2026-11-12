@@ -1,0 +1,136 @@
+---
+source: src/formats/web/misc.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.curlrc",
+    "stem": "harbour",
+    "extension": "curlrc"
+  },
+  "identification": {
+    "format": "netrc",
+    "name": "Wget / curl config, .netrc",
+    "mime": "text/plain",
+    "family": "web.misc",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "web.misc"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 183
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "risks": [
+      {
+        "kind": "embedded_secret",
+        "category": "data_exposure",
+        "severity": "high",
+        "detail": "1 passwords in the curl configuration",
+        "source": "web.misc"
+      }
+    ],
+    "risk_level": "high"
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 183,
+    "entropy": 4.696,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 183,
+      "chars": 183,
+      "words": 19,
+      "lines": 6,
+      "max_line_length": 44,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "359bfb9521136dbffd14eefe0ea9e3470cb4c94a5359f881b79d6230448d216c",
+    "blake3": "d42de19391cfc7eca0f94ebb28834ffe95ff69d2a4387e523c5bb0dec5ec1892"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "netrc": {
+      "tool": "curl",
+      "options": {
+        "connect_timeout": 1,
+        "proxy": 1,
+        "silent": 1,
+        "user": 1,
+        "user_agent": 1
+      },
+      "tls_verification_off": false,
+      "proxy": true
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "web.misc",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

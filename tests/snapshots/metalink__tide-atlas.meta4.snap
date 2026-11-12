@@ -1,0 +1,154 @@
+---
+source: src/formats/web/misc.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide-atlas.meta4",
+    "stem": "tide-atlas",
+    "extension": "meta4"
+  },
+  "identification": {
+    "format": "metalink",
+    "name": "Magnet / metalink",
+    "mime": "application/metalink4+xml",
+    "family": "web.misc",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "metalink",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "web.misc"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 757
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "published",
+        "value": "2025-11-05T08:00:00Z",
+        "source": "web.misc",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-11-05T08:00:00Z",
+    "latest": "2025-11-05T08:00:00Z"
+  },
+  "security": {
+    "external_references": 3
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 757,
+    "entropy": 5.181,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 757,
+      "chars": 757,
+      "words": 27,
+      "lines": 16,
+      "max_line_length": 96,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "2df32357d11ec05fd741d699c18699f4a68d82bdd679eded61b4620271d9be0d",
+    "blake3": "07d743ba09550ae5d515971ffa9aa1460dbf80772fd6ae636a04ac4db9a2e165"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "metalink": {
+      "version": "4.0",
+      "generator": "harbour-mirror/1.0",
+      "file_count": 2,
+      "files": [
+        "tide-atlas-1.0.zip",
+        "tide-atlas-1.0.pdf"
+      ],
+      "total_size": 1679360,
+      "urls": 3,
+      "top_hosts": {
+        "mirror1.example.org": 2,
+        "mirror2.example.net": 1
+      },
+      "hash_types": [
+        "sha-1",
+        "sha-256"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "web.misc",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

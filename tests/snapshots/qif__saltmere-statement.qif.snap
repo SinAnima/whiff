@@ -1,0 +1,119 @@
+---
+source: src/formats/data/records.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-statement.qif",
+    "stem": "saltmere-statement",
+    "extension": "qif"
+  },
+  "identification": {
+    "format": "qif",
+    "name": "Quicken Interchange Format",
+    "mime": "application/qif",
+    "family": "data.csv",
+    "confidence": 0.89,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.records"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 86
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 86,
+    "entropy": 4.859,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 86,
+      "chars": 86,
+      "words": 11,
+      "lines": 9,
+      "max_line_length": 18,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "890e09d070bf17f07d215f65eba507d78e8ff5aa5c86cfc1c22de5839be8b077",
+    "blake3": "0d95b9f9d03c7297e3a2e60baca7fb8cff1f4209daf76855089b9ebad060be3c"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "qif": {
+      "account_type": "Bank",
+      "transactions": 2,
+      "first_date": "08/05'25",
+      "last_date": "08/15'25"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.records",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

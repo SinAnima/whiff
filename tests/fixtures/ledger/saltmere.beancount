@@ -1,0 +1,19 @@
+option "title" "Saltmere harbour accounts"
+option "operating_currency" "GBP"
+
+2025-08-01 open Assets:Bank:Current GBP
+2025-08-01 open Expenses:Chandlery GBP
+2025-08-01 open Income:Moorings GBP
+2025-08-01 open Equity:Opening GBP
+
+2025-08-01 * "Opening balance"
+  Assets:Bank:Current   1000.00 GBP
+  Equity:Opening
+
+2025-08-05 * "Harbour chandlery" "Rope"
+  Expenses:Chandlery      12.50 GBP
+  Assets:Bank:Current
+
+2025-08-15 * "Mooring refund"
+  Assets:Bank:Current    200.00 GBP
+  Income:Moorings

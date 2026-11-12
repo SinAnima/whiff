@@ -1,0 +1,142 @@
+---
+source: src/formats/doc/writing.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-leaflet.sla",
+    "stem": "saltmere-leaflet",
+    "extension": "sla"
+  },
+  "identification": {
+    "format": "scribus",
+    "name": "Scribus document",
+    "mime": "application/vnd.scribus",
+    "family": "doc.other",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "scribus",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "doc.writing"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 964
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 964,
+    "entropy": 5.262,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 964,
+      "chars": 964,
+      "words": 77,
+      "lines": 18,
+      "max_line_length": 161,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "7ba49ab4a1a69141daf1ee94e41cd5022045a7d02fff9f347ef5cb785f6d0a17",
+    "blake3": "f32064e74ec92ff54ffe4e74b444b0fa7e2d640966b9e2ebcc32bbf03596fea5"
+  },
+  "content": {
+    "title": "Saltmere harbour leaflet",
+    "authors": [
+      "Ben Gull"
+    ],
+    "excerpt": "Saltmere harbour High water 06:12, low water 12:31. The bell rings at high tide."
+  },
+  "metadata": {},
+  "format": {
+    "scribus": {
+      "scribus_version": "1.6.3",
+      "title": "Saltmere harbour leaflet",
+      "author": "Ben Gull",
+      "comments": "Tide times for visitors",
+      "language": "en_GB",
+      "declared_pages": 2,
+      "pages": 2,
+      "frames": {
+        "image": 1,
+        "text": 2
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.writing",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

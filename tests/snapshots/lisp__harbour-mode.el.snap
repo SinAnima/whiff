@@ -1,0 +1,146 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-mode.el",
+    "stem": "harbour-mode",
+    "extension": "el"
+  },
+  "identification": {
+    "format": "lisp",
+    "name": "Common Lisp / Emacs Lisp source",
+    "mime": "text/x-common-lisp",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 317
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 317,
+    "entropy": 4.737,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 317,
+      "chars": 317,
+      "words": 39,
+      "lines": 14,
+      "max_line_length": 74,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "d76548a7a189afc48c7bd4cd37dfb9d99722083433e69229f2c6264bfde4a35e",
+    "blake3": "f03110cf31e6e1b903dcf1cddc3fd158b93aac9ba6623b9a0780e0c56a94efff"
+  },
+  "content": {
+    "description": "harbour-mode.el --- Saltmere Harbour notes -*- lexical-binding: t -*-",
+    "excerpt": "harbour-mode.el --- Saltmere Harbour notes -*- lexical-binding: t -*-"
+  },
+  "metadata": {},
+  "format": {
+    "lisp": {
+      "language": "Common Lisp / Emacs Lisp",
+      "loc": {
+        "code": 9,
+        "comment": 2,
+        "blank": 3,
+        "total": 14
+      },
+      "package": "harbour-mode",
+      "imports": [
+        "cl-lib"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "function": [
+          "harbour-tide"
+        ],
+        "variable": [
+          "harbour-berths"
+        ]
+      },
+      "symbol_counts": {
+        "function": 1,
+        "variable": 1
+      },
+      "module_doc": "harbour-mode.el --- Saltmere Harbour notes  -*- lexical-binding: t -*-",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 74
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

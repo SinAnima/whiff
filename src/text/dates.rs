@@ -11,15 +11,6 @@ use jiff::{Timestamp, tz::Offset};
 /// Returns the value in the form `temporal.content` expects plus whether the
 /// source carried a zone: RFC 3339 with its original offset (`tz_known`), or a
 /// civil `YYYY-MM-DDTHH:MM:SS` / `YYYY-MM-DD` (not `tz_known`).
-///
-/// ```
-/// use whiff::text::parse_date;
-/// assert_eq!(parse_date("2026-01-02T03:04:05+02:00"), Some(("2026-01-02T03:04:05+02:00".into(), true)));
-/// assert_eq!(parse_date("Fri, 16 Oct 2026 09:30:00 GMT"), Some(("2026-10-16T09:30:00+00:00".into(), true)));
-/// assert_eq!(parse_date("2026-10-16 09:30"), Some(("2026-10-16T09:30:00".into(), false)));
-/// assert_eq!(parse_date("October 16, 2026"), Some(("2026-10-16".into(), false)));
-/// assert_eq!(parse_date("soon"), None);
-/// ```
 pub fn parse_date(s: &str) -> Option<(String, bool)> {
     let s = s.trim().trim_matches('"');
     if s.len() < 6 || s.len() > 64 {
@@ -96,6 +87,15 @@ fn with_offset(ts: Timestamp, offset: Offset) -> String {
 #[cfg(test)]
 mod tests {
     use super::parse_date;
+
+    #[test]
+    fn parse_date_forms() {
+        assert_eq!(parse_date("2026-01-02T03:04:05+02:00"), Some(("2026-01-02T03:04:05+02:00".into(), true)));
+        assert_eq!(parse_date("Fri, 16 Oct 2026 09:30:00 GMT"), Some(("2026-10-16T09:30:00+00:00".into(), true)));
+        assert_eq!(parse_date("2026-10-16 09:30"), Some(("2026-10-16T09:30:00".into(), false)));
+        assert_eq!(parse_date("October 16, 2026"), Some(("2026-10-16".into(), false)));
+        assert_eq!(parse_date("soon"), None);
+    }
 
     #[test]
     fn notations() {

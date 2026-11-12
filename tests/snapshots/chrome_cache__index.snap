@@ -1,0 +1,108 @@
+---
+source: src/formats/forensic/longtail.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "index",
+    "stem": "index"
+  },
+  "identification": {
+    "format": "chrome_cache",
+    "name": "Chrome cache file",
+    "mime": "application/x-chrome-cache",
+    "family": "forensic",
+    "confidence": 0.76,
+    "detected_by": "magic",
+    "extractor": "forensic.longtail"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 256
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 256,
+    "entropy": 0.561,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "75f91255519886f79d1ce7a3e13b3cc5d6c50dd3b7f66abcb4262bbfd6afae43",
+    "blake3": "b938cb2e1c196ec74f25d2de5a52bdbe19bfe921efa6af26f899f89421369001"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "chrome_cache": {
+      "kind": "index",
+      "version": "3.0",
+      "entries": 3,
+      "bytes": 12345,
+      "table_length": 65536,
+      "created": "2025-09-01T12:00:00Z"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.longtail",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

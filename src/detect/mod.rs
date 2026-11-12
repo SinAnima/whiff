@@ -18,7 +18,7 @@
 use std::panic::{AssertUnwindSafe, catch_unwind};
 
 use crate::plugin::{FormatSpec, Probe, Registry};
-use crate::report::{Candidate, DetectedBy, Identification};
+use crate::report::{Candidate, DetectedBy, Identification, Wrapper};
 
 /// Formats in the catalogue (`data/formats.tsv`), by extension and MIME type.
 mod catalogue {
@@ -123,6 +123,7 @@ pub fn detect(registry: &Registry, probe: &Probe<'_>, forced: Option<&str>) -> D
                 encoding: fallback.encoding,
                 extractor: None,
                 available_with_feature: None,
+                wrapper: None,
             },
         };
     }
@@ -209,6 +210,37 @@ fn round3(x: f64) -> f64 {
     (x * 1000.0).round() / 1000.0
 }
 
+/// What a file's last extension says it wraps: a partial download
+/// (`.part`, `.crdownload`), a backup copy (`.bak`, `.orig`, a trailing
+/// `~`) or a temporary file (`.tmp`, only over another extension), with
+/// the extension underneath when there is one.
+pub fn wrapper_of(name: &str) -> Option<Wrapper> {
+    let file = name.rsplit(['/', '\\']).next()?;
+    let inner = |stem: &str| {
+        stem.rsplit_once('.')
+            .filter(|(s, e)| {
+                !s.is_empty() && (1..=10).contains(&e.len()) && e.bytes().all(|b| b.is_ascii_alphanumeric())
+            })
+            .map(|(_, e)| e.to_ascii_lowercase())
+    };
+    if let Some(stem) = file.strip_suffix('~').filter(|s| !s.is_empty() && !s.ends_with('~')) {
+        return Some(Wrapper { kind: "backup_copy".into(), extension: "~".into(), inner_extension: inner(stem) });
+    }
+    let (stem, ext) = file.rsplit_once('.').filter(|(s, _)| !s.is_empty())?;
+    let ext = ext.to_ascii_lowercase();
+    let kind = match ext.as_str() {
+        "part" | "crdownload" | "partial" | "opdownload" | "download" | "!ut" => "partial_download",
+        "bak" | "old" | "orig" | "backup" | "bkp" => "backup_copy",
+        "tmp" | "temp" => "temporary",
+        _ => return None,
+    };
+    let inner_extension = inner(stem);
+    if kind == "temporary" && inner_extension.is_none() {
+        return None;
+    }
+    Some(Wrapper { kind: kind.into(), extension: ext, inner_extension })
+}
+
 /// Identification for filesystem objects that are not regular files.
 pub fn special(format: &str, name: &str, mime: &str) -> Identification {
     Identification {
@@ -264,11 +296,25 @@ pub fn text_encoding(head: &[u8], complete: bool) -> Option<String> {
     if head.starts_with(&[0xEF, 0xBB, 0xBF]) {
         return Some("utf-8".into());
     }
+    // A UTF-16 byte-order mark, then mostly text: binary formats that start
+    // with `FF FE` (SketchUp models, …) are not text.
+    let utf16_text = |little: bool| {
+        let units: Vec<u16> = head[2..]
+            .as_chunks::<2>()
+            .0
+            .iter()
+            .map(|c| if little { u16::from_le_bytes(*c) } else { u16::from_be_bytes(*c) })
+            .collect();
+        let control = char::decode_utf16(units.iter().copied())
+            .filter(|c| c.as_ref().map_or(true, |c| (*c as u32) < 0x20 && !matches!(c, '\t' | '\n' | '\r' | '\x0c')))
+            .count();
+        control * 100 <= units.len()
+    };
     if head.starts_with(&[0xFF, 0xFE]) {
-        return Some("utf-16le".into());
+        return utf16_text(true).then(|| "utf-16le".into());
     }
     if head.starts_with(&[0xFE, 0xFF]) {
-        return Some("utf-16be".into());
+        return utf16_text(false).then(|| "utf-16be".into());
     }
     if head.contains(&0) {
         return None;
@@ -300,10 +346,26 @@ mod tests {
         assert_eq!(enc(b"hello\n", true).as_deref(), Some("us-ascii"));
         assert_eq!(enc("héllo".as_bytes(), true).as_deref(), Some("utf-8"));
         assert_eq!(enc(&[0xFF, 0xFE, b'h', 0], true).as_deref(), Some("utf-16le"));
+        // A BOM followed by binary data is not text.
+        assert_eq!(enc(&[0xFF, 0xFE, b'h', 0, 0, 0, 0, 0, 1, 0, 2, 0], true), None);
         assert_eq!(enc(&[0x7f, b'E', b'L', b'F', 0, 1], true), None);
         // Cut multi-byte char at the end of a partial head is still text.
         assert_eq!(enc(&"é".as_bytes()[..1], false).as_deref(), Some("utf-8"));
         assert_eq!(enc(b"caf\xe9 au lait", true).as_deref(), Some("windows-1252"));
+    }
+
+    #[test]
+    fn wrappers() {
+        let w = |n: &str| wrapper_of(n).map(|w| (w.kind, w.extension, w.inner_extension));
+        let some = |k: &str, e: &str, i: Option<&str>| Some((k.to_string(), e.to_string(), i.map(str::to_string)));
+        assert_eq!(w("dl/Tide Table.PDF.crdownload"), some("partial_download", "crdownload", Some("pdf")));
+        assert_eq!(w("notes.txt~"), some("backup_copy", "~", Some("txt")));
+        assert_eq!(w("db.bak"), some("backup_copy", "bak", None));
+        assert_eq!(w("x.tar.gz.part"), some("partial_download", "part", Some("gz")));
+        assert_eq!(w("~WRL0003.tmp"), None);
+        assert_eq!(w("a.tmp.tmp"), some("temporary", "tmp", Some("tmp")));
+        assert_eq!(w(".bak"), None);
+        assert_eq!(w("tides.csv"), None);
     }
 
     #[test]

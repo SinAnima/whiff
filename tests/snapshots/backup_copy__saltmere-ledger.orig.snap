@@ -1,0 +1,132 @@
+---
+source: src/formats/binary/wrapper.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-ledger.orig",
+    "stem": "saltmere-ledger",
+    "extension": "orig"
+  },
+  "identification": {
+    "format": "backup_copy",
+    "name": "Backup copy",
+    "mime": "application/octet-stream",
+    "family": "binary.unknown",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "extractor": "binary.wrapper",
+    "wrapper": {
+      "kind": "backup_copy",
+      "extension": "orig"
+    }
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4680
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4680,
+    "entropy": 0.692,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "5bfef1997ecc7719157fc42b9ae33c62fa551a97cdd13c2df49b1ef0a8dc9dda",
+    "blake3": "c060d0d608a6cc860d483fa6a7f38a6df05120ac53af02c8b9d82bf8e98a10e5"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "backup_copy": {
+      "bytes_examined": 4680,
+      "strings": {
+        "ascii": 24,
+        "utf16le": 0
+      },
+      "strings_sample": [
+        "north-quay",
+        "south-quay",
+        "fish-dock",
+        "ferry-slip",
+        "lifeboat",
+        "pilot-jetty"
+      ],
+      "entropy_profile": {
+        "block_bytes": 65536,
+        "blocks": 1,
+        "min": 0.692,
+        "max": 0.692,
+        "mean": 0.692,
+        "high_entropy_blocks": 0,
+        "likely_compressed_or_encrypted": false
+      },
+      "zero_ratio": 0.934,
+      "trailing_zero_bytes": 4096
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "binary.wrapper",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

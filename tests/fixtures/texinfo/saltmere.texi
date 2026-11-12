@@ -1,0 +1,55 @@
+\input texinfo
+@setfilename saltmere.info
+@documentencoding UTF-8
+@documentlanguage en
+@settitle Saltmere Harbour Handbook
+@set VERSION 1.4
+@set UPDATED 5 November 2025
+
+@copying
+This handbook is for Saltmere Harbour, version @value{VERSION}.
+
+Copyright @copyright{} 2025 Saltmere Harbour Board.
+@end copying
+
+@dircategory Harbours
+@direntry
+* Saltmere: (saltmere).  The Saltmere Harbour handbook.
+@end direntry
+
+@titlepage
+@title Saltmere Harbour Handbook
+@subtitle For visiting sailors
+@author Ada Quayside
+@end titlepage
+
+@node Top
+@top Saltmere Harbour
+
+This handbook describes the harbour.
+
+@menu
+* Arriving::    Entering the harbour.
+* Moorings::    Where to moor.
+@end menu
+
+@node Arriving
+@chapter Arriving
+
+Call the harbour master on @strong{VHF 12}. See @uref{https://board.example.org/}.
+
+@example
+tide --port saltmere
+@end example
+
+@node Moorings
+@chapter Moorings
+
+@section Fees
+
+@multitable @columnfractions .5 .5
+@headitem Length @tab Per night
+@item Under 10 m @tab 18.00
+@end multitable
+
+@bye

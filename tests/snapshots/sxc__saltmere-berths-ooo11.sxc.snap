@@ -1,0 +1,169 @@
+---
+source: src/formats/doc/odf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-berths-ooo11.sxc",
+    "stem": "saltmere-berths-ooo11",
+    "extension": "sxc"
+  },
+  "identification": {
+    "format": "sxc",
+    "name": "OpenOffice.org 1.x / StarOffice spreadsheet",
+    "mime": "application/vnd.sun.xml.calc",
+    "family": "doc.odf",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "sxc",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "doc.odf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1215
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00",
+        "source": "odf.meta.creation-date",
+        "tz_known": false
+      },
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00",
+        "source": "odf.meta.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ana Lighthouse",
+      "Ben Gull"
+    ]
+  },
+  "physical": {
+    "size_bytes": 1215,
+    "entropy": 7.167,
+    "entropy_scope": "file",
+    "document": {
+      "sheets": 2
+    }
+  },
+  "integrity": {
+    "sha256": "fdb094fe9f4f98d07ce3574dcfad6f8ad7719fd0d4df9345268ee32c7815cc5b",
+    "blake3": "b218cd4e8eecae6a4abc0c6b388c8270da5f74b16372dcee89a65c42ea4315b5"
+  },
+  "content": {
+    "title": "Saltmere harbour",
+    "authors": [
+      "Ana Lighthouse",
+      "Ben Gull"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "excerpt": "Grey Tern 5 06:12"
+  },
+  "metadata": {
+    "odf": {
+      "generator": "OpenOffice.org 1.1.5 (Linux)",
+      "title": "Saltmere harbour",
+      "initial-creator": "Ana Lighthouse",
+      "creator": "Ben Gull",
+      "creation-date": "2025-09-01T12:00:00",
+      "date": "2025-09-01T12:00:00",
+      "language": "en-GB",
+      "document-statistic": {
+        "table-count": 2,
+        "cell-count": 3
+      }
+    }
+  },
+  "format": {
+    "sxc": {
+      "mimetype": "application/vnd.sun.xml.calc",
+      "parts": 4,
+      "manifest_entries": 3,
+      "paragraphs": 3,
+      "tables": [
+        "Berths",
+        "Tides"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.odf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

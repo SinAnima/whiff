@@ -1,0 +1,116 @@
+---
+source: src/formats/forensic/longtail.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "2025.09.01.G80.asl",
+    "stem": "2025.09.01.G80",
+    "extension": "asl"
+  },
+  "identification": {
+    "format": "asl",
+    "name": "Apple System Log database",
+    "mime": "application/x-apple-asl",
+    "family": "forensic",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "forensic.longtail"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 416
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 416,
+    "entropy": 0.792,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "812d809ac9c2de541aefd1d6e4c8ea7ffac01153e5fcc0dff400fd722048cb76",
+    "blake3": "4e376f9e993564e9811c67a5880e433683953b5587e414de42d82897670c4114"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "asl": {
+      "version": 2,
+      "created": "2025-09-01T12:00:00Z",
+      "records": 3,
+      "levels": {
+        "error": 1,
+        "info": 1,
+        "notice": 1
+      },
+      "time_range": [
+        "2025-09-01T12:00:00Z",
+        "2025-09-01T12:01:30Z"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.longtail",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

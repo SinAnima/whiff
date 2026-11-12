@@ -1,0 +1,10 @@
+/* TEAM */
+Harbour master: Ada Quayside
+Site: https://saltmere.example
+
+/* THANKS */
+The lighthouse keepers
+
+/* SITE */
+Last update: 2025/11/05
+Standards: HTML5, CSS3

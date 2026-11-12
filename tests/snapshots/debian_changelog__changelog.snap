@@ -1,0 +1,151 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "changelog",
+    "stem": "changelog"
+  },
+  "identification": {
+    "format": "debian_changelog",
+    "name": "Debian changelog",
+    "mime": "text/plain",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 305
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2026-03-14T09:30:00+00:00",
+        "source": "code.manifest",
+        "tz_known": true
+      },
+      {
+        "field": "created",
+        "value": "2026-01-05T10:00:00+00:00",
+        "source": "code.manifest",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-01-05T10:00:00Z",
+    "latest": "2026-03-14T09:30:00Z"
+  },
+  "security": {
+    "personal_data": {
+      "email": 2
+    }
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 305,
+    "entropy": 4.991,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 305,
+      "chars": 305,
+      "words": 36,
+      "lines": 11,
+      "max_line_length": 80,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 5
+    }
+  },
+  "integrity": {
+    "sha256": "16065528cbdcb7f294da94fb4d30c139ca89c77a600952c378664c65aa4ee8f8",
+    "blake3": "8710658cf4cdccb939a4f13580e15cf3d09838a1a4c63db8e1b0b0ad43a453a4"
+  },
+  "content": {
+    "title": "saltmere-tides"
+  },
+  "metadata": {},
+  "format": {
+    "debian_changelog": {
+      "ecosystem": "debian",
+      "name": "saltmere-tides",
+      "entries": 2,
+      "maintainers": 2,
+      "latest": {
+        "version": "1.4.0-2",
+        "distribution": "unstable",
+        "urgency": "medium",
+        "date": "2026-03-14T09:30:00+00:00"
+      },
+      "oldest": {
+        "version": "1.4.0-1",
+        "distribution": "unstable",
+        "urgency": "low",
+        "date": "2026-01-05T10:00:00+00:00"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

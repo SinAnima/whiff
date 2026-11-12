@@ -1,0 +1,157 @@
+---
+source: src/formats/image/slide.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-3.scn",
+    "stem": "harbour-3",
+    "extension": "scn"
+  },
+  "identification": {
+    "format": "scn",
+    "name": "Leica SCN slide",
+    "mime": "application/octet-stream",
+    "family": "image.raster",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "scn",
+        "confidence": 0.99
+      },
+      {
+        "format": "tiff",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "image.slide"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1006
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "captured",
+        "value": "2024-05-01T19:42:10.00Z",
+        "source": "scn.creationDate",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-05-01T19:42:10Z",
+    "latest": "2024-05-01T19:42:10Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1006,
+    "entropy": 5.067,
+    "entropy_scope": "file",
+    "image": {
+      "width": 40000,
+      "height": 30000,
+      "frames": 2
+    }
+  },
+  "integrity": {
+    "sha256": "a2b64807d7b7881e7376ce83591491d6757e5ca9a6b1928f17f53aac566f9a2f",
+    "blake3": "84065dbf1289bb8932243ee7dd6deb915110bd746cbe16764525499a80764a74"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "scn": {
+      "slide": {
+        "collection": "HARBOUR-3",
+        "collection_size_nm": [
+          "25000000",
+          "75000000"
+        ],
+        "device": "Leica SCN400",
+        "device_version": "1.4.0.0000",
+        "magnification": 20.0,
+        "numerical_aperture": 0.4,
+        "illumination": "brightfield",
+        "images": 2,
+        "levels": [
+          {
+            "width": 40000,
+            "height": 30000,
+            "tiled": true,
+            "compression": 7
+          },
+          {
+            "width": 1600,
+            "height": 4800,
+            "tiled": false,
+            "compression": 7
+          }
+        ],
+        "associated_images": []
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.slide",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

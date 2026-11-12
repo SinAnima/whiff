@@ -31,6 +31,10 @@ pub(crate) fn detect(docs: &[Value], name: Option<&str>, cx: &mut Context<'_>) -
         github_actions,
         helm_chart,
     ];
+    // A `kustomization.yaml` has `apiVersion` / `kind` too.
+    if let Some(v) = kustomize(first, &name, cx) {
+        return Some(v);
+    }
     if let Some(v) = kubernetes(docs) {
         return Some(v);
     }
@@ -51,7 +55,685 @@ pub(crate) fn detect(docs: &[Value], name: Option<&str>, cx: &mut Context<'_>) -
     if let Some(v) = conda(first, &name) {
         return Some(v);
     }
+    let more: [Detector; 18] = [
+        oci,
+        tsdb_block_meta,
+        terraform_state,
+        data_package,
+        dbt_artifact,
+        js_tool_config,
+        takeout_locations,
+        drive_shortcut,
+        scratch_project,
+        vscode_config,
+        kustomize,
+        serverless,
+        dependency_bots,
+        pre_commit,
+        asyncapi,
+        jscalendar,
+        jscontact,
+        zeppelin,
+    ];
+    for d in more {
+        if let Some(v) = d(first, &name, cx) {
+            return Some(v);
+        }
+    }
     json_ld(first).or_else(|| tsconfig(first, &name))
+}
+
+/// Count of each value of `key` across `items`.
+fn histogram<'v>(items: impl Iterator<Item = &'v Value>, key: &str) -> BTreeMap<String, u64> {
+    let mut out = BTreeMap::new();
+    for i in items {
+        if let Some(k) = i.get(key).and_then(Value::as_str) {
+            *out.entry(k.to_string()).or_default() += 1;
+        }
+    }
+    out
+}
+
+/// Schemas whose values are private (infrastructure state, a person's
+/// contact details, where someone has been).
+const PRIVATE: [&str; 4] = ["terraform_state", "jscontact", "google_location_history", "google_drive_shortcut"];
+
+/// The generic path summary of a document, without its example values
+/// under strict privacy when the document is one of the [`PRIVATE`]
+/// schemas: the examples would show what the schema reader keeps back.
+pub(crate) fn schema_for(mut schema: Value, known: Option<&Value>, cx: &Context<'_>) -> Value {
+    let private = known.and_then(|k| k.get("id")).and_then(Value::as_str).is_some_and(|id| PRIVATE.contains(&id));
+    if private
+        && cx.privacy_strict()
+        && let Some(paths) = schema.get_mut("paths").and_then(Value::as_object_mut)
+    {
+        for p in paths.values_mut().filter_map(Value::as_object_mut) {
+            p.remove("examples");
+        }
+    }
+    schema
+}
+
+/// OCI image layouts (`oci-layout`), image indexes (`index.json`, Docker
+/// manifest lists) and manifests, ORAS artifacts among them: platforms,
+/// references, layers with their media types and sizes, the artifact type.
+fn oci(v: &Value, _: &str, _: &mut Context<'_>) -> Option<Value> {
+    if let Some(version) = v.get("imageLayoutVersion").and_then(Value::as_str) {
+        return Some(json!({ "id": "oci_layout", "name": "OCI image layout", "version": version }));
+    }
+    if v.get("schemaVersion")?.as_i64()? != 2 {
+        return None;
+    }
+    let media = v.get("mediaType").and_then(Value::as_str).unwrap_or("");
+    let docker = media.starts_with("application/vnd.docker.");
+    let annotation = |o: &Value, k: &str| o.pointer(&format!("/annotations/{}", k.replace('/', "~1"))).cloned();
+    let mut out = Map::new();
+    if let Some(list) = v.get("manifests").and_then(Value::as_array) {
+        out.insert("id".into(), json!("oci_index"));
+        out.insert("name".into(), json!(if docker { "Docker manifest list" } else { "OCI image index" }));
+        out.insert("manifests".into(), json!(list.len()));
+        let platforms: Vec<String> = list
+            .iter()
+            .filter_map(|m| {
+                let p = m.get("platform")?;
+                let mut s = format!("{}/{}", p.get("os")?.as_str()?, p.get("architecture")?.as_str()?);
+                if let Some(var) = p.get("variant").and_then(Value::as_str) {
+                    s = format!("{s}/{var}");
+                }
+                Some(s)
+            })
+            .take(50)
+            .collect();
+        if !platforms.is_empty() {
+            out.insert("platforms".into(), json!(platforms));
+        }
+        let refs: Vec<Value> =
+            list.iter().filter_map(|m| annotation(m, "org.opencontainers.image.ref.name")).take(50).collect();
+        if !refs.is_empty() {
+            out.insert("references".into(), json!(refs));
+        }
+        let types = histogram(list.iter(), "artifactType");
+        if !types.is_empty() {
+            out.insert("artifact_types".into(), json!(types));
+        }
+    } else if v.get("config").is_some() || v.get("layers").is_some() || v.get("blobs").is_some() {
+        let layers = v.get("layers").or_else(|| v.get("blobs")).and_then(Value::as_array);
+        let config_type = v.pointer("/config/mediaType").and_then(Value::as_str);
+        let artifact = v
+            .get("artifactType")
+            .and_then(Value::as_str)
+            .or(config_type.filter(|t| !t.ends_with(".image.config.v1+json") && !t.contains("container.image")));
+        out.insert("id".into(), json!("oci_manifest"));
+        out.insert(
+            "name".into(),
+            json!(match (docker, artifact.is_some()) {
+                (true, _) => "Docker image manifest",
+                (false, true) => "OCI artifact manifest (ORAS)",
+                (false, false) => "OCI image manifest",
+            }),
+        );
+        if let Some(a) = artifact {
+            out.insert("artifact_type".into(), json!(a));
+        }
+        if let Some(c) = config_type {
+            out.insert("config_media_type".into(), json!(c));
+        }
+        let list = layers.map(Vec::as_slice).unwrap_or_default();
+        out.insert("layers".into(), json!(list.len()));
+        let size: u64 = list.iter().filter_map(|l| l.get("size").and_then(Value::as_u64)).sum();
+        out.insert("layer_bytes".into(), json!(size));
+        let types = histogram(list.iter(), "mediaType");
+        if !types.is_empty() {
+            out.insert("layer_media_types".into(), json!(types));
+        }
+        let titles: Vec<Value> =
+            list.iter().filter_map(|l| annotation(l, "org.opencontainers.image.title")).take(50).collect();
+        if !titles.is_empty() {
+            out.insert("files".into(), json!(titles));
+        }
+        if v.get("subject").is_some() {
+            out.insert("refers_to".into(), json!(v.pointer("/subject/digest")));
+        }
+    } else {
+        return None;
+    }
+    if let Some(t) = annotation(v, "org.opencontainers.image.created") {
+        out.insert("created".into(), t);
+    }
+    Some(Value::Object(out))
+}
+
+/// A Prometheus TSDB block's `meta.json`: the time range, series, samples
+/// and chunks, the compaction level and sources.
+fn tsdb_block_meta(v: &Value, _: &str, _: &mut Context<'_>) -> Option<Value> {
+    let (min, max) = (v.get("minTime")?.as_i64()?, v.get("maxTime")?.as_i64()?);
+    v.get("ulid")?.as_str()?;
+    let ms = |t: i64| {
+        let ticks = t.checked_mul(10_000)?.checked_add(116_444_736_000_000_000)?;
+        crate::plugin::filetime(u64::try_from(ticks).ok()?)
+    };
+    Some(json!({
+        "id": "prometheus_tsdb_block",
+        "name": "Prometheus TSDB block metadata",
+        "ulid": v.get("ulid"),
+        "time_range": [ms(min), ms(max)],
+        "series": get(v, &["stats", "numSeries"]),
+        "samples": get(v, &["stats", "numSamples"]),
+        "chunks": get(v, &["stats", "numChunks"]),
+        "compaction_level": get(v, &["compaction", "level"]),
+        "sources": len(get(v, &["compaction", "sources"])),
+        "version": v.get("version"),
+    }))
+}
+
+/// Terraform state: resources by type, providers, serial and versions.
+/// Attribute and output values only with `--privacy off`, and then never
+/// the sensitive ones or anything that looks like a secret.
+fn terraform_state(v: &Value, _: &str, cx: &mut Context<'_>) -> Option<Value> {
+    v.get("terraform_version")?;
+    let resources = v.get("resources")?.as_array()?;
+    let mut providers: Vec<String> = resources
+        .iter()
+        .filter_map(|r| s(r, &["provider"]))
+        .map(|p| p.trim_start_matches("provider[\"").split('"').next().unwrap_or(p).to_string())
+        .collect();
+    providers.sort();
+    providers.dedup();
+    let instances: usize = resources.iter().map(|r| len(r.get("instances"))).sum();
+    let sensitive = resources
+        .iter()
+        .flat_map(|r| r.get("instances").and_then(Value::as_array).into_iter().flatten())
+        .filter(|i| i.get("sensitive_attributes").and_then(Value::as_array).is_some_and(|a| !a.is_empty()))
+        .count();
+    let mut out = json!({
+        "id": "terraform_state",
+        "name": "Terraform state",
+        "state_version": v.get("version"),
+        "terraform_version": v.get("terraform_version"),
+        "serial": v.get("serial"),
+        "resources": resources.len(),
+        "instances": instances,
+        "resource_types": histogram(resources.iter().filter(|r| s(r, &["mode"]) != Some("data")), "type"),
+        "data_sources": resources.iter().filter(|r| s(r, &["mode"]) == Some("data")).count(),
+        "providers": providers,
+        "outputs": keys(v.get("outputs"), 100),
+        "instances_with_sensitive_attributes": sensitive,
+    });
+    if !cx.privacy_strict() {
+        out["resource_list"] = resources.iter().take(200).map(terraform_resource).collect();
+        out["output_values"] = v
+            .get("outputs")
+            .and_then(Value::as_object)
+            .map(|o| {
+                o.iter()
+                    .take(100)
+                    .map(|(k, e)| {
+                        let shown = if e.get("sensitive").and_then(Value::as_bool) == Some(true) {
+                            json!("(sensitive)")
+                        } else {
+                            scalar(e.get("value"))
+                        };
+                        (k.clone(), shown)
+                    })
+                    .collect::<serde_json::Map<_, _>>()
+            })
+            .into();
+    }
+    Some(out)
+}
+
+/// A scalar shown as found, with anything that looks like a secret
+/// redacted; arrays and objects are summarised by their size.
+fn scalar(v: Option<&Value>) -> Value {
+    match v {
+        Some(Value::String(t)) => json!(crate::plugin::redact_secrets(t)),
+        Some(Value::Array(a)) => json!(format!("({} items)", a.len())),
+        Some(Value::Object(o)) => json!(format!("({} keys)", o.len())),
+        Some(other) => other.clone(),
+        None => Value::Null,
+    }
+}
+
+/// One state resource with `--privacy off`: its address and each
+/// instance's top-level attributes, minus the ones Terraform marks
+/// sensitive.
+fn terraform_resource(r: &Value) -> Value {
+    let address = [s(r, &["module"]), s(r, &["mode"]).filter(|m| *m == "data"), s(r, &["type"]), s(r, &["name"])]
+        .into_iter()
+        .flatten()
+        .collect::<Vec<_>>()
+        .join(".");
+    let instances: Vec<Value> = r
+        .get("instances")
+        .and_then(Value::as_array)
+        .into_iter()
+        .flatten()
+        .take(20)
+        .map(|i| {
+            let hidden: Vec<&str> = i
+                .get("sensitive_attributes")
+                .and_then(Value::as_array)
+                .into_iter()
+                .flatten()
+                .filter_map(|p| p.as_array()?.first()?.get("value")?.as_str())
+                .collect();
+            let attrs: serde_json::Map<String, Value> = i
+                .get("attributes")
+                .and_then(Value::as_object)
+                .into_iter()
+                .flatten()
+                .take(100)
+                .map(|(k, a)| {
+                    let secret = hidden.contains(&k.as_str()) || crate::plugin::is_secret_key(k);
+                    let shown = if secret { json!("(sensitive)") } else { scalar(Some(a)) };
+                    (k.clone(), shown)
+                })
+                .collect();
+            json!({ "index_key": i.get("index_key"), "attributes": attrs })
+        })
+        .collect();
+    json!({ "address": address, "instances": instances })
+}
+
+/// Frictionless data packages and CSV on the Web (CSVW) metadata.
+fn data_package(v: &Value, name: &str, cx: &mut Context<'_>) -> Option<Value> {
+    let csvw = v.get("@context").is_some_and(|c| c.to_string().contains("www.w3.org/ns/csvw"));
+    if csvw {
+        let tables = v.get("tables").and_then(Value::as_array).map_or(1, Vec::len);
+        let columns = |t: &Value| len(get(t, &["tableSchema", "columns"]));
+        let cols: usize =
+            v.get("tables").and_then(Value::as_array).map_or_else(|| columns(v), |a| a.iter().map(columns).sum());
+        title(cx, "csvw", s(v, &["dc:title"]).or_else(|| s(v, &["title"])), None);
+        return Some(
+            json!({ "id": "csvw", "name": "CSV on the Web metadata", "tables": tables, "columns": cols, "url": v.get("url") }),
+        );
+    }
+    let resources = v.get("resources")?.as_array()?;
+    if !name.starts_with("datapackage")
+        && v.get("profile").is_none()
+        && !resources.iter().any(|r| r.get("schema").is_some())
+    {
+        return None;
+    }
+    title(cx, "datapackage", s(v, &["title"]), s(v, &["description"]));
+    let fields: usize = resources.iter().map(|r| len(get(r, &["schema", "fields"]))).sum();
+    Some(json!({
+        "id": "datapackage",
+        "name": "Frictionless data package",
+        "package": v.get("name"),
+        "profile": v.get("profile"),
+        "resources": resources.len(),
+        "resource_names": resources.iter().filter_map(|r| s(r, &["name"])).take(50).collect::<Vec<_>>(),
+        "fields": fields,
+        "licenses": v.get("licenses").and_then(Value::as_array).map(|a| a.iter().filter_map(|l| s(l, &["name"])).collect::<Vec<_>>()),
+    }))
+}
+
+/// dbt artifacts: `manifest.json` (models, sources, tests …) and `catalog.json`.
+fn dbt_artifact(v: &Value, _: &str, _: &mut Context<'_>) -> Option<Value> {
+    let schema = s(v, &["metadata", "dbt_schema_version"])?;
+    let kind = schema.rsplit('/').next().unwrap_or(schema).split('.').next().unwrap_or("");
+    let nodes = v.get("nodes").and_then(Value::as_object);
+    let by_type = nodes.map(|n| histogram(n.values(), "resource_type")).unwrap_or_default();
+    Some(json!({
+        "id": "dbt_artifact",
+        "name": "dbt artifact",
+        "artifact": kind,
+        "dbt_version": s(v, &["metadata", "dbt_version"]),
+        "adapter": s(v, &["metadata", "adapter_type"]),
+        "nodes": nodes.map_or(0, Map::len),
+        "node_types": by_type,
+        "sources": len(v.get("sources")),
+        "exposures": len(v.get("exposures")),
+        "metrics": len(v.get("metrics")),
+    }))
+}
+
+/// ESLint, Prettier and Babel configuration files.
+fn js_tool_config(v: &Value, name: &str, _: &mut Context<'_>) -> Option<Value> {
+    let o = obj(v)?;
+    let list = |k: &str| -> Vec<String> {
+        match v.get(k) {
+            Some(Value::String(s)) => vec![s.clone()],
+            Some(Value::Array(a)) => a
+                .iter()
+                .filter_map(|x| {
+                    x.as_str().map(str::to_string).or_else(|| x.as_array()?.first()?.as_str().map(str::to_string))
+                })
+                .collect(),
+            _ => Vec::new(),
+        }
+    };
+    if name.contains("eslintrc")
+        || (o.contains_key("rules") && (o.contains_key("extends") || o.contains_key("parserOptions")))
+    {
+        return Some(json!({
+            "id": "eslint",
+            "name": "ESLint configuration",
+            "extends": list("extends"),
+            "plugins": list("plugins"),
+            "rules": len(v.get("rules")),
+            "env": keys(v.get("env"), 20),
+            "parser": v.get("parser"),
+        }));
+    }
+    if name.contains("babelrc") || name.starts_with("babel.config") {
+        return Some(
+            json!({ "id": "babel", "name": "Babel configuration", "presets": list("presets"), "plugins": list("plugins") }),
+        );
+    }
+    if name.contains("prettierrc") {
+        return Some(
+            json!({ "id": "prettier", "name": "Prettier configuration", "options": o.keys().take(30).cloned().collect::<Vec<_>>() }),
+        );
+    }
+    None
+}
+
+/// Google Takeout location history: `Records.json` points and the
+/// semantic timeline. Counts and the date range; the bounding box only
+/// with `--privacy off`.
+fn takeout_locations(v: &Value, _: &str, cx: &mut Context<'_>) -> Option<Value> {
+    let (kind, items) = if let Some(a) = v.get("locations").and_then(Value::as_array) {
+        ("records", a)
+    } else {
+        ("semantic_timeline", v.get("timelineObjects")?.as_array()?)
+    };
+    if kind == "records" && !items.iter().take(5).any(|p| p.get("latitudeE7").is_some()) {
+        return None;
+    }
+    let mut stamps: Vec<String> = Vec::new();
+    let (mut lat, mut lon) = (Vec::new(), Vec::new());
+    for p in items {
+        let t = s(p, &["timestamp"]).map(str::to_string).or_else(|| {
+            let ms: i64 = s(p, &["timestampMs"])?.parse().ok()?;
+            jiff::Timestamp::from_millisecond(ms).ok().map(|t| t.to_string())
+        });
+        stamps.extend(t);
+        if let (Some(a), Some(b)) =
+            (p.get("latitudeE7").and_then(Value::as_i64), p.get("longitudeE7").and_then(Value::as_i64))
+        {
+            lat.push(a);
+            lon.push(b);
+        }
+    }
+    stamps.sort();
+    let mut out = json!({
+        "id": "google_location_history",
+        "name": "Google Takeout location history",
+        "kind": kind,
+        "entries": items.len(),
+        "date_range": match (stamps.first(), stamps.last()) {
+            (Some(a), Some(b)) => json!([a, b]),
+            _ => Value::Null,
+        },
+    });
+    if !cx.privacy_strict()
+        && let (Some(a), Some(b), Some(c), Some(d)) =
+            (lat.iter().min(), lat.iter().max(), lon.iter().min(), lon.iter().max())
+    {
+        #[allow(clippy::cast_precision_loss)]
+        let deg = |e7: i64| (e7 as f64) / 1e7;
+        out["bbox"] = json!([deg(*c), deg(*a), deg(*d), deg(*b)]);
+    }
+    Some(out)
+}
+
+/// Google Drive desktop shortcuts (`.gdoc`, `.gsheet` …): the document id
+/// and kind; the account e-mail only without strict privacy.
+fn drive_shortcut(v: &Value, name: &str, cx: &mut Context<'_>) -> Option<Value> {
+    let url = s(v, &["url"])?;
+    let kind = name.rsplit('.').next().filter(|e| e.starts_with('g') && e.len() <= 8)?;
+    if !url.contains("google.com") {
+        return None;
+    }
+    let mut out = json!({
+        "id": "google_drive_shortcut",
+        "name": "Google Drive shortcut",
+        "kind": kind,
+        "doc_id": v.get("doc_id").or_else(|| v.get("resource_id")),
+        "url": url,
+    });
+    if !cx.privacy_strict()
+        && let Some(e) = s(v, &["email"])
+    {
+        out["account"] = e.into();
+    }
+    Some(out)
+}
+
+/// Scratch 3 `project.json`: sprites, blocks, extensions, the editor.
+fn scratch_project(v: &Value, _: &str, _: &mut Context<'_>) -> Option<Value> {
+    let targets = v.get("targets")?.as_array()?;
+    let meta = v.get("meta")?;
+    s(meta, &["semver"])?;
+    let blocks: usize = targets.iter().map(|t| len(t.get("blocks"))).sum();
+    Some(json!({
+        "id": "scratch",
+        "name": "Scratch project",
+        "semver": s(meta, &["semver"]),
+        "vm": s(meta, &["vm"]),
+        "sprites": targets.iter().filter(|t| t.get("isStage") != Some(&Value::Bool(true))).count(),
+        "sprite_names": targets.iter().filter(|t| t.get("isStage") != Some(&Value::Bool(true))).filter_map(|t| s(t, &["name"])).take(50).collect::<Vec<_>>(),
+        "blocks": blocks,
+        "costumes": targets.iter().map(|t| len(t.get("costumes"))).sum::<usize>(),
+        "sounds": targets.iter().map(|t| len(t.get("sounds"))).sum::<usize>(),
+        "extensions": v.get("extensions"),
+    }))
+}
+
+/// VS Code `launch.json` / `tasks.json` and `.code-snippets`.
+fn vscode_config(v: &Value, name: &str, _: &mut Context<'_>) -> Option<Value> {
+    if let Some(configs) = v.get("configurations").and_then(Value::as_array) {
+        return Some(json!({
+            "id": "vscode_launch",
+            "name": "VS Code launch configurations",
+            "configurations": configs.len(),
+            "types": histogram(configs.iter(), "type"),
+            "names": configs.iter().filter_map(|c| s(c, &["name"])).take(50).collect::<Vec<_>>(),
+        }));
+    }
+    if let Some(tasks) =
+        v.get("tasks").and_then(Value::as_array).filter(|_| name == "tasks.json" || v.get("version").is_some())
+        && tasks.iter().any(|t| t.get("label").is_some())
+    {
+        return Some(json!({
+            "id": "vscode_tasks",
+            "name": "VS Code tasks",
+            "tasks": tasks.len(),
+            "labels": tasks.iter().filter_map(|t| s(t, &["label"])).take(50).collect::<Vec<_>>(),
+        }));
+    }
+    let o = obj(v)?;
+    let snippet = |x: &Value| x.get("prefix").is_some() && x.get("body").is_some();
+    let ext = std::path::Path::new(name).extension().and_then(|x| x.to_str()).unwrap_or("");
+    if (ext.eq_ignore_ascii_case("code-snippets") || ext.eq_ignore_ascii_case("json"))
+        && !o.is_empty()
+        && o.values().all(snippet)
+    {
+        return Some(json!({
+            "id": "vscode_snippets",
+            "name": "VS Code snippets",
+            "snippets": o.len(),
+            "names": o.keys().take(50).cloned().collect::<Vec<_>>(),
+            "scopes": histogram(o.values(), "scope"),
+        }));
+    }
+    None
+}
+
+/// Kustomize `kustomization.yaml`.
+fn kustomize(v: &Value, name: &str, _: &mut Context<'_>) -> Option<Value> {
+    let kind = s(v, &["kind"]);
+    if kind != Some("Kustomization") && !name.starts_with("kustomization") {
+        return None;
+    }
+    let images: Vec<String> = v
+        .get("images")
+        .and_then(Value::as_array)
+        .map(|a| a.iter().filter_map(|i| s(i, &["name"])).map(str::to_string).collect())
+        .unwrap_or_default();
+    Some(json!({
+        "id": "kustomize",
+        "name": "Kustomize configuration",
+        "resources": len(v.get("resources")),
+        "bases": len(v.get("bases")),
+        "components": len(v.get("components")),
+        "patches": len(v.get("patches")) + len(v.get("patchesStrategicMerge")) + len(v.get("patchesJson6902")),
+        "namespace": v.get("namespace"),
+        "images": images,
+    }))
+}
+
+/// Serverless Framework `serverless.yml`.
+fn serverless(v: &Value, name: &str, _: &mut Context<'_>) -> Option<Value> {
+    let provider = v.get("provider")?;
+    let functions = v.get("functions");
+    if v.get("service").is_none() || (functions.is_none() && !name.starts_with("serverless")) {
+        return None;
+    }
+    Some(json!({
+        "id": "serverless",
+        "name": "Serverless Framework service",
+        "service": v.get("service"),
+        "provider": s(provider, &["name"]).map_or_else(|| provider.clone(), |p| json!(p)),
+        "runtime": s(provider, &["runtime"]),
+        "functions": keys(functions, 100),
+        "plugins": v.get("plugins"),
+    }))
+}
+
+/// Dependabot (`.github/dependabot.yml`) and Renovate (`renovate.json`).
+fn dependency_bots(v: &Value, name: &str, _: &mut Context<'_>) -> Option<Value> {
+    if let Some(updates) = v.get("updates").and_then(Value::as_array)
+        && v.get("version").and_then(Value::as_i64) == Some(2)
+        && updates.iter().any(|u| u.get("package-ecosystem").is_some())
+    {
+        return Some(json!({
+            "id": "dependabot",
+            "name": "Dependabot configuration",
+            "ecosystems": histogram(updates.iter(), "package-ecosystem"),
+            "intervals": updates.iter().filter_map(|u| s(u, &["schedule", "interval"])).collect::<std::collections::BTreeSet<_>>(),
+        }));
+    }
+    let schema = s(v, &["$schema"]).is_some_and(|x| x.contains("renovate"));
+    if schema || name.starts_with("renovate") || name == ".renovaterc" {
+        return Some(json!({
+            "id": "renovate",
+            "name": "Renovate configuration",
+            "extends": v.get("extends"),
+            "package_rules": len(v.get("packageRules")),
+            "schedule": v.get("schedule"),
+        }));
+    }
+    None
+}
+
+/// `.pre-commit-config.yaml`: repositories and hooks.
+fn pre_commit(v: &Value, name: &str, _: &mut Context<'_>) -> Option<Value> {
+    let repos = v.get("repos")?.as_array()?;
+    if !name.starts_with(".pre-commit") && !repos.iter().any(|r| r.get("hooks").is_some() && r.get("repo").is_some()) {
+        return None;
+    }
+    let hooks: Vec<&str> = repos
+        .iter()
+        .flat_map(|r| r.get("hooks").and_then(Value::as_array).into_iter().flatten())
+        .filter_map(|h| s(h, &["id"]))
+        .collect();
+    Some(json!({
+        "id": "pre_commit",
+        "name": "pre-commit configuration",
+        "repositories": repos.iter().filter_map(|r| s(r, &["repo"])).take(50).collect::<Vec<_>>(),
+        "hooks": hooks.iter().take(100).collect::<Vec<_>>(),
+    }))
+}
+
+/// AsyncAPI documents: version, title, channels, messages, servers.
+fn asyncapi(v: &Value, _: &str, cx: &mut Context<'_>) -> Option<Value> {
+    let version = s(v, &["asyncapi"])?;
+    title(cx, "asyncapi.info", s(v, &["info", "title"]), s(v, &["info", "description"]));
+    let messages = len(get(v, &["components", "messages"]));
+    Some(json!({
+        "id": "asyncapi",
+        "name": "AsyncAPI document",
+        "asyncapi": version,
+        "api_version": s(v, &["info", "version"]),
+        "channels": keys(v.get("channels"), 100),
+        "operations": len(v.get("operations")),
+        "messages": messages,
+        "servers": keys(v.get("servers"), 50),
+    }))
+}
+
+/// JSCalendar (RFC 8984) objects: events, tasks and groups.
+fn jscalendar(v: &Value, _: &str, cx: &mut Context<'_>) -> Option<Value> {
+    let kind = s(v, &["@type"]).filter(|t| matches!(*t, "Event" | "Task" | "Group"))?;
+    v.get("uid")?;
+    let entries = v.get("entries").and_then(Value::as_array);
+    title(cx, "jscalendar", s(v, &["title"]), s(v, &["description"]));
+    if let Some(st) = s(v, &["start"]) {
+        cx.temporal().source("jscalendar.start").content_date(DateField::Created, st, s(v, &["timeZone"]).is_some());
+    }
+    Some(json!({
+        "id": "jscalendar",
+        "name": "JSCalendar object",
+        "type": kind,
+        "start": v.get("start"),
+        "duration": v.get("duration"),
+        "time_zone": v.get("timeZone"),
+        "entries": entries.map(Vec::len),
+        "entry_types": entries.map(|e| histogram(e.iter(), "@type")),
+        "recurrence": v.get("recurrenceRules").is_some(),
+    }))
+}
+
+/// JSContact (RFC 9553) cards: the kind and which properties are filled;
+/// the values (a person's details) only with `--privacy off`.
+fn jscontact(v: &Value, _: &str, cx: &mut Context<'_>) -> Option<Value> {
+    if s(v, &["@type"]) != Some("Card") || v.get("version").is_none() {
+        return None;
+    }
+    let filled: Vec<&str> =
+        obj(v)?.keys().map(String::as_str).filter(|k| !k.starts_with('@') && *k != "version").collect();
+    let mut out = json!({
+        "id": "jscontact",
+        "name": "JSContact card",
+        "version": v.get("version"),
+        "kind": v.get("kind").unwrap_or(&json!("individual")),
+        "properties": filled,
+        "emails": len(v.get("emails")),
+        "phones": len(v.get("phones")),
+        "addresses": len(v.get("addresses")),
+    });
+    // With `--privacy off`, the card as written.
+    if !cx.privacy_strict() {
+        out["card"] = v.clone();
+    }
+    Some(out)
+}
+
+/// Apache Zeppelin notes (`.zpln`): paragraphs and interpreters.
+fn zeppelin(v: &Value, name: &str, cx: &mut Context<'_>) -> Option<Value> {
+    let paragraphs = v.get("paragraphs")?.as_array()?;
+    let zpln = std::path::Path::new(name).extension().is_some_and(|x| x.eq_ignore_ascii_case("zpln"));
+    if !zpln && v.get("config").is_none() {
+        return None;
+    }
+    let mut interpreters: BTreeMap<String, u64> = BTreeMap::new();
+    for p in paragraphs {
+        if let Some(t) = s(p, &["text"]) {
+            let i = t.trim_start().strip_prefix('%').and_then(|r| r.split_whitespace().next()).unwrap_or("(default)");
+            *interpreters.entry(i.to_string()).or_default() += 1;
+            cx.emit_text(TextRole::Body, t);
+        }
+    }
+    title(cx, "zeppelin", s(v, &["name"]), None);
+    Some(json!({
+        "id": "zeppelin",
+        "name": "Apache Zeppelin note",
+        "paragraphs": paragraphs.len(),
+        "interpreters": interpreters,
+    }))
 }
 
 /// HTTP methods of `OpenAPI` path items.
@@ -662,6 +1344,27 @@ fn tsconfig(v: &Value, name: &str) -> Option<Value> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    /// Terraform values appear only with `--privacy off`, and attributes
+    /// marked sensitive or named like secrets never do (neutral sample).
+    #[test]
+    fn terraform_values_follow_privacy() {
+        let state = br#"{"version":4,"terraform_version":"1.9.0","serial":1,"outputs":{"site":{"value":"example.org"},"key":{"value":"k1","sensitive":true}},
+            "resources":[{"mode":"managed","type":"t_user","name":"u","provider":"provider[\"x/t\"]","instances":[{"sensitive_attributes":[[{"type":"get_attr","value":"pin"}]],
+            "attributes":{"name":"alpha","pin":"1234","api_token":"zz"}}]}]}"#;
+        let strict = crate::plugin::testing::report_for("a.tfstate", state);
+        let text = serde_json::to_string(&strict).unwrap();
+        assert!(!text.contains("alpha") && !text.contains("example.org"));
+        let off = crate::plugin::testing::report_without_privacy("a.tfstate", state);
+        let k = &off.format["json"]["known_schema"];
+        assert_eq!(k["resource_list"][0]["address"], "t_user.u");
+        let attrs = &k["resource_list"][0]["instances"][0]["attributes"];
+        assert_eq!(attrs["name"], "alpha");
+        assert_eq!(attrs["pin"], "(sensitive)");
+        assert_eq!(attrs["api_token"], "(sensitive)");
+        assert_eq!(k["output_values"]["site"], "example.org");
+        assert_eq!(k["output_values"]["key"], "(sensitive)");
+    }
 
     #[test]
     fn kubernetes_images() {

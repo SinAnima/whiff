@@ -1,0 +1,124 @@
+---
+source: src/formats/exec/scripting.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "libharbour.rlib",
+    "stem": "libharbour",
+    "extension": "rlib"
+  },
+  "identification": {
+    "format": "rust_rlib",
+    "name": "Rust library (rlib)",
+    "mime": "application/x-archive",
+    "family": "exec",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "rust_rlib",
+        "confidence": 0.99
+      },
+      {
+        "format": "ar",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "exec.scripting"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 7992
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 7992,
+    "entropy": 5.774,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "0b29ca5af93ab19b96da50775eb6fd7b1ff607bb5dda1f9c346ced6424576b36",
+    "blake3": "0e237fa1590060f84d588a9e7edb87c907b42c80cb4faf385f4d612350705e7c"
+  },
+  "content": {
+    "title": "harbour"
+  },
+  "metadata": {},
+  "format": {
+    "rust_rlib": {
+      "crate": "harbour",
+      "codegen_units": 1,
+      "members": [
+        "lib.rmeta",
+        "lib.rmeta-link",
+        "harbour.harbour.4463f6f7a89075b5-cgu.0.rcgu.o"
+      ],
+      "rustc_version": "rustc 1.97.1 (8bab26f4f 2026-07-14)"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.scripting",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

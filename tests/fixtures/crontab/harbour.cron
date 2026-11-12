@@ -1,0 +1,6 @@
+# Harbour jobs
+MAILTO=harbour
+@reboot /usr/local/bin/harbourctl lights on
+0 6 * * * /usr/local/bin/tide-report --mail
+* * * * * /usr/local/bin/gauge-sample
+@daily /usr/bin/find /var/harbour/tmp -mtime +7 -delete

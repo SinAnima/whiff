@@ -21,6 +21,16 @@ expression: report
     "confidence": 0.81,
     "detected_by": "magic",
     "extension_matches": true,
+    "candidates": [
+      {
+        "format": "vox",
+        "confidence": 0.81
+      },
+      {
+        "format": "dialogic_vox",
+        "confidence": 0.35
+      }
+    ],
     "extractor": "cad.scene"
   },
   "system": {

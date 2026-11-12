@@ -1,0 +1,13 @@
+[Virtual Microscope Specimen]
+NoLayers=1
+NoJpegColumns=4
+NoJpegRows=3
+ImageFile=harbour-4.jpg
+ImageFile(1,0)=harbour-4_1_0.jpg
+ImageFile(2,0)=harbour-4_2_0.jpg
+MapFile=harbour-4_map.jpg
+OptimisationFile=harbour-4.opt
+MacroImage=harbour-4_macro.jpg
+SourceLens=20
+PhysicalWidth=25000000
+PhysicalHeight=18750000

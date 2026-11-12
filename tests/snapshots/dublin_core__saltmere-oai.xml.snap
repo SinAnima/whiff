@@ -1,0 +1,147 @@
+---
+source: src/formats/text/dialects.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-oai.xml",
+    "stem": "saltmere-oai",
+    "extension": "xml"
+  },
+  "identification": {
+    "format": "dublin_core",
+    "name": "Dublin Core / OAI-PMH",
+    "mime": "application/xml",
+    "family": "text.xml",
+    "confidence": 0.93,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "dublin_core",
+        "confidence": 0.93
+      },
+      {
+        "format": "xml",
+        "confidence": 0.65
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "text.dialects"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 938
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 938,
+    "entropy": 5.026,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 938,
+      "chars": 938,
+      "words": 27,
+      "lines": 16,
+      "max_line_length": 143,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "ceb3fb4e3bb3e9172255319fb61ad9ecc0aa4b29c9321e2801c85f470ac6357a",
+    "blake3": "7edfefd4988a3a271fcc2d0111841e3cb1df30d77861402ca02242f482275a39"
+  },
+  "content": {
+    "title": "Saltmere harbour charts"
+  },
+  "metadata": {},
+  "format": {
+    "dublin_core": {
+      "protocol": "OAI-PMH 2.0",
+      "verb": "ListRecords",
+      "response_date": "2025-09-01T12:00:00Z",
+      "records": 2,
+      "deleted": 1,
+      "datestamps": [
+        "2025-08-01",
+        "2025-08-20"
+      ],
+      "sets": [
+        "charts",
+        "logs"
+      ],
+      "resumption_token": true,
+      "elements": {
+        "date": 1,
+        "identifier": 2,
+        "title": 1,
+        "type": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.dialects",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

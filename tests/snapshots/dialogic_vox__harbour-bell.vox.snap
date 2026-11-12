@@ -1,0 +1,121 @@
+---
+source: src/formats/audio/raw.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-bell.vox",
+    "stem": "harbour-bell",
+    "extension": "vox"
+  },
+  "identification": {
+    "format": "dialogic_vox",
+    "name": "Dialogic ADPCM (VOX)",
+    "mime": "audio/x-vox",
+    "family": "audio",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "extractor": "audio.raw"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4000
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4000,
+    "entropy": 5.809,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.0,
+      "bitrate_bps": 32000,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "adpcm_ima_oki",
+          "sample_rate_hz": 8000,
+          "channels": 1,
+          "channel_layout": "mono",
+          "bits_per_sample": 4,
+          "bitrate_bps": 32000,
+          "samples": 8000
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "cd0afb46e7d09465856595bd047269843af4d7b28cedeca73a879dde9aca41ad",
+    "blake3": "41f921ccd9eb0f22fb05907ce610d727551c337985b270b2c380bb7351208af1"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "dialogic_vox": {
+      "assumed_sample_rate": true
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.raw",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

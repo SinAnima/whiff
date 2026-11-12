@@ -1,0 +1,256 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tsdb-block-meta.json",
+    "stem": "tsdb-block-meta",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.6,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 270
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 270,
+    "entropy": 4.807,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 270,
+      "chars": 270,
+      "words": 28,
+      "lines": 17,
+      "max_line_length": 52,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "c11dd8df5ce365e7fd9bd3194d366fbe1f672eb836b9e1cab52e73aa92a37636",
+    "blake3": "99acd6088421ad0f1c3881b76bc7f4a2aa3aa9d17cb1740f524665c3bab2ab2f"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "ulid",
+        "minTime",
+        "maxTime",
+        "stats",
+        "compaction",
+        "version"
+      ],
+      "key_count": 6,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.ulid": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "01J6Z0000000000000SALTMERE"
+            ]
+          },
+          "$.minTime": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              1756728000000
+            ]
+          },
+          "$.maxTime": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              1756735200000
+            ]
+          },
+          "$.stats": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.stats.numSamples": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              1440
+            ]
+          },
+          "$.stats.numSeries": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              2
+            ]
+          },
+          "$.stats.numChunks": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              2
+            ]
+          },
+          "$.compaction": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.compaction.level": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              1
+            ]
+          },
+          "$.compaction.sources": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.compaction.sources[]": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "01J6Z0000000000000SALTMERE"
+            ]
+          },
+          "$.version": {
+            "types": [
+              "integer"
+            ],
+            "count": 1,
+            "examples": [
+              1
+            ]
+          }
+        },
+        "max_depth": 3
+      },
+      "known_schema": {
+        "id": "prometheus_tsdb_block",
+        "name": "Prometheus TSDB block metadata",
+        "ulid": "01J6Z0000000000000SALTMERE",
+        "time_range": [
+          "2025-09-01T12:00:00Z",
+          "2025-09-01T14:00:00Z"
+        ],
+        "series": 2,
+        "samples": 1440,
+        "chunks": 2,
+        "compaction_level": 1,
+        "sources": 1,
+        "version": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

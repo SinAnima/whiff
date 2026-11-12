@@ -1,0 +1,234 @@
+#!/bin/sh
+# This is a shell archive (produced by GNU sharutils 4.15.2).
+# To extract the files from this archive, save it to some FILE, remove
+# everything before the '#!/bin/sh' line above, then type 'sh FILE'.
+#
+lock_dir=_sh00009
+# Made on 2025-09-01 12:00 UTC by <harbour@saltmere.example>.
+# Source directory was '/srv/harbour'.
+#
+# Existing files will *not* be overwritten, unless '-c' is specified.
+#
+# This shar contains:
+# length mode       name
+# ------ ---------- ------------------------------------------
+#    162 -rw-r--r-- notes.txt
+#     92 -rw-r--r-- log.csv
+#    438 -rw-r--r-- charts/bay.txt
+#
+MD5SUM=${MD5SUM-md5sum}
+f=`${MD5SUM} --version | egrep '^md5sum .*(core|text)utils'`
+test -n "${f}" && md5check=true || md5check=false
+${md5check} || \
+  echo 'Note: not verifying md5sums.  Consider installing GNU coreutils.'
+if test "X$1" = "X-c"
+then keep_file=''
+else keep_file=true
+fi
+echo=echo
+save_IFS="${IFS}"
+IFS="${IFS}:"
+gettext_dir=
+locale_dir=
+set_echo=false
+
+for dir in $PATH
+do
+  if test -f $dir/gettext \
+     && ($dir/gettext --version >/dev/null 2>&1)
+  then
+    case `$dir/gettext --version 2>&1 | sed 1q` in
+      *GNU*) gettext_dir=$dir
+      set_echo=true
+      break ;;
+    esac
+  fi
+done
+
+if ${set_echo}
+then
+  set_echo=false
+  for dir in $PATH
+  do
+    if test -f $dir/shar \
+       && ($dir/shar --print-text-domain-dir >/dev/null 2>&1)
+    then
+      locale_dir=`$dir/shar --print-text-domain-dir`
+      set_echo=true
+      break
+    fi
+  done
+
+  if ${set_echo}
+  then
+    TEXTDOMAINDIR=$locale_dir
+    export TEXTDOMAINDIR
+    TEXTDOMAIN=sharutils
+    export TEXTDOMAIN
+    echo="$gettext_dir/gettext -s"
+  fi
+fi
+IFS="$save_IFS"
+if (echo "testing\c"; echo 1,2,3) | grep c >/dev/null
+then if (echo -n test; echo 1,2,3) | grep n >/dev/null
+     then shar_n= shar_c='
+'
+     else shar_n=-n shar_c= ; fi
+else shar_n= shar_c='\c' ; fi
+f=shar-touch.$$
+st1=200112312359.59
+st2=123123592001.59
+st2tr=123123592001.5 # old SysV 14-char limit
+st3=1231235901
+
+if   touch -am -t ${st1} ${f} >/dev/null 2>&1 && \
+     test ! -f ${st1} && test -f ${f}; then
+  shar_touch='touch -am -t $1$2$3$4$5$6.$7 "$8"'
+
+elif touch -am ${st2} ${f} >/dev/null 2>&1 && \
+     test ! -f ${st2} && test ! -f ${st2tr} && test -f ${f}; then
+  shar_touch='touch -am $3$4$5$6$1$2.$7 "$8"'
+
+elif touch -am ${st3} ${f} >/dev/null 2>&1 && \
+     test ! -f ${st3} && test -f ${f}; then
+  shar_touch='touch -am $3$4$5$6$2 "$8"'
+
+else
+  shar_touch=:
+  echo
+  ${echo} 'WARNING: not restoring timestamps.  Consider getting and
+installing GNU '\''touch'\'', distributed in GNU coreutils...'
+  echo
+fi
+rm -f ${st1} ${st2} ${st2tr} ${st3} ${f}
+#
+if test ! -d ${lock_dir} ; then :
+else ${echo} "lock directory ${lock_dir} exists"
+     exit 1
+fi
+if mkdir ${lock_dir}
+then ${echo} "x - created lock directory ${lock_dir}."
+else ${echo} "x - failed to create lock directory ${lock_dir}."
+     exit 1
+fi
+# ============= notes.txt ==============
+if test -n "${keep_file}" && test -f 'notes.txt'
+then
+${echo} "x - SKIPPING notes.txt (file already exists)"
+
+else
+${echo} "x - extracting notes.txt (text)"
+  sed 's/^X//' << 'SHAR_EOF' | uudecode &&
+begin 600 notes.txt
+M4V%L=&UE<F4@:&%R8F]U<B!N;W1E<PT*2&EG:"!W871E<B`P-CHQ,BP@;&]W
+M('=A=&5R(#$R.C,Q+B!4:&4@<&EL;W0@;&%U;F-H(&QE879E<R!A="!D87=N
+M+@T*0F5N($=U;&P@:V5E<',@=&AE(&)E;&P@=&]W97(@;&]G.R!!;F$@3&EG
+;:'1H;W5S92!K965P<R!T:&4@8VAA<G1S+@T*
+`
+end
+SHAR_EOF
+  (set 20 25 09 01 12 00 00 'notes.txt'
+   eval "${shar_touch}") && \
+  chmod 0644 'notes.txt'
+if test $? -ne 0
+then ${echo} "restore of notes.txt failed"
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'notes.txt': 'MD5 check failed'
+       ) << \SHAR_EOF
+64c54f470988a0e6e5c9fc22a2a567a1  notes.txt
+SHAR_EOF
+
+else
+test `LC_ALL=C wc -c < 'notes.txt'` -ne 162 && \
+  ${echo} "restoration warning:  size of 'notes.txt' is not 162"
+  fi
+fi
+# ============= log.csv ==============
+if test -n "${keep_file}" && test -f 'log.csv'
+then
+${echo} "x - SKIPPING log.csv (file already exists)"
+
+else
+${echo} "x - extracting log.csv (text)"
+  sed 's/^X//' << 'SHAR_EOF' | uudecode &&
+begin 600 log.csv
+M9&%T92QB;V%T+&)E<G1H#0HR,#(U+3`Y+3`Q+$AA<F)O=7(@0F5L;"PS#0HR
+M,#(U+3`Y+3`Q+$=R97D@5&5R;BPU#0HR,#(U+3`Y+3`R+$QO=R!7871E<BPQ
+"#0HU
+`
+end
+SHAR_EOF
+  (set 20 25 09 01 12 00 00 'log.csv'
+   eval "${shar_touch}") && \
+  chmod 0644 'log.csv'
+if test $? -ne 0
+then ${echo} "restore of log.csv failed"
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'log.csv': 'MD5 check failed'
+       ) << \SHAR_EOF
+1de246a5ece3837b76a0aaf7827d47a4  log.csv
+SHAR_EOF
+
+else
+test `LC_ALL=C wc -c < 'log.csv'` -ne 92 && \
+  ${echo} "restoration warning:  size of 'log.csv' is not 92"
+  fi
+fi
+# ============= charts/bay.txt ==============
+if test ! -d 'charts'; then
+  mkdir 'charts'
+if test $? -eq 0
+then ${echo} "x - created directory charts."
+else ${echo} "x - failed to create directory charts."
+     exit 1
+fi
+fi
+if test -n "${keep_file}" && test -f 'charts/bay.txt'
+then
+${echo} "x - SKIPPING charts/bay.txt (file already exists)"
+
+else
+${echo} "x - extracting charts/bay.txt (text)"
+  sed 's/^X//' << 'SHAR_EOF' | uudecode &&
+begin 600 charts/bay.txt
+M4V%L=&UE<F4@8F%Y(&-H87)T.B!S;W5N9&EN9W,@:6X@9F%T:&]M<RP@=&AE
+M(&QO;F<@=V%L;"P@=&AE(&)E;&P@8G5O>2X-"E-A;'1M97)E(&)A>2!C:&%R
+M=#H@<V]U;F1I;F=S(&EN(&9A=&AO;7,L('1H92!L;VYG('=A;&PL('1H92!B
+M96QL(&)U;WDN#0I386QT;65R92!B87D@8VAA<G0Z('-O=6YD:6YG<R!I;B!F
+M871H;VUS+"!T:&4@;&]N9R!W86QL+"!T:&4@8F5L;"!B=6]Y+@T*4V%L=&UE
+M<F4@8F%Y(&-H87)T.B!S;W5N9&EN9W,@:6X@9F%T:&]M<RP@=&AE(&QO;F<@
+M=V%L;"P@=&AE(&)E;&P@8G5O>2X-"E-A;'1M97)E(&)A>2!C:&%R=#H@<V]U
+M;F1I;F=S(&EN(&9A=&AO;7,L('1H92!L;VYG('=A;&PL('1H92!B96QL(&)U
+M;WDN#0I386QT;65R92!B87D@8VAA<G0Z('-O=6YD:6YG<R!I;B!F871H;VUS
+A+"!T:&4@;&]N9R!W86QL+"!T:&4@8F5L;"!B=6]Y+@T*
+`
+end
+SHAR_EOF
+  (set 20 25 09 01 12 00 00 'charts/bay.txt'
+   eval "${shar_touch}") && \
+  chmod 0644 'charts/bay.txt'
+if test $? -ne 0
+then ${echo} "restore of charts/bay.txt failed"
+fi
+  if ${md5check}
+  then (
+       ${MD5SUM} -c >/dev/null 2>&1 || ${echo} 'charts/bay.txt': 'MD5 check failed'
+       ) << \SHAR_EOF
+6709f5d35d17a0103344ff31ebf4ee33  charts/bay.txt
+SHAR_EOF
+
+else
+test `LC_ALL=C wc -c < 'charts/bay.txt'` -ne 438 && \
+  ${echo} "restoration warning:  size of 'charts/bay.txt' is not 438"
+  fi
+fi
+if rm -fr ${lock_dir}
+then ${echo} "x - removed lock directory ${lock_dir}."
+else ${echo} "x - failed to remove lock directory ${lock_dir}."
+     exit 1
+fi
+exit 0

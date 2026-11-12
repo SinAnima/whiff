@@ -1,0 +1,128 @@
+---
+source: src/formats/apple/plists.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-shanty-metadata.plist",
+    "stem": "saltmere-shanty-metadata",
+    "extension": "plist"
+  },
+  "identification": {
+    "format": "bplist",
+    "name": "Apple plist (binary)",
+    "mime": "application/x-bplist",
+    "family": "data.binser",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "bplist",
+        "confidence": 0.97
+      },
+      {
+        "format": "plist",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "apple.plist"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 511
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 511,
+    "entropy": 5.798,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "6200e6049171c48ac1ec110bf81256b8cf792edb111c37398238a5070b18fdfa",
+    "blake3": "44d0d20bb006ccb53b0c1eeabde3ba42ecebee0cb2b0df675332d7bb47faee4b"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "bplist": {
+      "encoding": "binary",
+      "top_level": "dictionary",
+      "values": 20,
+      "max_depth": 2,
+      "kind": "garageband_song",
+      "tempo_bpm": 96.0,
+      "key": "D minor",
+      "time_signature": "6/8",
+      "tracks": 4,
+      "sample_rate": 48000,
+      "version": 3,
+      "files_used": {
+        "audio": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "apple.plist",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

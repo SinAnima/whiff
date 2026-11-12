@@ -1,0 +1,173 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "composer.json",
+    "stem": "composer",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "composer_json",
+    "name": "Composer manifest",
+    "mime": "application/json",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "composer_json",
+        "confidence": 0.97
+      },
+      {
+        "format": "json",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 651
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "personal_data": {
+      "email": 1
+    }
+  },
+  "rights": {
+    "creators": [
+      "Harbour Office"
+    ],
+    "license": {
+      "name": "CC0-1.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 651,
+    "entropy": 4.205,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 651,
+      "chars": 651,
+      "words": 56,
+      "lines": 32,
+      "max_line_length": 57,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "72a1e3dd95a45ec575c5d2f6037f92931a0c10208ac158d76e44fa79c1f06cb2",
+    "blake3": "112258111689fad7f3a9c1a4e59bdc7f8063966d023836333d609f41a78a38b4"
+  },
+  "content": {
+    "title": "saltmere/berths",
+    "description": "Berth bookings for Saltmere Harbour",
+    "authors": [
+      "Harbour Office"
+    ],
+    "keywords": [
+      "harbour",
+      "berths"
+    ],
+    "excerpt": "Berth bookings for Saltmere Harbour",
+    "tags": [
+      "harbour",
+      "berths"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "composer_json": {
+      "ecosystem": "composer",
+      "name": "saltmere/berths",
+      "license": "CC0-1.0",
+      "type": "library",
+      "requires_php": ">=8.2",
+      "php_extensions": [
+        "json"
+      ],
+      "dependencies": {
+        "guzzlehttp/guzzle": "^7.9"
+      },
+      "dependencies_count": 1,
+      "dev_dependencies": {
+        "phpunit/phpunit": "^11.3"
+      },
+      "dev_dependencies_count": 1,
+      "namespaces": [
+        "Saltmere\\Berths\\"
+      ],
+      "scripts": [
+        "test"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

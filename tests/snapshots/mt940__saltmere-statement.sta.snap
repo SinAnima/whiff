@@ -1,0 +1,127 @@
+---
+source: src/formats/data/records.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-statement.sta",
+    "stem": "saltmere-statement",
+    "extension": "sta"
+  },
+  "identification": {
+    "format": "mt940",
+    "name": "SWIFT MT940 statement",
+    "mime": "text/x-mt940",
+    "family": "data.csv",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.records"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 217
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 217,
+    "entropy": 4.616,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 217,
+      "chars": 217,
+      "words": 11,
+      "lines": 9,
+      "max_line_length": 34,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "50cc5dd9f917cca482ee0b064454f772b9fef391bc13b88243e9d4d11a2e02fe",
+    "blake3": "134c6ca2901df2ef090e3fe8dcfcf30f30f4da960f67fb257cba31ca5db87eaa"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "mt940": {
+      "statements": 1,
+      "accounts": [
+        "••••••••2345"
+      ],
+      "currencies": [
+        "GBP"
+      ],
+      "transactions": 2,
+      "date_range": [
+        "2025-08-05",
+        "2025-08-15"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.records",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

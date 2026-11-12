@@ -1,0 +1,148 @@
+---
+source: src/formats/audio/projects.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Saltmere Tides.rpp",
+    "stem": "Saltmere Tides",
+    "extension": "rpp"
+  },
+  "identification": {
+    "format": "reaper",
+    "name": "REAPER project",
+    "mime": "application/x-reaper-project",
+    "family": "audio",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "reaper",
+        "confidence": 0.97
+      },
+      {
+        "format": "xml",
+        "confidence": 0.32
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "audio.project"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 691
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 691,
+    "entropy": 4.607,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 691,
+      "chars": 691,
+      "words": 82,
+      "lines": 34,
+      "max_line_length": 64,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    },
+    "media": {
+      "duration_s": 16.5
+    }
+  },
+  "integrity": {
+    "sha256": "7cade2e4054721dcd296e047c139629538208175d0b384fd026eb078df4efb8d",
+    "blake3": "03c073786a4ff5c493e16bba7995e21e2fe18e9b45165026f3525d98eb90a538"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "reaper": {
+      "reaper_version": "7.07/linux-x86_64",
+      "saved_unix_time": 1756728000,
+      "tempo_bpm": 96.0,
+      "time_signature": "6/8",
+      "sample_rate_hz": 48000,
+      "tracks": 2,
+      "track_names": [
+        "Harbour bell",
+        "Gulls"
+      ],
+      "items": 2,
+      "markers": 2,
+      "fx": {
+        "VST3: ReaEQ (Cockos)": 1,
+        "utility/volume": 1
+      },
+      "source_files": [
+        "bell.wav",
+        "gulls.wav"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.project",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

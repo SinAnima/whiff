@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package>
+  <job id="tides">
+    <script language="JScript">
+      WScript.Echo("Saltmere: high water 06:12, low water 12:31.");
+    </script>
+  </job>
+  <job id="bell">
+    <script language="VBScript">
+      WScript.Echo "The harbour bell rings at high tide."
+    </script>
+  </job>
+</package>

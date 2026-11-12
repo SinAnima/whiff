@@ -1,0 +1,209 @@
+---
+source: src/formats/text/lightmarkup.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "maintenance.org",
+    "stem": "maintenance",
+    "extension": "org"
+  },
+  "identification": {
+    "format": "org",
+    "name": "Org-mode",
+    "mime": "text/x-org",
+    "family": "text.lightmarkup",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.lightmarkup"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 811
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-11-05",
+        "source": "text.lightmarkup",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {
+    "external_references": 1
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 811,
+    "entropy": 5.286,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 811,
+      "chars": 811,
+      "words": 111,
+      "lines": 31,
+      "max_line_length": 93,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "38f90ceaf4d53d8c90870ed4f11b6f307ef729f4f423045d8e4da0752424d7cf",
+    "blake3": "e7ec3d1f038e7441c50f134e06d80f96fed0fa8fb281adb06ff3543212a37925"
+  },
+  "content": {
+    "title": "Harbour maintenance log",
+    "authors": [
+      "Ben Netmaker"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Harbour maintenance log",
+      "log",
+      "harbour light bulb",
+      "maintenance",
+      "bulb",
+      "harbour",
+      "east pontoon",
+      "Repaint the east",
+      "Replace the harbour",
+      "pontoon"
+    ],
+    "keyword_frequency": [
+      [
+        "bulb",
+        2
+      ],
+      [
+        "harbour",
+        2
+      ]
+    ],
+    "excerpt": "- X Buy paint - Book the crane See and .",
+    "tags": [
+      "Harbour maintenance log",
+      "log",
+      "harbour light bulb",
+      "maintenance",
+      "bulb"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "org": {
+      "headings": 5,
+      "links": {
+        "internal": 0,
+        "external": 1
+      },
+      "top_link_hosts": {
+        "board.example.org": 1
+      },
+      "images": 1,
+      "code_blocks": 1,
+      "tables": 1,
+      "code_languages": {
+        "shell": 1
+      },
+      "todo_states": {
+        "TODO": 1,
+        "WAITING": 1,
+        "DONE": 1,
+        "CANCELLED": 1
+      },
+      "open_items": 2,
+      "priorities": {
+        "A": 1
+      },
+      "scheduled": 1,
+      "property_drawers": 1,
+      "deadline": 1,
+      "done_items": 2,
+      "closed": 1,
+      "clock": 1,
+      "tags": [
+        "harbour",
+        "light",
+        "maintenance",
+        "pontoon"
+      ],
+      "timestamps": {
+        "count": 3,
+        "first": "2025-11-03",
+        "last": "2025-11-20"
+      },
+      "checkboxes": {
+        "total": 2,
+        "done": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.lightmarkup",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

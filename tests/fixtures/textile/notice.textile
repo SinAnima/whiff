@@ -1,0 +1,20 @@
+h1. Notice to mariners
+
+p. The *east pontoon* is closed for painting from 10 November.
+
+h2. Diversions
+
+* Visitors moor on the _west_ pontoon.
+* Fuel is available as usual.
+
+bq. Please keep to 3 knots inside the harbour.
+
+bc. VHF channel 12
+
+|_. Pontoon |_. Status |
+| East | closed |
+| West | open |
+
+See "the harbour board":https://board.example.org/notices and !images/pontoon.png!.
+
+fn1. Issued by the harbour master.

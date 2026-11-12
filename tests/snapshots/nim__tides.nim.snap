@@ -1,0 +1,150 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.nim",
+    "stem": "tides",
+    "extension": "nim"
+  },
+  "identification": {
+    "format": "nim",
+    "name": "Nim source",
+    "mime": "text/x-nim",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 355
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 355,
+    "entropy": 4.827,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 355,
+      "chars": 355,
+      "words": 50,
+      "lines": 17,
+      "max_line_length": 50,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "db6224c9aa6e54faf36061b5e1f083c4fe6c71754e6e5bb55a82586c7e6cf3b5",
+    "blake3": "d14b1807df09ac0f6c98a6cbc605fbd6d8989317fcf9fc72704c57149014293c"
+  },
+  "content": {
+    "description": "Tide predictions for Saltmere Harbour.",
+    "excerpt": "Tide predictions for Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "nim": {
+      "language": "Nim",
+      "loc": {
+        "code": 11,
+        "comment": 2,
+        "blank": 4,
+        "total": 17
+      },
+      "imports": [
+        "std",
+        "times"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "procedure": [
+          "highWater"
+        ],
+        "template": [
+          "log"
+        ],
+        "type": [
+          "Gauge"
+        ]
+      },
+      "symbol_counts": {
+        "procedure": 1,
+        "template": 1,
+        "type": 1
+      },
+      "module_doc": "Tide predictions for Saltmere Harbour.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 50
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

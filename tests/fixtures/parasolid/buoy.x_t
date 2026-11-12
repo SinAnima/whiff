@@ -1,0 +1,24 @@
+**ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz**************************
+**PARASOLID !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~0123456789**************************
+**PART1;
+MC=x86;
+MC_MODEL=x86_64;
+MC_ID=unknown;
+OS=Linux;
+OS_RELEASE=6;
+FRU=sdl_parasolid_customer_support;
+APPL=saltmere-cad;
+SITE=Saltmere Harbour;
+USER=harbourmaster;
+FORMAT=text;
+GUISE=transmit;
+KEY=buoy;
+FILE=/home/harbourmaster/models/buoy.x_t;
+DATE=Mon Sep  1 12:00:00 2025;
+**PART2;
+SCH=SCH_3600274_36001;
+USFLD_SIZE=0;
+**PART3;
+**END_OF_HEADER*****************************************************************
+T51 : TRANSMIT FILE created by modeller version 3600274
+1 0 0

@@ -1,0 +1,16 @@
+# Generated for the harbour gauge daemon.
+ninja_required_version = 1.5
+cflags = -O2 -Wall
+
+rule cc
+  command = cc $cflags -c $in -o $out
+  description = CC $out
+
+rule link
+  command = cc $in -o $out
+
+build tides.o: cc tides.c
+build gauged.o: cc gauged.c
+build gauged: link gauged.o tides.o
+
+default gauged

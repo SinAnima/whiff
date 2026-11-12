@@ -1,0 +1,120 @@
+---
+source: src/formats/audio/raw.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-bell.thd",
+    "stem": "harbour-bell",
+    "extension": "thd"
+  },
+  "identification": {
+    "format": "truehd",
+    "name": "Dolby TrueHD / MLP",
+    "mime": "audio/vnd.dolby.mlp",
+    "family": "audio",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "audio.raw"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 35064
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 35064,
+    "entropy": 7.327,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.0,
+      "bitrate_bps": 280512,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "truehd",
+          "sample_rate_hz": 48000,
+          "channels": 2,
+          "channel_layout": "stereo",
+          "samples": 48000
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "904f7f33fdcfbc5d03987415cc45b7c3f6fecf9afc04097f8dc11589e264ee32",
+    "blake3": "f052ca21f06d25461e2e612e18cdad7dcba0f519688910b5c4ec179b399e3475"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "truehd": {
+      "access_units": 1200,
+      "major_syncs": 75
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.raw",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

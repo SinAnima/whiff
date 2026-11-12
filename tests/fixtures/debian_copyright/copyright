@@ -1,0 +1,19 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: saltmere-tides
+Upstream-Contact: Harbour Office <office@harbour.example.org>
+Source: https://harbour.test/releases
+
+Files: *
+Copyright: 2026 Saltmere Harbour Office
+License: CC0-1.0
+
+Files: debian/*
+Copyright: 2026 Ada Harbour
+License: CC0-1.0
+
+Files: data/charts/*
+Copyright: 2025 Saltmere Survey
+License: CC-BY-4.0
+
+License: CC0-1.0
+ To the extent possible under law, the authors have waived all copyright.

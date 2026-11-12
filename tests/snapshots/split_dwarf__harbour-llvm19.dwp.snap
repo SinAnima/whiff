@@ -1,0 +1,126 @@
+---
+source: src/formats/exec/debug.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-llvm19.dwp",
+    "stem": "harbour-llvm19",
+    "extension": "dwp"
+  },
+  "identification": {
+    "format": "split_dwarf",
+    "name": "Split DWARF debug information (DWO / DWP)",
+    "mime": "application/x-dwarf",
+    "family": "exec",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "split_dwarf",
+        "confidence": 0.95
+      },
+      {
+        "format": "elf",
+        "confidence": 0.95
+      }
+    ],
+    "extractor": "exec.debug"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1976
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1976,
+    "entropy": 3.419,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "0b6d0e7ae21e40c2b18b056188f6b4b2ebfd15e9456f992595041fb50a573c62",
+    "blake3": "8e693da71146ba1e805f48e9a3604e7204f7f89ee1f163ff92185e675cd5ec60"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "split_dwarf": {
+      "debug_sections": [
+        ".debug_abbrev.dwo",
+        ".debug_loclists.dwo",
+        ".debug_line.dwo",
+        ".debug_str.dwo",
+        ".debug_str_offsets.dwo",
+        ".debug_info.dwo",
+        ".debug_cu_index"
+      ],
+      "package": true,
+      "index_version": 5,
+      "units": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.debug",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

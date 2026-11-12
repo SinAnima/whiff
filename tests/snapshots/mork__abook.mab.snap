@@ -1,0 +1,127 @@
+---
+source: src/formats/email/stores.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "abook.mab",
+    "stem": "abook",
+    "extension": "mab"
+  },
+  "identification": {
+    "format": "mork",
+    "name": "Mork database",
+    "mime": "text/x-mork",
+    "family": "email",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "email.stores"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 474
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 474,
+    "entropy": 5.419,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 474,
+      "chars": 474,
+      "words": 21,
+      "lines": 11,
+      "max_line_length": 82,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "0b6d20e999abec3f30f30886474f661611a8e805363e88f9253a7f7c44899a0f",
+    "blake3": "7ad6f9835debdb979c05600b26a246279ce77e780b99190282127a7e59970c31"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "mork": {
+      "mork_version": "1.4",
+      "kind": "address book",
+      "tables": 1,
+      "rows": 2,
+      "columns": [
+        "DisplayName",
+        "FirstName",
+        "LastName",
+        "PrimaryEmail",
+        "WorkPhone"
+      ],
+      "cards": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "email.stores",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

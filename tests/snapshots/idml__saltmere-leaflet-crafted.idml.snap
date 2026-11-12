@@ -1,0 +1,161 @@
+---
+source: src/formats/doc/packages.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-leaflet-crafted.idml",
+    "stem": "saltmere-leaflet-crafted",
+    "extension": "idml"
+  },
+  "identification": {
+    "format": "idml",
+    "name": "InDesign Markup Language package",
+    "mime": "application/vnd.adobe.indesign-idml-package",
+    "family": "doc.other",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "idml",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "doc.packages"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2596
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "digitized",
+        "value": "2025-09-01T12:00:00+00:00",
+        "source": "xmp.xmp:CreateDate",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ben Gull"
+    ]
+  },
+  "physical": {
+    "size_bytes": 2596,
+    "entropy": 7.175,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "20bb9279401c1f435a38a5f22e36d1735ee49eaeb7ab42513aeb1473b8a9af27",
+    "blake3": "3b9b9ec37c9a7c1d35ac5f4847b9c2021bb9b6273d5a1da4f9fd7849582fdffe"
+  },
+  "content": {
+    "title": "Saltmere harbour leaflet",
+    "authors": [
+      "Ben Gull"
+    ],
+    "excerpt": "Saltmere harbour High water 06:12, low water 12:31."
+  },
+  "metadata": {
+    "xmp": {
+      "dc": {
+        "title": "Saltmere harbour leaflet",
+        "creator": [
+          "Ben Gull"
+        ]
+      },
+      "xmp": {
+        "CreatorTool": "Adobe InDesign 20.0 (Macintosh)",
+        "CreateDate": "2025-09-01T12:00:00Z"
+      }
+    }
+  },
+  "format": {
+    "idml": {
+      "dom_version": "20.0",
+      "spreads": 1,
+      "master_spreads": 1,
+      "stories": 2,
+      "font_families": [
+        "Harbour Serif",
+        "Tide Sans"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.packages",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.xmp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

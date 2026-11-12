@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bom xmlns="http://cyclonedx.org/schema/bom/1.5" serialNumber="urn:uuid:5b2a8e0c-6f4d-4c3b-9a1e-0d7f2c8b4e61" version="1">
+  <metadata>
+    <timestamp>2026-03-14T09:30:00Z</timestamp>
+    <tools>
+      <components>
+        <component type="application">
+          <name>harbour-sbom</name>
+          <version>1.0</version>
+        </component>
+      </components>
+    </tools>
+    <component type="application">
+      <name>saltmere-gauge</name>
+      <version>2.1.0</version>
+    </component>
+  </metadata>
+  <components>
+    <component type="library">
+      <name>pyserial</name>
+      <version>3.5</version>
+      <licenses><license><id>BSD-3-Clause</id></license></licenses>
+      <purl>pkg:pypi/pyserial@3.5</purl>
+    </component>
+    <component type="library">
+      <name>click</name>
+      <version>8.1.7</version>
+      <licenses><license><id>BSD-3-Clause</id></license></licenses>
+      <purl>pkg:pypi/click@8.1.7</purl>
+    </component>
+  </components>
+  <dependencies>
+    <dependency ref="saltmere-gauge"/>
+  </dependencies>
+</bom>

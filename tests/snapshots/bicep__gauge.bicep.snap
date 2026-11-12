@@ -1,0 +1,162 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "gauge.bicep",
+    "stem": "gauge",
+    "extension": "bicep"
+  },
+  "identification": {
+    "format": "bicep",
+    "name": "Bicep template",
+    "mime": "text/x-bicep",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 394
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 394,
+    "entropy": 4.697,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 394,
+      "chars": 394,
+      "words": 49,
+      "lines": 18,
+      "max_line_length": 65,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "31054427afed253b3e8cfe2f3cdbb47bdf75025bf4fe50a6c046a4da142bc64c",
+    "blake3": "be1f247e4000af3dd3a5195268eaa61f06b53bda3c60f40b5acc78bec96a1a6e"
+  },
+  "content": {
+    "description": "Storage for the harbour gauge readings.",
+    "excerpt": "Storage for the harbour gauge readings."
+  },
+  "metadata": {},
+  "format": {
+    "bicep": {
+      "language": "Bicep template",
+      "loc": {
+        "code": 13,
+        "comment": 1,
+        "blank": 4,
+        "total": 18
+      },
+      "package": "resourceGroup",
+      "imports": [
+        "./alerts.bicep"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "module": [
+          "alerts"
+        ],
+        "output": [
+          "storeId"
+        ],
+        "parameter": [
+          "location"
+        ],
+        "resource": [
+          "store"
+        ],
+        "resource_type": [
+          "Microsoft.Storage/storageAccounts"
+        ],
+        "variable": [
+          "name"
+        ]
+      },
+      "symbol_counts": {
+        "module": 1,
+        "output": 1,
+        "parameter": 1,
+        "resource": 1,
+        "resource_type": 1,
+        "variable": 1
+      },
+      "module_doc": "Storage for the harbour gauge readings.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 65
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -342,6 +342,7 @@ impl Cfb {
         self.entries.iter().filter(move |e| e.parent == Some(parent))
     }
 
+    #[cfg(test)]
     /// Index of `entry` in [`entries`](Self::entries).
     pub fn index_of(&self, entry: &CfbEntry) -> Option<usize> {
         self.entries.iter().position(|e| e.path == entry.path)

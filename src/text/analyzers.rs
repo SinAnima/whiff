@@ -265,6 +265,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg_attr(miri, ignore = "builds the secret and language tables: over 5 min under Miri")]
     fn analyzers_fill_content() {
         let body = "Fishing boats return to the harbour at dusk. The harbour master counts the boats. \
             Fishing boats unload their catch while gulls circle above the harbour. \
@@ -290,6 +291,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg_attr(miri, ignore = "compiles the secret patterns: 4 min under Miri")]
     fn secrets_are_flagged_and_redacted() {
         let text = store(&[(TextRole::Data, "AWS_KEY=AKIAABCDEFGHIJKLMNOP")]);
         let mut r = Report::default();

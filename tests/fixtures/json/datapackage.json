@@ -1,0 +1,28 @@
+{
+  "name": "saltmere-berths",
+  "title": "Saltmere berth register",
+  "profile": "tabular-data-package",
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "resources": [
+    {
+      "name": "berths",
+      "path": "berths.csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "boat",
+            "type": "string"
+          },
+          {
+            "name": "berth",
+            "type": "integer"
+          }
+        ]
+      }
+    }
+  ]
+}

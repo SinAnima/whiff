@@ -1,0 +1,129 @@
+---
+source: src/formats/image/diagram.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "ferry.mmd",
+    "stem": "ferry",
+    "extension": "mmd"
+  },
+  "identification": {
+    "format": "mermaid",
+    "name": "Mermaid diagram",
+    "mime": "text/vnd.mermaid",
+    "family": "image.vector",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "image.diagram"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 197
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 197,
+    "entropy": 4.672,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 197,
+      "chars": 197,
+      "words": 30,
+      "lines": 9,
+      "max_line_length": 39,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "2527a057e1830c273a1cfc5563b743c765e6716d725a11fe1f445b075f35e003",
+    "blake3": "f157b4e5aa1bae98bfe02777ea30b762b8e0e9086da4f40ff698f46949ec348f"
+  },
+  "content": {
+    "title": "Ferry crossing",
+    "excerpt": "Saltmere quay Weather ok? Sail to Gull Island Wait in harbour Gull Island pier"
+  },
+  "metadata": {},
+  "format": {
+    "mermaid": {
+      "diagram_type": "flowchart",
+      "direction": "LR",
+      "nodes": 5,
+      "edges": 4,
+      "labels": [
+        "Saltmere quay",
+        "Weather ok?",
+        "Sail to Gull Island",
+        "Wait in harbour",
+        "Gull Island pier"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.diagram",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

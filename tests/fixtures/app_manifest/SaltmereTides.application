@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <assemblyIdentity name="SaltmereTides.application" version="1.3.0.7" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <description asmv2:publisher="Saltmere Harbour" asmv2:product="Saltmere Tides" xmlns="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" />
+  <deployment install="true" mapFileExtensions="true" minimumRequiredVersion="1.3.0.0">
+    <deploymentProvider codebase="https://apps.saltmere.example/tides/SaltmereTides.application" />
+  </deployment>
+  <dependency>
+    <dependentAssembly dependencyType="install" codebase="Application Files\SaltmereTides_1_3_0_7\SaltmereTides.exe.manifest" size="4096">
+      <assemblyIdentity name="SaltmereTides.exe" version="1.3.0.7" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+    </dependentAssembly>
+  </dependency>
+</asmv1:assembly>

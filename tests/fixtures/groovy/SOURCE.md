@@ -5,4 +5,4 @@ Names, e-mail addresses (`example.org`, `example.com`) and phone numbers are fic
 
 | File | Origin | Licence |
 |---|---|---|
-| `build.gradle` | Written for whiff's test suite | CC0-1.0 |
+| `harbour.groovy` | Written for whiff's test suite (`scripts/fixtures/craft_code_src.py`) | CC0-1.0 |

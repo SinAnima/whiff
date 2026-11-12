@@ -1,0 +1,198 @@
+---
+source: src/formats/image/sidecar.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "breakwater-vra.xml",
+    "stem": "breakwater-vra",
+    "extension": "xml"
+  },
+  "identification": {
+    "format": "vra",
+    "name": "VRA Core 4 record",
+    "mime": "application/xml",
+    "family": "meta.vra",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "vra",
+        "confidence": 0.97
+      },
+      {
+        "format": "xml",
+        "confidence": 0.65
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "image.sidecar"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1129
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "copyright": "CC0 1.0"
+  },
+  "physical": {
+    "size_bytes": 1129,
+    "entropy": 4.85,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1129,
+      "chars": 1129,
+      "words": 47,
+      "lines": 12,
+      "max_line_length": 200,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "45da94b77b28d61d64c347da91d27237b05fd5f7ffb9382dd58ca31b9592f31b",
+    "blake3": "96107067b5a1436136b86955b159c3f1056a1993fe4fd688366872401f453489"
+  },
+  "content": {
+    "title": "The Old Breakwater",
+    "description": "Oil sketch of the breakwater at low tide.",
+    "authors": [
+      "Mira Castell"
+    ],
+    "keywords": [
+      "harbours",
+      "Saltmere"
+    ],
+    "tags": [
+      "harbours",
+      "Saltmere"
+    ]
+  },
+  "metadata": {
+    "vra": {
+      "records": [
+        {
+          "kind": "work",
+          "id": "w_1",
+          "title.display": [
+            "The Old Breakwater"
+          ],
+          "title": [
+            "The Old Breakwater"
+          ],
+          "agent.display": [
+            "Mira Castell (painter)"
+          ],
+          "agent.name": [
+            "Mira Castell"
+          ],
+          "agent.role": [
+            "painter"
+          ],
+          "agent.dates.earliestDate": [
+            "1980"
+          ],
+          "date.earliestDate": [
+            "2024"
+          ],
+          "date.latestDate": [
+            "2024"
+          ],
+          "subject.term": [
+            "harbours",
+            "Saltmere"
+          ],
+          "rights.rightsHolder": [
+            "Saltmere Harbour Museum"
+          ],
+          "rights.text": [
+            "CC0 1.0"
+          ],
+          "description": [
+            "Oil sketch of the breakwater at low tide."
+          ]
+        },
+        {
+          "kind": "image",
+          "id": "i_1",
+          "title": [
+            "Breakwater, full view"
+          ],
+          "technique": [
+            "digital photography"
+          ]
+        }
+      ]
+    }
+  },
+  "format": {
+    "vra": {
+      "records": 2
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.sidecar",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

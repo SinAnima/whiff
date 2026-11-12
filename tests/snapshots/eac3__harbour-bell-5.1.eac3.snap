@@ -1,0 +1,130 @@
+---
+source: src/formats/audio/raw.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-bell-5.1.eac3",
+    "stem": "harbour-bell-5.1",
+    "extension": "eac3"
+  },
+  "identification": {
+    "format": "eac3",
+    "name": "E-AC-3 (Dolby Digital Plus)",
+    "mime": "audio/eac3",
+    "family": "audio",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "eac3",
+        "confidence": 0.95
+      },
+      {
+        "format": "ac3",
+        "confidence": 0.68
+      }
+    ],
+    "extractor": "audio.raw"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 24576
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 24576,
+    "entropy": 6.915,
+    "entropy_scope": "file",
+    "media": {
+      "duration_s": 1.024,
+      "bitrate_bps": 192000,
+      "streams": [
+        {
+          "type": "audio",
+          "codec": "eac3",
+          "sample_rate_hz": 48000,
+          "channels": 6,
+          "channel_layout": "3/2+LFE",
+          "bitrate_bps": 192000,
+          "samples": 49152
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "b4bd992a4c9b1c898e35edbcf9ab6a15cbae26bdd3d9c8587dd2a7773d40f3e8",
+    "blake3": "edde01e96b00c5e3851258235088005a3b91c81b9594d099e8f97d3cad94dcd1"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "eac3": {
+      "frames": 32
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "audio.raw",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

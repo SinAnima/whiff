@@ -1,0 +1,117 @@
+---
+source: src/formats/science/statapps.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-catches.mtp",
+    "stem": "saltmere-catches",
+    "extension": "mtp"
+  },
+  "identification": {
+    "format": "minitab_portable",
+    "name": "Minitab portable worksheet",
+    "mime": "application/x-minitab-portable",
+    "family": "sci",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "science.statapps"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 94
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 94,
+    "entropy": 4.368,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 94,
+      "chars": 94,
+      "words": 14,
+      "lines": 2,
+      "max_line_length": 64,
+      "line_endings": "crlf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "59435c9e6aed4cba127e713a910b8dfed0e885fb6322354a78299e5611e10b79",
+    "blake3": "5b02c40464bb56e63aedb2a0d4f9c3fa7db790580bd85a5a9af82631885373ac"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "minitab_portable": {
+      "release_range": "portable",
+      "signature": "Minitab Portable Worksheet"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.statapps",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

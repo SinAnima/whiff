@@ -427,13 +427,13 @@ expression: report
         "name": "npm package.json",
         "mime": "application/json",
         "family": "code.manifest",
-        "confidence": 0.95,
+        "confidence": 0.97,
         "detected_by": "sniff",
         "extension_matches": true,
         "candidates": [
           {
             "format": "npm_package",
-            "confidence": 0.95
+            "confidence": 0.97
           },
           {
             "format": "json",
@@ -534,7 +534,7 @@ expression: report
         "extractors": [
           {
             "id": "code.manifest",
-            "version": 1,
+            "version": 2,
             "ms": 0.0,
             "status": "ok"
           },

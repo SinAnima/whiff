@@ -1,0 +1,89 @@
+WARC/1.0
+WARC-Type: warcinfo
+WARC-Record-ID: <urn:uuid:6cffa3e7-7111-4b33-9ad0-f009d11c489c>
+WARC-Filename: harbour.warc
+WARC-Date: 2026-11-05T16:45:13Z
+WARC-Block-Digest: sha1:K4WNTWA2L2H5IJKQKUN2V7X4KVCGFTYU
+Content-Type: application/warc-fields
+Content-Length: 102
+
+software: warcio (whiff fixtures)
+format: WARC File Format 1.1
+description: Saltmere Harbour pages
+
+
+WARC/1.0
+WARC-Type: request
+WARC-Record-ID: <urn:uuid:e79a929a-e165-4ce2-bfc6-50a3c79389b0>
+WARC-Target-URI: https://saltmere.example/
+WARC-Date: 2026-11-05T16:45:13Z
+WARC-Payload-Digest: sha1:3I42H3S6NNFQ2MSVX7XZKYAYSCX5QBYJ
+WARC-Block-Digest: sha1:NCJ7H4J4NP767T6IY44RDCVHO4EAFE7P
+Content-Type: application/http; msgtype=request
+Content-Length: 42
+
+GET / HTTP/1.1
+Host: saltmere.example
+
+
+
+WARC/1.0
+WARC-Type: response
+WARC-Record-ID: <urn:uuid:8057d214-30f9-45a0-97ce-1e534aa0b131>
+WARC-Target-URI: https://saltmere.example/
+WARC-Date: 2026-11-05T16:45:13Z
+WARC-Payload-Digest: sha1:HM6KUJFQRYNPO5JUP5NGEJOV5NFQSOXX
+WARC-Block-Digest: sha1:Q6I5FLJS4TKNR3EG23PPWKSFONWIPMN6
+Content-Type: application/http; msgtype=response
+Content-Length: 123
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+Content-Length: 44
+
+<html><title>Saltmere Harbour</title></html>
+
+WARC/1.0
+WARC-Type: request
+WARC-Record-ID: <urn:uuid:b69421bd-d22b-477b-a213-59456e2a95c5>
+WARC-Target-URI: https://saltmere.example/tides.json
+WARC-Date: 2026-11-05T16:45:13Z
+WARC-Payload-Digest: sha1:3I42H3S6NNFQ2MSVX7XZKYAYSCX5QBYJ
+WARC-Block-Digest: sha1:SUQWGPJQ6HYY7JAB3UNFAWPVRGG3HGRI
+Content-Type: application/http; msgtype=request
+Content-Length: 52
+
+GET /tides.json HTTP/1.1
+Host: saltmere.example
+
+
+
+WARC/1.0
+WARC-Type: response
+WARC-Record-ID: <urn:uuid:acfb7319-56c5-4829-83a1-ec0d1875f59e>
+WARC-Target-URI: https://saltmere.example/tides.json
+WARC-Date: 2026-11-05T16:45:13Z
+WARC-Payload-Digest: sha1:ALY55RPUGIU45L7LHUCWGZJZU35GVMYQ
+WARC-Block-Digest: sha1:LJXNX4ORV5O5S5I45GQR54OV4WHXBH4Z
+Content-Type: application/http; msgtype=response
+Content-Length: 88
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 17
+
+{"high": "06:12"}
+
+WARC/1.0
+WARC-Type: metadata
+WARC-Record-ID: <urn:uuid:8e3f367f-d575-4f6e-8db4-49b29cfa1d4e>
+WARC-Target-URI: https://saltmere.example/
+WARC-Date: 2026-11-05T16:45:13Z
+WARC-Payload-Digest: sha1:OQUAACZGH7WCGVUEL5LS3FVTQHHFV3YD
+WARC-Block-Digest: sha1:OQUAACZGH7WCGVUEL5LS3FVTQHHFV3YD
+Content-Type: application/warc-fields
+Content-Length: 21
+
+via: harbour-crawler
+
+

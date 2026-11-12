@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vra xmlns="http://www.vraweb.org/vracore4.htm">
+ <work id="w_1" source="Saltmere Harbour Museum">
+  <titleSet><display>The Old Breakwater</display><title type="descriptive">The Old Breakwater</title></titleSet>
+  <agentSet><display>Mira Castell (painter)</display><agent><name type="personal">Mira Castell</name><role>painter</role><dates type="life"><earliestDate>1980</earliestDate></dates></agent></agentSet>
+  <dateSet><date type="creation"><earliestDate>2024</earliestDate><latestDate>2024</latestDate></date></dateSet>
+  <subjectSet><subject><term type="descriptiveTopic">harbours</term></subject><subject><term type="geographicPlace">Saltmere</term></subject></subjectSet>
+  <rightsSet><rights type="publicDomain"><rightsHolder>Saltmere Harbour Museum</rightsHolder><text>CC0 1.0</text></rights></rightsSet>
+  <descriptionSet><description>Oil sketch of the breakwater at low tide.</description></descriptionSet>
+ </work>
+ <image id="i_1"><titleSet><title>Breakwater, full view</title></titleSet><techniqueSet><technique>digital photography</technique></techniqueSet></image>
+</vra>

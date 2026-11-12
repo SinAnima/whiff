@@ -1,0 +1,119 @@
+---
+source: src/formats/image/textures.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-rgba.pvr",
+    "stem": "harbour-rgba",
+    "extension": "pvr"
+  },
+  "identification": {
+    "format": "pvr",
+    "name": "PowerVR texture",
+    "mime": "application/octet-stream",
+    "family": "image.texture",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.textures"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 308
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 308,
+    "entropy": 0.52,
+    "entropy_scope": "file",
+    "image": {
+      "width": 8,
+      "height": 8,
+      "bit_depth": 8,
+      "channels": 4
+    }
+  },
+  "integrity": {
+    "sha256": "32e85860747d5d5c5087f977b9cf4292c3fe8581f02faac3a0401c1308a0f871",
+    "blake3": "c666e1ebe5f74d2d62e8d0511b87820ad9865511fd58332834a63b7b7fde8688"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pvr": {
+      "pixel_format": "r8g8b8a8",
+      "color_space": "linear",
+      "channel_type": "unsigned byte normalised",
+      "premultiplied": true,
+      "depth": 1,
+      "surfaces": 1,
+      "faces": 1,
+      "mip_levels": 1,
+      "version": 3
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.textures",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

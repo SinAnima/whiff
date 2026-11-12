@@ -100,17 +100,12 @@ impl Engine {
         // Cooperative deadlines stop extractors; hashing a large file is not
         // bounded by them, so allow for it at ~100 MiB/s.
         let deadline = timeout + Duration::from_secs(2) + Duration::from_secs(size / (100 << 20));
-        let (tx, rx) = std::sync::mpsc::sync_channel(1);
         let engine = self.clone();
-        let spawned =
-            std::thread::Builder::new().name("whiff-extract".into()).stack_size(WORKER_STACK).spawn(move || {
-                let _ = tx.send(work(&engine));
-            });
-        if spawned.is_err() {
+        let Some(outcome) = worker::run(Box::new(move || work(&engine)), deadline) else {
             // No thread available: detection and extraction run here, cooperatively bounded.
             return fallback(self);
-        }
-        let failure = match rx.recv_timeout(deadline) {
+        };
+        let failure = match outcome {
             Ok(result) => return result,
             Err(std::sync::mpsc::RecvTimeoutError::Timeout) => format!(
                 "extraction abandoned after {:.1} s: an extractor did not stop at the deadline",
@@ -151,8 +146,80 @@ impl Engine {
     }
 }
 
-/// Stack of the extraction worker thread.
-const WORKER_STACK: usize = 16 * 1024 * 1024;
+/// The extraction worker: one per calling thread, reused from file to file
+/// (spawning a thread per file cost about 3% of the time on small files).
+mod worker {
+    use std::cell::RefCell;
+    use std::sync::mpsc::{Receiver, RecvTimeoutError, Sender, SyncSender, channel, sync_channel};
+    use std::time::Duration;
+
+    use crate::Error;
+    use crate::report::Report;
+
+    /// Stack of the extraction worker thread.
+    const STACK: usize = 16 * 1024 * 1024;
+
+    pub(super) type Job = Box<dyn FnOnce() -> Result<Report, Error> + Send>;
+
+    struct Worker {
+        jobs: Sender<Job>,
+        results: Receiver<Result<Report, Error>>,
+    }
+
+    thread_local! {
+        static WORKER: RefCell<Option<Worker>> = const { RefCell::new(None) };
+    }
+
+    /// Run `job` on this thread's worker and wait up to `deadline`. `None`
+    /// when no thread could be started. A worker that overran or panicked is
+    /// dropped (it ends once its job does), and the next call starts another.
+    pub(super) fn run(job: Job, deadline: Duration) -> Option<Result<Result<Report, Error>, RecvTimeoutError>> {
+        WORKER.with(|cell| {
+            let mut slot = cell.borrow_mut();
+            let mut job = Some(job);
+            // A worker whose thread has ended returns the job: start another.
+            for _ in 0..2 {
+                if slot.is_none() {
+                    *slot = Some(spawn()?);
+                }
+                let worker = slot.as_ref()?;
+                match worker.jobs.send(job.take()?) {
+                    Ok(()) => {
+                        let outcome = worker.results.recv_timeout(deadline);
+                        if outcome.is_err() {
+                            *slot = None;
+                        }
+                        return Some(outcome);
+                    }
+                    Err(returned) => {
+                        job = Some(returned.0);
+                        *slot = None;
+                    }
+                }
+            }
+            None
+        })
+    }
+
+    fn spawn() -> Option<Worker> {
+        let (jobs, inbox) = channel::<Job>();
+        let (outbox, results): (SyncSender<_>, _) = sync_channel(1);
+        std::thread::Builder::new()
+            .name("whiff-extract".into())
+            .stack_size(STACK)
+            .spawn(move || {
+                // Ends when the caller drops the worker (its thread ended, or
+                // it gave up on this one after a deadline).
+                while let Ok(job) = inbox.recv() {
+                    if outbox.send(job()).is_err() {
+                        break;
+                    }
+                }
+            })
+            .ok()?;
+        Some(Worker { jobs, results })
+    }
+}
 
 /// Builder for [`Engine`].
 #[derive(Debug, Default)]

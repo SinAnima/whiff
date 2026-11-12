@@ -1,0 +1,153 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.vim",
+    "stem": "harbour",
+    "extension": "vim"
+  },
+  "identification": {
+    "format": "vim_script",
+    "name": "Vim script",
+    "mime": "text/x-vim",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 389
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 389,
+    "entropy": 4.9,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 389,
+      "chars": 389,
+      "words": 45,
+      "lines": 20,
+      "max_line_length": 40,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "485f4ae67af506345eae0980846bfab280ae7f422c86cd72bece2288279fc126",
+    "blake3": "759aa91956091c133f9708d990be72ba0bbe608fe4d20203e0ba462c47fbcf74"
+  },
+  "content": {
+    "description": "\" Commands for the harbour logbook.",
+    "excerpt": "\" Commands for the harbour logbook."
+  },
+  "metadata": {},
+  "format": {
+    "vim_script": {
+      "language": "Vim script",
+      "loc": {
+        "code": 14,
+        "comment": 2,
+        "blank": 4,
+        "total": 20
+      },
+      "imports": [
+        "~/.vim/harbour-tides.vim"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "autocmd_group": [
+          "harbour"
+        ],
+        "command": [
+          "HarbourTide"
+        ],
+        "function": [
+          "harbour#Tide"
+        ],
+        "mapping": [
+          "<leader>ht"
+        ]
+      },
+      "symbol_counts": {
+        "autocmd_group": 1,
+        "command": 1,
+        "function": 1,
+        "mapping": 1
+      },
+      "module_doc": "\" Commands for the harbour logbook.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 40
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

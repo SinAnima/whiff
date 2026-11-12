@@ -1,0 +1,175 @@
+---
+source: src/formats/doc/writing.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.typ",
+    "stem": "saltmere-tides",
+    "extension": "typ"
+  },
+  "identification": {
+    "format": "typst",
+    "name": "Typst document",
+    "mime": "text/x-typst",
+    "family": "doc.other",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "doc.writing"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 371
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 371,
+    "entropy": 4.897,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 371,
+      "chars": 371,
+      "words": 54,
+      "lines": 15,
+      "max_line_length": 84,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 6
+    }
+  },
+  "integrity": {
+    "sha256": "5963e1bcda22d47f7235dfd0174e13ed942dd64f8de5e4f6db2d6f1c197ce052",
+    "blake3": "c11e45bbb7550d2df58b445255c5e38100082176dc6454c78c1ede5769e0ff88"
+  },
+  "content": {
+    "title": "Saltmere tide tables",
+    "authors": [
+      "Ana Lighthouse",
+      "Ben Gull"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Saltmere tide tables",
+      "Saltmere",
+      "tables",
+      "tide",
+      "September",
+      "bell",
+      "leaves at dawn",
+      "dawn",
+      "launch leaves",
+      "pilot launch"
+    ],
+    "keyword_frequency": [
+      [
+        "bell",
+        2
+      ],
+      [
+        "tide",
+        2
+      ]
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "Saltmere tide tables"
+      },
+      {
+        "level": 2,
+        "text": "September"
+      },
+      {
+        "level": 2,
+        "text": "The bell"
+      }
+    ],
+    "excerpt": "High water at the long wall comes at 06:12; the pilot launch leaves at dawn. The harbour bell rings at high tide.",
+    "tags": [
+      "Saltmere tide tables",
+      "Saltmere",
+      "tables",
+      "tide",
+      "September"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "typst": {
+      "title": "Saltmere tide tables",
+      "author": "Ana Lighthouse, Ben Gull",
+      "headings": 3,
+      "imports": [
+        "@preview/tablex:0.0.8"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.writing",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

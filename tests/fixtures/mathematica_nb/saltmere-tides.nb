@@ -1,0 +1,15 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 14.1' *)
+(* Created By: Wolfram Mathematica 14.1 *)
+
+Notebook[{
+Cell["Saltmere tides", "Title"],
+Cell["High water", "Section"],
+Cell["The bell rings at high tide.", "Text"],
+Cell[BoxData[RowBox[{"tide", "[", "t_", "]", ":=", RowBox[{"2", " ", RowBox[{"Sin", "[", "t", "]"}]}]}]], "Input"],
+Cell[BoxData["2"], "Output"]
+}]

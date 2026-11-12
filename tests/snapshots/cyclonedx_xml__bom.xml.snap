@@ -1,0 +1,165 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "bom.xml",
+    "stem": "bom",
+    "extension": "xml"
+  },
+  "identification": {
+    "format": "cyclonedx_xml",
+    "name": "CycloneDX SBOM (XML)",
+    "mime": "application/vnd.cyclonedx+xml",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "cyclonedx_xml",
+        "confidence": 0.97
+      },
+      {
+        "format": "xml",
+        "confidence": 0.65
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1085
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2026-03-14T09:30:00+00:00",
+        "source": "code.manifest",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-03-14T09:30:00Z",
+    "latest": "2026-03-14T09:30:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1085,
+    "entropy": 4.77,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1085,
+      "chars": 1085,
+      "words": 45,
+      "lines": 35,
+      "max_line_length": 122,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "ce6c649ceb86d3c73b978e92859220d48dc5fee4cacb9fe1c1e5a083fcd16de9",
+    "blake3": "27b57546bd8d4b6c84a90ae1ac899e1430fdf72de8cab61fd4f3f81d17e024e0"
+  },
+  "content": {
+    "title": "saltmere-gauge"
+  },
+  "metadata": {},
+  "format": {
+    "cyclonedx_xml": {
+      "sbom_format": "CycloneDX",
+      "spec_version": "1.5",
+      "document_name": "saltmere-gauge",
+      "serial_number": "urn:uuid:5b2a8e0c-6f4d-4c3b-9a1e-0d7f2c8b4e61",
+      "tools": [
+        "harbour-sbom"
+      ],
+      "component": {
+        "name": "saltmere-gauge",
+        "version": "2.1.0"
+      },
+      "package_count": 2,
+      "packages": {
+        "pyserial": "3.5",
+        "click": "8.1.7"
+      },
+      "packages_count": 2,
+      "package_types": {
+        "application": 1,
+        "library": 2
+      },
+      "licenses": {
+        "BSD-3-Clause": 2
+      },
+      "ecosystems": {
+        "pypi": 2
+      },
+      "relationships": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

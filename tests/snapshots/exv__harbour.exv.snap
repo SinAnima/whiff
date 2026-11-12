@@ -1,0 +1,201 @@
+---
+source: src/formats/image/sidecar.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.exv",
+    "stem": "harbour",
+    "extension": "exv"
+  },
+  "identification": {
+    "format": "exv",
+    "name": "Exiv2 metadata container",
+    "mime": "image/x-exv",
+    "family": "meta.exif",
+    "confidence": 0.93,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "image.sidecar"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3493
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "captured",
+        "value": "2024-05-01T19:42:10",
+        "source": "exif.DateTimeOriginal",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "copyright": "(c) 2024 Mira Castell, CC0",
+    "creators": [
+      "Mira Castell"
+    ]
+  },
+  "physical": {
+    "size_bytes": 3493,
+    "entropy": 2.485,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "6c1d782ab2a9c14f9d5dd06ecf2211f9966c4cbdb9e05681f43d24d68afa0869",
+    "blake3": "e61a3082156d746a12a615162439e838f512fc308ac117ef936e5018728b15de"
+  },
+  "content": {
+    "title": "Old harbour",
+    "authors": [
+      "Mira Castell"
+    ],
+    "keywords": [
+      "harbour",
+      "boats"
+    ],
+    "excerpt": "Old harbour",
+    "tags": [
+      "harbour",
+      "boats"
+    ]
+  },
+  "metadata": {
+    "exif": {
+      "Make": "Example Optics",
+      "Model": "Example X100",
+      "XResolution": 1.0,
+      "YResolution": 1.0,
+      "ResolutionUnit": "no absolute unit",
+      "Artist": "Mira Castell",
+      "YCbCrPositioning": "centered",
+      "Copyright": "(c) 2024 Mira Castell, CC0",
+      "ExifVersion": "0232",
+      "DateTimeOriginal": "2024:05:01 19:42:10",
+      "ComponentsConfiguration": "YCbCr_",
+      "ColorSpace": "uncalibrated"
+    },
+    "photoshop": {
+      "resources": [
+        "iptc_naa"
+      ]
+    },
+    "xmp": {
+      "dc": {
+        "creator": [
+          "Mira Castell"
+        ],
+        "subject": [
+          "harbour",
+          "boats"
+        ],
+        "title": "Old harbour"
+      }
+    },
+    "iptc": {
+      "ObjectName": "Old harbour",
+      "Keywords": [
+        "harbour"
+      ],
+      "ApplicationRecordVersion": 4
+    }
+  },
+  "format": {
+    "exv": {
+      "comment": "whiff exv fixture\u0000",
+      "segments": [
+        "exif",
+        "photoshop",
+        "xmp",
+        "comment"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.sidecar",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.exif",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.photoshop",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.xmp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.iptc",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

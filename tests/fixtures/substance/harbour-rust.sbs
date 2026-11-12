@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><package><identifier v="Unsaved Package"/><formatVersion v="1.1.0.202301"/><updaterVersion v="1.1.0.202301"/><fileUID v="{00000000-0000-0000-0000-000000000001}"/><versionUID v="0"/>
+<dependencies><dependency><filename v="sbs://pattern_perlin_noise.sbs"/><uid v="1"/><type v="package"/></dependency></dependencies>
+<content><graph><identifier v="harbour_rust"/><uid v="2"/>
+<compNodes><compNode><uid v="10"/></compNode><compNode><uid v="11"/></compNode><compNode><uid v="12"/></compNode></compNodes>
+</graph></content></package>

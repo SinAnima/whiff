@@ -1,0 +1,139 @@
+---
+source: src/formats/text/dialects.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-quay.xodr",
+    "stem": "saltmere-quay",
+    "extension": "xodr"
+  },
+  "identification": {
+    "format": "opendrive",
+    "name": "ASAM OpenDRIVE road network",
+    "mime": "application/xml",
+    "family": "text.xml",
+    "confidence": 0.98,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "opendrive",
+        "confidence": 0.98
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "text.dialects"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1233
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1233,
+    "entropy": 5.01,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1233,
+      "chars": 1233,
+      "words": 87,
+      "lines": 18,
+      "max_line_length": 139,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "05e80b101e5b7d3729f34dbee58b325d99d0f87ef9af2005371486452b9c30db",
+    "blake3": "1a00dad574fb2abdfca0d8121a5c0c31e89703934bae94b73c107ab3741c5578"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "opendrive": {
+      "revision": "1.6",
+      "name": "Saltmere quay",
+      "date": "2025-09-01T12:00:00",
+      "vendor": "Saltmere Harbour",
+      "version": "1.00",
+      "counts": {
+        "junctions": 1,
+        "lanes": 3,
+        "objects": 1,
+        "roads": 2,
+        "signals": 1
+      },
+      "road_length_m": 200.5,
+      "geo_reference": "+proj=tmerc +lat_0=50 +lon_0=-5 +k=1 +x_0=0 +y_0=0 +ellps=WGS84 +units=m +no_defs"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.dialects",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

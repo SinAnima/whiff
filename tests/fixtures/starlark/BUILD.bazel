@@ -1,0 +1,13 @@
+# Build rules for the harbour tools.
+load("@rules_python//python:defs.bzl", "py_binary", "py_library")
+
+py_library(
+    name = "tides",
+    srcs = ["tides.py"],
+)
+
+py_binary(
+    name = "report",
+    srcs = ["report.py"],
+    deps = [":tides"],
+)

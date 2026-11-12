@@ -1,0 +1,141 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Tides.resi",
+    "stem": "Tides",
+    "extension": "resi"
+  },
+  "identification": {
+    "format": "rescript",
+    "name": "ReScript / ReasonML source",
+    "mime": "text/x-rescript",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 96
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 96,
+    "entropy": 4.477,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 96,
+      "chars": 96,
+      "words": 16,
+      "lines": 3,
+      "max_line_length": 41,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "394bb3bb695eeda599e73392c4d70ded0ba4512b127bd0b5425610b986e8bc34",
+    "blake3": "5ca54429917d850585a638f88e1b895101bfe59fef57a55d6a3c67f04f094961"
+  },
+  "content": {
+    "description": "Interface for Tides.",
+    "excerpt": "Interface for Tides."
+  },
+  "metadata": {},
+  "format": {
+    "rescript": {
+      "language": "ReScript / ReasonML",
+      "loc": {
+        "code": 2,
+        "comment": 1,
+        "blank": 0,
+        "total": 3
+      },
+      "symbols": {
+        "type": [
+          "gauge"
+        ],
+        "value": [
+          "highWater"
+        ]
+      },
+      "symbol_counts": {
+        "type": 1,
+        "value": 1
+      },
+      "module_doc": "Interface for Tides.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 41
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

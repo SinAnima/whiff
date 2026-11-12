@@ -1,0 +1,12 @@
+name = "SaltmereTides"
+uuid = "5f0e1d2c-3b4a-4958-8776-a5b4c3d2e1f0"
+authors = ["Harbour Office <office@harbour.example.org>"]
+version = "1.4.0"
+
+[deps]
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+
+[compat]
+Plots = "1.40"
+julia = "1.10"

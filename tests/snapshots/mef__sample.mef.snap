@@ -1,0 +1,201 @@
+---
+source: src/formats/image/raw.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "sample.mef",
+    "stem": "sample",
+    "extension": "mef"
+  },
+  "identification": {
+    "format": "mef",
+    "name": "Mamiya MEF raw image",
+    "mime": "image/x-mamiya-mef",
+    "family": "image.raw",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "mef",
+        "confidence": 0.99
+      },
+      {
+        "format": "tiff",
+        "confidence": 0.76
+      }
+    ],
+    "extractor": "image.raw"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1352
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "captured",
+        "value": "2024-06-01T09:30:00+02:00",
+        "source": "exif.DateTimeOriginal",
+        "tz_known": true
+      },
+      {
+        "field": "digitized",
+        "value": "2024-06-01T09:30:00",
+        "source": "exif.DateTimeDigitized",
+        "tz_known": false
+      },
+      {
+        "field": "modified",
+        "value": "2024-06-01T09:30:00",
+        "source": "exif.DateTime",
+        "tz_known": false
+      }
+    ],
+    "earliest": "2024-06-01T07:30:00Z",
+    "latest": "2024-06-01T07:30:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1352,
+    "entropy": 2.432,
+    "entropy_scope": "file",
+    "image": {
+      "width": 64,
+      "height": 48,
+      "bit_depth": 14,
+      "color_space": "raw",
+      "orientation": 1,
+      "dpi": [
+        300.0,
+        300.0
+      ]
+    }
+  },
+  "integrity": {
+    "sha256": "231ebfad6a78af2f15e646131b4bad109b997b72c03e84d00f75611022c4d7b0",
+    "blake3": "512e8f2412e366ecbb31dda729e23f5782ca2e839b235fbd1c09ff64336fcd5d"
+  },
+  "content": {},
+  "metadata": {
+    "exif": {
+      "ImageWidth": 16,
+      "ImageLength": 12,
+      "BitsPerSample": [
+        8,
+        8,
+        8
+      ],
+      "Compression": "uncompressed",
+      "PhotometricInterpretation": "RGB",
+      "Make": "Mamiya-OP Co.,Ltd.",
+      "Model": "ZD Example",
+      "Orientation": 1,
+      "SamplesPerPixel": 3,
+      "RowsPerStrip": 12,
+      "XResolution": 300.0,
+      "YResolution": 300.0,
+      "ResolutionUnit": "inch",
+      "Software": "whiff fixture generator",
+      "DateTime": "2024:06:01 09:30:00",
+      "ExposureTime": "1/250",
+      "FNumber": 5.6,
+      "PhotographicSensitivity": 200,
+      "ExifVersion": "0232",
+      "DateTimeOriginal": "2024:06:01 09:30:00",
+      "DateTimeDigitized": "2024:06:01 09:30:00",
+      "OffsetTimeOriginal": "+02:00",
+      "FocalLength": 35.0,
+      "LensModel": "ZD Example lens 24-70mm",
+      "unknown_tags": 1
+    }
+  },
+  "format": {
+    "mef": {
+      "byte_order": "big-endian",
+      "raw": {
+        "make": "Mamiya-OP Co.,Ltd.",
+        "model": "ZD Example",
+        "previews": [
+          {
+            "ifd": "ifd0",
+            "width": 16,
+            "height": 12,
+            "bytes": 576
+          }
+        ],
+        "ifds": 2,
+        "cfa_pattern": "RGGB",
+        "software": "whiff fixture generator"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.raw",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.exif",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

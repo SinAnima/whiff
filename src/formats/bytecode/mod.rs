@@ -15,6 +15,7 @@
 pub(crate) mod cli;
 pub(crate) mod dex;
 pub(crate) mod java;
+pub(crate) mod longtail;
 pub(crate) mod python;
 pub(crate) mod vm;
 

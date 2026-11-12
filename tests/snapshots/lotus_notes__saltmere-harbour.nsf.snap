@@ -1,0 +1,108 @@
+---
+source: src/formats/email/stores.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-harbour.nsf",
+    "stem": "saltmere-harbour",
+    "extension": "nsf"
+  },
+  "identification": {
+    "format": "lotus_notes",
+    "name": "Lotus Notes database",
+    "mime": "application/vnd.lotus-notes",
+    "family": "email",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "extractor": "email.stores"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2048
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 2048,
+    "entropy": 0.024,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "1c3e945f2dc77a935e9cb3230a4ebcd66a109b9a2a147eede2edb2757590cda1",
+    "blake3": "ddcc19b34c507d42501fd8a1b2eb1fcc026e0f5a67e8968264057ea5cb84d1a0"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "lotus_notes": {
+      "header_size_bytes": 178,
+      "ods_version": 43,
+      "release": "Notes 6 – 8",
+      "declared_size_bytes": 2048
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "email.stores",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,11 @@
+BEGMF 'Harbour plan';
+MFVERSION 1;
+MFDESC 'whiff fixture';
+FONTLIST 'Helvetica';
+BEGPIC 'Quay';
+VDCEXT 0,0 100,100;
+BEGPICBODY;
+LINE 0,0 100,100;
+TEXT 10,10 final 'North quay';
+ENDPIC;
+ENDMF;

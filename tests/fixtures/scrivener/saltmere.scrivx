@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScrivenerProject Template="No" Version="2.0" Identifier="5A17E2E0-0000-4000-8000-000000000002" Creator="SCRMAC-3.4-17342">
+  <Binder>
+    <BinderItem UUID="1" Type="DraftFolder" Created="2025-09-01 12:00:00 +0000" Modified="2025-09-01 12:00:00 +0000">
+      <Title>Manuscript</Title>
+      <Children>
+        <BinderItem UUID="2" Type="Text"><Title>The bell</Title></BinderItem>
+        <BinderItem UUID="3" Type="Text"><Title>The long wall</Title></BinderItem>
+      </Children>
+    </BinderItem>
+    <BinderItem UUID="4" Type="ResearchFolder"><Title>Research</Title></BinderItem>
+    <BinderItem UUID="5" Type="TrashFolder"><Title>Trash</Title></BinderItem>
+  </Binder>
+</ScrivenerProject>

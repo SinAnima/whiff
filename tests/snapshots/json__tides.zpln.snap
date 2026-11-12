@@ -1,0 +1,252 @@
+---
+source: src/formats/data/json.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides.zpln",
+    "stem": "tides",
+    "extension": "zpln"
+  },
+  "identification": {
+    "format": "json",
+    "name": "JSON",
+    "mime": "application/json",
+    "family": "data.json",
+    "confidence": 0.55,
+    "detected_by": "sniff",
+    "extension_matches": false,
+    "encoding": "us-ascii",
+    "extractor": "data.json"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 392
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 392,
+    "entropy": 4.452,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 392,
+      "chars": 392,
+      "words": 46,
+      "lines": 21,
+      "max_line_length": 63,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "017128db5b4bee400dd25fc2f9fc371cd3c46e77b38a08f371ea9d1275de004a",
+    "blake3": "49ff266b047ba3d008d43def3d1e0192c01eda03183fb38eb7e4455b5eac564a"
+  },
+  "content": {
+    "title": "Saltmere tides",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Saltmere tides",
+      "Saltmere",
+      "tides",
+      "python",
+      "print",
+      "sql",
+      "berth",
+      "boat",
+      "select",
+      "water"
+    ],
+    "keyword_frequency": [
+      [
+        "tides",
+        3
+      ],
+      [
+        "berth",
+        2
+      ],
+      [
+        "saltmere",
+        2
+      ]
+    ],
+    "excerpt": "%md # Saltmere tides High water 06:12. %python print('The bell rings at high tide.') %sql select boat, berth from berths",
+    "tags": [
+      "Saltmere tides",
+      "Saltmere",
+      "tides",
+      "python",
+      "print"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "json": {
+      "valid": true,
+      "dialect": "json",
+      "top_level": "object",
+      "keys": [
+        "name",
+        "id",
+        "config",
+        "paragraphs"
+      ],
+      "key_count": 4,
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.name": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Saltmere tides"
+            ]
+          },
+          "$.id": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "2KZAA0000"
+            ]
+          },
+          "$.config": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.config.looknfeel": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "default"
+            ]
+          },
+          "$.paragraphs": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              3,
+              3
+            ]
+          },
+          "$.paragraphs[]": {
+            "types": [
+              "object"
+            ],
+            "count": 3
+          },
+          "$.paragraphs[].text": {
+            "types": [
+              "string"
+            ],
+            "count": 3,
+            "examples": [
+              "%md\n# Saltmere tides\nHigh water 06:12.",
+              "%python\nprint('The bell rings at high tide.')",
+              "%sql\nselect boat, berth from berths"
+            ]
+          },
+          "$.paragraphs[].config": {
+            "types": [
+              "object"
+            ],
+            "count": 3
+          }
+        },
+        "max_depth": 3
+      },
+      "known_schema": {
+        "id": "zeppelin",
+        "name": "Apache Zeppelin note",
+        "paragraphs": 3,
+        "interpreters": {
+          "md": 1,
+          "python": 1,
+          "sql": 1
+        }
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.json",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

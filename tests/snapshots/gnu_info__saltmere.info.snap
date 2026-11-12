@@ -1,0 +1,170 @@
+---
+source: src/formats/text/special.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere.info",
+    "stem": "saltmere",
+    "extension": "info"
+  },
+  "identification": {
+    "format": "gnu_info",
+    "name": "GNU info",
+    "mime": "application/x-info",
+    "family": "text.plain",
+    "confidence": 0.9,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "utf-8",
+    "extractor": "text.special"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1114
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 1114,
+    "entropy": 4.986,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 1114,
+      "chars": 1113,
+      "words": 132,
+      "lines": 60,
+      "max_line_length": 75,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 18
+    }
+  },
+  "integrity": {
+    "sha256": "a613619c4ac4c57d581f3966c2ad7077f1364ff0e15398077643bb06742cb34b",
+    "blake3": "78360d29670b3b0e4fab6dd4a2f425f044c6cb9d7c116a4e269ac49c3aebd923"
+  },
+  "content": {
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "harbour",
+      "Arriving",
+      "Node",
+      "Moorings",
+      "Entering the harbour",
+      "Entering",
+      "saltmere",
+      "VHF",
+      "describes the harbour",
+      "Fees"
+    ],
+    "keyword_frequency": [
+      [
+        "harbour",
+        4
+      ],
+      [
+        "moorings",
+        4
+      ],
+      [
+        "arriving",
+        3
+      ],
+      [
+        "node",
+        3
+      ],
+      [
+        "saltmere",
+        2
+      ]
+    ],
+    "excerpt": "Saltmere Harbour **************** This handbook describes the harbour. * Menu: * Arriving:: Entering the harbour. * Moorings:: Where to moor. 1 Arriving ********** Call the harbour master on *VHF 12*. See <https://board.example.org/>. tide --port saltmere 2 Moorings ********** 2.1 Fees ======== Length Per night -------------------------------------------------------------------------- Under 10 m…",
+    "tags": [
+      "harbour",
+      "Arriving",
+      "Node",
+      "Moorings",
+      "Entering the harbour"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "gnu_info": {
+      "file": "saltmere.info",
+      "makeinfo_version": "7.1.1",
+      "source": "saltmere.texi",
+      "nodes": 3,
+      "has_top_node": true,
+      "tag_table": true,
+      "dir_section": "Harbours",
+      "dir_entries": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.special",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

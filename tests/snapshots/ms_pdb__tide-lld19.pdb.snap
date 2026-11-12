@@ -1,0 +1,126 @@
+---
+source: src/formats/exec/debug.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide-lld19.pdb",
+    "stem": "tide-lld19",
+    "extension": "pdb"
+  },
+  "identification": {
+    "format": "ms_pdb",
+    "name": "Microsoft program database (PDB)",
+    "mime": "application/x-ms-pdb",
+    "family": "exec",
+    "confidence": 0.92,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "exec.debug"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 77824
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 77824,
+    "entropy": 0.854,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "d29425e62fa7c9298da27c45543bfb8b4924ba031ba95be57705431e7ba0afa5",
+    "blake3": "01b5c4675fc1633d84063f3102cce947068f2202528c0928649cdf3c7257023d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ms_pdb": {
+      "block_bytes": 4096,
+      "streams": 16,
+      "version": "VC7",
+      "signature": 4128725002,
+      "age": 1,
+      "guid": "{F617580A-51AC-F055-4C4C-44205044422E}",
+      "types": 4,
+      "dbi_age": 1,
+      "toolchain": "14.11",
+      "machine": "x86-64",
+      "module_count": 3,
+      "modules": [
+        {
+          "module": "/src/harbour/tide.obj"
+        },
+        {
+          "module": "/src/harbour/berth.obj"
+        },
+        {
+          "module": "* Linker *"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.debug",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

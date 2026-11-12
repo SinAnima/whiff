@@ -92,6 +92,23 @@ pub fn load_formats(root: &Path, families: &[Family]) -> Result<Vec<Format>, Str
     Ok(out)
 }
 
+/// `data/coverage.tsv`: catalogue row name → the format id that handles it.
+/// Every row must name a catalogue row and a format of this build.
+fn load_overrides(root: &Path, formats: &[Format], registry: &Registry) -> Result<HashMap<String, String>, String> {
+    let mut out = HashMap::new();
+    for (n, c) in rows(&root.join("data/coverage.tsv"), 2)?.into_iter().enumerate() {
+        let (name, id) = (&c[0], &c[1]);
+        if !formats.iter().any(|f| f.name == *name) {
+            return Err(format!("coverage.tsv row {}: no catalogue row `{name}`", n + 1));
+        }
+        if !registry.formats().any(|(spec, _)| spec.id == id) {
+            return Err(format!("coverage.tsv row {}: no format `{id}` in this build", n + 1));
+        }
+        out.insert(name.clone(), id.clone());
+    }
+    Ok(out)
+}
+
 fn esc(s: &str) -> String {
     s.replace('<', "&lt;").replace('>', "&gt;").replace('|', "\\|")
 }
@@ -135,13 +152,14 @@ fn most_common<'a>(items: impl Iterator<Item = &'a str>) -> Vec<(&'a str, usize)
     counts
 }
 
-/// Extractor covering a catalogue row: same family and a shared extension,
-/// or an extractor whose sniffer claims one of the row's file names
-/// (`package.json`, `Dockerfile`) from the name alone.
-/// The extractor that handles a catalogue row: a format of the same family
-/// with the row's name, else one with one of its extensions (in the row's
-/// order), else a sniffer that recognises the row's file names.
-fn coverage(registry: &Registry, f: &Format) -> Option<&'static str> {
+/// The extractor that handles a catalogue row: the format named for it in
+/// `data/coverage.tsv`, else a format of the same family with the row's
+/// name, else one with one of its extensions (in the row's order), else a
+/// sniffer that recognises the row's file names.
+fn coverage(registry: &Registry, f: &Format, overrides: &HashMap<String, String>) -> Option<&'static str> {
+    if let Some(id) = overrides.get(&f.name) {
+        return registry.formats().find(|(spec, _)| spec.id == id).map(|(_, e)| e.meta().id);
+    }
     if let Some((_, e)) =
         registry.formats().find(|(spec, _)| spec.family == f.family && spec.name.eq_ignore_ascii_case(&f.name))
     {
@@ -155,7 +173,7 @@ fn coverage(registry: &Registry, f: &Format) -> Option<&'static str> {
             .extractors()
             .find(|e| {
                 f.extensions.split_whitespace().any(|name| {
-                    let probe = Probe { head: &[], tail: &[], len: 0, name: Some(name), extension: None };
+                    let probe = Probe::new(&[], &[], 0, Some(name), None);
                     e.sniff(&probe).is_some_and(|s| {
                         e.meta().formats.iter().any(|spec| spec.id == s.format && spec.family == f.family)
                     })
@@ -208,7 +226,9 @@ pub fn render(root: &Path, registry: &Registry) -> Result<String, String> {
         tier(2),
         tier(3)
     ));
-    let cov: HashMap<usize, Option<&'static str>> = rows.iter().map(|r| (r.order, coverage(registry, r))).collect();
+    let overrides = load_overrides(root, &formats, registry)?;
+    let cov: HashMap<usize, Option<&'static str>> =
+        rows.iter().map(|r| (r.order, coverage(registry, r, &overrides))).collect();
     let covered = cov.values().filter(|c| c.is_some()).count();
     out.push(format!("* Formats with an extractor in this build: **{covered}** of {}.", rows.len()));
     let status = |s: &str| rows.iter().filter(|r| fam[r.family.as_str()].1.status == s).count();

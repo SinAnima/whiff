@@ -239,6 +239,8 @@ impl Extractor for PropertyList {
             Some("provisioning_profile") => provisioning(&p, cx),
             Some("shortcut") => shortcut(&p, cx),
             Some("automator_workflow") => automator(&p, cx),
+            Some("garageband_song") => garageband_song(&p, cx),
+            Some("garageband_project_info") => copy_strings(cx, &p, &[("LastSavedFrom", "last_saved_from")]),
             Some(k) if k.starts_with("ios_backup") => backup(&p, k, cx),
             _ => {
                 if let Some(keys) = top_keys(&p) {
@@ -270,6 +272,12 @@ fn kind_of(p: &Plist, name: Option<&str>) -> Option<&'static str> {
         _ if k("ProvisionedDevices") || k("DeveloperCertificates") && k("TeamIdentifier") => "provisioning_profile",
         _ if k("WFWorkflowActions") => "shortcut",
         _ if k("AMApplicationBuild") && k("actions") => "automator_workflow",
+        _ if k("SongKey") && k("BeatsPerMinute") && k("NumberOfTracks") => "garageband_song",
+        _ if get_str(p, "LastSavedFrom").is_some_and(|v| v.starts_with("GarageBand") || v.starts_with("Logic"))
+            && k("VariantNames") =>
+        {
+            "garageband_project_info"
+        }
         _ => return None,
     })
 }
@@ -618,6 +626,48 @@ fn automator(p: &Plist, cx: &mut Context<'_>) {
         .filter_map(|a| get_str(a, "BundleIdentifier").or_else(|| get_str(a, "ActionBundlePath")))
         .collect();
     actions(cx, &ids);
+}
+
+/// A GarageBand / Logic `MetaData.plist`: the song's tempo, key, time
+/// signature, tracks and sample rate, and how many files of each kind it uses.
+fn garageband_song(p: &Plist, cx: &mut Context<'_>) {
+    let Some(d) = p.as_dictionary() else { return };
+    let int = |k: &str| d.get(k).and_then(Plist::as_signed_integer);
+    if let Some(bpm) =
+        d.get("BeatsPerMinute").and_then(|v| v.as_real().or_else(|| v.as_signed_integer().map(|i| i as f64)))
+    {
+        cx.format_set("tempo_bpm", bpm);
+    }
+    if let Some(key) = get_str(p, "SongKey") {
+        let mode = get_str(p, "SongGenderKey").unwrap_or("");
+        cx.format_set("key", format!("{key} {mode}").trim().to_string());
+    }
+    if let (Some(n), Some(m)) = (int("SongSignatureNumerator"), int("SongSignatureDenominator")) {
+        cx.format_set("time_signature", format!("{n}/{m}"));
+    }
+    for (key, out) in [("NumberOfTracks", "tracks"), ("SampleRate", "sample_rate"), ("Version", "version")] {
+        if let Some(v) = int(key) {
+            cx.format_set(out, v);
+        }
+    }
+    let mut files = serde_json::Map::new();
+    for (key, out) in [
+        ("AudioFiles", "audio"),
+        ("UnusedAudioFiles", "unused_audio"),
+        ("SamplerInstrumentsFiles", "sampler_instruments"),
+        ("UltrabeatFiles", "ultrabeat"),
+        ("AlchemyFiles", "alchemy"),
+        ("ImpulsResponsesFiles", "impulse_responses"),
+        ("PlaybackFiles", "playback"),
+        ("VideoFiles", "video"),
+    ] {
+        if let Some(n) = d.get(key).and_then(Plist::as_array).map(Vec::len).filter(|&n| n > 0) {
+            files.insert(out.into(), n.into());
+        }
+    }
+    if !files.is_empty() {
+        cx.format_set("files_used", Value::Object(files));
+    }
 }
 
 fn backup(p: &Plist, kind: &str, cx: &mut Context<'_>) {

@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteRule ^tides/(.*)$ /tide.php?day=$1 [L]
+Redirect 301 /old-moorings /moorings
+AuthType Basic
+AuthName "Harbour staff"
+Require valid-user

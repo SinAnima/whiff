@@ -1,0 +1,108 @@
+---
+source: src/formats/doc/legacy.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-notes-crafted.wpd",
+    "stem": "saltmere-notes-crafted",
+    "extension": "wpd"
+  },
+  "identification": {
+    "format": "wordperfect",
+    "name": "WordPerfect document",
+    "mime": "application/vnd.wordperfect",
+    "family": "doc.ole",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "doc.legacy"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 565
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 565,
+    "entropy": 0.953,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "590c3a27d4c096f989fd123d923120c622658859763f0122d625622f64936e09",
+    "blake3": "2c5b59bdabcbb9865d2d80028812aab4ff135de3f7ae562829a595ea89aa635e"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "wordperfect": {
+      "product": "WordPerfect",
+      "file_type": "document",
+      "version": "6.0 or later (minor 0)",
+      "document_offset": 512
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.legacy",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

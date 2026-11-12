@@ -1,0 +1,151 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.cr",
+    "stem": "harbour",
+    "extension": "cr"
+  },
+  "identification": {
+    "format": "crystal",
+    "name": "Crystal source",
+    "mime": "text/x-crystal",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 235
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 235,
+    "entropy": 4.476,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 235,
+      "chars": 235,
+      "words": 27,
+      "lines": 16,
+      "max_line_length": 45,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "d0bd645ecfd1bec97b9e28fd24357163bdcd142b01a488479945427dd963a19d",
+    "blake3": "72dc682e4268ad96ceffb08d4ea94222728681517378f56656e2de73707fa9a6"
+  },
+  "content": {
+    "description": "Harbour berth allocation.",
+    "excerpt": "Harbour berth allocation."
+  },
+  "metadata": {},
+  "format": {
+    "crystal": {
+      "language": "Crystal",
+      "loc": {
+        "code": 12,
+        "comment": 1,
+        "blank": 3,
+        "total": 16
+      },
+      "imports": [
+        "json",
+        "./berth"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "class": [
+          "Harbour"
+        ],
+        "method": [
+          "initialize",
+          "berths"
+        ],
+        "module": [
+          "Saltmere"
+        ]
+      },
+      "symbol_counts": {
+        "class": 1,
+        "method": 2,
+        "module": 1
+      },
+      "module_doc": "Harbour berth allocation.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 45
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

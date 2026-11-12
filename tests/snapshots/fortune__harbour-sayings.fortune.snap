@@ -1,0 +1,153 @@
+---
+source: src/formats/data/records.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-sayings.fortune",
+    "stem": "harbour-sayings",
+    "extension": "fortune"
+  },
+  "identification": {
+    "format": "fortune",
+    "name": "Fortune quote file",
+    "mime": "text/plain",
+    "family": "text.plain",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.records"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 189
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 189,
+    "entropy": 4.306,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 189,
+      "chars": 189,
+      "words": 42,
+      "lines": 9,
+      "max_line_length": 46,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "157b1cc4942c64cf5bf8c8b97b164f3592c2c5e5500ebbd3f9a8b82350cfb2b9",
+    "blake3": "36cbdcbca0df408c07d19c40389262f41745bd65496ee7332833a00b6f25ed91"
+  },
+  "content": {
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "harbour bell rings",
+      "tide",
+      "harbour is safe",
+      "harbour",
+      "bell",
+      "rings",
+      "Fog",
+      "horn",
+      "listen",
+      "wall"
+    ],
+    "keyword_frequency": [
+      [
+        "boat",
+        2
+      ],
+      [
+        "harbour",
+        2
+      ]
+    ],
+    "excerpt": "The harbour bell rings at high tide. Fog on the long wall: listen for the horn. A boat in the harbour is safe, but that is not what boats are for. Low water at 12:31; mind the bar.",
+    "tags": [
+      "harbour bell rings",
+      "tide",
+      "harbour is safe",
+      "harbour",
+      "bell"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "fortune": {
+      "quotes": 4,
+      "shortest_bytes": 33,
+      "longest_bytes": 66
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.records",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

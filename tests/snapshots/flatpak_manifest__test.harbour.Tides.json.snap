@@ -1,0 +1,149 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "test.harbour.Tides.json",
+    "stem": "test.harbour.Tides",
+    "extension": "json"
+  },
+  "identification": {
+    "format": "flatpak_manifest",
+    "name": "Flatpak manifest",
+    "mime": "application/json",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "flatpak_manifest",
+        "confidence": 0.97
+      },
+      {
+        "format": "json",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 659
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 659,
+    "entropy": 4.158,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 659,
+      "chars": 659,
+      "words": 53,
+      "lines": 35,
+      "max_line_length": 59,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "9ac15e82c53884ca1344df1a3f9e83a00eb78384d3ff3a438bbedee3ca7cae7b",
+    "blake3": "c55d10a9154b5f3bf8da1be0572ea4619f823a13fc001cd2853b0315272f8247"
+  },
+  "content": {
+    "title": "test.harbour.Tides"
+  },
+  "metadata": {},
+  "format": {
+    "flatpak_manifest": {
+      "ecosystem": "flatpak",
+      "name": "test.harbour.Tides",
+      "runtime": "org.gnome.Platform",
+      "runtime_version": "47",
+      "sdk": "org.gnome.Sdk",
+      "command": "tides",
+      "permissions": [
+        "--share=network",
+        "--socket=wayland",
+        "--filesystem=home"
+      ],
+      "broad_permissions": [
+        "--filesystem=home"
+      ],
+      "modules": [
+        "saltmere-tides",
+        "tide-model"
+      ],
+      "source_types": {
+        "dir": 1,
+        "git": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

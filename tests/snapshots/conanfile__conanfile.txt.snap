@@ -1,0 +1,143 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "conanfile.txt",
+    "stem": "conanfile",
+    "extension": "txt"
+  },
+  "identification": {
+    "format": "conanfile",
+    "name": "Conan conanfile",
+    "mime": "text/plain",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "conanfile",
+        "confidence": 0.97
+      },
+      {
+        "format": "text",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 125
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 125,
+    "entropy": 4.752,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 125,
+      "chars": 125,
+      "words": 10,
+      "lines": 13,
+      "max_line_length": 15,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "5197926a22f0d2367d0751343990e174e9644c3f0838e10038550225bb76240e",
+    "blake3": "0116a904ebb6c2fd0d948d06bcb63ce9eb1cba8424afd886a57c910f73a2981c"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "conanfile": {
+      "ecosystem": "conan",
+      "dependencies": {
+        "zlib": "1.3.1",
+        "fmt": "11.0.2"
+      },
+      "dependencies_count": 2,
+      "tool_dependencies": {
+        "cmake": "3.30.1"
+      },
+      "tool_dependencies_count": 1,
+      "generators": [
+        "CMakeDeps",
+        "CMakeToolchain"
+      ],
+      "layout": [
+        "cmake_layout"
+      ],
+      "kind": "conanfile.txt"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

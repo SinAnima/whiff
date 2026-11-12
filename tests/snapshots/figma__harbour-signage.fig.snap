@@ -1,0 +1,135 @@
+---
+source: src/formats/image/layered.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-signage.fig",
+    "stem": "harbour-signage",
+    "extension": "fig"
+  },
+  "identification": {
+    "format": "figma",
+    "name": "Figma document",
+    "mime": "application/octet-stream",
+    "family": "image.layered",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "figma",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "image.layered"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 669
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2024-05-01T17:42:10.000Z",
+        "source": "figma.meta.exported_at",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2024-05-01T17:42:10Z",
+    "latest": "2024-05-01T17:42:10Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 669,
+    "entropy": 5.961,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "fe32a1b16d03185670c92dd517c9b3ce6b541c8c26cafc356f51ec8817fb8be5",
+    "blake3": "141b42aacf99a310e0295ef6a43430ace511f3989866ab334eb2e938e898e8f8"
+  },
+  "content": {
+    "title": "Harbour signage"
+  },
+  "metadata": {},
+  "format": {
+    "figma": {
+      "container": "zip",
+      "images": 1,
+      "thumbnail": {
+        "name": "thumbnail.png",
+        "width": 32,
+        "height": 24
+      },
+      "canvas_version": 20,
+      "canvas_bytes": 24
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.layered",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

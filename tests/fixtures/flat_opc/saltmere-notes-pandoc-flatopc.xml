@@ -1,0 +1,573 @@
+<?xml version="1.0" standalone="yes"?><?mso-application progid="Word.Document"?><pkg:package xmlns:pkg="http://schemas.microsoft.com/office/2006/xmlPackage"><pkg:part pkg:name="/[Content_Types].xml" pkg:contentType="application/xml"><pkg:xmlData><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="xml" ContentType="application/xml" /><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml" /><Default Extension="odttf" ContentType="application/vnd.openxmlformats-officedocument.obfuscatedFont" /><Override PartName="/word/webSettings.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.webSettings+xml" /><Override PartName="/word/numbering.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.numbering+xml" /><Override PartName="/word/settings.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.settings+xml" /><Override PartName="/word/theme/theme1.xml" ContentType="application/vnd.openxmlformats-officedocument.theme+xml" /><Override PartName="/word/fontTable.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.fontTable+xml" /><Override PartName="/docProps/app.xml" ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml" /><Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml" /><Override PartName="/docProps/custom.xml" ContentType="application/vnd.openxmlformats-officedocument.custom-properties+xml" /><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml" /><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml" /><Override PartName="/word/comments.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.comments+xml" /><Override PartName="/word/footnotes.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.footnotes+xml" /></Types></pkg:xmlData></pkg:part><pkg:part pkg:name="/_rels/.rels" pkg:contentType="application/vnd.openxmlformats-package.relationships+xml"><pkg:xmlData><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml" /><Relationship Id="rId4" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties" Target="docProps/app.xml" /><Relationship Id="rId3" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml" /><Relationship Id="rId5" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/custom-properties" Target="docProps/custom.xml" /></Relationships></pkg:xmlData></pkg:part><pkg:part pkg:name="/word/document.xml" pkg:contentType="application/xml"><pkg:xmlData><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"><w:body><w:p><w:pPr><w:pStyle w:val="Title" /></w:pPr><w:r><w:t xml:space="preserve">Saltmere harbour notes</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="Author" /></w:pPr><w:r><w:t xml:space="preserve">Ben Gull</w:t></w:r></w:p><w:bookmarkStart w:id="20" w:name="saltmere-harbour-notes" /><w:p><w:pPr><w:pStyle w:val="Heading1" /></w:pPr><w:r><w:t xml:space="preserve">Saltmere harbour notes</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="FirstParagraph" /></w:pPr><w:r><w:t xml:space="preserve">High water 06:12, low water 12:31.</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="BodyText" /></w:pPr><w:r><w:t xml:space="preserve">The bell rings at high tide.</w:t></w:r></w:p><w:bookmarkEnd w:id="20" /><w:sectPr /></w:body></w:document></pkg:xmlData></pkg:part><pkg:part pkg:name="/word/_rels/document.xml.rels" pkg:contentType="application/vnd.openxmlformats-package.relationships+xml"><pkg:xmlData><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/numbering" Id="rId1" Target="numbering.xml" /><Relationship Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Id="rId2" Target="styles.xml" /><Relationship Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/settings" Id="rId3" Target="settings.xml" /><Relationship Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/webSettings" Id="rId4" Target="webSettings.xml" /><Relationship Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/fontTable" Id="rId5" Target="fontTable.xml" /><Relationship Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/theme" Id="rId6" Target="theme/theme1.xml" /><Relationship Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/footnotes" Id="rId7" Target="footnotes.xml" /><Relationship Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/comments" Id="rId8" Target="comments.xml" /></Relationships></pkg:xmlData></pkg:part><pkg:part pkg:name="/word/_rels/footnotes.xml.rels" pkg:contentType="application/vnd.openxmlformats-package.relationships+xml"><pkg:xmlData><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships" /></pkg:xmlData></pkg:part><pkg:part pkg:name="/word/numbering.xml" pkg:contentType="application/xml"><pkg:xmlData><w:numbering xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:abstractNum w:abstractNumId="990"><w:nsid w:val="0000A990" /><w:multiLevelType w:val="multilevel" /><w:lvl w:ilvl="0"><w:numFmt w:val="bullet" /><w:lvlText w:val=" " /><w:lvlJc w:val="left" /><w:pPr><w:ind w:left="720" w:hanging="480" /></w:pPr></w:lvl><w:lvl w:ilvl="1"><w:numFmt w:val="bullet" /><w:lvlText w:val=" " /><w:lvlJc w:val="left" /><w:pPr><w:ind w:left="1440" w:hanging="480" /></w:pPr></w:lvl><w:lvl w:ilvl="2"><w:numFmt w:val="bullet" /><w:lvlText w:val=" " /><w:lvlJc w:val="left" /><w:pPr><w:ind w:left="2160" w:hanging="480" /></w:pPr></w:lvl><w:lvl w:ilvl="3"><w:numFmt w:val="bullet" /><w:lvlText w:val=" " /><w:lvlJc w:val="left" /><w:pPr><w:ind w:left="2880" w:hanging="480" /></w:pPr></w:lvl><w:lvl w:ilvl="4"><w:numFmt w:val="bullet" /><w:lvlText w:val=" " /><w:lvlJc w:val="left" /><w:pPr><w:ind w:left="3600" w:hanging="480" /></w:pPr></w:lvl><w:lvl w:ilvl="5"><w:numFmt w:val="bullet" /><w:lvlText w:val=" " /><w:lvlJc w:val="left" /><w:pPr><w:ind w:left="4320" w:hanging="480" /></w:pPr></w:lvl><w:lvl w:ilvl="6"><w:numFmt w:val="bullet" /><w:lvlText w:val=" " /><w:lvlJc w:val="left" /><w:pPr><w:ind w:left="5040" w:hanging="480" /></w:pPr></w:lvl><w:lvl w:ilvl="7"><w:numFmt w:val="bullet" /><w:lvlText w:val=" " /><w:lvlJc w:val="left" /><w:pPr><w:ind w:left="5760" w:hanging="480" /></w:pPr></w:lvl><w:lvl w:ilvl="8"><w:numFmt w:val="bullet" /><w:lvlText w:val=" " /><w:lvlJc w:val="left" /><w:pPr><w:ind w:left="6480" w:hanging="480" /></w:pPr></w:lvl></w:abstractNum><w:num w:numId="1000"><w:abstractNumId w:val="990" /></w:num></w:numbering></pkg:xmlData></pkg:part><pkg:part pkg:name="/word/styles.xml" pkg:contentType="application/xml"><pkg:xmlData><w:styles xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <w:docDefaults>
+    <w:rPrDefault>
+      <w:rPr>
+        <w:rFonts w:asciiTheme="minorHAnsi" w:cstheme="minorBidi" w:eastAsiaTheme="minorHAnsi" w:hAnsiTheme="minorHAnsi" />
+        <w:sz w:val="24" />
+        <w:szCs w:val="24" />
+        <w:lang w:bidi="ar-SA" w:eastAsia="en-US" w:val="en-US" />
+      </w:rPr>
+    </w:rPrDefault>
+    <w:pPrDefault>
+      <w:pPr>
+        <w:spacing w:after="200" />
+      </w:pPr>
+    </w:pPrDefault>
+  </w:docDefaults>
+  <w:latentStyles w:count="276" w:defLockedState="0" w:defQFormat="0" w:defSemiHidden="0" w:defUIPriority="0" w:defUnhideWhenUsed="0" />
+  <w:style w:default="1" w:styleId="Normal" w:type="paragraph">
+    <w:name w:val="Normal" />
+    <w:qFormat />
+  </w:style>
+    <w:style w:styleId="BodyText" w:type="paragraph">
+    <w:name w:val="Body Text" />
+    <w:basedOn w:val="Normal" />
+    <w:link w:val="BodyTextChar" />
+    <w:qFormat />
+    <w:pPr>
+      <w:spacing w:after="180" w:before="180" />
+    </w:pPr>
+  </w:style>
+  <w:style w:customStyle="1" w:styleId="FirstParagraph" w:type="paragraph">
+    <w:name w:val="First Paragraph" />
+    <w:basedOn w:val="BodyText" />
+    <w:next w:val="BodyText" />
+    <w:qFormat />
+  </w:style>
+  <w:style w:customStyle="1" w:styleId="Compact" w:type="paragraph">
+    <w:name w:val="Compact" />
+    <w:basedOn w:val="BodyText" />
+    <w:qFormat />
+    <w:pPr>
+      <w:spacing w:after="36" w:before="36" />
+    </w:pPr>
+  </w:style>
+  <w:style w:styleId="Title" w:type="paragraph">
+    <w:name w:val="Title" />
+    <w:basedOn w:val="Normal" />
+    <w:next w:val="BodyText" />
+    <w:qFormat />
+    <w:pPr>
+      <w:keepNext />
+      <w:keepLines />
+      <w:spacing w:after="240" w:before="480" />
+      <w:jc w:val="center" />
+    </w:pPr>
+    <w:rPr>
+      <w:rFonts w:asciiTheme="majorHAnsi" w:cstheme="majorBidi" w:eastAsiaTheme="majorEastAsia" w:hAnsiTheme="majorHAnsi" />
+      <w:b />
+      <w:bCs />
+      <w:color w:themeColor="accent1" w:themeShade="B5" w:val="345A8A" />
+      <w:sz w:val="36" />
+      <w:szCs w:val="36" />
+    </w:rPr>
+  </w:style>
+ <w:style w:styleId="Subtitle" w:type="paragraph">
+    <w:name w:val="Subtitle" />
+    <w:basedOn w:val="Title" />
+    <w:next w:val="BodyText" />
+    <w:qFormat />
+    <w:pPr>
+      <w:keepNext />
+      <w:keepLines />
+      <w:spacing w:after="240" w:before="240" />
+      <w:jc w:val="center" />
+    </w:pPr>
+    <w:rPr>
+      <w:sz w:val="30" />
+      <w:szCs w:val="30" />
+    </w:rPr>
+ </w:style>
+  <w:style w:customStyle="1" w:styleId="Author" w:type="paragraph">
+    <w:name w:val="Author" />
+    <w:next w:val="BodyText" />
+    <w:qFormat />
+    <w:pPr>
+      <w:keepNext />
+      <w:keepLines />
+      <w:jc w:val="center" />
+    </w:pPr>
+  </w:style>
+  <w:style w:styleId="Date" w:type="paragraph">
+    <w:name w:val="Date" />
+    <w:next w:val="BodyText" />
+    <w:qFormat />
+    <w:pPr>
+      <w:keepNext />
+      <w:keepLines />
+      <w:jc w:val="center" />
+    </w:pPr>
+  </w:style>
+  <w:style w:customStyle="1" w:styleId="AbstractTitle" w:type="paragraph">
+    <w:name w:val="Abstract Title" />
+    <w:basedOn w:val="Normal" />
+    <w:next w:val="Abstract" />
+    <w:qFormat />
+    <w:pPr>
+      <w:keepNext />
+      <w:keepLines />
+      <w:spacing w:after="0" w:before="300" />
+      <w:jc w:val="center" />
+    </w:pPr>
+    <w:rPr>
+      <w:b />
+      <w:color w:val="345A8A" />
+      <w:sz w:val="20" />
+      <w:szCs w:val="20" />
+    </w:rPr>
+  </w:style>
+  <w:style w:customStyle="1" w:styleId="Abstract" w:type="paragraph">
+    <w:name w:val="Abstract" />
+    <w:basedOn w:val="Normal" />
+    <w:next w:val="BodyText" />
+    <w:qFormat />
+    <w:pPr>
+      <w:keepNext />
+      <w:keepLines />
+      <w:spacing w:after="300" w:before="100" />
+    </w:pPr>
+    <w:rPr>
+      <w:sz w:val="20" />
+      <w:szCs w:val="20" />
+    </w:rPr>
+  </w:style>
+  <w:style w:styleId="Bibliography" w:type="paragraph">
+    <w:name w:val="Bibliography" />
+    <w:basedOn w:val="Normal" />
+    <w:next w:val="Bibliography" />
+    <w:qFormat />
+    <w:pPr />
+    <w:rPr />
+  </w:style>
+  <w:style w:styleId="Heading1" w:type="paragraph">
+    <w:name w:val="Heading 1" />
+    <w:basedOn w:val="Normal" />
+    <w:next w:val="BodyText" />
+    <w:uiPriority w:val="9" />
+    <w:qFormat />
+    <w:pPr>
+      <w:keepNext />
+      <w:keepLines />
+      <w:spacing w:after="0" w:before="480" />
+      <w:outlineLvl w:val="0" />
+    </w:pPr>
+    <w:rPr>
+      <w:rFonts w:asciiTheme="majorHAnsi" w:cstheme="majorBidi" w:eastAsiaTheme="majorEastAsia" w:hAnsiTheme="majorHAnsi" />
+      <w:b />
+      <w:bCs />
+      <w:color w:themeColor="accent1" w:val="4F81BD" />
+      <w:sz w:val="32" />
+      <w:szCs w:val="32" />
+    </w:rPr>
+  </w:style>
+  <w:style w:styleId="Heading2" w:type="paragraph">
+    <w:name w:val="Heading 2" />
+    <w:basedOn w:val="Normal" />
+    <w:next w:val="BodyText" />
+    <w:uiPriority w:val="9" />
+    <w:unhideWhenUsed />
+    <w:qFormat />
+    <w:pPr>
+      <w:keepNext />
+      <w:keepLines />
+      <w:spacing w:after="0" w:before="200" />
+      <w:outlineLvl w:val="1" />
+    </w:pPr>
+    <w:rPr>
+      <w:rFonts w:asciiTheme="majorHAnsi" w:cstheme="majorBidi" w:eastAsiaTheme="majorEastAsia" w:hAnsiTheme="majorHAnsi" />
+      <w:b />
+      <w:bCs />
+      <w:color w:themeColor="accent1" w:val="4F81BD" />
+      <w:sz w:val="28" />
+      <w:szCs w:val="28" />
+    </w:rPr>
+  </w:style>
+  <w:style w:styleId="Heading3" w:type="paragraph">
+    <w:name w:val="Heading 3" />
+    <w:basedOn w:val="Normal" />
+    <w:next w:val="BodyText" />
+    <w:uiPriority w:val="9" />
+    <w:unhideWhenUsed />
+    <w:qFormat />
+    <w:pPr>
+      <w:keepNext />
+      <w:keepLines />
+      <w:spacing w:after="0" w:before="200" />
+      <w:outlineLvl w:val="2" />
+    </w:pPr>
+    <w:rPr>
+      <w:rFonts w:asciiTheme="majorHAnsi" w:cstheme="majorBidi" w:eastAsiaTheme="majorEastAsia" w:hAnsiTheme="majorHAnsi" />
+      <w:b />
+      <w:bCs />
+      <w:color w:themeColor="accent1" w:val="4F81BD" />
+      <w:sz w:val="24" />
+      <w:szCs w:val="24" />
+    </w:rPr>
+  </w:style>
+  <w:style w:styleId="Heading4" w:type="paragraph">
+    <w:name w:val="Heading 4" />
+    <w:basedOn w:val="Normal" />
+    <w:next w:val="BodyText" />
+    <w:uiPriority w:val="9" />
+    <w:unhideWhenUsed />
+    <w:qFormat />
+    <w:pPr>
+      <w:keepNext />
+      <w:keepLines />
+      <w:spacing w:after="0" w:before="200" />
+      <w:outlineLvl w:val="3" />
+    </w:pPr>
+    <w:rPr>
+      <w:rFonts w:asciiTheme="majorHAnsi" w:cstheme="majorBidi" w:eastAsiaTheme="majorEastAsia" w:hAnsiTheme="majorHAnsi" />
+      <w:bCs />
+      <w:i />
+      <w:color w:themeColor="accent1" w:val="4F81BD" />
+      <w:sz w:val="24" />
+      <w:szCs w:val="24" />
+    </w:rPr>
+  </w:style>
+  <w:style w:styleId="Heading5" w:type="paragraph">
+    <w:name w:val="Heading 5" />
+    <w:basedOn w:val="Normal" />
+    <w:next w:val="BodyText" />
+    <w:uiPriority w:val="9" />
+    <w:unhideWhenUsed />
+    <w:qFormat />
+    <w:pPr>
+      <w:keepNext />
+      <w:keepLines />
+      <w:spacing w:after="0" w:before="200" />
+      <w:outlineLvl w:val="4" />
+    </w:pPr>
+    <w:rPr>
+      <w:rFonts w:asciiTheme="majorHAnsi" w:cstheme="majorBidi" w:eastAsiaTheme="majorEastAsia" w:hAnsiTheme="majorHAnsi" />
+      <w:iCs />
+      <w:color w:themeColor="accent1" w:val="4F81BD" />
+      <w:sz w:val="24" />
+      <w:szCs w:val="24" />
+    </w:rPr>
+  </w:style>
+  <w:style w:styleId="Heading6" w:type="paragraph">
+    <w:name w:val="Heading 6" />
+    <w:basedOn w:val="Normal" />
+    <w:next w:val="BodyText" />
+    <w:uiPriority w:val="9" />
+    <w:unhideWhenUsed />
+    <w:qFormat />
+    <w:pPr>
+      <w:keepNext />
+      <w:keepLines />
+      <w:spacing w:after="0" w:before="200" />
+      <w:outlineLvl w:val="5" />
+    </w:pPr>
+    <w:rPr>
+      <w:rFonts w:asciiTheme="majorHAnsi" w:cstheme="majorBidi" w:eastAsiaTheme="majorEastAsia" w:hAnsiTheme="majorHAnsi" />
+      <w:color w:themeColor="accent1" w:val="4F81BD" />
+      <w:sz w:val="24" />
+      <w:szCs w:val="24" />
+    </w:rPr>
+  </w:style>
+  <w:style w:styleId="Heading7" w:type="paragraph">
+    <w:name w:val="Heading 7" />
+    <w:basedOn w:val="Normal" />
+    <w:next w:val="BodyText" />
+    <w:uiPriority w:val="9" />
+    <w:unhideWhenUsed />
+    <w:qFormat />
+    <w:pPr>
+      <w:keepNext />
+      <w:keepLines />
+      <w:spacing w:after="0" w:before="200" />
+      <w:outlineLvl w:val="6" />
+    </w:pPr>
+    <w:rPr>
+      <w:rFonts w:asciiTheme="majorHAnsi" w:cstheme="majorBidi" w:eastAsiaTheme="majorEastAsia" w:hAnsiTheme="majorHAnsi" />
+      <w:color w:themeColor="accent1" w:val="4F81BD" />
+      <w:sz w:val="24" />
+      <w:szCs w:val="24" />
+    </w:rPr>
+  </w:style>
+  <w:style w:styleId="Heading8" w:type="paragraph">
+    <w:name w:val="Heading 8" />
+    <w:basedOn w:val="Normal" />
+    <w:next w:val="BodyText" />
+    <w:uiPriority w:val="9" />
+    <w:unhideWhenUsed />
+    <w:qFormat />
+    <w:pPr>
+      <w:keepNext />
+      <w:keepLines />
+      <w:spacing w:after="0" w:before="200" />
+      <w:outlineLvl w:val="7" />
+    </w:pPr>
+    <w:rPr>
+      <w:rFonts w:asciiTheme="majorHAnsi" w:cstheme="majorBidi" w:eastAsiaTheme="majorEastAsia" w:hAnsiTheme="majorHAnsi" />
+      <w:color w:themeColor="accent1" w:val="4F81BD" />
+      <w:sz w:val="24" />
+      <w:szCs w:val="24" />
+    </w:rPr>
+  </w:style>
+  <w:style w:styleId="Heading9" w:type="paragraph">
+    <w:name w:val="Heading 9" />
+    <w:basedOn w:val="Normal" />
+    <w:next w:val="BodyText" />
+    <w:uiPriority w:val="9" />
+    <w:unhideWhenUsed />
+    <w:qFormat />
+    <w:pPr>
+      <w:keepNext />
+      <w:keepLines />
+      <w:spacing w:after="0" w:before="200" />
+      <w:outlineLvl w:val="8" />
+    </w:pPr>
+    <w:rPr>
+      <w:rFonts w:asciiTheme="majorHAnsi" w:cstheme="majorBidi" w:eastAsiaTheme="majorEastAsia" w:hAnsiTheme="majorHAnsi" />
+      <w:color w:themeColor="accent1" w:val="4F81BD" />
+      <w:sz w:val="24" />
+      <w:szCs w:val="24" />
+    </w:rPr>
+  </w:style>
+  <w:style w:styleId="BlockText" w:type="paragraph">
+    <w:name w:val="Block Text" />
+    <w:basedOn w:val="BodyText" />
+    <w:next w:val="BodyText" />
+    <w:uiPriority w:val="9" />
+    <w:unhideWhenUsed />
+    <w:qFormat />
+    <w:pPr>
+      <w:spacing w:after="100" w:before="100" />
+      <w:ind w:firstLine="0" w:left="480" w:right="480" />
+    </w:pPr>
+  </w:style>
+  <w:style w:styleId="FootnoteText" w:type="paragraph">
+    <w:name w:val="Footnote Text" />
+    <w:basedOn w:val="Normal" />
+    <w:next w:val="FootnoteText" />
+    <w:uiPriority w:val="9" />
+    <w:unhideWhenUsed />
+    <w:qFormat />
+  </w:style>
+  <w:style w:styleId="FootnoteBlockText" w:type="paragraph">
+    <w:name w:val="Footnote Block Text" />
+    <w:basedOn w:val="Footnote Text" />
+    <w:next w:val="Footnote Text" />
+    <w:uiPriority w:val="9" />
+    <w:unhideWhenUsed />
+    <w:qFormat />
+    <w:pPr>
+      <w:spacing w:after="100" w:before="100" />
+      <w:ind w:firstLine="0" w:left="480" w:right="480" />
+    </w:pPr>
+  </w:style>
+  <w:style w:default="1" w:styleId="DefaultParagraphFont" w:type="character">
+    <w:name w:val="Default Paragraph Font" />
+    <w:semiHidden />
+    <w:unhideWhenUsed />
+  </w:style>
+  <w:style w:default="1" w:styleId="Table" w:type="table">
+    <w:name w:val="Table" />
+    <w:basedOn w:val="TableNormal" />
+    <w:semiHidden />
+    <w:unhideWhenUsed />
+    <w:qFormat />
+    <w:tblPr>
+      <w:tblInd w:type="dxa" w:w="0" />
+      <w:tblCellMar>
+        <w:top w:type="dxa" w:w="0" />
+        <w:left w:type="dxa" w:w="108" />
+        <w:bottom w:type="dxa" w:w="0" />
+        <w:right w:type="dxa" w:w="108" />
+      </w:tblCellMar>
+    </w:tblPr>
+    <w:tblStylePr w:type="firstRow">
+      <w:tblPr>
+        <w:jc w:val="left" />
+        <w:tblInd w:type="dxa" w:w="0" />
+      </w:tblPr>
+      <w:trPr>
+        <w:jc w:val="left" />
+      </w:trPr>
+      <w:tcPr>
+        <w:tcBorders>
+          <w:bottom w:val="single" />
+        </w:tcBorders>
+        <w:vAlign w:val="bottom" />
+      </w:tcPr>
+    </w:tblStylePr>
+  </w:style>
+  <w:style w:customStyle="1" w:styleId="DefinitionTerm" w:type="paragraph">
+    <w:name w:val="Definition Term" />
+    <w:basedOn w:val="Normal" />
+    <w:next w:val="Definition" />
+    <w:pPr>
+      <w:keepNext />
+      <w:keepLines />
+      <w:spacing w:after="0" />
+    </w:pPr>
+    <w:rPr>
+      <w:b />
+    </w:rPr>
+  </w:style>
+  <w:style w:customStyle="1" w:styleId="Definition" w:type="paragraph">
+    <w:name w:val="Definition" />
+    <w:basedOn w:val="Normal" />
+  </w:style>
+  <w:style w:styleId="Caption" w:type="paragraph">
+    <w:name w:val="Caption" />
+    <w:basedOn w:val="Normal" />
+    <w:link w:val="BodyTextChar" />
+    <w:pPr>
+      <w:spacing w:after="120" w:before="0" />
+    </w:pPr>
+    <w:rPr>
+      <w:i />
+    </w:rPr>
+  </w:style>
+  <w:style w:customStyle="1" w:styleId="TableCaption" w:type="paragraph">
+    <w:name w:val="Table Caption" />
+    <w:basedOn w:val="Caption" />
+    <w:pPr>
+      <w:keepNext />
+    </w:pPr>
+  </w:style>
+  <w:style w:customStyle="1" w:styleId="ImageCaption" w:type="paragraph">
+    <w:name w:val="Image Caption" />
+    <w:basedOn w:val="Caption" />
+  </w:style>
+  <w:style w:customStyle="1" w:styleId="Figure" w:type="paragraph">
+    <w:name w:val="Figure" />
+    <w:basedOn w:val="Normal" />
+  </w:style>
+  <w:style w:customStyle="1" w:styleId="CaptionedFigure" w:type="paragraph">
+    <w:name w:val="Captioned Figure" />
+    <w:basedOn w:val="Figure" />
+    <w:pPr>
+      <w:keepNext />
+    </w:pPr>
+  </w:style>
+  <w:style w:customStyle="1" w:styleId="BodyTextChar" w:type="character">
+    <w:name w:val="Body Text Char" />
+    <w:basedOn w:val="DefaultParagraphFont" />
+    <w:link w:val="BodyText" />
+  </w:style>
+  <w:style w:customStyle="1" w:styleId="VerbatimChar" w:type="character">
+    <w:name w:val="Verbatim Char" />
+    <w:basedOn w:val="BodyTextChar" />
+    <w:rPr>
+      <w:rFonts w:ascii="Consolas" w:hAnsi="Consolas" />
+      <w:sz w:val="22" />
+    </w:rPr>
+  </w:style>
+  <w:style w:customStyle="1" w:styleId="SectionNumber" w:type="character">
+    <w:name w:val="Section Number" />
+    <w:basedOn w:val="BodyTextChar" />
+  </w:style>
+  <w:style w:styleId="FootnoteReference" w:type="character">
+    <w:name w:val="Footnote Reference" />
+    <w:basedOn w:val="BodyTextChar" />
+    <w:rPr>
+      <w:vertAlign w:val="superscript" />
+    </w:rPr>
+  </w:style>
+  <w:style w:styleId="Hyperlink" w:type="character">
+    <w:name w:val="Hyperlink" />
+    <w:basedOn w:val="BodyTextChar" />
+    <w:rPr>
+      <w:color w:themeColor="accent1" w:val="4F81BD" />
+    </w:rPr>
+  </w:style>
+  <w:style w:styleId="TOCHeading" w:type="paragraph">
+    <w:name w:val="TOC Heading" />
+    <w:basedOn w:val="Heading1" />
+    <w:next w:val="BodyText" />
+    <w:uiPriority w:val="39" />
+    <w:unhideWhenUsed />
+    <w:qFormat />
+    <w:pPr>
+      <w:spacing w:before="240" w:line="259" w:lineRule="auto" />
+      <w:outlineLvl w:val="9" />
+    </w:pPr>
+    <w:rPr>
+      <w:rFonts w:asciiTheme="majorHAnsi" w:cstheme="majorBidi" w:eastAsiaTheme="majorEastAsia" w:hAnsiTheme="majorHAnsi" />
+      <w:b w:val="0" />
+      <w:bCs w:val="0" />
+      <w:color w:themeColor="accent1" w:themeShade="BF" w:val="365F91" />
+    </w:rPr>
+  </w:style>
+<w:style w:type="paragraph" w:customStyle="1" w:styleId="SourceCode"><w:name w:val="Source Code" /><w:basedOn w:val="Normal" /><w:link w:val="VerbatimChar" /><w:pPr><w:wordWrap w:val="off" /></w:pPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="KeywordTok"><w:name w:val="KeywordTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:b /><w:color w:val="007020" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="DataTypeTok"><w:name w:val="DataTypeTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:color w:val="902000" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="DecValTok"><w:name w:val="DecValTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:color w:val="40a070" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="BaseNTok"><w:name w:val="BaseNTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:color w:val="40a070" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="FloatTok"><w:name w:val="FloatTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:color w:val="40a070" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="ConstantTok"><w:name w:val="ConstantTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:color w:val="880000" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="CharTok"><w:name w:val="CharTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:color w:val="4070a0" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="SpecialCharTok"><w:name w:val="SpecialCharTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:color w:val="4070a0" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="StringTok"><w:name w:val="StringTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:color w:val="4070a0" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="VerbatimStringTok"><w:name w:val="VerbatimStringTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:color w:val="4070a0" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="SpecialStringTok"><w:name w:val="SpecialStringTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:color w:val="bb6688" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="ImportTok"><w:name w:val="ImportTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:b /><w:color w:val="008000" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="CommentTok"><w:name w:val="CommentTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:i /><w:color w:val="60a0b0" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="DocumentationTok"><w:name w:val="DocumentationTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:i /><w:color w:val="ba2121" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="AnnotationTok"><w:name w:val="AnnotationTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:b /><w:i /><w:color w:val="60a0b0" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="CommentVarTok"><w:name w:val="CommentVarTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:b /><w:i /><w:color w:val="60a0b0" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="OtherTok"><w:name w:val="OtherTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:color w:val="007020" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="FunctionTok"><w:name w:val="FunctionTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:color w:val="06287e" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="VariableTok"><w:name w:val="VariableTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:color w:val="19177c" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="ControlFlowTok"><w:name w:val="ControlFlowTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:b /><w:color w:val="007020" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="OperatorTok"><w:name w:val="OperatorTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:color w:val="666666" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="BuiltInTok"><w:name w:val="BuiltInTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:color w:val="008000" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="ExtensionTok"><w:name w:val="ExtensionTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr /></w:style><w:style w:type="character" w:customStyle="1" w:styleId="PreprocessorTok"><w:name w:val="PreprocessorTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:color w:val="bc7a00" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="AttributeTok"><w:name w:val="AttributeTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:color w:val="7d9029" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="RegionMarkerTok"><w:name w:val="RegionMarkerTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr /></w:style><w:style w:type="character" w:customStyle="1" w:styleId="InformationTok"><w:name w:val="InformationTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:b /><w:i /><w:color w:val="60a0b0" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="WarningTok"><w:name w:val="WarningTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:b /><w:i /><w:color w:val="60a0b0" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="AlertTok"><w:name w:val="AlertTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:b /><w:color w:val="ff0000" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="ErrorTok"><w:name w:val="ErrorTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr><w:b /><w:color w:val="ff0000" /></w:rPr></w:style><w:style w:type="character" w:customStyle="1" w:styleId="NormalTok"><w:name w:val="NormalTok" /><w:basedOn w:val="VerbatimChar" /><w:rPr /></w:style></w:styles></pkg:xmlData></pkg:part><pkg:part pkg:name="/word/footnotes.xml" pkg:contentType="application/xml"><pkg:xmlData><w:footnotes xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"><w:footnote w:type="continuationSeparator" w:id="0"><w:p><w:r><w:continuationSeparator /></w:r></w:p></w:footnote><w:footnote w:type="separator" w:id="-1"><w:p><w:r><w:separator /></w:r></w:p></w:footnote></w:footnotes></pkg:xmlData></pkg:part><pkg:part pkg:name="/word/comments.xml" pkg:contentType="application/xml"><pkg:xmlData><w:comments xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" /></pkg:xmlData></pkg:part><pkg:part pkg:name="/docProps/core.xml" pkg:contentType="application/xml"><pkg:xmlData><cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dcmitype="http://purl.org/dc/dcmitype/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><dc:title>Saltmere harbour notes</dc:title><dc:creator>Ben Gull</dc:creator><cp:keywords></cp:keywords><dcterms:created xsi:type="dcterms:W3CDTF">2026-11-09T05:12:06Z</dcterms:created><dcterms:modified xsi:type="dcterms:W3CDTF">2026-11-09T05:12:06Z</dcterms:modified></cp:coreProperties></pkg:xmlData></pkg:part><pkg:part pkg:name="/docProps/app.xml" pkg:contentType="application/xml"><pkg:xmlData>
+<Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
+  <Words>83</Words>
+  <SharedDoc>false</SharedDoc>
+  <HyperlinksChanged>false</HyperlinksChanged>
+  <Lines>12</Lines>
+  <AppVersion>12.0000</AppVersion>
+  <LinksUpToDate>false</LinksUpToDate>
+  <Application>Microsoft Word 12.0.0</Application>
+  <CharactersWithSpaces>583</CharactersWithSpaces>
+  <Template>Normal.dotm</Template>
+  <DocSecurity>0</DocSecurity>
+  <TotalTime>6</TotalTime>
+  <ScaleCrop>false</ScaleCrop>
+  <Characters>475</Characters>
+  <Paragraphs>8</Paragraphs>
+  <Pages>1</Pages>
+</Properties></pkg:xmlData></pkg:part><pkg:part pkg:name="/docProps/custom.xml" pkg:contentType="application/xml"><pkg:xmlData><Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes" /></pkg:xmlData></pkg:part><pkg:part pkg:name="/word/settings.xml" pkg:contentType="application/xml"><pkg:xmlData><w:settings xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:sl="http://schemas.openxmlformats.org/schemaLibrary/2006/main" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word"><w:zoom w:percent="100" /><w:embedSystemFonts /><w:proofState w:grammar="clean" w:spelling="clean" /><w:stylePaneFormatFilter w:val="0004" /><w:doNotTrackMoves /><w:defaultTabStop w:val="720" /><w:drawingGridHorizontalSpacing w:val="360" /><w:drawingGridVerticalSpacing w:val="360" /><w:displayHorizontalDrawingGridEvery w:val="0" /><w:displayVerticalDrawingGridEvery w:val="0" /><w:characterSpacingControl w:val="doNotCompress" /><w:savePreviewPicture /><w:footnotePr>
+    <w:footnote w:id="-1" />
+    <w:footnote w:id="0" />
+  </w:footnotePr><w:rsids>
+  </w:rsids><w:themeFontLang w:val="en-US" /><w:clrSchemeMapping w:accent1="accent1" w:accent2="accent2" w:accent3="accent3" w:accent4="accent4" w:accent5="accent5" w:accent6="accent6" w:bg1="light1" w:bg2="light2" w:followedHyperlink="followedHyperlink" w:hyperlink="hyperlink" w:t1="dark1" w:t2="dark2" /><w:decimalSymbol w:val="." /><w:listSeparator w:val="," /></w:settings></pkg:xmlData></pkg:part><pkg:part pkg:name="/word/webSettings.xml" pkg:contentType="application/xml"><pkg:xmlData>
+<ns0:webSettings xmlns:ns0="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <ns0:allowPNG />
+  <ns0:doNotSaveAsSingleFile />
+</ns0:webSettings></pkg:xmlData></pkg:part><pkg:part pkg:name="/word/fontTable.xml" pkg:contentType="application/xml"><pkg:xmlData>
+<w:fonts xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+&#9;<w:font w:name="Symbol">
+&#9;&#9;<w:panose1 w:val="02000500000000000000" />
+&#9;&#9;<w:charset w:val="02" />
+&#9;&#9;<w:family w:val="auto" />
+&#9;&#9;<w:pitch w:val="variable" />
+&#9;&#9;<w:sig w:usb0="00000000" w:usb1="00000000" w:usb2="00010000" w:usb3="00000000" w:csb0="80000000" w:csb1="00000000" />
+&#9;</w:font>
+&#9;<w:font w:name="Times New Roman">
+&#9;&#9;<w:panose1 w:val="02020603050405020304" />
+&#9;&#9;<w:charset w:val="00" />
+&#9;&#9;<w:family w:val="auto" />
+&#9;&#9;<w:pitch w:val="variable" />
+&#9;&#9;<w:sig w:usb0="00000003" w:usb1="00000000" w:usb2="00000000" w:usb3="00000000" w:csb0="00000001" w:csb1="00000000" />
+&#9;</w:font>
+&#9;<w:font w:name="Courier New">
+&#9;&#9;<w:panose1 w:val="02070309020205020404" />
+&#9;&#9;<w:charset w:val="00" />
+&#9;&#9;<w:family w:val="auto" />
+&#9;&#9;<w:pitch w:val="variable" />
+&#9;&#9;<w:sig w:usb0="00000003" w:usb1="00000000" w:usb2="00000000" w:usb3="00000000" w:csb0="00000001" w:csb1="00000000" />
+&#9;</w:font>
+&#9;<w:font w:name="Wingdings">
+&#9;&#9;<w:panose1 w:val="05020102010804080708" />
+&#9;&#9;<w:charset w:val="02" />
+&#9;&#9;<w:family w:val="auto" />
+&#9;&#9;<w:pitch w:val="variable" />
+&#9;&#9;<w:sig w:usb0="00000000" w:usb1="00000000" w:usb2="00010000" w:usb3="00000000" w:csb0="80000000" w:csb1="00000000" />
+&#9;</w:font>
+&#9;<w:font w:name="Cambria">
+&#9;&#9;<w:panose1 w:val="02040503050406030204" />
+&#9;&#9;<w:charset w:val="00" />
+&#9;&#9;<w:family w:val="auto" />
+&#9;&#9;<w:pitch w:val="variable" />
+&#9;&#9;<w:sig w:usb0="00000003" w:usb1="00000000" w:usb2="00000000" w:usb3="00000000" w:csb0="00000001" w:csb1="00000000" />
+&#9;</w:font>
+&#9;<w:font w:name="Calibri">
+&#9;&#9;<w:panose1 w:val="020F0502020204030204" />
+&#9;&#9;<w:charset w:val="00" />
+&#9;&#9;<w:family w:val="auto" />
+&#9;&#9;<w:pitch w:val="variable" />
+&#9;&#9;<w:sig w:usb0="00000003" w:usb1="00000000" w:usb2="00000000" w:usb3="00000000" w:csb0="00000001" w:csb1="00000000" />
+&#9;</w:font>
+&#9;<w:font w:name="Arial">
+&#9;&#9;<w:panose1 w:val="020B0604020202020204" />
+&#9;&#9;<w:charset w:val="00" />
+&#9;&#9;<w:family w:val="auto" />
+&#9;&#9;<w:pitch w:val="variable" />
+&#9;&#9;<w:sig w:usb0="00000003" w:usb1="00000000" w:usb2="00000000" w:usb3="00000000" w:csb0="00000001" w:csb1="00000000" />
+&#9;</w:font>
+</w:fonts></pkg:xmlData></pkg:part></pkg:package>

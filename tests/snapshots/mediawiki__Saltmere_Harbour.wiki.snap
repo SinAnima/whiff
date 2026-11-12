@@ -1,0 +1,183 @@
+---
+source: src/formats/text/lightmarkup.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Saltmere_Harbour.wiki",
+    "stem": "Saltmere_Harbour",
+    "extension": "wiki"
+  },
+  "identification": {
+    "format": "mediawiki",
+    "name": "MediaWiki markup",
+    "mime": "text/x-wiki",
+    "family": "text.lightmarkup",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.lightmarkup"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 818
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 1
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 818,
+    "entropy": 5.158,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 818,
+      "chars": 818,
+      "words": 109,
+      "lines": 37,
+      "max_line_length": 112,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 7
+    }
+  },
+  "integrity": {
+    "sha256": "f48a32ffa50c772a2c1fc9bff83b4906221d0c14058f5ca4a858da23eda892d2",
+    "blake3": "2e676bd102cb5bd1c3c17e7f24e021b94eb2e18a027c799e1f46d2ad05dca1a7"
+  },
+  "content": {
+    "title": "Saltmere Harbour",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "harbour",
+      "Saltmere Harbour",
+      "Board",
+      "Saltmere",
+      "Harbour Board",
+      "History",
+      "Annual report",
+      "Annual",
+      "harbour.harbour board",
+      "VHF"
+    ],
+    "keyword_frequency": [
+      [
+        "harbour",
+        4
+      ],
+      [
+        "board",
+        2
+      ],
+      [
+        "saltmere",
+        2
+      ]
+    ],
+    "excerpt": "Saltmere Harbour is a small fishing and leisure harbour.Harbour Board, Annual report, 2025. The harbour wall was built in 1852. The was automated in 1988. VHF 12 https://board.example.org/ Harbour Board",
+    "tags": [
+      "harbour",
+      "Saltmere Harbour",
+      "Board",
+      "Saltmere",
+      "Harbour Board"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "mediawiki": {
+      "headings": 5,
+      "links": {
+        "internal": 1,
+        "external": 1
+      },
+      "top_link_hosts": {
+        "board.example.org": 1
+      },
+      "images": 1,
+      "code_blocks": 1,
+      "tables": 1,
+      "templates": {
+        "Infobox harbour": 1,
+        "cite book": 1
+      },
+      "references": 2,
+      "categories": [
+        "Fictitious places",
+        "Harbours"
+      ],
+      "language_links": [
+        "fr"
+      ],
+      "magic_words": [
+        "NOTOC"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.lightmarkup",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

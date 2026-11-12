@@ -1,0 +1,105 @@
+---
+source: src/formats/exec/scripting.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-bell.scpt",
+    "stem": "harbour-bell",
+    "extension": "scpt"
+  },
+  "identification": {
+    "format": "applescript_compiled",
+    "name": "Compiled AppleScript",
+    "mime": "application/x-apple-script",
+    "family": "exec",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "exec.scripting"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 444
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 444,
+    "entropy": 4.344,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "6bebfb496a5dd2ddcdc119a3399d3b531a32d24117defc76eedff56cf93372a9",
+    "blake3": "7867a3ddffc4decfa9ad04102ba83101f4785fb851ea673e714d8729efa99fb1"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "applescript_compiled": {
+      "version": "1.101.10"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.scripting",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

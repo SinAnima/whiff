@@ -17,7 +17,7 @@
 # their specifications. DGN comes from GDAL 3.10 in `whiff-geo` (see
 # geo.sh).
 #
-#     scripts/fixtures/cad.sh [STEP ...]   (meshes blender usd voxels capture photometry ldraw gcode cad eda)
+#     scripts/fixtures/cad.sh [STEP ...]   (meshes blender usd voxels capture photometry ldraw gcode cad eda longtail)
 #
 # Containerfile (`podman build -t whiff-cad`):
 #

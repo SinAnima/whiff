@@ -1,0 +1,118 @@
+---
+source: src/formats/exec/misc.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "Image-arm64-crafted",
+    "stem": "Image-arm64-crafted"
+  },
+  "identification": {
+    "format": "linux_kernel",
+    "name": "Linux kernel image",
+    "mime": "application/x-linux-kernel",
+    "family": "exec",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "candidates": [
+      {
+        "format": "linux_kernel",
+        "confidence": 0.95
+      },
+      {
+        "format": "dos_exe",
+        "confidence": 0.8
+      }
+    ],
+    "extractor": "exec.misc"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4096
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4096,
+    "entropy": 0.032,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "86cc3a236a308077684d051c715c65c17a51c69f0c59da9d3bf29170ce5057e5",
+    "blake3": "4d429a47205135b83939d13895d845d9e55255a3b6dcd6ed8a1b347d923166b9"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "linux_kernel": {
+      "architecture": "arm64",
+      "text_offset": 0,
+      "image_bytes": 4096,
+      "byte_order": "little-endian",
+      "page_size": "4K",
+      "efi_stub": true
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.misc",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

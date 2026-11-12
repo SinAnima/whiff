@@ -1,0 +1,134 @@
+---
+source: src/formats/crypto/tpm.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-signing.tss",
+    "stem": "saltmere-signing",
+    "extension": "tss"
+  },
+  "identification": {
+    "format": "tpm2_key",
+    "name": "TPM 2.0 key file",
+    "mime": "application/x-tpm2-key",
+    "family": "crypto",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "crypto.tpm"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 788
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 788,
+    "entropy": 5.948,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 788,
+      "chars": 788,
+      "words": 20,
+      "lines": 14,
+      "max_line_length": 64,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "67c78568ffdf8c40a2fc03f2e1a953929ad61e7183706dedd0871893d593b9df",
+    "blake3": "697c216399630c14e52febb434b3f435251e6249eaf23435c926df011ce5750d"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "tpm2_key": {
+      "encoding": "pem",
+      "tpm_version": "2.0",
+      "key_kind": "loadable",
+      "empty_auth": true,
+      "parent": "owner",
+      "key_algorithm": "rsa",
+      "name_algorithm": "sha256",
+      "attributes": [
+        "fixed_tpm",
+        "fixed_parent",
+        "sensitive_data_origin",
+        "user_with_auth",
+        "no_dictionary_attack",
+        "decrypt",
+        "sign"
+      ],
+      "tpm_name": "000b4e0dde5dfcdffcbf65068dfcef976e7632aeaef4bdb81f7511be8af75f3c042a",
+      "key_bits": 2048,
+      "rsa_exponent": 65537
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "crypto.tpm",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,146 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour.coffee",
+    "stem": "harbour",
+    "extension": "coffee"
+  },
+  "identification": {
+    "format": "coffeescript",
+    "name": "CoffeeScript source",
+    "mime": "text/x-coffeescript",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 302
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 302,
+    "entropy": 4.711,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 302,
+      "chars": 302,
+      "words": 45,
+      "lines": 15,
+      "max_line_length": 44,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "c09ad3c231981a75719868f114fbe570bba0bce8af81a8e1030d452dd3991482",
+    "blake3": "7dcc3f44d206c3543e92f153553b846b24a5bd36550fb8b8ab1a83ad2b63bd5f"
+  },
+  "content": {
+    "description": "Berth allocation for Saltmere Harbour.",
+    "excerpt": "Berth allocation for Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "coffeescript": {
+      "language": "CoffeeScript",
+      "loc": {
+        "code": 8,
+        "comment": 4,
+        "blank": 3,
+        "total": 15
+      },
+      "imports": [
+        "fs",
+        "./tides"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "class": [
+          "Harbour"
+        ],
+        "function": [
+          "allocate"
+        ]
+      },
+      "symbol_counts": {
+        "class": 1,
+        "function": 1
+      },
+      "module_doc": "Berth allocation for Saltmere Harbour.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 44
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

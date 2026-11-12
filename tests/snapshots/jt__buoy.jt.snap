@@ -1,0 +1,112 @@
+---
+source: src/formats/cad/exchange.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "buoy.jt",
+    "stem": "buoy",
+    "extension": "jt"
+  },
+  "identification": {
+    "format": "jt",
+    "name": "JT",
+    "mime": "model/jt",
+    "family": "cad",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "cad.exchange"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 149
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 149,
+    "entropy": 1.951,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "655f0d9aed700936817fded940a3cb73bc668ec545f5e3e425bd21feebd30148",
+    "blake3": "9c5f96af065036a3b2377d355355a40d89865a9c66fba9ef9462be4f33a8573f"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "jt": {
+      "version_string": "Version 9.5 JT",
+      "version": "9.5",
+      "byte_order": "little-endian",
+      "toc_entries": 2,
+      "segments": {
+        "logical scene graph": 1,
+        "shape": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "cad.exchange",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

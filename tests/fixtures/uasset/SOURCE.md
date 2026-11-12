@@ -6,3 +6,4 @@ Files made for whiff's tests, CC0-1.0, for a fictitious game (Saltmere Tides). R
 |---|---|---|
 | `Pier.umap` | craft_games.py (UE 4.27 and UE 5.1 summaries) | CC0-1.0 |
 | `SM_Buoy.uasset` | craft_games.py (UE 4.27 and UE 5.1 summaries) | CC0-1.0 |
+| `harbour-textures.utx` | craft_media.py (Unreal Engine 2 package header; `scripts/fixtures/media.sh`) | CC0-1.0 |

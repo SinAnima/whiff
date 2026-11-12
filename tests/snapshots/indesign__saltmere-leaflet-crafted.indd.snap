@@ -1,0 +1,145 @@
+---
+source: src/formats/doc/packages.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-leaflet-crafted.indd",
+    "stem": "saltmere-leaflet-crafted",
+    "extension": "indd"
+  },
+  "identification": {
+    "format": "indesign",
+    "name": "Adobe InDesign document",
+    "mime": "application/x-indesign",
+    "family": "doc.other",
+    "confidence": 0.97,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "doc.packages"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 5227
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "digitized",
+        "value": "2025-09-01T12:00:00+00:00",
+        "source": "xmp.xmp:CreateDate",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ben Gull"
+    ]
+  },
+  "physical": {
+    "size_bytes": 5227,
+    "entropy": 1.202,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "baaa1a385b24013c097d0dc7ed529d8d0e57ab362115e57a79d5022fbb0a23b9",
+    "blake3": "8149227d094ecfe34800ff095901d0168aeedaf0651230448b627be9e07de397"
+  },
+  "content": {
+    "title": "Saltmere harbour leaflet",
+    "authors": [
+      "Ben Gull"
+    ],
+    "excerpt": "Saltmere harbour leaflet"
+  },
+  "metadata": {
+    "xmp": {
+      "dc": {
+        "title": "Saltmere harbour leaflet",
+        "creator": [
+          "Ben Gull"
+        ]
+      },
+      "xmp": {
+        "CreatorTool": "Adobe InDesign 20.0 (Macintosh)",
+        "CreateDate": "2025-09-01T12:00:00Z"
+      }
+    }
+  },
+  "format": {
+    "indesign": {
+      "kind": "DOCUMENT",
+      "byte_order": "little-endian"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.packages",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.xmp",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

@@ -1,0 +1,117 @@
+---
+source: src/formats/exec/misc.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "harbour-crafted.odex",
+    "stem": "harbour-crafted",
+    "extension": "odex"
+  },
+  "identification": {
+    "format": "android_oat",
+    "name": "Android OAT / ODEX",
+    "mime": "application/x-android-oat",
+    "family": "exec",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "android_oat",
+        "confidence": 0.95
+      },
+      {
+        "format": "elf",
+        "confidence": 0.95
+      }
+    ],
+    "extractor": "exec.misc"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 4219
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 4219,
+    "entropy": 0.176,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "6f68d0a6492ee80f1f7b0b30aa265f3709b268e402201c6ce24478daac9b20a5",
+    "blake3": "289c48d87333942fb46bf9c89f28226062e17779b118a6146bcd178b83ba1230"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "android_oat": {
+      "oat_version": "239",
+      "compiler_filter": "speed-profile",
+      "debuggable": "false"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "exec.misc",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

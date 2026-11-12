@@ -1,0 +1,182 @@
+---
+source: src/formats/text/lightmarkup.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "notice.textile",
+    "stem": "notice",
+    "extension": "textile"
+  },
+  "identification": {
+    "format": "textile",
+    "name": "Textile",
+    "mime": "text/x-textile",
+    "family": "text.lightmarkup",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "text.lightmarkup"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 422
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "external_references": 1
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 422,
+    "entropy": 4.708,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 422,
+      "chars": 422,
+      "words": 70,
+      "lines": 20,
+      "max_line_length": 83,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 8
+    }
+  },
+  "integrity": {
+    "sha256": "136653a2333143bb557527116a7843b27152025010f36fc576aac2e8f28ba1bd",
+    "blake3": "9efdf271c81da0538002906fa11a48ef13f5ca4157cc9cdab0ef7908caa64742"
+  },
+  "content": {
+    "title": "Notice to mariners",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "keywords": [
+      "Notice to mariners",
+      "mariners",
+      "Notice",
+      "pontoon",
+      "November",
+      "harbour",
+      "closed",
+      "east",
+      "Diversions",
+      "VHF"
+    ],
+    "keyword_frequency": [
+      [
+        "pontoon",
+        3
+      ],
+      [
+        "closed",
+        2
+      ],
+      [
+        "east",
+        2
+      ],
+      [
+        "harbour",
+        2
+      ],
+      [
+        "mariners",
+        2
+      ],
+      [
+        "notice",
+        2
+      ]
+    ],
+    "excerpt": "p. The east pontoon is closed for painting from 10 November. Visitors moor on the _west_ pontoon. Fuel is available as usual. bq. Please keep to 3 knots inside the harbour. bc. VHF channel 12 _. Pontoon _. Status East closed West open See and !images/pontoon.png!. fn1. Issued by the harbour master.",
+    "tags": [
+      "Notice to mariners",
+      "mariners",
+      "Notice",
+      "pontoon",
+      "November"
+    ]
+  },
+  "metadata": {},
+  "format": {
+    "textile": {
+      "headings": 2,
+      "links": {
+        "internal": 0,
+        "external": 1
+      },
+      "top_link_hosts": {
+        "board.example.org": 1
+      },
+      "images": 1,
+      "code_blocks": 1,
+      "tables": 1,
+      "block_quotes": 1,
+      "footnotes": 1
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "text.lightmarkup",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

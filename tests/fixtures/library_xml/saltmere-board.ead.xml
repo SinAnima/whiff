@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ead xmlns="urn:isbn:1-931666-22-9">
+  <eadheader><eadid>saltmere-harbour-records</eadid>
+    <filedesc><titlestmt><titleproper>Records of the Saltmere Harbour Board</titleproper></titlestmt></filedesc>
+  </eadheader>
+  <archdesc level="fonds">
+    <did><unittitle>Saltmere Harbour Board</unittitle><unitdate>1850-1960</unitdate>
+      <origination><corpname>Saltmere Harbour Board</corpname></origination></did>
+    <dsc>
+      <c01 level="series"><did><unittitle>Tide registers</unittitle><unitdate>1850-1900</unitdate></did>
+        <c02 level="file"><did><unittitle>Register 1</unittitle></did></c02>
+        <c02 level="file"><did><unittitle>Register 2</unittitle></did></c02>
+      </c01>
+      <c01 level="series"><did><unittitle>Bell logs</unittitle><unitdate>1901-1960</unitdate></did></c01>
+    </dsc>
+  </archdesc>
+</ead>

@@ -1,0 +1,162 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "snapcraft.yaml",
+    "stem": "snapcraft",
+    "extension": "yaml"
+  },
+  "identification": {
+    "format": "snapcraft",
+    "name": "Snapcraft manifest",
+    "mime": "application/yaml",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "snapcraft",
+        "confidence": 0.97
+      },
+      {
+        "format": "yaml",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 489
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "license": {
+      "name": "CC0-1.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 489,
+    "entropy": 4.512,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 489,
+      "chars": 489,
+      "words": 56,
+      "lines": 27,
+      "max_line_length": 60,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 2
+    }
+  },
+  "integrity": {
+    "sha256": "9e41bdbcfe545a556d1987223304694e03c42efcdf447ecb271e4cc94c3d8073",
+    "blake3": "8e3178ff7b7eb7f704e4fe95e47c9cbb6c555f0a6e9161e7ae7b7d5d5f8b69eb"
+  },
+  "content": {
+    "title": "saltmere-tides 1.4.0",
+    "description": "Tide predictions for Saltmere Harbour",
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "excerpt": "Tide predictions for Saltmere Harbour Harmonic tide predictions for the gauges of the fictitious Saltmere Harbour."
+  },
+  "metadata": {},
+  "format": {
+    "snapcraft": {
+      "ecosystem": "snap",
+      "name": "saltmere-tides",
+      "version": "1.4.0",
+      "license": "CC0-1.0",
+      "base": "core24",
+      "grade": "stable",
+      "confinement": "strict",
+      "apps": [
+        "tides",
+        "gauged"
+      ],
+      "daemons": 1,
+      "plugs": [
+        "network",
+        "network-bind",
+        "serial-port"
+      ],
+      "parts": [
+        "tides",
+        "data"
+      ],
+      "part_plugins": {
+        "dump": 1,
+        "meson": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

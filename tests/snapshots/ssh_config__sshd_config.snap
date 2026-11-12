@@ -1,0 +1,135 @@
+---
+source: src/formats/code/config.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "sshd_config",
+    "stem": "sshd_config"
+  },
+  "identification": {
+    "format": "ssh_config",
+    "name": "SSH config",
+    "mime": "text/plain",
+    "family": "code.infra",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "encoding": "us-ascii",
+    "extractor": "code.config"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 203
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 203,
+    "entropy": 4.731,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 203,
+      "chars": 203,
+      "words": 19,
+      "lines": 9,
+      "max_line_length": 43,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "b71a31a7eeaf5530c817007ffa3295d34de0d7c3c9ace9dc3a4265187b2b51d0",
+    "blake3": "96fb0355517ecfef58417f8fe775d1abdb4c5097482510d6ff9ad79b0654e8e1"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "ssh_config": {
+      "role": "server",
+      "options": {
+        "allowusers": 1,
+        "kbdinteractiveauthentication": 1,
+        "passwordauthentication": 1,
+        "permitrootlogin": 1,
+        "port": 1,
+        "pubkeyauthentication": 1,
+        "subsystem": 1,
+        "usepam": 1,
+        "x11forwarding": 1
+      },
+      "settings": {
+        "port": "2222",
+        "permitrootlogin": "no",
+        "passwordauthentication": "no",
+        "pubkeyauthentication": "yes",
+        "kbdinteractiveauthentication": "no",
+        "x11forwarding": "no",
+        "usepam": "yes",
+        "subsystem": "sftp /usr/lib/openssh/sftp-server"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.config",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

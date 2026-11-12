@@ -1,0 +1,279 @@
+---
+source: src/formats/archive/encoded.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tide-table-sharutils.shar",
+    "stem": "tide-table-sharutils",
+    "extension": "shar"
+  },
+  "identification": {
+    "format": "shar",
+    "name": "Shell archive (shar)",
+    "mime": "application/x-shar",
+    "family": "archive",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "shar",
+        "confidence": 0.99
+      },
+      {
+        "format": "shell",
+        "confidence": 0.9
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "archive.encoded"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 3843
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00",
+        "source": "archive.encoded",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 3843,
+    "entropy": 5.237,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 3843,
+      "chars": 3843,
+      "words": 526,
+      "lines": 147,
+      "max_line_length": 83,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 9
+    },
+    "container": {
+      "entries": 1,
+      "uncompressed_bytes": 70,
+      "ratio": 0.018214936247723135
+    }
+  },
+  "integrity": {
+    "sha256": "a71909f8023193ce755261cf75da0debbab661bb3d369c95fcd7084e32872cb3",
+    "blake3": "7885d37665d0ef0b73db65c299849e06ceb8051faa2562e5dc64ae519ba8fab7"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "shar": {
+      "generator": "GNU sharutils 4.15.2",
+      "created": "2025-09-01 12:00 UTC",
+      "md5_checked": true,
+      "files": 1,
+      "methods": {
+        "text": 1
+      },
+      "file_types": {
+        "txt": 1
+      },
+      "top_level": [
+        "tide-table.txt"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00",
+        "2025-09-01T12:00:00"
+      ],
+      "entries": [
+        {
+          "path": "tide-table.txt",
+          "size_bytes": 70,
+          "modified": "2025-09-01T12:00:00",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "tide-table.txt",
+        "stem": "tide-table",
+        "extension": "txt"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.35,
+        "detected_by": "extension",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 70
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 70,
+        "entropy": 4.476,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 70,
+          "chars": 70,
+          "words": 11,
+          "lines": 3,
+          "max_line_length": 25,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "c7a3368b90c26df8146555274d08e150b80efb74f316f49401cc0963a7ca99db",
+        "blake3": "bd5ae484c186ec54ecde2c838fdd87f0f507c8d78127476c3ab955f8dd5059e5"
+      },
+      "content": {
+        "excerpt": "Saltmere tides, September high 06:12 low 12:31 high 18:40 low 00:55"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "archive.encoded",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

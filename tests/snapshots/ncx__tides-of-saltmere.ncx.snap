@@ -1,0 +1,160 @@
+---
+source: src/formats/doc/ebook/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "tides-of-saltmere.ncx",
+    "stem": "tides-of-saltmere",
+    "extension": "ncx"
+  },
+  "identification": {
+    "format": "ncx",
+    "name": "DAISY / EPUB navigation (NCX)",
+    "mime": "application/x-dtbncx+xml",
+    "family": "doc.ebook",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "ncx",
+        "confidence": 0.99
+      },
+      {
+        "format": "xml",
+        "confidence": 0.6
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "doc.ebook"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 797
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ana Lighthouse"
+    ]
+  },
+  "physical": {
+    "size_bytes": 797,
+    "entropy": 5.007,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 797,
+      "chars": 797,
+      "words": 41,
+      "lines": 16,
+      "max_line_length": 121,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "725071ed2fc4418ed73662ab3e7e9962fcb8b638dc6fa02350270348d70cda8b",
+    "blake3": "9e71cedb39ce747b5708c99d9ab64ee3f14d1bdbe7db846c6767df079f7acc28"
+  },
+  "content": {
+    "title": "Tides of Saltmere",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "outline": [
+      {
+        "level": 1,
+        "text": "High water"
+      },
+      {
+        "level": 2,
+        "text": "The bell"
+      },
+      {
+        "level": 1,
+        "text": "Low water"
+      }
+    ],
+    "excerpt": "Tides of Saltmere High water The bell Low water"
+  },
+  "metadata": {},
+  "format": {
+    "ncx": {
+      "uid": "urn:uuid:5a17e2e0-0000-4000-8000-000000000003",
+      "depth": "2",
+      "page_count": "0",
+      "nav_points": 3,
+      "creators": [
+        {
+          "name": "Ana Lighthouse",
+          "role": "aut"
+        }
+      ],
+      "toc_entries": 3
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.ebook",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

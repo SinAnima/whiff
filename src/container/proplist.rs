@@ -249,6 +249,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg_attr(miri, ignore = "expands to the 2,000,000-event cap: hours under Miri")]
     fn shared_references_are_bounded() {
         // A binary plist of 40 arrays, each holding the next one twice:
         // 2^40 values once expanded.

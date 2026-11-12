@@ -1,4 +1,5 @@
-//! HEIF / HEIC / AVIF (still images and sequences): brands, the primary
+//! HEIF / HEIC / AVIF / AVCI (H.264) / HEJ2 (JPEG 2000) still images and
+//! sequences: brands, the primary
 //! item's size, bit depth, rotation and colour (ICC or nclx), the item
 //! catalogue (thumbnails, tiles, alpha / depth / HDR gain-map auxiliaries)
 //! and the EXIF and XMP items, read through the item locations.
@@ -58,6 +59,24 @@ static META: ExtractorMeta = ExtractorMeta {
             magic: &[Magic::at(4, b"ftypavif"), Magic::at(4, b"ftypavis")],
             parent: None,
         },
+        FormatSpec {
+            id: "avci",
+            name: "AVC-coded HEIF image",
+            family: "image.raster",
+            mimes: &["image/avci"],
+            extensions: &["avci", "avcs"],
+            magic: &[Magic::at(4, b"ftypavci"), Magic::at(4, b"ftypavcs")],
+            parent: None,
+        },
+        FormatSpec {
+            id: "hej2",
+            name: "JPEG 2000 in HEIF",
+            family: "image.raster",
+            mimes: &["image/hej2k"],
+            extensions: &["hej2"],
+            magic: &[Magic::at(4, b"ftypj2ki"), Magic::at(4, b"ftypj2is")],
+            parent: None,
+        },
     ],
 };
 
@@ -80,6 +99,10 @@ impl Extractor for Heif {
         }
         if brands.iter().any(|b| *b == b"avif" || *b == b"avis") {
             Some(Sniff { format: "avif", confidence: 0.95 })
+        } else if brands.iter().any(|b| *b == b"avci" || *b == b"avcs") {
+            Some(Sniff { format: "avci", confidence: 0.95 })
+        } else if brands.iter().any(|b| *b == b"j2ki" || *b == b"j2is") {
+            Some(Sniff { format: "hej2", confidence: 0.95 })
         } else if brands.iter().any(|b| b.starts_with(b"hei") || b.starts_with(b"hev")) {
             Some(Sniff { format: "heic", confidence: 0.95 })
         } else {
@@ -415,5 +438,5 @@ impl Meta {
 
 #[cfg(test)]
 mod tests {
-    crate::fixture_tests!("heic", "heif", "avif");
+    crate::fixture_tests!("heic", "heif", "avif", "avci", "hej2");
 }

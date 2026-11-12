@@ -1,0 +1,121 @@
+---
+source: src/formats/image/retro.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "check.rle",
+    "stem": "check",
+    "extension": "rle"
+  },
+  "identification": {
+    "format": "compuserve_rle",
+    "name": "CompuServe RLE image",
+    "mime": "application/octet-stream",
+    "family": "image.raster",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "image.retro"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 198
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 198,
+    "entropy": 0.254,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 198,
+      "chars": 198,
+      "words": 1,
+      "lines": 0,
+      "max_line_length": 196,
+      "bom": false,
+      "blank_lines": 0
+    },
+    "image": {
+      "width": 256,
+      "height": 192,
+      "bit_depth": 1,
+      "channels": 1
+    }
+  },
+  "integrity": {
+    "sha256": "95ce867a8514549740feb66e836e8c92fcf788ac8c7c54462ba701beb71b30f9",
+    "blake3": "f716ae9e00e2a304b57f31c2d06cf5c28d945c325c4d501d60675c770aac4bbd"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "compuserve_rle": {
+      "resolution": "high"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "image.retro",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

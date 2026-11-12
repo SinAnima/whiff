@@ -5,6 +5,7 @@ use crate::io::SourceError;
 /// Failure of a whole `extract_*` call. Problems *inside* a file never produce
 /// this; they are recorded in the report's `diagnostics` instead.
 #[derive(Debug, thiserror::Error)]
+#[non_exhaustive]
 pub enum Error {
     /// The path could not be inspected at all (missing, permission denied on stat, …).
     #[error("{path}: {source}")]
@@ -20,6 +21,7 @@ pub enum Error {
 /// Why an extractor, block decoder or analyzer stopped. Recorded in
 /// `diagnostics.extractors[].status`; never fatal for the report.
 #[derive(Debug, Clone, PartialEq, Eq, thiserror::Error)]
+#[non_exhaustive]
 pub enum ExtractError {
     /// The input is not (or no longer) the format this extractor handles.
     #[error("not a {0} file")]

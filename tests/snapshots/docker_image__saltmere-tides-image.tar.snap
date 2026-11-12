@@ -936,6 +936,16 @@ expression: report
               }
             },
             "max_depth": 3
+          },
+          "known_schema": {
+            "id": "oci_manifest",
+            "name": "OCI image manifest",
+            "config_media_type": "application/vnd.oci.image.config.v1+json",
+            "layers": 1,
+            "layer_bytes": 10240,
+            "layer_media_types": {
+              "application/vnd.oci.image.layer.v1.tar": 1
+            }
           }
         }
       },
@@ -1135,6 +1145,14 @@ expression: report
               }
             },
             "max_depth": 4
+          },
+          "known_schema": {
+            "id": "oci_index",
+            "name": "OCI image index",
+            "manifests": 1,
+            "references": [
+              "1.2.0"
+            ]
           }
         }
       },
@@ -1458,6 +1476,11 @@ expression: report
               }
             },
             "max_depth": 1
+          },
+          "known_schema": {
+            "id": "oci_layout",
+            "name": "OCI image layout",
+            "version": "1.0.0"
           }
         }
       },

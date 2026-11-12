@@ -1,0 +1,238 @@
+---
+source: src/formats/data/csv.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tides.fwf",
+    "stem": "saltmere-tides",
+    "extension": "fwf"
+  },
+  "identification": {
+    "format": "fixed_width",
+    "name": "Fixed-width text table",
+    "mime": "text/x-fixed-width",
+    "family": "data.csv",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.csv"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 504
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 504,
+    "entropy": 3.674,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 504,
+      "chars": 504,
+      "words": 48,
+      "lines": 7,
+      "max_line_length": 71,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "0eaaf999b7820b59651571ccd0bf9a4b6e1d19ed13eb39a84e55d51d41d3e66a",
+    "blake3": "1fa7b8885673384a2fa597cb7fce2eb74540fc611fef657a6a30e79de86615c9"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "fixed_width": {
+      "dialect": {
+        "layout": "fixed_width",
+        "column_spans": [
+          [
+            0,
+            15
+          ],
+          [
+            18,
+            28
+          ],
+          [
+            33,
+            43
+          ],
+          [
+            46,
+            52
+          ],
+          [
+            55,
+            64
+          ],
+          [
+            66,
+            null
+          ]
+        ],
+        "header": true
+      },
+      "rows": 6,
+      "columns": 6,
+      "column_profile": [
+        {
+          "name": "station",
+          "type": "string",
+          "null_ratio": 0.0,
+          "distinct": 3,
+          "max_length": 15
+        },
+        {
+          "name": "date",
+          "type": "date",
+          "null_ratio": 0.0,
+          "distinct": 2,
+          "min": "2025-09-01",
+          "max": "2025-09-02"
+        },
+        {
+          "name": "high_water",
+          "type": "string",
+          "null_ratio": 0.0,
+          "distinct": 6,
+          "max_length": 10
+        },
+        {
+          "name": "high_m",
+          "type": "number",
+          "null_ratio": 0.0,
+          "distinct": 6,
+          "min": 3.95,
+          "max": 4.4,
+          "mean": 4.167
+        },
+        {
+          "name": "low_water",
+          "type": "string",
+          "null_ratio": 0.0,
+          "distinct": 6,
+          "max_length": 9
+        },
+        {
+          "name": "low_m",
+          "type": "number",
+          "null_ratio": 0.0,
+          "distinct": 6,
+          "min": 0.49,
+          "max": 0.81,
+          "mean": 0.663
+        }
+      ],
+      "sample_rows": [
+        [
+          "Saltmere Quay",
+          "2025-09-01",
+          "06:12",
+          "4.10",
+          "12:31",
+          "0.72"
+        ],
+        [
+          "Saltmere Quay",
+          "2025-09-02",
+          "06:58",
+          "4.22",
+          "13:15",
+          "0.64"
+        ],
+        [
+          "Brackwell Point",
+          "2025-09-01",
+          "06:20",
+          "3.95",
+          "12:40",
+          "0.81"
+        ],
+        [
+          "Brackwell Point",
+          "2025-09-02",
+          "07:05",
+          "4.02",
+          "13:22",
+          "0.77"
+        ],
+        [
+          "Gull Rock",
+          "2025-09-01",
+          "06:05",
+          "4.31",
+          "12:24",
+          "0.55"
+        ]
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.csv",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

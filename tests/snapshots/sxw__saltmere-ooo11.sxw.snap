@@ -1,0 +1,173 @@
+---
+source: src/formats/doc/odf.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-ooo11.sxw",
+    "stem": "saltmere-ooo11",
+    "extension": "sxw"
+  },
+  "identification": {
+    "format": "sxw",
+    "name": "OpenOffice.org 1.x / StarOffice text",
+    "mime": "application/vnd.sun.xml.writer",
+    "family": "doc.odf",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "sxw",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "doc.odf"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 1230
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00",
+        "source": "odf.meta.creation-date",
+        "tz_known": false
+      },
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00",
+        "source": "odf.meta.date",
+        "tz_known": false
+      }
+    ]
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ana Lighthouse",
+      "Ben Gull"
+    ]
+  },
+  "physical": {
+    "size_bytes": 1230,
+    "entropy": 7.168,
+    "entropy_scope": "file",
+    "document": {
+      "pages": 1,
+      "words": 15
+    }
+  },
+  "integrity": {
+    "sha256": "5921d4dff41499c4e6a31ffaacf31e1809868536f5b47ba1e7a1e768dd302675",
+    "blake3": "ea32193ae3600e28f698a7749264b546b876ac8a5c5bf877e016b7b7900b63a2"
+  },
+  "content": {
+    "title": "Saltmere harbour",
+    "authors": [
+      "Ana Lighthouse",
+      "Ben Gull"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "outline": [
+      {
+        "level": 1,
+        "text": "Saltmere harbour"
+      }
+    ],
+    "excerpt": "High water 06:12, low water 12:31. The bell rings at high tide."
+  },
+  "metadata": {
+    "odf": {
+      "generator": "OpenOffice.org 1.1.5 (Linux)",
+      "title": "Saltmere harbour",
+      "initial-creator": "Ana Lighthouse",
+      "creator": "Ben Gull",
+      "creation-date": "2025-09-01T12:00:00",
+      "date": "2025-09-01T12:00:00",
+      "language": "en-GB",
+      "document-statistic": {
+        "page-count": 1,
+        "paragraph-count": 3,
+        "word-count": 15
+      }
+    }
+  },
+  "format": {
+    "sxw": {
+      "mimetype": "application/vnd.sun.xml.writer",
+      "parts": 4,
+      "manifest_entries": 3,
+      "paragraphs": 3
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.odf",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

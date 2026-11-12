@@ -1,0 +1,163 @@
+---
+source: src/formats/science/statapps.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-catches.mtw",
+    "stem": "saltmere-catches",
+    "extension": "mtw"
+  },
+  "identification": {
+    "format": "minitab_worksheet",
+    "name": "Minitab worksheet",
+    "mime": "application/x-minitab-worksheet",
+    "family": "sci",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "minitab_worksheet",
+        "confidence": 0.99
+      },
+      {
+        "format": "cfb",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "science.statapps"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2560
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "ole.CreateDate",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Saltmere Harbour"
+    ]
+  },
+  "physical": {
+    "size_bytes": 2560,
+    "entropy": 1.706,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "1d7484dbbf9ee42d314233e94d03782dfacc5c0b749269194dcc64a43cb73e78",
+    "blake3": "9f580fbe11d3bd8663274eb1ca3a99a1ebe4315ebde4b1cc334cb4930c0f7558"
+  },
+  "content": {
+    "title": "Saltmere catches 2025",
+    "authors": [
+      "Saltmere Harbour"
+    ],
+    "excerpt": "Saltmere catches 2025"
+  },
+  "metadata": {
+    "ole": {
+      "Title": "Saltmere catches 2025",
+      "Author": "Saltmere Harbour",
+      "CreateDate": "2025-09-01T12:00:00Z"
+    }
+  },
+  "format": {
+    "minitab_worksheet": {
+      "release_range": "15+",
+      "version": 3,
+      "streams": 3,
+      "storages": 0,
+      "entries": [
+        {
+          "name": "SummaryInformation",
+          "size_bytes": 168
+        },
+        {
+          "name": "Worksheet",
+          "size_bytes": 96
+        },
+        {
+          "name": "WorksheetInfo",
+          "size_bytes": 64
+        }
+      ],
+      "top_level_streams": [
+        "SummaryInformation",
+        "Worksheet",
+        "WorksheetInfo"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "science.statapps",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

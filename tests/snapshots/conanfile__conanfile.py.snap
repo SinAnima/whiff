@@ -1,0 +1,147 @@
+---
+source: src/formats/code/manifest/mod.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "conanfile.py",
+    "stem": "conanfile",
+    "extension": "py"
+  },
+  "identification": {
+    "format": "conanfile",
+    "name": "Conan conanfile",
+    "mime": "text/plain",
+    "family": "code.manifest",
+    "confidence": 0.97,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "conanfile",
+        "confidence": 0.97
+      },
+      {
+        "format": "python",
+        "confidence": 0.35
+      }
+    ],
+    "encoding": "us-ascii",
+    "extractor": "code.manifest"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 396
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {
+    "license": {
+      "name": "CC0-1.0"
+    }
+  },
+  "physical": {
+    "size_bytes": 396,
+    "entropy": 4.669,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 396,
+      "chars": 396,
+      "words": 35,
+      "lines": 14,
+      "max_line_length": 57,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 3
+    }
+  },
+  "integrity": {
+    "sha256": "0ed77d1454bd8efa499f45c497daee05fdc19a508e5f5a845946254cb09f691e",
+    "blake3": "9f290f89edc5bb13acb288a4f22643e0124c5407b393fe68752eb79a41e3ffd5"
+  },
+  "content": {
+    "title": "saltmere-tides 1.4.0",
+    "description": "Tide predictions for Saltmere Harbour",
+    "excerpt": "Tide predictions for Saltmere Harbour"
+  },
+  "metadata": {},
+  "format": {
+    "conanfile": {
+      "ecosystem": "conan",
+      "name": "saltmere-tides",
+      "version": "1.4.0",
+      "license": "CC0-1.0",
+      "repository": "https://git.harbour.test/tides",
+      "dependencies": {
+        "fmt": "11.0.2"
+      },
+      "dependencies_count": 1,
+      "tool_dependencies": {
+        "cmake": "3.30.1"
+      },
+      "tool_dependencies_count": 1,
+      "kind": "conanfile.py"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.manifest",
+        "version": 2,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

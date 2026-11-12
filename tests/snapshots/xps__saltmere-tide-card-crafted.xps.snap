@@ -1,0 +1,153 @@
+---
+source: src/formats/doc/packages.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-tide-card-crafted.xps",
+    "stem": "saltmere-tide-card-crafted",
+    "extension": "xps"
+  },
+  "identification": {
+    "format": "xps",
+    "name": "XPS / OpenXPS document",
+    "mime": "application/oxps",
+    "family": "doc.ooxml",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "xps",
+        "confidence": 0.99
+      },
+      {
+        "format": "zip",
+        "confidence": 0.5
+      }
+    ],
+    "extractor": "doc.packages"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 2485
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "created",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "xps.core.created",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {
+    "creators": [
+      "Ana Lighthouse"
+    ]
+  },
+  "physical": {
+    "size_bytes": 2485,
+    "entropy": 7.246,
+    "entropy_scope": "file",
+    "document": {
+      "pages": 2
+    }
+  },
+  "integrity": {
+    "sha256": "aa0b4f4151bdfd2d50b0bb1e552fb294d54494fac1fe4abaf1dd0d221081a367",
+    "blake3": "593e9408d5b008857dd6ed77d6d4d7ccff032bc477f6ab0e1ee8d159d45d0af4"
+  },
+  "content": {
+    "title": "Saltmere tide card",
+    "authors": [
+      "Ana Lighthouse"
+    ],
+    "language": {
+      "code": "en",
+      "confidence": 1.0
+    },
+    "excerpt": "Saltmere tide card High water 06:12 Low water 12:31 The bell rings at high tide."
+  },
+  "metadata": {},
+  "format": {
+    "xps": {
+      "variant": "XPS 1.0",
+      "documents": 1,
+      "font_files": 1,
+      "fonts": [
+        "Harbour.odttf"
+      ],
+      "core_properties": {
+        "title": "Saltmere tide card",
+        "creator": "Ana Lighthouse",
+        "language": "en-GB",
+        "created": "2025-09-01T12:00:00Z"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.packages",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

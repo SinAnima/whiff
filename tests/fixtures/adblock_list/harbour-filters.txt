@@ -1,0 +1,14 @@
+[Adblock Plus 2.0]
+! Title: Saltmere Harbour filters
+! Version: 202511050800
+! Last modified: 05 Nov 2025 08:00 UTC
+! Expires: 4 days
+! Homepage: https://saltmere.example/filters
+! License: CC0-1.0
+||ads.example.com^
+||tracker.example.net^$third-party
+/banner/*$image
+@@||saltmere.example^$document
+saltmere.example##.popup-ad
+saltmere.example#@#.newsletter
+example.org##+js(nowebrtc)

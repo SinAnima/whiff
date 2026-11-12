@@ -71,7 +71,12 @@ pub(crate) fn fill_from_metadata(report: &mut Report, meta: &Metadata, path: &Pa
         sys.device = Some(meta.dev());
         sys.inode = Some(meta.ino());
         sys.links = Some(meta.nlink());
-        sys.allocated_bytes = Some(meta.blocks().saturating_mul(512));
+        let allocated = meta.blocks().saturating_mul(512);
+        sys.allocated_bytes = Some(allocated);
+        // A file shorter than a block can be stored inline (no blocks).
+        if meta.is_file() && meta.len() >= 4096 {
+            sys.sparse = Some(allocated < meta.len());
+        }
         sys.hidden = Some(name.starts_with('.'));
         times.changed = u32::try_from(meta.ctime_nsec())
             .ok()

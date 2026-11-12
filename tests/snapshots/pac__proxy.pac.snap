@@ -1,0 +1,136 @@
+---
+source: src/formats/web/misc.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "proxy.pac",
+    "stem": "proxy",
+    "extension": "pac"
+  },
+  "identification": {
+    "format": "pac",
+    "name": "PAC proxy auto-config",
+    "mime": "application/x-ns-proxy-autoconfig",
+    "family": "web.misc",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "web.misc"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 417
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {
+    "active_content": [
+      "javascript"
+    ]
+  },
+  "rights": {},
+  "physical": {
+    "size_bytes": 417,
+    "entropy": 5.13,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 417,
+      "chars": 417,
+      "words": 30,
+      "lines": 9,
+      "max_line_length": 83,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "12779e2b6929507f119c32463338e9752e4771685b513e516b14f2a71ff2b65a",
+    "blake3": "586ee2781fae6807db1ce6ceab9f7ed1416dae18bb33f83b4c00864fc2af2a14"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pac": {
+      "proxies": [
+        "proxy.saltmere.example:8080",
+        "socks.saltmere.example:1080",
+        "tides-proxy.saltmere.example:3128"
+      ],
+      "proxy_kinds": {
+        "PROXY": 2,
+        "SOCKS5": 1
+      },
+      "direct": true,
+      "functions_used": {
+        "dnsDomainIs": 1,
+        "dnsResolve": 1,
+        "isInNet": 1,
+        "isPlainHostName": 1,
+        "shExpMatch": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "web.misc",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

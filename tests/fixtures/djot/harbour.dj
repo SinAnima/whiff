@@ -1,0 +1,25 @@
+# Saltmere Harbour
+
+Visitors moor on the *east pontoon*. See [the board](https://board.example.org/)
+and <https://tides.example.org/saltmere>.
+
+![The east pontoon](images/pontoon.png)
+
+## Fees
+
+| Length     | Per night |
+|------------|-----------|
+| Under 10 m | 18.00     |
+
+``` python
+print("VHF 12")
+```
+
+::: warning
+The bar dries at low water springs.[^bar]
+:::
+
+[^bar]: Charted at 0.4 m.
+
+{#moorings}
+## Moorings

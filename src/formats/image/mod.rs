@@ -8,10 +8,14 @@
 // `y1`) and keep a reader `r` and layout `l` in scope: short names are clearer here.
 #![allow(clippy::many_single_char_names, clippy::similar_names)]
 
+pub(crate) mod assets;
 pub(crate) mod bmp;
+pub(crate) mod codecs;
 pub(crate) mod dds;
+pub(crate) mod diagram;
 pub(crate) mod emf;
 pub(crate) mod exr;
+pub(crate) mod film;
 pub(crate) mod gif;
 pub(crate) mod hdr;
 pub(crate) mod heif;
@@ -20,13 +24,18 @@ pub(crate) mod jp2;
 pub(crate) mod jpeg;
 pub(crate) mod jxl;
 pub(crate) mod ktx;
+pub(crate) mod layered;
 pub(crate) mod pcx;
 pub(crate) mod png;
 pub(crate) mod pnm;
 pub(crate) mod psd;
 pub(crate) mod qoi;
 pub(crate) mod raw;
+pub(crate) mod retro;
+pub(crate) mod sidecar;
+pub(crate) mod slide;
 pub(crate) mod svg;
+pub(crate) mod textures;
 pub(crate) mod tga;
 pub(crate) mod tiff;
 pub(crate) mod webp;

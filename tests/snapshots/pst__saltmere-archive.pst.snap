@@ -1,0 +1,111 @@
+---
+source: src/formats/email/stores.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-archive.pst",
+    "stem": "saltmere-archive",
+    "extension": "pst"
+  },
+  "identification": {
+    "format": "pst",
+    "name": "Outlook data file (PST / OST)",
+    "mime": "application/vnd.ms-outlook-pst",
+    "family": "email",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "extractor": "email.stores"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 8192
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 8192,
+    "entropy": 0.223,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "5da10989d11a2de76ae10e830aab855ecbfc4ba487aa9f6e83b1682005e5711c",
+    "blake3": "e96c3f776fd41962b7705f64305e2273b68b9f8d2da5b71d0ff1e49b40856920"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "pst": {
+      "content_type": "PST (personal folders)",
+      "data_version": 23,
+      "layout": "Unicode (64-bit)",
+      "content_version": 19,
+      "declared_size_bytes": 8192,
+      "encryption": "compressible (permutation)",
+      "header_valid": true
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "email.stores",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

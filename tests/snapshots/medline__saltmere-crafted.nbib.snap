@@ -1,0 +1,132 @@
+---
+source: src/formats/doc/writing.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-crafted.nbib",
+    "stem": "saltmere-crafted",
+    "extension": "nbib"
+  },
+  "identification": {
+    "format": "medline",
+    "name": "MEDLINE / PubMed citations",
+    "mime": "application/nbib",
+    "family": "doc.other",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "doc.writing"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 364
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 364,
+    "entropy": 4.9,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 364,
+      "chars": 364,
+      "words": 73,
+      "lines": 20,
+      "max_line_length": 55,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 1
+    }
+  },
+  "integrity": {
+    "sha256": "7eeae91aa3a8af001013784006f3de91561b453a2e9eef7ef762e26e97efb94f",
+    "blake3": "49dc252544907030cc3d7b58f45aa37b9f3dbd6e473a94d2071ab280f6c935fb"
+  },
+  "content": {
+    "excerpt": "Tide tables for Saltmere Harbour: a small-harbour study. Bell buoys in fog."
+  },
+  "metadata": {},
+  "format": {
+    "medline": {
+      "entries": 2,
+      "entry_types": {
+        "Journal Article": 1,
+        "Review": 1
+      },
+      "year_range": [
+        2024,
+        2025
+      ],
+      "dois": 1,
+      "distinct_authors": 3,
+      "titles": [
+        "Tide tables for Saltmere Harbour: a small-harbour study.",
+        "Bell buoys in fog."
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "doc.writing",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

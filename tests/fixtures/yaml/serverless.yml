@@ -1,0 +1,11 @@
+service: saltmere-tides
+provider:
+  name: aws
+  runtime: python3.12
+functions:
+  highWater:
+    handler: tides.high
+  bell:
+    handler: tides.bell
+plugins:
+  - serverless-offline

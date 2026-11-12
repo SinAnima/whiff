@@ -1,0 +1,249 @@
+---
+source: src/formats/data/yaml.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "kustomization.yaml",
+    "stem": "kustomization",
+    "extension": "yaml"
+  },
+  "identification": {
+    "format": "yaml",
+    "name": "YAML",
+    "mime": "application/yaml",
+    "family": "data.yaml",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.yaml"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 215
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 215,
+    "entropy": 4.666,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 215,
+      "chars": 215,
+      "words": 21,
+      "lines": 11,
+      "max_line_length": 43,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 0
+    }
+  },
+  "integrity": {
+    "sha256": "f6011c6feedfd3c145fad3defb4c68673b87889c2b74d6e42e4518b99f67aa3d",
+    "blake3": "f9932fb279a5b738ef00ed667050ab0dbebd86fcb9403392522050f1a5707d8a"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "yaml": {
+      "anchors": 0,
+      "aliases": 0,
+      "valid": true,
+      "documents": 1,
+      "top_level": "object",
+      "schema": {
+        "paths": {
+          "$": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.apiVersion": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "kustomize.config.k8s.io/v1beta1"
+            ]
+          },
+          "$.kind": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "Kustomization"
+            ]
+          },
+          "$.namespace": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "harbour"
+            ]
+          },
+          "$.resources": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              2,
+              2
+            ]
+          },
+          "$.resources[]": {
+            "types": [
+              "string"
+            ],
+            "count": 2,
+            "examples": [
+              "deployment.yaml",
+              "service.yaml"
+            ]
+          },
+          "$.patches": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.patches[]": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.patches[].path": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "replicas.yaml"
+            ]
+          },
+          "$.images": {
+            "types": [
+              "array"
+            ],
+            "count": 1,
+            "items": [
+              1,
+              1
+            ]
+          },
+          "$.images[]": {
+            "types": [
+              "object"
+            ],
+            "count": 1
+          },
+          "$.images[].name": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "saltmere/tides"
+            ]
+          },
+          "$.images[].newTag": {
+            "types": [
+              "string"
+            ],
+            "count": 1,
+            "examples": [
+              "1.4"
+            ]
+          }
+        },
+        "max_depth": 3
+      },
+      "known_schema": {
+        "id": "kustomize",
+        "name": "Kustomize configuration",
+        "resources": 2,
+        "bases": 0,
+        "components": 0,
+        "patches": 1,
+        "namespace": "harbour",
+        "images": [
+          "saltmere/tides"
+        ]
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.yaml",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

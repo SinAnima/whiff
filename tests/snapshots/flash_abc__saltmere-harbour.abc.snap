@@ -1,0 +1,139 @@
+---
+source: src/formats/bytecode/longtail.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-harbour.abc",
+    "stem": "saltmere-harbour",
+    "extension": "abc"
+  },
+  "identification": {
+    "format": "flash_abc",
+    "name": "ActionScript bytecode (ABC)",
+    "mime": "application/x-actionscript-bytecode",
+    "family": "bytecode",
+    "confidence": 0.76,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "extractor": "bytecode.longtail"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 263
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 263,
+    "entropy": 4.21,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "15e845718776bd9e748e0ccd99c87763917243d2a659b2fa8d76cc2e354d4132",
+    "blake3": "dcf3600201207e0deef33c49fc1e94bfb99fc4aa825f82df2cc26cc701d6d521"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "flash_abc": {
+      "abc_version": "46.16",
+      "constant_pool": {
+        "integers": 0,
+        "unsigned_integers": 0,
+        "doubles": 0,
+        "strings": 11,
+        "namespaces": 2,
+        "namespace_sets": 0,
+        "multinames": 6
+      },
+      "methods": 8,
+      "method_bodies": 6,
+      "code_bytes": 18,
+      "scripts": 1,
+      "metadata": {
+        "SWF": 1
+      },
+      "classes": 3,
+      "class_list": [
+        {
+          "name": "saltmere.harbour.Tide",
+          "extends": "Object"
+        },
+        {
+          "name": "saltmere.harbour.Bell",
+          "extends": "Object"
+        },
+        {
+          "name": "saltmere.harbour.IRinger",
+          "interface": true
+        }
+      ],
+      "packages": [
+        "saltmere.harbour"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "bytecode.longtail",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

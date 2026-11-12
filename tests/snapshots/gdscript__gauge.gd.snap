@@ -1,0 +1,157 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "gauge.gd",
+    "stem": "gauge",
+    "extension": "gd"
+  },
+  "identification": {
+    "format": "gdscript",
+    "name": "GDScript source",
+    "mime": "text/x-gdscript",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 331
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 331,
+    "entropy": 4.843,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 331,
+      "chars": 331,
+      "words": 42,
+      "lines": 14,
+      "max_line_length": 63,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "6b8c18da1f89ecc48c8fe5546aeef852d23303ae61ab509cb150dcfb42e2de6c",
+    "blake3": "2bb804ed7b2eab0d264036efec2b262fd9a94cb9ea129c02ecbb81af4602c62c"
+  },
+  "content": {
+    "description": "Tide gauge node for the harbour scene.",
+    "excerpt": "Tide gauge node for the harbour scene."
+  },
+  "metadata": {},
+  "format": {
+    "gdscript": {
+      "language": "GDScript",
+      "loc": {
+        "code": 9,
+        "comment": 1,
+        "blank": 4,
+        "total": 14
+      },
+      "imports": [
+        "res://ripple.gd"
+      ],
+      "import_count": 1,
+      "symbols": {
+        "class": [
+          "TideGauge"
+        ],
+        "export": [
+          "amplitude"
+        ],
+        "extends": [
+          "Node2D"
+        ],
+        "function": [
+          "_process"
+        ],
+        "signal": [
+          "level_changed"
+        ]
+      },
+      "symbol_counts": {
+        "class": 1,
+        "export": 1,
+        "extends": 1,
+        "function": 1,
+        "signal": 1
+      },
+      "module_doc": "Tide gauge node for the harbour scene.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 56
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

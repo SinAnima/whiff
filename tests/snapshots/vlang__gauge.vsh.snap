@@ -1,0 +1,148 @@
+---
+source: src/formats/code/source.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "gauge.vsh",
+    "stem": "gauge",
+    "extension": "vsh"
+  },
+  "identification": {
+    "format": "vlang",
+    "name": "V source",
+    "mime": "text/x-vlang",
+    "family": "code.source",
+    "confidence": 0.35,
+    "detected_by": "extension",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "code.source"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 249
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 249,
+    "entropy": 4.833,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 249,
+      "chars": 249,
+      "words": 42,
+      "lines": 19,
+      "max_line_length": 52,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 4
+    }
+  },
+  "integrity": {
+    "sha256": "97286237e8639025d1ff6390f12993f77b860cb06f94266e0c9ffc8453062da3",
+    "blake3": "c5ff9c4cbd2ecf5140ff3799ff4f9dadead3ef3d9da7ed340585141c50be55a2"
+  },
+  "content": {
+    "description": "Gauge report script.",
+    "excerpt": "Gauge report script."
+  },
+  "metadata": {},
+  "format": {
+    "vlang": {
+      "language": "V",
+      "loc": {
+        "code": 14,
+        "comment": 1,
+        "blank": 4,
+        "total": 19
+      },
+      "package": "main",
+      "imports": [
+        "os",
+        "math"
+      ],
+      "import_count": 2,
+      "symbols": {
+        "function": [
+          "high_water",
+          "main"
+        ],
+        "struct": [
+          "Gauge"
+        ]
+      },
+      "symbol_counts": {
+        "function": 2,
+        "struct": 1
+      },
+      "module_doc": "Gauge report script.",
+      "is_test": false,
+      "generated": false,
+      "longest_line": 45
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "code.source",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}
