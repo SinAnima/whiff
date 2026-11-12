@@ -23,7 +23,7 @@ pub use fs::{FileSystem, filesystem, identify};
 // Used by the disk extractors (feature `forensics`) and squashfs.
 #[allow(unused_imports)]
 pub(crate) use fs::{FatGeometry, fat_geometry, squashfs_compression};
-pub use partition::{Partition, Table, is_mbr, table};
+pub use partition::{is_mbr, table};
 
 /// Partitions described at most.
 pub const MAX_PARTITIONS: usize = 128;

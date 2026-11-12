@@ -1,5 +1,6 @@
 /// What a piece of emitted text is.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[non_exhaustive]
 pub enum TextRole {
     /// Running body text.
     Body,
@@ -29,6 +30,7 @@ impl TextRole {
 
 /// One emitted piece of text.
 #[derive(Debug, Clone, PartialEq, Eq)]
+#[non_exhaustive]
 pub struct TextChunk {
     /// Role.
     pub role: TextRole,

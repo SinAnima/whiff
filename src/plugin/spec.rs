@@ -58,6 +58,7 @@ pub struct FormatSpec {
 
 /// How expensive an extractor is; profiles filter on this.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
+#[non_exhaustive]
 pub enum Cost {
     /// Reads headers / small structures only (all profiles).
     Header,
@@ -84,6 +85,7 @@ pub struct ExtractorMeta {
 
 /// What a sniffer sees.
 #[derive(Debug, Clone, Copy)]
+#[non_exhaustive]
 pub struct Probe<'a> {
     /// First bytes (up to 64 KiB).
     pub head: &'a [u8],
@@ -95,6 +97,20 @@ pub struct Probe<'a> {
     pub name: Option<&'a str>,
     /// Lowercase extension.
     pub extension: Option<&'a str>,
+}
+
+impl<'a> Probe<'a> {
+    /// A probe over `head` and `tail` of a `len`-byte input named `name`
+    /// (the extension is taken from the name, lowercased by the caller).
+    pub const fn new(
+        head: &'a [u8],
+        tail: &'a [u8],
+        len: u64,
+        name: Option<&'a str>,
+        extension: Option<&'a str>,
+    ) -> Self {
+        Self { head, tail, len, name, extension }
+    }
 }
 
 /// A sniffer's verdict.

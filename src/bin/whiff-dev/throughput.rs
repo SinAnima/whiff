@@ -155,5 +155,6 @@ fn profile_name(p: Profile) -> &'static str {
         Profile::Standard => "standard",
         Profile::Full => "full",
         Profile::Llm => "llm",
+        _ => "other",
     }
 }

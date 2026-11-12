@@ -32,6 +32,7 @@ use super::testing::{fixture_files, redact};
 
 /// One failed check.
 #[derive(Debug, Clone, PartialEq, Eq)]
+#[non_exhaustive]
 pub struct Failure {
     /// Extractor id.
     pub extractor: String,
@@ -51,6 +52,7 @@ impl std::fmt::Display for Failure {
 
 /// Result of a conformance run.
 #[derive(Debug, Default)]
+#[non_exhaustive]
 pub struct Outcome {
     /// (extractor, format) pairs checked.
     pub checked: usize,

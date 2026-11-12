@@ -384,7 +384,7 @@ impl Zip {
     }
 
     /// Where `entry`'s data starts (after its local header).
-    pub fn data_offset(&self, src: &mut dyn Source, entry: &ZipEntry) -> Result<u64, ExtractError> {
+    pub fn data_offset(src: &mut dyn Source, entry: &ZipEntry) -> Result<u64, ExtractError> {
         let header = src.read_vec(entry.local_offset, 30)?;
         if !header.starts_with(LOCAL) {
             return Err(ExtractError::malformed(format!("{}: no local header", entry.name)));
@@ -397,6 +397,7 @@ impl Zip {
     /// Up to `max` bytes of `entry`'s data, and whether that is all of it.
     /// Reads stored, deflate, bzip2, LZMA, Zstandard and xz entries;
     /// decompression is charged to the budget.
+    #[allow(clippy::unused_self)] // read through the archive, like `read`, though only the entry is needed
     pub fn read_prefix(
         &self,
         src: &mut dyn Source,
@@ -407,7 +408,7 @@ impl Zip {
         if entry.is_encrypted() {
             return Err(ExtractError::Encrypted);
         }
-        let at = self.data_offset(src, entry)?;
+        let at = Self::data_offset(src, entry)?;
         let csize = entry.compressed_size;
         if at.checked_add(csize).is_none_or(|end| end > src.len()) {
             return Err(ExtractError::malformed(format!("{}: data out of range", entry.name)));

@@ -374,7 +374,8 @@ fn group<'m>(out: &'m mut Map<String, Value>, prefix: &str) -> &'m mut Map<Strin
     }
 }
 
-/// Parse a packet into `metadata.xmp` form (for other decoders and tests).
+/// Parse a packet into `metadata.xmp` form (for the tests).
+#[cfg(test)]
 pub fn parse(text: &str) -> Result<Map<String, Value>, String> {
     Ok(Tree::parse(text)?.properties())
 }

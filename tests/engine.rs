@@ -501,7 +501,8 @@ fn minimal_profile_skips_hashing() {
 
 #[test]
 fn reader_input_is_bounded() {
-    let options = Options { limits: Limits::default().max_read_bytes(8), ..Options::default() };
+    let mut options = Options::default();
+    options.limits = Limits::default().max_read_bytes(8);
     let e = Engine::builder().registry(Registry::empty()).options(options).build();
     let r = e.extract_reader(Some("-"), &b"0123456789abcdef"[..]).unwrap();
     assert_eq!(r.system.size_bytes, Some(8));

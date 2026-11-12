@@ -173,7 +173,7 @@ fn coverage(registry: &Registry, f: &Format, overrides: &HashMap<String, String>
             .extractors()
             .find(|e| {
                 f.extensions.split_whitespace().any(|name| {
-                    let probe = Probe { head: &[], tail: &[], len: 0, name: Some(name), extension: None };
+                    let probe = Probe::new(&[], &[], 0, Some(name), None);
                     e.sniff(&probe).is_some_and(|s| {
                         e.meta().formats.iter().any(|spec| spec.id == s.format && spec.family == f.family)
                     })

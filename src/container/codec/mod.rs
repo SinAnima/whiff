@@ -22,7 +22,7 @@ use std::io::Read;
 use crate::error::ExtractError;
 use crate::io::Budget;
 
-pub use xz::{XzIndex, filter_name as xz_filter_name, lzma2_dict_size, xz_first_filters, xz_index};
+pub use xz::{lzma2_dict_size, xz_first_filters, xz_index};
 
 /// A compression codec.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]

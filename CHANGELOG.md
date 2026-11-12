@@ -6,6 +6,25 @@ keep the schema version.
 
 ## Unreleased
 
+**Breaking changes to the library API, ahead of 1.0** (the JSON report and
+the command line are unchanged):
+
+- `whiff::container`, `whiff::detect`, `whiff::meta`, `whiff::text` and
+  `whiff::formats` are no longer public. `whiff::plugin` no longer
+  re-exports the container readers and text helpers (`Zip`, `Cfb`,
+  `xmlwalk`, `der`, `truncate_chars`, …); built-in extractors still use
+  them. The stable API is the crate root, `report`, `plugin` and `io`.
+- Report structs, `Options`, `Limits`, `Hashes`, `Probe`, `TextChunk`, the
+  conformance results and the enums that can grow (`Profile`, `Privacy`,
+  `Severity`, `RiskCategory`, `RunStatus`, `DateField`, `TextRole`,
+  `Cost`, `Error`, `ExtractError`, …) are `#[non_exhaustive]`: build
+  `Options` / `Limits` from their defaults (new `Limits` setters for every
+  limit) and match with a wildcard arm. `Probe::new` builds a probe;
+  `plugin::Decompressed` names what `Context::decompress` returns.
+- The report schema is frozen at 1.0 as
+  `docs/schema/whiff-1-baseline.schema.json`; a test checks that
+  `whiff/1` only grows from it.
+
 Games (Stage 8, part 1) and the long tail (parts 2 to 4, and the
 archives, executables and documents of part 6): every tier 1 and tier 2
 catalogue format now has an extractor, and so does every programming
