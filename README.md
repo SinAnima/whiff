@@ -2,7 +2,7 @@
 
 **whiff** (verb): to catch the scent of something. Point `whiff` at any file and it returns one JSON document describing it: what it is, where it came from, who owns it, when it was made, what rights apply, its physical properties, and a compact, LLM-ready view of its content. Pure Rust, safe on untrusted input.
 
-> **Status:** 0.7.0 is the latest release; `main` adds games and the long tail and is being prepared for 1.0. Every one of the 1008 formats in the catalogue now has an extractor (1233 format ids with every feature on); anything else is still identified by signature.
+> **Status:** 0.8.0 (games and the long tail; the library API narrowed ahead of 1.0). Every one of the 1008 formats in the catalogue now has an extractor (1233 format ids with every feature on); anything else is still identified by signature.
 
 What every report contains:
 
@@ -132,14 +132,14 @@ let compact = report.llm_view(800); // ~800 tokens
 
 ```toml
 # library only, without the CLI's dependencies
-whiff = { version = "0.7", default-features = false, features = ["common"] }
+whiff = { version = "0.8", default-features = false, features = ["common"] }
 ```
 
 The stable library API is the crate root (`Engine`, `EngineBuilder`, `Options`, `Limits`, `Hashes`, `Privacy`, `Profile`, `Registry`, the risk vocabulary), `whiff::report` (the report types), `whiff::plugin` (writing and registering extractors, block decoders and analyzers) and `whiff::io` (sources and byte readers). Report and option structs and the enums that can grow are `#[non_exhaustive]`: read their fields, set options through `Engine::builder()` or by changing the fields of `Options::default()` / `Limits::default()`, and match their enums with a wildcard arm.
 
 ## The report
 
-Every report has the same top-level sections: `whiff`, `source`, `identification`, `system`, `temporal`, `security`, `rights`, `physical`, `integrity`, `content`, `metadata` (raw metadata per standard: front matter, HTML meta, OpenGraph, JSON-LD, EXIF, XMP, IPTC, ICC, Photoshop resources), `format` (technical details per format), `embedded` (children of containers) and `diagnostics`. Empty fields are omitted; sections are always present. The schema is in [`docs/schema/whiff-1.schema.json`](https://github.com/baoulo/whiff/blob/main/docs/schema/whiff-1.schema.json). Within `whiff/1` the report only grows: fields, enum values and sections may be added, but nothing the 1.0 schema (`docs/schema/whiff-1-baseline.schema.json`) promises is removed, renamed or retyped; that would be `whiff/2`.
+Every report has the same top-level sections: `whiff`, `source`, `identification`, `system`, `temporal`, `security`, `rights`, `physical`, `integrity`, `content`, `metadata` (raw metadata per standard: front matter, HTML meta, OpenGraph, JSON-LD, EXIF, XMP, IPTC, ICC, Photoshop resources), `format` (technical details per format), `embedded` (children of containers) and `diagnostics`. Empty fields are omitted; sections are always present. The schema is in [`docs/schema/whiff-1.schema.json`](https://github.com/baoulo/whiff/blob/main/docs/schema/whiff-1.schema.json). Within `whiff/1` the report only grows: fields, enum values and sections may be added, but nothing the 1.0 schema (`docs/schema/whiff-1-baseline.schema.json`) promises is removed, renamed or retyped; that would be `whiff/2`. The free-form maps are outside that promise: the keys under `format.<id>` and `metadata.<standard>` are each extractor's own, may change in a minor release, and are versioned by the extractor's `version` in `diagnostics.extractors`.
 
 Secrets found in content (keys, tokens, credentials in URLs) are counted under `security.secrets` and redacted from the report; personal data (e-mail addresses, phone numbers, card numbers, IBANs) is counted under `security.personal_data` and never listed in derived text.
 

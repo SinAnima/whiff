@@ -4,6 +4,7 @@ use encoding_rs::{Encoding, UTF_8};
 
 /// Decoded text and how it was decoded.
 #[derive(Debug, Clone, PartialEq, Eq)]
+#[non_exhaustive]
 pub struct Decoded {
     /// The text, with any byte-order mark removed.
     pub text: String,

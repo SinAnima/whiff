@@ -158,10 +158,10 @@ fn header(cx: &mut Context<'_>, b: &[u8]) -> Option<()> {
     if let Some(t) = filetime(le64(b, m + 0x10)) {
         cx.format_set("end_time", t);
     }
-    cx.format_set("timer_resolution_100ns", le32(b, m + 0x18));
+    cx.format_set("timer_resolution_ns", u64::from(le32(b, m + 0x18)) * 100);
     let max_mb = le32(b, m + 0x1C);
     if max_mb > 0 {
-        cx.format_set("maximum_file_size_mb", max_mb);
+        cx.format_set("maximum_file_size_bytes", u64::from(max_mb) << 20);
     }
     let mode = le32(b, m + 0x20);
     let modes: Vec<&str> = MODES.iter().filter(|(bit, _)| mode & bit != 0).map(|(_, n)| *n).collect();
@@ -172,7 +172,7 @@ fn header(cx: &mut Context<'_>, b: &[u8]) -> Option<()> {
     cx.format_set("events_lost", le32(b, m + 0x30));
     let mhz = le32(b, m + 0x34);
     if mhz > 0 {
-        cx.format_set("cpu_mhz", mhz);
+        cx.format_set("cpu_hz", u64::from(mhz) * 1_000_000);
     }
     let p = if pointer == 4 { 4 } else { 8 };
     // TIME_ZONE_INFORMATION: bias, then the standard name (32 units).

@@ -49,8 +49,8 @@ expression: report
       "os_version": "10.0.26100",
       "processors": 4,
       "end_time": "2025-09-01T12:30:00Z",
-      "timer_resolution_100ns": 156250,
-      "maximum_file_size_mb": 64,
+      "timer_resolution_ns": 15625000,
+      "maximum_file_size_bytes": 67108864,
       "log_file_mode": {
         "value": "0x00000001",
         "flags": [
@@ -60,7 +60,7 @@ expression: report
       "buffers_written": 3,
       "pointer_size": 8,
       "events_lost": 0,
-      "cpu_mhz": 2400,
+      "cpu_hz": 2400000000,
       "time_zone": {
         "bias_minutes": 0,
         "standard_name": "GMT Standard Time"

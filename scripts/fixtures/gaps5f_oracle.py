@@ -227,7 +227,7 @@ def fusion(fx):
     want(f, "format.fusion_design.design_type", props["type"], "json")
     want(f, "format.fusion_design.entries", len(z.namelist()), "zipfile")
     breps = [n for n in z.namelist() if "Breps.BlobParts/" in n]
-    want(f, "format.fusion_design.parts.brep_streams", len(breps), "zipfile")
+    want(f, "format.fusion_design.parts_by_role.brep_streams", len(breps), "zipfile")
     f = fx / "fusion_archive/saltmere-pontoon.f3z"
     z = zipfile.ZipFile(f)
     want(f, "format.fusion_archive.root", json.loads(z.read("Manifest.json"))["root"], "json")

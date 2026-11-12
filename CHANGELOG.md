@@ -6,6 +6,14 @@ keep the schema version.
 
 ## Unreleased
 
+## 0.8.0 — 2026-11-11
+
+Games and the long tail: every one of the 1008 formats in the catalogue
+now has an extractor (279 extractors, 1233 format ids with every feature
+on). The library API is narrowed ahead of 1.0 and the report schema is
+frozen as the 1.0 baseline. What was deliberately set aside is listed in
+[`docs/known-gaps.md`](docs/known-gaps.md).
+
 **Breaking changes to the library API, ahead of 1.0** (the JSON report and
 the command line are unchanged):
 
@@ -23,7 +31,11 @@ the command line are unchanged):
   `plugin::Decompressed` names what `Context::decompress` returns.
 - The report schema is frozen at 1.0 as
   `docs/schema/whiff-1-baseline.schema.json`; a test checks that
-  `whiff/1` only grows from it.
+  `whiff/1` only grows from it. The keys under `format.<id>` and
+  `metadata.<standard>` are each extractor's own and may change in a minor
+  release (versioned by `diagnostics.extractors[].version`);
+  CONTRIBUTING.md has the naming convention for new keys and
+  `scripts/format_keys.py` reports the keys in use.
 
 Games (Stage 8, part 1) and the long tail (parts 2 to 4, and the
 archives, executables and documents of part 6): every tier 1 and tier 2

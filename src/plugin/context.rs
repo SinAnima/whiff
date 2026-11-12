@@ -269,7 +269,7 @@ impl Context<'_> {
     /// Decompress the MSZIP blocks of a cabinet folder (each block a
     /// `CK`-prefixed deflate stream sharing the previous block's window) into
     /// at most `max` bytes.
-    pub fn decompress_mszip(
+    pub(crate) fn decompress_mszip(
         &mut self,
         blocks: &[&[u8]],
         max: usize,

@@ -388,7 +388,7 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 - **Privacy:** C3D subject names appear only with privacy off; FBX
   document paths are dropped.
 
-## Games (unreleased, feature `games`)
+## Games (0.8.0, feature `games`)
 
 - **Not read:** PlayStation, Saturn and Dreamcast disc images (their ISO
   9660 file systems are listed by the `disk` reader), Nintendo DS, Wii and
@@ -421,7 +421,7 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   `LastOwner` Steam IDs appear only with privacy off; user folders in
   Steam paths are hidden unless privacy is off.
 
-## Long tail (unreleased)
+## Long tail (0.8.0)
 
 The first long-tail batch reads each format line by line or from its
 header; it never evaluates, expands or follows anything.

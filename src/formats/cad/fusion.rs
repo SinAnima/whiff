@@ -272,7 +272,7 @@ fn design(zip: &Zip, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), E
     if !asset_types.is_empty() {
         cx.format_set("asset_types", hist(asset_types));
     }
-    cx.format_set("parts", hist(roles));
+    cx.format_set("parts_by_role", hist(roles));
     if let Some(h) = brep_header {
         cx.format_set("brep_encoding", h);
     }

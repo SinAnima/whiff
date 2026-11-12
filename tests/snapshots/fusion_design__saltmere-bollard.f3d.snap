@@ -72,7 +72,7 @@ expression: report
       "asset_types": {
         "FusionAssetType": 1
       },
-      "parts": {
+      "parts_by_role": {
         "brep_streams": 2,
         "design_segments": 1,
         "images": 1,
