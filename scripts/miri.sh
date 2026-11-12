@@ -9,6 +9,13 @@
 # Tests that read fixtures from disk or run to a large limit are marked
 # `#[cfg_attr(miri, ignore = "…")]`.
 #
+# Miri interprets for aarch64 Linux on every host (`MIRI_TARGET` overrides).
+# On x86_64 the run cannot pass: encoding_rs detects AVX2 through
+# core_detect, whose `cpuid` inline assembly Miri cannot execute, and with
+# AVX2 enabled at compile time simdutf8 0.1.5 computes its prefetch pointer
+# past the end of the input (`add` where `wrapping_add` is needed; harmless
+# in practice, but undefined behaviour to Miri).
+#
 #   scripts/miri.sh                 # the four modules
 #   scripts/miri.sh container::zip  # narrower test filters
 set -euo pipefail
@@ -36,4 +43,4 @@ fi
 # answer for rustc. `formats::` is skipped because filters match anywhere in
 # a test's path (`formats::score::text::…` contains `text::`).
 PATH="$NIGHTLY_BIN:$PATH" CARGO_TARGET_DIR="${CARGO_TARGET_DIR:-target/miri}" RUSTFLAGS="" \
-  "$NIGHTLY_BIN/cargo" miri test --lib -- "$@" --skip formats::
+  "$NIGHTLY_BIN/cargo" miri test --lib --target "${MIRI_TARGET:-aarch64-unknown-linux-gnu}" -- "$@" --skip formats::

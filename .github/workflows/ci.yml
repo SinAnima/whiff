@@ -114,7 +114,7 @@ jobs:
         with:
           components: miri, rust-src
       - uses: Swatinem/rust-cache@v2
-      - run: cargo miri setup
+      - run: cargo miri setup --target aarch64-unknown-linux-gnu
       - run: scripts/miri.sh
         env:
           CARGO_TARGET_DIR: target

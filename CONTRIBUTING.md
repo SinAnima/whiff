@@ -68,7 +68,7 @@ scripts/ci.sh
 
 ## Miri
 
-`scripts/miri.sh` runs the unit tests of `container`, `meta`, `text` and `detect` under Miri (`rustup component add miri rust-src --toolchain nightly`; about 3 minutes once built). whiff forbids unsafe code, so this checks the unsafe and SIMD code in the dependencies those tests reach. A test that reads files from disk or takes minutes under Miri gets `#[cfg_attr(miri, ignore = "reason")]`. `MIRI=1 scripts/ci.sh` includes it; CI runs it as its own job.
+`scripts/miri.sh` runs the unit tests of `container`, `meta`, `text` and `detect` under Miri (`rustup component add miri rust-src --toolchain nightly`; about 3 minutes once built). whiff forbids unsafe code, so this checks the unsafe and SIMD code in the dependencies those tests reach. It interprets for aarch64 Linux on every host: on x86_64, encoding_rs's AVX2 detection runs `cpuid` inline assembly that Miri cannot execute. A test that reads files from disk or takes minutes under Miri gets `#[cfg_attr(miri, ignore = "reason")]`. `MIRI=1 scripts/ci.sh` includes it; CI runs it as its own job.
 
 ## Fuzzing
 
