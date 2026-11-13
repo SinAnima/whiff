@@ -2,7 +2,7 @@
 
 **whiff** (verb): to catch the scent of something. Point `whiff` at any file and it returns one JSON document describing it: what it is, where it came from, who owns it, when it was made, what rights apply, its physical properties, and a compact, LLM-ready view of its content. Pure Rust, safe on untrusted input.
 
-> **Status:** 0.8.0 (games and the long tail; the library API narrowed ahead of 1.0). Every one of the 1008 formats in the catalogue now has an extractor (1233 format ids with every feature on); anything else is still identified by signature.
+> **Status:** 0.8.1 (games and the long tail; the library API narrowed ahead of 1.0). Every one of the 1008 formats in the catalogue now has an extractor (1233 format ids with every feature on); anything else is still identified by signature.
 
 What every report contains:
 

@@ -6,6 +6,18 @@ keep the schema version.
 
 ## Unreleased
 
+## 0.8.1 — 2026-11-13
+
+The repository moved to [SinAnima/whiff](https://github.com/SinAnima/whiff)
+and the asdf plugin to
+[SinAnima/asdf-whiff](https://github.com/SinAnima/asdf-whiff); GitHub
+redirects the old addresses. No change to the library, the command line or
+the report.
+
+Crate metadata (`repository`, `homepage`), the README, the install script,
+the `setup-whiff` GitHub Action, the Homebrew formula, the Scoop manifest
+and the asdf and mise instructions point to the new homes.
+
 ## 0.8.0 — 2026-11-11
 
 Games and the long tail: every one of the 1008 formats in the catalogue
