@@ -9,13 +9,13 @@
 [project]
 name = "whiff"
 description = "Sniff any file and get one JSON document describing it: identity, provenance, rights, physical properties and an LLM-ready view of its content."
-github_owner = "baoulo"
+github_owner = "SinAnima"
 github_repo = "whiff"
 binary_name = "whiff"
 version = "0.8.0"
 cargo_manifest = "Cargo.toml"
 license = "MIT"
-homepage = "https://github.com/baoulo/whiff"
+homepage = "https://github.com/SinAnima/whiff"
 
 [org]
 homebrew_tap = "baoulo/homebrew-tap"

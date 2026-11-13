@@ -1,24 +1,24 @@
 {
   "version": "0.3.0",
   "description": "Describe any file as one JSON document for people and LLMs",
-  "homepage": "https://github.com/baoulo/whiff",
+  "homepage": "https://github.com/SinAnima/whiff",
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://github.com/baoulo/whiff/releases/download/v0.3.0/whiff-v0.3.0-windows-x86_64.zip",
+      "url": "https://github.com/SinAnima/whiff/releases/download/v0.3.0/whiff-v0.3.0-windows-x86_64.zip",
       "hash": "d40482086ca8b0bc97738d80db294365ecff8d7532f66f57636c18e384a21363"
     }
   },
   "bin": "whiff.exe",
   "checkver": {
-    "github": "https://github.com/baoulo/whiff"
+    "github": "https://github.com/SinAnima/whiff"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://github.com/baoulo/whiff/releases/download/v$version/whiff-v$version-windows-x86_64.zip",
+        "url": "https://github.com/SinAnima/whiff/releases/download/v$version/whiff-v$version-windows-x86_64.zip",
         "hash": {
-          "url": "https://github.com/baoulo/whiff/releases/download/v$version/SHA256SUMS"
+          "url": "https://github.com/SinAnima/whiff/releases/download/v$version/SHA256SUMS"
         }
       }
     }

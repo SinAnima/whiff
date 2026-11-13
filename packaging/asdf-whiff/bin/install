@@ -3,7 +3,7 @@ set -euo pipefail
 # asdf install whiff <version>
 version="${ASDF_INSTALL_VERSION:?}"
 install_path="${ASDF_INSTALL_PATH:?}"
-repo="${ASDF_WHIFF_REPO:-baoulo/whiff}"
+repo="${ASDF_WHIFF_REPO:-SinAnima/whiff}"
 tag="v${version#v}"
 
 os="$(uname -s | tr '[:upper:]' '[:lower:]')"

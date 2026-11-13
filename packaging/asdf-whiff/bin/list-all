@@ -2,7 +2,7 @@
 set -euo pipefail
 # List release tags for whiff (strip leading v). `v*`, not `v\?`: BSD sed on
 # macOS has no `\?` in basic regexes.
-curl -fsSL "https://api.github.com/repos/baoulo/whiff/releases" \
+curl -fsSL "https://api.github.com/repos/SinAnima/whiff/releases" \
   | sed -n 's/.*"tag_name": *"v*\([^"]*\)".*/\1/p' \
   | sort -V \
   | xargs

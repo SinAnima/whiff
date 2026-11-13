@@ -2,11 +2,11 @@
 # Install whiff from GitHub Releases (no Rust toolchain required).
 # Needs bash (not POSIX sh: Debian's /bin/sh is dash).
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/baoulo/whiff/main/scripts/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/SinAnima/whiff/main/scripts/install.sh | bash
 #   WHIFF_VERSION=v0.7.0 bash scripts/install.sh
 set -euo pipefail
 
-REPO="${WHIFF_REPO:-baoulo/whiff}"
+REPO="${WHIFF_REPO:-SinAnima/whiff}"
 INSTALL_DIR="${WHIFF_INSTALL_DIR:-${HOME}/.local/bin}"
 VERSION="${WHIFF_VERSION:-}"
 

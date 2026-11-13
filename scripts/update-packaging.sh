@@ -11,7 +11,7 @@ set -euo pipefail
 VERSION="${1:?usage: $0 <version>}"
 VERSION="${VERSION#v}"
 TAG="v${VERSION}"
-REPO="baoulo/whiff"
+REPO="SinAnima/whiff"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 FORMULA="${ROOT}/packaging/homebrew/whiff.rb"
 SCOOP="${ROOT}/packaging/scoop/whiff.json"

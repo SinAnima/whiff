@@ -11,7 +11,7 @@ What every report contains:
 - **Format details** from 279 in-house extractors: documents, e-mail, images with EXIF / XMP / IPTC / ICC reconciled, audio, video and subtitles, archives and packages (entries listed, never extracted to disk), executables and bytecode, certificates and keys (never the key itself), databases, Apple formats, serialisations, fonts, source code, package manifests and lockfiles, and, behind cargo features, forensic artefacts and disk images, columnar data and ML models, scientific and medical files, geodata, 3D and CAD, and games.
 - **Privacy by default:** user names in paths, personal identifiers and account numbers are masked unless you pass `--privacy off`; secrets are always redacted.
 
-[`File_FORMATS.md`](https://github.com/baoulo/whiff/blob/main/File_FORMATS.md) lists every format whiff reads with every feature on, [`docs/metadata-extracted.md`](https://github.com/baoulo/whiff/blob/main/docs/metadata-extracted.md) the 1008 catalogue formats and what is extracted from each, and [`docs/known-gaps.md`](https://github.com/baoulo/whiff/blob/main/docs/known-gaps.md) what was deliberately left out. The [CHANGELOG](https://github.com/baoulo/whiff/blob/main/CHANGELOG.md) has the details of each release.
+[`File_FORMATS.md`](https://github.com/SinAnima/whiff/blob/main/File_FORMATS.md) lists every format whiff reads with every feature on, [`docs/metadata-extracted.md`](https://github.com/SinAnima/whiff/blob/main/docs/metadata-extracted.md) the 1008 catalogue formats and what is extracted from each, and [`docs/known-gaps.md`](https://github.com/SinAnima/whiff/blob/main/docs/known-gaps.md) what was deliberately left out. The [CHANGELOG](https://github.com/SinAnima/whiff/blob/main/CHANGELOG.md) has the details of each release.
 
 ## Install
 
@@ -20,12 +20,12 @@ brew install baoulo/tap/whiff                                    # macOS, Linux
 scoop bucket add baoulo https://github.com/baoulo/scoop-bucket   # Windows
 scoop install whiff
 asdf plugin add whiff https://github.com/baoulo/asdf-whiff.git && asdf install whiff latest
-mise use -g github:baoulo/whiff
-curl -fsSL https://raw.githubusercontent.com/baoulo/whiff/main/scripts/install.sh | bash
+mise use -g github:SinAnima/whiff
+curl -fsSL https://raw.githubusercontent.com/SinAnima/whiff/main/scripts/install.sh | bash
 cargo install whiff                                              # from source (Rust 1.89+)
 ```
 
-Release binaries (Linux static, macOS, Windows) include every format collection; `cargo install whiff --features full` does the same from source. In GitHub Actions: `uses: baoulo/whiff/.github/actions/setup-whiff@main`.
+Release binaries (Linux static, macOS, Windows) include every format collection; `cargo install whiff --features full` does the same from source. In GitHub Actions: `uses: SinAnima/whiff/.github/actions/setup-whiff@main`.
 
 ## Use
 
@@ -77,7 +77,7 @@ Images get their embedded metadata decoded (`metadata.exif`, `.xmp`, `.iptc`, `.
 
 The full report adds the GPS location (`content.location`), camera settings, the ICC profile and the raw blocks. AI-generated images are flagged in `security.risks` (Stable Diffusion, ComfyUI and InvokeAI parameters in PNGs, the IPTC digital source type); SVGs with scripts or external references are flagged too.
 
-Documents report their properties, outline and text; PDFs, Office files, RTF and e-mail also report active content (macros, JavaScript, DDE, external templates, launch actions) and phishing signals in `security.risks`, and their attachments and embedded files appear under `embedded`. Each risk carries a `category` (`active_content`, `phishing`, `external_reference`, `exploit`, …) and a `severity` (`info` to `high`); `security.risk_level` is the highest severity in the file or anything embedded in it, and `security.embedded_risks` counts the embedded files' risks. [`docs/risks.md`](https://github.com/baoulo/whiff/blob/main/docs/risks.md) lists every kind. Addresses are reduced to their domain unless you pass `--privacy off`.
+Documents report their properties, outline and text; PDFs, Office files, RTF and e-mail also report active content (macros, JavaScript, DDE, external templates, launch actions) and phishing signals in `security.risks`, and their attachments and embedded files appear under `embedded`. Each risk carries a `category` (`active_content`, `phishing`, `external_reference`, `exploit`, …) and a `severity` (`info` to `high`); `security.risk_level` is the highest severity in the file or anything embedded in it, and `security.embedded_risks` counts the embedded files' risks. [`docs/risks.md`](https://github.com/SinAnima/whiff/blob/main/docs/risks.md) lists every kind. Addresses are reduced to their domain unless you pass `--privacy off`.
 
 Executables report their architecture, linked libraries, imports, hardening and toolchain. `whiff --profile llm tides-gcc-hardened` on a small Linux binary prints (abridged):
 
@@ -139,7 +139,7 @@ The stable library API is the crate root (`Engine`, `EngineBuilder`, `Options`, 
 
 ## The report
 
-Every report has the same top-level sections: `whiff`, `source`, `identification`, `system`, `temporal`, `security`, `rights`, `physical`, `integrity`, `content`, `metadata` (raw metadata per standard: front matter, HTML meta, OpenGraph, JSON-LD, EXIF, XMP, IPTC, ICC, Photoshop resources), `format` (technical details per format), `embedded` (children of containers) and `diagnostics`. Empty fields are omitted; sections are always present. The schema is in [`docs/schema/whiff-1.schema.json`](https://github.com/baoulo/whiff/blob/main/docs/schema/whiff-1.schema.json). Within `whiff/1` the report only grows: fields, enum values and sections may be added, but nothing the 1.0 schema (`docs/schema/whiff-1-baseline.schema.json`) promises is removed, renamed or retyped; that would be `whiff/2`. The free-form maps are outside that promise: the keys under `format.<id>` and `metadata.<standard>` are each extractor's own, may change in a minor release, and are versioned by the extractor's `version` in `diagnostics.extractors`.
+Every report has the same top-level sections: `whiff`, `source`, `identification`, `system`, `temporal`, `security`, `rights`, `physical`, `integrity`, `content`, `metadata` (raw metadata per standard: front matter, HTML meta, OpenGraph, JSON-LD, EXIF, XMP, IPTC, ICC, Photoshop resources), `format` (technical details per format), `embedded` (children of containers) and `diagnostics`. Empty fields are omitted; sections are always present. The schema is in [`docs/schema/whiff-1.schema.json`](https://github.com/SinAnima/whiff/blob/main/docs/schema/whiff-1.schema.json). Within `whiff/1` the report only grows: fields, enum values and sections may be added, but nothing the 1.0 schema (`docs/schema/whiff-1-baseline.schema.json`) promises is removed, renamed or retyped; that would be `whiff/2`. The free-form maps are outside that promise: the keys under `format.<id>` and `metadata.<standard>` are each extractor's own, may change in a minor release, and are versioned by the extractor's `version` in `diagnostics.extractors`.
 
 Secrets found in content (keys, tokens, credentials in URLs) are counted under `security.secrets` and redacted from the report; personal data (e-mail addresses, phone numbers, card numbers, IBANs) is counted under `security.personal_data` and never listed in derived text.
 
@@ -163,8 +163,8 @@ The minimum supported Rust version is 1.89.
 
 ## Contributing
 
-Adding a format is one file. See [CONTRIBUTING.md](https://github.com/baoulo/whiff/blob/main/CONTRIBUTING.md).
+Adding a format is one file. See [CONTRIBUTING.md](https://github.com/SinAnima/whiff/blob/main/CONTRIBUTING.md).
 
 ## Licence
 
-MIT. See [LICENSE](https://github.com/baoulo/whiff/blob/main/LICENSE).
+MIT. See [LICENSE](https://github.com/SinAnima/whiff/blob/main/LICENSE).
