@@ -19,7 +19,7 @@ What every report contains:
 brew install baoulo/tap/whiff                                    # macOS, Linux
 scoop bucket add baoulo https://github.com/baoulo/scoop-bucket   # Windows
 scoop install whiff
-asdf plugin add whiff https://github.com/baoulo/asdf-whiff.git && asdf install whiff latest
+asdf plugin add whiff https://github.com/SinAnima/asdf-whiff.git && asdf install whiff latest
 mise use -g github:SinAnima/whiff
 curl -fsSL https://raw.githubusercontent.com/SinAnima/whiff/main/scripts/install.sh | bash
 cargo install whiff                                              # from source (Rust 1.89+)

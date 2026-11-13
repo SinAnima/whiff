@@ -20,7 +20,7 @@ homepage = "https://github.com/SinAnima/whiff"
 [org]
 homebrew_tap = "baoulo/homebrew-tap"
 scoop_bucket = "baoulo/scoop-bucket"
-asdf_plugin_repo = "baoulo/asdf-whiff"
+asdf_plugin_repo = "SinAnima/asdf-whiff"
 
 [mechanisms]
 ci = false
