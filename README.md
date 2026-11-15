@@ -16,13 +16,13 @@ What every report contains:
 ## Install
 
 ```sh
-brew install baoulo/tap/whiff                                    # macOS, Linux
-scoop bucket add baoulo https://github.com/baoulo/scoop-bucket   # Windows
+brew install SinAnima/tap/whiff                                      # macOS, Linux
+scoop bucket add sinanima https://github.com/SinAnima/scoop-bucket   # Windows
 scoop install whiff
 asdf plugin add whiff https://github.com/SinAnima/asdf-whiff.git && asdf install whiff latest
 mise use -g github:SinAnima/whiff
 curl -fsSL https://raw.githubusercontent.com/SinAnima/whiff/main/scripts/install.sh | bash
-cargo install whiff                                              # from source (Rust 1.89+)
+cargo install whiff                                                  # from source (Rust 1.89+)
 ```
 
 Release binaries (Linux static, macOS, Windows) include every format collection; `cargo install whiff --features full` does the same from source. In GitHub Actions: `uses: SinAnima/whiff/.github/actions/setup-whiff@main`.
