@@ -6,6 +6,59 @@ keep the schema version.
 
 ## Unreleased
 
+Safety and correctness fixes from the 0.8.0 review. No API change; the
+report only gains warnings and corrected values.
+
+### Fixed
+
+- **Secrets are redacted everywhere in the report**: extended attributes
+  (a "Where from" URL with a password in it), rights, authors, warnings,
+  extractor errors and embedded reports, not only `metadata`, `format` and
+  the content fields. A private key is redacted from its `BEGIN` line
+  through its `END` line; before, only the `BEGIN` line was.
+- **Extended attributes** are read into a 4 KiB buffer on Linux and macOS.
+  A larger value is reported as `{"bytes": n, "skipped": "too_large"}`
+  instead of being read whole. The Windows `Zone.Identifier` stream is
+  read up to 4 KiB.
+- **The file watchdog never re-runs detection.** When an extraction
+  overruns `file_timeout`, the report reuses what the worker had detected.
+  If the worker was still detecting, only the built-in `empty` / `text` /
+  `binary` fallbacks are used. Before, every sniffer ran again on the
+  caller's thread with no deadline. At most 8 abandoned workers may run at
+  once; past that, files get a detection-free report with
+  `limits_hit: ["timeout"]` until one ends. The grace period after the
+  deadline is now a quarter of `file_timeout` (between 50 ms and 2 s)
+  instead of 2 s plus 1 s per 100 MiB.
+- **Hashing** reads through the file handle the extractors used, in 1 MiB
+  chunks, and stops at the file deadline with `integrity.skipped:
+  "timeout"`. Before, it opened the file a second time and ran unbounded.
+- **Sniffers**: a sniffer that panics is reported in
+  `diagnostics.warnings` instead of being skipped silently. A sniffer that
+  takes over 50 ms is reported and skipped for the rest of the input,
+  embedded files included.
+- **Read and decompression budgets** commit a charge only when it fits, so
+  a refused charge no longer counts and a huge charge cannot wrap the
+  counter. File reads are charged for the bytes actually read.
+- **`Context::inflate`** no longer records `decompressed_bytes` in
+  `limits_hit` when the caller's own cap was the limit (that error is
+  `inflate_limit`). **`Context::inflate_prefix`** returns what decoded
+  when a cap is reached instead of an error. Both decode in 1 MiB steps
+  and stop at the deadline.
+
+- Four extractor panics found by the nightly fuzzer. The engine contained
+  each one and reported the extractor as `internal`, so the rest of the
+  report was still produced.
+  - A LUKS header cut short by the end of the input.
+  - A VHD whose footer copy at the start of the file is shorter than 512
+    bytes. Also guarded: VDI headers shorter than 440 bytes and a VHDX
+    metadata table running past its region.
+  - A LilyPond `\key` whose note name starts with a non-ASCII letter.
+  - A MIDI file whose SMPTE division byte is -128.
+- The `whiff::plugin::testing` helpers `report_for` and
+  `report_without_privacy` now panic when an extractor reports an
+  `internal` status, as the fuzz target does. Before, a test of a
+  panicking extractor could still pass.
+
 ## 0.8.1 — 2026-11-13
 
 The repository moved to [SinAnima/whiff](https://github.com/SinAnima/whiff)

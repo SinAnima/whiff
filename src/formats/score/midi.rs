@@ -174,8 +174,8 @@ fn parse(d: &[u8], cx: &mut Context<'_>) -> Result<Song, ExtractError> {
     };
     let division = u16::from_be_bytes([d[12], d[13]]);
     if division & 0x8000 != 0 {
-        #[allow(clippy::cast_possible_truncation, clippy::cast_sign_loss)] // the SMPTE format is a negative byte
-        let fps = (-((division >> 8) as i8)) as u8;
+        #[allow(clippy::cast_possible_truncation)] // the SMPTE format is a negative byte
+        let fps = ((division >> 8) as i8).unsigned_abs();
         s.smpte = Some((fps, (division & 0xff) as u8));
     } else {
         s.ppq = Some(division).filter(|p| *p > 0);
@@ -517,6 +517,13 @@ mod tests {
     use crate::plugin::testing::report_for;
 
     crate::fixture_tests!("midi", "rmi");
+
+    #[test]
+    fn smpte_minus_128() {
+        // Fuzz regression: an SMPTE division byte of -128 used to overflow.
+        let r = report_for("x.mid", b"MThd\0\0\0\x06\0\0\0\x01\x80\x28");
+        assert_eq!(r.identification.format, "midi");
+    }
 
     /// A format-1 file: a tempo track (120 then 60 bpm) and a note track.
     fn smf() -> Vec<u8> {

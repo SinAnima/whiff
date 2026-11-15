@@ -782,22 +782,24 @@ fn lvm2(mut v: Volume<'_, '_>, f: &mut Facts) -> Option<()> {
 
 fn luks(b: &[u8], f: &mut Facts) -> Option<()> {
     f.set("encrypted", true);
+    // A header cut short by the end of the input leaves its fields blank.
+    let field = |r: std::ops::Range<usize>| b.get(r).and_then(text_field);
     let version = be16(b, 6)?;
     f.set("version", version);
-    f.opt("uuid", text_field(&b[168..208]));
+    f.opt("uuid", field(168..208));
     if version == 1 {
-        let cipher = [text_field(&b[8..40]), text_field(&b[40..72])].into_iter().flatten().collect::<Vec<_>>();
+        let cipher = [field(8..40), field(40..72)].into_iter().flatten().collect::<Vec<_>>();
         if !cipher.is_empty() {
             f.set("cipher", cipher.join("-"));
         }
-        f.opt("hash", text_field(&b[72..104]));
-        f.set("key_bits", be32(b, 108)? * 8);
+        f.opt("hash", field(72..104));
+        f.set("key_bits", u64::from(be32(b, 108)?) * 8);
         let slots = (0..8).filter(|i| be32(b, 208 + 48 * i) == Some(0x00AC_71F3)).count();
         f.set("key_slots", slots);
         return Some(());
     }
-    f.opt("label", text_field(&b[24..72]));
-    f.opt("subsystem", text_field(&b[208..256]));
+    f.opt("label", field(24..72));
+    f.opt("subsystem", field(208..256));
     // LUKS2 keeps its parameters in JSON after the binary header.
     let hdr = usize::try_from(be64(b, 8)?).ok()?;
     if let Some(json) = b.get(4096..hdr.min(b.len()))
@@ -842,6 +844,18 @@ mod tests {
         let fs = filesystem(&mut BytesSource::new(None, luks, Budget::unlimited()), 0, 1024).unwrap();
         assert_eq!(fs.facts["encrypted"], json!(true));
         assert_eq!(identify(&[0u8; 4096]), None);
+    }
+
+    #[test]
+    fn short_luks_headers() {
+        // Fuzz regression: a LUKS header cut short by the end of the input.
+        for (version, n) in [(1u8, 100usize), (2, 200), (2, 247)] {
+            let mut luks = vec![0u8; n];
+            luks[..6].copy_from_slice(b"LUKS\xba\xbe");
+            luks[7] = version;
+            let fs = filesystem(&mut BytesSource::new(None, luks, Budget::unlimited()), 0, n as u64).unwrap();
+            assert_eq!(fs.facts["encrypted"], json!(true));
+        }
     }
 
     #[test]

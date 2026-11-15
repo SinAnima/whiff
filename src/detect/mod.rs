@@ -17,6 +17,9 @@
 
 use std::panic::{AssertUnwindSafe, catch_unwind};
 
+use std::time::Duration;
+
+use crate::io::Budget;
 use crate::plugin::{FormatSpec, Probe, Registry};
 use crate::report::{Candidate, DetectedBy, Identification, Wrapper};
 
@@ -29,6 +32,11 @@ mod catalogue {
 /// candidates and the text fallback, below registered magic and sniffers.
 const DATABASE_CONFIDENCE: f64 = 0.5;
 
+/// A sniffer slower than this is skipped for the rest of the input (its
+/// embedded files included). Sniffers see only the head and tail windows,
+/// so a well-behaved one takes microseconds.
+const SLOW_SNIFF: Duration = Duration::from_millis(50);
+
 /// Detection result before it is written into the report.
 #[derive(Debug, Clone)]
 pub struct Detection {
@@ -36,6 +44,8 @@ pub struct Detection {
     pub spec: Option<&'static FormatSpec>,
     /// Identification to write into the report.
     pub identification: Identification,
+    /// Sniffers that panicked or were too slow, for `diagnostics.warnings`.
+    pub warnings: Vec<String>,
 }
 
 struct Scored {
@@ -45,9 +55,10 @@ struct Scored {
 }
 
 /// Detect the format of the input described by `probe`.
-pub fn detect(registry: &Registry, probe: &Probe<'_>, forced: Option<&str>) -> Detection {
+pub fn detect(registry: &Registry, probe: &Probe<'_>, forced: Option<&str>, budget: &Budget) -> Detection {
     let ext = probe.extension;
     let mut scored: Vec<Scored> = Vec::new();
+    let mut warnings = Vec::new();
 
     if let Some(id) = forced
         && let Some((spec, _)) = registry.formats().find(|(f, _)| f.id == id)
@@ -63,13 +74,7 @@ pub fn detect(registry: &Registry, probe: &Probe<'_>, forced: Option<&str>) -> D
                 upsert(&mut scored, spec, confidence, DetectedBy::Magic);
             }
         }
-        for e in registry.extractors() {
-            // A sniffer is contributor code: contain its panics like the extractor's.
-            let Ok(Some(sniff)) = catch_unwind(AssertUnwindSafe(|| e.sniff(probe))) else { continue };
-            if let Some(spec) = e.meta().formats.iter().find(|f| f.id == sniff.format) {
-                upsert(&mut scored, spec, sniff.confidence.clamp(0.0, 1.0), DetectedBy::Sniff);
-            }
-        }
+        sniff_all(registry, probe, budget, &mut scored, &mut warnings);
         if let Some(ext) = ext {
             for (spec, _) in registry.formats() {
                 if !spec.extensions.iter().any(|e| e.eq_ignore_ascii_case(ext)) {
@@ -110,6 +115,7 @@ pub fn detect(registry: &Registry, probe: &Probe<'_>, forced: Option<&str>) -> D
         let extension_matches =
             ext.map(|e| spec.extensions.is_empty() || spec.extensions.iter().any(|x| x.eq_ignore_ascii_case(e)));
         return Detection {
+            warnings,
             spec: Some(spec),
             identification: Identification {
                 format: spec.id.to_string(),
@@ -135,7 +141,7 @@ pub fn detect(registry: &Registry, probe: &Probe<'_>, forced: Option<&str>) -> D
             let listed = file_format::FileFormat::from_extension(e);
             listed.is_empty() || listed.iter().any(|f| f.media_type() == id.mime)
         });
-        return Detection { spec: None, identification: id };
+        return Detection { spec: None, identification: id, warnings };
     }
     // The built-in fallback, handed to the extractor that declares its id.
     let spec = registry.formats().map(|(f, _)| f).find(|f| f.id == fallback.format);
@@ -148,7 +154,7 @@ pub fn detect(registry: &Registry, probe: &Probe<'_>, forced: Option<&str>) -> D
         },
         None => Identification { candidates, ..fallback },
     };
-    Detection { spec, identification }
+    Detection { spec, identification, warnings }
 }
 
 /// The `file-format` database's verdict, unless it only says text or binary.
@@ -254,6 +260,43 @@ pub fn special(format: &str, name: &str, mime: &str) -> Identification {
 }
 
 /// Built-in fallback: `empty`, `text` or `binary`.
+/// Run every extractor's sniffer, containing panics and skipping sniffers
+/// already found too slow for this input.
+fn sniff_all(
+    registry: &Registry,
+    probe: &Probe<'_>,
+    budget: &Budget,
+    scored: &mut Vec<Scored>,
+    warnings: &mut Vec<String>,
+) {
+    for e in registry.extractors() {
+        let id = e.meta().id;
+        if budget.sniffer_is_slow(id) {
+            continue;
+        }
+        // A sniffer is contributor code: contain its panics like the extractor's.
+        let (sniffed, took) = Budget::timed(|| catch_unwind(AssertUnwindSafe(|| e.sniff(probe))));
+        if took.is_some_and(|t| t > SLOW_SNIFF) {
+            budget.mark_sniffer_slow(id);
+            warnings.push(format!("sniffer {id} took over {} ms; skipped from now on", SLOW_SNIFF.as_millis()));
+        }
+        let sniffed = sniffed.unwrap_or_else(|panic| {
+            warnings.push(format!("sniffer {id} panicked: {}", crate::engine::panic_message(&*panic)));
+            None
+        });
+        let Some(sniff) = sniffed else { continue };
+        if let Some(spec) = e.meta().formats.iter().find(|f| f.id == sniff.format) {
+            upsert(scored, spec, sniff.confidence.clamp(0.0, 1.0), DetectedBy::Sniff);
+        }
+    }
+}
+
+/// Identification from the built-in fallbacks only (`empty`, `text`,
+/// `binary`): no sniffer runs. For the report of an abandoned extraction.
+pub fn builtin_fallback(probe: &Probe<'_>) -> Identification {
+    fallback(probe)
+}
+
 fn fallback(probe: &Probe<'_>) -> Identification {
     if probe.len == 0 {
         return Identification {
@@ -379,7 +422,7 @@ mod tests {
     fn database_names_formats_without_extractors() {
         let png = b"\x89PNG\r\n\x1a\n\0\0\0\rIHDR\0\0\0\x01\0\0\0\x01\x08\x06\0\0\0\x1f\x15\xc4\x89";
         let probe = Probe { head: png, tail: png, len: png.len() as u64, name: Some("a.png"), extension: Some("png") };
-        let d = detect(&Registry::empty(), &probe, None);
+        let d = detect(&Registry::empty(), &probe, None, &Budget::unlimited());
         assert!(d.spec.is_none());
         assert_eq!(d.identification.format, "png");
         assert_eq!(d.identification.mime, "image/png");

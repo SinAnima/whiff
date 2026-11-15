@@ -1791,6 +1791,7 @@ dependencies = [
  "rayon",
  "regex",
  "rust-stemmers",
+ "rustix",
  "ruzstd",
  "schemars",
  "scraper",

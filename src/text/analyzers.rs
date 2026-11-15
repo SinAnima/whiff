@@ -209,21 +209,12 @@ impl Analyzer for Privacy {
             sec.risks.push(crate::report::Risk::new("embedded_secret", Some(kinds.join(", ")), self.id()));
         }
 
-        redact_value_tree(&mut report.metadata);
-        redact_value_tree(&mut report.format);
+        redact_report(report);
         let c = &mut report.content;
-        for s in [&mut c.title, &mut c.description].into_iter().flatten() {
-            redact_in_place(s, Category::Secret);
-        }
-        for h in &mut c.outline {
-            redact_in_place(&mut h.text, Category::Secret);
-        }
         for s in [&mut c.summary, &mut c.excerpt].into_iter().flatten() {
-            redact_in_place(s, Category::Secret);
             redact_in_place(s, Category::Personal);
         }
         for s in c.keywords.iter_mut().chain(c.tags.iter_mut()).chain(c.keyword_frequency.iter_mut().map(|(w, _)| w)) {
-            redact_in_place(s, Category::Secret);
             redact_in_place(s, Category::Personal);
         }
         Ok(())
@@ -238,17 +229,48 @@ fn redact_in_place(s: &mut String, category: Category) {
     }
 }
 
+/// Redact secrets in every string of the report: sections, extended
+/// attributes, warnings, extractor errors and embedded reports. The report
+/// is walked as JSON and rebuilt only when something was redacted.
+fn redact_report(report: &mut Report) {
+    let Ok(mut tree) = serde_json::to_value(&*report) else { return };
+    if !redact_value(&mut tree) {
+        return;
+    }
+    match serde_json::from_value::<Report>(tree) {
+        Ok(redacted) => *report = redacted,
+        // Not expected (the report round-trips); fall back to the sections
+        // extractors fill from file content.
+        Err(e) => {
+            for map in [&mut report.metadata, &mut report.format] {
+                for v in map.values_mut() {
+                    redact_value(v);
+                }
+            }
+            report.diagnostics.warnings.push(format!("privacy: report not fully scanned for secrets: {e}"));
+        }
+    }
+}
+
 /// Redact secrets in every string of a JSON tree, without recursion.
-fn redact_value_tree(map: &mut crate::report::Map) {
-    let mut stack: Vec<&mut Value> = map.values_mut().collect();
+/// Whether anything changed.
+fn redact_value(root: &mut Value) -> bool {
+    let mut changed = false;
+    let mut stack: Vec<&mut Value> = vec![root];
     while let Some(v) = stack.pop() {
         match v {
-            Value::String(s) => redact_in_place(s, Category::Secret),
+            Value::String(s) if super::sensitive::has_secret(s) => {
+                if let std::borrow::Cow::Owned(r) = redact(s, Category::Secret) {
+                    *s = r;
+                    changed = true;
+                }
+            }
             Value::Array(a) => stack.extend(a.iter_mut()),
             Value::Object(o) => stack.extend(o.values_mut()),
             _ => {}
         }
     }
+    changed
 }
 
 #[cfg(test)]
@@ -300,6 +322,36 @@ mod tests {
         assert_eq!(r.security.secrets.get("aws_access_key_id"), Some(&1));
         assert_eq!(r.security.risks[0].kind, "embedded_secret");
         assert_eq!(r.format["env"]["values"][0], "[redacted:aws_access_key_id]");
+    }
+
+    #[test]
+    #[cfg_attr(miri, ignore = "compiles the secret patterns: 4 min under Miri")]
+    fn secrets_are_redacted_everywhere() {
+        let key = "AKIAABCDEFGHIJKLMNOP";
+        let mut r = Report::default();
+        r.security.xattrs.insert(
+            "com.apple.metadata:kMDItemWhereFroms".into(),
+            serde_json::json!(["https://user:s3cr3t@evil.test/a"]),
+        );
+        r.diagnostics.warnings.push(format!("bad entry {key}"));
+        r.diagnostics
+            .extractors
+            .push(crate::report::ExtractorRun { error: Some(format!("unknown key {key}")), ..Default::default() });
+        r.content.authors.push(format!("Ada {key}"));
+        Privacy.run(&mut r, &TextStore::default(), &Options::default()).unwrap();
+        let json = serde_json::to_string(&r).unwrap();
+        assert!(!json.contains(key) && !json.contains("s3cr3t"), "{json}");
+        assert!(json.contains("[redacted:url_credentials]") && json.contains("[redacted:aws_access_key_id]"));
+    }
+
+    #[test]
+    #[cfg_attr(miri, ignore = "runs the whole engine: too slow under Miri")]
+    fn private_key_body_never_reaches_the_report() {
+        let line = "MIIBOgIBAAJBAKj34GkxFhD90vcNLYLInFEX6Ppy1tPf9Cnzj4p4WGeKLs1Pt8Qu";
+        let text = format!("Notes\n-----BEGIN PRIVATE KEY-----\n{line}\n{line}\n-----END PRIVATE KEY-----\nThe end.\n");
+        let r = crate::plugin::testing::report_for("notes.txt", text.as_bytes());
+        let json = serde_json::to_string(&r).unwrap();
+        assert!(!json.contains(line), "{json}");
     }
 
     #[test]

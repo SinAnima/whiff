@@ -102,7 +102,7 @@ pub(super) fn extract_path(engine: &Engine, path: &Path) -> Result<Report, Error
                 report.integrity.skipped = Some("extraction abandoned".into());
             } else {
                 let encoding = text_encoding(&report, &engine.options, meta.len());
-                integrity_for_file(&mut report, path, meta.len(), src.head(), &engine.options, encoding);
+                integrity_for_file(&mut report, &mut src, meta.len(), &engine.options, encoding);
             }
             text
         }
@@ -184,8 +184,20 @@ fn extract_source(engine: &Engine, report: &mut Report, src: &mut dyn Source, le
         name: name.as_deref(),
         extension: extension.as_deref(),
     };
-    let detection = detect::detect(registry, &probe, options.format.as_deref());
+    let root = level.depth == 0 && level.layers == 0;
+    let detection = match &engine.detect {
+        super::Detect::Preset(id) if root => {
+            report.identification = (**id).clone();
+            return text;
+        }
+        super::Detect::BuiltinOnly if root => {
+            report.identification = detect::builtin_fallback(&probe);
+            return text;
+        }
+        _ => detect::detect(registry, &probe, options.format.as_deref(), src.budget()),
+    };
     report.identification = detection.identification;
+    report.diagnostics.warnings.extend(detection.warnings);
     // `.bak` is SQL Server's own extension: not a wrapper there.
     let native = |w: &crate::report::Wrapper| {
         detection.spec.is_some_and(|s| s.extensions.iter().any(|e| e.eq_ignore_ascii_case(&w.extension)))
@@ -196,6 +208,11 @@ fn extract_source(engine: &Engine, report: &mut Report, src: &mut dyn Source, le
         && detection.spec.is_none_or(|s| s.id != forced)
     {
         report.diagnostics.warnings.push(format!("--format {forced}: no extractor declares this format"));
+    }
+    if let super::Detect::Publish(slot) = &engine.detect
+        && root
+    {
+        let _ = slot.set(report.identification.clone());
     }
     let Some(spec) = detection.spec.filter(|_| !engine.detect_only) else { return text };
     let budget = src.budget().clone();
@@ -386,11 +403,7 @@ fn run_stage(
             run.error = Some(e.to_string());
         }
         Err(payload) => {
-            let msg = payload
-                .downcast_ref::<&str>()
-                .map(|s| (*s).to_string())
-                .or_else(|| payload.downcast_ref::<String>().cloned())
-                .unwrap_or_else(|| "panic".to_string());
+            let msg = super::panic_message(&*payload);
             run.status = RunStatus::Internal;
             run.error_kind = Some("internal".into());
             run.error = Some(format!("panicked: {msg}"));

@@ -21,6 +21,18 @@ pub enum Compression {
     Gzip,
 }
 
+/// How a streaming inflate ended.
+enum Inflated {
+    /// The stream ended normally.
+    Done(Vec<u8>),
+    /// Output reached the cap; `budget` when the decompression budget, not
+    /// the caller's `max`, was the tighter one. `out` is what was decoded
+    /// (empty for a whole-stream inflate, which discards it).
+    Cap { out: Vec<u8>, budget: bool },
+    /// The stream is damaged or cut short; what decoded before that.
+    Damaged(Vec<u8>),
+}
+
 /// The deflate stream inside a gzip member (header skipped).
 fn gzip_body(data: &[u8]) -> Result<&[u8], ExtractError> {
     let bad = || ExtractError::malformed("gzip header");
@@ -299,69 +311,95 @@ impl Context<'_> {
 
     /// Decompress `data` (zlib, raw deflate or gzip) into at most `max` bytes,
     /// charged to the decompression budget (the zip-bomb guard). Output
-    /// beyond `max` or the remaining budget is an error, not a truncation.
+    /// beyond `max` or the remaining budget is an error, not a truncation:
+    /// `LimitExceeded("inflate_limit")` for `max`, and
+    /// `LimitExceeded("decompressed_bytes")` (also recorded in
+    /// `diagnostics.limits_hit`) for the budget.
     pub fn inflate(&mut self, data: &[u8], kind: Compression, max: usize) -> Result<Vec<u8>, ExtractError> {
-        let room = usize::try_from(self.budget.remaining_decompressed()).unwrap_or(usize::MAX);
-        let limit = max.min(room);
-        let body = match kind {
-            Compression::Gzip => gzip_body(data)?,
-            _ => data,
-        };
-        let result = match kind {
-            Compression::Zlib => miniz_oxide::inflate::decompress_to_vec_zlib_with_limit(body, limit),
-            Compression::Deflate | Compression::Gzip => miniz_oxide::inflate::decompress_to_vec_with_limit(body, limit),
-        };
-        match result {
-            Ok(out) => {
-                self.budget.charge_decompressed(out.len() as u64)?;
-                Ok(out)
-            }
-            Err(e) if e.status == miniz_oxide::inflate::TINFLStatus::HasMoreOutput => {
-                let what = if limit < max { "decompressed_bytes" } else { "inflate_limit" };
-                self.budget.hit("decompressed_bytes");
-                Err(ExtractError::LimitExceeded(what.into()))
-            }
-            Err(e) => Err(ExtractError::malformed(format!("{kind:?} data: {:?}", e.status))),
+        match self.stream_inflate(data, kind, max, true)? {
+            Inflated::Done(out) => Ok(out),
+            Inflated::Cap { budget: true, .. } => Err(ExtractError::LimitExceeded("decompressed_bytes".into())),
+            Inflated::Cap { budget: false, .. } => Err(ExtractError::LimitExceeded("inflate_limit".into())),
+            Inflated::Damaged(_) => Err(ExtractError::malformed(format!("{kind:?} data"))),
         }
     }
 
-    /// Like [`inflate`](Self::inflate), but for damaged or truncated input:
-    /// returns whatever decodes before the first error (at least one byte),
-    /// charged to the same budget.
+    /// Like [`inflate`](Self::inflate), but for damaged, truncated or
+    /// oversized input: returns whatever decodes before the first error or
+    /// the cap (at least one byte), charged to the same budget. Stopping at
+    /// the budget is still recorded in `diagnostics.limits_hit`.
     pub fn inflate_prefix(&mut self, data: &[u8], kind: Compression, max: usize) -> Result<Vec<u8>, ExtractError> {
+        match self.stream_inflate(data, kind, max, false)? {
+            Inflated::Done(out) | Inflated::Cap { out, .. } | Inflated::Damaged(out) if !out.is_empty() => Ok(out),
+            _ => Err(ExtractError::malformed(format!("{kind:?} data"))),
+        }
+    }
+
+    /// The streaming loop behind `inflate` and `inflate_prefix`: decodes in
+    /// steps of at most 1 MiB, checking the deadline between steps, and
+    /// charges the bytes it returns.
+    fn stream_inflate(
+        &mut self,
+        data: &[u8],
+        kind: Compression,
+        max: usize,
+        whole: bool,
+    ) -> Result<Inflated, ExtractError> {
         use miniz_oxide::inflate::TINFLStatus;
         use miniz_oxide::inflate::core::{DecompressorOxide, decompress, inflate_flags};
+        const STEP: usize = 1 << 20;
         let room = usize::try_from(self.budget.remaining_decompressed()).unwrap_or(usize::MAX);
         let limit = max.min(room);
         let (body, mut flags) = match kind {
             Compression::Gzip => (gzip_body(data)?, 0),
-            Compression::Zlib => (data, inflate_flags::TINFL_FLAG_PARSE_ZLIB_HEADER),
+            Compression::Zlib => {
+                (data, inflate_flags::TINFL_FLAG_PARSE_ZLIB_HEADER | inflate_flags::TINFL_FLAG_COMPUTE_ADLER32)
+            }
             Compression::Deflate => (data, 0),
         };
-        flags |= inflate_flags::TINFL_FLAG_HAS_MORE_INPUT | inflate_flags::TINFL_FLAG_USING_NON_WRAPPING_OUTPUT_BUF;
+        flags |= inflate_flags::TINFL_FLAG_USING_NON_WRAPPING_OUTPUT_BUF;
+        if !whole {
+            flags |= inflate_flags::TINFL_FLAG_HAS_MORE_INPUT;
+        }
         let mut state = Box::<DecompressorOxide>::default();
-        let mut out = vec![0u8; limit.clamp(1, 1 << 16)];
+        let mut out = Vec::new();
         let (mut read, mut written) = (0usize, 0usize);
-        loop {
-            let (status, r, w) = decompress(&mut state, &body[read..], &mut out, written, flags);
+        let end = loop {
+            self.budget.check_deadline()?;
+            let step_end = written.saturating_add(STEP).min(limit);
+            if out.len() < step_end {
+                out.resize(step_end.max(out.len().saturating_mul(2)).min(limit), 0);
+            }
+            let (status, r, w) = decompress(&mut state, &body[read..], &mut out[..step_end], written, flags);
             read += r;
             written += w;
             match status {
-                TINFLStatus::HasMoreOutput if out.len() < limit => out.resize((out.len() * 2).min(limit), 0),
-                TINFLStatus::HasMoreOutput => {
-                    self.budget.hit("decompressed_bytes");
-                    return Err(ExtractError::LimitExceeded("decompressed_bytes".into()));
+                TINFLStatus::Done => break None,
+                TINFLStatus::HasMoreOutput if step_end < limit => {}
+                TINFLStatus::HasMoreOutput => break Some(limit < max),
+                TINFLStatus::NeedsMoreInput if !whole && (r > 0 || w > 0) => {}
+                _ => {
+                    out.truncate(written);
+                    if !whole {
+                        self.budget.charge_decompressed(written as u64)?;
+                    }
+                    return Ok(Inflated::Damaged(out));
                 }
-                TINFLStatus::NeedsMoreInput if r > 0 || w > 0 => {}
-                _ => break,
             }
-        }
-        if written == 0 {
-            return Err(ExtractError::malformed(format!("{kind:?} data")));
-        }
+        };
         out.truncate(written);
+        if let Some(budget) = end {
+            if budget {
+                self.budget.hit("decompressed_bytes");
+            }
+            if whole {
+                return Ok(Inflated::Cap { out: Vec::new(), budget });
+            }
+            self.budget.charge_decompressed(written as u64)?;
+            return Ok(Inflated::Cap { out, budget });
+        }
         self.budget.charge_decompressed(written as u64)?;
-        Ok(out)
+        Ok(Inflated::Done(out))
     }
 
     /// An in-memory [`Source`](crate::io::Source) over `data` (a decompressed
@@ -814,5 +852,90 @@ impl ImageWriter<'_> {
     pub fn frames(&mut self, v: u32) -> &mut Self {
         self.img.frames.get_or_insert(v);
         self
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::io::Budget;
+    use std::time::Duration;
+
+    /// Run `f` with a context over `budget`.
+    fn with_cx<T>(budget: &Budget, f: impl FnOnce(&mut Context<'_>) -> T) -> T {
+        let (mut report, mut text, mut blocks, mut children, mut redirect) =
+            (Report::default(), TextStore::default(), Vec::new(), Vec::new(), None);
+        let options = Options::default();
+        let mut cx = Context {
+            report: &mut report,
+            text: &mut text,
+            blocks: &mut blocks,
+            children: &mut children,
+            options: &options,
+            budget,
+            format_id: "test",
+            emitter: "test",
+            redirect: &mut redirect,
+        };
+        f(&mut cx)
+    }
+
+    fn zeros_deflated(n: usize) -> Vec<u8> {
+        miniz_oxide::deflate::compress_to_vec(&vec![0u8; n], 6)
+    }
+
+    #[test]
+    fn inflate_within_limits() {
+        let budget = Budget::unlimited();
+        let out = with_cx(&budget, |cx| cx.inflate(&zeros_deflated(1000), Compression::Deflate, 1000)).unwrap();
+        assert_eq!(out.len(), 1000);
+        let z = miniz_oxide::deflate::compress_to_vec_zlib(b"hello", 6);
+        assert_eq!(with_cx(&budget, |cx| cx.inflate(&z, Compression::Zlib, 100)).unwrap(), b"hello");
+        assert_eq!(budget.limits_hit(), Vec::<&str>::new());
+    }
+
+    #[test]
+    fn caller_cap_is_not_a_budget_hit() {
+        let budget = Budget::new(u64::MAX, 1 << 20, None);
+        let data = zeros_deflated(1001);
+        let e = with_cx(&budget, |cx| cx.inflate(&data, Compression::Deflate, 1000)).unwrap_err();
+        assert!(matches!(e, ExtractError::LimitExceeded(ref w) if w == "inflate_limit"), "{e:?}");
+        assert_eq!(budget.limits_hit(), Vec::<&str>::new());
+        // The prefix variant keeps what decoded, still without a budget hit.
+        let out = with_cx(&budget, |cx| cx.inflate_prefix(&data, Compression::Deflate, 1000)).unwrap();
+        assert_eq!(out.len(), 1000);
+        assert_eq!(budget.limits_hit(), Vec::<&str>::new());
+        assert_eq!(budget.remaining_decompressed(), (1 << 20) - 1000);
+    }
+
+    #[test]
+    fn budget_cap_is_recorded() {
+        let budget = Budget::new(u64::MAX, 500, None);
+        let data = zeros_deflated(1000);
+        let e = with_cx(&budget, |cx| cx.inflate(&data, Compression::Deflate, 1000)).unwrap_err();
+        assert!(matches!(e, ExtractError::LimitExceeded(ref w) if w == "decompressed_bytes"), "{e:?}");
+        assert_eq!(budget.limits_hit(), ["decompressed_bytes"]);
+        let out = with_cx(&budget, |cx| cx.inflate_prefix(&data, Compression::Deflate, 1000)).unwrap();
+        assert_eq!(out.len(), 500);
+        assert_eq!(budget.remaining_decompressed(), 0);
+    }
+
+    #[test]
+    fn truncated_streams() {
+        let budget = Budget::unlimited();
+        let mut data = zeros_deflated(100_000);
+        data.truncate(data.len() / 2);
+        assert!(with_cx(&budget, |cx| cx.inflate(&data, Compression::Deflate, 1 << 20)).is_err());
+        let out = with_cx(&budget, |cx| cx.inflate_prefix(&data, Compression::Deflate, 1 << 20)).unwrap();
+        assert!(!out.is_empty() && out.len() < 100_000);
+    }
+
+    #[test]
+    #[cfg(not(all(target_arch = "wasm32", target_os = "unknown")))]
+    fn inflate_stops_at_the_deadline() {
+        let budget = Budget::new(u64::MAX, u64::MAX, Some(Duration::ZERO));
+        let e = with_cx(&budget, |cx| cx.inflate(&zeros_deflated(10), Compression::Deflate, 100)).unwrap_err();
+        assert!(matches!(e, ExtractError::Timeout), "{e:?}");
+        assert_eq!(budget.limits_hit(), ["timeout"]);
     }
 }

@@ -21,8 +21,11 @@ pub(crate) fn fill(report: &mut Report, path: &std::path::Path) {
     names.sort();
     let total = names.len();
     for name in names.into_iter().take(MAX_ATTRS) {
-        let Ok(Some(value)) = xattr::get_deref(path, &name) else { continue };
-        let decoded = decode(&name, &value);
+        let decoded = match read_capped(path, &name) {
+            Some(Ok(value)) => decode(&name, &value),
+            Some(Err(size)) => json!({ "bytes": size, "skipped": "too_large" }),
+            None => continue,
+        };
         if name == "com.apple.metadata:_kMDItemUserTags"
             && let Value::Array(tags) = &decoded
         {
@@ -39,13 +42,40 @@ pub(crate) fn fill(report: &mut Report, path: &std::path::Path) {
     }
 }
 
+/// The value of attribute `name`, read into a buffer of at most
+/// [`MAX_VALUE`] bytes: `Err(size)` when it is larger, `None` when absent
+/// or unreadable.
+#[cfg(any(target_os = "android", target_os = "linux", target_os = "macos"))]
+fn read_capped(path: &std::path::Path, name: &str) -> Option<Result<Vec<u8>, usize>> {
+    let mut buf = vec![0u8; MAX_VALUE];
+    match rustix::fs::getxattr(path, name, &mut buf[..]) {
+        Ok(n) => {
+            buf.truncate(n);
+            Some(Ok(buf))
+        }
+        Err(rustix::io::Errno::RANGE) => Some(Err(rustix::fs::getxattr(path, name, &mut [0u8; 0][..]).unwrap_or(0))),
+        Err(_) => None,
+    }
+}
+
+/// Other Unix systems: no capped read is available, so the value is read
+/// whole and cut.
+#[cfg(all(unix, not(any(target_os = "android", target_os = "linux", target_os = "macos"))))]
+fn read_capped(path: &std::path::Path, name: &str) -> Option<Result<Vec<u8>, usize>> {
+    xattr::get_deref(path, name).ok().flatten().map(Ok)
+}
+
 /// Fill `security.xattrs["Zone.Identifier"]` from the NTFS alternate data stream.
 #[cfg(windows)]
 pub(crate) fn fill(report: &mut Report, path: &std::path::Path) {
     let mut ads = path.as_os_str().to_owned();
     ads.push(":Zone.Identifier");
-    let Ok(bytes) = std::fs::read(std::path::Path::new(&ads)) else { return };
-    let text = String::from_utf8_lossy(&bytes[..bytes.len().min(MAX_VALUE)]);
+    let mut bytes = Vec::new();
+    let Ok(file) = std::fs::File::open(std::path::Path::new(&ads)) else { return };
+    if std::io::Read::read_to_end(&mut std::io::Read::take(file, MAX_VALUE as u64), &mut bytes).is_err() {
+        return;
+    }
+    let text = String::from_utf8_lossy(&bytes);
     let mut zone = Map::new();
     for line in text.lines() {
         if let Some((k, v)) = line.split_once('=') {
@@ -195,5 +225,12 @@ mod tests {
         let mut r = Report::default();
         fill(&mut r, &p);
         assert_eq!(r.security.xattrs["user.xdg.origin.url"], "https://example.org/f.txt");
+
+        // A value past the cap is measured, not read.
+        if xattr::set(&p, "user.big", &vec![b'a'; MAX_VALUE + 1]).is_ok() {
+            let mut r = Report::default();
+            fill(&mut r, &p);
+            assert_eq!(r.security.xattrs["user.big"], json!({ "bytes": MAX_VALUE + 1, "skipped": "too_large" }));
+        }
     }
 }

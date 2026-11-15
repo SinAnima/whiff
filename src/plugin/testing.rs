@@ -72,9 +72,19 @@ pub fn fixture_reports(manifest_dir: &str, format_id: &str) -> Vec<(String, Repo
 
 /// The report for in-memory `bytes` named `name`, with embedded files
 /// analysed one level deep: for unit tests over small synthetic inputs.
+/// Panics when an extractor panicked, as the fuzz target does.
 pub fn report_for(name: &str, bytes: &[u8]) -> Report {
     let engine = Engine::builder().limits(crate::engine::Limits::default().max_depth(1)).build();
-    engine.extract_bytes(Some(name), bytes.to_vec())
+    no_internal_errors(engine.extract_bytes(Some(name), bytes.to_vec()))
+}
+
+/// Panics when an extractor panicked or broke an invariant: the engine
+/// contains those, so a test would otherwise pass over them.
+fn no_internal_errors(report: Report) -> Report {
+    for run in &report.diagnostics.extractors {
+        assert!(run.status != crate::report::RunStatus::Internal, "{}: {:?}", run.id, run.error);
+    }
+    report
 }
 
 /// [`report_for`] with `--privacy off`: for tests that check what the
@@ -84,7 +94,7 @@ pub fn report_without_privacy(name: &str, bytes: &[u8]) -> Report {
         .limits(crate::engine::Limits::default().max_depth(1))
         .privacy(crate::engine::Privacy::Off)
         .build();
-    engine.extract_bytes(Some(name), bytes.to_vec())
+    no_internal_errors(engine.extract_bytes(Some(name), bytes.to_vec()))
 }
 
 /// A ZIP archive of `(name, data, deflate?)` entries, for unit tests of
