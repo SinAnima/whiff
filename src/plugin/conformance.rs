@@ -123,6 +123,7 @@ fn test_limits() -> Limits {
     Limits::default()
         .file_timeout(Some(Duration::from_secs(10 * scale)))
         .extractor_timeout(Some(Duration::from_secs(5 * scale)))
+        .without_slow_sniff()
 }
 
 fn check_format(

@@ -17,8 +17,6 @@
 
 use std::panic::{AssertUnwindSafe, catch_unwind};
 
-use std::time::Duration;
-
 use crate::io::Budget;
 use crate::plugin::{FormatSpec, Probe, Registry};
 use crate::report::{Candidate, DetectedBy, Identification, Wrapper};
@@ -31,11 +29,6 @@ mod catalogue {
 /// Confidence given to a `file-format` database match: above extension-only
 /// candidates and the text fallback, below registered magic and sniffers.
 const DATABASE_CONFIDENCE: f64 = 0.5;
-
-/// A sniffer slower than this is skipped for the rest of the input (its
-/// embedded files included). Sniffers see only the head and tail windows,
-/// so a well-behaved one takes microseconds.
-const SLOW_SNIFF: Duration = Duration::from_millis(50);
 
 /// Detection result before it is written into the report.
 #[derive(Debug, Clone)]
@@ -276,9 +269,11 @@ fn sniff_all(
         }
         // A sniffer is contributor code: contain its panics like the extractor's.
         let (sniffed, took) = Budget::timed(|| catch_unwind(AssertUnwindSafe(|| e.sniff(probe))));
-        if took.is_some_and(|t| t > SLOW_SNIFF) {
+        if let (Some(took), Some(limit)) = (took, budget.slow_sniff_threshold())
+            && took > limit
+        {
             budget.mark_sniffer_slow(id);
-            warnings.push(format!("sniffer {id} took over {} ms; skipped from now on", SLOW_SNIFF.as_millis()));
+            warnings.push(format!("sniffer {id} took over {} ms; skipped from now on", limit.as_millis()));
         }
         let sniffed = sniffed.unwrap_or_else(|panic| {
             warnings.push(format!("sniffer {id} panicked: {}", crate::engine::panic_message(&*panic)));

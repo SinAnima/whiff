@@ -47,7 +47,7 @@ fn new_report(engine: &Engine, source: SourceInfo) -> Report {
 
 fn budget_for(engine: &Engine) -> Budget {
     let l = &engine.options.limits;
-    Budget::new(l.max_read_bytes, l.max_decompressed_bytes, l.file_timeout)
+    Budget::new(l.max_read_bytes, l.max_decompressed_bytes, l.file_timeout).slow_sniff(l.slow_sniff)
 }
 
 pub(super) fn extract_path(engine: &Engine, path: &Path) -> Result<Report, Error> {

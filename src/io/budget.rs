@@ -56,6 +56,8 @@ struct Inner {
     /// The tighter of the file deadline and the current extractor's deadline.
     current_deadline: Mutex<Option<Instant>>,
     limits_hit: Mutex<Vec<&'static str>>,
+    /// A sniffer slower than this is skipped (`None` = never).
+    slow_sniff: Option<Duration>,
     /// Extractors whose sniffer was too slow: skipped for the rest of this
     /// input and its embedded files.
     slow_sniffers: Mutex<Vec<&'static str>>,
@@ -88,9 +90,25 @@ impl Budget {
                 file_deadline,
                 current_deadline: Mutex::new(file_deadline),
                 limits_hit: Mutex::new(Vec::new()),
+                slow_sniff: Some(crate::engine::SLOW_SNIFF),
                 slow_sniffers: Mutex::new(Vec::new()),
             }),
         }
+    }
+
+    /// The same budget with sniffers slower than `t` skipped (`None` = never).
+    /// Call before the budget is shared.
+    #[must_use]
+    pub(crate) fn slow_sniff(mut self, t: Option<Duration>) -> Self {
+        if let Some(inner) = Arc::get_mut(&mut self.inner) {
+            inner.slow_sniff = t;
+        }
+        self
+    }
+
+    /// The slow-sniffer threshold.
+    pub(crate) fn slow_sniff_threshold(&self) -> Option<Duration> {
+        self.inner.slow_sniff
     }
 
     /// No limits at all (tests, trusted callers).

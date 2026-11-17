@@ -12,6 +12,7 @@ use std::path::Path;
 use std::sync::{Arc, OnceLock};
 use std::time::Duration;
 
+pub(crate) use options::SLOW_SNIFF;
 pub use options::{Hashes, Limits, Options, Privacy, Profile};
 
 use crate::Error;

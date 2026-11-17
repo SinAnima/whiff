@@ -55,9 +55,15 @@ pub fn fixture_files(manifest_dir: &Path, format_id: &str) -> Vec<PathBuf> {
     files
 }
 
+/// Default limits without the wall-clock sniffer check, whose warning would
+/// make reports depend on how busy the machine is.
+fn snapshot_limits() -> crate::engine::Limits {
+    crate::engine::Limits::default().without_slow_sniff()
+}
+
 /// Redacted reports for every fixture of `format_id`, keyed by file name.
 pub fn fixture_reports(manifest_dir: &str, format_id: &str) -> Vec<(String, Report)> {
-    let engine = Engine::new();
+    let engine = Engine::builder().limits(snapshot_limits()).build();
     fixture_files(Path::new(manifest_dir), format_id)
         .into_iter()
         .map(|path| {
@@ -74,7 +80,7 @@ pub fn fixture_reports(manifest_dir: &str, format_id: &str) -> Vec<(String, Repo
 /// analysed one level deep: for unit tests over small synthetic inputs.
 /// Panics when an extractor panicked, as the fuzz target does.
 pub fn report_for(name: &str, bytes: &[u8]) -> Report {
-    let engine = Engine::builder().limits(crate::engine::Limits::default().max_depth(1)).build();
+    let engine = Engine::builder().limits(snapshot_limits().max_depth(1)).build();
     no_internal_errors(engine.extract_bytes(Some(name), bytes.to_vec()))
 }
 
@@ -90,10 +96,7 @@ fn no_internal_errors(report: Report) -> Report {
 /// [`report_for`] with `--privacy off`: for tests that check what the
 /// strict mode keeps back.
 pub fn report_without_privacy(name: &str, bytes: &[u8]) -> Report {
-    let engine = Engine::builder()
-        .limits(crate::engine::Limits::default().max_depth(1))
-        .privacy(crate::engine::Privacy::Off)
-        .build();
+    let engine = Engine::builder().limits(snapshot_limits().max_depth(1)).privacy(crate::engine::Privacy::Off).build();
     no_internal_errors(engine.extract_bytes(Some(name), bytes.to_vec()))
 }
 
