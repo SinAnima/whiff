@@ -53,7 +53,7 @@ fn read_capped(path: &std::path::Path, name: &str) -> Option<Result<Vec<u8>, usi
             buf.truncate(n);
             Some(Ok(buf))
         }
-        Err(rustix::io::Errno::RANGE) => Some(Err(rustix::fs::getxattr(path, name, &mut [0u8; 0][..]).unwrap_or(0))),
+        Err(rustix::io::Errno::RANGE) => Some(Err(rustix::fs::getxattr_query(path, name).unwrap_or(0))),
         Err(_) => None,
     }
 }
