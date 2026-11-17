@@ -13,7 +13,7 @@ use std::collections::BTreeMap;
 use super::{Entry, Inventory, Kind, MAX_ENTRIES, child, wanted};
 use crate::plugin::{
     Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, Zip, ZipEntry,
-    zip_method_name,
+    redact_sensitive, user_path, zip_method_name,
 };
 
 /// Extractor for ZIP archives.
@@ -73,6 +73,7 @@ impl Extractor for ZipArchive {
 
     fn extract(&self, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
         let zip = Zip::open(src, MAX_ENTRIES)?;
+        zip.flag_duplicates(cx);
         if !zip.comment.trim().is_empty() {
             cx.format_set("comment", zip.comment.trim());
             cx.content().description(zip.comment.trim());
@@ -96,7 +97,11 @@ impl Extractor for ZipArchive {
         for e in &zip.entries {
             *hosts.entry(host_name(e.host)).or_default() += 1;
             if e.is_encrypted() {
-                let kind = e.aes.map_or_else(|| "ZipCrypto".to_string(), |(bits, _)| format!("AES-{bits}"));
+                let kind = match e.aes {
+                    None => "ZipCrypto".to_string(),
+                    Some((0, _)) => "AES (unknown strength)".to_string(),
+                    Some((bits, _)) => format!("AES-{bits}"),
+                };
                 if !encryption.contains(&kind) {
                     encryption.push(kind);
                 }
@@ -108,7 +113,13 @@ impl Extractor for ZipArchive {
             if entry.kind == Kind::Symlink && links_read < MAX_LINKS_READ && e.size <= 4096 {
                 links_read += 1;
                 if let Ok(target) = zip.read(src, e, cx, 4096) {
-                    entry.link = Some(String::from_utf8_lossy(&target).into_owned());
+                    let target = String::from_utf8_lossy(&target);
+                    // A target can name a profile folder or carry a secret.
+                    entry.link = Some(if cx.privacy_strict() {
+                        redact_sensitive(&user_path(cx, &target)).into_owned()
+                    } else {
+                        target.into_owned()
+                    });
                 }
             }
             inv.push(entry);
@@ -228,6 +239,38 @@ mod tests {
         // Fifield: every entry's data runs into the next local header.
         assert_eq!(overlapping(&[at(0, 31, 1000), at(40, 71, 960), at(80, 111, 920)]), 2);
         assert_eq!(overlapping(&[at(0, 31, 10), at(0, 31, 10)]), 1);
+    }
+
+    /// `zip` with entry `index` made on Unix with mode `mode`.
+    fn with_unix_mode(mut zip: Vec<u8>, index: usize, mode: u32) -> Vec<u8> {
+        let mut at = 0;
+        for _ in 0..=index {
+            at += zip[at..].windows(4).position(|w| w == b"PK\x01\x02").unwrap() + 1;
+        }
+        let at = at - 1;
+        zip[at + 5] = 3;
+        zip[at + 38..at + 42].copy_from_slice(&(mode << 16).to_le_bytes());
+        zip
+    }
+
+    #[test]
+    fn duplicate_names_are_a_risk() {
+        let z = crate::plugin::testing::zip(&[("a.txt", b"one", false), ("a.txt", b"two", false)]);
+        let r = crate::plugin::testing::report_for("twice.zip", &z);
+        let risk = r.security.risks.iter().find(|x| x.kind == "duplicate_entry_names").expect("risk");
+        assert_eq!(risk.detail.as_deref(), Some("1 entry repeats an earlier name; the last is read"));
+    }
+
+    #[test]
+    fn symlink_targets_hide_the_user_under_strict_privacy() {
+        let z = crate::plugin::testing::zip(&[("key", b"/Users/alice/.ssh/id_ed25519", false)]);
+        let z = with_unix_mode(z, 0, 0o120_777);
+        let strict = crate::plugin::testing::report_for("links.zip", &z);
+        let json = serde_json::to_string(&strict).unwrap();
+        assert!(json.contains("/Users/[user]/.ssh/id_ed25519"), "{json}");
+        assert!(!json.contains("alice"));
+        let off = crate::plugin::testing::report_without_privacy("links.zip", &z);
+        assert!(serde_json::to_string(&off).unwrap().contains("/Users/alice/.ssh/id_ed25519"));
     }
 
     crate::fixture_tests!("zip");

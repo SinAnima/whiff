@@ -633,7 +633,7 @@
 3	db	dBase / FoxPro DBF	dbf	application/dbase	
 3	db	DuckDB database	duckdb ddb		header version
 3	db	LMDB / Berkeley DB	mdb db		page size, entries
-3	db	LevelDB / RocksDB SST & logs	ldb sst log		table properties (RocksDB properties block)
+3	db	LevelDB / RocksDB SST & logs	ldb sst log		table properties (RocksDB properties block); LevelDB index: data blocks, first and last keys, entry count
 3	db	Realm / Firebird / H2 / HSQLDB	realm fdb gdb mv.db		header
 3	db	Microsoft SQL Server backup / MDF	bak mdf ldf		header: database name, version
 3	db	PostgreSQL custom dump	dump backup	application/octet-stream	pg_dump header: db name, version, TOC entries

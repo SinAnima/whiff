@@ -45,7 +45,19 @@ expression: report
   "metadata": {},
   "format": {
     "leveldb_table": {
-      "table_format": "leveldb"
+      "table_format": "leveldb",
+      "metaindex_handle": {
+        "offset": 2749,
+        "size": 8
+      },
+      "index_handle": {
+        "offset": 2762,
+        "size": 71
+      },
+      "data_blocks": 3,
+      "first_key": "station-000",
+      "last_key": "station-299",
+      "entries": 300
     }
   },
   "diagnostics": {

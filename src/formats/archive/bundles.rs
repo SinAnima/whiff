@@ -177,7 +177,7 @@ fn zipapp(src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError
         cx.format_set("packages", packages.into_keys().collect::<Vec<_>>());
     }
     inv.report(cx, src.len());
-    if let Some(main) = zip.entries.iter().find(|e| e.name == "__main__.py").cloned() {
+    if let Some(main) = zip.find("__main__.py").cloned() {
         cx.format_set("main", "__main__.py");
         let data = zip.read(src, &main, cx, cx.parse_limit())?;
         let complete = data.len() as u64 == main.size;
@@ -240,7 +240,7 @@ fn jmod(src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> 
     }
     cx.format_set("sections", serde_json::json!(sections));
     inv.report(cx, len);
-    if let Some(info) = zip.entries.iter().find(|e| e.name == "classes/module-info.class").cloned() {
+    if let Some(info) = zip.find("classes/module-info.class").cloned() {
         let data = zip.read(&mut sub, &info, cx, cx.parse_limit())?;
         let complete = data.len() as u64 == info.size;
         child(cx, "module-info.class", data, complete)?;

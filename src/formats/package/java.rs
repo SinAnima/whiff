@@ -106,6 +106,7 @@ impl Extractor for Java {
     #[allow(clippy::too_many_lines)] // manifest, coordinates, signatures, per-kind descriptors
     fn extract(&self, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
         let zip = Zip::open(src, MAX_ENTRIES)?;
+        zip.flag_duplicates(cx);
         let mut pkg = Package::new("maven");
         let main = match zip.read_text(src, "META-INF/MANIFEST.MF", cx, 1 << 20) {
             Some(Ok(t)) => t,

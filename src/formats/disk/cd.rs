@@ -84,7 +84,7 @@ impl BlockMap for Sectors {
     }
 
     fn locate(&mut self, _: &mut dyn Source, n: u64) -> Result<Block, SourceError> {
-        Ok(Block::At(n * RAW + self.offset))
+        Ok(Block::At(super::offset(super::scaled(n, RAW)?, self.offset)?))
     }
 }
 

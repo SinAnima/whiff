@@ -145,8 +145,9 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   the ACE layout is checked by the oracle against a Jackcess file.
 - **DBF:** memo files (`.dbt`, `.fpt`) are not read, and no `.cpg`
   sidecar is consulted for the encoding.
-- **Header only:** LevelDB tables give their format but no entry count
-  (that needs the Snappy-compressed blocks); Redis snapshots give the first
+- **Header only:** LevelDB tables count their entries only when the data
+  blocks fit `max_parse_bytes` (the index, block count and key range are
+  always read); Redis snapshots give the first
   database's key counts (later ones follow its values); Berkeley DB key
   counts are only there after `db_stat`; MySQL 8 `.ibd` SDI (the table
   definition inside the tablespace) is not decoded.

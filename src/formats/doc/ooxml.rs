@@ -214,6 +214,7 @@ impl Extractor for Ooxml {
 
     fn extract(&self, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
         let zip = Zip::open(src, MAX_ENTRIES)?;
+        zip.flag_duplicates(cx);
         let mut pkg = Package { zip, max: cx.parse_limit(), ..Package::default() };
         pkg.run(src, cx)
     }
@@ -1569,6 +1570,30 @@ mod tests {
         assert_eq!(rels_path(""), "_rels/.rels");
         assert_eq!(host("https://Example.org:8080/x"), Some("example.org".into()));
         assert_eq!(format_for_content_type("application/vnd.ms-word.document.macroEnabled.main+xml"), Some("docm"));
+    }
+
+    #[test]
+    fn an_updated_part_is_read_from_its_last_copy() {
+        const TYPES: &[u8] = br#"<?xml version="1.0"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>"#;
+        const RELS: &[u8] = br#"<?xml version="1.0"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>"#;
+        let body = |word: &str| {
+            format!(
+                r#"<?xml version="1.0"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:p><w:r><w:t>Harbour {word} draft</w:t></w:r></w:p></w:body></w:document>"#
+            )
+        };
+        let (old, new) = (body("outdated"), body("current"));
+        let docx = crate::plugin::testing::zip(&[
+            ("[Content_Types].xml", TYPES, false),
+            ("_rels/.rels", RELS, false),
+            ("word/document.xml", old.as_bytes(), true),
+            ("word/document.xml", new.as_bytes(), true),
+        ]);
+        let r = crate::plugin::testing::report_for("notes.docx", &docx);
+        assert_eq!(r.identification.format, "docx");
+        let json = serde_json::to_string(&r).unwrap();
+        assert!(json.contains("Harbour current draft"), "{json}");
+        assert!(!json.contains("outdated"));
+        assert!(r.security.risks.iter().any(|x| x.kind == "duplicate_entry_names"));
     }
 
     #[test]

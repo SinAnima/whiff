@@ -22,6 +22,7 @@ struct Item {
 #[allow(clippy::too_many_lines)] // container, package, manifest, TOC, text
 pub(super) fn extract(src: &mut dyn Source, cx: &mut Context<'_>, book: &mut Book) -> Result<(), ExtractError> {
     let zip = Zip::open(src, MAX_ENTRIES)?;
+    zip.flag_duplicates(cx);
     let max = cx.parse_limit();
     book.format.insert("entries".into(), json!(zip.entries.len()));
     drm(&zip, src, cx, book)?;

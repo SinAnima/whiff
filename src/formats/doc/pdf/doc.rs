@@ -19,6 +19,9 @@ pub(crate) enum Entry {
     At(u64, u16),
     /// Inside object stream `stream`, at position `index`.
     InStream(u32, u32),
+    /// Deleted by this or a newer section: an older section must not
+    /// bring the object back.
+    Free,
 }
 
 /// A decoded object stream: object offsets relative to `first`.
@@ -51,6 +54,9 @@ pub(crate) struct Doc<'s, 'c> {
     objstm: HashMap<u32, Option<std::rc::Rc<ObjStm>>>,
     depth: usize,
     max_stream: usize,
+    /// Numbers the current section's table marked free. Its `/XRefStm` may
+    /// still place them (hybrid files list compressed objects as free).
+    hidden: HashSet<u32>,
 }
 
 impl<'s, 'c> Doc<'s, 'c> {
@@ -86,6 +92,7 @@ impl<'s, 'c> Doc<'s, 'c> {
             objstm: HashMap::new(),
             depth: 0,
             max_stream,
+            hidden: HashSet::new(),
         };
         let startxref = rfind(&tail, b"startxref").and_then(|i| {
             let mut lx = Lexer::at(&tail, i + 9);
@@ -178,6 +185,7 @@ impl<'s, 'c> Doc<'s, 'c> {
                 break;
             }
             self.cx.checkpoint()?;
+            self.hidden.clear();
             let trailer = match self.read_section(off) {
                 Ok(t) => t,
                 // Offsets counted from a junk prefix, or a little off.
@@ -192,6 +200,7 @@ impl<'s, 'c> Doc<'s, 'c> {
             {
                 let _ = self.read_section(o);
             }
+            self.hidden.clear();
             if let Some(p) = trailer.get("Prev").and_then(Obj::as_int) {
                 next = u64::try_from(p).ok();
             }
@@ -203,7 +212,7 @@ impl<'s, 'c> Doc<'s, 'c> {
                 }
             }
         }
-        if self.xref.is_empty() {
+        if !self.xref.values().any(|e| *e != Entry::Free) {
             return Err(ExtractError::malformed("empty cross-reference table"));
         }
         Ok(())
@@ -233,37 +242,47 @@ impl<'s, 'c> Doc<'s, 'c> {
         let (trailer, _) = self.parse_at(off, 1 << 16, |lx| {
             found.clear();
             loop {
-                match lx.token()? {
-                    Some(Token::Obj(Obj::Int(start))) => {
-                        let Some(Token::Obj(Obj::Int(count))) = lx.token()? else { return Err(ParseError::Invalid) };
+                match next(lx)? {
+                    Token::Obj(Obj::Int(start)) => {
+                        let Token::Obj(Obj::Int(count)) = next(lx)? else { return Err(ParseError::Invalid) };
                         if !(0..=10_000_000).contains(&count) || start < 0 {
                             return Err(ParseError::Invalid);
                         }
                         for i in 0..count {
-                            let Some(Token::Obj(o)) = lx.token()? else { return Err(ParseError::Invalid) };
-                            let Some(Token::Obj(g)) = lx.token()? else { return Err(ParseError::Invalid) };
-                            let kind = match lx.token()? {
-                                Some(Token::Keyword(k)) => k.first().copied(),
-                                _ => return Err(ParseError::Invalid),
-                            };
-                            if kind == Some(b'n')
-                                && let (Some(o), Some(g)) = (o.as_int(), g.as_int())
-                                && let (Ok(n), Ok(o), Ok(g)) =
-                                    (u32::try_from(start + i), u64::try_from(o), u16::try_from(g))
-                                && o > 0
-                                && found.len() < MAX_OBJECTS
-                            {
-                                found.push((n, Entry::At(o, g)));
+                            let Token::Obj(o) = next(lx)? else { return Err(ParseError::Invalid) };
+                            let Token::Obj(g) = next(lx)? else { return Err(ParseError::Invalid) };
+                            let Token::Keyword(k) = next(lx)? else { return Err(ParseError::Invalid) };
+                            // Past `u32` (or `i64`) the row names no object: skip it.
+                            let Some(n) = start.checked_add(i).and_then(|n| u32::try_from(n).ok()) else { continue };
+                            if found.len() >= MAX_OBJECTS {
+                                continue;
+                            }
+                            match k.first() {
+                                Some(b'f') => found.push((n, Entry::Free)),
+                                Some(b'n') => {
+                                    if let (Some(o), Some(g)) = (o.as_int(), g.as_int())
+                                        && let (Ok(o), Ok(g)) = (u64::try_from(o), u16::try_from(g))
+                                        && o > 0
+                                    {
+                                        found.push((n, Entry::At(o, g)));
+                                    }
+                                }
+                                _ => {}
                             }
                         }
                     }
-                    Some(Token::Keyword(b"trailer")) => return lx.object(),
+                    Token::Keyword(b"trailer") => return lx.object(),
                     _ => return Err(ParseError::Invalid),
                 }
             }
         })?;
         for (n, e) in found {
-            self.xref.entry(n).or_insert(e);
+            if let std::collections::hash_map::Entry::Vacant(v) = self.xref.entry(n) {
+                v.insert(e);
+                if e == Entry::Free {
+                    self.hidden.insert(n);
+                }
+            }
         }
         trailer.as_dict().cloned().ok_or_else(|| ExtractError::malformed("trailer"))
     }
@@ -291,11 +310,12 @@ impl<'s, 'c> Doc<'s, 'c> {
                 let kind = if w[0] == 0 { 1 } else { field(&row[..w[0]]) };
                 let f2 = field(&row[w[0]..w[0] + w[1]]);
                 let f3 = field(&row[w[0] + w[1]..]);
-                let Ok(n) = u32::try_from(start + i) else { continue };
+                let Some(n) = start.checked_add(i).and_then(|n| u32::try_from(n).ok()) else { continue };
                 if self.xref.len() >= MAX_OBJECTS {
                     return Ok(());
                 }
                 let entry = match kind {
+                    0 => Entry::Free,
                     1 if f2 > 0 => Entry::At(f2, u16::try_from(f3).unwrap_or(0)),
                     2 => match (u32::try_from(f2), u32::try_from(f3)) {
                         (Ok(s), Ok(ix)) => Entry::InStream(s, ix),
@@ -303,7 +323,12 @@ impl<'s, 'c> Doc<'s, 'c> {
                     },
                     _ => continue,
                 };
-                self.xref.entry(n).or_insert(entry);
+                // A free row of this section's table yields to its `/XRefStm`.
+                if entry != Entry::Free && self.hidden.remove(&n) {
+                    self.xref.insert(n, entry);
+                } else {
+                    self.xref.entry(n).or_insert(entry);
+                }
             }
         }
         Ok(())
@@ -449,7 +474,7 @@ impl<'s, 'c> Doc<'s, 'c> {
                 _ => Obj::Null,
             },
             Some(Entry::InStream(s, ix)) => self.in_objstm(s, ix, n),
-            None => Obj::Null,
+            Some(Entry::Free) | None => Obj::Null,
         };
         self.depth -= 1;
         let obj = match (&self.crypt, obj) {
@@ -601,9 +626,14 @@ impl<'s, 'c> Doc<'s, 'c> {
         self.stream_decoded(n, &dict, data, max)
     }
 
-    /// Every object number in the table, ascending.
+    /// Objects in use (free entries left out).
+    pub(crate) fn object_count(&self) -> usize {
+        self.xref.values().filter(|e| **e != Entry::Free).count()
+    }
+
+    /// Every object number in use, ascending.
     pub(crate) fn numbers(&self) -> Vec<u32> {
-        let mut v: Vec<u32> = self.xref.keys().copied().collect();
+        let mut v: Vec<u32> = self.xref.iter().filter(|(_, e)| **e != Entry::Free).map(|(n, _)| *n).collect();
         v.sort_unstable();
         v
     }
@@ -623,6 +653,13 @@ pub(crate) fn find(hay: &[u8], needle: &[u8]) -> Option<usize> {
 
 pub(crate) fn rfind(hay: &[u8], needle: &[u8]) -> Option<usize> {
     hay.windows(needle.len()).rposition(|w| w == needle)
+}
+
+/// The next token of a cross-reference table. The buffer ending between
+/// tokens before `trailer` means the window was too small, not that the
+/// table is bad.
+fn next<'a>(lx: &mut Lexer<'a>) -> Result<Token<'a>, ParseError> {
+    lx.token()?.ok_or(ParseError::Incomplete)
 }
 
 /// For `obj` at `at`: the `n g` before it, and where `n` starts.

@@ -135,6 +135,12 @@ pub static RISK_KINDS: &[RiskKind] = &[
     k("destructive_statements", Unsafe, Medium, "SQL that drops or truncates tables or deletes without a condition"),
     k("display_name_spoof", Phishing, High, "Sender display name shows an address other than the real sender"),
     k("double_extension", Phishing, High, "Attachment name hides an executable behind a document extension"),
+    k(
+        "duplicate_entry_names",
+        Obf,
+        Medium,
+        "Archive entries share a name, so unpacking tools disagree on which one they extract",
+    ),
     k("embedded_secret", Data, High, "Credentials or keys found in the content"),
     k("equation_editor_object", Exploit, High, "Equation Editor 3.0 object, a classic Office exploit vector"),
     k("executable_attachment", Act, High, "Attached or embedded file is a program or script"),

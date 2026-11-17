@@ -924,7 +924,7 @@ fn gedcom(cx: &mut Context<'_>, text: &str) {
 fn gtfs(src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
     let zip = Zip::open(src, 1 << 16)?;
     let find =
-        |name: &str| zip.entries.iter().find(|e| e.name.rsplit('/').next() == Some(name)).map(|e| e.name.clone());
+        |name: &str| zip.entries.iter().rev().find(|e| e.name.rsplit('/').next() == Some(name)).map(|e| e.name.clone());
     let read = |src: &mut dyn Source, cx: &mut Context<'_>, name: &str| -> Option<String> {
         let n = find(name)?;
         zip.read_text(src, &n, cx, cx.parse_limit()).and_then(Result::ok)

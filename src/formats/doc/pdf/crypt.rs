@@ -138,10 +138,7 @@ impl Decryptor {
                     return Some(Vec::new());
                 }
                 let mut out = aes_cbc_decrypt(&Aes::new(&k)?, data[..16].try_into().ok()?, &data[16..]);
-                let pad = usize::from(*out.last()?);
-                if (1..=16).contains(&pad) && out.len() >= pad {
-                    out.truncate(out.len() - pad);
-                }
+                unpad(&mut out);
                 out
             }
         })
@@ -471,6 +468,16 @@ fn inv_shift_rows(s: &mut [u8; 16]) {
     }
 }
 
+/// Remove PKCS#7 padding: only when every padding byte holds the pad length,
+/// so a wrong key or damaged data keeps its bytes.
+fn unpad(out: &mut Vec<u8>) {
+    let Some(&last) = out.last() else { return };
+    let pad = usize::from(last);
+    if (1..=16).contains(&pad) && out.len() >= pad && out[out.len() - pad..].iter().all(|&b| b == last) {
+        out.truncate(out.len() - pad);
+    }
+}
+
 fn aes_cbc_decrypt(aes: &Aes, iv: &[u8; 16], data: &[u8]) -> Vec<u8> {
     let mut prev = *iv;
     let mut out = Vec::with_capacity(data.len());
@@ -520,6 +527,27 @@ mod tests {
             aes.decrypt(&mut b);
             assert_eq!(b, plain);
         }
+    }
+
+    #[test]
+    fn padding_is_removed_only_when_every_byte_matches() {
+        let unpadded = |mut v: Vec<u8>| {
+            unpad(&mut v);
+            v
+        };
+        assert_eq!(unpadded(b"notes\x02\x02".to_vec()), b"notes");
+        // A last byte of 2 after a byte that is not 2 is data, not padding.
+        assert_eq!(unpadded(b"notes\x01\x02".to_vec()), b"notes\x01\x02");
+        let mut block = vec![0x10; 16];
+        block[14] = 0x0f;
+        assert_eq!(unpadded(block.clone()), block);
+        assert_eq!(unpadded(vec![0x10; 16]), b"");
+        // Through AES-CBC: a whole padding block comes off, data stays.
+        let aes = Aes::new(&[7; 16]).unwrap();
+        let mut plain = b"Harbour notes\x01\x02\x02".to_vec();
+        plain.extend_from_slice(&[0x10; 16]);
+        let enc = aes_cbc_encrypt(&aes, [3; 16], &plain);
+        assert_eq!(unpadded(aes_cbc_decrypt(&aes, &[3; 16], &enc)), b"Harbour notes\x01\x02\x02");
     }
 
     #[test]

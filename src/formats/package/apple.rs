@@ -87,6 +87,7 @@ impl Extractor for Ipa {
     #[allow(clippy::too_many_lines)] // Info.plist, provisioning profile, bundle contents
     fn extract(&self, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
         let zip = Zip::open(src, MAX_ENTRIES)?;
+        zip.flag_duplicates(cx);
         let app = app_dir(zip.entries.iter().map(|e| e.name.as_str()))
             .ok_or_else(|| ExtractError::malformed("no Payload/<App>.app folder"))?;
         let mut pkg = Package::new("ios");

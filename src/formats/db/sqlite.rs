@@ -167,6 +167,8 @@ pub(crate) struct Pager<'s> {
     max_reads: usize,
     /// The budget ran out somewhere.
     pub exhausted: bool,
+    /// Leaf cells whose payload could not be read (skipped, the walk goes on).
+    pub cells_skipped: u64,
 }
 
 impl Pager<'_> {
@@ -331,7 +333,12 @@ impl Pager<'_> {
             } else if kind == 13 || kind == 10 {
                 for i in 0..cells {
                     let Some(c) = page.get(ptrs + 2 * i..ptrs + 2 * i + 2) else { return false };
-                    let Some(p) = self.payload(&page, be_usize(c), kind, want) else { return false };
+                    let Some(p) = self.payload(&page, be_usize(c), kind, want) else {
+                        // One damaged cell (a payload past the page, a broken
+                        // overflow chain) loses that row, not the rest.
+                        self.cells_skipped += 1;
+                        continue;
+                    };
                     if !f(&p) {
                         return false;
                     }
@@ -551,18 +558,27 @@ impl Extractor for Sqlite {
         }
         cx.format_set("free_pages", u32_at(36));
         let reserved = usize::from(h[20]);
+        // The format requires at least 480 usable bytes per page; the cell
+        // arithmetic below assumes it. SQLite itself refuses such a file.
+        let usable = page_size - reserved;
+        if usable < 480 {
+            return Err(ExtractError::malformed(format!(
+                "usable page size {usable} ({page_size} less {reserved} reserved) is below the minimum of 480"
+            )));
+        }
         let max_reads = (cx.parse_limit() / page_size).max(4);
         let mut db = Db {
             pager: Pager {
                 src,
                 page_size,
-                usable: page_size.saturating_sub(reserved).max(480),
+                usable,
                 page_count: page_count.min(file_pages.max(1)),
                 encoding,
                 cache: HashMap::new(),
                 reads: 0,
                 max_reads,
                 exhausted: false,
+                cells_skipped: 0,
             },
             objects: Vec::new(),
         };
@@ -571,6 +587,10 @@ impl Extractor for Sqlite {
         apps::identify(&mut db, app_id, u32_at(60), cx);
         if db.pager.exhausted {
             cx.warn("the page budget ran out: some counts are estimates or missing");
+        }
+        if db.pager.cells_skipped > 0 {
+            cx.format_set("cells_skipped", db.pager.cells_skipped);
+            cx.warn(format!("{} damaged cells skipped", db.pager.cells_skipped));
         }
         Ok(())
     }
@@ -753,6 +773,104 @@ mod tests {
         assert_eq!(varint(&[0x81, 0x00], &mut at), Some(128));
         let mut at = 0;
         assert_eq!(varint(&[0xff; 9], &mut at), Some(u64::MAX));
+    }
+
+    fn varint_bytes(v: usize) -> Vec<u8> {
+        assert!(v < 1 << 14);
+        if v < 0x80 {
+            vec![u8::try_from(v).unwrap()]
+        } else {
+            vec![0x80 | u8::try_from(v >> 7).unwrap(), u8::try_from(v & 0x7f).unwrap()]
+        }
+    }
+
+    /// A `sqlite_schema` row for table `name` rooted at page 2.
+    fn schema_row(name: &str) -> Vec<u8> {
+        let sql = format!("CREATE TABLE {name} (id INTEGER)");
+        let texts = ["table", name, name];
+        let mut types = Vec::new();
+        for t in texts {
+            types.extend(varint_bytes(t.len() * 2 + 13));
+        }
+        types.push(1); // rootpage: a 1-byte integer
+        types.extend(varint_bytes(sql.len() * 2 + 13));
+        let mut rec = varint_bytes(types.len() + 1);
+        rec.extend(types);
+        for t in texts {
+            rec.extend_from_slice(t.as_bytes());
+        }
+        rec.push(2);
+        rec.extend_from_slice(sql.as_bytes());
+        rec
+    }
+
+    /// A two-page database: page 1 holds the schema leaf with `cells`
+    /// (payload length, record), page 2 an empty table leaf.
+    fn database(page: usize, reserved: u8, cells: &[(usize, Vec<u8>)]) -> Vec<u8> {
+        let mut db = vec![0u8; page * 2];
+        db[..16].copy_from_slice(b"SQLite format 3\0");
+        db[16..18].copy_from_slice(&u16::try_from(page).unwrap().to_be_bytes());
+        db[18] = 1;
+        db[19] = 1;
+        db[20] = reserved;
+        db[21..24].copy_from_slice(&[64, 32, 32]);
+        db[27] = 1; // change counter
+        db[31] = 2; // pages
+        db[47] = 4; // schema format
+        db[59] = 1; // UTF-8
+        db[95] = 1; // version-valid-for = change counter
+        let mut end = page - usize::from(reserved);
+        let mut ptrs = Vec::new();
+        for (rowid, (len, rec)) in cells.iter().enumerate() {
+            let mut cell = varint_bytes(*len);
+            cell.extend(varint_bytes(rowid + 1));
+            cell.extend_from_slice(rec);
+            end -= cell.len();
+            db[end..end + cell.len()].copy_from_slice(&cell);
+            ptrs.push(end);
+        }
+        db[100] = 13;
+        db[103..105].copy_from_slice(&u16::try_from(cells.len()).unwrap().to_be_bytes());
+        db[105..107].copy_from_slice(&u16::try_from(end).unwrap().to_be_bytes());
+        for (i, p) in ptrs.iter().enumerate() {
+            db[108 + 2 * i..110 + 2 * i].copy_from_slice(&u16::try_from(*p).unwrap().to_be_bytes());
+        }
+        db[page] = 13;
+        db[page + 5..page + 7].copy_from_slice(&u16::try_from(page).unwrap().to_be_bytes());
+        db
+    }
+
+    fn table_names(r: &crate::plugin::Report) -> Vec<String> {
+        r.format["sqlite"]["tables"]
+            .as_array()
+            .into_iter()
+            .flatten()
+            .filter_map(|t| t["name"].as_str())
+            .map(str::to_string)
+            .collect()
+    }
+
+    #[test]
+    fn reserved_bytes_shrink_the_usable_page() {
+        let row = schema_row("berths");
+        let full = crate::plugin::testing::report_for("a.sqlite", &database(512, 0, &[(row.len(), row.clone())]));
+        let reserved = crate::plugin::testing::report_for("b.sqlite", &database(512, 32, &[(row.len(), row.clone())]));
+        assert_eq!(table_names(&full), ["berths"]);
+        assert_eq!(table_names(&reserved), table_names(&full));
+        // 512 - 80 = 432 usable bytes: not a valid database, not read as one.
+        let small = crate::plugin::testing::report_for("c.sqlite", &database(512, 80, &[(row.len(), row)]));
+        let run = small.diagnostics.extractors.iter().find(|r| r.id == "db.sqlite").unwrap();
+        assert!(run.error.as_deref().is_some_and(|e| e.contains("below the minimum of 480")), "{run:?}");
+    }
+
+    #[test]
+    fn a_damaged_cell_skips_one_row_not_the_rest() {
+        let (bad, good) = (schema_row("ghosts"), schema_row("berths"));
+        // The first cell claims 400 bytes; the page ends well before.
+        let db = database(512, 0, &[(400, bad), (good.len(), good)]);
+        let r = crate::plugin::testing::report_for("d.sqlite", &db);
+        assert_eq!(table_names(&r), ["berths"], "{:?}", r.format);
+        assert_eq!(r.format["sqlite"]["cells_skipped"], 1);
     }
 
     crate::fixture_tests!("sqlite", "sqlite_wal", "sqlite_journal");

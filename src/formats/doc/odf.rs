@@ -227,6 +227,7 @@ impl Extractor for Odf {
             return Ok(());
         }
         let zip = Zip::open(src, MAX_ENTRIES)?;
+        zip.flag_duplicates(cx);
         let max = cx.parse_limit();
         if let Some(e) = zip.entries.first()
             && e.name == "mimetype"

@@ -16,10 +16,15 @@
 //! "RDB File Format"; PostgreSQL `pg_backup_archiver.c`; MySQL `.frm` and
 //! InnoDB `fil0fil.h` / `fsp0fsp.h`; H2 `MVStore` file header.
 
+use std::fmt::Write as _;
+
 use serde_json::{Map, Value};
 
 use super::unix_time;
-use crate::plugin::{Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Probe, Sniff, Source};
+use crate::plugin::{
+    Codec, Context, Cost, End, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Probe, Sniff, Source, codec,
+    redact_sensitive, truncate_chars,
+};
 
 /// Extractor for database engine files read from their headers.
 pub struct Engines;
@@ -321,15 +326,20 @@ fn varint(b: &[u8], at: &mut usize) -> Option<u64> {
 }
 
 /// The key / value entries of an uncompressed block (prefix-compressed
-/// keys, restart array at the end).
+/// keys, restart array at the end), at most 4096.
 fn block_entries(b: &[u8]) -> Vec<(Vec<u8>, Vec<u8>)> {
+    block_entries_up_to(b, 4096)
+}
+
+/// [`block_entries`], at most `max`.
+fn block_entries_up_to(b: &[u8], max: usize) -> Vec<(Vec<u8>, Vec<u8>)> {
     let mut out = Vec::new();
     let Some(n) = b.len().checked_sub(4).and_then(|at| usize::try_from(le(&b[at..])).ok()) else { return out };
     let n = n.min(b.len() / 4);
     let end = b.len().saturating_sub(4 + 4 * n);
     let mut at = 0;
     let mut key: Vec<u8> = Vec::new();
-    while at < end && out.len() < 4096 {
+    while at < end && out.len() < max {
         let (Some(shared), Some(unshared), Some(vlen)) = (varint(b, &mut at), varint(b, &mut at), varint(b, &mut at))
         else {
             break;
@@ -367,6 +377,10 @@ fn sorted_table(src: &mut dyn Source, cx: &mut Context<'_>) -> Option<()> {
     };
     cx.format_set("table_format", kind);
     if magic == LEVELDB_MAGIC {
+        let footer = footer.to_vec();
+        if leveldb(src, cx, &footer).is_none() {
+            cx.warn("LevelDB index block unreadable");
+        }
         return Some(());
     }
     let version = le(&footer[footer.len() - 12..footer.len() - 8]);
@@ -414,6 +428,77 @@ fn sorted_table(src: &mut dyn Source, cx: &mut Context<'_>) -> Option<()> {
         }
     }
     cx.format_set("properties", Value::Object(out));
+    Some(())
+}
+
+/// A table block by its handle: `size` bytes of contents, then a trailer
+/// whose first byte is the compression (0 none, 1 Snappy).
+fn table_block(src: &mut dyn Source, off: u64, size: u64, max: usize) -> Option<Vec<u8>> {
+    let size = usize::try_from(size).ok().filter(|&s| s <= max)?;
+    let raw = read(src, off, size.checked_add(1)?)?;
+    let (contents, kind) = (raw.get(..size)?, *raw.get(size)?);
+    match kind {
+        0 => Some(contents.to_vec()),
+        1 => {
+            let d = codec::decode(contents, Codec::SnappyBlock, max, src.budget()).ok()?;
+            (d.end == End::Complete).then_some(d.data)
+        }
+        _ => None,
+    }
+}
+
+/// A LevelDB key for the report: the user key (the internal key less its
+/// 8-byte sequence and type), as text when it is text, else hex.
+fn leveldb_key(cx: &Context<'_>, internal: &[u8]) -> String {
+    let user = &internal[..internal.len().saturating_sub(8)];
+    let shown = match std::str::from_utf8(user) {
+        Ok(t) if !t.chars().any(char::is_control) => truncate_chars(t, 200),
+        _ => user.iter().take(64).fold(String::new(), |mut hex, b| {
+            let _ = write!(hex, "{b:02x}");
+            hex
+        }),
+    };
+    if cx.privacy_strict() { redact_sensitive(&shown).into_owned() } else { shown }
+}
+
+/// A LevelDB table past its magic: the footer's metaindex and index
+/// handles, the index block (one entry per data block), the first and last
+/// keys, and the entry count when the data blocks fit the parse limit.
+fn leveldb(src: &mut dyn Source, cx: &mut Context<'_>, footer: &[u8]) -> Option<()> {
+    let mut at = 0;
+    let handles: Vec<u64> = (0..4).map(|_| varint(footer, &mut at)).collect::<Option<_>>()?;
+    let handle = |o: u64, s: u64| serde_json::json!({ "offset": o, "size": s });
+    cx.format_set("metaindex_handle", handle(handles[0], handles[1]));
+    cx.format_set("index_handle", handle(handles[2], handles[3]));
+    let max = cx.parse_limit();
+    let index = table_block(src, handles[2], handles[3], max)?;
+    let blocks: Vec<(u64, u64)> = block_entries_up_to(&index, 1 << 20)
+        .into_iter()
+        .filter_map(|(_, v)| {
+            let mut at = 0;
+            Some((varint(&v, &mut at)?, varint(&v, &mut at)?))
+        })
+        .collect();
+    cx.format_set("data_blocks", blocks.len());
+    let (&(first_off, first_size), &(last_off, last_size)) = (blocks.first()?, blocks.last()?);
+    if let Some((k, _)) =
+        table_block(src, first_off, first_size, max).and_then(|b| block_entries(&b).into_iter().next())
+    {
+        cx.format_set("first_key", leveldb_key(cx, &k));
+    }
+    if let Some((k, _)) = table_block(src, last_off, last_size, max).and_then(|b| block_entries(&b).pop()) {
+        cx.format_set("last_key", leveldb_key(cx, &k));
+    }
+    // Every entry, while the data blocks fit the parse limit.
+    let data: u64 = blocks.iter().map(|(_, s)| s).sum();
+    if data <= max as u64 {
+        let mut entries = 0usize;
+        for &(o, s) in &blocks {
+            cx.checkpoint().ok()?;
+            entries += block_entries(&table_block(src, o, s, max)?).len();
+        }
+        cx.format_set("entries", entries);
+    }
     Some(())
 }
 

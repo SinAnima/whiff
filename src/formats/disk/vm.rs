@@ -172,9 +172,10 @@ impl BlockMap for VdiMap {
         Ok(if i >= 0xFFFF_FFFE {
             Block::Zero
         } else {
-            u64::from(i)
-                .checked_mul(self.block + self.extra)
-                .map_or(Block::Zero, |o| Block::At(self.data.saturating_add(o) + self.extra))
+            Block::At(super::offset(
+                super::offset(self.data, super::scaled(u64::from(i), super::offset(self.block, self.extra)?)?)?,
+                self.extra,
+            )?)
         })
     }
 }
@@ -378,7 +379,11 @@ impl BlockMap for VhdMap {
         }
         let e = entry(src, self.bat + 4 * n, 4)?;
         let sector = u32::from_be_bytes([e[0], e[1], e[2], e[3]]);
-        Ok(if sector == u32::MAX { Block::Zero } else { Block::At(u64::from(sector) * 512 + self.bitmap) })
+        Ok(if sector == u32::MAX {
+            Block::Zero
+        } else {
+            Block::At(super::offset(u64::from(sector) * 512, self.bitmap)?)
+        })
     }
 }
 

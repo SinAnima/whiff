@@ -6,8 +6,21 @@ keep the schema version.
 
 ## Unreleased
 
-Safety and correctness fixes from the 0.8.0 review. No API change; the
-report only gains warnings and corrected values.
+Safety and correctness fixes from the 0.8.0 review. No API change. The
+report gains warnings, one risk kind and a few keys, and some values are
+corrected.
+
+### Added
+
+- **Risk `duplicate_entry_names`** (obfuscation, medium): two entries of a
+  ZIP archive share a name, so unpacking tools disagree on which one they
+  extract. Raised for ZIP archives, Office and OpenDocument files, EPUB,
+  JAR, APK and IPA packages.
+- **LevelDB tables** are read past the magic: `metaindex_handle`,
+  `index_handle`, `data_blocks`, `first_key`, `last_key`, and `entries`
+  when the data blocks fit `max_parse_bytes`. Keys go through
+  `redact_sensitive` under strict privacy.
+- **SQLite**: `cells_skipped` counts damaged cells that were skipped.
 
 ### Fixed
 
@@ -44,6 +57,40 @@ report only gains warnings and corrected values.
   `inflate_limit`). **`Context::inflate_prefix`** returns what decoded
   when a cap is reached instead of an error. Both decode in 1 MiB steps
   and stop at the deadline.
+- **PDF incremental updates**: an object deleted by a newer section (a
+  free entry in a table, type 0 in a cross-reference stream) is no longer
+  read from an older one. Before, a deleted script, attachment or metadata
+  stream was still reported. A hybrid file's table may still mark objects
+  free that its `/XRefStm` places.
+- **PDF cross-reference tables** that the 64 KiB read window splits between
+  two rows are read instead of being rebuilt by the repair scan, which
+  reads only `max_parse_bytes` from the start. A subsection numbered near
+  `i64::MAX` is skipped instead of overflowing.
+- **PDF AES strings** lose their padding only when every padding byte holds
+  the pad length (PKCS#7), not on the last byte alone.
+- **ZIP entries with the same name**: the last one is read, as an update
+  appends the new member after the old. Before, a Word, ODF or EPUB file
+  updated in place showed its old text and properties.
+- **ZIP times**: the NTFS time is used only when there is no Unix
+  extended timestamp, and only between 1980 and 2100 (a zero NTFS time is
+  1601).
+- **ZIP AES strength** 0 or above 3 is reported as `AES (unknown
+  strength)`, not AES-256. In the library, `ZipEntry::aes` gives 0 bits
+  for it.
+- **ZIP symbolic-link targets** hide the user's profile folder and
+  personal data under strict privacy.
+- **Virtual disks**: a block offset that overflows fails the read instead
+  of wrapping onto another part of the image. A compressed block that does
+  not decode fully (the decompression budget, a cut stream) fails the read
+  instead of reading as zeros, and is not cached.
+- **SQLite**: a page whose usable size is below 480 bytes (page size less
+  reserved bytes) is reported as malformed, as SQLite does, instead of
+  being read with a larger usable size. A damaged cell loses that row,
+  not every row after it.
+- **Format redirects** (a ZIP found to be a DOCX …) merge the container's
+  keys into what the real format already has instead of replacing it.
+- Extractor error messages are capped at 300 characters: they can quote
+  names from the file.
 
 - Four extractor panics found by the nightly fuzzer. The engine contained
   each one and reported the extractor as `internal`, so the rest of the

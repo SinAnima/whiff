@@ -460,7 +460,7 @@ fn anki(src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> 
     // The SQLite collection (anki2 / anki21) as a child; anki21b is zstd.
     if let Some(c) = collection.filter(|c| *c != "collection.anki21b")
         && cx.options().limits.max_depth > 0
-        && let Some(e) = zip.entries.iter().find(|e| e.name == c).cloned()
+        && let Some(e) = zip.find(c).cloned()
     {
         let data = zip.read(src, &e, cx, 64 << 20)?;
         cx.emit_child(c, data)?;
