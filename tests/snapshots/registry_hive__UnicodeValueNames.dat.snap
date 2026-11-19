@@ -1,0 +1,136 @@
+---
+source: src/formats/forensic/registry.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "UnicodeValueNames.dat",
+    "stem": "UnicodeValueNames",
+    "extension": "dat"
+  },
+  "identification": {
+    "format": "registry_hive",
+    "name": "Windows registry hive",
+    "mime": "application/octet-stream",
+    "family": "forensic",
+    "confidence": 0.81,
+    "detected_by": "magic",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "registry_hive",
+        "confidence": 0.81
+      },
+      {
+        "format": "binary",
+        "confidence": 0.35
+      }
+    ],
+    "extractor": "forensic.registry"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 8192
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2026-10-07T10:52:53Z",
+        "source": "forensic.registry",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2026-10-07T10:52:53Z",
+    "latest": "2026-10-07T10:52:53Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 8192,
+    "entropy": 0.602,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "f6329fcd53d89e52835fa4ee825f7b3aba2cf861bb876b7a51965cf076dcb5d6",
+    "blake3": "1174069c3ba1a6ff6ee107e624f8294be37becd99545bd02b33c4477aa4a08d7"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "registry_hive": {
+      "version": "1.3",
+      "dirty": false,
+      "last_written": "2026-10-07T10:52:53Z",
+      "root_key": "ApUnicodeValueNames",
+      "hive": "unknown",
+      "root_subkeys": [
+        "日本語キー"
+      ],
+      "keys": 2,
+      "values": 4,
+      "max_depth": 1,
+      "newest_key_written": "2026-10-07T10:52:53Z"
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.registry",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

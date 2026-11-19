@@ -1,0 +1,1860 @@
+---
+source: src/formats/package/tarball.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-harbour.unitypackage",
+    "stem": "saltmere-harbour",
+    "extension": "unitypackage"
+  },
+  "identification": {
+    "format": "unity_package",
+    "name": "Unity asset package",
+    "mime": "application/gzip",
+    "family": "package",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "unity_package",
+        "confidence": 0.99
+      },
+      {
+        "format": "gzip",
+        "confidence": 0.72
+      }
+    ],
+    "extractor": "package.tarball"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 632
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-09-01T12:00:00Z",
+        "source": "package.tarball",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-09-01T12:00:00Z",
+    "latest": "2025-09-01T12:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 632,
+    "entropy": 7.407,
+    "entropy_scope": "file",
+    "container": {
+      "entries": 19,
+      "uncompressed_bytes": 678,
+      "ratio": 1.0727848101265822
+    }
+  },
+  "integrity": {
+    "sha256": "8732faed79b80fe000acd869d0d6c1d9ce0e064c413ad05ba612917d7ef18d73",
+    "blake3": "ea3deede63ce8d69095a07e3b424b24842f36782c9cd673fc661da9bc8decd38"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "unity_package": {
+      "ecosystem": "unity",
+      "compression": "gzip",
+      "assets": 5,
+      "asset_kinds": {
+        "(folder or none)": 1,
+        "cs": 2,
+        "mat": 1,
+        "unity": 1
+      },
+      "folders": {
+        "Assets": 1,
+        "Assets/Saltmere": 4
+      },
+      "asset_paths": [
+        "Assets/Saltmere",
+        "Assets/Saltmere/Materials/Harbour.mat",
+        "Assets/Saltmere/Scenes/Quay.unity",
+        "Assets/Saltmere/Scripts/Bell.cs",
+        "Assets/Saltmere/Scripts/Tide.cs"
+      ],
+      "files": 14,
+      "directories": 5,
+      "compressed_bytes": 678,
+      "file_types": {
+        "(none)": 9,
+        "meta": 5
+      },
+      "top_level": [
+        "4a1b2c3d4e5f60718293a4b5c6d7e8f9/",
+        "5b2c3d4e5f60718293a4b5c6d7e8f90a/",
+        "6c3d4e5f60718293a4b5c6d7e8f90a1b/",
+        "7d4e5f60718293a4b5c6d7e8f90a1b2c/",
+        "3f2a9c4e5b6d7e8f90a1b2c3d4e5f601/"
+      ],
+      "modified_range": [
+        "2025-09-01T12:00:00Z",
+        "2025-09-01T12:00:00Z"
+      ],
+      "entries": [
+        {
+          "path": "3f2a9c4e5b6d7e8f90a1b2c3d4e5f601/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "3f2a9c4e5b6d7e8f90a1b2c3d4e5f601/asset.meta",
+          "size_bytes": 60,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "3f2a9c4e5b6d7e8f90a1b2c3d4e5f601/pathname",
+          "size_bytes": 18,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "4a1b2c3d4e5f60718293a4b5c6d7e8f9/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "4a1b2c3d4e5f60718293a4b5c6d7e8f9/asset",
+          "size_bytes": 43,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "4a1b2c3d4e5f60718293a4b5c6d7e8f9/asset.meta",
+          "size_bytes": 60,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "4a1b2c3d4e5f60718293a4b5c6d7e8f9/pathname",
+          "size_bytes": 34,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "5b2c3d4e5f60718293a4b5c6d7e8f90a/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "5b2c3d4e5f60718293a4b5c6d7e8f90a/asset",
+          "size_bytes": 44,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "5b2c3d4e5f60718293a4b5c6d7e8f90a/asset.meta",
+          "size_bytes": 60,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "5b2c3d4e5f60718293a4b5c6d7e8f90a/pathname",
+          "size_bytes": 34,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "6c3d4e5f60718293a4b5c6d7e8f90a1b/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "6c3d4e5f60718293a4b5c6d7e8f90a1b/asset",
+          "size_bytes": 57,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "6c3d4e5f60718293a4b5c6d7e8f90a1b/asset.meta",
+          "size_bytes": 60,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "6c3d4e5f60718293a4b5c6d7e8f90a1b/pathname",
+          "size_bytes": 40,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "7d4e5f60718293a4b5c6d7e8f90a1b2c/",
+          "type": "directory",
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "755"
+        },
+        {
+          "path": "7d4e5f60718293a4b5c6d7e8f90a1b2c/asset",
+          "size_bytes": 72,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "7d4e5f60718293a4b5c6d7e8f90a1b2c/asset.meta",
+          "size_bytes": 60,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        },
+        {
+          "path": "7d4e5f60718293a4b5c6d7e8f90a1b2c/pathname",
+          "size_bytes": 36,
+          "modified": "2025-09-01T12:00:00Z",
+          "mode": "644"
+        }
+      ]
+    }
+  },
+  "embedded": [
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "asset.meta",
+        "stem": "asset",
+        "extension": "meta"
+      },
+      "identification": {
+        "format": "unity_meta",
+        "name": "Unity asset metadata",
+        "mime": "application/octet-stream",
+        "family": "data.binser",
+        "confidence": 0.99,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.unity"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 60
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 60,
+        "entropy": 4.796,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 60,
+          "chars": 60,
+          "words": 4,
+          "lines": 2,
+          "max_line_length": 38,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "f22e92e941ff369c0c507b25280785ae9343be219bb3cf501a59df67d4799dcf",
+        "blake3": "45e0b4546b74a750a874e94ae7c16bd97239f15c363b7b3f9b33f104fba97d7a"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "unity_meta": {
+          "file_format_version": "2",
+          "guid": "3f2a9c4e5b6d7e8f90a1b2c3d4e5f601"
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.unity",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "pathname",
+        "stem": "pathname"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.3,
+        "detected_by": "heuristic",
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 18
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 18,
+        "entropy": 3.419,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 18,
+          "chars": 18,
+          "words": 2,
+          "lines": 1,
+          "max_line_length": 15,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "59dad3a54f81672298c69d3ada768257df69ddc4b3b8d5d8f7fa86bcce11bdfc",
+        "blake3": "53502bb97a162168d1c417f963afef0f1bd1aebc880cce1dd8fe46f7251cef57"
+      },
+      "content": {
+        "excerpt": "Assets/Saltmere 00"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "asset",
+        "stem": "asset"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.3,
+        "detected_by": "heuristic",
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 43
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 43,
+        "entropy": 4.161,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 43,
+          "chars": 43,
+          "words": 8,
+          "lines": 1,
+          "max_line_length": 42,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "8c5d0cb960788c46162ebd1953ee13b8737d4eb82da78e2147b6db593ee4dc70",
+        "blake3": "2b623673e14b3ede75d9bee228ef25082366d7408934083ec39b21f13c77be52"
+      },
+      "content": {
+        "excerpt": "public class Tide { public float Height; }"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "asset.meta",
+        "stem": "asset",
+        "extension": "meta"
+      },
+      "identification": {
+        "format": "unity_meta",
+        "name": "Unity asset metadata",
+        "mime": "application/octet-stream",
+        "family": "data.binser",
+        "confidence": 0.99,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.unity"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 60
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 60,
+        "entropy": 4.831,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 60,
+          "chars": 60,
+          "words": 4,
+          "lines": 2,
+          "max_line_length": 38,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "f92ef7d28b0d8fda19c842a61ad2e6e6f3ccdd2e4ac6861d83c8b9e02215defd",
+        "blake3": "a8066ba7aa0e70cab4e982ed6e15a59f954af3d0e405678c12c8cca67c73cfb5"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "unity_meta": {
+          "file_format_version": "2",
+          "guid": "4a1b2c3d4e5f60718293a4b5c6d7e8f9"
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.unity",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "pathname",
+        "stem": "pathname"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.3,
+        "detected_by": "heuristic",
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 34
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 34,
+        "entropy": 3.937,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 34,
+          "chars": 34,
+          "words": 2,
+          "lines": 1,
+          "max_line_length": 31,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "0d5a9dccca145d55ea85836c53dffb4a650f4c1a67f090fa214d11040ade281d",
+        "blake3": "588ce2341b776b0fb086cad2393069531333558b0360b0c4c3a1db1d997548d0"
+      },
+      "content": {
+        "excerpt": "Assets/Saltmere/Scripts/Tide.cs 00"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "asset",
+        "stem": "asset"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.3,
+        "detected_by": "heuristic",
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 44
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 44,
+        "entropy": 4.088,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 44,
+          "chars": 44,
+          "words": 9,
+          "lines": 1,
+          "max_line_length": 43,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "bb6c01d944f89ba73a8c230c76216932bf851ab325fb34fcdeba816e119e756a",
+        "blake3": "ac7f6a0dea8aca9a2f5b645274e606cfb8d70b7ff357861fac120080e8909aa6"
+      },
+      "content": {
+        "excerpt": "public class Bell { public void Ring() {} }"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "asset.meta",
+        "stem": "asset",
+        "extension": "meta"
+      },
+      "identification": {
+        "format": "unity_meta",
+        "name": "Unity asset metadata",
+        "mime": "application/octet-stream",
+        "family": "data.binser",
+        "confidence": 0.99,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.unity"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 60
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 60,
+        "entropy": 4.831,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 60,
+          "chars": 60,
+          "words": 4,
+          "lines": 2,
+          "max_line_length": 38,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "9384d6dbd81f7ac4ed51102b99fd145ac4332c14fc6d20b318117cef91404789",
+        "blake3": "271061290a3d73aeac937138f63661a3405054112e41b65ba31e043ca699bc01"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "unity_meta": {
+          "file_format_version": "2",
+          "guid": "5b2c3d4e5f60718293a4b5c6d7e8f90a"
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.unity",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "pathname",
+        "stem": "pathname"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.3,
+        "detected_by": "heuristic",
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 34
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 34,
+        "entropy": 3.856,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 34,
+          "chars": 34,
+          "words": 2,
+          "lines": 1,
+          "max_line_length": 31,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "f7323089be90dfb0ce44b0c40e71e97f3e85112715b78b740f3818f8bbe3394c",
+        "blake3": "f7381ceea1847c5a5ada7eb2a4031e29c0f1d8bdc9a59a6d43dca961bd68e51c"
+      },
+      "content": {
+        "excerpt": "Assets/Saltmere/Scripts/Bell.cs 00"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "asset",
+        "stem": "asset"
+      },
+      "identification": {
+        "format": "yaml",
+        "name": "YAML",
+        "mime": "application/yaml",
+        "family": "data.yaml",
+        "confidence": 0.8,
+        "detected_by": "sniff",
+        "encoding": "us-ascii",
+        "extractor": "data.yaml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 57
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 57,
+        "entropy": 4.524,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 57,
+          "chars": 57,
+          "words": 8,
+          "lines": 4,
+          "max_line_length": 18,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "0375ba01aa3cc18206224ba37a5b4095111b5e063f7520aaa7f4b5e304889097",
+        "blake3": "588b224dfd277eae047d13847ad328d36cb9da72dcffdae6f655da2503e76358"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "yaml": {
+          "anchors": 1,
+          "aliases": 0,
+          "valid": false,
+          "error": "error: line 2 column 5: the handle wasn't declared\n --> <input>:2:5\n  |\n1 | %YAML 1.1\n2 | --- !u!21 &2100000\n  |     ^ the handle wasn't declared\n3 | Material:\n4 |   m_Name: Harbour\n  |"
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.yaml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "asset.meta",
+        "stem": "asset",
+        "extension": "meta"
+      },
+      "identification": {
+        "format": "unity_meta",
+        "name": "Unity asset metadata",
+        "mime": "application/octet-stream",
+        "family": "data.binser",
+        "confidence": 0.99,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.unity"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 60
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 60,
+        "entropy": 4.844,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 60,
+          "chars": 60,
+          "words": 4,
+          "lines": 2,
+          "max_line_length": 38,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "962b2661f160e2dc7375d20cd16be85a436de424e27b46b04906dc9c675da336",
+        "blake3": "d116bbd47380fc96efe52646000c2bf38233a5d6fb5c3784d8ff462a9195aaf1"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "unity_meta": {
+          "file_format_version": "2",
+          "guid": "6c3d4e5f60718293a4b5c6d7e8f90a1b"
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.unity",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "pathname",
+        "stem": "pathname"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.3,
+        "detected_by": "heuristic",
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 40
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 40,
+        "entropy": 3.963,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 40,
+          "chars": 40,
+          "words": 2,
+          "lines": 1,
+          "max_line_length": 37,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "526ca600cc4abad098fa06b9ae8277ce134b83db9cc59bd98a515e8be9b59f86",
+        "blake3": "2383e983f5e9aebe0c156501c125a62a15912f9a77b9c6a7cf041fd6f82f0168"
+      },
+      "content": {
+        "excerpt": "Assets/Saltmere/Materials/Harbour.mat 00"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "asset",
+        "stem": "asset"
+      },
+      "identification": {
+        "format": "yaml",
+        "name": "YAML",
+        "mime": "application/yaml",
+        "family": "data.yaml",
+        "confidence": 0.8,
+        "detected_by": "sniff",
+        "encoding": "us-ascii",
+        "extractor": "data.yaml"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 72
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 72,
+        "entropy": 4.943,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 72,
+          "chars": 72,
+          "words": 8,
+          "lines": 4,
+          "max_line_length": 25,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "fc2fc42579358261ced9dc3f6e7d9861fd8ddc3eb7298dfdcaf1b507f21a03aa",
+        "blake3": "2fe513b28583aef5fe8859ef0f54a41cb38c2cbe4e54d47edc35fd36ff22beb0"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "yaml": {
+          "anchors": 1,
+          "aliases": 0,
+          "valid": false,
+          "error": "error: line 2 column 5: the handle wasn't declared\n --> <input>:2:5\n  |\n1 | %YAML 1.1\n2 | --- !u!29 &1\n  |     ^ the handle wasn't declared\n3 | OcclusionCullingSettings:\n4 |   m_ObjectHideFlags: 0\n  |"
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.yaml",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "asset.meta",
+        "stem": "asset",
+        "extension": "meta"
+      },
+      "identification": {
+        "format": "unity_meta",
+        "name": "Unity asset metadata",
+        "mime": "application/octet-stream",
+        "family": "data.binser",
+        "confidence": 0.99,
+        "detected_by": "sniff",
+        "extension_matches": true,
+        "encoding": "us-ascii",
+        "extractor": "data.unity"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 60
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 60,
+        "entropy": 4.831,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 60,
+          "chars": 60,
+          "words": 4,
+          "lines": 2,
+          "max_line_length": 38,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "d61dc81e05f275cd8402e26d97fb49699ebbb36a752a8873f99d7c8f37011251",
+        "blake3": "ec306af12dc119b489f3b9a5bf66ffe425fe8113f15adcc5fee511e3028e6b19"
+      },
+      "content": {},
+      "metadata": {},
+      "format": {
+        "unity_meta": {
+          "file_format_version": "2",
+          "guid": "7d4e5f60718293a4b5c6d7e8f90a1b2c"
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "data.unity",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    },
+    {
+      "whiff": {
+        "version": "[version]",
+        "schema": "whiff/1",
+        "profile": "standard"
+      },
+      "source": {
+        "name": "pathname",
+        "stem": "pathname"
+      },
+      "identification": {
+        "format": "text",
+        "name": "Plain text",
+        "mime": "text/plain",
+        "family": "text.plain",
+        "confidence": 0.3,
+        "detected_by": "heuristic",
+        "encoding": "us-ascii",
+        "extractor": "text.plain"
+      },
+      "system": {
+        "kind": "memory",
+        "size_bytes": 36
+      },
+      "temporal": {
+        "filesystem": {}
+      },
+      "security": {},
+      "rights": {},
+      "physical": {
+        "size_bytes": 36,
+        "entropy": 4.028,
+        "entropy_scope": "file",
+        "text": {
+          "bytes": 36,
+          "chars": 36,
+          "words": 2,
+          "lines": 1,
+          "max_line_length": 33,
+          "line_endings": "lf",
+          "bom": false,
+          "blank_lines": 0
+        }
+      },
+      "integrity": {
+        "sha256": "807e25edc02a5351a4d28b89bfa985c1cc3f8b69eb134b6b46984cd0d64f935b",
+        "blake3": "babfbd53727047baf4801951427d070d93c1a1fba6930e6fab4705b1e4f24abb"
+      },
+      "content": {
+        "excerpt": "Assets/Saltmere/Scenes/Quay.unity 00"
+      },
+      "metadata": {},
+      "format": {
+        "text": {
+          "paragraphs": 1
+        }
+      },
+      "diagnostics": {
+        "extractors": [
+          {
+            "id": "text.plain",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "meta.mwg",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.language",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.excerpt",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.keywords",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "text.summary",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "temporal.range",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          },
+          {
+            "id": "privacy.scan",
+            "version": 1,
+            "ms": 0.0,
+            "status": "ok"
+          }
+        ],
+        "truncated": false,
+        "elapsed_ms": 0.0
+      }
+    }
+  ],
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "package.tarball",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

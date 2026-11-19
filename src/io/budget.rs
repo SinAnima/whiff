@@ -61,6 +61,8 @@ struct Inner {
     /// Extractors whose sniffer was too slow: skipped for the rest of this
     /// input and its embedded files.
     slow_sniffers: Mutex<Vec<&'static str>>,
+    /// The clock (`None` where there is none).
+    now: fn() -> Option<Instant>,
 }
 
 /// Add `n` to `counter` only when the total stays within `limit`, so a
@@ -80,6 +82,17 @@ impl Budget {
     /// A budget allowing `read_limit` bytes read, `decompressed_limit` bytes
     /// inflated, and finishing within `timeout`.
     pub fn new(read_limit: u64, decompressed_limit: u64, timeout: Option<Duration>) -> Self {
+        Self::with_clock(read_limit, decompressed_limit, timeout, now)
+    }
+
+    /// [`Budget::new`] with the clock given: `now` is `None` where there is
+    /// no clock (wasm32-unknown-unknown), which the tests check on any target.
+    fn with_clock(
+        read_limit: u64,
+        decompressed_limit: u64,
+        timeout: Option<Duration>,
+        now: fn() -> Option<Instant>,
+    ) -> Self {
         let file_deadline = timeout.and_then(|t| now().map(|n| n + t));
         Self {
             inner: Arc::new(Inner {
@@ -92,6 +105,7 @@ impl Budget {
                 limits_hit: Mutex::new(Vec::new()),
                 slow_sniff: Some(crate::engine::SLOW_SNIFF),
                 slow_sniffers: Mutex::new(Vec::new()),
+                now,
             }),
         }
     }
@@ -144,7 +158,7 @@ impl Budget {
     /// Fail with [`SourceError::Timeout`] once the deadline has passed.
     pub fn check_deadline(&self) -> Result<(), SourceError> {
         let deadline = *self.inner.current_deadline.lock().unwrap_or_else(PoisonError::into_inner);
-        if let (Some(d), Some(n)) = (deadline, now())
+        if let (Some(d), Some(n)) = (deadline, (self.inner.now)())
             && n >= d
         {
             self.hit("timeout");
@@ -173,7 +187,7 @@ impl Budget {
 
     /// Start an extractor: its deadline is `timeout` from now, capped by the file deadline.
     pub(crate) fn begin_stage(&self, timeout: Option<Duration>) {
-        let stage = timeout.and_then(|t| now().map(|n| n + t));
+        let stage = timeout.and_then(|t| (self.inner.now)().map(|n| n + t));
         let deadline = match (self.inner.file_deadline, stage) {
             (Some(f), Some(s)) => Some(if s < f { s } else { f }),
             (f, s) => f.or(s),
@@ -209,7 +223,56 @@ impl Budget {
 
 #[cfg(test)]
 mod tests {
+    use proptest::prelude::*;
+
     use super::*;
+
+    #[test]
+    fn without_a_clock_a_timeout_neither_panics_nor_fires() {
+        // What wasm32-unknown-unknown does: deadlines are not enforced.
+        let b = Budget::with_clock(100, 100, Some(Duration::ZERO), || None);
+        b.begin_stage(Some(Duration::ZERO));
+        assert!(b.check_deadline().is_ok());
+        assert!(b.charge_read(10).is_ok());
+        b.end_stage();
+        assert!(b.check_deadline().is_ok());
+        assert_eq!(b.limits_hit(), [] as [&str; 0]);
+        // With the clock, the same zero timeout has already passed.
+        let b = Budget::new(100, 100, Some(Duration::ZERO));
+        assert!(matches!(b.check_deadline(), Err(SourceError::Timeout)));
+        assert_eq!(b.limits_hit(), ["timeout"]);
+    }
+
+    proptest! {
+        #[test]
+        fn charges_are_monotonic_and_never_pass_the_limit(
+            limit in prop_oneof![0..200u64, Just(u64::MAX - 1), Just(u64::MAX)],
+            charges in proptest::collection::vec(prop_oneof![0..80u64, Just(u64::MAX), Just(u64::MAX / 2 + 1)], 0..32),
+        ) {
+            let b = Budget::new(limit, limit, None);
+            // The model: a plain sum of the accepted charges.
+            let mut total = 0u64;
+            let mut refused = false;
+            for n in charges {
+                let fits = total.checked_add(n).is_some_and(|t| t <= limit);
+                let before = b.bytes_read();
+                prop_assert_eq!(b.charge_read(n).is_ok(), fits);
+                prop_assert_eq!(b.charge_decompressed(n).is_ok(), fits);
+                if fits {
+                    total += n;
+                } else {
+                    refused = true;
+                }
+                prop_assert!(b.bytes_read() >= before, "the counter went down");
+                prop_assert_eq!(b.bytes_read(), total);
+                prop_assert!(b.bytes_read() <= limit);
+                prop_assert_eq!(b.remaining_decompressed(), limit - total);
+            }
+            let hit = b.limits_hit();
+            prop_assert_eq!(hit.contains(&"read_bytes"), refused);
+            prop_assert_eq!(hit.contains(&"decompressed_bytes"), refused);
+        }
+    }
 
     #[test]
     fn refused_charges_leave_the_counter_alone() {

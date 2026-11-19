@@ -330,5 +330,5 @@ mod tests {
         assert_eq!(f["checksum"], "xxhash");
     }
 
-    crate::fixture_tests!("lance", "vortex");
+    crate::fixture_tests!("lance", "vortex", "f3");
 }

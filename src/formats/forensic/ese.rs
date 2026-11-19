@@ -85,6 +85,8 @@ crate::register_extractor!(Ese);
 mod tests {
     use super::*;
 
+    crate::fixture_tests!("ese");
+
     #[test]
     fn jet_logtime() {
         assert_eq!(logtime(&[5, 4, 3, 1, 9, 125, 0, 0]).as_deref(), Some("2025-09-01T03:04:05"));

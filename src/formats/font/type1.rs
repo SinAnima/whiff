@@ -380,22 +380,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn eexec_round_trip() {
-        // Encrypt "1234/CharStrings 3 dict" and decrypt it back.
-        let plain = b"1234/CharStrings 3 dict";
-        let mut r: u16 = 55665;
-        let cipher: Vec<u8> = plain
-            .iter()
-            .map(|&p| {
-                let c = p ^ (r >> 8).to_le_bytes()[0];
-                r = u16::from(c).wrapping_add(r).wrapping_mul(52845).wrapping_add(22719);
-                c
-            })
-            .collect();
-        let out = eexec(&cipher);
-        assert_eq!(out, b"/CharStrings 3 dict");
-        assert_eq!(private_count(&out, b"/CharStrings"), Some(3));
+    fn eexec_decrypts_a_font_another_tool_encrypted() {
+        // The first 33 bytes of the eexec segment FontForge wrote into
+        // `tests/fixtures/pfb/saltmere-serif-italic.pfb` (offset 811), and
+        // their plaintext after the four random lead bytes.
+        let cipher = unhex(b"743f8413f3636ca85a9ffefb50b4bb273023e93df9bcdbd9d94233fb53f690564b");
+        assert_eq!(cipher.len(), 33);
+        assert_eq!(eexec(&cipher), b"dup\n/Private 8 dict dup begin");
         assert_eq!(unhex(b"4a 6b\n7C"), vec![0x4a, 0x6b, 0x7c]);
+        assert_eq!(private_count(b"/Subrs 6 array /CharStrings 11 dict", b"/CharStrings"), Some(11));
     }
 
     #[test]

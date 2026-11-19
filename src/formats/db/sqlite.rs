@@ -873,5 +873,5 @@ mod tests {
         assert_eq!(r.format["sqlite"]["cells_skipped"], 1);
     }
 
-    crate::fixture_tests!("sqlite", "sqlite_wal", "sqlite_journal");
+    crate::fixture_tests!("sqlite", "sqlite_wal", "sqlite_journal", "geopackage", "mbtiles");
 }

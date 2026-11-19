@@ -138,7 +138,7 @@ pub fn detect(registry: &Registry, probe: &Probe<'_>, forced: Option<&str>, budg
     }
     // The built-in fallback, handed to the extractor that declares its id.
     let spec = registry.formats().map(|(f, _)| f).find(|f| f.id == fallback.format);
-    let identification = match spec {
+    let mut identification = match spec {
         Some(spec) => Identification {
             name: spec.name.to_string(),
             family: Some(spec.family.to_string()),
@@ -147,7 +147,25 @@ pub fn detect(registry: &Registry, probe: &Probe<'_>, forced: Option<&str>, budg
         },
         None => Identification { candidates, ..fallback },
     };
+    // Nothing recognised the bytes and nothing reads them as text: the
+    // extension may still name a format this build left out (a `.nes` ROM
+    // without `games`). Text is not hinted: the text reader reads it in
+    // full, and extensions such as `.out` name text of every kind.
+    if identification.format == "binary" {
+        identification.available_with_feature =
+            ext.and_then(|e| feature_for_extension(e, &crate::enabled_features())).map(str::to_string);
+    }
     Detection { spec, identification, warnings }
+}
+
+/// The feature that reads files with extension `ext`, when it is not one of
+/// `enabled` (from the catalogue, so it covers formats compiled out).
+fn feature_for_extension(ext: &str, enabled: &[&str]) -> Option<&'static str> {
+    let ext = ext.to_ascii_lowercase();
+    let table = catalogue::BY_EXTENSION;
+    let i = table.binary_search_by(|(k, _, _)| (*k).cmp(ext.as_str())).ok()?;
+    let feature = table[i].2;
+    (!enabled.contains(&feature)).then_some(feature)
 }
 
 /// The `file-format` database's verdict, unless it only says text or binary.
@@ -377,6 +395,27 @@ pub fn text_encoding(head: &[u8], complete: bool) -> Option<String> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn a_compiled_out_extension_names_its_feature() {
+        assert_eq!(feature_for_extension("NES", &["common"]), Some("games"));
+        assert_eq!(feature_for_extension("nes", &["common", "games"]), None);
+        assert_eq!(feature_for_extension("shp", &["common"]), Some("geo"));
+        assert_eq!(feature_for_extension("no-such-extension", &[]), None);
+    }
+
+    #[test]
+    fn unrecognised_bytes_fall_back_to_the_extension_hint() {
+        // An unknown body named like a ROM: `binary`, and in a build without
+        // `games` the hint says which feature reads `.nes` files.
+        let r = crate::plugin::testing::report_for("cartridge.nes", &[0x00, 0x9c, 0xff, 0x01].repeat(16));
+        assert_eq!(r.identification.format, "binary");
+        let want = (!crate::enabled_features().contains(&"games")).then(|| "games".to_string());
+        assert_eq!(r.identification.available_with_feature, want);
+        // Text named `.out` is read as text, with no hint.
+        let r = crate::plugin::testing::report_for("build.out", b"compiled 3 files\n");
+        assert_eq!(r.identification.available_with_feature, None);
+    }
 
     #[test]
     fn encodings() {

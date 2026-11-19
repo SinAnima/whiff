@@ -275,7 +275,7 @@ fn y4m(head: &[u8], len: u64) -> Option<(Video, Option<f64>)> {
 mod tests {
     use super::*;
 
-    crate::fixture_tests!("h264", "hevc", "m2v", "ivf", "y4m");
+    crate::fixture_tests!("h264", "hevc", "m2v", "ivf", "y4m", "obu");
 
     #[test]
     fn sniffs_and_y4m() {

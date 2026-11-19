@@ -46,7 +46,7 @@ expression: report
   "format": {
     "figma": {
       "canvas_version": 20,
-      "canvas_bytes": 24
+      "schema_bytes": 8
     }
   },
   "diagnostics": {

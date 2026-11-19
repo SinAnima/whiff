@@ -7,7 +7,8 @@
 //! * **fixtures** — at least one sample in `tests/fixtures/<format>/`;
 //! * **detection** — each fixture is detected as that format, both with
 //!   this extractor alone and with every registered extractor competing;
-//! * **schema** — reports round-trip through the `whiff/1` model;
+//! * **schema** — reports round-trip through the `whiff/1` model and are
+//!   valid against its JSON Schema (`docs/schema/whiff-1.schema.json`);
 //! * **determinism** — two runs give identical (redacted) JSON;
 //! * **field names** — keys in `format.<id>` are `snake_case`;
 //! * **risk kinds** — every reported risk is in the vocabulary
@@ -16,7 +17,8 @@
 //!   truncated and bit-flipped inputs never panic;
 //! * **performance** — none of those inputs makes an extractor hit its
 //!   deadline (a sign of super-linear work);
-//! * **budget** — a 4 KiB read budget never causes a panic;
+//! * **budget** — a 4 KiB read budget never causes a panic, and output it
+//!   cuts short says so (`read_bytes` in `limits_hit` or a limit error);
 //! * **magic** — the declared magic matches all own fixtures and at most 5 %
 //!   of other formats' fixtures (formats declaring it as their parent
 //!   excepted).
@@ -62,6 +64,7 @@ pub struct Outcome {
 
 /// Check every extractor in `registry`. `manifest_dir` holds `tests/fixtures/`.
 pub fn check_registry(registry: &Registry, manifest_dir: &Path) -> Outcome {
+    let schema = serde_json::to_value(schemars::schema_for!(Report)).unwrap_or_default();
     let all_fixtures: Vec<(&'static str, PathBuf)> = registry
         .formats()
         .flat_map(|(spec, _)| fixture_files(manifest_dir, spec.id).into_iter().map(move |p| (spec.id, p)))
@@ -93,7 +96,10 @@ pub fn check_registry(registry: &Registry, manifest_dir: &Path) -> Outcome {
                         loop {
                             let i = next.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
                             let Some(&(extractor, spec)) = pairs.get(i) else { break };
-                            done.push((i, check_format(registry, extractor, spec, manifest_dir, &all_fixtures)));
+                            done.push((
+                                i,
+                                check_format(registry, extractor, spec, manifest_dir, &all_fixtures, &schema),
+                            ));
                         }
                         done
                     })
@@ -115,9 +121,10 @@ fn engine_for(registry: &Registry, extractor_id: &str, options: Options) -> Engi
 ///
 /// The deadlines are wall-clock time, and instrumented code checked on every
 /// core at once runs 20–30 times slower than a normal test build, so linear
-/// work on the large inputs can pass the normal deadline. Super-linear work is
-/// still caught: by the normal `cargo test` run, and here at the longer
-/// deadline.
+/// work on the large inputs could miss the normal deadline there. The
+/// deadline that matters is the uninstrumented `cargo test` run (CI's test
+/// job): an extractor that is super-linear on these inputs fails there, even
+/// if the coverage job's longer deadline lets it through.
 fn test_limits() -> Limits {
     let scale = if std::env::var_os("LLVM_PROFILE_FILE").is_some() { 4 } else { 1 };
     Limits::default()
@@ -132,6 +139,7 @@ fn check_format(
     spec: &'static FormatSpec,
     manifest_dir: &Path,
     all_fixtures: &[(&'static str, PathBuf)],
+    schema: &serde_json::Value,
 ) -> Vec<Failure> {
     let id = extractor.meta().id;
     let mut failures = Vec::new();
@@ -179,8 +187,14 @@ fn check_format(
         for r in a.security.risks.iter().filter(|r| r.category == crate::report::RiskCategory::Other) {
             fail("risk_kinds", format!("{name}: risk kind `{}` is not in src/report/risk.rs", r.kind));
         }
-        if serde_json::to_value(&a).ok().and_then(|v| serde_json::from_value::<Report>(v).ok()).as_ref() != Some(&a) {
+        let json = serde_json::to_value(&a).unwrap_or_default();
+        if serde_json::from_value::<Report>(json.clone()).ok().as_ref() != Some(&a) {
             fail("schema", format!("{name}: report does not round-trip through the whiff/1 model"));
+        }
+        let errors = super::schema_check::validate(schema, &json);
+        if !errors.is_empty() {
+            let shown: Vec<&str> = errors.iter().take(3).map(String::as_str).collect();
+            fail("schema", format!("{name}: not valid against the whiff/1 schema: {}", shown.join("; ")));
         }
         let (mut ra, mut rb) = (a.clone(), b);
         redact(&mut ra);
@@ -207,17 +221,12 @@ fn check_format(
 
     robustness(&forced, spec, &fixture_bytes, &mut fail);
 
-    // Budget honesty: a tiny read budget must end in an error, not a panic.
     let tight = engine_for(
         registry,
         id,
         Options { limits: test_limits().max_read_bytes(4096), format: Some(spec.id.to_string()), ..Options::default() },
     );
-    for (name, data) in &fixture_bytes {
-        if let Some(run) = panicked(&tight.extract_bytes(Some(name), data.clone())) {
-            fail("budget", format!("{name} with 4 KiB budget: {run}"));
-        }
-    }
+    budget(&tight, &forced, &fixture_bytes, &mut fail);
 
     // Magic sanity: not matching (almost) everything else.
     if !spec.magic.is_empty() {
@@ -233,6 +242,28 @@ fn check_format(
         }
     }
     failures
+}
+
+/// Budget honesty: a 4 KiB read budget (`tight`) must not panic, and when it
+/// changes the output of the unlimited run (`forced`) the report must say a
+/// limit stopped the work.
+fn budget(
+    tight: &Engine,
+    forced: &Engine,
+    fixture_bytes: &[(String, Vec<u8>)],
+    fail: &mut impl FnMut(&'static str, String),
+) {
+    for (name, data) in fixture_bytes {
+        let cut = tight.extract_bytes(Some(name), data.clone());
+        if let Some(run) = panicked(&cut) {
+            fail("budget", format!("{name} with 4 KiB budget: {run}"));
+        } else if data.len() > 4096 {
+            let full = forced.extract_bytes(Some(name), data.clone());
+            if let Some(what) = silently_cut(&cut, &full) {
+                fail("budget", format!("{name} with 4 KiB budget: {what} differs and no limit is reported"));
+            }
+        }
+    }
 }
 
 /// Hostile variants, with the format forced so the extractor runs.
@@ -300,6 +331,31 @@ fn panicked(report: &Report) -> Option<String> {
         .or_else(|| report.embedded.iter().find_map(panicked))
 }
 
+/// Which part of `cut` (a run under a tight read budget) differs from `full`
+/// (the same input without it), when `cut` reports no limit. An extractor
+/// that stops early must leave `read_bytes` in `limits_hit` or end with a
+/// limit error, so that a shorter report is never mistaken for the whole.
+fn silently_cut(cut: &Report, full: &Report) -> Option<&'static str> {
+    let limited = |r: &Report| {
+        !r.diagnostics.limits_hit.is_empty()
+            || r.diagnostics.extractors.iter().any(|x| matches!(x.error_kind.as_deref(), Some("limit_exceeded")))
+    };
+    if limited(cut) {
+        return None;
+    }
+    let (mut a, mut b) = (cut.clone(), full.clone());
+    redact(&mut a);
+    redact(&mut b);
+    [
+        ("format", a.format == b.format),
+        ("metadata", a.metadata == b.metadata),
+        ("content", a.content == b.content),
+        ("embedded", a.embedded == b.embedded),
+    ]
+    .into_iter()
+    .find_map(|(what, same)| (!same).then_some(what))
+}
+
 fn timed_out(report: &Report) -> Option<String> {
     if report.diagnostics.warnings.iter().any(|w| w.contains("abandoned")) {
         return Some("did not stop at the deadline; abandoned by the watchdog".into());
@@ -338,7 +394,20 @@ impl XorShift {
 
 #[cfg(test)]
 mod tests {
-    use super::is_snake_case;
+    use super::{is_snake_case, silently_cut};
+    use crate::report::Report;
+
+    #[test]
+    fn a_shorter_report_must_name_the_limit() {
+        let mut full = Report::default();
+        full.format.insert("tide".into(), serde_json::json!({ "rows": 300 }));
+        let mut cut = Report::default();
+        cut.format.insert("tide".into(), serde_json::json!({ "rows": 12 }));
+        assert_eq!(silently_cut(&cut, &full), Some("format"));
+        assert_eq!(silently_cut(&full.clone(), &full), None, "the same output needs no limit");
+        cut.diagnostics.limits_hit.push("read_bytes".into());
+        assert_eq!(silently_cut(&cut, &full), None);
+    }
 
     #[test]
     fn snake_case() {

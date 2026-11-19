@@ -1,0 +1,195 @@
+---
+source: src/formats/db/sqlite.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-chart-raster.mbtiles",
+    "stem": "saltmere-chart-raster",
+    "extension": "mbtiles"
+  },
+  "identification": {
+    "format": "mbtiles",
+    "name": "MBTiles tileset",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "mbtiles",
+        "confidence": 0.99
+      },
+      {
+        "format": "sqlite",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "db.sqlite"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 16384
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 16384,
+    "entropy": 2.535,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "5f927194429633b7a5f28b76a16223040cd88b3d0787be006fa14fae3ad3200e",
+    "blake3": "2aa354b63c34346fd314cf2f1e2a4ef870c24166e15de3d18e0bba63cb1c1ea2"
+  },
+  "content": {
+    "title": "Saltmere chart",
+    "description": "saltmere-chart-raster",
+    "extent": {
+      "west": 4.0945211,
+      "south": 52.3600393,
+      "east": 4.099113,
+      "north": 52.3628435,
+      "source": "mbtiles.metadata.bounds"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "mbtiles": {
+      "sqlite_version": "3.46.1",
+      "page_size": 4096,
+      "page_count": 4,
+      "encoding": "utf-8",
+      "journal_mode": "rollback",
+      "schema_format": 4,
+      "user_version": 0,
+      "free_pages": 0,
+      "object_counts": {
+        "tables": 2,
+        "indexes": 0,
+        "views": 0,
+        "triggers": 0
+      },
+      "total_rows": 12,
+      "tables": [
+        {
+          "name": "tiles",
+          "columns": [
+            {
+              "name": "zoom_level",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "tile_column",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "tile_row",
+              "type": "INTEGER",
+              "not_null": true
+            },
+            {
+              "name": "tile_data",
+              "type": "BLOB",
+              "not_null": true
+            }
+          ],
+          "rows": 4
+        },
+        {
+          "name": "metadata",
+          "columns": [
+            {
+              "name": "name",
+              "type": "TEXT"
+            },
+            {
+              "name": "value",
+              "type": "TEXT"
+            }
+          ],
+          "rows": 8
+        }
+      ],
+      "application": {
+        "name": "mbtiles",
+        "metadata": {
+          "name": "Saltmere chart",
+          "type": "overlay",
+          "description": "saltmere-chart-raster",
+          "version": "1.1",
+          "format": "png",
+          "bounds": "4.0945210650167789,52.360039336720007,4.099113006850275,52.362843535565375",
+          "minzoom": "16",
+          "maxzoom": "16"
+        },
+        "tiles": 4
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "db.sqlite",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

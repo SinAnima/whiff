@@ -21,6 +21,10 @@ corrected.
   when the data blocks fit `max_parse_bytes`. Keys go through
   `redact_sensitive` under strict privacy.
 - **SQLite**: `cells_skipped` counts damaged cells that were skipped.
+- **`available_with_feature`** is also set when nothing in the build
+  recognises a binary file but its extension belongs to a format of a
+  feature the build leaves out (a `.nes` ROM without `games`). Before, only formats the
+  `file-format` database knew got the hint.
 
 ### Fixed
 
@@ -91,6 +95,13 @@ corrected.
   keys into what the real format already has instead of replacing it.
 - Extractor error messages are capped at 300 characters: they can quote
   names from the file.
+- **`physical.text.bom`** is found when the input arrives in pieces
+  shorter than the byte-order mark. Found by a new property test.
+- **Livebook**: dependencies are read from a `Mix.install` call spread over
+  several lines, the way Livebook saves it. Before, none were listed.
+- **Figma**: a raw `fig-kiwi` canvas reports `schema_bytes` (the length of
+  its first chunk) instead of `canvas_bytes`, which was the file size. A
+  ZIP export keeps `canvas_bytes`, the size of its `canvas.fig` entry.
 
 - Four extractor panics found by the nightly fuzzer. The engine contained
   each one and reported the extractor as `internal`, so the rest of the
@@ -105,6 +116,26 @@ corrected.
   `report_without_privacy` now panic when an extractor reports an
   `internal` status, as the fuzz target does. Before, a test of a
   panicking extractor could still pass.
+
+### Tests
+
+- **Property tests** (`proptest`, a dev-dependency) for `ByteReader`
+  (random reads, seeks and skips against a slicing model; every truncation
+  of every fixed-size read), `Budget` (charges are monotonic, never pass
+  the limit and never wrap) and `WcCounter` (GNU `wc` counts computed
+  independently, on text fed in random pieces).
+- **Conformance** checks every fixture report against the `whiff/1` JSON
+  Schema, with a small in-house validator for the keywords the schema uses.
+  Under a 4 KiB read budget, a report that differs from the unlimited one
+  must name the limit.
+- **Snapshots** for the formats that had none: F3, GeoPackage, MBTiles,
+  AV1 OBU, Unity packages, ESE and registry hives.
+- Tests that a wrong parser could pass now check values: IPTC datasets read
+  from a JPEG, an XMP depth cut, Type 1 `eexec` on FontForge's ciphertext,
+  the HTML depth scan on hostile input. A second Livebook fixture in
+  Livebook's saved layout.
+- `wasm32-unknown-unknown`, where there is no clock: a budget with a
+  timeout neither panics nor times out (checked on every target).
 
 ## 0.8.1 — 2026-11-13
 

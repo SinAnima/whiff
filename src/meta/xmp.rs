@@ -421,12 +421,20 @@ mod tests {
     #[test]
     #[cfg_attr(miri, ignore = "10,000 nested elements: 3 min under Miri")]
     fn hostile_input() {
-        assert!(parse("not xml at all").map_or(true, |p| p.is_empty()));
+        // Text with no markup is an empty packet, not an error.
+        assert_eq!(parse("not xml at all"), Ok(Map::new()));
         let deep = format!(
             r#"<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><rdf:Description xmlns:a="urn:a">{}</rdf:Description></rdf:RDF>"#,
             "<a:x>".repeat(10_000)
         );
         let p = parse(&deep).unwrap();
-        assert!(p.contains_key("a"));
+        // The value is cut at `MAX_DEPTH`, and the cut is marked.
+        let (mut v, mut levels) = (&p["a"]["x"], 0);
+        while let Some(inner) = v.get("x") {
+            v = inner;
+            levels += 1;
+        }
+        assert_eq!(levels, MAX_DEPTH);
+        assert_eq!(v, &json!("…"));
     }
 }

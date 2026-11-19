@@ -869,10 +869,12 @@ mod tests {
         assert_eq!(depth_cut(&flat, 20), None);
         assert_eq!(depth_cut(&format!("<!-- {} -->", "<div>".repeat(900)), 20), None);
         assert_eq!(depth_cut(&format!("<SCRIPT>{}</Script>{}", "<div>".repeat(900), "<div>".repeat(3)), 20), None);
-        // Hostile shapes stay fast.
+        // Hostile shapes stay fast and give the right answer: unterminated
+        // `<a` tags still open elements (the 21st, at byte 40, is too deep);
+        // an unclosed `<script>` makes the rest raw text, which never nests.
         let start = std::time::Instant::now();
-        let _ = depth_cut(&"<a".repeat(200_000), 20);
-        let _ = depth_cut(&"<script>".repeat(100_000), 20);
+        assert_eq!(depth_cut(&"<a".repeat(200_000), 20), Some(40));
+        assert_eq!(depth_cut(&"<script>".repeat(100_000), 20), None);
         assert!(start.elapsed() < std::time::Duration::from_secs(5));
     }
 

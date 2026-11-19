@@ -787,6 +787,7 @@ mod tests {
         "conda_package",
         "freebsd_package",
         "slackware_package",
-        "docker_image"
+        "docker_image",
+        "unity_package"
     );
 }

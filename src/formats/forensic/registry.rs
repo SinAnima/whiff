@@ -321,6 +321,8 @@ mod tests {
     use super::*;
     use crate::plugin::testing::report_for;
 
+    crate::fixture_tests!("registry_hive");
+
     /// A hive with a root key, one subkey and a `REG_SZ` value on it.
     fn hive() -> Vec<u8> {
         let mut bins = Vec::new();
