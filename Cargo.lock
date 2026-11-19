@@ -1823,7 +1823,7 @@ dependencies = [
 
 [[package]]
 name = "whiff"
-version = "0.8.1"
+version = "0.8.2"
 dependencies = [
  "aho-corasick",
  "blake3",

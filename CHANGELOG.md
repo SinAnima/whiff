@@ -6,6 +6,8 @@ keep the schema version.
 
 ## Unreleased
 
+## 0.8.2 — 2026-11-19
+
 Safety and correctness fixes from the 0.8.0 review. No API change. The
 report gains warnings, one risk kind and a few keys, and some values are
 corrected.
@@ -102,7 +104,6 @@ corrected.
 - **Figma**: a raw `fig-kiwi` canvas reports `schema_bytes` (the length of
   its first chunk) instead of `canvas_bytes`, which was the file size. A
   ZIP export keeps `canvas_bytes`, the size of its `canvas.fig` entry.
-
 - Four extractor panics found by the nightly fuzzer. The engine contained
   each one and reported the extractor as `internal`, so the rest of the
   report was still produced.
