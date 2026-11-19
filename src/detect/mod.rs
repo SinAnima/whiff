@@ -405,6 +405,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg_attr(miri, ignore = "runs the whole engine: too slow under Miri")]
     fn unrecognised_bytes_fall_back_to_the_extension_hint() {
         // An unknown body named like a ROM: `binary`, and in a build without
         // `games` the hint says which feature reads `.nes` files.

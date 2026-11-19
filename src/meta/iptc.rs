@@ -229,6 +229,7 @@ mod tests {
     }
 
     #[test]
+    #[cfg_attr(miri, ignore = "runs the whole engine: too slow under Miri")]
     fn decodes_names_values_and_dates_from_a_jpeg() {
         // JPEG: SOI, APP13 holding a Photoshop resource 0x0404, SOF0 8×8, EOI.
         let iptc = sample();

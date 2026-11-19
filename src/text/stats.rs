@@ -232,7 +232,19 @@ mod tests {
             wc.finish()
         }
 
+        /// Under Miri: a few cases (each one is slow there) and no seed file,
+        /// whose path needs the working directory that isolation hides.
+        fn config() -> ProptestConfig {
+            if cfg!(miri) {
+                ProptestConfig { cases: 8, failure_persistence: None, ..ProptestConfig::default() }
+            } else {
+                ProptestConfig::default()
+            }
+        }
+
         proptest! {
+            #![proptest_config(config())]
+
             #[test]
             fn counts_match_gnu_wc_invariants(
                 s in text(UNICODE),
