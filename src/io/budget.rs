@@ -28,6 +28,13 @@ impl std::ops::Add<Duration> for Instant {
 }
 
 #[cfg(all(target_arch = "wasm32", target_os = "unknown"))]
+impl Instant {
+    fn duration_since(self, _: Instant) -> Duration {
+        Duration::ZERO
+    }
+}
+
+#[cfg(all(target_arch = "wasm32", target_os = "unknown"))]
 fn now() -> Option<Instant> {
     None
 }
@@ -49,12 +56,43 @@ struct Inner {
     /// The tighter of the file deadline and the current extractor's deadline.
     current_deadline: Mutex<Option<Instant>>,
     limits_hit: Mutex<Vec<&'static str>>,
+    /// A sniffer slower than this is skipped (`None` = never).
+    slow_sniff: Option<Duration>,
+    /// Extractors whose sniffer was too slow: skipped for the rest of this
+    /// input and its embedded files.
+    slow_sniffers: Mutex<Vec<&'static str>>,
+    /// The clock (`None` where there is none).
+    now: fn() -> Option<Instant>,
+}
+
+/// Add `n` to `counter` only when the total stays within `limit`, so a
+/// rejected charge leaves the counter unchanged (no overflow, no drift).
+fn commit(counter: &AtomicU64, limit: u64, n: u64) -> bool {
+    let mut before = counter.load(Ordering::Relaxed);
+    loop {
+        let Some(total) = before.checked_add(n).filter(|&t| t <= limit) else { return false };
+        match counter.compare_exchange_weak(before, total, Ordering::Relaxed, Ordering::Relaxed) {
+            Ok(_) => return true,
+            Err(now) => before = now,
+        }
+    }
 }
 
 impl Budget {
     /// A budget allowing `read_limit` bytes read, `decompressed_limit` bytes
     /// inflated, and finishing within `timeout`.
     pub fn new(read_limit: u64, decompressed_limit: u64, timeout: Option<Duration>) -> Self {
+        Self::with_clock(read_limit, decompressed_limit, timeout, now)
+    }
+
+    /// [`Budget::new`] with the clock given: `now` is `None` where there is
+    /// no clock (wasm32-unknown-unknown), which the tests check on any target.
+    fn with_clock(
+        read_limit: u64,
+        decompressed_limit: u64,
+        timeout: Option<Duration>,
+        now: fn() -> Option<Instant>,
+    ) -> Self {
         let file_deadline = timeout.and_then(|t| now().map(|n| n + t));
         Self {
             inner: Arc::new(Inner {
@@ -65,8 +103,26 @@ impl Budget {
                 file_deadline,
                 current_deadline: Mutex::new(file_deadline),
                 limits_hit: Mutex::new(Vec::new()),
+                slow_sniff: Some(crate::engine::SLOW_SNIFF),
+                slow_sniffers: Mutex::new(Vec::new()),
+                now,
             }),
         }
+    }
+
+    /// The same budget with sniffers slower than `t` skipped (`None` = never).
+    /// Call before the budget is shared.
+    #[must_use]
+    pub(crate) fn slow_sniff(mut self, t: Option<Duration>) -> Self {
+        if let Some(inner) = Arc::get_mut(&mut self.inner) {
+            inner.slow_sniff = t;
+        }
+        self
+    }
+
+    /// The slow-sniffer threshold.
+    pub(crate) fn slow_sniff_threshold(&self) -> Option<Duration> {
+        self.inner.slow_sniff
     }
 
     /// No limits at all (tests, trusted callers).
@@ -77,8 +133,7 @@ impl Budget {
     /// Charge `n` bytes read.
     pub fn charge_read(&self, n: u64) -> Result<(), SourceError> {
         self.check_deadline()?;
-        let before = self.inner.read.fetch_add(n, Ordering::Relaxed);
-        if before.saturating_add(n) > self.inner.read_limit {
+        if !commit(&self.inner.read, self.inner.read_limit, n) {
             self.hit("read_bytes");
             return Err(SourceError::LimitExceeded("read_bytes"));
         }
@@ -88,8 +143,7 @@ impl Budget {
     /// Charge `n` bytes produced by decompression (zip-bomb guard).
     pub fn charge_decompressed(&self, n: u64) -> Result<(), SourceError> {
         self.check_deadline()?;
-        let before = self.inner.decompressed.fetch_add(n, Ordering::Relaxed);
-        if before.saturating_add(n) > self.inner.decompressed_limit {
+        if !commit(&self.inner.decompressed, self.inner.decompressed_limit, n) {
             self.hit("decompressed_bytes");
             return Err(SourceError::LimitExceeded("decompressed_bytes"));
         }
@@ -104,7 +158,7 @@ impl Budget {
     /// Fail with [`SourceError::Timeout`] once the deadline has passed.
     pub fn check_deadline(&self) -> Result<(), SourceError> {
         let deadline = *self.inner.current_deadline.lock().unwrap_or_else(PoisonError::into_inner);
-        if let (Some(d), Some(n)) = (deadline, now())
+        if let (Some(d), Some(n)) = (deadline, (self.inner.now)())
             && n >= d
         {
             self.hit("timeout");
@@ -133,7 +187,7 @@ impl Budget {
 
     /// Start an extractor: its deadline is `timeout` from now, capped by the file deadline.
     pub(crate) fn begin_stage(&self, timeout: Option<Duration>) {
-        let stage = timeout.and_then(|t| now().map(|n| n + t));
+        let stage = timeout.and_then(|t| (self.inner.now)().map(|n| n + t));
         let deadline = match (self.inner.file_deadline, stage) {
             (Some(f), Some(s)) => Some(if s < f { s } else { f }),
             (f, s) => f.or(s),
@@ -141,8 +195,114 @@ impl Budget {
         *self.inner.current_deadline.lock().unwrap_or_else(PoisonError::into_inner) = deadline;
     }
 
+    /// Run `f` and say how long it took (`None` where there is no clock).
+    pub(crate) fn timed<T>(f: impl FnOnce() -> T) -> (T, Option<Duration>) {
+        let start = now();
+        let out = f();
+        (out, start.and_then(|s| now().map(|n| n.duration_since(s))))
+    }
+
+    /// Whether the sniffer of extractor `id` was marked slow.
+    pub(crate) fn sniffer_is_slow(&self, id: &str) -> bool {
+        self.inner.slow_sniffers.lock().unwrap_or_else(PoisonError::into_inner).contains(&id)
+    }
+
+    /// Skip the sniffer of extractor `id` from now on.
+    pub(crate) fn mark_sniffer_slow(&self, id: &'static str) {
+        let mut slow = self.inner.slow_sniffers.lock().unwrap_or_else(PoisonError::into_inner);
+        if !slow.contains(&id) {
+            slow.push(id);
+        }
+    }
+
     /// Back to the file deadline only.
     pub(crate) fn end_stage(&self) {
         *self.inner.current_deadline.lock().unwrap_or_else(PoisonError::into_inner) = self.inner.file_deadline;
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use proptest::prelude::*;
+
+    use super::*;
+
+    #[test]
+    fn without_a_clock_a_timeout_neither_panics_nor_fires() {
+        // What wasm32-unknown-unknown does: deadlines are not enforced.
+        let b = Budget::with_clock(100, 100, Some(Duration::ZERO), || None);
+        b.begin_stage(Some(Duration::ZERO));
+        assert!(b.check_deadline().is_ok());
+        assert!(b.charge_read(10).is_ok());
+        b.end_stage();
+        assert!(b.check_deadline().is_ok());
+        assert_eq!(b.limits_hit(), [] as [&str; 0]);
+        // With the clock, the same zero timeout has already passed.
+        let b = Budget::new(100, 100, Some(Duration::ZERO));
+        assert!(matches!(b.check_deadline(), Err(SourceError::Timeout)));
+        assert_eq!(b.limits_hit(), ["timeout"]);
+    }
+
+    proptest! {
+        #[test]
+        fn charges_are_monotonic_and_never_pass_the_limit(
+            limit in prop_oneof![0..200u64, Just(u64::MAX - 1), Just(u64::MAX)],
+            charges in proptest::collection::vec(prop_oneof![0..80u64, Just(u64::MAX), Just(u64::MAX / 2 + 1)], 0..32),
+        ) {
+            let b = Budget::new(limit, limit, None);
+            // The model: a plain sum of the accepted charges.
+            let mut total = 0u64;
+            let mut refused = false;
+            for n in charges {
+                let fits = total.checked_add(n).is_some_and(|t| t <= limit);
+                let before = b.bytes_read();
+                prop_assert_eq!(b.charge_read(n).is_ok(), fits);
+                prop_assert_eq!(b.charge_decompressed(n).is_ok(), fits);
+                if fits {
+                    total += n;
+                } else {
+                    refused = true;
+                }
+                prop_assert!(b.bytes_read() >= before, "the counter went down");
+                prop_assert_eq!(b.bytes_read(), total);
+                prop_assert!(b.bytes_read() <= limit);
+                prop_assert_eq!(b.remaining_decompressed(), limit - total);
+            }
+            let hit = b.limits_hit();
+            prop_assert_eq!(hit.contains(&"read_bytes"), refused);
+            prop_assert_eq!(hit.contains(&"decompressed_bytes"), refused);
+        }
+    }
+
+    #[test]
+    fn refused_charges_leave_the_counter_alone() {
+        let b = Budget::new(100, 100, None);
+        assert!(b.charge_read(u64::MAX - 50).is_err());
+        assert!(b.charge_read(50).is_ok(), "the refused charge was not committed");
+        assert!(b.charge_read(51).is_err());
+        assert!(b.charge_read(50).is_ok());
+        assert_eq!(b.bytes_read(), 100);
+        assert!(b.charge_read(1).is_err());
+        assert_eq!(b.limits_hit(), ["read_bytes"]);
+
+        assert!(b.charge_decompressed(u64::MAX).is_err());
+        assert!(b.charge_decompressed(100).is_ok());
+        assert_eq!(b.remaining_decompressed(), 0);
+    }
+
+    #[test]
+    fn concurrent_charges_never_pass_the_limit() {
+        let b = Budget::new(1000, u64::MAX, None);
+        std::thread::scope(|s| {
+            for _ in 0..8 {
+                s.spawn(|| {
+                    for _ in 0..500 {
+                        let _ = b.charge_read(3);
+                    }
+                });
+            }
+        });
+        assert!(b.bytes_read() <= 1000);
+        assert!(b.bytes_read() >= 997);
     }
 }

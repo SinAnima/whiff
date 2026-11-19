@@ -533,6 +533,7 @@ impl Extractor for Android {
 
     fn extract(&self, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
         let zip = Zip::open(src, MAX_ENTRIES)?;
+        zip.flag_duplicates(cx);
         let mut pkg = Package::new("android");
         let format = cx.format_id().to_string();
         match format.as_str() {

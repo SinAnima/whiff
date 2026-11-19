@@ -72,8 +72,12 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   or portable PDBs (tables past 0x2C stop the table reader).
 - **Go build information** is read in the Go 1.18+ inline format; older
   binaries only report that it is there.
+- **Android OAT and ART:** an OAT file gives its version and the
+  compiler filter and `debuggable` flag from its key-value store; an ART
+  image gives its version only (the header after it changes with every
+  version). Neither the compiled methods nor the image's objects are read.
 - **Not read:** PDB files, split DWARF (`.dwo`, `.dwp`) and dSYM bundles
-  as folders, Windows minidumps, Linux kernel images, Android OAT / ART,
+  as folders, Windows minidumps, Linux kernel images,
   Windows catalogs (`.cat`), Rust `rlib` / `rmeta`, AIX XCOFF, compiled
   AppleScript, Windows script hosts, device trees, FPGA bitstreams, and
   the WebAssembly component model beyond its header.
@@ -145,8 +149,9 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   the ACE layout is checked by the oracle against a Jackcess file.
 - **DBF:** memo files (`.dbt`, `.fpt`) are not read, and no `.cpg`
   sidecar is consulted for the encoding.
-- **Header only:** LevelDB tables give their format but no entry count
-  (that needs the Snappy-compressed blocks); Redis snapshots give the first
+- **Header only:** LevelDB tables count their entries only when the data
+  blocks fit `max_parse_bytes` (the index, block count and key range are
+  always read); Redis snapshots give the first
   database's key counts (later ones follow its values); Berkeley DB key
   counts are only there after `db_stat`; MySQL 8 `.ibd` SDI (the table
   definition inside the tablespace) is not decoded.

@@ -2,7 +2,6 @@
 //! size, entropy, hashes.
 
 use std::fs::Metadata;
-use std::io::Read;
 use std::path::Path;
 use std::time::SystemTime;
 
@@ -265,16 +264,17 @@ pub(crate) fn text_encoding(report: &Report, options: &Options, size: u64) -> Op
 /// `head` only.
 pub(crate) fn integrity_for_file(
     report: &mut Report,
-    path: &Path,
+    src: &mut crate::io::FileSource,
     size: u64,
-    head: &[u8],
     options: &Options,
     text: Option<&'static Encoding>,
 ) {
+    use crate::io::{Source, SourceError};
     let hash = hashing_wanted(options, size);
     if let Err(reason) = &hash {
         report.integrity = Integrity { skipped: Some(reason.clone()), ..Integrity::default() };
         if text.is_none() {
+            let head = src.head();
             let mut d = Digester::new(options, false, None);
             d.update(head);
             let scope = if head.len() as u64 == size { EntropyScope::File } else { EntropyScope::Head };
@@ -283,18 +283,12 @@ pub(crate) fn integrity_for_file(
         }
     }
     let mut d = Digester::new(options, hash.is_ok(), text);
-    let result = std::fs::File::open(path).and_then(|mut f| {
-        let mut buf = vec![0u8; 256 * 1024];
-        loop {
-            let n = f.read(&mut buf)?;
-            if n == 0 {
-                return Ok(());
-            }
-            d.update(&buf[..n]);
-        }
-    });
-    match result {
+    match src.stream(1 << 20, |chunk| d.update(chunk)) {
         Ok(()) => d.finish(report, EntropyScope::File),
+        Err(SourceError::Timeout) => {
+            report.integrity = Integrity { skipped: Some("timeout".into()), ..Integrity::default() };
+            report.diagnostics.warnings.push("integrity: stopped at the file deadline".into());
+        }
         Err(e) => {
             report.integrity.skipped = Some(format!("read error: {e}"));
             report.diagnostics.warnings.push(format!("integrity: {e}"));

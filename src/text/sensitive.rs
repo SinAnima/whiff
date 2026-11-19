@@ -171,11 +171,27 @@ impl Counts {
     }
 }
 
-/// Replace matches of the given category with `[redacted:<kind>]`.
+/// How far past a `BEGIN … PRIVATE KEY` line the matching `END` line is
+/// looked for. Real keys are a few KiB.
+const PEM_SPAN: usize = 64 * 1024;
+
+/// Whether any secret pattern occurs in `text` (a cheap pre-check).
+pub fn has_secret(text: &str) -> bool {
+    SET.matches(text).iter().any(|i| PATTERNS[i].category == Category::Secret)
+}
+
+/// Replace matches of the given category with `[redacted:<kind>]`. A
+/// private key is redacted from its `BEGIN` line through its `END` line.
 pub fn redact(text: &str, category: Category) -> Cow<'_, str> {
     let hits = SET.matches(text);
     let mut out = Cow::Borrowed(text);
     for (_, p) in PATTERNS.iter().enumerate().filter(|(i, p)| p.category == category && hits.matched(*i)) {
+        if p.kind == "private_key" {
+            if let Some(r) = redact_pem(&out, &p.re) {
+                out = Cow::Owned(r);
+            }
+            continue;
+        }
         let replaced = p.re.replace_all(&out, |caps: &regex::Captures<'_>| {
             let m = &caps[0];
             if (p.check)(m) { format!("[redacted:{}]", p.kind) } else { m.to_string() }
@@ -185,6 +201,55 @@ pub fn redact(text: &str, category: Category) -> Cow<'_, str> {
         }
     }
     out
+}
+
+/// Replace each private-key block, from the `BEGIN` line matched by `begin`
+/// to the end of its `END … -----` line, with `[redacted:private_key]`.
+/// Without an `END` line (the text was cut), the base64 and header lines
+/// that follow are redacted.
+fn redact_pem(text: &str, begin: &Regex) -> Option<String> {
+    let mut out = String::new();
+    let mut last = 0;
+    for m in begin.find_iter(text) {
+        if m.start() < last {
+            continue;
+        }
+        out.push_str(&text[last..m.start()]);
+        out.push_str("[redacted:private_key]");
+        last = pem_end(text, m.end());
+    }
+    (last > 0).then(|| {
+        out.push_str(&text[last..]);
+        out
+    })
+}
+
+/// Where the key block whose `BEGIN` line ends at `from` ends.
+fn pem_end(text: &str, from: usize) -> usize {
+    let mut limit = (from + PEM_SPAN).min(text.len());
+    while !text.is_char_boundary(limit) {
+        limit -= 1;
+    }
+    let window = &text[from..limit];
+    if let Some(i) = window.find("-----END ")
+        && let Some(j) = window[i + 9..].find("-----")
+    {
+        return from + i + 9 + j + 5;
+    }
+    // No END line: take the lines that look like key material.
+    let mut end = from;
+    for line in window.split_inclusive('\n') {
+        let t = line.trim();
+        let material = t.is_empty()
+            || t.starts_with("Proc-Type:")
+            || t.starts_with("DEK-Info:")
+            || t.bytes().all(|b| b.is_ascii_alphanumeric() || b"+/=".contains(&b));
+        if !material {
+            break;
+        }
+        end += line.len();
+    }
+    end
 }
 
 /// Whether a configuration key name suggests its value is a secret
@@ -231,6 +296,22 @@ mod tests {
         assert!(!r.contains("hunter2"));
         assert!(r.contains("bob@example.com"));
         assert!(matches!(redact("nothing here", Category::Secret), Cow::Borrowed(_)));
+    }
+
+    #[test]
+    #[cfg_attr(miri, ignore = "compiles the secret patterns: over 5 min under Miri")]
+    fn private_key_bodies_are_redacted() {
+        let body = "MIIBOgIBAAJBAKj34GkxFhD90vcNLYLInFEX6Ppy1tPf9Cnzj4p4WGeKLs1Pt8Qu";
+        let pem =
+            format!("before\n-----BEGIN RSA PRIVATE KEY-----\n{body}\n{body}\n-----END RSA PRIVATE KEY-----\nafter");
+        let r = redact(&pem, Category::Secret);
+        assert_eq!(r, "before\n[redacted:private_key]\nafter");
+        // Cut before the END line: the key lines still go.
+        let cut = format!("-----BEGIN PRIVATE KEY-----\n{body}\n{body}\nplain words here");
+        let r = redact(&cut, Category::Secret);
+        assert!(!r.contains(body), "{r}");
+        assert!(r.ends_with("plain words here"), "{r}");
+        assert!(has_secret(&pem) && !has_secret("nothing"));
     }
 
     #[test]

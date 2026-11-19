@@ -47,7 +47,7 @@ fn new_report(engine: &Engine, source: SourceInfo) -> Report {
 
 fn budget_for(engine: &Engine) -> Budget {
     let l = &engine.options.limits;
-    Budget::new(l.max_read_bytes, l.max_decompressed_bytes, l.file_timeout)
+    Budget::new(l.max_read_bytes, l.max_decompressed_bytes, l.file_timeout).slow_sniff(l.slow_sniff)
 }
 
 pub(super) fn extract_path(engine: &Engine, path: &Path) -> Result<Report, Error> {
@@ -102,7 +102,7 @@ pub(super) fn extract_path(engine: &Engine, path: &Path) -> Result<Report, Error
                 report.integrity.skipped = Some("extraction abandoned".into());
             } else {
                 let encoding = text_encoding(&report, &engine.options, meta.len());
-                integrity_for_file(&mut report, path, meta.len(), src.head(), &engine.options, encoding);
+                integrity_for_file(&mut report, &mut src, meta.len(), &engine.options, encoding);
             }
             text
         }
@@ -184,8 +184,20 @@ fn extract_source(engine: &Engine, report: &mut Report, src: &mut dyn Source, le
         name: name.as_deref(),
         extension: extension.as_deref(),
     };
-    let detection = detect::detect(registry, &probe, options.format.as_deref());
+    let root = level.depth == 0 && level.layers == 0;
+    let detection = match &engine.detect {
+        super::Detect::Preset(id) if root => {
+            report.identification = (**id).clone();
+            return text;
+        }
+        super::Detect::BuiltinOnly if root => {
+            report.identification = detect::builtin_fallback(&probe);
+            return text;
+        }
+        _ => detect::detect(registry, &probe, options.format.as_deref(), src.budget()),
+    };
     report.identification = detection.identification;
+    report.diagnostics.warnings.extend(detection.warnings);
     // `.bak` is SQL Server's own extension: not a wrapper there.
     let native = |w: &crate::report::Wrapper| {
         detection.spec.is_some_and(|s| s.extensions.iter().any(|e| e.eq_ignore_ascii_case(&w.extension)))
@@ -196,6 +208,11 @@ fn extract_source(engine: &Engine, report: &mut Report, src: &mut dyn Source, le
         && detection.spec.is_none_or(|s| s.id != forced)
     {
         report.diagnostics.warnings.push(format!("--format {forced}: no extractor declares this format"));
+    }
+    if let super::Detect::Publish(slot) = &engine.detect
+        && root
+    {
+        let _ = slot.set(report.identification.clone());
     }
     let Some(spec) = detection.spec.filter(|_| !engine.detect_only) else { return text };
     let budget = src.budget().clone();
@@ -274,9 +291,23 @@ fn reidentify(report: &mut Report, from: &crate::plugin::FormatSpec, to: &'stati
         id.extension_matches =
             Some(to.extensions.is_empty() || to.extensions.iter().any(|e| e.eq_ignore_ascii_case(ext)));
     }
-    // What the container's extractor wrote under its format id now describes the real format.
-    if let Some(v) = report.format.remove(from.id) {
-        report.format.insert(to.id.to_string(), v);
+    move_format(&mut report.format, from.id, to.id);
+}
+
+/// What the container's extractor wrote under `from` now describes the real
+/// format `to`. Keys already under `to` stay; only absent ones are added.
+fn move_format(format: &mut crate::report::Map, from: &str, to: &str) {
+    let Some(moved) = format.remove(from) else { return };
+    match (format.get_mut(to), moved) {
+        (Some(serde_json::Value::Object(dest)), serde_json::Value::Object(src)) => {
+            for (k, v) in src {
+                dest.entry(k).or_insert(v);
+            }
+        }
+        (Some(_), _) => {}
+        (None, v) => {
+            format.insert(to.to_string(), v);
+        }
     }
 }
 
@@ -364,6 +395,10 @@ fn run_analyzers(engine: &Engine, report: &mut Report, text: &TextStore, budget:
     }
 }
 
+/// Longest error message kept in `diagnostics.extractors[].error`. Messages
+/// can quote names from the file (entry names, keys), which can be long.
+const MAX_ERROR_CHARS: usize = 300;
+
 /// Run one extractor/decoder/analyzer with its own deadline, containing panics.
 fn run_stage(
     id: &str,
@@ -383,17 +418,13 @@ fn run_stage(
             run.status =
                 if matches!(e, crate::ExtractError::Internal(_)) { RunStatus::Internal } else { RunStatus::Error };
             run.error_kind = Some(e.kind().to_string());
-            run.error = Some(e.to_string());
+            run.error = Some(crate::text::truncate_chars(&e.to_string(), MAX_ERROR_CHARS));
         }
         Err(payload) => {
-            let msg = payload
-                .downcast_ref::<&str>()
-                .map(|s| (*s).to_string())
-                .or_else(|| payload.downcast_ref::<String>().cloned())
-                .unwrap_or_else(|| "panic".to_string());
+            let msg = super::panic_message(&*payload);
             run.status = RunStatus::Internal;
             run.error_kind = Some("internal".into());
-            run.error = Some(format!("panicked: {msg}"));
+            run.error = Some(crate::text::truncate_chars(&format!("panicked: {msg}"), MAX_ERROR_CHARS));
         }
     }
     run
@@ -432,4 +463,34 @@ fn roll_up_risks(report: &mut Report) {
 
 fn finish_clock(report: &mut Report, clock: &Stopwatch) {
     report.diagnostics.elapsed_ms = clock.ms();
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn long_error_messages_are_capped() {
+        let long = "x".repeat(5000);
+        let run = run_stage("test", 1, None, &Budget::unlimited(), || {
+            Err(crate::ExtractError::malformed(format!("entry {long}")))
+        });
+        let err = run.error.unwrap();
+        assert!(err.chars().count() <= MAX_ERROR_CHARS + 1, "{}", err.len());
+        assert!(err.starts_with("malformed"), "{err}");
+    }
+
+    #[test]
+    fn a_redirect_merges_into_what_the_destination_has() {
+        let mut format = crate::report::Map::new();
+        format.insert("zip".into(), serde_json::json!({ "entries": 3, "comment": "zip side" }));
+        format.insert("docx".into(), serde_json::json!({ "comment": "docx side" }));
+        move_format(&mut format, "zip", "docx");
+        assert_eq!(format.get("zip"), None);
+        assert_eq!(format["docx"], serde_json::json!({ "entries": 3, "comment": "docx side" }));
+        // No destination yet: moved whole.
+        format.insert("tar".into(), serde_json::json!({ "members": 2 }));
+        move_format(&mut format, "tar", "npm");
+        assert_eq!(format["npm"], serde_json::json!({ "members": 2 }));
+    }
 }

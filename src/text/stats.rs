@@ -30,8 +30,9 @@ pub struct WcCounter {
     crlf: u64,
     cr: u64,
     prev_cr: bool,
-    bom: bool,
-    started: bool,
+    /// The first bytes (up to 3, the longest BOM), gathered across chunks.
+    start: [u8; 3],
+    start_len: usize,
 }
 
 impl WcCounter {
@@ -53,17 +54,16 @@ impl WcCounter {
             crlf: 0,
             cr: 0,
             prev_cr: false,
-            bom: false,
-            started: false,
+            start: [0; 3],
+            start_len: 0,
         }
     }
 
     /// Count a chunk; `last` marks the end of the input.
     pub fn feed(&mut self, bytes: &[u8], last: bool) {
-        if !self.started && !bytes.is_empty() {
-            self.started = true;
-            self.bom = Encoding::for_bom(bytes).is_some();
-        }
+        let take = bytes.len().min(self.start.len() - self.start_len);
+        self.start[self.start_len..self.start_len + take].copy_from_slice(&bytes[..take]);
+        self.start_len += take;
         self.bytes += bytes.len() as u64;
         let mut input = bytes;
         loop {
@@ -141,7 +141,7 @@ impl WcCounter {
                 [one] => Some((*one).to_string()),
                 _ => Some("mixed".to_string()),
             },
-            bom: Some(self.bom),
+            bom: Some(Encoding::for_bom(&self.start[..self.start_len]).is_some()),
             blank_lines: Some(self.blank_lines),
         }
     }
@@ -194,6 +194,78 @@ mod tests {
         }
         wc.feed(&[], true);
         assert_eq!(wc.finish(), whole);
+    }
+
+    /// GNU `wc` counts, computed without `WcCounter`: lines by counting
+    /// `\n`, words by splitting, blank lines from the split lines, and (for
+    /// ASCII) the widest line by length. Text is fed in random chunks, so
+    /// multi-byte characters are split between `feed` calls.
+    mod properties {
+        use proptest::prelude::*;
+
+        use super::super::WcCounter;
+
+        fn space(c: char) -> bool {
+            c.is_whitespace() && !matches!(c, '\u{a0}' | '\u{2007}' | '\u{202f}')
+        }
+
+        fn text(alphabet: &'static [char]) -> impl Strategy<Value = String> {
+            proptest::collection::vec(proptest::sample::select(alphabet), 0..200).prop_map(|v| v.into_iter().collect())
+        }
+
+        const UNICODE: &[char] = &[
+            'a', 'z', '7', ' ', ' ', '\t', '\n', '\n', '\r', '\u{0b}', '\u{0c}', '\u{a0}', '\u{2003}', '\u{2007}',
+            '\u{3000}', 'é', 'ß', '日', '😀', '\u{feff}',
+        ];
+        const ASCII: &[char] = &['a', 'Z', '0', '.', ' ', ' ', '\n', '\n', '\r', '\u{0c}'];
+
+        fn counted(s: &str, cuts: &[usize]) -> crate::report::TextPhysical {
+            let b = s.as_bytes();
+            let mut wc = WcCounter::new(encoding_rs::UTF_8);
+            let mut at = 0;
+            for &c in cuts {
+                let to = (at + c).min(b.len());
+                wc.feed(&b[at..to], false);
+                at = to;
+            }
+            wc.feed(&b[at..], true);
+            wc.finish()
+        }
+
+        /// Under Miri: a few cases (each one is slow there) and no seed file,
+        /// whose path needs the working directory that isolation hides.
+        fn config() -> ProptestConfig {
+            if cfg!(miri) {
+                ProptestConfig { cases: 8, failure_persistence: None, ..ProptestConfig::default() }
+            } else {
+                ProptestConfig::default()
+            }
+        }
+
+        proptest! {
+            #![proptest_config(config())]
+
+            #[test]
+            fn counts_match_gnu_wc_invariants(
+                s in text(UNICODE),
+                cuts in proptest::collection::vec(0..9usize, 0..40),
+            ) {
+                let t = counted(&s, &cuts);
+                prop_assert_eq!(t.bytes, Some(s.len() as u64));
+                prop_assert_eq!(t.chars, Some(s.chars().count() as u64));
+                prop_assert_eq!(t.lines, Some(s.matches('\n').count() as u64));
+                prop_assert_eq!(t.words, Some(s.split(space).filter(|w| !w.is_empty()).count() as u64));
+                let blank = s.split_inclusive('\n').filter(|l| l.ends_with('\n') && l.chars().all(space)).count();
+                prop_assert_eq!(t.blank_lines, Some(blank as u64));
+                prop_assert_eq!(t.bom, Some(s.starts_with('\u{feff}')));
+            }
+
+            #[test]
+            fn the_widest_ascii_line_is_its_length(s in text(ASCII), cuts in proptest::collection::vec(0..9usize, 0..40)) {
+                let widest = s.split(['\n', '\r', '\u{0c}']).map(str::len).max().unwrap_or(0);
+                prop_assert_eq!(counted(&s, &cuts).max_line_length, Some(widest as u64));
+            }
+        }
     }
 
     #[test]

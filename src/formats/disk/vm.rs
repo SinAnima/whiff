@@ -172,9 +172,10 @@ impl BlockMap for VdiMap {
         Ok(if i >= 0xFFFF_FFFE {
             Block::Zero
         } else {
-            u64::from(i)
-                .checked_mul(self.block + self.extra)
-                .map_or(Block::Zero, |o| Block::At(self.data.saturating_add(o) + self.extra))
+            Block::At(super::offset(
+                super::offset(self.data, super::scaled(u64::from(i), super::offset(self.block, self.extra)?)?)?,
+                self.extra,
+            )?)
         })
     }
 }
@@ -208,10 +209,10 @@ fn vdi(src: &mut dyn Source, cx: &mut Context<'_>, h: &[u8]) -> Result<(), Extra
     cx.format_set("block_size", block);
     cx.format_set("blocks", blocks);
     cx.format_set("allocated_blocks", le32(h, 388).ok_or_else(bad)?);
-    if let Some(u) = guid_le(&h[392..408]) {
+    if let Some(u) = h.get(392..408).and_then(guid_le) {
         cx.format_set("uuid", u);
     }
-    if let Some(u) = guid_le(&h[424..440]) {
+    if let Some(u) = h.get(424..440).and_then(guid_le) {
         cx.format_set("parent_uuid", u);
     }
     cx.physical().uncompressed_bytes(size);
@@ -378,7 +379,11 @@ impl BlockMap for VhdMap {
         }
         let e = entry(src, self.bat + 4 * n, 4)?;
         let sector = u32::from_be_bytes([e[0], e[1], e[2], e[3]]);
-        Ok(if sector == u32::MAX { Block::Zero } else { Block::At(u64::from(sector) * 512 + self.bitmap) })
+        Ok(if sector == u32::MAX {
+            Block::Zero
+        } else {
+            Block::At(super::offset(u64::from(sector) * 512, self.bitmap)?)
+        })
     }
 }
 
@@ -403,6 +408,9 @@ fn vhd(src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
     if !footer_ok {
         return Err(ExtractError::malformed("no VHD footer"));
     }
+    // A footer copy at the start of a file shorter than 512 bytes: read
+    // the missing fields as zero.
+    f.resize(512, 0);
     let bad = || ExtractError::malformed("short VHD footer");
     let version = be32(&f, 12).ok_or_else(bad)?;
     cx.format_set("version", format!("{}.{}", version >> 16, version & 0xFFFF));
@@ -580,7 +588,7 @@ fn vhdx(src: &mut dyn Source, cx: &mut Context<'_>, head: &[u8]) -> Result<(), E
     }
     let (mut block, mut size, mut sector, mut has_parent) = (0u64, 0u64, 512u64, false);
     for i in 0..usize::from(le16(&m, 10).unwrap_or(0).min(64)) {
-        let e = &m[32 + 32 * i..64 + 32 * i];
+        let Some(e) = m.get(32 + 32 * i..64 + 32 * i) else { break };
         let at = le32(e, 16).unwrap_or(0) as usize;
         let item = |n: usize| m.get(at..at + n);
         match guid_le(&e[..16]).as_deref() {
@@ -979,6 +987,15 @@ mod tests {
     #[test]
     fn vhd_times() {
         assert_eq!(vhd_time(0).as_deref(), Some("2000-01-01T00:00:00Z"));
+    }
+
+    #[test]
+    fn short_vhd_footer() {
+        // Fuzz regression: a footer copy at the start of a 64-byte file.
+        let mut d = b"conectix".to_vec();
+        d.resize(64, 0);
+        let r = crate::plugin::testing::report_for("disk.vhd", &d);
+        assert_eq!(r.identification.format, "vhd");
     }
 
     crate::fixture_tests!("vdi", "vmdk", "vhd", "vhdx", "qcow2", "qed", "sparseimage");

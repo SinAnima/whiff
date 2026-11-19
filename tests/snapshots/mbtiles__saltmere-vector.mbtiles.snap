@@ -1,0 +1,191 @@
+---
+source: src/formats/db/sqlite.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-vector.mbtiles",
+    "stem": "saltmere-vector",
+    "extension": "mbtiles"
+  },
+  "identification": {
+    "format": "mbtiles",
+    "name": "MBTiles tileset",
+    "mime": "application/octet-stream",
+    "family": "geo",
+    "confidence": 0.99,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "candidates": [
+      {
+        "format": "mbtiles",
+        "confidence": 0.99
+      },
+      {
+        "format": "sqlite",
+        "confidence": 0.92
+      }
+    ],
+    "extractor": "db.sqlite"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 16384
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 16384,
+    "entropy": 2.01,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "e1d5c3051375d4e30976a685bfc3d0077dee585e18bda043f3b40f6271b2b560",
+    "blake3": "804d494cbca09104440c25104111420c88a3b08018117d1c88e83960e03d4890"
+  },
+  "content": {
+    "title": "Saltmere vector",
+    "extent": {
+      "west": 4.095,
+      "south": 52.347,
+      "east": 4.142,
+      "north": 52.361,
+      "source": "mbtiles.metadata.bounds"
+    }
+  },
+  "metadata": {},
+  "format": {
+    "mbtiles": {
+      "sqlite_version": "3.46.1",
+      "page_size": 4096,
+      "page_count": 4,
+      "encoding": "utf-8",
+      "journal_mode": "rollback",
+      "schema_format": 4,
+      "user_version": 0,
+      "free_pages": 0,
+      "object_counts": {
+        "tables": 2,
+        "indexes": 0,
+        "views": 0,
+        "triggers": 0
+      },
+      "total_rows": 15,
+      "tables": [
+        {
+          "name": "metadata",
+          "columns": [
+            {
+              "name": "name",
+              "type": "TEXT"
+            },
+            {
+              "name": "value",
+              "type": "TEXT"
+            }
+          ],
+          "rows": 11
+        },
+        {
+          "name": "tiles",
+          "columns": [
+            {
+              "name": "zoom_level",
+              "type": "INTEGER"
+            },
+            {
+              "name": "tile_column",
+              "type": "INTEGER"
+            },
+            {
+              "name": "tile_row",
+              "type": "INTEGER"
+            },
+            {
+              "name": "tile_data",
+              "type": "BLOB"
+            }
+          ],
+          "rows": 4
+        }
+      ],
+      "application": {
+        "name": "mbtiles",
+        "metadata": {
+          "name": "Saltmere vector",
+          "description": "",
+          "version": "2",
+          "minzoom": "10",
+          "maxzoom": "12",
+          "center": "4.1185000,52.3540000,10",
+          "bounds": "4.0950000,52.3470000,4.1420000,52.3610000",
+          "type": "overlay",
+          "format": "pbf"
+        },
+        "tiles": 4
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "db.sqlite",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

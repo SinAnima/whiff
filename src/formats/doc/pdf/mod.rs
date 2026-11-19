@@ -226,7 +226,7 @@ impl Scan {
         if let Some(v) = &doc.version {
             self.format.insert("version".into(), json!(v));
         }
-        self.format.insert("objects".into(), json!(doc.xref.len()));
+        self.format.insert("objects".into(), json!(doc.object_count()));
         if doc.sections > 1 {
             self.format.insert("incremental_updates".into(), json!(doc.sections - 1));
         }
@@ -1142,6 +1142,12 @@ mod tests {
 
     /// A PDF from object bodies (object `i + 1` is `objects[i]`), catalog = 1.
     fn build(objects: &[&str], xref: bool) -> Vec<u8> {
+        build_padded(objects, xref, 0)
+    }
+
+    /// [`build`] with `pad` spaces after the subsection header, to move the
+    /// rows against the parser's 64 KiB window.
+    fn build_padded(objects: &[&str], xref: bool, pad: usize) -> Vec<u8> {
         let mut out = b"%PDF-1.7\n".to_vec();
         let mut offsets = Vec::new();
         for (i, body) in objects.iter().enumerate() {
@@ -1149,7 +1155,9 @@ mod tests {
             out.extend_from_slice(format!("{} 0 obj\n{body}\nendobj\n", i + 1).as_bytes());
         }
         let at = out.len();
-        out.extend_from_slice(format!("xref\n0 {}\n0000000000 65535 f \n", objects.len() + 1).as_bytes());
+        out.extend_from_slice(
+            format!("xref\n0 {}{}\n0000000000 65535 f \n", objects.len() + 1, " ".repeat(pad)).as_bytes(),
+        );
         for o in &offsets {
             out.extend_from_slice(format!("{o:010} 00000 n \n").as_bytes());
         }
@@ -1234,6 +1242,104 @@ mod tests {
         assert_eq!(r.format["pdf"]["repaired"], true);
         assert_eq!(r.content.title.as_deref(), Some("Harbour notes"));
         assert_eq!(r.physical.document.as_ref().and_then(|d| d.pages), Some(1));
+    }
+
+    /// The offset after the last `startxref`.
+    fn startxref(pdf: &[u8]) -> usize {
+        let i = doc::rfind(pdf, b"startxref").unwrap() + 9;
+        let digits: String =
+            pdf[i..].iter().skip(1).take_while(|b| b.is_ascii_digit()).map(|&b| char::from(b)).collect();
+        digits.parse().unwrap()
+    }
+
+    const BASE: [&str; 7] = [
+        "<< /Type /Catalog /Pages 3 0 R /OpenAction 7 0 R >>",
+        "<< /Title (Harbour notes) >>",
+        "<< /Type /Pages /Kids [4 0 R] /Count 1 >>",
+        PAGE,
+        FONT,
+        CONTENT,
+        "<< /S /JavaScript /JS (console.println\\(\"ready\"\\);) >>",
+    ];
+
+    #[test]
+    fn an_incremental_update_deletes_and_replaces_objects() {
+        let mut pdf = build(&BASE, true);
+        let prev = startxref(&pdf);
+        let info = pdf.len();
+        pdf.extend_from_slice(b"2 1 obj\n<< /Title (Revised notes) >>\nendobj\n");
+        let at = pdf.len();
+        pdf.extend_from_slice(
+            format!(
+                "xref\n0 1\n0000000000 65535 f \n2 1\n{info:010} 00001 n \n7 1\n0000000000 00001 f \n\
+                 trailer\n<< /Size 8 /Root 1 0 R /Info 2 1 R /Prev {prev} >>\nstartxref\n{at}\n%%EOF\n"
+            )
+            .as_bytes(),
+        );
+        let r = crate::plugin::testing::report_for("updated.pdf", &pdf);
+        assert_eq!(r.format["pdf"]["incremental_updates"], 1, "{:?}", r.format["pdf"]);
+        assert_eq!(r.content.title.as_deref(), Some("Revised notes"));
+        // Object 7 was deleted by the update: the older section must not revive it.
+        assert!(!risks(&r).contains(&"javascript"), "{:?}", risks(&r));
+        assert_eq!(r.format["pdf"]["objects"], 6);
+    }
+
+    #[test]
+    fn a_hybrid_table_hides_objects_its_xref_stream_places() {
+        // Object 2 is free in the classic table (as older readers must see
+        // it) and placed by the same section's `/XRefStm`.
+        let mut pdf = build(&BASE[..6], true);
+        let info = startxref(&pdf); // where the table starts
+        let body2 = doc::find(&pdf, b"2 0 obj").unwrap();
+        let row = format!("{body2:010} 00000 n \n");
+        let at = doc::find(&pdf, row.as_bytes()).unwrap();
+        pdf.splice(at..at + row.len(), b"0000000000 65535 f \n".iter().copied());
+        // A cross-reference stream with one type-1 row for object 2, inserted
+        // before the table so the table's offset moves.
+        let mut stm = Vec::new();
+        stm.push(1u8);
+        stm.extend_from_slice(&u32::try_from(body2).unwrap().to_be_bytes());
+        stm.extend_from_slice(&[0, 0]);
+        let mut obj = b"9 0 obj\n<< /Type /XRef /W [1 4 2] /Index [2 1] /Size 10 /Length 7 >>\nstream\n".to_vec();
+        obj.extend_from_slice(&stm);
+        obj.extend_from_slice(b"\nendstream\nendobj\n");
+        let xrefstm = info;
+        pdf.splice(info..info, obj.iter().copied());
+        let table_at = info + obj.len();
+        let t = doc::find(&pdf, b"trailer\n<<").unwrap() + 10;
+        pdf.splice(t..t, format!(" /XRefStm {xrefstm}").bytes());
+        let s = doc::rfind(&pdf, b"startxref\n").unwrap() + 10;
+        let e = s + pdf[s..].iter().position(|&b| b == b'\n').unwrap();
+        pdf.splice(s..e, table_at.to_string().bytes());
+        let r = crate::plugin::testing::report_for("hybrid.pdf", &pdf);
+        assert_ne!(r.format["pdf"]["repaired"], true, "{:?}", r.diagnostics.warnings);
+        assert_eq!(r.content.title.as_deref(), Some("Harbour notes"));
+    }
+
+    #[test]
+    fn a_table_split_between_rows_by_the_window_is_read() {
+        // The window starts after `xref`: "\n0 3291" + pad + "\n" is 16 bytes
+        // with pad 8, so 65536 ends exactly after row 3276's newline and the
+        // trailer is in the next window.
+        let mut objects: Vec<&str> = BASE[..6].to_vec();
+        objects.resize(3290, "null");
+        let pdf = build_padded(&objects, true, 8);
+        let window = startxref(&pdf) + 4;
+        assert!(pdf[..window + 65536].ends_with(b" 00000 n \n"), "the window ends after a row");
+        let r = crate::plugin::testing::report_for("long.pdf", &pdf);
+        assert_ne!(r.format["pdf"]["repaired"], true, "{:?}", r.diagnostics.warnings);
+        assert_eq!(r.format["pdf"]["objects"], 3290);
+        assert_eq!(r.content.title.as_deref(), Some("Harbour notes"));
+    }
+
+    #[test]
+    fn a_subsection_past_the_object_range_is_skipped() {
+        let mut pdf = build(&BASE[..6], true);
+        let t = doc::rfind(&pdf, b"trailer").unwrap();
+        let rows = "9223372036854775806 3\n0000000009 00000 n \n0000000009 00000 n \n0000000009 00000 n \n";
+        pdf.splice(t..t, rows.bytes());
+        let r = crate::plugin::testing::report_for("huge.pdf", &pdf);
+        assert_eq!(r.content.title.as_deref(), Some("Harbour notes"));
     }
 
     crate::fixture_tests!("pdf", "fdf");

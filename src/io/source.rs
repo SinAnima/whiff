@@ -113,6 +113,22 @@ impl FileSource {
         s.tail = tail;
         Ok(s)
     }
+
+    /// Stream the whole file through `f` in `chunk`-byte pieces from the
+    /// open handle, checking the deadline before each piece. Not charged to
+    /// the read budget: hashing has its own cap (`limits.hash_max_bytes`).
+    pub(crate) fn stream(&mut self, chunk: usize, mut f: impl FnMut(&[u8])) -> Result<(), SourceError> {
+        self.file.seek(SeekFrom::Start(0)).map_err(|e| SourceError::Io(e.to_string()))?;
+        let mut buf = vec![0u8; chunk.max(1)];
+        loop {
+            self.budget.check_deadline()?;
+            let n = self.file.read(&mut buf).map_err(|e| SourceError::Io(e.to_string()))?;
+            if n == 0 {
+                return Ok(());
+            }
+            f(&buf[..n]);
+        }
+    }
 }
 
 impl Source for FileSource {
@@ -125,9 +141,13 @@ impl Source for FileSource {
             return Ok(0);
         }
         let want = usize::try_from((self.len - offset).min(buf.len() as u64)).unwrap_or(buf.len());
-        self.budget.charge_read(want as u64)?;
+        self.budget.check_deadline()?;
         self.file.seek(SeekFrom::Start(offset)).map_err(|e| SourceError::Io(e.to_string()))?;
-        self.file.read(&mut buf[..want]).map_err(|e| SourceError::Io(e.to_string()))
+        let n = self.file.read(&mut buf[..want]).map_err(|e| SourceError::Io(e.to_string()))?;
+        // Charge what was actually read: a short read costs only its bytes.
+        // When the charge is refused the bytes are not handed out.
+        self.budget.charge_read(n as u64)?;
+        Ok(n)
     }
 
     fn head(&self) -> &[u8] {
@@ -282,5 +302,62 @@ impl Seek for BoundedReader<'_, '_> {
             target.ok_or_else(|| std::io::Error::new(std::io::ErrorKind::InvalidInput, "seek before start"))?;
         self.pos = target;
         Ok(target)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::io::Write;
+
+    #[test]
+    fn file_reads_charge_the_bytes_read() {
+        let mut f = tempfile::NamedTempFile::new().unwrap();
+        f.write_all(&vec![7u8; 1 << 20]).unwrap();
+        let budget = Budget::new(2 << 20, 0, None);
+        let mut src = FileSource::open(f.path(), budget.clone()).unwrap();
+        let before = budget.bytes_read();
+        let mut buf = vec![0u8; 4096];
+        let mut at = 0u64;
+        while at < src.len() {
+            at += src.read_at(at, &mut buf).unwrap() as u64;
+        }
+        assert_eq!(budget.bytes_read() - before, 1 << 20);
+        // Reading past the end costs nothing.
+        assert_eq!(src.read_at(1 << 20, &mut buf).unwrap(), 0);
+        assert_eq!(budget.bytes_read() - before, 1 << 20);
+    }
+
+    #[test]
+    fn streaming_checks_the_deadline_but_not_the_read_budget() {
+        let mut f = tempfile::NamedTempFile::new().unwrap();
+        f.write_all(&vec![7u8; 1 << 20]).unwrap();
+        let budget = Budget::new(512 << 10, 0, None);
+        let mut src = FileSource::open(f.path(), budget.clone()).unwrap();
+        let before = budget.bytes_read();
+        let mut total = 0;
+        src.stream(4096, |c| total += c.len()).unwrap();
+        assert_eq!(total, 1 << 20, "hashing has its own cap, not max_read_bytes");
+        assert_eq!(budget.bytes_read(), before);
+
+        #[cfg(not(all(target_arch = "wasm32", target_os = "unknown")))]
+        {
+            let budget = Budget::new(u64::MAX, 0, Some(std::time::Duration::from_millis(30)));
+            let mut src = FileSource::open(f.path(), budget.clone()).unwrap();
+            std::thread::sleep(std::time::Duration::from_millis(40));
+            assert!(matches!(src.stream(4096, |_| {}), Err(SourceError::Timeout)));
+            assert_eq!(budget.limits_hit(), ["timeout"]);
+        }
+    }
+
+    #[test]
+    fn file_reads_stop_at_the_limit() {
+        let mut f = tempfile::NamedTempFile::new().unwrap();
+        f.write_all(&vec![7u8; 64 << 10]).unwrap();
+        let budget = Budget::new(64 << 10, 0, None);
+        let mut src = FileSource::open(f.path(), budget.clone()).unwrap();
+        let mut buf = vec![0u8; 64 << 10];
+        assert!(matches!(src.read_at(0, &mut buf), Err(SourceError::LimitExceeded("read_bytes"))));
+        assert!(budget.bytes_read() <= 64 << 10);
     }
 }

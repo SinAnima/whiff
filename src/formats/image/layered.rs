@@ -730,6 +730,7 @@ fn figma(src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError>
         cx.format_set("images", zip.entries.iter().filter(|e| e.name.starts_with("images/")).count());
         thumbnail(&zip, src, &["thumbnail.png"], cx);
         let Some(e) = zip.find("canvas.fig").cloned() else { return Ok(()) };
+        cx.format_set("canvas_bytes", e.size);
         let (head, _) = zip.read_prefix(src, &e, cx, 16)?;
         return figma_canvas(&head, e.size, cx);
     }
@@ -737,13 +738,20 @@ fn figma(src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError>
     figma_canvas(&h, src.len(), cx)
 }
 
+/// The `fig-kiwi` canvas: the magic, a little-endian `u32` version, then
+/// length-prefixed chunks (the compressed Kiwi schema first, then the
+/// compressed document). `len` is the size of the whole canvas.
 fn figma_canvas(h: &[u8], len: u64, cx: &mut Context<'_>) -> Result<(), ExtractError> {
     if !h.starts_with(b"fig-kiwi") {
         return Err(ExtractError::malformed("no fig-kiwi header"));
     }
-    let v = ByteReader::new(h).skip(8)?.le_u32()?;
-    cx.format_set("canvas_version", v);
-    cx.format_set("canvas_bytes", len);
+    let mut r = ByteReader::new(h).skip(8)?;
+    cx.format_set("canvas_version", r.le_u32()?);
+    let schema = r.le_u32()?;
+    if 16 + u64::from(schema) > len {
+        return Err(ExtractError::malformed("fig-kiwi schema chunk runs past the canvas"));
+    }
+    cx.format_set("schema_bytes", schema);
     Ok(())
 }
 

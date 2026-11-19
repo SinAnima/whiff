@@ -50,6 +50,17 @@ pub(crate) enum Block {
     Compressed { at: u64, len: usize, codec: Codec },
 }
 
+/// `base + add` as an image offset. An overflow means the image is damaged:
+/// fail the read rather than wrap onto another part of the image.
+pub(crate) fn offset(base: u64, add: u64) -> Result<u64, SourceError> {
+    base.checked_add(add).ok_or_else(|| SourceError::Io("block offset out of range".into()))
+}
+
+/// `a * b` as an image offset (see [`offset`]).
+pub(crate) fn scaled(a: u64, b: u64) -> Result<u64, SourceError> {
+    a.checked_mul(b).ok_or_else(|| SourceError::Io("block offset out of range".into()))
+}
+
 /// How a virtual disk's blocks map onto its image file.
 pub(crate) trait BlockMap: Send {
     /// Bytes per block.
@@ -114,13 +125,22 @@ impl<M: BlockMap> Source for Virtual<'_, '_, M> {
                         *b = pattern[(within + i) % 4];
                     }
                 }
-                Block::At(at) => (self.image as &mut dyn Source).read_exact_at(at + within, out)?,
+                Block::At(at) => (self.image as &mut dyn Source).read_exact_at(self::offset(at, within)?, out)?,
                 Block::Compressed { at, len, codec } => {
                     if self.cache.as_ref().is_none_or(|(c, _)| *c != n) {
                         let data = (self.image as &mut dyn Source).read_vec(at, len)?;
                         let max = usize::try_from(bs).unwrap_or(0);
                         let decoded = codec::decode(&data, codec, max, &self.budget)
                             .map_err(|e| SourceError::Io(e.to_string()))?;
+                        // A full block, or a stream that ended normally. Anything
+                        // else would read as zeros, so it fails and is not cached.
+                        if decoded.data.len() < max && decoded.end != codec::End::Complete {
+                            self.cache = None;
+                            return Err(match decoded.end {
+                                codec::End::Limit => SourceError::LimitExceeded("decompressed_bytes"),
+                                _ => SourceError::Io(format!("compressed block {n} does not decode")),
+                            });
+                        }
                         self.cache = Some((n, decoded.data));
                     }
                     let block = self.cache.as_ref().map_or(&[][..], |(_, d)| d.as_slice());
@@ -275,5 +295,51 @@ mod tests {
         let src: &mut dyn Source = &mut v;
         assert_eq!(src.read_vec(0, 15).unwrap(), b"EFGH\0\0\0\0abcd\x01\x02\x03");
         assert_eq!(src.read_vec(2, 4).unwrap(), b"GH\0\0");
+    }
+
+    /// One 512-byte block, wherever `block` says.
+    struct One(Block);
+
+    impl BlockMap for One {
+        fn block_size(&self) -> u64 {
+            512
+        }
+
+        fn locate(&mut self, _: &mut dyn Source, _: u64) -> Result<Block, SourceError> {
+            Ok(self.0)
+        }
+    }
+
+    #[test]
+    fn an_offset_past_u64_fails_instead_of_wrapping() {
+        // Wrapped, `u64::MAX - 8 + 100` would land on the planted sector at 91.
+        let mut data = vec![0u8; 1024];
+        data[91..99].copy_from_slice(b"PLANTED!");
+        let mut image = BytesSource::new(None, data, Budget::unlimited());
+        let mut v = Virtual::new(&mut image, One(Block::Zero), 512).unwrap();
+        v.map = One(Block::At(u64::MAX - 8));
+        let err = (&mut v as &mut dyn Source).read_vec(100, 8).err();
+        assert!(matches!(err, Some(SourceError::Io(_))), "{err:?}");
+    }
+
+    #[test]
+    fn a_compressed_block_cut_short_fails_instead_of_reading_zeros() {
+        let block = miniz_oxide::deflate::compress_to_vec_zlib(&[0xAB; 512], 6);
+        let len = block.len();
+        let at = |budget| BytesSource::new(None, block.clone(), budget);
+        let zlib = Block::Compressed { at: 0, len, codec: Codec::Zlib };
+        // Whole: every byte is the data, none zero.
+        let mut image = at(Budget::unlimited());
+        let mut v = Virtual::new(&mut image, One(zlib), 512).unwrap();
+        assert_eq!((&mut v as &mut dyn Source).read_vec(500, 12).unwrap(), [0xAB; 12]);
+        // A 16-byte decompression budget.
+        let mut image = at(Budget::new(u64::MAX, 16, None));
+        let err = Virtual::new(&mut image, One(zlib), 512).err();
+        assert!(matches!(err, Some(SourceError::LimitExceeded("decompressed_bytes"))), "{err:?}");
+        // The stream cut in half.
+        let mut image = at(Budget::unlimited());
+        let half = Block::Compressed { at: 0, len: len / 2, codec: Codec::Zlib };
+        let err = Virtual::new(&mut image, One(half), 512).err();
+        assert!(matches!(err, Some(SourceError::Io(_))), "{err:?}");
     }
 }

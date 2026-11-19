@@ -80,7 +80,7 @@ impl BlockMap for SparseMap {
         let i = self.runs.partition_point(|r| r.0 + r.1 <= n);
         Ok(match self.runs.get(i) {
             Some(&(first, count, Block::At(at))) if n >= first && n < first + count => {
-                Block::At(at + (n - first) * self.block)
+                Block::At(super::offset(at, super::scaled(n - first, self.block)?)?)
             }
             Some(&(first, _, b)) if n >= first => b,
             _ => Block::Zero,

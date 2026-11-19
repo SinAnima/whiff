@@ -5,3 +5,4 @@ Files made for whiff's tests, CC0-1.0, for the fictitious Saltmere Harbour. Rege
 | File | Origin | Licence |
 |---|---|---|
 | `saltmere-tides.livemd` | written by hand (craft_legacy.py) | CC0-1.0 |
+| `saltmere-berths.livemd` | written by hand (craft_legacy.py) | CC0-1.0 |

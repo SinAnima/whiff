@@ -92,11 +92,14 @@ fi
 # Line-ending conversion would silently change test inputs (CRLF fixtures).
 echo ""
 echo "==> fixtures stored byte-exact by git"
+# What `git add` would store (attributes and filters applied) must be the
+# file's own bytes. Checked on the working tree, so it holds for edited and
+# new fixtures before they are staged, not only for the index.
 changed=()
 while IFS= read -r f; do
   [[ -f "$f" ]] || continue
-  cmp -s <(git show ":$f") "$f" || changed+=("$f")
-done < <(git ls-files tests/fixtures)
+  [[ "$(git hash-object --path="$f" "$f")" == "$(git hash-object --no-filters "$f")" ]] || changed+=("$f")
+done < <(git ls-files --cached --others --exclude-standard tests/fixtures)
 if [ ${#changed[@]} -gt 0 ]; then
   echo "error: git would store these fixtures differently from the working tree:" >&2
   printf '  %s\n' "${changed[@]}" >&2

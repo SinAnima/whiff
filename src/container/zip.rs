@@ -40,10 +40,11 @@ pub struct ZipEntry {
     /// The system that made the entry (the high byte of "version made by":
     /// 0 MS-DOS, 3 Unix, 10 NTFS, 19 macOS …).
     pub host: u8,
-    /// Modification time in UTC (RFC 3339) from the extended-timestamp or
-    /// NTFS extra field, when present.
+    /// Modification time in UTC (RFC 3339) from the extended-timestamp
+    /// field, or else from a plausible (1980–2100) NTFS time.
     pub modified_utc: Option<String>,
-    /// AES encryption (WinZip AE-1 / AE-2): key bits and the real method.
+    /// AES encryption (WinZip AE-1 / AE-2): key bits (128, 192 or 256; 0 when
+    /// the strength byte is none of those) and the real method.
     pub aes: Option<(u16, u16)>,
     /// Where the entry's data starts at the earliest: its local header plus
     /// the name (the local extra field may add more).
@@ -200,10 +201,14 @@ fn unix_utc(secs: i64) -> Option<String> {
     Some(ts.strftime("%Y-%m-%dT%H:%M:%SZ").to_string())
 }
 
+/// NTFS times outside 1980–2100 (a zero `FILETIME` is 1601) are noise.
+const NTFS_PLAUSIBLE: std::ops::RangeInclusive<i64> = 315_532_800..=4_102_444_800;
+
 /// Read the extra fields: Zip64 sizes (replacing the 32-bit fields that are
 /// all ones), extended timestamps, NTFS times and AES encryption.
 fn parse_extra(extra: &[u8], size: &mut u64, csize: &mut u64, offset: &mut u64) -> Extra {
     let mut out = Extra::default();
+    let mut ntfs = None;
     let mut r = ByteReader::new(extra);
     while let (Ok(id), Ok(len)) = (r.le_u16(), r.le_u16()) {
         let Ok(body) = r.bytes(usize::from(len)) else { break };
@@ -234,7 +239,9 @@ fn parse_extra(extra: &[u8], size: &mut u64, csize: &mut u64, offset: &mut u64) 
                     && let Ok(ticks) = b.le_u64()
                 {
                     let secs = i64::try_from(ticks / 10_000_000).unwrap_or(0) - 11_644_473_600;
-                    out.modified_utc = unix_utc(secs).or(out.modified_utc);
+                    if ntfs.is_none() && NTFS_PLAUSIBLE.contains(&secs) {
+                        ntfs = unix_utc(secs);
+                    }
                 }
             }
             // WinZip AES: version, vendor "AE", strength, actual method.
@@ -243,7 +250,8 @@ fn parse_extra(extra: &[u8], size: &mut u64, csize: &mut u64, offset: &mut u64) 
                     let bits = match strength {
                         1 => 128,
                         2 => 192,
-                        _ => 256,
+                        3 => 256,
+                        _ => 0,
                     };
                     out.aes = Some((bits, method));
                 }
@@ -251,6 +259,8 @@ fn parse_extra(extra: &[u8], size: &mut u64, csize: &mut u64, offset: &mut u64) 
             _ => {}
         }
     }
+    // The Unix timestamp (`0x5455`) wins when both are present.
+    out.modified_utc = out.modified_utc.or(ntfs);
     out
 }
 
@@ -337,15 +347,34 @@ impl Zip {
         Ok(zip)
     }
 
-    /// The entry named `name` (exact match).
+    /// The entry named `name` (exact match). With duplicate names the last
+    /// one wins: an update appends the new member after the old one.
     pub fn find(&self, name: &str) -> Option<&ZipEntry> {
-        self.entries.iter().find(|e| e.name == name)
+        self.entries.iter().rev().find(|e| e.name == name)
     }
 
-    /// The entry named `name`, ignoring ASCII case and a leading `/`.
+    /// The entry named `name`, ignoring ASCII case and a leading `/`; the
+    /// last one with duplicate names.
     pub fn find_ci(&self, name: &str) -> Option<&ZipEntry> {
         let name = name.trim_start_matches('/');
-        self.entries.iter().find(|e| e.name.trim_start_matches('/').eq_ignore_ascii_case(name))
+        self.entries.iter().rev().find(|e| e.name.trim_start_matches('/').eq_ignore_ascii_case(name))
+    }
+
+    /// Entries whose exact name an earlier entry already has. Tools disagree
+    /// on which one they extract, so the archive can show each tool
+    /// different content.
+    pub fn duplicate_names(&self) -> usize {
+        let mut seen = std::collections::HashSet::new();
+        self.entries.iter().filter(|e| !e.is_dir() && !seen.insert(e.name.as_str())).count()
+    }
+
+    /// Raise `duplicate_entry_names` when two entries share a name.
+    pub(crate) fn flag_duplicates(&self, cx: &mut Context<'_>) {
+        let n = self.duplicate_names();
+        if n > 0 {
+            let what = if n == 1 { "entry repeats" } else { "entries repeat" };
+            cx.security().risk("duplicate_entry_names", Some(format!("{n} {what} an earlier name; the last is read")));
+        }
     }
 
     /// Entries whose name starts with `prefix`.
@@ -581,6 +610,77 @@ pub(crate) mod tests {
         assert_eq!(zip.entries.len(), 2);
         assert_eq!(zip.entries[1].modified.as_deref(), Some("2024-09-01T00:00:00"));
         assert!(zip.find_ci("/A/B.XML").is_some());
+    }
+
+    #[test]
+    fn duplicate_names_resolve_to_the_last_entry() {
+        let z = build(&[("notes.txt", b"OLD", false), ("dir/", b"", false), ("notes.txt", b"NEW", true)]);
+        let mut src = crate::io::BytesSource::new(None, z, crate::io::Budget::unlimited());
+        let zip = Zip::open(&mut src, 100).unwrap();
+        assert_eq!(zip.find("notes.txt").unwrap().method, 8, "the later, deflated entry");
+        assert_eq!(zip.find_ci("/NOTES.TXT").unwrap().method, 8);
+        assert_eq!(zip.duplicate_names(), 1);
+        let single = build(&[("notes.txt", b"ONLY", false)]);
+        let mut src = crate::io::BytesSource::new(None, single, crate::io::Budget::unlimited());
+        let zip = Zip::open(&mut src, 100).unwrap();
+        assert_eq!(zip.find("notes.txt").unwrap().size, 4);
+        assert_eq!(zip.duplicate_names(), 0);
+    }
+
+    /// An extra field: id, length, body.
+    fn field(id: u16, body: &[u8]) -> Vec<u8> {
+        let mut v = id.to_le_bytes().to_vec();
+        v.extend_from_slice(&u16::try_from(body.len()).unwrap().to_le_bytes());
+        v.extend_from_slice(body);
+        v
+    }
+
+    /// An NTFS extra field whose three times are `ticks` (100 ns since 1601).
+    fn ntfs(ticks: u64) -> Vec<u8> {
+        let mut body = vec![0; 4];
+        body.extend_from_slice(&1u16.to_le_bytes());
+        body.extend_from_slice(&24u16.to_le_bytes());
+        for _ in 0..3 {
+            body.extend_from_slice(&ticks.to_le_bytes());
+        }
+        field(0x000a, &body)
+    }
+
+    fn extra_of(extra: &[u8]) -> Extra {
+        let (mut a, mut b, mut c) = (0, 0, 0);
+        parse_extra(extra, &mut a, &mut b, &mut c)
+    }
+
+    #[test]
+    fn ntfs_times_only_fill_in_and_must_be_plausible() {
+        // 2024-01-01T00:00:00Z
+        let unix = 1_704_067_200u32;
+        let ticks = (u64::from(unix) + 11_644_473_600) * 10_000_000;
+        let mut ut = vec![1];
+        ut.extend_from_slice(&(unix + 60).to_le_bytes());
+        let ut = field(0x5455, &ut);
+        // Both present, NTFS first: the extended timestamp wins.
+        let both = [ntfs(ticks), ut.clone()].concat();
+        assert_eq!(extra_of(&both).modified_utc.as_deref(), Some("2024-01-01T00:01:00Z"));
+        assert_eq!(extra_of(&ntfs(ticks)).modified_utc.as_deref(), Some("2024-01-01T00:00:00Z"));
+        // A zero FILETIME is 1601: dropped.
+        assert_eq!(extra_of(&ntfs(0)).modified_utc, None);
+        assert_eq!(extra_of(&[ntfs(0), ut].concat()).modified_utc.as_deref(), Some("2024-01-01T00:01:00Z"));
+    }
+
+    #[test]
+    fn aes_strength() {
+        let aes = |strength: u8| {
+            let mut body = 2u16.to_le_bytes().to_vec();
+            body.extend_from_slice(b"AE");
+            body.push(strength);
+            body.extend_from_slice(&8u16.to_le_bytes());
+            extra_of(&field(0x9901, &body)).aes
+        };
+        assert_eq!(aes(1), Some((128, 8)));
+        assert_eq!(aes(3), Some((256, 8)));
+        assert_eq!(aes(0), Some((0, 8)), "not AES-256");
+        assert_eq!(aes(9), Some((0, 8)));
     }
 
     #[test]

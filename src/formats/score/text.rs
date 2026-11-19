@@ -398,7 +398,8 @@ fn lilypond(raw: &str, cx: &mut Context<'_>) {
         let mut w = k.split_whitespace();
         if let (Some(tonic), Some(mode)) = (w.next(), w.next()) {
             let tonic = tonic.replace("is", "#").replace("es", "b");
-            let tonic = tonic[..1].to_ascii_uppercase() + &tonic[1..];
+            let mut c = tonic.chars();
+            let tonic = c.next().map(|h| h.to_uppercase().chain(c).collect::<String>()).unwrap_or_default();
             f.insert("key".into(), json!(format!("{tonic} {}", mode.trim_start_matches('\\'))));
         }
     }
@@ -440,6 +441,13 @@ mod tests {
     use super::*;
 
     crate::fixture_tests!("abc", "lilypond");
+
+    #[test]
+    fn lilypond_non_ascii_key() {
+        // Fuzz regression: a key tonic that starts with a multi-byte letter.
+        let r = crate::plugin::testing::report_for("x.ly", "\\version \"2.24.0\"\n\\key \u{d2}s \\major\n".as_bytes());
+        assert_eq!(r.identification.format, "lilypond");
+    }
 
     #[test]
     fn helpers() {

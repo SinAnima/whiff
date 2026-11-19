@@ -539,3 +539,46 @@ fn pnm_rejects_a_non_ascii_header() {
     let pnm = r.diagnostics.extractors.iter().find(|e| e.id == "image.pnm").expect("image.pnm ran");
     assert_eq!(pnm.status, RunStatus::Error, "rejected, not a panic");
 }
+
+/// A sniffer that panics on every input.
+struct PanickySniffer;
+impl Extractor for PanickySniffer {
+    fn meta(&self) -> &'static ExtractorMeta {
+        meta!("test.panicky_sniffer", "panicky", b"PNCK", Cost::Header)
+    }
+    fn sniff(&self, _: &whiff::plugin::Probe<'_>) -> Option<whiff::plugin::Sniff> {
+        panic!("sniffer bug")
+    }
+    fn extract(&self, _: &mut dyn Source, _: &mut Context<'_>) -> Result<(), ExtractError> {
+        Ok(())
+    }
+}
+
+/// A sniffer that takes 80 ms, counting its calls.
+struct SlowSniffer;
+static SLOW_SNIFFS: std::sync::atomic::AtomicUsize = std::sync::atomic::AtomicUsize::new(0);
+impl Extractor for SlowSniffer {
+    fn meta(&self) -> &'static ExtractorMeta {
+        meta!("test.slow_sniffer", "slow", b"SLOW", Cost::Header)
+    }
+    fn sniff(&self, _: &whiff::plugin::Probe<'_>) -> Option<whiff::plugin::Sniff> {
+        SLOW_SNIFFS.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+        std::thread::sleep(Duration::from_millis(80));
+        None
+    }
+    fn extract(&self, _: &mut dyn Source, _: &mut Context<'_>) -> Result<(), ExtractError> {
+        Ok(())
+    }
+}
+
+#[test]
+fn sniffer_panics_and_slow_sniffers_are_reported() {
+    let engine = Engine::builder().registry(registry().with(PanickySniffer).with(SlowSniffer)).build();
+    // The root and its embedded child: the slow sniffer runs once only.
+    let r = engine.extract_bytes(Some("x.tst"), b"DEMOchild".to_vec());
+    assert_eq!(r.identification.format, "demo", "detection still works");
+    let w = &r.diagnostics.warnings;
+    assert!(w.iter().any(|w| w == "sniffer test.panicky_sniffer panicked: sniffer bug"), "{w:?}");
+    assert!(w.iter().any(|w| w.starts_with("sniffer test.slow_sniffer took over 50 ms")), "{w:?}");
+    assert_eq!(SLOW_SNIFFS.load(std::sync::atomic::Ordering::Relaxed), 1);
+}

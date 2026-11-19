@@ -49,6 +49,7 @@ impl Profile {
                 max_text_bytes: 0,
                 hash_max_bytes: 0,
                 max_parse_bytes: 256 * KIB,
+                slow_sniff: Some(SLOW_SNIFF),
             },
             Self::Standard | Self::Llm => Limits {
                 max_read_bytes: 256 * MIB,
@@ -60,6 +61,7 @@ impl Profile {
                 max_text_bytes: MIB_USIZE,
                 hash_max_bytes: 2 * GIB,
                 max_parse_bytes: 16 * MIB,
+                slow_sniff: Some(SLOW_SNIFF),
             },
             Self::Full => Limits {
                 max_read_bytes: 4 * GIB,
@@ -71,6 +73,7 @@ impl Profile {
                 max_text_bytes: 16 * MIB_USIZE,
                 hash_max_bytes: 16 * GIB,
                 max_parse_bytes: 256 * MIB,
+                slow_sniff: Some(SLOW_SNIFF),
             },
         }
     }
@@ -88,6 +91,11 @@ impl std::str::FromStr for Profile {
         }
     }
 }
+
+/// A sniffer slower than this is skipped for the rest of the input (its
+/// embedded files included). Sniffers see only the head and tail windows,
+/// so a well-behaved one takes microseconds.
+pub(crate) const SLOW_SNIFF: Duration = Duration::from_millis(50);
 
 /// Resource limits for one root input and everything embedded in it.
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -112,6 +120,10 @@ pub struct Limits {
     /// Bytes a structured parser (JSON, YAML, HTML, SQL, …) loads into memory;
     /// larger inputs are parsed in part or only scanned.
     pub max_parse_bytes: u64,
+    /// A sniffer slower than this is skipped for the rest of the input
+    /// (`None` = never). Wall-clock time, so the crate's own snapshot tests
+    /// turn it off: a loaded machine would otherwise change their reports.
+    pub(crate) slow_sniff: Option<Duration>,
 }
 
 impl Default for Limits {
@@ -121,6 +133,12 @@ impl Default for Limits {
 }
 
 impl Limits {
+    /// The same limits with the slow-sniffer check off, for snapshot tests.
+    #[must_use]
+    pub(crate) fn without_slow_sniff(mut self) -> Self {
+        self.slow_sniff = None;
+        self
+    }
     /// Set [`Limits::max_depth`].
     #[must_use]
     pub fn max_depth(mut self, n: u32) -> Self {

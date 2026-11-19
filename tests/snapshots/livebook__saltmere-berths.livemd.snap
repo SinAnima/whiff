@@ -1,0 +1,132 @@
+---
+source: src/formats/data/records.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "saltmere-berths.livemd",
+    "stem": "saltmere-berths",
+    "extension": "livemd"
+  },
+  "identification": {
+    "format": "livebook",
+    "name": "Livebook notebook",
+    "mime": "text/x-livebook",
+    "family": "code.notebook",
+    "confidence": 0.95,
+    "detected_by": "sniff",
+    "extension_matches": true,
+    "encoding": "us-ascii",
+    "extractor": "data.records"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 335
+  },
+  "temporal": {
+    "filesystem": {}
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 335,
+    "entropy": 5.066,
+    "entropy_scope": "file",
+    "text": {
+      "bytes": 335,
+      "chars": 335,
+      "words": 41,
+      "lines": 26,
+      "max_line_length": 67,
+      "line_endings": "lf",
+      "bom": false,
+      "blank_lines": 8
+    }
+  },
+  "integrity": {
+    "sha256": "bb96c1ef87d73daab3881ce7d0b0b8b6dc5e84391c7def41b5086a139505ac9a",
+    "blake3": "a96056599550edf6ed2aa841426a50324744f073f0696ba3fae63f7baa38abdf"
+  },
+  "content": {
+    "title": "Saltmere berths",
+    "outline": [
+      {
+        "level": 2,
+        "text": "Moorings"
+      }
+    ],
+    "excerpt": "Boats tie up at the north quay."
+  },
+  "metadata": {},
+  "format": {
+    "livebook": {
+      "sections": [
+        "Moorings"
+      ],
+      "elixir_cells": 2,
+      "dependencies": [
+        "kino",
+        "req"
+      ]
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "data.records",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

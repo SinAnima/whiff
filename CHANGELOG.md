@@ -6,6 +6,138 @@ keep the schema version.
 
 ## Unreleased
 
+## 0.8.2 — 2026-11-19
+
+Safety and correctness fixes from the 0.8.0 review. No API change. The
+report gains warnings, one risk kind and a few keys, and some values are
+corrected.
+
+### Added
+
+- **Risk `duplicate_entry_names`** (obfuscation, medium): two entries of a
+  ZIP archive share a name, so unpacking tools disagree on which one they
+  extract. Raised for ZIP archives, Office and OpenDocument files, EPUB,
+  JAR, APK and IPA packages.
+- **LevelDB tables** are read past the magic: `metaindex_handle`,
+  `index_handle`, `data_blocks`, `first_key`, `last_key`, and `entries`
+  when the data blocks fit `max_parse_bytes`. Keys go through
+  `redact_sensitive` under strict privacy.
+- **SQLite**: `cells_skipped` counts damaged cells that were skipped.
+- **`available_with_feature`** is also set when nothing in the build
+  recognises a binary file but its extension belongs to a format of a
+  feature the build leaves out (a `.nes` ROM without `games`). Before, only formats the
+  `file-format` database knew got the hint.
+
+### Fixed
+
+- **Secrets are redacted everywhere in the report**: extended attributes
+  (a "Where from" URL with a password in it), rights, authors, warnings,
+  extractor errors and embedded reports, not only `metadata`, `format` and
+  the content fields. A private key is redacted from its `BEGIN` line
+  through its `END` line; before, only the `BEGIN` line was.
+- **Extended attributes** are read into a 4 KiB buffer on Linux and macOS.
+  A larger value is reported as `{"bytes": n, "skipped": "too_large"}`
+  instead of being read whole. The Windows `Zone.Identifier` stream is
+  read up to 4 KiB.
+- **The file watchdog never re-runs detection.** When an extraction
+  overruns `file_timeout`, the report reuses what the worker had detected.
+  If the worker was still detecting, only the built-in `empty` / `text` /
+  `binary` fallbacks are used. Before, every sniffer ran again on the
+  caller's thread with no deadline. At most 8 abandoned workers may run at
+  once; past that, files get a detection-free report with
+  `limits_hit: ["timeout"]` until one ends. The grace period after the
+  deadline is now a quarter of `file_timeout` (between 50 ms and 2 s)
+  instead of 2 s plus 1 s per 100 MiB.
+- **Hashing** reads through the file handle the extractors used, in 1 MiB
+  chunks, and stops at the file deadline with `integrity.skipped:
+  "timeout"`. Before, it opened the file a second time and ran unbounded.
+- **Sniffers**: a sniffer that panics is reported in
+  `diagnostics.warnings` instead of being skipped silently. A sniffer that
+  takes over 50 ms is reported and skipped for the rest of the input,
+  embedded files included.
+- **Read and decompression budgets** commit a charge only when it fits, so
+  a refused charge no longer counts and a huge charge cannot wrap the
+  counter. File reads are charged for the bytes actually read.
+- **`Context::inflate`** no longer records `decompressed_bytes` in
+  `limits_hit` when the caller's own cap was the limit (that error is
+  `inflate_limit`). **`Context::inflate_prefix`** returns what decoded
+  when a cap is reached instead of an error. Both decode in 1 MiB steps
+  and stop at the deadline.
+- **PDF incremental updates**: an object deleted by a newer section (a
+  free entry in a table, type 0 in a cross-reference stream) is no longer
+  read from an older one. Before, a deleted script, attachment or metadata
+  stream was still reported. A hybrid file's table may still mark objects
+  free that its `/XRefStm` places.
+- **PDF cross-reference tables** that the 64 KiB read window splits between
+  two rows are read instead of being rebuilt by the repair scan, which
+  reads only `max_parse_bytes` from the start. A subsection numbered near
+  `i64::MAX` is skipped instead of overflowing.
+- **PDF AES strings** lose their padding only when every padding byte holds
+  the pad length (PKCS#7), not on the last byte alone.
+- **ZIP entries with the same name**: the last one is read, as an update
+  appends the new member after the old. Before, a Word, ODF or EPUB file
+  updated in place showed its old text and properties.
+- **ZIP times**: the NTFS time is used only when there is no Unix
+  extended timestamp, and only between 1980 and 2100 (a zero NTFS time is
+  1601).
+- **ZIP AES strength** 0 or above 3 is reported as `AES (unknown
+  strength)`, not AES-256. In the library, `ZipEntry::aes` gives 0 bits
+  for it.
+- **ZIP symbolic-link targets** hide the user's profile folder and
+  personal data under strict privacy.
+- **Virtual disks**: a block offset that overflows fails the read instead
+  of wrapping onto another part of the image. A compressed block that does
+  not decode fully (the decompression budget, a cut stream) fails the read
+  instead of reading as zeros, and is not cached.
+- **SQLite**: a page whose usable size is below 480 bytes (page size less
+  reserved bytes) is reported as malformed, as SQLite does, instead of
+  being read with a larger usable size. A damaged cell loses that row,
+  not every row after it.
+- **Format redirects** (a ZIP found to be a DOCX …) merge the container's
+  keys into what the real format already has instead of replacing it.
+- Extractor error messages are capped at 300 characters: they can quote
+  names from the file.
+- **`physical.text.bom`** is found when the input arrives in pieces
+  shorter than the byte-order mark. Found by a new property test.
+- **Livebook**: dependencies are read from a `Mix.install` call spread over
+  several lines, the way Livebook saves it. Before, none were listed.
+- **Figma**: a raw `fig-kiwi` canvas reports `schema_bytes` (the length of
+  its first chunk) instead of `canvas_bytes`, which was the file size. A
+  ZIP export keeps `canvas_bytes`, the size of its `canvas.fig` entry.
+- Four extractor panics found by the nightly fuzzer. The engine contained
+  each one and reported the extractor as `internal`, so the rest of the
+  report was still produced.
+  - A LUKS header cut short by the end of the input.
+  - A VHD whose footer copy at the start of the file is shorter than 512
+    bytes. Also guarded: VDI headers shorter than 440 bytes and a VHDX
+    metadata table running past its region.
+  - A LilyPond `\key` whose note name starts with a non-ASCII letter.
+  - A MIDI file whose SMPTE division byte is -128.
+- The `whiff::plugin::testing` helpers `report_for` and
+  `report_without_privacy` now panic when an extractor reports an
+  `internal` status, as the fuzz target does. Before, a test of a
+  panicking extractor could still pass.
+
+### Tests
+
+- **Property tests** (`proptest`, a dev-dependency) for `ByteReader`
+  (random reads, seeks and skips against a slicing model; every truncation
+  of every fixed-size read), `Budget` (charges are monotonic, never pass
+  the limit and never wrap) and `WcCounter` (GNU `wc` counts computed
+  independently, on text fed in random pieces).
+- **Conformance** checks every fixture report against the `whiff/1` JSON
+  Schema, with a small in-house validator for the keywords the schema uses.
+  Under a 4 KiB read budget, a report that differs from the unlimited one
+  must name the limit.
+- **Snapshots** for the formats that had none: F3, GeoPackage, MBTiles,
+  AV1 OBU, Unity packages, ESE and registry hives.
+- Tests that a wrong parser could pass now check values: IPTC datasets read
+  from a JPEG, an XMP depth cut, Type 1 `eexec` on FontForge's ciphertext,
+  the HTML depth scan on hostile input. A second Livebook fixture in
+  Livebook's saved layout.
+- `wasm32-unknown-unknown`, where there is no clock: a budget with a
+  timeout neither panics nor times out (checked on every target).
+
 ## 0.8.1 — 2026-11-13
 
 The repository moved to [SinAnima/whiff](https://github.com/SinAnima/whiff)

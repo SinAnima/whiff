@@ -924,7 +924,7 @@ fn gedcom(cx: &mut Context<'_>, text: &str) {
 fn gtfs(src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
     let zip = Zip::open(src, 1 << 16)?;
     let find =
-        |name: &str| zip.entries.iter().find(|e| e.name.rsplit('/').next() == Some(name)).map(|e| e.name.clone());
+        |name: &str| zip.entries.iter().rev().find(|e| e.name.rsplit('/').next() == Some(name)).map(|e| e.name.clone());
     let read = |src: &mut dyn Source, cx: &mut Context<'_>, name: &str| -> Option<String> {
         let n = find(name)?;
         zip.read_text(src, &n, cx, cx.parse_limit()).and_then(Result::ok)
@@ -1135,8 +1135,26 @@ fn mathematica(cx: &mut Context<'_>, text: &str) {
     cx.emit_text(TextRole::Body, &prose);
 }
 
+/// A Livebook notebook (`.livemd`): Markdown with Elixir code fences.
+/// `text` is the decoded notebook, already cut to `max_parse_bytes`.
+///
+/// Writes `format.livebook.sections` (the `##` headings), `elixir_cells`
+/// and, when the setup cell calls `Mix.install`, `dependencies`: the package
+/// atoms only (`{:kino, "~> 0.14"}` gives `kino`; version requirements and
+/// options are dropped). The `#` heading is the title; prose outside the
+/// fences is the body text. `<!-- livebook:… -->` lines (notebook settings,
+/// Markdown breaks, output markers) are neither prose nor format keys.
+///
+/// The fixture `saltmere-tides.livemd` (three Elixir cells, `Mix.install`
+/// of `kino` and `explode`) gives `elixir_cells: 3`, dependencies
+/// `["kino", "explode"]` and the excerpt "The bell rings at high tide.",
+/// without the code. Nothing fails: an unclosed fence leaves the rest of the
+/// file as code, not prose. Any `.livemd` file is taken as a notebook; on
+/// a plain Markdown file renamed so, only `elixir_cells` tells them apart.
 fn livebook(cx: &mut Context<'_>, text: &str) {
     let (mut sections, mut cells, mut deps, mut in_code) = (Vec::new(), 0u64, Vec::new(), false);
+    // Inside a `Mix.install(...)` call, which Livebook writes over several lines.
+    let mut in_install = false;
     let mut prose = String::new();
     for line in text.lines() {
         if line.starts_with("```") {
@@ -1144,14 +1162,17 @@ fn livebook(cx: &mut Context<'_>, text: &str) {
                 cells += 1;
             }
             in_code = !in_code;
+            in_install = false;
             continue;
         }
         if in_code {
-            if line.contains("Mix.install") {
-                // `Mix.install([{:kino, "~> 0.14"}, {:req, "~> 0.5"}])`
-                for (p, _) in line.match_indices("{:") {
-                    deps.extend(line[p + 2..].split([',', '}']).next().map(|d| d.trim().to_string()));
+            let call = line.find("Mix.install");
+            if call.is_some() || in_install {
+                let args = &line[call.unwrap_or(0)..];
+                for (p, _) in args.match_indices("{:") {
+                    deps.extend(args[p + 2..].split([',', '}']).next().map(|d| d.trim().to_string()));
                 }
+                in_install = !args.contains("])");
             }
             continue;
         }
@@ -1176,6 +1197,28 @@ fn livebook(cx: &mut Context<'_>, text: &str) {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn livebook_keeps_atoms_and_drops_its_own_comments() {
+        let path = concat!(env!("CARGO_MANIFEST_DIR"), "/tests/fixtures/livebook/saltmere-berths.livemd");
+        let text = std::fs::read_to_string(path).unwrap();
+        let r = crate::plugin::testing::report_for("saltmere-berths.livemd", text.as_bytes());
+        let f = &r.format["livebook"];
+        // Atoms only: no version requirements, no `only: :dev`, from a
+        // Mix.install spread over four lines.
+        assert_eq!(f["dependencies"], json!(["kino", "req"]));
+        assert_eq!(f["elixir_cells"], 2);
+        assert_eq!(f["sections"], json!(["Moorings"]));
+        assert_eq!(r.content.title.as_deref(), Some("Saltmere berths"));
+        let excerpt = r.content.excerpt.as_deref().unwrap_or_default();
+        assert!(excerpt.contains("Boats tie up at the north quay."), "{excerpt}");
+        for comment in ["livebook", "autosave", "break_markdown", "persist_outputs"] {
+            assert!(!excerpt.contains(comment), "excerpt has `{comment}`: {excerpt}");
+            assert!(!f.to_string().contains(comment), "format.livebook has `{comment}`: {f}");
+        }
+        // The persisted output is a fence, not prose.
+        assert!(!excerpt.contains("12"), "{excerpt}");
+    }
 
     crate::fixture_tests!(
         "lcov",

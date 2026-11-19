@@ -13,6 +13,7 @@
 pub mod conformance;
 pub(crate) mod context;
 mod registry;
+pub(crate) mod schema_check;
 mod spec;
 #[doc(hidden)]
 pub mod testing;

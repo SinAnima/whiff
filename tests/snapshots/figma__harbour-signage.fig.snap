@@ -74,8 +74,9 @@ expression: report
         "width": 32,
         "height": 24
       },
+      "canvas_bytes": 24,
       "canvas_version": 20,
-      "canvas_bytes": 24
+      "schema_bytes": 8
     }
   },
   "diagnostics": {

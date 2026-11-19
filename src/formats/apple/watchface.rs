@@ -52,7 +52,7 @@ impl Extractor for WatchFace {
     fn extract(&self, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
         let zip = Zip::open(src, 10_000)?;
         let json_of = |src: &mut dyn Source, cx: &mut Context<'_>, name: &str| -> Option<Value> {
-            let e = zip.entries.iter().find(|e| e.name.rsplit('/').next() == Some(name))?.clone();
+            let e = zip.entries.iter().rev().find(|e| e.name.rsplit('/').next() == Some(name))?.clone();
             serde_json::from_slice(&zip.read(src, &e, cx, 4 << 20).ok()?).ok()
         };
         let face = json_of(src, cx, "face.json").unwrap_or(Value::Null);

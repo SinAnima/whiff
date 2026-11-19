@@ -1935,6 +1935,36 @@ Kino.DataTable.new([%{boat: "Grey Tern", berth: 5}])
 """
 
 
+# What Livebook itself writes: a notebook settings comment, a multi-line
+# Mix.install in the setup cell, a Markdown break and a persisted output.
+LIVEBOOK_SAVED = """<!-- livebook:{"autosave_interval_s":30,"persist_outputs":true} -->
+
+# Saltmere berths
+
+```elixir
+Mix.install([
+  {:kino, "~> 0.14"},
+  {:req, "~> 0.5", only: :dev}
+])
+```
+
+## Moorings
+
+<!-- livebook:{"break_markdown":true} -->
+
+Boats tie up at the north quay.
+
+```elixir
+berths = 12
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+12
+```
+"""
+
 def step_records() -> None:
     import io
     import zipfile
@@ -1946,6 +1976,7 @@ def step_records() -> None:
         ("edi_x12", "purchase-order.x12", X12), ("edifact", "orders.edifact", EDIFACT), ("gedcom", "saltmere-tree.ged", GEDCOM),
         ("fortune", "harbour-sayings.fortune", FORTUNE), ("ldif", "saltmere-directory.ldif", LDIF),
         ("mathematica_nb", "saltmere-tides.nb", MATHEMATICA), ("livebook", "saltmere-tides.livemd", LIVEBOOK),
+        ("livebook", "saltmere-berths.livemd", LIVEBOOK_SAVED),
     ):
         out(fmt, name, text.encode())
     # The strfile index of the fortune file (strfile(1): version 2, counts,

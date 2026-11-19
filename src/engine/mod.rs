@@ -9,14 +9,31 @@ mod xattrs;
 
 use std::io::Read;
 use std::path::Path;
-use std::sync::Arc;
+use std::sync::{Arc, OnceLock};
 use std::time::Duration;
 
+pub(crate) use options::SLOW_SNIFF;
 pub use options::{Hashes, Limits, Options, Privacy, Profile};
 
 use crate::Error;
 use crate::plugin::Registry;
-use crate::report::Report;
+use crate::report::{Identification, Report};
+
+/// How the engine identifies the root input.
+#[derive(Debug, Clone, Default)]
+enum Detect {
+    /// Run detection.
+    #[default]
+    Run,
+    /// Run detection and publish the root identification as soon as it is
+    /// known (a worker under the watchdog).
+    Publish(Arc<OnceLock<Identification>>),
+    /// Use this identification: what an abandoned worker had detected.
+    Preset(Box<Identification>),
+    /// Use only the built-in fallbacks (`empty`, `text`, `binary`): the
+    /// abandoned worker was still detecting, so no sniffer runs again.
+    BuiltinOnly,
+}
 
 /// Runs extractions. Cheap to share across threads (`&Engine` is `Sync`).
 #[derive(Debug, Clone)]
@@ -25,6 +42,7 @@ pub struct Engine {
     options: Options,
     /// Stop after detection (the report of an abandoned extraction).
     detect_only: bool,
+    detect: Detect,
 }
 
 impl Default for Engine {
@@ -63,12 +81,15 @@ impl Engine {
     /// thread. Deadlines are checked on every read, but a parser that loops
     /// without reading cannot see them; if the worker overruns, the caller
     /// gets a detection-only report with `limits_hit: ["timeout"]` and the
-    /// worker is abandoned.
+    /// worker is abandoned. That report reuses the worker's detection (or,
+    /// when detection itself overran, only the built-in `empty` / `text` /
+    /// `binary` fallbacks); no extractor code runs on the caller. While 8
+    /// abandoned workers are still running, further files get that report
+    /// without a worker.
     pub fn extract_path(&self, path: impl AsRef<Path>) -> Result<Report, Error> {
         let path = path.as_ref();
-        let size = std::fs::metadata(path).map_or(0, |m| m.len());
         let owned = path.to_path_buf();
-        self.guarded(size, move |e| pipeline::extract_path(e, &owned), |e| pipeline::extract_path(e, path))
+        self.guarded(move |e| pipeline::extract_path(e, &owned), |e| pipeline::extract_path(e, path))
     }
 
     /// Describe in-memory bytes. `name` (a file name) helps detection. Runs
@@ -77,7 +98,6 @@ impl Engine {
         let data: Arc<[u8]> = bytes.into();
         let (owned_name, owned_data) = (name.map(str::to_string), Arc::clone(&data));
         let report = self.guarded(
-            data.len() as u64,
             move |e| Ok(pipeline::extract_bytes(e, owned_name.as_deref(), &owned_data)),
             |e| Ok(pipeline::extract_bytes(e, name, &data)),
         );
@@ -85,11 +105,14 @@ impl Engine {
     }
 
     /// Run `work` on a worker thread with a hard deadline; on overrun, run
-    /// `fallback` with detection only. Without threads (WASM) or without a
-    /// file deadline, `work` runs here.
+    /// `fallback` here without extraction. Without threads (WASM) or
+    /// without a file deadline, `work` runs here.
+    ///
+    /// The fallback never re-runs detection: it reuses what the worker had
+    /// detected, or only the built-in `empty` / `text` / `binary` fallbacks
+    /// when the worker was still detecting.
     fn guarded(
         &self,
-        size: u64,
         work: impl FnOnce(&Engine) -> Result<Report, Error> + Send + 'static,
         fallback: impl FnOnce(&Engine) -> Result<Report, Error>,
     ) -> Result<Report, Error> {
@@ -97,30 +120,35 @@ impl Engine {
         let Some(timeout) = self.options.limits.file_timeout.filter(|_| threads && !self.detect_only) else {
             return work(self);
         };
-        // Cooperative deadlines stop extractors; hashing a large file is not
-        // bounded by them, so allow for it at ~100 MiB/s.
-        let deadline = timeout + Duration::from_secs(2) + Duration::from_secs(size / (100 << 20));
-        let engine = self.clone();
-        let Some(outcome) = worker::run(Box::new(move || work(&engine)), deadline) else {
+        // Reads, inflating and hashing check the deadline themselves; the
+        // grace period only lets a cooperative stop finish.
+        let deadline = timeout + (timeout / 4).clamp(Duration::from_millis(50), Duration::from_secs(2));
+        let detected = Arc::new(OnceLock::new());
+        let mut engine = self.clone();
+        engine.detect = Detect::Publish(Arc::clone(&detected));
+        let failure = match worker::run(Box::new(move || work(&engine)), deadline) {
+            Ok(Ok(result)) => return result,
             // No thread available: detection and extraction run here, cooperatively bounded.
-            return fallback(self);
-        };
-        let failure = match outcome {
-            Ok(result) => return result,
-            Err(std::sync::mpsc::RecvTimeoutError::Timeout) => format!(
+            Err(worker::NoWorker::SpawnFailed) => return fallback(self),
+            Err(worker::NoWorker::TooManyAbandoned) => format!(
+                "extraction skipped: {} earlier extractions are still running past their deadline",
+                worker::ABANDONED_CAP
+            ),
+            Ok(Err(std::sync::mpsc::RecvTimeoutError::Timeout)) => format!(
                 "extraction abandoned after {:.1} s: an extractor did not stop at the deadline",
                 deadline.as_secs_f64()
             ),
             // Stages contain their own panics; this is a bug in the engine.
-            Err(std::sync::mpsc::RecvTimeoutError::Disconnected) => {
+            Ok(Err(std::sync::mpsc::RecvTimeoutError::Disconnected)) => {
                 "extraction failed: the worker thread panicked".into()
             }
         };
         let mut quick = self.clone();
         quick.detect_only = true;
         quick.options.limits.file_timeout = None;
+        quick.detect = detected.get().map_or(Detect::BuiltinOnly, |id| Detect::Preset(Box::new(id.clone())));
         let mut report = fallback(&quick)?;
-        if failure.contains("abandoned") {
+        if !failure.contains("panicked") {
             report.diagnostics.limits_hit.push("timeout".into());
         }
         report.diagnostics.truncated = true;
@@ -146,10 +174,21 @@ impl Engine {
     }
 }
 
+/// The text of a caught panic (`"panic"` when it carries none).
+pub(crate) fn panic_message(payload: &(dyn std::any::Any + Send)) -> String {
+    payload
+        .downcast_ref::<&str>()
+        .map(|s| (*s).to_string())
+        .or_else(|| payload.downcast_ref::<String>().cloned())
+        .unwrap_or_else(|| "panic".to_string())
+}
+
 /// The extraction worker: one per calling thread, reused from file to file
 /// (spawning a thread per file cost about 3% of the time on small files).
 mod worker {
     use std::cell::RefCell;
+    use std::sync::Arc;
+    use std::sync::atomic::{AtomicBool, AtomicUsize, Ordering};
     use std::sync::mpsc::{Receiver, RecvTimeoutError, Sender, SyncSender, channel, sync_channel};
     use std::time::Duration;
 
@@ -159,37 +198,67 @@ mod worker {
     /// Stack of the extraction worker thread.
     const STACK: usize = 16 * 1024 * 1024;
 
+    /// Abandoned workers still running, process-wide. Past the cap no new
+    /// worker is started, so a stream of hostile files cannot pile up threads.
+    pub(super) const ABANDONED_CAP: usize = 8;
+    static ABANDONED: AtomicUsize = AtomicUsize::new(0);
+
     pub(super) type Job = Box<dyn FnOnce() -> Result<Report, Error> + Send>;
+
+    /// Why `run` did not run the job.
+    pub(super) enum NoWorker {
+        /// The OS refused a thread.
+        SpawnFailed,
+        /// [`ABANDONED_CAP`] abandoned workers are still running.
+        TooManyAbandoned,
+    }
 
     struct Worker {
         jobs: Sender<Job>,
         results: Receiver<Result<Report, Error>>,
+        /// Set when the caller gives up on this worker.
+        abandoned: Arc<AtomicBool>,
     }
 
     thread_local! {
         static WORKER: RefCell<Option<Worker>> = const { RefCell::new(None) };
     }
 
-    /// Run `job` on this thread's worker and wait up to `deadline`. `None`
-    /// when no thread could be started. A worker that overran or panicked is
-    /// dropped (it ends once its job does), and the next call starts another.
-    pub(super) fn run(job: Job, deadline: Duration) -> Option<Result<Result<Report, Error>, RecvTimeoutError>> {
+    /// Run `job` on this thread's worker and wait up to `deadline`. A worker
+    /// that overran or panicked is dropped (it ends once its job does), and
+    /// the next call starts another.
+    pub(super) fn run(
+        job: Job,
+        deadline: Duration,
+    ) -> Result<Result<Result<Report, Error>, RecvTimeoutError>, NoWorker> {
         WORKER.with(|cell| {
             let mut slot = cell.borrow_mut();
             let mut job = Some(job);
             // A worker whose thread has ended returns the job: start another.
             for _ in 0..2 {
                 if slot.is_none() {
-                    *slot = Some(spawn()?);
+                    if ABANDONED.load(Ordering::Relaxed) >= ABANDONED_CAP {
+                        return Err(NoWorker::TooManyAbandoned);
+                    }
+                    *slot = Some(spawn().ok_or(NoWorker::SpawnFailed)?);
                 }
-                let worker = slot.as_ref()?;
-                match worker.jobs.send(job.take()?) {
+                let Some(worker) = slot.as_ref() else { break };
+                let Some(next) = job.take() else { break };
+                match worker.jobs.send(next) {
                     Ok(()) => {
                         let outcome = worker.results.recv_timeout(deadline);
                         if outcome.is_err() {
+                            if matches!(outcome, Err(RecvTimeoutError::Timeout)) {
+                                // Counted before the flag is set, so the worker's
+                                // decrement can never come first.
+                                ABANDONED.fetch_add(1, Ordering::Relaxed);
+                                if worker.abandoned.swap(true, Ordering::AcqRel) {
+                                    ABANDONED.fetch_sub(1, Ordering::Relaxed);
+                                }
+                            }
                             *slot = None;
                         }
-                        return Some(outcome);
+                        return Ok(outcome);
                     }
                     Err(returned) => {
                         job = Some(returned.0);
@@ -197,13 +266,15 @@ mod worker {
                     }
                 }
             }
-            None
+            Err(NoWorker::SpawnFailed)
         })
     }
 
     fn spawn() -> Option<Worker> {
         let (jobs, inbox) = channel::<Job>();
         let (outbox, results): (SyncSender<_>, _) = sync_channel(1);
+        let abandoned = Arc::new(AtomicBool::new(false));
+        let flag = Arc::clone(&abandoned);
         std::thread::Builder::new()
             .name("whiff-extract".into())
             .stack_size(STACK)
@@ -215,9 +286,15 @@ mod worker {
                         break;
                     }
                 }
+                // The caller marked this worker abandoned: it no longer counts.
+                // When the flag is not set yet, setting it tells a caller that
+                // is about to count it that the worker has already ended.
+                if flag.swap(true, Ordering::AcqRel) {
+                    ABANDONED.fetch_sub(1, Ordering::Relaxed);
+                }
             })
             .ok()?;
-        Some(Worker { jobs, results })
+        Some(Worker { jobs, results, abandoned })
     }
 }
 
@@ -307,6 +384,11 @@ impl EngineBuilder {
         if !self.limits_set {
             self.options.limits = self.options.profile.limits();
         }
-        Engine { registry: self.registry.unwrap_or_else(Registry::builtin), options: self.options, detect_only: false }
+        Engine {
+            registry: self.registry.unwrap_or_else(Registry::builtin),
+            options: self.options,
+            detect_only: false,
+            detect: Detect::Run,
+        }
     }
 }

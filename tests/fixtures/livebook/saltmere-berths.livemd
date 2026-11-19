@@ -1,0 +1,26 @@
+<!-- livebook:{"autosave_interval_s":30,"persist_outputs":true} -->
+
+# Saltmere berths
+
+```elixir
+Mix.install([
+  {:kino, "~> 0.14"},
+  {:req, "~> 0.5", only: :dev}
+])
+```
+
+## Moorings
+
+<!-- livebook:{"break_markdown":true} -->
+
+Boats tie up at the north quay.
+
+```elixir
+berths = 12
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+12
+```

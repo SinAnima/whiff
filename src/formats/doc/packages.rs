@@ -479,7 +479,7 @@ fn flat_opc(cx: &mut Context<'_>, text: &str) -> Result<(), ExtractError> {
 fn iwork(src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
     let zip = Zip::open(src, MAX_ENTRIES)?;
     let read = |zip: &Zip, src: &mut dyn Source, cx: &mut Context<'_>, name: &str| -> Option<Vec<u8>> {
-        let e = zip.entries.iter().find(|e| e.name == name)?.clone();
+        let e = zip.find(name)?.clone();
         zip.read(src, &e, cx, 1 << 20).ok()
     };
     if let Some(b) = read(&zip, src, cx, "Metadata/Properties.plist")

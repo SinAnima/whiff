@@ -17,6 +17,7 @@
 
 use std::panic::{AssertUnwindSafe, catch_unwind};
 
+use crate::io::Budget;
 use crate::plugin::{FormatSpec, Probe, Registry};
 use crate::report::{Candidate, DetectedBy, Identification, Wrapper};
 
@@ -36,6 +37,8 @@ pub struct Detection {
     pub spec: Option<&'static FormatSpec>,
     /// Identification to write into the report.
     pub identification: Identification,
+    /// Sniffers that panicked or were too slow, for `diagnostics.warnings`.
+    pub warnings: Vec<String>,
 }
 
 struct Scored {
@@ -45,9 +48,10 @@ struct Scored {
 }
 
 /// Detect the format of the input described by `probe`.
-pub fn detect(registry: &Registry, probe: &Probe<'_>, forced: Option<&str>) -> Detection {
+pub fn detect(registry: &Registry, probe: &Probe<'_>, forced: Option<&str>, budget: &Budget) -> Detection {
     let ext = probe.extension;
     let mut scored: Vec<Scored> = Vec::new();
+    let mut warnings = Vec::new();
 
     if let Some(id) = forced
         && let Some((spec, _)) = registry.formats().find(|(f, _)| f.id == id)
@@ -63,13 +67,7 @@ pub fn detect(registry: &Registry, probe: &Probe<'_>, forced: Option<&str>) -> D
                 upsert(&mut scored, spec, confidence, DetectedBy::Magic);
             }
         }
-        for e in registry.extractors() {
-            // A sniffer is contributor code: contain its panics like the extractor's.
-            let Ok(Some(sniff)) = catch_unwind(AssertUnwindSafe(|| e.sniff(probe))) else { continue };
-            if let Some(spec) = e.meta().formats.iter().find(|f| f.id == sniff.format) {
-                upsert(&mut scored, spec, sniff.confidence.clamp(0.0, 1.0), DetectedBy::Sniff);
-            }
-        }
+        sniff_all(registry, probe, budget, &mut scored, &mut warnings);
         if let Some(ext) = ext {
             for (spec, _) in registry.formats() {
                 if !spec.extensions.iter().any(|e| e.eq_ignore_ascii_case(ext)) {
@@ -110,6 +108,7 @@ pub fn detect(registry: &Registry, probe: &Probe<'_>, forced: Option<&str>) -> D
         let extension_matches =
             ext.map(|e| spec.extensions.is_empty() || spec.extensions.iter().any(|x| x.eq_ignore_ascii_case(e)));
         return Detection {
+            warnings,
             spec: Some(spec),
             identification: Identification {
                 format: spec.id.to_string(),
@@ -135,11 +134,11 @@ pub fn detect(registry: &Registry, probe: &Probe<'_>, forced: Option<&str>) -> D
             let listed = file_format::FileFormat::from_extension(e);
             listed.is_empty() || listed.iter().any(|f| f.media_type() == id.mime)
         });
-        return Detection { spec: None, identification: id };
+        return Detection { spec: None, identification: id, warnings };
     }
     // The built-in fallback, handed to the extractor that declares its id.
     let spec = registry.formats().map(|(f, _)| f).find(|f| f.id == fallback.format);
-    let identification = match spec {
+    let mut identification = match spec {
         Some(spec) => Identification {
             name: spec.name.to_string(),
             family: Some(spec.family.to_string()),
@@ -148,7 +147,25 @@ pub fn detect(registry: &Registry, probe: &Probe<'_>, forced: Option<&str>) -> D
         },
         None => Identification { candidates, ..fallback },
     };
-    Detection { spec, identification }
+    // Nothing recognised the bytes and nothing reads them as text: the
+    // extension may still name a format this build left out (a `.nes` ROM
+    // without `games`). Text is not hinted: the text reader reads it in
+    // full, and extensions such as `.out` name text of every kind.
+    if identification.format == "binary" {
+        identification.available_with_feature =
+            ext.and_then(|e| feature_for_extension(e, &crate::enabled_features())).map(str::to_string);
+    }
+    Detection { spec, identification, warnings }
+}
+
+/// The feature that reads files with extension `ext`, when it is not one of
+/// `enabled` (from the catalogue, so it covers formats compiled out).
+fn feature_for_extension(ext: &str, enabled: &[&str]) -> Option<&'static str> {
+    let ext = ext.to_ascii_lowercase();
+    let table = catalogue::BY_EXTENSION;
+    let i = table.binary_search_by(|(k, _, _)| (*k).cmp(ext.as_str())).ok()?;
+    let feature = table[i].2;
+    (!enabled.contains(&feature)).then_some(feature)
 }
 
 /// The `file-format` database's verdict, unless it only says text or binary.
@@ -254,6 +271,45 @@ pub fn special(format: &str, name: &str, mime: &str) -> Identification {
 }
 
 /// Built-in fallback: `empty`, `text` or `binary`.
+/// Run every extractor's sniffer, containing panics and skipping sniffers
+/// already found too slow for this input.
+fn sniff_all(
+    registry: &Registry,
+    probe: &Probe<'_>,
+    budget: &Budget,
+    scored: &mut Vec<Scored>,
+    warnings: &mut Vec<String>,
+) {
+    for e in registry.extractors() {
+        let id = e.meta().id;
+        if budget.sniffer_is_slow(id) {
+            continue;
+        }
+        // A sniffer is contributor code: contain its panics like the extractor's.
+        let (sniffed, took) = Budget::timed(|| catch_unwind(AssertUnwindSafe(|| e.sniff(probe))));
+        if let (Some(took), Some(limit)) = (took, budget.slow_sniff_threshold())
+            && took > limit
+        {
+            budget.mark_sniffer_slow(id);
+            warnings.push(format!("sniffer {id} took over {} ms; skipped from now on", limit.as_millis()));
+        }
+        let sniffed = sniffed.unwrap_or_else(|panic| {
+            warnings.push(format!("sniffer {id} panicked: {}", crate::engine::panic_message(&*panic)));
+            None
+        });
+        let Some(sniff) = sniffed else { continue };
+        if let Some(spec) = e.meta().formats.iter().find(|f| f.id == sniff.format) {
+            upsert(scored, spec, sniff.confidence.clamp(0.0, 1.0), DetectedBy::Sniff);
+        }
+    }
+}
+
+/// Identification from the built-in fallbacks only (`empty`, `text`,
+/// `binary`): no sniffer runs. For the report of an abandoned extraction.
+pub fn builtin_fallback(probe: &Probe<'_>) -> Identification {
+    fallback(probe)
+}
+
 fn fallback(probe: &Probe<'_>) -> Identification {
     if probe.len == 0 {
         return Identification {
@@ -341,6 +397,28 @@ mod tests {
     use super::*;
 
     #[test]
+    fn a_compiled_out_extension_names_its_feature() {
+        assert_eq!(feature_for_extension("NES", &["common"]), Some("games"));
+        assert_eq!(feature_for_extension("nes", &["common", "games"]), None);
+        assert_eq!(feature_for_extension("shp", &["common"]), Some("geo"));
+        assert_eq!(feature_for_extension("no-such-extension", &[]), None);
+    }
+
+    #[test]
+    #[cfg_attr(miri, ignore = "runs the whole engine: too slow under Miri")]
+    fn unrecognised_bytes_fall_back_to_the_extension_hint() {
+        // An unknown body named like a ROM: `binary`, and in a build without
+        // `games` the hint says which feature reads `.nes` files.
+        let r = crate::plugin::testing::report_for("cartridge.nes", &[0x00, 0x9c, 0xff, 0x01].repeat(16));
+        assert_eq!(r.identification.format, "binary");
+        let want = (!crate::enabled_features().contains(&"games")).then(|| "games".to_string());
+        assert_eq!(r.identification.available_with_feature, want);
+        // Text named `.out` is read as text, with no hint.
+        let r = crate::plugin::testing::report_for("build.out", b"compiled 3 files\n");
+        assert_eq!(r.identification.available_with_feature, None);
+    }
+
+    #[test]
     fn encodings() {
         let enc = |b: &[u8], complete| text_encoding(b, complete);
         assert_eq!(enc(b"hello\n", true).as_deref(), Some("us-ascii"));
@@ -379,7 +457,7 @@ mod tests {
     fn database_names_formats_without_extractors() {
         let png = b"\x89PNG\r\n\x1a\n\0\0\0\rIHDR\0\0\0\x01\0\0\0\x01\x08\x06\0\0\0\x1f\x15\xc4\x89";
         let probe = Probe { head: png, tail: png, len: png.len() as u64, name: Some("a.png"), extension: Some("png") };
-        let d = detect(&Registry::empty(), &probe, None);
+        let d = detect(&Registry::empty(), &probe, None, &Budget::unlimited());
         assert!(d.spec.is_none());
         assert_eq!(d.identification.format, "png");
         assert_eq!(d.identification.mime, "image/png");

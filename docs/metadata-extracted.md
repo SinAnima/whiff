@@ -939,7 +939,7 @@ Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** mean
 | 798 | dBase / FoxPro DBF | `dbf` | application/dbase | 3 | `db` | `common` | `db.dbf` | impl | S6 | — |
 | 799 | DuckDB database | `duckdb` `ddb` | — | 3 | `db` | `common` | `db.engines` | impl | S6 | header version |
 | 800 | LMDB / Berkeley DB | `mdb` `db` | — | 3 | `db` | `common` | `db.access` | impl | S6 | page size, entries |
-| 801 | LevelDB / RocksDB SST & logs | `ldb` `sst` `log` | — | 3 | `db` | `common` | `db.engines` | impl | S6 | table properties (RocksDB properties block) |
+| 801 | LevelDB / RocksDB SST & logs | `ldb` `sst` `log` | — | 3 | `db` | `common` | `db.engines` | impl | S6 | table properties (RocksDB properties block); LevelDB index: data blocks, first and last keys, entry count |
 | 802 | Realm / Firebird / H2 / HSQLDB | `realm` `fdb` `gdb` `mv.db` | — | 3 | `db` | `common` | `db.stores` | impl | S6 | header |
 | 803 | Microsoft SQL Server backup / MDF | `bak` `mdf` `ldf` | — | 3 | `db` | `common` | `db.stores` | impl | S6 | header: database name, version |
 | 804 | PostgreSQL custom dump | `dump` `backup` | application/octet-stream | 3 | `db` | `common` | `db.engines` | impl | S6 | pg_dump header: db name, version, TOC entries |

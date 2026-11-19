@@ -1,0 +1,134 @@
+---
+source: src/formats/forensic/registry.rs
+expression: report
+---
+{
+  "whiff": {
+    "version": "[version]",
+    "schema": "whiff/1",
+    "profile": "standard"
+  },
+  "source": {
+    "name": "SOFTWARE",
+    "stem": "SOFTWARE"
+  },
+  "identification": {
+    "format": "registry_hive",
+    "name": "Windows registry hive",
+    "mime": "application/octet-stream",
+    "family": "forensic",
+    "confidence": 0.76,
+    "detected_by": "magic",
+    "extractor": "forensic.registry"
+  },
+  "system": {
+    "kind": "regular",
+    "size_bytes": 12288
+  },
+  "temporal": {
+    "filesystem": {},
+    "content": [
+      {
+        "field": "modified",
+        "value": "2025-07-31T08:00:00Z",
+        "source": "forensic.registry",
+        "tz_known": true
+      }
+    ],
+    "earliest": "2025-07-31T08:00:00Z",
+    "latest": "2025-07-31T08:00:00Z"
+  },
+  "security": {},
+  "rights": {},
+  "physical": {
+    "size_bytes": 12288,
+    "entropy": 0.788,
+    "entropy_scope": "file"
+  },
+  "integrity": {
+    "sha256": "f2b8c05a01ed1ade867dda46fdc8e58e3e1e99ca343335d51bf290d429ade317",
+    "blake3": "7b6448565bc2f50818b9601bbc0d391ae1dd30aed1a7f2241d8188a68671a316"
+  },
+  "content": {},
+  "metadata": {},
+  "format": {
+    "registry_hive": {
+      "version": "1.6",
+      "dirty": false,
+      "last_written": "2025-07-31T08:00:00Z",
+      "root_key": "ROOT",
+      "hive": "software",
+      "root_subkeys": [
+        "Classes",
+        "Clients",
+        "Microsoft",
+        "Policies"
+      ],
+      "keys": 11,
+      "values": 9,
+      "max_depth": 3,
+      "windows": {
+        "product": "Windows 11 Pro",
+        "edition": "Professional",
+        "display_version": "24H2",
+        "build": "26100",
+        "version": "6.3",
+        "install_date": "2025-09-01T12:01:04Z"
+      }
+    }
+  },
+  "diagnostics": {
+    "extractors": [
+      {
+        "id": "forensic.registry",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "meta.mwg",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.language",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.excerpt",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.keywords",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "text.summary",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "temporal.range",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      },
+      {
+        "id": "privacy.scan",
+        "version": 1,
+        "ms": 0.0,
+        "status": "ok"
+      }
+    ],
+    "truncated": false,
+    "elapsed_ms": 0.0
+  }
+}

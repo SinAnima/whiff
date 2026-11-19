@@ -202,8 +202,7 @@ mod tests {
         out
     }
 
-    #[test]
-    fn parses_datasets() {
+    fn sample() -> Vec<u8> {
         let mut data = dataset(1, 90, b"\x1b%G");
         data.extend(dataset(2, 5, "Harbour at dusk".as_bytes()));
         data.extend(dataset(2, 25, b"harbour"));
@@ -211,12 +210,47 @@ mod tests {
         data.extend(dataset(2, 55, b"20260914"));
         data.extend(dataset(2, 60, b"170322+0200"));
         data.extend(dataset(2, 116, "© Ada".as_bytes()));
-        let raw = datasets(&data).unwrap();
-        assert_eq!(raw.len(), 7);
-        let mut m = Map::new();
-        m.insert("DateCreated".into(), json!("20260914"));
-        m.insert("TimeCreated".into(), json!("170322+0200"));
-        assert_eq!(date(&m, "DateCreated", "TimeCreated"), Some(("2026-09-14T17:03:22+02:00".into(), true)));
-        assert!(datasets(b"\x1c\x02").is_err() || datasets(b"\x1c\x02").unwrap().is_empty());
+        data
+    }
+
+    #[test]
+    fn parses_datasets() {
+        let raw = datasets(&sample()).unwrap();
+        let ids: Vec<(u8, u8)> = raw.iter().map(|(r, d, _)| (*r, *d)).collect();
+        assert_eq!(ids, [(1, 90), (2, 5), (2, 25), (2, 25), (2, 55), (2, 60), (2, 116)]);
+        assert_eq!(raw[1].2, b"Harbour at dusk");
+        assert_eq!(raw[6].2, "© Ada".as_bytes());
+        // A tag marker with no room for the rest of the dataset header.
+        assert!(matches!(datasets(b"\x1c\x02"), Err(ExtractError::Truncated { .. })));
+        // A value cut short ends the list after the datasets before it.
+        let mut cut = dataset(2, 5, b"Quay");
+        cut.extend_from_slice(&dataset(2, 25, b"harbour")[..6]);
+        assert_eq!(datasets(&cut).unwrap(), [(2, 5, b"Quay".to_vec())]);
+    }
+
+    #[test]
+    #[cfg_attr(miri, ignore = "runs the whole engine: too slow under Miri")]
+    fn decodes_names_values_and_dates_from_a_jpeg() {
+        // JPEG: SOI, APP13 holding a Photoshop resource 0x0404, SOF0 8×8, EOI.
+        let iptc = sample();
+        let mut irb = b"Photoshop 3.0\0".to_vec();
+        irb.extend_from_slice(b"8BIM\x04\x04\0\0");
+        irb.extend_from_slice(&u32::try_from(iptc.len()).unwrap().to_be_bytes());
+        irb.extend_from_slice(&iptc);
+        if iptc.len() % 2 == 1 {
+            irb.push(0);
+        }
+        let mut jpeg = vec![0xFF, 0xD8, 0xFF, 0xED];
+        jpeg.extend_from_slice(&u16::try_from(irb.len() + 2).unwrap().to_be_bytes());
+        jpeg.extend_from_slice(&irb);
+        jpeg.extend_from_slice(&[0xFF, 0xC0, 0, 11, 8, 0, 8, 0, 8, 1, 1, 0x11, 0, 0xFF, 0xD9]);
+        let report = crate::plugin::testing::report_for("dusk.jpg", &jpeg);
+        let m = &report.metadata["iptc"];
+        assert_eq!(m["ObjectName"], json!("Harbour at dusk"));
+        assert_eq!(m["Keywords"], json!(["harbour", "boats"]));
+        assert_eq!(m["CopyrightNotice"], json!("© Ada"));
+        assert_eq!(m["CodedCharacterSet"], json!("UTF-8"));
+        let map = m.as_object().unwrap();
+        assert_eq!(date(map, "DateCreated", "TimeCreated"), Some(("2026-09-14T17:03:22+02:00".into(), true)));
     }
 }
