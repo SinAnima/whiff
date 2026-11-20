@@ -984,6 +984,7 @@ impl Default for Redactor {
 impl Redactor {
     /// Whether secrets are redacted: a value under a key named like a secret
     /// (`password`, `api_key`) is then left out.
+    #[cfg_attr(not(feature = "full"), allow(dead_code))]
     pub(crate) fn hides_secrets(self) -> bool {
         self.secrets
     }

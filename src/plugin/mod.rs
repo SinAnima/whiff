@@ -20,6 +20,7 @@ pub mod testing;
 mod text;
 mod values;
 
+#[cfg_attr(not(feature = "full"), allow(unused_imports))]
 pub(crate) use context::Redactor;
 pub use context::{
     Compression, ContentWriter, Context, ImageWriter, MAX_OUTLINE, PhysicalWriter, RightsWriter, SecurityWriter,
