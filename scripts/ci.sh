@@ -2,7 +2,7 @@
 # Local checks that mirror .github/workflows/ci.yml
 # (fmt, clippy, test, docs, coverage, repo checks, each-feature, MSRV, wasm,
 # deny/audit, Miri with MIRI=1, fuzz smoke). Optional tools are skipped with
-# an install hint.
+# an install hint; each-feature falls back to a plain cargo check loop.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -111,7 +111,16 @@ fi
 if cargo hack --version >/dev/null 2>&1; then
   CARGO_TARGET_DIR=target/hack RUSTFLAGS="-D warnings" run cargo hack check --each-feature --no-dev-deps
 else
-  skip "cargo hack check --each-feature" "install with: cargo install cargo-hack"
+  # Without cargo-hack, do the same by hand: no default features, all
+  # features, then each feature on its own (lib and bins only, so dev
+  # dependencies play no part, as with --no-dev-deps).
+  features=$(sed -n '/^\[features\]/,/^\[/p' Cargo.toml | grep -oE '^[a-z0-9_-]+ =' | cut -d' ' -f1)
+  hack() { CARGO_TARGET_DIR=target/hack RUSTFLAGS="-D warnings" run cargo check -q "$@"; }
+  hack --no-default-features
+  hack --all-features
+  for feature in $features; do
+    hack --no-default-features --features "$feature"
+  done
 fi
 
 # --- MSRV ------------------------------------------------------------------
