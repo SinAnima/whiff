@@ -13,8 +13,7 @@ use serde_json::{Map, Value};
 use super::histogram;
 use crate::plugin::protowire::{self, Wire};
 use crate::plugin::{
-    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, redact_sensitive,
-    truncate_chars,
+    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, truncate_chars,
 };
 
 /// Extractor for Core ML models.
@@ -234,7 +233,7 @@ impl Extractor for CoreMl {
                     .filter_map(|kv| {
                         let k = protowire::first(kv, 1).and_then(Wire::text)?;
                         let v = protowire::first(kv, 2).and_then(Wire::text).unwrap_or_default();
-                        Some((truncate_chars(&k, 100), Value::String(truncate_chars(&redact_sensitive(&v), 300))))
+                        Some((truncate_chars(&k, 100), Value::String(truncate_chars(&cx.redact_sensitive(&v), 300))))
                     })
                     .collect();
                 if !user.is_empty() {

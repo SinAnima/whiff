@@ -32,9 +32,9 @@ impl TextRole {
 #[derive(Debug, Clone, PartialEq, Eq)]
 #[non_exhaustive]
 pub struct TextChunk {
-    /// Role.
+    /// What the text is: a title, a heading (with its level), body text, a caption, a comment…
     pub role: TextRole,
-    /// Text.
+    /// The text itself, already decoded to UTF-8, e.g. `"High water at 06:12."`.
     pub text: String,
 }
 

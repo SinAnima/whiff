@@ -4,6 +4,8 @@ This is the reference for **what whiff extracts from each file format, why it is
 
 *Researched 2026-10-15. Crate versions were checked against the crates.io API on that date.*
 
+*Library names dated 2026-10-15 are the survey. The parser is in-house unless `Cargo.toml` lists the crate; the Library columns below name only crates whiff depends on.*
+
 ## 1. How this list was built
 
 * **No authoritative "top 1000 file formats" ranking exists.** This list was curated from common usage and cross-checked against the freedesktop `shared-mime-info` database, the IANA media-type registry, The National Archives PRONOM registry, and Wikipedia's list of file formats. Formats are sorted into three popularity **tiers**, not given an exact rank.
@@ -33,7 +35,7 @@ The article [*Rust libraries for file formats* (2026-10-13)](https://thanos.gith
 | `arrow`, `parquet`, `lance`, `vortex-ipc` | All current | `parquet` / `arrow` footer-only by default. `lance` and `vortex` are feature-gated (heavy) |
 | `monstertruck-io` for STEP/IGES | 0.4.1, about 600 downloads, full B-rep | Feature-gated. The default is an in-house ISO-10303-21 header lexer |
 
-Crates the article missed that whiff relies on: `lofty` (audio tags), `kamadak-exif`, `nom-exif`, `img-parts`, `imagesize`, `mail-parser`, `read-fonts` / `skrifa`, `x509-parser`, `pgp`, `goblin`, `object`, `gimli`, `mp4-atom`, `matroska`, `mpeg2ts-reader`, `hdf5-reader` (pure-Rust HDF5), `netcdf3`, `fitsrs`, `dicom-object`, `lava_torrent`, `tokei`, `whatlang`, `yake-rust`, `chardetng`, `feed-rs`, `ssh-key`, `midly`, `fitparser` and `serde-saphyr`.
+Crates the article missed that the survey considered (most were later replaced by in-house parsers; `Cargo.toml` has the current list): `lofty` (audio tags), `kamadak-exif`, `nom-exif`, `img-parts`, `imagesize`, `mail-parser`, `read-fonts` / `skrifa`, `x509-parser`, `pgp`, `goblin`, `object`, `gimli`, `mp4-atom`, `matroska`, `mpeg2ts-reader`, `hdf5-reader` (pure-Rust HDF5), `netcdf3`, `fitsrs`, `dicom-object`, `lava_torrent`, `tokei`, `whatlang`, `yake-rust`, `chardetng`, `feed-rs`, `ssh-key`, `midly`, `fitparser` and `serde-saphyr`.
 
 ## 2. Universal information (every file, every format)
 
@@ -43,11 +45,19 @@ These sections are filled for **every** file before format-specific extraction r
 |---|---|---|
 | **System identification** | path (as given + canonical), file name, stem, extension, detected format id + name + MIME + confidence + detector, extension/content mismatch flag, device id, inode, hard-link count, file kind (regular/dir/symlink/fifo/socket/device), symlink target, hidden flag, hostname (opt-in) | `std::fs::Metadata`, `std::os::unix::fs::MetadataExt`, `file-format` + `infer` + in-house sniffers |
 | **Temporal data** | filesystem: modified, accessed, changed (ctime), created (birth time where available); content: every date the extractors found (EXIF DateTimeOriginal, PDF CreationDate, docProps created/modified, ID3 TDRC, archive entry mtime range...), normalised to RFC 3339 with `source` provenance and `tz_known` | `std::fs`, `jiff` for parsing and normalisation |
-| **Security & rights** | Unix mode (octal + rwx string), owner uid/gid + names, setuid/setgid/sticky, ACL present, extended attributes (names; values for `com.apple.quarantine`, `com.apple.metadata:kMDItemWhereFroms`, `user.xdg.origin.url`), Windows Zone.Identifier ADS (when present); content: encrypted?, signed?, signature validity (where checkable offline), macros/scripts/active content present, external references, DRM present, copyright / licence / usage terms gathered from EXIF, IPTC, XMP (`xmpRights`, `cc`), ID3 TCOP, font fsType, package licences | `rustix`, `uzers`, `xattr` + per-format extractors |
+| **Security & rights** | Unix mode (octal + rwx string), owner uid/gid + names, setuid/setgid/sticky, extended attributes (names; values for `com.apple.quarantine`, `com.apple.metadata:kMDItemWhereFroms`, `user.xdg.origin.url`), Windows Zone.Identifier ADS (when present); content: encrypted?, signed?, signature validity (where checkable offline), macros/scripts/active content present, external references, DRM present, copyright / licence / usage terms gathered from EXIF, IPTC, XMP (`xmpRights`, `cc`), ID3 TCOP, font fsType, package licences | `rustix`, `uzers`, `xattr` + per-format extractors |
 | **Physical properties** | size in bytes, allocated blocks, sparse?; for text: `wc` (bytes, chars, words, lines, max line length), line endings, encoding, BOM; for binaries: Shannon entropy + per-block profile; dimensions / duration / page count / entry count / row count as applicable | streaming counters, `unicode-segmentation` |
-| **Integrity** | SHA-256 and BLAKE3 (configurable, streaming), optional perceptual hash (images) and TLSH-style similarity hash | `sha2`, `blake3` |
+| **Integrity** | SHA-256 and BLAKE3 (configurable, streaming) and Shannon entropy. `integrity.phash` (a perceptual hash) and `security.acl` are reserved in the schema; this version fills neither | `sha2`, `blake3` |
 | **Content (LLM view)** | title, authors, description, language (+ confidence), keywords (YAKE), keyword frequency (top N stemmed terms), headings outline, extractive summary (TextRank, N sentences), text excerpt (token-budgeted), tags (merged from metadata keywords + extracted keywords) | `whatlang`, `yake-rust`, `stop-words`, `rust-stemmers`; TextRank implemented in-house |
 | **Embedded / children** | for containers (archives, emails, Office files, PDFs with attachments): each child gets its own (bounded, recursive) whiff record | engine recursion with depth, size and count limits |
 | **Diagnostics** | extractors run + versions + timings, warnings, partial/truncated flags, limits hit | engine |
 
-**Privacy defaults.** Whiff never outputs secret material, such as private-key bytes, passwords, `.env` values or cookie values. Personal data is **counted, not listed** by default: email addresses in vCards, DICOM patient fields, browser history URLs and IP addresses in logs. `--privacy=off` lifts the counted-not-listed rule for personal data. It never lifts the rule for secrets.
+**Privacy and redaction.** Two switches, both on by default. Key material (private-key bytes) is never copied into a report.
+
+| | `--redaction on` (default) | `--redaction off` |
+|---|---|---|
+| **`--privacy strict`** (default) | personal data counted and masked; secrets redacted | personal data counted and masked; secrets as found |
+| **`--privacy off`** | personal data as found; secrets redacted | everything as found |
+
+* *Personal data* (e-mail addresses, phone numbers, account numbers, birthdays, infrastructure values such as host names and IP addresses, DICOM patient fields, browser history URLs) is always counted in `security.personal_data`. Under strict privacy, e-mail addresses keep only their domain, the other values are counted or hidden, and personal data is replaced with `[redacted:<kind>]` in the excerpt, summary, keywords and tags. People's names (authors, senders, contacts) are kept. `--privacy off` lists all of it as found, derived text included.
+* *Secrets* (API keys and tokens, passwords, credentials in URLs, private-key blocks, `.env` values, values under keys named like secrets) are always counted in `security.secrets` and raise the `embedded_secret` risk. With `--redaction on` they are replaced with `[redacted:<kind>]` everywhere in the report; `--redaction off` leaves them as found.

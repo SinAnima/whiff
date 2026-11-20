@@ -152,7 +152,7 @@ pub(crate) fn report(cx: &mut Context<'_>, d: &Decoded, w: &Walk) {
         cx.format_set("decode_error", e);
     }
     if !d.docs.is_empty() {
-        let mut s = Schema::default();
+        let mut s = Schema::with(cx.redactor());
         for doc in d.docs.iter().take(SAMPLE_DOCS) {
             s.add(doc);
         }

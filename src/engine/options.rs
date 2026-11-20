@@ -10,15 +10,17 @@ use crate::plugin::Cost;
 #[serde(rename_all = "snake_case")]
 #[non_exhaustive]
 pub enum Profile {
-    /// Stat, detection, headers only. No hashing, no text analysis.
+    /// Stat, detection, and header-cost extractors. No hashing, no text
+    /// analysis, no embedded files.
     Minimal,
     /// All metadata extractors, hashes, bounded text analysis.
     #[default]
     Standard,
     /// Everything, including payload decoding and deeper recursion.
     Full,
-    /// `standard` plus a summary; the CLI prints the compact LLM view
-    /// ([`Report::llm_view`](crate::Report::llm_view)) instead of the report.
+    /// `standard` plus a summary. The library still returns the full
+    /// [`Report`](crate::Report); the CLI prints its compact LLM view
+    /// ([`Report::llm_view`](crate::Report::llm_view)) instead.
     Llm,
 }
 
@@ -32,7 +34,27 @@ impl Profile {
         }
     }
 
-    /// Default limits for this profile.
+    /// Default limits for this profile (`llm` has `standard`'s):
+    ///
+    /// | [`Limits`] field | `minimal` | `standard`, `llm` | `full` |
+    /// |---|---|---|---|
+    /// | `max_read_bytes` | 256 KiB | 256 MiB | 4 GiB |
+    /// | `max_decompressed_bytes` | 1 MiB | 256 MiB | 1 GiB |
+    /// | `max_depth` | 0 | 1 | 3 |
+    /// | `max_children` | 0 | 50 | 200 |
+    /// | `file_timeout` | 2 s | 30 s | 120 s |
+    /// | `extractor_timeout` | 1 s | 5 s | 30 s |
+    /// | `max_text_bytes` | 0 | 1 MiB | 16 MiB |
+    /// | `hash_max_bytes` | 0 (no hashing) | 2 GiB | 16 GiB |
+    /// | `max_parse_bytes` | 256 KiB | 16 MiB | 256 MiB |
+    ///
+    /// ```
+    /// use whiff::Profile;
+    ///
+    /// let limits = Profile::Full.limits();
+    /// assert_eq!(limits.max_depth, 3);
+    /// assert_eq!(limits.file_timeout, Some(std::time::Duration::from_secs(120)));
+    /// ```
     pub fn limits(self) -> Limits {
         const KIB: u64 = 1024;
         const MIB: u64 = 1024 * KIB;
@@ -221,18 +243,44 @@ impl Hashes {
     }
 }
 
-/// How personal data found in a file is reported.
+/// How personal data found in a file is reported. Secrets are a separate
+/// switch, [`Redaction`]; personal data is counted in
+/// `security.personal_data` under either mode.
+///
+/// | | [`Redaction::On`] (default) | [`Redaction::Off`] |
+/// |---|---|---|
+/// | **[`Privacy::Strict`]** (default) | personal data masked, secrets redacted | personal data masked, secrets as found |
+/// | **[`Privacy::Off`]** | personal data as found, secrets redacted | everything as found |
+///
+/// ```
+/// use whiff::{Engine, Privacy};
+///
+/// let text: &[u8] = b"Write to the harbour master at berths@example.org.";
+/// let strict = Engine::new().extract_bytes(Some("note.txt"), text);
+/// assert!(!strict.content.excerpt.unwrap().contains("berths@example.org"));
+/// assert_eq!(strict.security.personal_data["email"], 1);
+///
+/// let off = Engine::builder().privacy(Privacy::Off).build().extract_bytes(Some("note.txt"), text);
+/// assert!(off.content.excerpt.unwrap().contains("berths@example.org"));
+/// assert_eq!(off.security.personal_data["email"], 1);
+/// ```
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Hash)]
 #[non_exhaustive]
 pub enum Privacy {
-    /// Personal data is counted, not listed: e-mail addresses in message
-    /// headers, contacts and calendars are reduced to their domain, phone
-    /// numbers and birthdays are counted. Names are kept.
+    /// Personal data is counted, and masked where it is listed: e-mail
+    /// addresses in message headers, contacts and calendars keep only their
+    /// domain; phone numbers, account numbers, birthdays and infrastructure
+    /// values (host names, IP addresses, directory values) are counted or
+    /// hidden; profile folders in paths lose the user name; e-mail
+    /// addresses, phone numbers, card numbers and IBANs are replaced with
+    /// `[redacted:<kind>]` in the excerpt, summary, keywords and tags.
+    /// People's names (authors, senders, contacts) are kept.
     #[default]
     Strict,
     /// Full details: addresses and phone numbers as found, whole account
     /// numbers and transactions, people's names in genealogies and
-    /// directories, infrastructure values. Secrets are redacted either way.
+    /// directories, infrastructure values, and personal data in the
+    /// excerpt, summary, keywords and tags. Secrets follow [`Redaction`].
     Off,
 }
 
@@ -247,13 +295,54 @@ impl std::str::FromStr for Privacy {
     }
 }
 
+/// Whether secrets (private keys, API keys and tokens, passwords, and
+/// credentials in URLs) are replaced with `[redacted:<kind>]` in the
+/// report. Under either mode they are counted in `security.secrets` and
+/// raise the `embedded_secret` risk. See [`Privacy`] for the four
+/// combinations.
+///
+/// ```
+/// use whiff::{Engine, Redaction};
+///
+/// let text: &[u8] = b"aws_access_key_id = AKIAIOSFODNN7EXAMPLF";
+/// let on = Engine::new().extract_bytes(Some("config.ini"), text);
+/// assert!(!serde_json::to_string(&on)?.contains("AKIAIOSFODNN7EXAMPLF"));
+///
+/// let off = Engine::builder().redaction(Redaction::Off).build().extract_bytes(Some("config.ini"), text);
+/// assert!(serde_json::to_string(&off)?.contains("AKIAIOSFODNN7EXAMPLF"));
+/// assert!(off.security.risks.iter().any(|r| r.kind == "embedded_secret"));
+/// # Ok::<(), serde_json::Error>(())
+/// ```
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Hash)]
+#[non_exhaustive]
+pub enum Redaction {
+    /// Secrets are redacted everywhere in the report.
+    #[default]
+    On,
+    /// Secrets are left as found (still counted and flagged).
+    Off,
+}
+
+impl std::str::FromStr for Redaction {
+    type Err = String;
+    fn from_str(s: &str) -> Result<Self, String> {
+        match s {
+            "on" => Ok(Self::On),
+            "off" => Ok(Self::Off),
+            other => Err(format!("unknown redaction mode `{other}` (expected on or off)")),
+        }
+    }
+}
+
 /// Everything that controls an extraction.
 #[derive(Debug, Clone, Default)]
 #[non_exhaustive]
 pub struct Options {
     /// Profile.
     pub profile: Profile,
-    /// Limits (defaults come from the profile).
+    /// Limits. `Options::default()` has the `standard` profile's; changing
+    /// `profile` here does not change them (the builder's
+    /// [`profile`](crate::EngineBuilder::profile) does).
     pub limits: Limits,
     /// Hashes to compute.
     pub hashes: Hashes,
@@ -267,6 +356,8 @@ pub struct Options {
     pub provenance: bool,
     /// How personal data is reported.
     pub privacy: Privacy,
+    /// Whether secrets are redacted.
+    pub redaction: Redaction,
 }
 
 impl Options {

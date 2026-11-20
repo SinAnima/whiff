@@ -16,7 +16,7 @@ use super::{
     MAX_DEPS, Package, bracketed, deps, parse_json, parse_jsonc, parse_toml, parse_yaml, person, put_deps, put_pairs,
     quoted, s,
 };
-use crate::plugin::{Context, DateField, ExtractError, parse_date, redact_secrets};
+use crate::plugin::{Context, DateField, ExtractError, parse_date};
 
 pub(super) fn extract(id: &str, text: &str, cx: &mut Context<'_>) -> Result<(), ExtractError> {
     match id {
@@ -223,7 +223,7 @@ fn gradle(text: &str, cx: &mut Context<'_>) {
         .collect();
     for c in MAVEN.captures_iter(text) {
         let url = c.get(1).or_else(|| c.get(2)).map_or("", |m| m.as_str());
-        let url = redact_secrets(url).into_owned();
+        let url = cx.redact_secrets(url).into_owned();
         if !["repo.maven.apache.org", "repo1.maven.org", "maven.google.com", "plugins.gradle.org"]
             .iter()
             .any(|k| url.contains(k))
@@ -273,7 +273,8 @@ fn composer(v: &Value, cx: &mut Context<'_>) {
     set_keys(cx, "scripts", v.get("scripts"));
     for r in v.get("repositories").and_then(Value::as_array).into_iter().flatten() {
         if let Some(url) = s(r, &["url"]).filter(|u| !u.contains("packagist.org")) {
-            cx.security().risk("custom_package_index", Some(redact_secrets(url).into_owned()));
+            let url = cx.redact_secrets(url).into_owned();
+            cx.security().risk("custom_package_index", Some(url));
         }
     }
     if let Some(k) = v.get("keywords").and_then(Value::as_array) {
@@ -827,7 +828,7 @@ fn flake_lock(v: &Value, cx: &mut Context<'_>) {
         let kind = s(locked, &["type"]).unwrap_or("?");
         let source = match (s(locked, &["owner"]), s(locked, &["repo"])) {
             (Some(o), Some(r)) => format!("{kind}:{o}/{r}"),
-            _ => s(locked, &["url"]).map_or_else(|| kind.to_string(), |u| redact_secrets(u).into_owned()),
+            _ => s(locked, &["url"]).map_or_else(|| kind.to_string(), |u| cx.redact_secrets(u).into_owned()),
         };
         let mut e = Map::new();
         e.insert("name".into(), json!(name));
@@ -1250,10 +1251,11 @@ fn zon(text: &str, cx: &mut Context<'_>) {
         cx.format_set("minimum_zig_version", z);
     }
     if let Some(block) = bracketed(text, ".dependencies", '{', '}') {
+        let r = cx.redactor();
         let pairs = DEP.captures_iter(block).map(|c| {
             let body = &c[2];
             let at = if let Some(u) = body.split(".url").nth(1).and_then(|r| quoted(r).into_iter().next()) {
-                redact_secrets(&u).into_owned()
+                r.secrets(&u).into_owned()
             } else if let Some(p) = body.split(".path").nth(1).and_then(|r| quoted(r).into_iter().next()) {
                 format!("path: {p}")
             } else {

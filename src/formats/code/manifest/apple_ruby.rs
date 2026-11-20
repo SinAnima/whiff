@@ -10,7 +10,7 @@ use regex::Regex;
 use serde_json::{Map, Value, json};
 
 use super::{MAX_DEPS, Package, parse_json, parse_yaml, put_pairs, quoted, s};
-use crate::plugin::{Context, ExtractError, redact_secrets};
+use crate::plugin::{Context, ExtractError};
 
 pub(super) fn extract(id: &str, text: &str, cx: &mut Context<'_>) -> Result<(), ExtractError> {
     match id {
@@ -82,7 +82,7 @@ fn gemfile(text: &str, cx: &mut Context<'_>) {
     for line in text.lines() {
         let t = line.trim();
         if let Some(src) = t.strip_prefix("source ").and_then(|r| quoted(r).into_iter().next()) {
-            sources.push(redact_secrets(&src).into_owned());
+            sources.push(cx.redact_secrets(&src).into_owned());
         } else if let Some(v) = t.strip_prefix("ruby ").and_then(|r| quoted(r).into_iter().next()) {
             cx.format_set("ruby_version", v);
         } else if t == "gemspec" || t.starts_with("gemspec ") {
@@ -137,7 +137,7 @@ fn gemfile_lock(text: &str, cx: &mut Context<'_>) {
         match (section, indent) {
             ("GEM" | "GIT" | "PATH", 2) => {
                 if let Some(r) = t.strip_prefix("remote: ") {
-                    remotes.push(redact_secrets(r).into_owned());
+                    remotes.push(cx.redact_secrets(r).into_owned());
                 }
             }
             ("GEM" | "GIT" | "PATH", 4) => {
@@ -185,7 +185,7 @@ fn podfile(text: &str, cx: &mut Context<'_>) {
             let version = parts.next().and_then(|v| quoted(v).into_iter().next());
             cx.format_set("platform", json!({ "os": os, "version": version }));
         } else if let Some(src) = t.strip_prefix("source ").and_then(|r| quoted(r).into_iter().next()) {
-            sources.push(redact_secrets(&src).into_owned());
+            sources.push(cx.redact_secrets(&src).into_owned());
         } else if let Some(c) = TARGET.captures(t) {
             targets.push(c[1].to_string());
         } else if t.starts_with("use_frameworks!") {
@@ -387,7 +387,7 @@ fn homebrew(text: &str, cx: &mut Context<'_>) {
         cx.content().source("homebrew.name").title(n);
     }
     if let Some(u) = get("url") {
-        cx.format_set("url", redact_secrets(u).as_ref());
+        cx.format_set("url", cx.redact_secrets(u).as_ref());
     }
     match get("sha256") {
         Some(":no_check") => cx.format_set("checksum", false),

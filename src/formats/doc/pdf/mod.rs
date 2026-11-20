@@ -24,9 +24,10 @@ use serde_json::{Value, json};
 
 use self::doc::Doc;
 use self::object::{Dict, Obj, text_string};
+use crate::plugin::Redactor;
 use crate::plugin::{
     BlockKind, Context, Cost, DateField, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Map, Source,
-    TextRole, parse_date, redact_secrets, truncate_chars,
+    TextRole, parse_date, truncate_chars,
 };
 
 /// Extractor for PDF and FDF files.
@@ -87,8 +88,9 @@ impl Extractor for Pdf {
         let looks_ai = [src.head(), src.tail()]
             .iter()
             .any(|w| doc::find(w, b"Illustrator").is_some() || doc::find(w, b"AIPrivateData").is_some());
+        let redactor = cx.redactor();
         let mut doc = Doc::open(src, cx)?;
-        let mut s = Scan::default();
+        let mut s = Scan { redactor, ..Scan::default() };
         s.structure(&mut doc, linearized);
         let catalog = doc.key(&doc.trailer.clone(), "Root");
         let catalog = catalog.as_dict().cloned().unwrap_or_default();
@@ -219,6 +221,7 @@ struct Scan {
     annotations: BTreeMap<String, u64>,
     signatures: Vec<Value>,
     seen_files: HashSet<u32>,
+    redactor: Redactor,
 }
 
 impl Scan {
@@ -307,7 +310,7 @@ impl Scan {
                 && self.info.len() < 100
             {
                 let value = match value {
-                    Value::String(s) => Value::String(redact_secrets(&truncate_chars(&s, 2000)).into_owned()),
+                    Value::String(s) => Value::String(self.redactor.secrets(&truncate_chars(&s, 2000)).into_owned()),
                     other => other,
                 };
                 self.info.insert(k.clone(), value);
@@ -667,7 +670,7 @@ impl Scan {
                 Some("SubmitForm" | "ImportData") => {
                     let url = str_of(&doc.key(&d, "F"))
                         .or_else(|| doc.key(&d, "F").as_dict().and_then(|f| f.get("F").and_then(str_of)));
-                    self.submit.push(truncate_chars(&redact_secrets(&url.unwrap_or_default()), 200));
+                    self.submit.push(truncate_chars(&self.redactor.secrets(&url.unwrap_or_default()), 200));
                 }
                 Some("GoToR" | "GoToE") => {
                     let f = str_of(&doc.key(&d, "F"))
@@ -683,7 +686,7 @@ impl Scan {
                         && self.uris.len() < MAX_LISTED
                         && !self.uris.contains(&u)
                     {
-                        self.uris.push(truncate_chars(&redact_secrets(&u), 300));
+                        self.uris.push(truncate_chars(&self.redactor.secrets(&u), 300));
                     }
                     if is_automatic(trigger) {
                         self.auto_actions.push(format!("{trigger}: URI"));

@@ -18,8 +18,10 @@ pub enum Error {
     },
 }
 
-/// Why an extractor, block decoder or analyzer stopped. Recorded in
-/// `diagnostics.extractors[].status`; never fatal for the report.
+/// Why an extractor, block decoder or analyzer stopped. Recorded in the
+/// report as `diagnostics.extractors[].status: "error"`, with the variant in
+/// `error_kind` (`malformed`, `timeout`, …) and the message in `error`; never
+/// fatal for the report.
 #[derive(Debug, Clone, PartialEq, Eq, thiserror::Error)]
 #[non_exhaustive]
 pub enum ExtractError {

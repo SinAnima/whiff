@@ -16,7 +16,7 @@ use serde_json::{Map, Value, json};
 
 use crate::plugin::{
     Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, TextRole, parse_date,
-    redact_sensitive, truncate_chars,
+    truncate_chars,
 };
 
 /// Extractor for delimiter-separated tables.
@@ -336,7 +336,9 @@ impl Table {
             .skip(usize::from(header))
             .take(SAMPLE_ROWS)
             .map(|r| {
-                json!(r.iter().take(MAX_COLUMNS).map(|v| truncate_chars(&redact_sensitive(v), 80)).collect::<Vec<_>>())
+                json!(
+                    r.iter().take(MAX_COLUMNS).map(|v| truncate_chars(&cx.redact_sensitive(v), 80)).collect::<Vec<_>>()
+                )
             })
             .collect();
         let dialect = match dialect {

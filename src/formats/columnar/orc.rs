@@ -10,10 +10,10 @@
 use serde_json::{Map, Value};
 
 use super::{epoch_text, number};
+use crate::plugin::Redactor;
 use crate::plugin::protowire::{self, Wire};
 use crate::plugin::{
-    Codec, Context, Cost, End, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Source, redact_sensitive,
-    truncate_chars,
+    Codec, Context, Cost, End, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Source, truncate_chars,
 };
 
 /// Extractor for ORC files.
@@ -102,7 +102,7 @@ fn zigzag(v: u64) -> i64 {
 }
 
 /// Min and max of one column's statistics, by kind.
-fn min_max(s: &[u8]) -> (Option<Value>, Option<Value>) {
+fn min_max(s: &[u8], r: Redactor) -> (Option<Value>, Option<Value>) {
     let pick = |n: u32| protowire::first(s, n).and_then(Wire::bytes);
     if let Some(i) = pick(2) {
         let get = |k| protowire::first(i, k).and_then(Wire::int).map(|v| Value::from(zigzag(v)));
@@ -114,9 +114,7 @@ fn min_max(s: &[u8]) -> (Option<Value>, Option<Value>) {
     }
     if let Some(t) = pick(4) {
         let get = |k| {
-            protowire::first(t, k)
-                .and_then(Wire::text)
-                .map(|v| Value::String(truncate_chars(&redact_sensitive(&v), 100)))
+            protowire::first(t, k).and_then(Wire::text).map(|v| Value::String(truncate_chars(&r.sensitive(&v), 100)))
         };
         return (get(1), get(2));
     }
@@ -263,7 +261,7 @@ impl Extractor for Orc {
                     if let Some(n) = protowire::first(s, 1).and_then(Wire::int) {
                         m.insert("values".into(), n.into());
                     }
-                    let (min, max) = min_max(s);
+                    let (min, max) = min_max(s, cx.redactor());
                     if let Some(v) = min {
                         m.insert("min".into(), v);
                     }
@@ -291,7 +289,7 @@ impl Extractor for Orc {
                 let v = std::str::from_utf8(v)
                     .ok()
                     .filter(|s| s.len() <= 300)
-                    .map_or_else(|| format!("({} bytes)", v.len()), |s| redact_sensitive(s).into_owned());
+                    .map_or_else(|| format!("({} bytes)", v.len()), |s| cx.redact_sensitive(s).into_owned());
                 Some((truncate_chars(&k, 100), Value::String(v)))
             })
             .collect();
@@ -315,7 +313,7 @@ mod tests {
     fn statistics_kinds() {
         // intStatistics {min: -3, max: 7} (zig-zag 5 and 14).
         let s = [0x08, 4, 0x12, 4, 0x08, 5, 0x10, 14];
-        assert_eq!(min_max(&s), (Some(Value::from(-3)), Some(Value::from(7))));
+        assert_eq!(min_max(&s, Redactor::default()), (Some(Value::from(-3)), Some(Value::from(7))));
         assert_eq!(zigzag(1), -1);
         assert_eq!(kind_name(12), "struct");
     }

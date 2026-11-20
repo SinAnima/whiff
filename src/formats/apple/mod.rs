@@ -53,7 +53,7 @@ pub(crate) fn copy_strings(cx: &mut Context<'_>, p: &Plist, keys: &[(&str, &str)
 
 /// Infer the shape of a plist (as JSON) into the format section's `schema`.
 pub(crate) fn schema(cx: &mut Context<'_>, p: &Plist) {
-    let mut s = Schema::default();
+    let mut s = Schema::with(cx.redactor());
     s.add(&proplist::to_json(p, 14));
     cx.format_set("schema", s.to_json());
 }

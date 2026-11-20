@@ -625,7 +625,8 @@ fn requirements(text: &str, cx: &mut Context<'_>) {
         }
         if let Some(index) = ["--index-url", "-i ", "--extra-index-url"].iter().find(|o| line.starts_with(**o)) {
             let url = line[index.len()..].trim_start_matches(['=', ' ']);
-            cx.security().risk("custom_package_index", Some(crate::plugin::redact_secrets(url).into_owned()));
+            let url = cx.redact_secrets(url).into_owned();
+            cx.security().risk("custom_package_index", Some(url));
             continue;
         }
         if let Some(f) = line.strip_prefix("-r ").or_else(|| line.strip_prefix("--requirement ")) {

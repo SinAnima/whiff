@@ -22,9 +22,10 @@ use std::collections::BTreeMap;
 
 use serde_json::{Map, Value};
 
+use crate::plugin::Redactor;
 use crate::plugin::{
     Codec, Context, Cost, DateField, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Probe, Sniff, Source,
-    parse_date, redact_sensitive, truncate_chars,
+    parse_date, truncate_chars,
 };
 
 /// Extractor for statistics packages' data files.
@@ -116,11 +117,11 @@ fn cstr(b: &[u8]) -> String {
     s.trim_end_matches(['\0', ' ']).trim().to_string()
 }
 
-fn vars_map(vars: Vec<(String, String)>) -> Value {
+fn vars_map(vars: Vec<(String, String)>, r: Redactor) -> Value {
     Value::Object(
         vars.into_iter()
             .take(MAX_VARS)
-            .map(|(n, l)| (truncate_chars(&n, 100), Value::String(truncate_chars(&redact_sensitive(&l), 200))))
+            .map(|(n, l)| (truncate_chars(&n, 100), Value::String(truncate_chars(&r.sensitive(&l), 200))))
             .collect(),
     )
 }
@@ -216,7 +217,7 @@ fn sav(cx: &mut Context<'_>, b: &[u8]) -> Option<()> {
         }
     }
     cx.format_set("variable_count", vars.len());
-    cx.format_set("variables", vars_map(vars));
+    cx.format_set("variables", vars_map(vars, cx.redactor()));
     Some(())
 }
 
@@ -309,7 +310,7 @@ fn por(cx: &mut Context<'_>, b: &[u8]) -> Option<()> {
         }
     }
     cx.format_set("variable_count", vars.len());
-    cx.format_set("variables", vars_map(vars));
+    cx.format_set("variables", vars_map(vars, cx.redactor()));
     Some(())
 }
 
@@ -353,7 +354,7 @@ fn dta(cx: &mut Context<'_>, b: &[u8]) -> Option<()> {
         let labels: Vec<String> =
             get("variable_labels").map(|v| v.chunks(lwidth).map(cstr).collect()).unwrap_or_default();
         let vars = names.into_iter().zip(labels.into_iter().chain(std::iter::repeat(String::new()))).collect();
-        cx.format_set("variables", vars_map(vars));
+        cx.format_set("variables", vars_map(vars, cx.redactor()));
         return Some(());
     }
     // Formats 113–115: version, byte order, type, nvar (2), nobs (4), label (81), stamp (18).
@@ -385,7 +386,7 @@ fn dta(cx: &mut Context<'_>, b: &[u8]) -> Option<()> {
         .filter_map(|i| b.get(names_at + 33 * i..names_at + 33 * (i + 1)).map(cstr))
         .map(|n| (n, String::new()))
         .collect();
-    cx.format_set("variables", vars_map(names));
+    cx.format_set("variables", vars_map(names, cx.redactor()));
     Some(())
 }
 
@@ -425,7 +426,7 @@ fn xpt(cx: &mut Context<'_>, b: &[u8]) -> Option<()> {
             e.insert("label".into(), truncate_chars(&label, 64).into());
         }
         e.insert("variable_count".into(), n.into());
-        e.insert("variables".into(), vars_map(vars));
+        e.insert("variables".into(), vars_map(vars, cx.redactor()));
         members.push(Value::Object(e));
         at = m + 400 + 140 * n;
         if members.len() >= 100 {

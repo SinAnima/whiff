@@ -13,10 +13,10 @@
 
 use serde_json::{Map, Value};
 
+use crate::plugin::Redactor;
 use crate::plugin::flatbuf::FlatBuf;
 use crate::plugin::{
-    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Probe, Sniff, Source, redact_sensitive,
-    truncate_chars,
+    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Probe, Sniff, Source, truncate_chars,
 };
 
 /// Extractor for Arrow IPC and Feather files.
@@ -151,14 +151,14 @@ fn field_type(fb: &FlatBuf<'_>, f: usize, depth: usize) -> String {
 }
 
 /// `KeyValue` metadata as a JSON object (small text values only).
-fn key_values(fb: &FlatBuf<'_>, t: usize, n: usize) -> Map<String, Value> {
+fn key_values(fb: &FlatBuf<'_>, t: usize, n: usize, redactor: Redactor) -> Map<String, Value> {
     fb.tables(t, n)
         .iter()
         .take(100)
         .filter_map(|&kv| {
             let k = fb.string(kv, 0)?;
             let v = fb.string(kv, 1).unwrap_or_default();
-            let v = if v.len() > 300 { format!("({} bytes)", v.len()) } else { redact_sensitive(&v).into_owned() };
+            let v = if v.len() > 300 { format!("({} bytes)", v.len()) } else { redactor.sensitive(&v).into_owned() };
             Some((truncate_chars(&k, 100), Value::String(v)))
         })
         .collect()
@@ -180,7 +180,7 @@ pub(crate) fn schema(cx: &mut Context<'_>, fb: &FlatBuf<'_>, s: usize) {
     if fb.u16_field(s, 0) == Some(1) {
         cx.format_set("endianness", "big");
     }
-    let meta = key_values(fb, s, 2);
+    let meta = key_values(fb, s, 2, cx.redactor());
     if !meta.is_empty() {
         cx.format_set("metadata", Value::Object(meta));
     }
@@ -263,7 +263,7 @@ fn file(cx: &mut Context<'_>, src: &mut dyn Source) -> Result<(), ExtractError> 
     if let Some(c) = codec {
         cx.format_set("compression", codec_name(c));
     }
-    let meta = key_values(&fb, root, 4);
+    let meta = key_values(&fb, root, 4, cx.redactor());
     if !meta.is_empty() {
         cx.format_set("footer_metadata", Value::Object(meta));
     }

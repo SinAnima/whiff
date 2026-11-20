@@ -16,9 +16,9 @@ use serde_json::{Map, Value};
 
 use super::thrift::{self, TValue};
 use super::{epoch_text, number};
+use crate::plugin::Redactor;
 use crate::plugin::{
-    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Probe, Sniff, Source, redact_sensitive,
-    truncate_chars,
+    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Probe, Sniff, Source, truncate_chars,
 };
 
 /// Extractor for Parquet and GeoParquet files.
@@ -198,7 +198,7 @@ fn node(
 }
 
 /// A statistics value as JSON, by physical and logical type.
-fn stat(raw: &[u8], t: i64, log: Option<&str>) -> Option<Value> {
+fn stat(raw: &[u8], t: i64, log: Option<&str>, redactor: Redactor) -> Option<Value> {
     let le = |n: usize| raw.get(..n).map(|b| b.iter().rev().fold(0u64, |a, &x| a << 8 | u64::from(x)));
     Some(match t {
         0 => Value::Bool(*raw.first()? != 0),
@@ -224,7 +224,7 @@ fn stat(raw: &[u8], t: i64, log: Option<&str>) -> Option<Value> {
         4 => number(f64::from(f32::from_bits(u32::try_from(le(4)?).ok()?))),
         5 => number(f64::from_bits(le(8)?)),
         6 if matches!(log, Some("string" | "json" | "enum")) => {
-            Value::String(truncate_chars(&redact_sensitive(&String::from_utf8_lossy(raw)), 100))
+            Value::String(truncate_chars(&redactor.sensitive(&String::from_utf8_lossy(raw)), 100))
         }
         _ => return None,
     })
@@ -359,8 +359,8 @@ fn describe(cx: &mut Context<'_>, meta: &TValue<'_>) {
             if stats.len() >= MAX_COLUMNS && !stats.contains_key(&path) {
                 continue;
             }
-            let min = s.bytes(6).or_else(|| s.bytes(2)).and_then(|b| stat(b, t, log));
-            let max = s.bytes(5).or_else(|| s.bytes(1)).and_then(|b| stat(b, t, log));
+            let min = s.bytes(6).or_else(|| s.bytes(2)).and_then(|b| stat(b, t, log, cx.redactor()));
+            let max = s.bytes(5).or_else(|| s.bytes(1)).and_then(|b| stat(b, t, log, cx.redactor()));
             let entry = stats.entry(path).or_insert((None, None, 0));
             if let Some(v) = min
                 && entry.0.as_ref().is_none_or(|cur| less(&v, cur))
@@ -427,7 +427,7 @@ fn describe(cx: &mut Context<'_>, meta: &TValue<'_>) {
                 }
             }
             _ if v.len() <= 200 && !k.starts_with("ARROW:") && v.chars().all(|c| !c.is_control()) => {
-                small.insert(truncate_chars(&k, 100), redact_sensitive(&v).into_owned().into());
+                small.insert(truncate_chars(&k, 100), cx.redact_sensitive(&v).into_owned().into());
             }
             _ => {}
         }
@@ -492,11 +492,14 @@ mod tests {
 
     #[test]
     fn statistics_values() {
-        assert_eq!(stat(&7i32.to_le_bytes(), 1, None), Some(Value::from(7)));
-        assert_eq!(stat(&2.5f64.to_le_bytes(), 5, None), Some(Value::from(2.5)));
-        assert_eq!(stat(b"Pier", 6, Some("string")), Some(Value::from("Pier")));
-        assert_eq!(stat(b"\x01\x02", 6, None), None);
-        assert_eq!(stat(&20_000i32.to_le_bytes(), 1, Some("date")), Some(Value::from("2024-10-04T00:00:00Z")));
+        assert_eq!(stat(&7i32.to_le_bytes(), 1, None, Redactor::default()), Some(Value::from(7)));
+        assert_eq!(stat(&2.5f64.to_le_bytes(), 5, None, Redactor::default()), Some(Value::from(2.5)));
+        assert_eq!(stat(b"Pier", 6, Some("string"), Redactor::default()), Some(Value::from("Pier")));
+        assert_eq!(stat(b"\x01\x02", 6, None, Redactor::default()), None);
+        assert_eq!(
+            stat(&20_000i32.to_le_bytes(), 1, Some("date"), Redactor::default()),
+            Some(Value::from("2024-10-04T00:00:00Z"))
+        );
         assert!(less(&Value::from(1), &Value::from(2.5)));
     }
 

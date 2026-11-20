@@ -62,7 +62,7 @@ pub struct FormatSpec {
 pub enum Cost {
     /// Reads headers / small structures only (all profiles).
     Header,
-    /// Scans a bounded part of the content (`standard` and `full`).
+    /// Scans a bounded part of the content (`standard`, `llm` and `full`).
     Scan,
     /// Decodes payloads: pixels, audio, full text (`full` only).
     Decode,
@@ -75,9 +75,9 @@ pub struct ExtractorMeta {
     pub id: &'static str,
     /// Output version; bump when the output changes.
     pub version: u32,
-    /// Formats handled.
+    /// Formats handled, each with its id, MIME types, extensions and magic.
     pub formats: &'static [FormatSpec],
-    /// Cost class.
+    /// Cost class: the cheapest profile that runs this extractor ([`Cost`]).
     pub cost: Cost,
     /// Tie-break when several extractors claim one format (higher runs first).
     pub priority: i16,
@@ -91,17 +91,18 @@ pub struct Probe<'a> {
     pub head: &'a [u8],
     /// Last bytes (up to 64 KiB).
     pub tail: &'a [u8],
-    /// Total length.
+    /// Total length of the input in bytes.
     pub len: u64,
     /// File or entry name.
     pub name: Option<&'a str>,
-    /// Lowercase extension.
+    /// Lowercase extension without the dot, e.g. `Some("jpg")` for `Photo.JPG`.
     pub extension: Option<&'a str>,
 }
 
 impl<'a> Probe<'a> {
-    /// A probe over `head` and `tail` of a `len`-byte input named `name`
-    /// (the extension is taken from the name, lowercased by the caller).
+    /// A probe over `head` and `tail` of a `len`-byte input named `name`,
+    /// whose `extension` the caller passes already lowercased and without
+    /// the dot (`"jpg"` for `Photo.JPG`); `name` is not parsed for it.
     pub const fn new(
         head: &'a [u8],
         tail: &'a [u8],

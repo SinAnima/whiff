@@ -15,8 +15,7 @@ use super::super::product;
 use super::{histogram, tensors};
 use crate::plugin::protowire::{self, Wire};
 use crate::plugin::{
-    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, redact_sensitive,
-    truncate_chars,
+    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, truncate_chars,
 };
 
 /// Extractor for ONNX models.
@@ -295,8 +294,10 @@ impl Extractor for Onnx {
                         && props.len() < 100
                     {
                         let v = protowire::first(&b, 2).and_then(Wire::text).unwrap_or_default();
-                        props
-                            .insert(truncate_chars(&k, 100), Value::String(truncate_chars(&redact_sensitive(&v), 500)));
+                        props.insert(
+                            truncate_chars(&k, 100),
+                            Value::String(truncate_chars(&cx.redact_sensitive(&v), 500)),
+                        );
                     }
                 }
                 (25, 2) => functions += 1,

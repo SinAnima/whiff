@@ -97,8 +97,12 @@ def main():
                "Formats it does not list are still identified by signature and get the universal sections "
                "(identification, system, temporal, security, physical, integrity).")
     out.append("")
+    # The "unreleased" note only when some format is not in the latest release.
+    unreleased = any(f["id"] not in released for f in formats)
+    note = (f"*Unreleased* formats are on `main` but not in the latest release ({tag or 'none yet'}). "
+            if unreleased else "")
     out.append("The **Feature** column is the Cargo feature that enables a format; `common` is on by default. "
-               f"*Unreleased* formats are on `main` but not in the latest release ({tag or 'none yet'}). "
+               + note +
                "[`docs/metadata-extracted.md`](docs/metadata-extracted.md) lists every format planned and what is "
                "extracted from each; [`docs/known-gaps.md`](docs/known-gaps.md) lists what is deliberately left out.")
     out.append("")

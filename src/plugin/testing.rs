@@ -100,6 +100,17 @@ pub fn report_without_privacy(name: &str, bytes: &[u8]) -> Report {
     no_internal_errors(engine.extract_bytes(Some(name), bytes.to_vec()))
 }
 
+/// [`report_for`] with `--privacy off --redaction off`: for tests that check
+/// what redaction keeps back.
+pub fn report_unredacted(name: &str, bytes: &[u8]) -> Report {
+    let engine = Engine::builder()
+        .limits(snapshot_limits().max_depth(1))
+        .privacy(crate::engine::Privacy::Off)
+        .redaction(crate::engine::Redaction::Off)
+        .build();
+    no_internal_errors(engine.extract_bytes(Some(name), bytes.to_vec()))
+}
+
 /// A ZIP archive of `(name, data, deflate?)` entries, for unit tests of
 /// ZIP-based formats.
 #[cfg(test)]

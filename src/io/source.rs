@@ -15,7 +15,31 @@ use super::{Budget, SourceError, WINDOW};
 pub trait Source: Send {
     /// Total length in bytes.
     fn len(&self) -> u64;
-    /// Read up to `buf.len()` bytes at `offset`; returns the count (0 at end).
+    /// Read up to `buf.len()` bytes at `offset`; returns the count, which
+    /// is short near the end and `Ok(0)` at or past it. Every read is
+    /// charged to [`budget`](Self::budget).
+    ///
+    /// # Errors
+    ///
+    /// [`SourceError::LimitExceeded`]`("read_bytes")` when the read budget
+    /// cannot cover the read (nothing is read then),
+    /// [`SourceError::Timeout`] past the deadline, and [`SourceError::Io`]
+    /// when the underlying file fails.
+    ///
+    /// ```
+    /// use whiff::io::{Budget, BytesSource, Source, SourceError};
+    ///
+    /// let mut src = BytesSource::new(None, b"0123456789".to_vec(), Budget::new(8, 0, None));
+    /// let mut buf = [0u8; 4];
+    /// assert_eq!(src.read_at(8, &mut buf), Ok(2)); // short near the end
+    /// assert_eq!(src.read_at(10, &mut buf), Ok(0)); // at the end
+    /// assert_eq!(src.read_at(0, &mut buf), Ok(4)); // 6 of 8 bytes charged
+    /// assert_eq!(src.read_at(4, &mut buf), Err(SourceError::LimitExceeded("read_bytes")));
+    ///
+    /// let mut late = BytesSource::new(None, vec![0; 16], Budget::new(64, 0, Some(std::time::Duration::ZERO)));
+    /// # #[cfg(not(all(target_arch = "wasm32", target_os = "unknown")))]
+    /// assert_eq!(late.read_at(0, &mut buf), Err(SourceError::Timeout));
+    /// ```
     fn read_at(&mut self, offset: u64, buf: &mut [u8]) -> Result<usize, SourceError>;
     /// The first bytes (up to 64 KiB), pre-read.
     fn head(&self) -> &[u8];
@@ -32,8 +56,33 @@ pub trait Source: Send {
     }
 }
 
+/// The examples below use this input:
+///
+/// ```
+/// use whiff::io::{Budget, BytesSource, Source};
+///
+/// let mut bytes = BytesSource::new(Some("tide.bin".into()), b"HDR1tide-table".to_vec(), Budget::unlimited());
+/// let src: &mut dyn Source = &mut bytes;
+/// assert_eq!(src.len(), 14);
+/// ```
 impl<'s> dyn Source + 's {
-    /// Fill `buf` completely from `offset`, or fail with [`SourceError::OutOfBounds`].
+    /// Fill `buf` completely from `offset`.
+    ///
+    /// # Errors
+    ///
+    /// [`SourceError::OutOfBounds`] when the range runs past the end (checked
+    /// before reading), and the errors of [`Source::read_at`].
+    ///
+    /// ```
+    /// # use whiff::io::{Budget, BytesSource, Source, SourceError};
+    /// # let mut bytes = BytesSource::new(None, b"HDR1tide-table".to_vec(), Budget::unlimited());
+    /// # let src: &mut dyn Source = &mut bytes;
+    /// let mut magic = [0u8; 4];
+    /// src.read_exact_at(0, &mut magic)?;
+    /// assert_eq!(&magic, b"HDR1");
+    /// assert_eq!(src.read_exact_at(12, &mut magic), Err(SourceError::OutOfBounds { offset: 12, needed: 4 }));
+    /// # Ok::<(), SourceError>(())
+    /// ```
     pub fn read_exact_at(&mut self, offset: u64, buf: &mut [u8]) -> Result<(), SourceError> {
         let end = offset.checked_add(buf.len() as u64);
         if end.is_none_or(|e| e > self.len()) {
@@ -51,6 +100,19 @@ impl<'s> dyn Source + 's {
     }
 
     /// Read `len` bytes at `offset` into a new vector.
+    ///
+    /// # Errors
+    ///
+    /// As [`read_exact_at`](trait.Source.html#method.read_exact_at).
+    ///
+    /// ```
+    /// # use whiff::io::{Budget, BytesSource, Source, SourceError};
+    /// # let mut bytes = BytesSource::new(None, b"HDR1tide-table".to_vec(), Budget::unlimited());
+    /// # let src: &mut dyn Source = &mut bytes;
+    /// assert_eq!(src.read_vec(4, 4)?, b"tide");
+    /// assert!(src.read_vec(10, 10).is_err());
+    /// # Ok::<(), SourceError>(())
+    /// ```
     pub fn read_vec(&mut self, offset: u64, len: usize) -> Result<Vec<u8>, SourceError> {
         let mut v = vec![0; len];
         self.read_exact_at(offset, &mut v)?;
@@ -70,7 +132,25 @@ impl<'s> dyn Source + 's {
         BoundedReader { src: self, pos: 0 }
     }
 
-    /// A view of `len` bytes starting at `offset` (an embedded stream).
+    /// A view of `len` bytes starting at `offset` (an embedded stream):
+    /// offsets in the view start at 0, and reads are charged to the same
+    /// budget.
+    ///
+    /// # Errors
+    ///
+    /// [`SourceError::OutOfBounds`] when the range runs past the end, and the
+    /// errors of reading the view's head and tail windows.
+    ///
+    /// ```
+    /// # use whiff::io::{Budget, BytesSource, Source, SourceError};
+    /// # let mut bytes = BytesSource::new(None, b"HDR1tide-table".to_vec(), Budget::unlimited());
+    /// # let src: &mut dyn Source = &mut bytes;
+    /// let mut body = src.slice(4, 10)?;
+    /// assert_eq!(body.len(), 10);
+    /// assert_eq!(body.head(), b"tide-table");
+    /// assert!(src.slice(4, 11).is_err());
+    /// # Ok::<(), SourceError>(())
+    /// ```
     pub fn slice(&mut self, offset: u64, len: u64) -> Result<SubSource<'_, 's>, SourceError> {
         SubSource::new(self, offset, len)
     }

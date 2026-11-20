@@ -12,8 +12,8 @@ use std::collections::BTreeMap;
 
 use super::{Entry, Inventory, Kind, MAX_ENTRIES, child, wanted};
 use crate::plugin::{
-    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, Zip, ZipEntry,
-    redact_sensitive, user_path, zip_method_name,
+    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, Zip, ZipEntry, user_path,
+    zip_method_name,
 };
 
 /// Extractor for ZIP archives.
@@ -116,7 +116,7 @@ impl Extractor for ZipArchive {
                     let target = String::from_utf8_lossy(&target);
                     // A target can name a profile folder or carry a secret.
                     entry.link = Some(if cx.privacy_strict() {
-                        redact_sensitive(&user_path(cx, &target)).into_owned()
+                        cx.redact_sensitive(&user_path(cx, &target)).into_owned()
                     } else {
                         target.into_owned()
                     });

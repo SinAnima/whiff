@@ -59,7 +59,7 @@ impl Extractor for Toml {
             cx.format_set("tables", serde_json::json!(tables));
             cx.format_set("top_level_keys", o.len());
         }
-        let mut schema = Schema::default();
+        let mut schema = Schema::with(cx.redactor());
         schema.add(&value);
         cx.format_set("schema", schema.to_json());
         let name = src.name_hint().map(str::to_string);

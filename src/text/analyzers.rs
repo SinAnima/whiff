@@ -178,9 +178,11 @@ impl Analyzer for Excerpt {
 
 crate::register_analyzer!(Excerpt);
 
-/// Counts secrets and personal data in all emitted text, flags secrets as a
-/// risk, and redacts them from every string in the report. Personal data is
-/// also redacted from derived text (excerpt, summary, keywords, tags).
+/// Counts secrets and personal data in all emitted text and flags secrets as
+/// a risk. Under `Redaction::On` (the default) it redacts secrets from every
+/// string in the report; under `Privacy::Strict` (the default) it also
+/// redacts personal data from derived text (excerpt, summary, keywords,
+/// tags).
 pub struct Privacy;
 
 impl Analyzer for Privacy {
@@ -192,7 +194,7 @@ impl Analyzer for Privacy {
         AnalyzerStage::Privacy
     }
 
-    fn run(&self, report: &mut Report, text: &TextStore, _: &Options) -> Result<(), ExtractError> {
+    fn run(&self, report: &mut Report, text: &TextStore, options: &Options) -> Result<(), ExtractError> {
         let mut counts = Counts::default();
         for chunk in text.chunks() {
             counts.scan(&chunk.text);
@@ -209,7 +211,12 @@ impl Analyzer for Privacy {
             sec.risks.push(crate::report::Risk::new("embedded_secret", Some(kinds.join(", ")), self.id()));
         }
 
-        redact_report(report);
+        if options.redaction == crate::engine::Redaction::On {
+            redact_report(report);
+        }
+        if options.privacy != crate::engine::Privacy::Strict {
+            return Ok(());
+        }
         let c = &mut report.content;
         for s in [&mut c.summary, &mut c.excerpt].into_iter().flatten() {
             redact_in_place(s, Category::Personal);
@@ -352,6 +359,44 @@ mod tests {
         let r = crate::plugin::testing::report_for("notes.txt", text.as_bytes());
         let json = serde_json::to_string(&r).unwrap();
         assert!(!json.contains(line), "{json}");
+    }
+
+    /// The four combinations of `--privacy` and `--redaction` on one file:
+    /// personal data and secrets are counted under all four, and listed only
+    /// when their switch is off.
+    #[test]
+    #[cfg_attr(miri, ignore = "runs the whole engine: too slow under Miri")]
+    fn privacy_and_redaction_are_separate_switches() {
+        use crate::engine::{Privacy as P, Redaction as R};
+        let key = "AKIAQWERTYUIOPASDFGH";
+        let text = format!("Berth bookings: write to harbour.master@saltmere.example.org.\naws_key = {key}\n");
+        for (privacy, redaction) in [(P::Strict, R::On), (P::Off, R::On), (P::Strict, R::Off), (P::Off, R::Off)] {
+            let r = crate::Engine::builder()
+                .privacy(privacy)
+                .redaction(redaction)
+                .build()
+                .extract_bytes(Some("notes.txt"), text.as_bytes());
+            let case = format!("{privacy:?} / {redaction:?}");
+            let excerpt = r.content.excerpt.clone().unwrap_or_default();
+            assert_eq!(excerpt.contains("harbour.master@"), privacy == P::Off, "{case}: {excerpt}");
+            assert_eq!(serde_json::to_string(&r).unwrap().contains(key), redaction == R::Off, "{case}");
+            assert_eq!(r.security.personal_data.get("email"), Some(&1), "{case}");
+            assert_eq!(r.security.secrets.get("aws_access_key_id"), Some(&1), "{case}");
+            assert!(r.security.risks.iter().any(|k| k.kind == "embedded_secret"), "{case}");
+        }
+    }
+
+    /// A vCard phone number is held back under strict privacy and listed with
+    /// `--privacy off`.
+    #[test]
+    #[cfg_attr(miri, ignore = "runs the whole engine: too slow under Miri")]
+    fn a_vcard_phone_number_follows_privacy() {
+        let card =
+            b"BEGIN:VCARD\r\nVERSION:3.0\r\nFN:Harbour Office\r\nTEL;TYPE=WORK:+44 20 7946 0958\r\nEND:VCARD\r\n";
+        let strict = serde_json::to_string(&crate::plugin::testing::report_for("office.vcf", card)).unwrap();
+        let off = serde_json::to_string(&crate::plugin::testing::report_without_privacy("office.vcf", card)).unwrap();
+        assert!(!strict.contains("7946 0958"), "{strict}");
+        assert!(off.contains("7946 0958"), "{off}");
     }
 
     #[test]

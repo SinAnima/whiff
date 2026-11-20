@@ -13,7 +13,28 @@ impl Report {
     /// A compact JSON view for language models: what the file is, what it is
     /// about, who made it, rights and risks, and the most useful
     /// format-specific details, shrunk step by step until it fits
-    /// `max_tokens` (estimated at four bytes per token).
+    /// `max_tokens` (estimated at four bytes per token of JSON).
+    ///
+    /// Over budget, parts are dropped in this order: `metadata`, then the
+    /// longer `details` and `outline`, a shorter `excerpt`, `details`,
+    /// `keywords`, the `excerpt`, a shorter `summary`, `embedded` names, and
+    /// last the dates, physical properties, summary and outline. What the
+    /// file is (`format`, `mime`) always stays, so a very small budget can
+    /// still be exceeded. 800 is the CLI's default (`--max-tokens`).
+    ///
+    /// ```
+    /// let text = "# Saltmere tides\n\n".to_string() + &"The bell rings at high water. ".repeat(80);
+    /// let report = whiff::Engine::new().extract_bytes(Some("tides.md"), text.into_bytes());
+    ///
+    /// let view = report.llm_view(800);
+    /// assert!(view["excerpt"].is_string());
+    ///
+    /// // A tight budget drops the excerpt but keeps what the file is.
+    /// let tight = report.llm_view(60);
+    /// assert!(tight.get("excerpt").is_none());
+    /// assert!(serde_json::to_string(&tight)?.contains("markdown"));
+    /// # Ok::<(), serde_json::Error>(())
+    /// ```
     pub fn llm_view(&self, max_tokens: usize) -> Value {
         let mut parts = Parts::from(self);
         let mut view = parts.render();

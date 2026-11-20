@@ -177,7 +177,7 @@ fn jwt(text: &str, cx: &mut Context<'_>) -> Result<(), ExtractError> {
         h.insert("x5c_certificates".into(), n.len().into());
     }
     if let Some(u) = header.get("jku").or_else(|| header.get("x5u")).and_then(Value::as_str) {
-        h.insert("key_url".into(), crate::plugin::redact_secrets(u).into_owned().into());
+        h.insert("key_url".into(), cx.redact_secrets(u).into_owned().into());
     }
     cx.format_set("header", Value::Object(h));
     let alg = header.get("alg").and_then(Value::as_str).unwrap_or("");

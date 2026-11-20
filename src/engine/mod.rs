@@ -13,7 +13,7 @@ use std::sync::{Arc, OnceLock};
 use std::time::Duration;
 
 pub(crate) use options::SLOW_SNIFF;
-pub use options::{Hashes, Limits, Options, Privacy, Profile};
+pub use options::{Hashes, Limits, Options, Privacy, Profile, Redaction};
 
 use crate::Error;
 use crate::plugin::Registry;
@@ -86,14 +86,51 @@ impl Engine {
     /// `binary` fallbacks); no extractor code runs on the caller. While 8
     /// abandoned workers are still running, further files get that report
     /// without a worker.
+    ///
+    /// # Errors
+    ///
+    /// [`Error::Io`] when `path` cannot be inspected (it does not exist, or
+    /// its metadata cannot be read). An unreadable or damaged file is still
+    /// `Ok`: the problem is in `diagnostics`. An overrun deadline is `Ok` too,
+    /// with `"timeout"` in `diagnostics.limits_hit`.
+    ///
+    /// ```
+    /// let engine = whiff::Engine::new();
+    ///
+    /// let report = engine.extract_path(concat!(env!("CARGO_MANIFEST_DIR"), "/Cargo.toml"))?;
+    /// assert_eq!(report.identification.format, "cargo_manifest");
+    /// assert!(report.integrity.sha256.is_some());
+    ///
+    /// let missing = engine.extract_path("no/such/file.txt");
+    /// assert!(matches!(missing, Err(whiff::Error::Io { .. })));
+    /// # Ok::<(), whiff::Error>(())
+    /// ```
     pub fn extract_path(&self, path: impl AsRef<Path>) -> Result<Report, Error> {
         let path = path.as_ref();
         let owned = path.to_path_buf();
         self.guarded(move |e| pipeline::extract_path(e, &owned), |e| pipeline::extract_path(e, path))
     }
 
-    /// Describe in-memory bytes. `name` (a file name) helps detection. Runs
-    /// under the same watchdog as [`extract_path`](Self::extract_path).
+    /// Describe in-memory bytes. `name` (a file name, `None` if unknown)
+    /// helps detection; `bytes` is anything that becomes an `Arc<[u8]>`
+    /// (`Vec<u8>`, `&[u8]`, `Box<[u8]>`). Runs under the same watchdog as
+    /// [`extract_path`](Self::extract_path).
+    ///
+    /// Never fails and never panics on bad input: problems are recorded in
+    /// `diagnostics`. The `system` section is empty (there is no file).
+    ///
+    /// ```
+    /// let engine = whiff::Engine::new();
+    ///
+    /// let csv: &[u8] = b"berth,vessel\n1,Grey Tern\n2,Kittiwake\n";
+    /// let report = engine.extract_bytes(Some("berths.csv"), csv);
+    /// assert_eq!(report.identification.format, "csv");
+    ///
+    /// // Unrecognised bytes with no name: identified as binary, no panic.
+    /// let noise = [0x00, 0x9c, 0x7f, 0x01].repeat(64);
+    /// let report = engine.extract_bytes(None, noise);
+    /// assert_eq!(report.identification.format, "binary");
+    /// ```
     pub fn extract_bytes(&self, name: Option<&str>, bytes: impl Into<Arc<[u8]>>) -> Report {
         let data: Arc<[u8]> = bytes.into();
         let (owned_name, owned_data) = (name.map(str::to_string), Arc::clone(&data));
@@ -156,7 +193,39 @@ impl Engine {
         Ok(report)
     }
 
-    /// Read `reader` into memory (up to `max_read_bytes`) and describe it.
+    /// Read `reader` into memory (up to `limits.max_read_bytes`) and describe
+    /// it, as [`extract_bytes`](Self::extract_bytes) does. Longer input is cut
+    /// at the limit: the report has `diagnostics.truncated` and `"read_bytes"`
+    /// in `diagnostics.limits_hit`.
+    ///
+    /// # Errors
+    ///
+    /// The reader's own error, when a read fails. A reader that ends early
+    /// is not an error: whatever it gave is described.
+    ///
+    /// ```
+    /// use std::io::{Cursor, Error, Read};
+    ///
+    /// let engine = whiff::Engine::new();
+    /// let report = engine.extract_reader(Some("notes.md"), Cursor::new("# Tides\n\nHigh water at 06:12.\n"))?;
+    /// assert_eq!(report.identification.format, "markdown");
+    ///
+    /// // Past the read limit: described up to it, and marked.
+    /// let small = whiff::Engine::builder().limits(whiff::Limits::default().max_read_bytes(8)).build();
+    /// let report = small.extract_reader(None, Cursor::new(vec![b'a'; 100]))?;
+    /// assert!(report.diagnostics.truncated);
+    /// assert!(report.diagnostics.limits_hit.contains(&"read_bytes".to_string()));
+    ///
+    /// // A failing reader is an error.
+    /// struct Broken;
+    /// impl Read for Broken {
+    ///     fn read(&mut self, _: &mut [u8]) -> std::io::Result<usize> {
+    ///         Err(Error::other("disk went away"))
+    ///     }
+    /// }
+    /// assert!(engine.extract_reader(None, Broken).is_err());
+    /// # Ok::<(), std::io::Error>(())
+    /// ```
     pub fn extract_reader(&self, name: Option<&str>, reader: impl Read) -> std::io::Result<Report> {
         let mut buf = Vec::new();
         let limit = self.options.limits.max_read_bytes;
@@ -307,7 +376,9 @@ pub struct EngineBuilder {
 }
 
 impl EngineBuilder {
-    /// Profile (also resets limits to the profile's defaults unless set explicitly).
+    /// Profile. [`build`](Self::build) then uses the profile's
+    /// [limits](Profile::limits), unless [`limits`](Self::limits) or
+    /// [`options`](Self::options) set them.
     #[must_use]
     pub fn profile(mut self, profile: Profile) -> Self {
         self.options.profile = profile;
@@ -364,6 +435,13 @@ impl EngineBuilder {
         self
     }
 
+    /// Whether secrets are redacted (default [`Redaction::On`]).
+    #[must_use]
+    pub fn redaction(mut self, redaction: Redaction) -> Self {
+        self.options.redaction = redaction;
+        self
+    }
+
     /// Use exactly this registry instead of [`Registry::builtin`].
     #[must_use]
     pub fn registry(mut self, registry: Registry) -> Self {
@@ -371,7 +449,9 @@ impl EngineBuilder {
         self
     }
 
-    /// Replace all options at once.
+    /// Replace all options at once, limits included: an `Options` changed
+    /// only in its `profile` keeps the `standard` limits, so set
+    /// `limits: profile.limits()` too.
     #[must_use]
     pub fn options(mut self, options: Options) -> Self {
         self.options = options;

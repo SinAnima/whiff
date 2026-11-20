@@ -20,6 +20,8 @@ pub mod testing;
 mod text;
 mod values;
 
+#[cfg_attr(not(feature = "full"), allow(unused_imports))]
+pub(crate) use context::Redactor;
 pub use context::{
     Compression, ContentWriter, Context, ImageWriter, MAX_OUTLINE, PhysicalWriter, RightsWriter, SecurityWriter,
     TemporalWriter,
@@ -31,7 +33,7 @@ pub use values::{AnyValue, MAX_NESTING, dotted_key_depth, nesting_depth};
 
 // Types that `Context`'s methods take or return.
 pub use crate::container::codec::{Codec, Decoded as Decompressed, End};
-pub use crate::engine::{Options, Privacy, Profile};
+pub use crate::engine::{Options, Privacy, Profile, Redaction};
 pub use crate::text::Decoded;
 
 // Helpers for the built-in extractors (container readers, text utilities).
@@ -61,15 +63,18 @@ pub(crate) use crate::text::sensitive::is_secret_key;
 pub(crate) use crate::text::{parse_date, squash_whitespace, truncate_chars};
 
 /// Replace secrets (keys, tokens, credentials in URLs) in `text` with
-/// `[redacted:<kind>]`. Use it for values written to `format` or `metadata`
-/// that may hold credentials; the privacy analyzer also runs over the report.
+/// `[redacted:<kind>]`, whatever the options say.
+#[deprecated(since = "0.9.0", note = "use `Context::redact_secrets`, which follows `Options::redaction`")]
 pub fn redact_secrets(text: &str) -> std::borrow::Cow<'_, str> {
     crate::text::sensitive::redact(text, crate::text::sensitive::Category::Secret)
 }
 
 /// Replace secrets **and** personal data (e-mail addresses, phone numbers,
-/// card numbers, IBANs) in `text`. Use it for sample values (CSV rows, schema
-/// examples) that would otherwise list personal data.
+/// card numbers, IBANs) in `text`, whatever the options say.
+#[deprecated(
+    since = "0.9.0",
+    note = "use `Context::redact_sensitive`, which follows `Options::privacy` and `Options::redaction`"
+)]
 pub fn redact_sensitive(text: &str) -> std::borrow::Cow<'_, str> {
     use crate::text::sensitive::{Category, redact};
     match redact(text, Category::Secret) {
@@ -116,6 +121,60 @@ pub use crate::report::{DateField, Map, Report};
 /// Implementations must never panic on bad input (the engine contains panics,
 /// but reports them as bugs), never print, and write output only through the
 /// [`Context`].
+///
+/// A whole extractor: a made-up "tide table" format (`TIDE`, a version byte,
+/// a station count), added to the built-in registry.
+///
+/// ```
+/// use whiff::plugin::{
+///     ByteReader, Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Registry, Source,
+/// };
+///
+/// struct TideTable;
+///
+/// impl Extractor for TideTable {
+///     fn meta(&self) -> &'static ExtractorMeta {
+///         static FORMATS: [FormatSpec; 1] = [FormatSpec {
+///             id: "tide_table",
+///             name: "Tide table",
+///             family: "tide_table",
+///             mimes: &["application/x-tide-table"],
+///             extensions: &["tide"],
+///             magic: &[Magic::prefix(b"TIDE")],
+///             parent: None,
+///         }];
+///         static META: ExtractorMeta =
+///             ExtractorMeta { id: "data.tide_table", version: 1, formats: &FORMATS, cost: Cost::Header, priority: 0 };
+///         &META
+///     }
+///
+///     fn extract(&self, src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
+///         let mut r = ByteReader::new(src.head());
+///         r.tag(b"TIDE")?; // `Truncated` or `Malformed` on other input
+///         let version = r.u8()?;
+///         if version != 1 {
+///             return Err(ExtractError::Malformed(format!("version {version}")));
+///         }
+///         cx.format_set("stations", r.be_u16()?);
+///         Ok(())
+///     }
+/// }
+///
+/// let engine = whiff::Engine::builder().registry(Registry::builtin().with(TideTable)).build();
+///
+/// let report = engine.extract_bytes(Some("saltmere.tide"), &b"TIDE\x01\x00\x03"[..]);
+/// assert_eq!(report.identification.format, "tide_table");
+/// assert_eq!(report.format["tide_table"]["stations"], 3);
+///
+/// // An error is recorded in the report, which is still produced.
+/// let report = engine.extract_bytes(Some("future.tide"), &b"TIDE\x09\x00\x03"[..]);
+/// let run = report.diagnostics.extractors.iter().find(|r| r.id == "data.tide_table").unwrap();
+/// assert_eq!(run.error_kind.as_deref(), Some("malformed"));
+/// ```
+///
+/// A panic in `extract` is a bug: the engine catches it and records the
+/// run with status `internal`, and the test helpers in
+/// [`testing`] fail on it.
 pub trait Extractor: Send + Sync + 'static {
     /// Static description: id, version, formats, cost.
     fn meta(&self) -> &'static ExtractorMeta;
@@ -161,7 +220,9 @@ pub enum AnalyzerStage {
     Reconcile,
     /// Redaction of secrets and personal data.
     Privacy,
-    /// Final shaping (LLM view).
+    /// Final shaping. No built-in analyzer uses it: the compact LLM view is
+    /// made on request by [`Report::llm_view`](crate::Report::llm_view), not
+    /// by an analyzer.
     Output,
 }
 

@@ -76,7 +76,7 @@ impl Extractor for Yaml {
         if let Some(first) = docs.first() {
             cx.format_set("top_level", top_level(first));
         }
-        let mut schema = Schema::default();
+        let mut schema = Schema::with(cx.redactor());
         for d in docs.iter().take(1000) {
             schema.add(d);
         }

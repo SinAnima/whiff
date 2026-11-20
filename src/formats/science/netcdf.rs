@@ -11,9 +11,8 @@
 
 use serde_json::{Map, Value};
 
-use crate::plugin::{
-    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Source, redact_sensitive, truncate_chars,
-};
+use crate::plugin::Redactor;
+use crate::plugin::{Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Source, truncate_chars};
 
 /// Extractor for NetCDF classic files.
 pub struct NetCdf;
@@ -71,9 +70,9 @@ fn text(v: &Value) -> Option<String> {
     }
 }
 
-fn shown(v: &Value) -> Value {
+fn shown(v: &Value, r: Redactor) -> Value {
     match v {
-        Value::String(s) => Value::String(truncate_chars(&redact_sensitive(s), 500)),
+        Value::String(s) => Value::String(truncate_chars(&r.sensitive(s), 500)),
         other => other.clone(),
     }
 }
@@ -101,8 +100,9 @@ pub(crate) fn describe(cx: &mut Context<'_>, m: &Model) {
     }
     cx.format_set("variable_count", m.vars.len());
     cx.format_set("variables", Value::Object(vars));
+    let r = cx.redactor();
     let globals: Map<String, Value> =
-        m.attrs.iter().take(MAX_ITEMS).map(|(k, v)| (truncate_chars(k, 100), shown(v))).collect();
+        m.attrs.iter().take(MAX_ITEMS).map(|(k, v)| (truncate_chars(k, 100), shown(v, r))).collect();
     if !globals.is_empty() {
         cx.format_set("global_attributes", Value::Object(globals));
     }
