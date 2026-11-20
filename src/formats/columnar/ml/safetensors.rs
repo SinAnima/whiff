@@ -12,8 +12,7 @@ use serde_json::{Map, Value};
 use super::super::product;
 use super::tensors;
 use crate::plugin::{
-    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, redact_sensitive,
-    truncate_chars,
+    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, truncate_chars,
 };
 
 /// Extractor for safetensors files.
@@ -85,7 +84,7 @@ impl Extractor for Safetensors {
                     .take(100)
                     .map(|(k, v)| {
                         let s = v.as_str().map_or_else(|| v.to_string(), str::to_string);
-                        (truncate_chars(k, 100), Value::String(truncate_chars(&redact_sensitive(&s), 500)))
+                        (truncate_chars(k, 100), Value::String(truncate_chars(&cx.redact_sensitive(&s), 500)))
                     })
                     .collect();
                 cx.format_set("metadata", Value::Object(m));

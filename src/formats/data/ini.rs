@@ -1,13 +1,13 @@
 //! INI-style configuration (INI, systemd units, desktop entries, git config,
 //! `EditorConfig`, Windows `.reg` and `.inf`), Java properties and dotenv:
 //! sections and keys, with secret-looking values redacted (key names kept)
-//! and every dotenv value redacted.
+//! and every dotenv value redacted (both unless `--redaction off`).
 
 use serde_json::{Map, Value, json};
 
 use crate::plugin::{
     Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, TextRole, is_secret_key,
-    redact_secrets, redact_sensitive, truncate_chars,
+    truncate_chars,
 };
 
 /// Extractor for INI, properties and dotenv files.
@@ -242,7 +242,9 @@ fn dialect(name: &str, text: &str, doc: &Doc) -> &'static str {
 }
 
 fn report(doc: &Doc, dialect: &'static str, cx: &mut Context<'_>) {
-    let redact_all = dialect == "dotenv";
+    // Dotenv files hold credentials; every value is one under `--redaction on`.
+    let hide = cx.redaction_on();
+    let redact_all = hide && dialect == "dotenv";
     let mut secret_keys = 0u64;
     let mut values = Map::new();
     let mut sections = Vec::new();
@@ -251,12 +253,12 @@ fn report(doc: &Doc, dialect: &'static str, cx: &mut Context<'_>) {
         total += s.entries.len();
         let mut map = Map::new();
         for (k, v) in s.entries.iter().take(MAX_KEYS) {
-            let secret = is_secret_key(k);
+            let secret = hide && is_secret_key(k);
             secret_keys += u64::from(secret);
             let value = if redact_all || secret {
                 json!("[redacted]")
             } else {
-                json!(truncate_chars(&redact_sensitive(v), 200))
+                json!(truncate_chars(&cx.redact_sensitive(v), 200))
             };
             map.insert(k.clone(), value);
         }
@@ -293,7 +295,7 @@ fn report(doc: &Doc, dialect: &'static str, cx: &mut Context<'_>) {
         }
         "internet_shortcut" => {
             if let Some(u) = lookup("InternetShortcut", "URL") {
-                cx.format_set("target", truncate_chars(&redact_secrets(u), 500));
+                cx.format_set("target", truncate_chars(&cx.redact_secrets(u), 500));
                 cx.security().external_references(1);
             }
         }

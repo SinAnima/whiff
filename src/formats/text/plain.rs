@@ -13,9 +13,10 @@ use std::sync::LazyLock;
 use regex::Regex;
 use serde_json::{Value, json};
 
+use crate::plugin::Redactor;
 use crate::plugin::{
     Context, Cost, DateField, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, TextRole,
-    find_copyright, identify_license, parse_date, redact_secrets, truncate_chars,
+    find_copyright, identify_license, parse_date, truncate_chars,
 };
 
 /// Extractor for plain text, logs and diffs.
@@ -250,6 +251,7 @@ struct LogStats {
     syslog_first: Option<String>,
     syslog_last: Option<String>,
     errors: Vec<String>,
+    redactor: Redactor,
 }
 
 impl LogStats {
@@ -272,14 +274,14 @@ impl LogStats {
         if matches!(norm.as_str(), "ERROR" | "CRITICAL" | "FATAL" | "ALERT" | "EMERG" | "SEVERE")
             && self.errors.len() < 5
         {
-            self.errors.push(truncate_chars(&redact_secrets(line.trim()), 200));
+            self.errors.push(truncate_chars(&self.redactor.secrets(line.trim()), 200));
         }
         *self.levels.entry(norm).or_default() += 1;
     }
 }
 
 fn log(text: &str, cx: &mut Context<'_>) {
-    let mut s = LogStats::default();
+    let mut s = LogStats { redactor: cx.redactor(), ..LogStats::default() };
     let mut lines = 0u64;
     for line in text.lines() {
         lines += 1;
@@ -305,7 +307,7 @@ fn log(text: &str, cx: &mut Context<'_>) {
             *s.status.entry(c[4].to_string()).or_default() += 1;
             *s.methods.entry(c[3].to_string()).or_default() += 1;
             if c[4].starts_with('5') && s.errors.len() < 5 {
-                s.errors.push(truncate_chars(&redact_secrets(line), 200));
+                s.errors.push(truncate_chars(&cx.redact_secrets(line), 200));
             }
             continue;
         }

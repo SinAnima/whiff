@@ -10,8 +10,7 @@
 use serde_json::{Map, Value};
 
 use crate::plugin::{
-    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, redact_sensitive,
-    truncate_chars,
+    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, truncate_chars,
 };
 
 /// Extractor for Zarr metadata.
@@ -44,7 +43,7 @@ fn attrs(cx: &mut Context<'_>, a: &Value) {
         .take(100)
         .map(|(k, v)| {
             let v = match v {
-                Value::String(s) => Value::String(truncate_chars(&redact_sensitive(s), 300)),
+                Value::String(s) => Value::String(truncate_chars(&cx.redact_sensitive(s), 300)),
                 Value::Array(x) if x.len() > 16 => Value::String(format!("({} values)", x.len())),
                 Value::Object(x) => Value::String(format!("({} keys)", x.len())),
                 other => other.clone(),

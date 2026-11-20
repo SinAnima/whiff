@@ -1,7 +1,8 @@
 //! The report: whiff's JSON contract (`whiff/1`).
 //!
-//! Every report has the same fixed top-level sections. Optional fields that
-//! have no value are omitted from the JSON; sections are always present.
+//! Every report has the same fixed top-level sections, always present except
+//! `embedded`, which is omitted when the input holds no analysed files.
+//! Optional fields that have no value are omitted from the JSON.
 //! Free-form data is only allowed in [`Report::metadata`] (per standard, e.g.
 //! `exif`, `xmp`) and [`Report::format`] (per format id).
 
@@ -24,7 +25,8 @@ pub struct Report {
     pub source: SourceInfo,
     /// What the file is.
     pub identification: Identification,
-    /// Filesystem identity.
+    /// Filesystem identity: `system.kind`, `system.size_bytes`, inode, links, flags. Mostly empty for in-memory
+    /// input.
     pub system: System,
     /// Filesystem times and dates found in the content.
     pub temporal: Temporal,
@@ -34,7 +36,7 @@ pub struct Report {
     pub rights: Rights,
     /// Size, entropy and dimensions.
     pub physical: Physical,
-    /// Hashes.
+    /// Hashes and entropy: `integrity.sha256`, `integrity.blake3`, `integrity.entropy`.
     pub integrity: Integrity,
     /// The LLM-facing view: title, language, keywords, outline, summary.
     pub content: Content,
@@ -79,7 +81,7 @@ pub struct WhiffInfo {
     pub version: String,
     /// Schema identifier, e.g. `whiff/1`.
     pub schema: String,
-    /// Profile used.
+    /// Profile used: `whiff.profile`, e.g. `"standard"`.
     pub profile: Profile,
 }
 
@@ -145,7 +147,7 @@ pub enum DetectedBy {
 #[serde(default)]
 #[non_exhaustive]
 pub struct Candidate {
-    /// Format id.
+    /// Format id: `identification.candidates[].format`, e.g. `"zip"`.
     pub format: String,
     /// Confidence in `0.0..=1.0`.
     pub confidence: f64,
@@ -235,9 +237,9 @@ pub enum FileKind {
 #[serde(default)]
 #[non_exhaustive]
 pub struct System {
-    /// Kind of object.
+    /// Kind of object: `system.kind`, e.g. `"regular"`, `"directory"`, `"symlink"`.
     pub kind: FileKind,
-    /// Logical size.
+    /// Logical size: `system.size_bytes`, e.g. `48213`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub size_bytes: Option<u64>,
     /// Bytes actually allocated on disk.
@@ -396,7 +398,7 @@ pub struct Security {
     /// `ls`-style permission string, e.g. `rw-r--r--`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub permissions: Option<String>,
-    /// Owner.
+    /// Owner: `security.owner`, the file's user and group, e.g. `{"uid": 501, "user": "ada", "gid": 20}`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub owner: Option<Owner>,
     /// Set-user-id bit.
@@ -408,7 +410,8 @@ pub struct Security {
     /// Sticky bit.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub sticky: Option<bool>,
-    /// Access-control list present.
+    /// Whether the file has an access-control list. Reserved: this version
+    /// never sets it, so it is absent from reports.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acl: Option<bool>,
     /// Extended attributes of interest.
@@ -426,7 +429,8 @@ pub struct Security {
     /// Number of external references (links, remote resources).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub external_references: Option<u64>,
-    /// Risk signals.
+    /// Risk signals: `security.risks`, e.g. `[{"kind": "macro", "category": "active_content", "severity": "high",
+    /// …}]`.
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub risks: Vec<Risk>,
     /// The highest severity among `risks` and every embedded file's risks;
@@ -454,7 +458,7 @@ pub struct License {
     /// Name, e.g. `CC BY 4.0` or an SPDX id.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
-    /// Licence URL.
+    /// Licence URL: `rights.license.url`, e.g. `"https://creativecommons.org/licenses/by/4.0/"`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub url: Option<String>,
 }
@@ -464,19 +468,19 @@ pub struct License {
 #[serde(default)]
 #[non_exhaustive]
 pub struct Rights {
-    /// Copyright notice.
+    /// Copyright notice as found: `rights.copyright`, e.g. `"© 2024 Saltmere Harbour Trust"`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub copyright: Option<String>,
     /// Creators / authors / artists.
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub creators: Vec<String>,
-    /// Credit line.
+    /// Credit line: `rights.credit`, e.g. `"Photo: A. Lovelace"`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub credit: Option<String>,
-    /// Licence.
+    /// Licence: `rights.license`, its SPDX id, name and URL when known.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub license: Option<License>,
-    /// Usage terms.
+    /// Usage terms as found: `rights.usage_terms`, e.g. `"Editorial use only"`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub usage_terms: Option<String>,
     /// Marked as rights-managed.
@@ -495,7 +499,10 @@ pub enum EntropyScope {
     /// The whole file.
     #[default]
     File,
-    /// Only the first bytes (minimal profile, or file too large to hash).
+    /// Only the first 64 KiB: the file was neither hashed nor counted as
+    /// text (hashing off, the `minimal` profile, or larger than
+    /// `hash_max_bytes`) and is longer than that. In-memory input is always
+    /// measured whole.
     Head,
 }
 
@@ -504,13 +511,13 @@ pub enum EntropyScope {
 #[serde(default)]
 #[non_exhaustive]
 pub struct TextPhysical {
-    /// Bytes.
+    /// Bytes: `physical.text.bytes`, as `wc -c` counts them, e.g. `1024`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bytes: Option<u64>,
     /// Unicode scalar values.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub chars: Option<u64>,
-    /// Words.
+    /// Words: `physical.text.words`, runs of non-whitespace as `wc -w` counts them, e.g. `173`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub words: Option<u64>,
     /// Newline count (`wc -l`).
@@ -580,16 +587,16 @@ pub struct MediaPhysical {
 #[serde(default)]
 #[non_exhaustive]
 pub struct DocumentPhysical {
-    /// Pages.
+    /// Pages: `physical.document.pages`, e.g. `12`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub pages: Option<u64>,
     /// Words (as declared by the document).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub words: Option<u64>,
-    /// Slides.
+    /// Slides: `physical.document.slides` (presentations), e.g. `24`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub slides: Option<u64>,
-    /// Sheets.
+    /// Sheets: `physical.document.sheets` (spreadsheets), e.g. `3`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub sheets: Option<u64>,
 }
@@ -599,16 +606,16 @@ pub struct DocumentPhysical {
 #[serde(default)]
 #[non_exhaustive]
 pub struct ContainerPhysical {
-    /// Entry count.
+    /// Entry count: `physical.container.entries` (files and folders), e.g. `42`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub entries: Option<u64>,
     /// Total uncompressed size.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub uncompressed_bytes: Option<u64>,
-    /// Uncompressed / compressed.
+    /// Compression ratio, uncompressed / compressed: `physical.container.ratio`, e.g. `3.2`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ratio: Option<f64>,
-    /// Encrypted entries.
+    /// Encrypted entries: `physical.container.encrypted_entries`, e.g. `0`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub encrypted_entries: Option<u64>,
 }
@@ -627,19 +634,19 @@ pub struct Physical {
     /// Bytes the entropy covers.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub entropy_scope: Option<EntropyScope>,
-    /// Text properties.
+    /// Text properties (`wc` parity): `physical.text`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub text: Option<TextPhysical>,
-    /// Image properties.
+    /// Image properties: `physical.image`, e.g. `{"width": 4032, "height": 3024, …}`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub image: Option<ImagePhysical>,
-    /// Audio/video properties.
+    /// Audio and video properties: `physical.media`, e.g. `{"duration_s": 182.4, "streams": […]}`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub media: Option<MediaPhysical>,
-    /// Document properties.
+    /// Document properties: `physical.document`, e.g. `{"pages": 12, "words": 3400}`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub document: Option<DocumentPhysical>,
-    /// Container properties.
+    /// Archive and container properties: `physical.container`, e.g. `{"entries": 42, "ratio": 3.2}`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub container: Option<ContainerPhysical>,
 }
@@ -655,7 +662,8 @@ pub struct Integrity {
     /// BLAKE3, lowercase hex.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub blake3: Option<String>,
-    /// Perceptual hash (images, `full` profile).
+    /// Perceptual hash of an image. Reserved: this version computes none, so
+    /// it is absent from reports.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub phash: Option<String>,
     /// Why hashing was skipped, if it was.
@@ -681,7 +689,7 @@ pub struct Language {
 pub struct Heading {
     /// Level, 1 = top.
     pub level: u8,
-    /// Heading text.
+    /// Heading text: `content.outline[].text`, e.g. `"High water"`.
     pub text: String,
 }
 
@@ -723,16 +731,16 @@ pub struct Extent {
 #[serde(default)]
 #[non_exhaustive]
 pub struct Content {
-    /// Title.
+    /// Title: `content.title`, from the format's own metadata, e.g. `"Saltmere tide tables 2025"`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<String>,
     /// Description / caption / abstract.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
-    /// Authors.
+    /// Authors: `content.authors`, as found (names are kept under strict privacy), e.g. `["Ada Lovelace"]`.
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub authors: Vec<String>,
-    /// Natural language.
+    /// Natural language of the text: `content.language`, e.g. `{"code": "en", "confidence": 0.97}`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language: Option<Language>,
     /// Keywords (declared or extracted).
@@ -744,13 +752,14 @@ pub struct Content {
     /// Heading outline in document order.
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub outline: Vec<Heading>,
-    /// Extractive summary.
+    /// Extractive summary (`full` and `llm` profiles): `content.summary`, a few sentences taken from the text.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub summary: Option<String>,
-    /// Text excerpt.
+    /// Text excerpt: `content.excerpt`, the start of the body text with whitespace squashed (at most 400 characters).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub excerpt: Option<String>,
-    /// Merged tags.
+    /// Merged tags from every source (keywords fields, XMP subjects, ID3 genres): `content.tags`, e.g. `["harbour",
+    /// "tides"]`.
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub tags: Vec<String>,
     /// Location the content refers to (e.g. photo GPS).
@@ -782,11 +791,11 @@ pub enum RunStatus {
 pub struct ExtractorRun {
     /// Extractor / decoder / analyzer id.
     pub id: String,
-    /// Its output version.
+    /// Its output version: `diagnostics.extractors[].version`, e.g. `1`.
     pub version: u32,
     /// Wall time in milliseconds.
     pub ms: f64,
-    /// Outcome.
+    /// Outcome: `diagnostics.extractors[].status`, `"ok"`, `"error"` or `"internal"` (a panic: a bug).
     pub status: RunStatus,
     /// Error kind (`malformed`, `timeout`, …) when not `ok`.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -804,7 +813,7 @@ pub struct Diagnostics {
     /// Everything that ran, in order.
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub extractors: Vec<ExtractorRun>,
-    /// Non-fatal problems.
+    /// Non-fatal problems: `diagnostics.warnings`, e.g. `["zip: central directory repaired"]`.
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub warnings: Vec<String>,
     /// Limits that stopped work early (`read_bytes`, `timeout`, `max_depth`, …).

@@ -12,7 +12,7 @@ use serde_json::{Map, Value};
 
 use crate::plugin::{
     Context, Cost, DateField, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Source, parse_date,
-    redact_sensitive, truncate_chars,
+    truncate_chars,
 };
 
 /// Extractor for FITS files.
@@ -263,7 +263,7 @@ fn hdu(cx: &mut Context<'_>, h: &Header, index: usize, verified: Option<(bool, b
         for (k, out) in OBSERVATION {
             if let Some(v) = get(h, k) {
                 let v = match v {
-                    Value::String(s) => Value::String(truncate_chars(&redact_sensitive(s), 200)),
+                    Value::String(s) => Value::String(truncate_chars(&cx.redact_sensitive(s), 200)),
                     other => other.clone(),
                 };
                 cx.format_set(out, v);

@@ -17,8 +17,8 @@ use serde_json::{Map, Value, json};
 
 use super::get_str;
 use crate::plugin::{
-    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, proplist, redact_secrets,
-    truncate_chars, user_path,
+    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, proplist, truncate_chars,
+    user_path,
 };
 
 /// Extractor for Xcode projects and workspaces.
@@ -165,7 +165,7 @@ fn project(p: &Plist, cx: &mut Context<'_>) {
             "XCRemoteSwiftPackageReference" => {
                 let mut m = Map::new();
                 if let Some(u) = get_str(o, "repositoryURL") {
-                    m.insert("url".into(), truncate_chars(&redact_secrets(u), 300).into());
+                    m.insert("url".into(), truncate_chars(&cx.redact_secrets(u), 300).into());
                 }
                 let req = o.as_dictionary().and_then(|d| d.get("requirement"));
                 if let Some(r) = req {

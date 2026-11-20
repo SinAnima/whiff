@@ -13,7 +13,7 @@ use serde_json::{Map, Value};
 use super::unix_time;
 use crate::plugin::{
     Context, Cost, DateField, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Source, proplist,
-    redact_secrets, truncate_chars,
+    truncate_chars,
 };
 
 /// Extractor for AppleDouble and AppleSingle files.
@@ -164,7 +164,7 @@ impl Extractor for AppleDouble {
                                         let urls =
                                             p.as_array().into_iter().flatten().filter_map(plist::Value::as_string);
                                         where_froms
-                                            .extend(urls.take(4).map(|u| truncate_chars(&redact_secrets(u), 500)));
+                                            .extend(urls.take(4).map(|u| truncate_chars(&cx.redact_secrets(u), 500)));
                                     }
                                 }
                                 _ => {}

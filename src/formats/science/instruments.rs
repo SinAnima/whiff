@@ -22,7 +22,7 @@ use serde_json::{Map, Value};
 
 use crate::plugin::{
     Context, Cost, DateField, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Probe, Sniff, Source, Zip,
-    redact_sensitive, truncate_chars, zip_names,
+    truncate_chars, zip_names,
 };
 
 /// Extractor for instrument and signal recordings.
@@ -235,7 +235,7 @@ fn edf(cx: &mut Context<'_>, b: &[u8]) -> Option<()> {
     }
     let recording = ascii(b, 88, 80);
     if !recording.is_empty() {
-        cx.format_set("recording", truncate_chars(&redact_sensitive(&recording), 80));
+        cx.format_set("recording", truncate_chars(&cx.redact_sensitive(&recording), 80));
     }
     let (date, time) = (ascii(b, 168, 8), ascii(b, 176, 8));
     // dd.mm.yy hh.mm.ss; EDF uses 1985–2084 for yy.
@@ -382,7 +382,7 @@ fn tdms(cx: &mut Context<'_>, src: &mut dyn Source) -> Result<(), ExtractError> 
                     let Some(t) = u32_at(i) else { break };
                     i += 4;
                     let v = match t {
-                        0x20 => string(&mut i).map(|s| Value::String(truncate_chars(&redact_sensitive(&s), 200))),
+                        0x20 => string(&mut i).map(|s| Value::String(truncate_chars(&cx.redact_sensitive(&s), 200))),
                         1 | 5 | 0x21 => {
                             i += 1;
                             m.get(i - 1).map(|&x| Value::from(x))

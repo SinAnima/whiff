@@ -27,7 +27,7 @@ use super::yaml::first_document;
 use super::{Package, Tarball, bare, codec_of, ext_is, gunzip_head, person, tar_names, text, unwrap};
 use crate::plugin::{
     Codec, Context, Cost, DateField, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, Zip,
-    redact_secrets, zip_names,
+    zip_names,
 };
 
 /// Extractor for tar-based packages.
@@ -725,7 +725,7 @@ fn docker(cx: &mut Context<'_>, ball: &Tarball, pkg: &mut Package) {
             pkg.set(out, v);
         }
     }
-    let env: Vec<String> = strs(c.get("Env")).iter().map(|e| redact_secrets(e).into_owned()).collect();
+    let env: Vec<String> = strs(c.get("Env")).iter().map(|e| cx.redact_secrets(e).into_owned()).collect();
     if !env.is_empty() {
         pkg.set("env", env);
     }

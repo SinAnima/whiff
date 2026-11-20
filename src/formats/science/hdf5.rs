@@ -21,9 +21,9 @@ use serde_json::{Map, Value};
 
 use super::h5::{self, Dataset, File, attr};
 use super::netcdf::{self, Dim, Model, Var};
+use crate::plugin::Redactor;
 use crate::plugin::{
-    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Probe, Sniff, Source, redact_sensitive,
-    truncate_chars,
+    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Probe, Sniff, Source, truncate_chars,
 };
 
 /// Extractor for HDF5 files and their layouts.
@@ -92,16 +92,16 @@ fn has(h: &[u8], n: &[u8]) -> bool {
     h.windows(n.len()).any(|w| w == n)
 }
 
-fn shown(v: &Value) -> Value {
+fn shown(v: &Value, r: Redactor) -> Value {
     match v {
-        Value::String(s) => Value::String(truncate_chars(&redact_sensitive(s), 500)),
+        Value::String(s) => Value::String(truncate_chars(&r.sensitive(s), 500)),
         Value::Array(a) if a.len() > 16 => Value::String(format!("({} values)", a.len())),
         other => other.clone(),
     }
 }
 
-fn attrs_map(attrs: &[(String, Value)]) -> Value {
-    Value::Object(attrs.iter().take(100).map(|(k, v)| (truncate_chars(k, 100), shown(v))).collect())
+fn attrs_map(attrs: &[(String, Value)], r: Redactor) -> Value {
+    Value::Object(attrs.iter().take(100).map(|(k, v)| (truncate_chars(k, 100), shown(v, r))).collect())
 }
 
 fn text(v: Option<&Value>) -> Option<String> {
@@ -170,7 +170,7 @@ fn generic(cx: &mut Context<'_>, f: &File) {
     cx.format_set("groups", f.groups.len());
     cx.format_set("datasets", f.datasets.len());
     if let Some(root) = f.group("/").filter(|r| !r.attrs.is_empty()) {
-        cx.format_set("root_attributes", attrs_map(&root.attrs));
+        cx.format_set("root_attributes", attrs_map(&root.attrs, cx.redactor()));
     }
     let mut list = Vec::new();
     let mut types: BTreeMap<String, u64> = BTreeMap::new();

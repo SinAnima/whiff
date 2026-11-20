@@ -198,7 +198,7 @@ pub fn render(root: &Path, registry: &Registry) -> Result<String, String> {
     });
 
     let mut out: Vec<String> = vec![header.trim_end().to_string() + "\n", "\n## 3. Parser families\n".into()];
-    out.push("Each format in §5 maps to one **family**. A family is one extractor implementation (or one reusable *block decoder*, marked `Block`) that serves every format in it. This is why ~1000 formats need ~60 extractors.\n".into());
+    out.push("Each format in §5 maps to one **family**. A family is one extractor implementation (or one reusable *block decoder*, marked `Block`) that serves every format in it. The survey estimated ~60 extractors for ~1000 formats; 0.8.0 ships 286, most of them in-house parsers.\n".into());
     out.push("Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** means a crate parses the container and whiff maps it to the schema. **impl** means no suitable pure-Rust crate exists, so whiff implements the parser.\n".into());
     out.push("| Family | Category | Feature | Information extracted | Why it helps an LLM | Library / implementation | Status | Stage | # formats |".into());
     out.push("|---|---|---|---|---|---|---|---|---|".into());

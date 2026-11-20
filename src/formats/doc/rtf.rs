@@ -18,7 +18,7 @@ use serde_json::{Value, json};
 
 use crate::plugin::{
     Context, Cost, DateField, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Map, Source, TextRole,
-    redact_secrets, truncate_chars,
+    truncate_chars,
 };
 
 /// Extractor for RTF documents.
@@ -619,7 +619,7 @@ impl<'c, 'x> Parser<'c, 'x> {
                     if !self.prop_name.trim().is_empty() && self.user_props.len() < 100 {
                         self.user_props.insert(
                             self.prop_name.trim().to_string(),
-                            json!(redact_secrets(&truncate_chars(self.prop_value.trim(), 500))),
+                            json!(self.cx.redact_secrets(&truncate_chars(self.prop_value.trim(), 500))),
                         );
                     }
                 }
@@ -705,7 +705,7 @@ impl<'c, 'x> Parser<'c, 'x> {
             && self.links.len() < MAX_LISTED
             && !self.links.contains(&url)
         {
-            self.links.push(truncate_chars(&redact_secrets(&url), 300));
+            self.links.push(truncate_chars(&self.cx.redact_secrets(&url), 300));
         }
         if let Some(risk) = super::field::risk(instr)
             && self.risky_fields.len() < 10

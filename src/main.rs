@@ -7,7 +7,7 @@ use std::time::Duration;
 
 use clap::{Args, Parser, Subcommand};
 use rayon::prelude::*;
-use whiff::{Engine, Hashes, Privacy, Profile, Registry, Report};
+use whiff::{Engine, Hashes, Privacy, Profile, Redaction, Registry, Report};
 
 #[derive(Parser)]
 #[command(
@@ -63,7 +63,8 @@ struct RunArgs {
     /// Bytes extractors may read per file, e.g. `256MiB`.
     #[arg(long, value_name = "SIZE", value_parser = parse_size)]
     max_bytes: Option<u64>,
-    /// Hashes: `sha256`, `blake3`, a comma list, or `none`.
+    /// Hashes: `sha256`, `blake3`, a comma list, or `none` (default: both
+    /// SHA-256 and BLAKE3; the `minimal` profile hashes nothing).
     #[arg(long, value_name = "LIST", value_parser = parse_hashes)]
     hash: Option<Hashes>,
     /// Run only these extractors or groups (repeatable, e.g. `image`).
@@ -78,11 +79,18 @@ struct RunArgs {
     /// Record which source set each normalised field.
     #[arg(long)]
     provenance: bool,
-    /// Personal data: `strict` counts it and keeps only the domain of e-mail
-    /// addresses; `off` gives the full details (addresses, phone numbers,
-    /// account numbers and transactions, names) as found.
+    /// Personal data: `strict` counts it, keeps only the domain of e-mail
+    /// addresses, and masks it in the excerpt, summary and keywords; `off`
+    /// gives the full details (addresses, phone numbers, account numbers and
+    /// transactions) as found, derived text included. Names are kept either
+    /// way. Personal data is counted in both modes.
     #[arg(long, value_name = "MODE", default_value = "strict", value_parser = parse_privacy)]
     privacy: Privacy,
+    /// Secrets (keys, tokens, passwords, credentials in URLs): `on` replaces
+    /// them with `[redacted:<kind>]` everywhere in the report; `off` leaves
+    /// them as found. Secrets are counted and flagged as a risk either way.
+    #[arg(long, value_name = "MODE", default_value = "on", value_parser = parse_redaction)]
+    redaction: Redaction,
     /// Include hidden files when walking directories.
     #[arg(long)]
     hidden: bool,
@@ -99,6 +107,10 @@ fn parse_profile(s: &str) -> Result<Profile, String> {
 }
 
 fn parse_privacy(s: &str) -> Result<Privacy, String> {
+    s.parse()
+}
+
+fn parse_redaction(s: &str) -> Result<Redaction, String> {
     s.parse()
 }
 
@@ -214,7 +226,8 @@ fn build_engine(a: &RunArgs) -> Engine {
         .only(a.only.clone())
         .skip(a.skip.clone())
         .provenance(a.provenance)
-        .privacy(a.privacy);
+        .privacy(a.privacy)
+        .redaction(a.redaction);
     if let Some(h) = a.hash {
         builder = builder.hashes(h);
     }

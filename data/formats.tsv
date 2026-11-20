@@ -249,7 +249,7 @@
 3	code.manifest	SBOM (SPDX / CycloneDX)	spdx spdx.json cdx.json bom.xml		component count, licences
 1	code.notebook	Jupyter notebook	ipynb	application/x-ipynb+json	
 3	code.notebook	Zeppelin / Databricks notebook	zpln dbc		
-3	code.notebook	Observable / Livebook	livemd		
+3	code.notebook	Livebook	livemd		Title, `##` sections, Elixir cell count, `Mix.install` dependencies (package names); in-house line scanner
 3	code.notebook	Mathematica notebook	nb cdf	application/mathematica	
 1	code.infra	Dockerfile / Containerfile	Dockerfile Containerfile dockerfile		
 1	code.infra	Makefile	Makefile makefile mk GNUmakefile		

@@ -5,7 +5,7 @@ use std::collections::BTreeMap;
 
 use serde_json::{Map, Value, json};
 
-use crate::plugin::{Context, DateField, TextRole, parse_date, truncate_chars};
+use crate::plugin::{Context, DateField, Redactor, TextRole, parse_date, truncate_chars};
 
 /// A detector for one known schema.
 type Detector = fn(&Value, &str, &mut Context<'_>) -> Option<Value>;
@@ -260,7 +260,9 @@ fn terraform_state(v: &Value, _: &str, cx: &mut Context<'_>) -> Option<Value> {
         "instances_with_sensitive_attributes": sensitive,
     });
     if !cx.privacy_strict() {
-        out["resource_list"] = resources.iter().take(200).map(terraform_resource).collect();
+        let r = cx.redactor();
+        let redact = cx.redaction_on();
+        out["resource_list"] = resources.iter().take(200).map(|res| terraform_resource(res, r, redact)).collect();
         out["output_values"] = v
             .get("outputs")
             .and_then(Value::as_object)
@@ -268,10 +270,10 @@ fn terraform_state(v: &Value, _: &str, cx: &mut Context<'_>) -> Option<Value> {
                 o.iter()
                     .take(100)
                     .map(|(k, e)| {
-                        let shown = if e.get("sensitive").and_then(Value::as_bool) == Some(true) {
+                        let shown = if redact && e.get("sensitive").and_then(Value::as_bool) == Some(true) {
                             json!("(sensitive)")
                         } else {
-                            scalar(e.get("value"))
+                            scalar(e.get("value"), r)
                         };
                         (k.clone(), shown)
                     })
@@ -283,10 +285,11 @@ fn terraform_state(v: &Value, _: &str, cx: &mut Context<'_>) -> Option<Value> {
 }
 
 /// A scalar shown as found, with anything that looks like a secret
-/// redacted; arrays and objects are summarised by their size.
-fn scalar(v: Option<&Value>) -> Value {
+/// redacted (unless redaction is off); arrays and objects are summarised by
+/// their size.
+fn scalar(v: Option<&Value>, r: Redactor) -> Value {
     match v {
-        Some(Value::String(t)) => json!(crate::plugin::redact_secrets(t)),
+        Some(Value::String(t)) => json!(r.secrets(t)),
         Some(Value::Array(a)) => json!(format!("({} items)", a.len())),
         Some(Value::Object(o)) => json!(format!("({} keys)", o.len())),
         Some(other) => other.clone(),
@@ -295,9 +298,10 @@ fn scalar(v: Option<&Value>) -> Value {
 }
 
 /// One state resource with `--privacy off`: its address and each
-/// instance's top-level attributes, minus the ones Terraform marks
-/// sensitive.
-fn terraform_resource(r: &Value) -> Value {
+/// instance's top-level attributes. The ones Terraform marks sensitive, or
+/// whose name says they are a secret, show `(sensitive)` unless `redact` is
+/// false (`--redaction off`).
+fn terraform_resource(r: &Value, redactor: Redactor, redact: bool) -> Value {
     let address = [s(r, &["module"]), s(r, &["mode"]).filter(|m| *m == "data"), s(r, &["type"]), s(r, &["name"])]
         .into_iter()
         .flatten()
@@ -325,7 +329,7 @@ fn terraform_resource(r: &Value) -> Value {
                 .take(100)
                 .map(|(k, a)| {
                     let secret = hidden.contains(&k.as_str()) || crate::plugin::is_secret_key(k);
-                    let shown = if secret { json!("(sensitive)") } else { scalar(Some(a)) };
+                    let shown = if secret && redact { json!("(sensitive)") } else { scalar(Some(a), redactor) };
                     (k.clone(), shown)
                 })
                 .collect();
@@ -1346,7 +1350,8 @@ mod tests {
     use super::*;
 
     /// Terraform values appear only with `--privacy off`, and attributes
-    /// marked sensitive or named like secrets never do (neutral sample).
+    /// marked sensitive or named like secrets only with `--redaction off`
+    /// too (neutral sample).
     #[test]
     fn terraform_values_follow_privacy() {
         let state = br#"{"version":4,"terraform_version":"1.9.0","serial":1,"outputs":{"site":{"value":"example.org"},"key":{"value":"k1","sensitive":true}},
@@ -1364,6 +1369,11 @@ mod tests {
         assert_eq!(attrs["api_token"], "(sensitive)");
         assert_eq!(k["output_values"]["site"], "example.org");
         assert_eq!(k["output_values"]["key"], "(sensitive)");
+        let bare = crate::plugin::testing::report_unredacted("a.tfstate", state);
+        let k = &bare.format["json"]["known_schema"];
+        let attrs = &k["resource_list"][0]["instances"][0]["attributes"];
+        assert_eq!((&attrs["pin"], &attrs["api_token"]), (&json!("1234"), &json!("zz")));
+        assert_eq!(k["output_values"]["key"], "k1");
     }
 
     #[test]

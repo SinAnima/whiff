@@ -23,8 +23,8 @@ use serde_json::{Map, Value};
 
 use super::epoch_text;
 use crate::plugin::{
-    Context, Cost, DateField, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source,
-    redact_sensitive, truncate_chars, user_path,
+    Context, Cost, DateField, ExtractError, Extractor, ExtractorMeta, FormatSpec, Probe, Sniff, Source, truncate_chars,
+    user_path,
 };
 
 /// Extractor for Delta Lake, Iceberg and Hudi metadata.
@@ -221,7 +221,7 @@ fn delta(cx: &mut Context<'_>, text: &str) {
                                 (
                                     k.clone(),
                                     Value::String(truncate_chars(
-                                        &redact_sensitive(v.as_str().unwrap_or_default()),
+                                        &cx.redact_sensitive(v.as_str().unwrap_or_default()),
                                         200,
                                     )),
                                 )
@@ -304,7 +304,7 @@ fn iceberg(cx: &mut Context<'_>, v: &Value) {
             .iter()
             .take(50)
             .map(|(k, v)| {
-                (k.clone(), Value::String(truncate_chars(&redact_sensitive(v.as_str().unwrap_or_default()), 200)))
+                (k.clone(), Value::String(truncate_chars(&cx.redact_sensitive(v.as_str().unwrap_or_default()), 200)))
             })
             .collect();
         cx.format_set("properties", Value::Object(m));

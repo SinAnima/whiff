@@ -6,6 +6,70 @@ keep the schema version.
 
 ## Unreleased
 
+Documentation and API cleanup from the 0.8.0 review, and a second privacy
+switch. One breaking change in the library: `whiff::engine` is private.
+
+### Breaking
+
+- **`whiff::engine` is no longer public.** Its types were already
+  re-exported at the crate root and still are: use `whiff::Engine`,
+  `whiff::Options`, `whiff::Privacy` and so on instead of
+  `whiff::engine::…`.
+
+### Added
+
+- **`--redaction on|off`** (library: `Options::redaction`,
+  `EngineBuilder::redaction`, enum `Redaction`, default `On`). `off` leaves
+  secrets (keys, tokens, passwords, credentials in URLs, `.env` values,
+  values under keys named like secrets) as found. They are still counted in
+  `security.secrets` and still raise the `embedded_secret` risk.
+- **`Context::redact_secrets`, `Context::redact_sensitive` and
+  `Context::redaction_on`** for extractors: they follow `--redaction` and
+  `--privacy`. The free functions `plugin::redact_secrets` and
+  `plugin::redact_sensitive`, which always redact, are deprecated.
+- `plugin::testing::report_unredacted`: a report with both switches off.
+- Rustdoc examples that run, for `Engine::extract_path`, `extract_bytes`,
+  `extract_reader`, `Report::llm_view`, `Source::read_at`,
+  `read_exact_at`, `read_vec`, `slice`, `Budget::check_deadline`,
+  `Context::emit_child`, `Context::decompress`, `Extractor`, `Privacy`,
+  `Redaction`, `Profile::limits` and `enabled_features`.
+
+### Changed
+
+- **`--privacy off` gives the full details everywhere.** Personal data is
+  now kept in the excerpt, summary, keywords and tags too, and sample values
+  (CSV rows, schema examples, Parquet and HDF5 attributes and the like) are
+  no longer masked. Personal data is still counted in
+  `security.personal_data`. The default, `strict`, is unchanged.
+- The `Privacy` and `Redaction` rustdoc, the CLI help, the README and
+  `docs/metadata-extracted.md` give the four combinations in one table.
+
+### Documentation
+
+- Comments that described behaviour the code does not have now match it:
+  the `embedded` section is omitted when empty; `integrity.phash` and
+  `security.acl` are reserved and never set; `Cost::Scan` runs under
+  `llm` too; `Probe::new` takes the extension from its caller;
+  `ExtractError` is recorded as `status: "error"` with `error_kind`;
+  `EngineBuilder::profile` and `Options::limits`; `EntropyScope::Head`;
+  `AnalyzerStage::Output` (unused); `enabled_features` lists format
+  collections only; which `Context` writes are first-write-wins;
+  `Context::decompress` and `ByteReader::tag` errors; `Profile::Llm` and
+  `Profile::Minimal`.
+- `Profile::limits` has the table of limits per profile; `--hash` says
+  the default is SHA-256 and BLAKE3.
+- Short field comments in `report` and `plugin` give the JSON path and a
+  typical value (the JSON Schema descriptions change with them).
+- `docs/known-gaps.md` no longer says "not read" for formats 0.8.0 reads.
+- `docs/metadata-extracted.md`: the 2026-10-15 library survey is marked as
+  such, and its Library columns name only crates whiff depends on
+  (`in-house` otherwise); Livebook has its own row; no perceptual hash or
+  ACL is promised. `CONTRIBUTING.md` no longer points at that column to
+  choose a crate.
+- README: every option with its default, the `minimal` profile's real
+  scope, `games` released, and the privacy table. `File_FORMATS.md` drops
+  the "unreleased" sentence when no format is unreleased.
+
 ## 0.8.2 — 2026-11-19
 
 Safety and correctness fixes from the 0.8.0 review. No API change. The

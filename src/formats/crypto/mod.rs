@@ -112,7 +112,7 @@ pub(crate) fn is_past(t: &str) -> bool {
 /// it holds personal data and privacy is strict.
 pub(crate) fn comment(cx: &Context<'_>, s: &str) -> String {
     let s = crate::plugin::truncate_chars(s.trim(), 200);
-    if cx.privacy_strict() { crate::plugin::redact_sensitive(&s).into_owned() } else { s }
+    if cx.privacy_strict() { cx.redact_sensitive(&s).into_owned() } else { s }
 }
 
 #[cfg(test)]

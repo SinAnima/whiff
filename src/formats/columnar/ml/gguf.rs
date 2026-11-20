@@ -14,9 +14,7 @@ use serde_json::{Map, Value};
 
 use super::super::product;
 use super::tensors;
-use crate::plugin::{
-    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Source, redact_sensitive, truncate_chars,
-};
+use crate::plugin::{Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Source, truncate_chars};
 
 /// Extractor for GGUF and GGML files.
 pub struct Gguf;
@@ -263,7 +261,7 @@ fn gguf(cx: &mut Context<'_>, b: &[u8], cut: bool) -> Result<(), ExtractError> {
     let text = |v: &Value| v.as_str().map_or_else(|| v.to_string(), str::to_string);
     for (key, out) in GENERAL {
         if let Some(v) = kv.get(key) {
-            let s = redact_sensitive(&text(v)).into_owned();
+            let s = cx.redact_sensitive(&text(v)).into_owned();
             cx.format_set(out, truncate_chars(&s, if out == "description" { 1000 } else { 300 }));
         }
     }

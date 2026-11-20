@@ -6,7 +6,7 @@ use std::collections::BTreeMap;
 
 use serde_json::{Map, Value, json};
 
-use crate::plugin::{is_secret_key, redact_sensitive, truncate_chars};
+use crate::plugin::{Redactor, is_secret_key, truncate_chars};
 
 /// Paths tracked; further paths are counted as dropped.
 const MAX_PATHS: usize = 300;
@@ -33,6 +33,8 @@ pub(crate) struct Schema {
     dropped: u64,
     documents: u64,
     max_depth: usize,
+    /// How example values are redacted.
+    redactor: Redactor,
 }
 
 fn type_name(v: &Value) -> &'static str {
@@ -48,9 +50,15 @@ fn type_name(v: &Value) -> &'static str {
 }
 
 impl Schema {
+    /// An empty schema whose examples are redacted as `redactor` says.
+    pub(crate) fn with(redactor: Redactor) -> Self {
+        Self { redactor, ..Self::default() }
+    }
+
     /// Add one document.
     pub(crate) fn add(&mut self, doc: &Value) {
         self.documents += 1;
+        let redactor = self.redactor;
         // Iterative walk: (path, value, depth, key the value sits under).
         let mut stack: Vec<(String, &Value, usize, Option<&str>)> = vec![("$".into(), doc, 0, None)];
         while let Some((path, v, depth, key)) = stack.pop() {
@@ -76,9 +84,9 @@ impl Schema {
                 }
                 Value::Object(_) | Value::Null => {}
                 scalar => {
-                    let sensitive = key.is_some_and(is_secret_key);
+                    let sensitive = redactor.hides_secrets() && key.is_some_and(is_secret_key);
                     if !sensitive && stats.examples.len() < MAX_EXAMPLES {
-                        let ex = example(scalar);
+                        let ex = example(scalar, redactor);
                         if !stats.examples.contains(&ex) {
                             stats.examples.push(ex);
                         }
@@ -137,9 +145,9 @@ fn escape_key(k: &str) -> String {
     }
 }
 
-fn example(v: &Value) -> Value {
+fn example(v: &Value, r: Redactor) -> Value {
     match v {
-        Value::String(s) => json!(truncate_chars(&redact_sensitive(s), 60)),
+        Value::String(s) => json!(truncate_chars(&r.sensitive(s), 60)),
         other => other.clone(),
     }
 }

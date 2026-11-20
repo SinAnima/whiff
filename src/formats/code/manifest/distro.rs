@@ -12,7 +12,7 @@ use regex::Regex;
 use serde_json::{Map, Value, json};
 
 use super::{MAX_DEPS, Package, put_pairs};
-use crate::plugin::{Context, DateField, TextRole, parse_date, redact_secrets, truncate_chars};
+use crate::plugin::{Context, DateField, TextRole, parse_date, truncate_chars};
 
 pub(super) fn extract(id: &str, text: &str, cx: &mut Context<'_>) {
     match id {
@@ -279,7 +279,7 @@ fn debian_copyright(text: &str, cx: &mut Context<'_>) {
         cx.format_set("upstream_contact", name_only(c.lines().next().unwrap_or(c)));
     }
     if let Some(s) = field(header, "Source") {
-        cx.format_set("source", redact_secrets(s).as_ref());
+        cx.format_set("source", cx.redact_secrets(s).as_ref());
     }
     let mut licenses: BTreeMap<String, u64> = BTreeMap::new();
     let mut files = 0u64;

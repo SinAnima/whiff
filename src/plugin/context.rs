@@ -79,8 +79,12 @@ pub(crate) struct PendingChild {
 /// Normalised sections are written through typed writers
 /// ([`content`](Self::content), [`temporal`](Self::temporal),
 /// [`rights`](Self::rights), [`security`](Self::security),
-/// [`physical`](Self::physical)). Scalar fields are **first write wins**:
-/// higher-priority sources run first, so later values never overwrite them.
+/// [`physical`](Self::physical)). Most scalar fields are **first write
+/// wins**: higher-priority sources run first, so later values never
+/// overwrite them. The exceptions: `security.encrypted` and
+/// `security.signed` are OR-ed (any `true` sticks), counts such as
+/// `security.external_references` add up, and `physical.image` is set once
+/// as a whole.
 /// Free-form data goes into [`metadata`](Self::metadata) (per standard) and
 /// [`format`](Self::format) (this format only).
 pub struct Context<'a> {
@@ -220,9 +224,43 @@ impl Context<'_> {
         }
     }
 
-    /// Queue an embedded file for recursive extraction (bounded by depth and
-    /// child limits). Fails with `LimitExceeded` once the child limit is reached,
-    /// so extractors can stop listing early.
+    /// Queue an embedded file named `name` for recursive extraction. It is
+    /// analysed after this extractor returns, while `limits.max_depth`
+    /// allows, and appears in `embedded`.
+    ///
+    /// # Errors
+    ///
+    /// [`ExtractError::LimitExceeded`]`("max_children")` once
+    /// `limits.max_children` files are queued (also recorded in
+    /// `diagnostics.limits_hit`), so an extractor can stop listing early.
+    ///
+    /// ```
+    /// # use whiff::plugin::{Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Registry, Source};
+    /// # struct Bundle;
+    /// # impl Extractor for Bundle {
+    /// #     fn meta(&self) -> &'static ExtractorMeta {
+    /// #         static F: [FormatSpec; 1] = [FormatSpec { id: "bundle", name: "Bundle", family: "bundle",
+    /// #             mimes: &[], extensions: &["bundle"], magic: &[Magic::prefix(b"BNDL")], parent: None }];
+    /// #         static M: ExtractorMeta = ExtractorMeta { id: "test.bundle", version: 1, formats: &F, cost: Cost::Header, priority: 0 };
+    /// #         &M
+    /// #     }
+    /// // In an extractor for a bundle of text notes:
+    /// fn extract(&self, _: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
+    ///     for i in 0..3 {
+    ///         let note = b"High water at 06:12.\n".to_vec();
+    ///         if let Err(ExtractError::LimitExceeded(_)) = cx.emit_child(&format!("note{i}.txt"), note) {
+    ///             break; // the rest would not be analysed
+    ///         }
+    ///     }
+    ///     Ok(())
+    /// }
+    /// # }
+    /// # let limits = whiff::Limits::default().max_children(2);
+    /// # let engine = whiff::Engine::builder().registry(Registry::builtin().with(Bundle)).limits(limits).build();
+    /// let report = engine.extract_bytes(Some("notes.bundle"), &b"BNDL"[..]);
+    /// assert_eq!(report.embedded.len(), 2); // `max_children` is 2 here
+    /// assert!(report.diagnostics.limits_hit.contains(&"max_children".to_string()));
+    /// ```
     pub fn emit_child(&mut self, name: &str, data: impl Into<Vec<u8>>) -> Result<(), ExtractError> {
         if self.children.len() >= self.options.limits.max_children as usize {
             self.budget.hit("max_children");
@@ -265,9 +303,47 @@ impl Context<'_> {
     }
 
     /// Decompress `data` with `codec` into at most `max` bytes (and no
-    /// more than the decompression budget has left). Hitting the cap is not
-    /// an error: the result says how decoding ended
-    /// ([`End`](crate::container::codec::End)) and holds what came before.
+    /// more than the decompression budget has left).
+    ///
+    /// Reaching `max` or the budget is not an error: the result
+    /// ([`Decompressed`](crate::plugin::Decompressed)) holds what came before
+    /// and says how decoding ended in its `end` field ([`End::Limit`](crate::plugin::End::Limit); a cut
+    /// stream is [`End::Truncated`](crate::plugin::End::Truncated), bad data [`End::Error`](crate::plugin::End::Error), a whole stream
+    /// [`End::Complete`](crate::plugin::End::Complete)). Only the file deadline is an `Err`
+    /// ([`ExtractError::Timeout`](crate::ExtractError::Timeout)). [`Context::inflate`] is stricter: there,
+    /// output past `max` is an `Err`.
+    ///
+    /// # Errors
+    ///
+    /// [`ExtractError::Timeout`](crate::ExtractError::Timeout) past the file
+    /// deadline.
+    ///
+    /// ```
+    /// # use whiff::plugin::{Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Registry, Source};
+    /// # struct Packed;
+    /// # impl Extractor for Packed {
+    /// #     fn meta(&self) -> &'static ExtractorMeta {
+    /// #         static F: [FormatSpec; 1] = [FormatSpec { id: "packed", name: "Packed", family: "packed",
+    /// #             mimes: &[], extensions: &["packed"], magic: &[Magic::prefix(b"PACK")], parent: None }];
+    /// #         static M: ExtractorMeta = ExtractorMeta { id: "test.bundle", version: 1, formats: &F, cost: Cost::Header, priority: 0 };
+    /// #         &M
+    /// #     }
+    /// // A stored (uncompressed) deflate block holding "tide-table".
+    /// fn extract(&self, _: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> {
+    ///     let block = b"\x01\x0a\x00\xf5\xfftide-table";
+    ///     let whole = cx.decompress(block, Codec::Deflate, 1024)?;
+    ///     assert!(whole.end == End::Complete && whole.data == b"tide-table");
+    ///     let capped = cx.decompress(block, Codec::Deflate, 4)?; // the cap is not an error
+    ///     assert!(capped.end == End::Limit && capped.data == b"tide");
+    ///     cx.format_set("checked", true);
+    ///     Ok(())
+    /// }
+    /// # }
+    /// # use whiff::plugin::{Codec, End};
+    /// # let engine = whiff::Engine::builder().registry(Registry::builtin().with(Packed)).build();
+    /// # let report = engine.extract_bytes(Some("a.packed"), &b"PACK"[..]);
+    /// # assert_eq!(report.format["packed"]["checked"], true);
+    /// ```
     pub fn decompress(
         &mut self,
         data: &[u8],
@@ -433,6 +509,38 @@ impl Context<'_> {
     /// ([`Privacy::Strict`](crate::engine::Privacy::Strict), the default).
     pub fn privacy_strict(&self) -> bool {
         self.options.privacy == crate::engine::Privacy::Strict
+    }
+
+    /// Whether secrets must be redacted
+    /// ([`Redaction::On`](crate::engine::Redaction::On), the default).
+    pub fn redaction_on(&self) -> bool {
+        self.options.redaction == crate::engine::Redaction::On
+    }
+
+    /// `text` with secrets (keys, tokens, credentials in URLs) replaced with
+    /// `[redacted:<kind>]`, unless [`Redaction::Off`](crate::engine::Redaction::Off).
+    /// Use it for values written to `format` or `metadata` that may hold
+    /// credentials. Borrowed when nothing changed.
+    ///
+    /// `"https://ci:hunter22@pkgs.example.org/simple"` becomes
+    /// `"[redacted:url_credentials]/simple"`.
+    pub fn redact_secrets<'t>(&self, text: &'t str) -> std::borrow::Cow<'t, str> {
+        self.redactor().secrets(text)
+    }
+
+    /// `text` with secrets redacted as [`Context::redact_secrets`] does, and
+    /// personal data (e-mail addresses, phone numbers, card numbers, IBANs)
+    /// replaced with `[redacted:<kind>]` under strict privacy. Use it for
+    /// sample values (CSV rows, schema examples, free-form attributes) that
+    /// may list personal data. Borrowed when nothing changed.
+    pub fn redact_sensitive<'t>(&self, text: &'t str) -> std::borrow::Cow<'t, str> {
+        self.redactor().sensitive(text)
+    }
+
+    /// The redaction settings in effect, for helpers that run without the
+    /// context.
+    pub(crate) fn redactor(&self) -> Redactor {
+        Redactor { secrets: self.redaction_on(), personal: self.privacy_strict() }
     }
 
     /// A mailbox (display name and e-mail address) for the report:
@@ -852,6 +960,51 @@ impl ImageWriter<'_> {
     pub fn frames(&mut self, v: u32) -> &mut Self {
         self.img.frames.get_or_insert(v);
         self
+    }
+}
+
+/// What [`Context::redact_secrets`] and [`Context::redact_sensitive`] hide,
+/// copied out of the options so parsers can redact without holding the
+/// context.
+#[derive(Debug, Clone, Copy)]
+pub(crate) struct Redactor {
+    /// Redact secrets ([`Redaction::On`](crate::engine::Redaction::On)).
+    secrets: bool,
+    /// Redact personal data ([`Privacy::Strict`](crate::engine::Privacy::Strict)).
+    personal: bool,
+}
+
+impl Default for Redactor {
+    /// The default options: secrets and personal data redacted.
+    fn default() -> Self {
+        Self { secrets: true, personal: true }
+    }
+}
+
+impl Redactor {
+    /// Whether secrets are redacted: a value under a key named like a secret
+    /// (`password`, `api_key`) is then left out.
+    pub(crate) fn hides_secrets(self) -> bool {
+        self.secrets
+    }
+
+    /// See [`Context::redact_secrets`].
+    pub(crate) fn secrets(self, text: &str) -> std::borrow::Cow<'_, str> {
+        use crate::text::sensitive::{Category, redact};
+        if self.secrets { redact(text, Category::Secret) } else { std::borrow::Cow::Borrowed(text) }
+    }
+
+    /// See [`Context::redact_sensitive`].
+    pub(crate) fn sensitive(self, text: &str) -> std::borrow::Cow<'_, str> {
+        use crate::text::sensitive::{Category, redact};
+        let secrets = self.secrets(text);
+        if !self.personal {
+            return secrets;
+        }
+        match secrets {
+            std::borrow::Cow::Borrowed(t) => redact(t, Category::Personal),
+            std::borrow::Cow::Owned(t) => std::borrow::Cow::Owned(redact(&t, Category::Personal).into_owned()),
+        }
     }
 }
 

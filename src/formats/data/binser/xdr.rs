@@ -15,8 +15,7 @@ use std::collections::BTreeMap;
 use serde_json::{Map, Value, json};
 
 use crate::plugin::{
-    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Source, TextRole, redact_sensitive,
-    truncate_chars,
+    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Source, TextRole, truncate_chars,
 };
 
 /// Extractor for XDR data.
@@ -79,7 +78,7 @@ impl Extractor for Xdr {
                 .map(|s| {
                     text.push_str(s);
                     text.push('\n');
-                    json!(truncate_chars(&redact_sensitive(s), 200))
+                    json!(truncate_chars(&cx.redact_sensitive(s), 200))
                 })
                 .collect();
             cx.emit_text(TextRole::Data, &text);

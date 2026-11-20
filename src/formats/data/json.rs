@@ -136,7 +136,7 @@ fn document(text: &str, cut: bool, name: Option<&str>, cx: &mut Context<'_>) {
     cx.format_set("valid", true);
     cx.format_set("dialect", dialect);
     describe(&value, cx);
-    let mut schema = Schema::default();
+    let mut schema = Schema::with(cx.redactor());
     schema.add(&value);
     let known = known::detect(std::slice::from_ref(&value), name, cx);
     cx.format_set("schema", known::schema_for(schema.to_json(), known.as_ref(), cx));
@@ -229,7 +229,7 @@ fn describe(v: &Value, cx: &mut Context<'_>) {
 }
 
 fn ndjson(text: &str, cut: bool, name: Option<&str>, cx: &mut Context<'_>) -> Result<(), ExtractError> {
-    let mut schema = Schema::default();
+    let mut schema = Schema::with(cx.redactor());
     let (mut records, mut invalid, mut blank) = (0u64, 0u64, 0u64);
     let mut first_error = None;
     let mut sample: Vec<Value> = Vec::new();

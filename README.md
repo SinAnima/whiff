@@ -8,8 +8,8 @@ What every report contains:
 
 - **Universal sections for any file:** identification (format, MIME, how it was detected, the wrapper of a partial download or backup copy), system facts (size, times, owner, permissions, extended attributes such as macOS quarantine, "Where from" and Finder tags, Windows `Zone.Identifier`), hashes, entropy and risk signals.
 - **Text analytics for anything readable:** `wc` statistics, language, keywords and their frequency, an excerpt, and (profiles `full` / `llm`) a summary.
-- **Format details** from 279 in-house extractors: documents, e-mail, images with EXIF / XMP / IPTC / ICC reconciled, audio, video and subtitles, archives and packages (entries listed, never extracted to disk), executables and bytecode, certificates and keys (never the key itself), databases, Apple formats, serialisations, fonts, source code, package manifests and lockfiles, and, behind cargo features, forensic artefacts and disk images, columnar data and ML models, scientific and medical files, geodata, 3D and CAD, and games.
-- **Privacy by default:** user names in paths, personal identifiers and account numbers are masked unless you pass `--privacy off`; secrets are always redacted.
+- **Format details** from 286 in-house extractors: documents, e-mail, images with EXIF / XMP / IPTC / ICC reconciled, audio, video and subtitles, archives and packages (entries listed, never extracted to disk), executables and bytecode, certificates and keys (never the key itself), databases, Apple formats, serialisations, fonts, source code, package manifests and lockfiles, and, behind cargo features, forensic artefacts and disk images, columnar data and ML models, scientific and medical files, geodata, 3D and CAD, and games.
+- **Privacy by default:** personal data (user names in paths, e-mail addresses, phone and account numbers) is counted and masked unless you pass `--privacy off`, and secrets (keys, tokens, passwords) are redacted unless you pass `--redaction off`. Both are counted either way.
 
 [`File_FORMATS.md`](https://github.com/SinAnima/whiff/blob/main/File_FORMATS.md) lists every format whiff reads with every feature on, [`docs/metadata-extracted.md`](https://github.com/SinAnima/whiff/blob/main/docs/metadata-extracted.md) the 1008 catalogue formats and what is extracted from each, and [`docs/known-gaps.md`](https://github.com/SinAnima/whiff/blob/main/docs/known-gaps.md) what was deliberately left out. The [CHANGELOG](https://github.com/SinAnima/whiff/blob/main/CHANGELOG.md) has the details of each release.
 
@@ -34,10 +34,30 @@ whiff notes.md                        # one report (pretty-printed on a terminal
 whiff ~/projects/app                  # walks a directory (honours .gitignore); one JSON report per line
 curl -s https://example.org/ | whiff -    # stdin: detection works from the content alone
 whiff --profile llm README.md         # compact, token-budgeted view for language models
-whiff --profile minimal --hash none disk.iso   # fast: stat and detection only, no hashing
+whiff --profile minimal disk.iso      # fast: stat, detection and header extractors; no hashing or text analysis
 whiff --only code.manifest package.json        # run only some extractors
 whiff formats                         # formats this build extracts
 whiff schema                          # JSON Schema of the report (whiff/1)
+```
+
+Options (defaults in brackets; the limits come from the profile, here `standard`):
+
+```text
+-p, --profile <minimal|standard|full|llm>   how much work per file [standard]
+    --max-tokens <N>        token budget of the LLM view [800]
+    --jsonl / --pretty      one compact report per line / indented JSON [jsonl for several files, pretty for one on a terminal]
+    --max-depth <N>         recursion depth into embedded files [1]
+    --timeout <DURATION>    deadline per file: 30s, 500ms, 2m or none [30s]
+    --max-bytes <SIZE>      bytes extractors may read per file [256MiB]
+    --hash <LIST>           sha256, blake3, a comma list, or none [sha256,blake3]
+    --only <ID> / --skip <ID>   run only / never run these extractors or groups (repeatable) [all]
+    --format <ID>           force a format id instead of detecting [detect]
+    --provenance            record which source set each normalised field [off]
+    --privacy <strict|off>  personal data masked, or listed as found [strict]
+    --redaction <on|off>    secrets redacted, or left as found [on]
+    --hidden / --no-ignore  walk hidden files / ignore .gitignore when walking directories [off]
+-j, --jobs <N>              worker threads [number of CPUs]
+    formats --json          the format list as JSON
 ```
 
 `whiff --profile llm guide.md` on a Markdown file with YAML front matter prints (abridged):
@@ -135,13 +155,20 @@ let compact = report.llm_view(800); // ~800 tokens
 whiff = { version = "0.8", default-features = false, features = ["common"] }
 ```
 
-The stable library API is the crate root (`Engine`, `EngineBuilder`, `Options`, `Limits`, `Hashes`, `Privacy`, `Profile`, `Registry`, the risk vocabulary), `whiff::report` (the report types), `whiff::plugin` (writing and registering extractors, block decoders and analyzers) and `whiff::io` (sources and byte readers). Report and option structs and the enums that can grow are `#[non_exhaustive]`: read their fields, set options through `Engine::builder()` or by changing the fields of `Options::default()` / `Limits::default()`, and match their enums with a wildcard arm.
+The stable library API is the crate root (`Engine`, `EngineBuilder`, `Options`, `Limits`, `Hashes`, `Privacy`, `Redaction`, `Profile`, `Registry`, the risk vocabulary), `whiff::report` (the report types), `whiff::plugin` (writing and registering extractors, block decoders and analyzers) and `whiff::io` (sources and byte readers). Report and option structs and the enums that can grow are `#[non_exhaustive]`: read their fields, set options through `Engine::builder()` or by changing the fields of `Options::default()` / `Limits::default()`, and match their enums with a wildcard arm.
 
 ## The report
 
-Every report has the same top-level sections: `whiff`, `source`, `identification`, `system`, `temporal`, `security`, `rights`, `physical`, `integrity`, `content`, `metadata` (raw metadata per standard: front matter, HTML meta, OpenGraph, JSON-LD, EXIF, XMP, IPTC, ICC, Photoshop resources), `format` (technical details per format), `embedded` (children of containers) and `diagnostics`. Empty fields are omitted; sections are always present. The schema is in [`docs/schema/whiff-1.schema.json`](https://github.com/SinAnima/whiff/blob/main/docs/schema/whiff-1.schema.json). Within `whiff/1` the report only grows: fields, enum values and sections may be added, but nothing the 1.0 schema (`docs/schema/whiff-1-baseline.schema.json`) promises is removed, renamed or retyped; that would be `whiff/2`. The free-form maps are outside that promise: the keys under `format.<id>` and `metadata.<standard>` are each extractor's own, may change in a minor release, and are versioned by the extractor's `version` in `diagnostics.extractors`.
+Every report has the same top-level sections: `whiff`, `source`, `identification`, `system`, `temporal`, `security`, `rights`, `physical`, `integrity`, `content`, `metadata` (raw metadata per standard: front matter, HTML meta, OpenGraph, JSON-LD, EXIF, XMP, IPTC, ICC, Photoshop resources), `format` (technical details per format), `embedded` (children of containers) and `diagnostics`. Empty fields are omitted; every section is always present except `embedded`, which is omitted when there are no children. The schema is in [`docs/schema/whiff-1.schema.json`](https://github.com/SinAnima/whiff/blob/main/docs/schema/whiff-1.schema.json). Within `whiff/1` the report only grows: fields, enum values and sections may be added, but nothing the 1.0 schema (`docs/schema/whiff-1-baseline.schema.json`) promises is removed, renamed or retyped; that would be `whiff/2`. The free-form maps are outside that promise: the keys under `format.<id>` and `metadata.<standard>` are each extractor's own, may change in a minor release, and are versioned by the extractor's `version` in `diagnostics.extractors`.
 
-Secrets found in content (keys, tokens, credentials in URLs) are counted under `security.secrets` and redacted from the report; personal data (e-mail addresses, phone numbers, card numbers, IBANs) is counted under `security.personal_data` and never listed in derived text.
+Secrets (keys, tokens, passwords, credentials in URLs) are counted under `security.secrets` and personal data (e-mail addresses, phone numbers, card numbers, IBANs) under `security.personal_data`, whatever the options. Two switches decide what is listed:
+
+| | `--redaction on` (default) | `--redaction off` |
+|---|---|---|
+| **`--privacy strict`** (default) | personal data masked, secrets redacted | personal data masked, secrets as found |
+| **`--privacy off`** | personal data as found, secrets redacted | everything as found |
+
+Masked personal data keeps only the domain of an e-mail address, and is replaced with `[redacted:<kind>]` in the excerpt, summary, keywords and tags; names are kept. Redacted secrets read `[redacted:<kind>]` everywhere in the report. Key material from key files is never copied into a report.
 
 Untrusted input is bounded: reads, decompression and time are budgeted per file, panics in extractors are contained, deeply nested input is refused before recursive parsers see it, and an extractor that ignores its deadline is abandoned by a watchdog.
 
@@ -149,14 +176,14 @@ Untrusted input is bounded: reads, decompression and time are budgeted per file,
 
 | Feature | Default | Adds |
 |---|---|---|
-| `common` | yes | text, logs, diffs, Markdown, HTML, XML, feeds, JSON, YAML, TOML, INI, CSV, SQL, source code, package manifests, notebooks, Dockerfiles, Makefiles, raster / vector / layered images, diagrams, camera raw, GPU textures, metadata sidecars, DjVu, whole-slide images, documents (PDF, Office, OpenDocument, RTF, ebooks, PostScript, BibTeX), e-mail, calendars and contacts, audio, video, subtitles, playlists, scores, archives and compressed files (squashfs too), packages, executables (ELF, PE / .NET, Mach-O, WebAssembly), bytecode (Java, DEX, Python, .NET, Lua, BEAM and more), certificates, keys and signatures (X.509, CMS, PKCS#12, SSH, OpenPGP, key stores, JOSE), databases (SQLite, DBF, Access, DuckDB, LMDB, RocksDB, Redis, pg_dump and more), Apple formats (plists, profiles, `.strings`, `.DS_Store`, aliases, asset catalogs, Xcode projects), binary serialisations (MessagePack, CBOR, BSON, Avro, protobuf, pickle, Java serialization and more), fonts (TrueType, OpenType, WOFF, Type 1, bitmap fonts, font sources); more in later releases |
+| `common` | yes | text, logs, diffs, Markdown, HTML, XML, feeds, JSON, YAML, TOML, INI, CSV, SQL, source code, package manifests, notebooks, Dockerfiles, Makefiles, raster / vector / layered images, diagrams, camera raw, GPU textures, metadata sidecars, DjVu, whole-slide images, documents (PDF, Office, OpenDocument, RTF, ebooks, PostScript, BibTeX), e-mail, calendars and contacts, audio, video, subtitles, playlists, scores, archives and compressed files (squashfs too), packages, executables (ELF, PE / .NET, Mach-O, WebAssembly), bytecode (Java, DEX, Python, .NET, Lua, BEAM and more), certificates, keys and signatures (X.509, CMS, PKCS#12, SSH, OpenPGP, key stores, JOSE), databases (SQLite, DBF, Access, DuckDB, LMDB, RocksDB, Redis, pg_dump and more), Apple formats (plists, profiles, `.strings`, `.DS_Store`, aliases, asset catalogs, Xcode projects), binary serialisations (MessagePack, CBOR, BSON, Avro, protobuf, pickle, Java serialization and more), fonts (TrueType, OpenType, WOFF, Type 1, bitmap fonts, font sources) |
 | `cli` | yes | the `whiff` binary |
 | `forensics` | no | disk images: partition tables, file systems, VM disks, evidence files, firmware; forensic artefacts: packet captures, event logs, registry hives, shortcuts, jump lists, Prefetch, dumps, `$MFT`, login records, journals, IDS alerts and rules, HAR, crash reports, Zeek logs (includes `common`) |
 | `data` | no | columnar data and models: Parquet, GeoParquet, Arrow, Feather, ORC, Lance, Vortex, F3, Delta Lake, Iceberg, TFRecord, R fst / qs, safetensors, GGUF, ONNX, PyTorch, Keras, TensorFlow Lite, SavedModel, Core ML (includes `common`) |
 | `science` | no | scientific and medical files: HDF5 (NetCDF-4, AnnData, Loom, MATLAB 7.3), NetCDF, FITS, ASDF, Zarr, GRIB, ROOT, NumPy, MATLAB, SPSS, Stata, SAS, R data, genomics (FASTA, FASTQ, SAM / BAM / CRAM, VCF / BCF, BED, GFF), chemistry (PDB, mmCIF, MOL / SDF), instruments (mzML, EDF, TDMS, VCD, OME-TIFF), simulation and EDA text formats, DICOM, NIfTI, NRRD, HL7, FHIR (includes `common`) |
 | `geo` | no | geodata: GeoJSON, TopoJSON, KML / KMZ, GPX, GML, shapefiles, File Geodatabase tables, FlatGeobuf, MapInfo, OpenStreetMap, S-57, WKT / WKB, GeoTIFF / COG, DTED, ASCII grids, LAS / LAZ / COPC, E57, PMTiles, vector and 3D tiles, FIT, TCX, IGC, NMEA, map styles and QGIS projects (includes `common`) |
 | `cad` | no | 3D and CAD: glTF / GLB, VRM, OBJ, STL, PLY, OFF, AMF, 3MF, COLLADA, X3D, VRML, Draco, FBX, Blender, USD, 3DS, MagicaVoxel, OpenVDB, LDraw, BVH, C3D, IES, EULUMDAT, G-code, DXF, DGN, STEP, IFC, IGES, Gerber, Excellon, KiCad, GDSII, OASIS, OpenSCAD (includes `common`) |
-| `games` | no | games: cartridge ROMs, Switch and 3DS packages, chiptunes, WAD / PAK / BSP / VPK, Bethesda, RPG Maker and Ren'Py archives, Godot and Unreal packs, Unity and Unreal assets, GameMaker and Godot projects, Minecraft, Tiled, Aseprite, Steam manifests, interactive fiction, emulator saves (includes `common`; unreleased) |
+| `games` | no | games: cartridge ROMs, Switch and 3DS packages, chiptunes, WAD / PAK / BSP / VPK, Bethesda, RPG Maker and Ren'Py archives, Godot and Unreal packs, Unity and Unreal assets, GameMaker and Godot projects, Minecraft, Tiled, Aseprite, Steam manifests, interactive fiction, emulator saves (includes `common`) |
 | `full` | no | all collections |
 
 The minimum supported Rust version is 1.89.

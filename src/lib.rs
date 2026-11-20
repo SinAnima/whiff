@@ -22,7 +22,7 @@
 pub(crate) mod container;
 #[cfg_attr(not(feature = "full"), allow(dead_code, unused_imports))]
 pub(crate) mod detect;
-pub mod engine;
+pub(crate) mod engine;
 mod error;
 pub(crate) mod formats;
 pub mod io;
@@ -33,7 +33,7 @@ pub mod report;
 #[cfg_attr(not(feature = "full"), allow(dead_code, unused_imports))]
 pub(crate) mod text;
 
-pub use engine::{Engine, EngineBuilder, Hashes, Limits, Options, Privacy, Profile};
+pub use engine::{Engine, EngineBuilder, Hashes, Limits, Options, Privacy, Profile, Redaction};
 pub use error::{Error, ExtractError};
 pub use plugin::Registry;
 pub use report::{RISK_KINDS, Report, Risk, RiskCategory, RiskKind, Severity};
@@ -41,7 +41,17 @@ pub use report::{RISK_KINDS, Report, Risk, RiskCategory, RiskKind, Severity};
 /// The report schema identifier written to `whiff.schema`.
 pub const SCHEMA: &str = "whiff/1";
 
-/// Cargo features this build of whiff was compiled with.
+/// The format collections this build was compiled with: the Cargo
+/// features that add formats (`common`, `geo`, `science`, `data`, `cad`,
+/// `forensics`, `games`), in that order. Other features (`cli`, and `full`,
+/// which only turns the collections on) are not listed.
+///
+/// ```
+/// // A default build has `common`.
+/// # #[cfg(feature = "common")]
+/// assert!(whiff::enabled_features().contains(&"common"));
+/// assert!(!whiff::enabled_features().contains(&"full"));
+/// ```
 pub fn enabled_features() -> Vec<&'static str> {
     let mut f = Vec::new();
     for (name, on) in [

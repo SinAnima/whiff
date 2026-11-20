@@ -7,7 +7,7 @@ use std::collections::BTreeMap;
 use serde_json::{Value, json};
 
 use super::{Package, bracketed, deps, parse_json, parse_toml, put_deps, put_pairs, quoted, s};
-use crate::plugin::{Context, ExtractError, redact_secrets};
+use crate::plugin::{Context, ExtractError};
 
 pub(super) fn extract(id: &str, text: &str, cx: &mut Context<'_>) -> Result<(), ExtractError> {
     match id {
@@ -28,7 +28,7 @@ fn pipfile(v: &Value, cx: &mut Context<'_>) {
         .into_iter()
         .flatten()
         .filter_map(|s| s.get("url")?.as_str())
-        .map(|u| redact_secrets(u).into_owned())
+        .map(|u| cx.redact_secrets(u).into_owned())
         .collect();
     for url in &sources {
         if !url.contains("pypi.org") && !url.contains("pythonhosted.org") {

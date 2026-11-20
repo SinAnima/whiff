@@ -96,7 +96,8 @@ impl<'a> ByteReader<'a> {
         self.data.get(self.pos..self.pos.checked_add(n)?)
     }
 
-    /// Consume `expected` or fail with [`ExtractError::Malformed`].
+    /// Consume `expected`. Fails with [`ExtractError::Truncated`] when fewer
+    /// bytes are left, and with [`ExtractError::Malformed`] when they differ.
     pub fn tag(&mut self, expected: &[u8]) -> Result<(), ExtractError> {
         let got = self.bytes(expected.len())?;
         if got == expected {

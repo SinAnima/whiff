@@ -23,7 +23,7 @@ use serde_json::{Map, Value};
 use super::unix_time;
 use crate::plugin::{
     Codec, Context, Cost, End, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Probe, Sniff, Source, codec,
-    redact_sensitive, truncate_chars,
+    truncate_chars,
 };
 
 /// Extractor for database engine files read from their headers.
@@ -458,7 +458,7 @@ fn leveldb_key(cx: &Context<'_>, internal: &[u8]) -> String {
             hex
         }),
     };
-    if cx.privacy_strict() { redact_sensitive(&shown).into_owned() } else { shown }
+    if cx.privacy_strict() { cx.redact_sensitive(&shown).into_owned() } else { shown }
 }
 
 /// A LevelDB table past its magic: the footer's metaindex and index

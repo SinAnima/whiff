@@ -23,7 +23,7 @@ use serde_json::{Map, Value, json};
 // Readers shared with the archive and bytecode extractors.
 pub(crate) use super::archive::unix_time;
 pub(crate) use super::bytecode::cli;
-use crate::plugin::{Context, ExtractError, Source, redact_secrets};
+use crate::plugin::{Context, ExtractError, Redactor, Source};
 
 /// Sections listed in the report (the counts cover all of them).
 const MAX_SECTIONS: usize = 96;
@@ -210,7 +210,7 @@ pub(crate) fn scan_toolchain(src: &mut dyn Source, cx: &mut Context<'_>) -> Resu
             0 => {
                 if !t.facts.contains_key("go") {
                     let go = src.read_vec(off, usize::try_from((src.len() - off).min(1 << 20)).unwrap_or(0))?;
-                    if let Some(g) = go_buildinfo(&go) {
+                    if let Some(g) = go_buildinfo(&go, cx.redactor()) {
                         t.facts.insert("go".into(), Value::Object(g));
                     }
                 }
@@ -308,7 +308,7 @@ const GO_BUILD_KEYS: &[&str] = &[
 
 /// Go build information (Go 1.18+ inline format): toolchain version, main
 /// package and module, dependencies, build settings.
-pub(crate) fn go_buildinfo(b: &[u8]) -> Option<Map<String, Value>> {
+pub(crate) fn go_buildinfo(b: &[u8], redactor: Redactor) -> Option<Map<String, Value>> {
     let flags = *b.get(15)?;
     let mut out = Map::new();
     if flags & 2 == 0 {
@@ -353,7 +353,7 @@ pub(crate) fn go_buildinfo(b: &[u8]) -> Option<Map<String, Value>> {
                 if let Some((k, v)) = kv.split_once('=')
                     && GO_BUILD_KEYS.contains(&k)
                 {
-                    build.insert(k.into(), redact_secrets(v).into_owned().into());
+                    build.insert(k.into(), redactor.secrets(v).into_owned().into());
                 }
             }
             _ => {}
@@ -481,6 +481,7 @@ pub(crate) fn dwarf_unit(
     e: Endian,
     strings: &mut dyn FnMut(DebugStr, u64) -> Option<String>,
     offsets: &mut dyn FnMut(u64, bool) -> Option<u64>,
+    r: Redactor,
 ) -> Option<Map<String, Value>> {
     enum V {
         Str(DebugStr, u64),
@@ -627,7 +628,7 @@ pub(crate) fn dwarf_unit(
             V::Num(_) => None,
         };
         if let Some(t) = text.filter(|t| !t.is_empty()) {
-            out.insert(key.into(), redact_secrets(&t).into_owned().into());
+            out.insert(key.into(), r.secrets(&t).into_owned().into());
         }
     }
     Some(out)
@@ -639,6 +640,7 @@ pub(crate) fn dwarf_summary(
     src: &mut dyn Source,
     e: Endian,
     find: &dyn Fn(&str) -> Option<(u64, u64)>,
+    r: Redactor,
 ) -> Option<Map<String, Value>> {
     let (io, isz) = find(".debug_info")?;
     let (ao, asz) = find(".debug_abbrev")?;
@@ -669,7 +671,7 @@ pub(crate) fn dwarf_summary(
         let b = src.borrow_mut().read_vec(base + at, usize::try_from(n).ok()?).ok()?;
         e.word(&b, 0, wide)
     };
-    dwarf_unit(&info, &abbrev, e, &mut strings, &mut offsets)
+    dwarf_unit(&info, &abbrev, e, &mut strings, &mut offsets, r)
 }
 
 fn dwarf_language(n: u64) -> Option<&'static str> {
@@ -719,7 +721,7 @@ mod tests {
         let n = u16::try_from(modinfo.len()).unwrap();
         b.extend([u8::try_from(n & 0x7f).unwrap() | 0x80, u8::try_from(n >> 7).unwrap()]);
         b.extend_from_slice(&modinfo);
-        let g = go_buildinfo(&b).unwrap();
+        let g = go_buildinfo(&b, Redactor::default()).unwrap();
         assert_eq!(g["version"], "go1.24.6");
         assert_eq!(g["path"], "example.org/saltmere/tides");
         assert_eq!(g["module_version"], "v1.2.0");
@@ -728,7 +730,7 @@ mod tests {
         // Pointer format (Go 1.17 and older).
         let mut old = b"\xff Go buildinf:\x08\x00".to_vec();
         old.resize(32, 0);
-        assert_eq!(go_buildinfo(&old).unwrap()["format"], "pointer");
+        assert_eq!(go_buildinfo(&old, Redactor::default()).unwrap()["format"], "pointer");
     }
 
     #[test]

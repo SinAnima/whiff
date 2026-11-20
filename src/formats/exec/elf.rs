@@ -14,9 +14,7 @@
 use serde_json::{Map, Value, json};
 
 use super::{Endian, Section, addr, c_string, dwarf_summary, hex, names, report_sections, scan_toolchain};
-use crate::plugin::{
-    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Probe, Sniff, Source, redact_secrets,
-};
+use crate::plugin::{Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Probe, Sniff, Source};
 
 /// Extractor for ELF files.
 pub struct Elf;
@@ -477,7 +475,7 @@ impl Extractor for Elf {
                 }
                 shdrs.iter().find(|s| s.name == n).map(|s| (s.offset, s.size))
             };
-            if let Some(unit) = dwarf_summary(src, hd.e, &find) {
+            if let Some(unit) = dwarf_summary(src, hd.e, &find, cx.redactor()) {
                 d.extend(unit);
             }
             cx.format_set("debug", Value::Object(d));
@@ -701,7 +699,7 @@ fn core(src: &mut dyn Source, cx: &mut Context<'_>, h: &Header, phdrs: &[Phdr]) 
                     if let Some(args) = desc.get(fname_at + 16..fname_at + 96) {
                         let a = c_string(args, 80);
                         if !a.is_empty() {
-                            cx.format_set("command_line", redact_secrets(&a).into_owned());
+                            cx.format_set("command_line", cx.redact_secrets(&a).into_owned());
                         }
                     }
                 }

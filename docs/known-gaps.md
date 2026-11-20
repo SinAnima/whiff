@@ -32,7 +32,7 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   package and how, but does not check the signature or the certificate
   chain.
 - **Not read:** Solaris SVR4 packages, Windows update packages (`.msu`),
-  Unity packages, Homebrew bottles.
+  Homebrew bottles. (Unity packages are read since 0.8.0; see Unity below.)
 
 ## Disk images (0.5.1, feature `forensics`)
 
@@ -45,7 +45,7 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   but not listed. The metadata partitions of UDF 2.50 and later are read
   but untested on a real disc; revisions 1.02, 1.50 and 2.01 are checked.
 - **Evidence files:** EnCase `.Ex01` is not read, and of a split E01 set
-  only the first segment is (the acquired disk is cut short there).
+  only the first segment is read (the acquired disk is cut short there).
 - **Not read:** Nero `.nrg`, Alcohol `.mds` / `.mdf`, Amstrad CPC `.dsk`,
   Atari ST specifics, sparse bundles (a folder, not a file), Android
   Verified Boot footers, UEFI firmware volumes, Flatpak `.flatpak`
@@ -76,11 +76,11 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   compiler filter and `debuggable` flag from its key-value store; an ART
   image gives its version only (the header after it changes with every
   version). Neither the compiled methods nor the image's objects are read.
-- **Not read:** PDB files, split DWARF (`.dwo`, `.dwp`) and dSYM bundles
-  as folders, Windows minidumps, Linux kernel images,
-  Windows catalogs (`.cat`), Rust `rlib` / `rmeta`, AIX XCOFF, compiled
-  AppleScript, Windows script hosts, device trees, FPGA bitstreams, and
-  the WebAssembly component model beyond its header.
+- **Not read:** dSYM bundles as folders, and the WebAssembly component
+  model beyond its header. PDB files, split DWARF, minidumps, Linux kernel
+  images, Windows catalogs, Rust `rlib` / `rmeta`, AIX XCOFF, compiled
+  AppleScript, Windows script files, device trees and Xilinx bitstreams
+  are read since 0.8.0, to the depths given in the 0.8.0 sections below.
 
 ## Bytecode (0.6.0)
 
@@ -101,9 +101,10 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   format, which is not read.
 - **YARV:** the Ruby version, byte order and word size; the source path
   and method names are in the object list, which is not read.
-- **Not read:** Hermes, V8 snapshots and QuickJS bytecode, Smalltalk /
-  Pharo images, Haskell `.hi` interfaces, Flash ActionScript ABC, and
-  Guile `.go` files (ELF files, described by the executable extractor).
+- **Not read:** V8 snapshots and QuickJS bytecode, Haskell `.hi`
+  interfaces, and Guile `.go` files (ELF files, described by the
+  executable extractor). Hermes bytecode, Smalltalk / Pharo images and
+  Flash ActionScript ABC are read since 0.8.0 (see below).
 
 ## Crypto (0.6.0)
 
@@ -122,8 +123,8 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   whiff counts it from the subkey's, as RFC 9580 says.
 - **JCEKS:** a secret-key entry is a serialised Java object of unknown
   length, so entries after the first one are not read.
-- **Not read:** BKS / UBER (Bouncy Castle) key stores, PKCS#11 / TPM key
-  blobs, macOS keychains, 1Password exports, VeraCrypt and BitLocker
+- **Not read:** BKS / UBER (Bouncy Castle) key stores, PKCS#11 key
+  blobs (TPM key files are read since 0.8.0; see TPM below), macOS keychains, 1Password exports, VeraCrypt and BitLocker
   headers (LUKS is read by the disk extractors), S/MIME messages beyond
   their CMS part (see e-mail) and `.mobileprovision` (the Apple part of
   this stage).
@@ -155,9 +156,10 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   database's key counts (later ones follow its values); Berkeley DB key
   counts are only there after `db_stat`; MySQL 8 `.ibd` SDI (the table
   definition inside the tablespace) is not decoded.
-- **Not read:** SQL Server MDF / LDF and `.bak`, Firebird, Realm, Kafka
-  segments, Prometheus blocks, Windows ESE databases (the forensic part of
-  this stage), LevelDB / RocksDB logs and MANIFEST files, Redis AOF.
+- **Not read:** SQL Server data files (`.mdf`, `.ldf`), LevelDB / RocksDB
+  logs and MANIFEST files, Redis AOF. SQL Server backups, Firebird, Realm,
+  Kafka segments and Prometheus blocks are read since 0.8.0 (headers; see
+  below), Windows ESE databases by the forensic extractors.
 
 ## Forensic artefacts (0.6.0, feature `forensics`)
 
@@ -182,10 +184,11 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 - **Captures:** the protocol histogram needs the `full` profile and reads
   128 bytes per packet (Ethernet, Linux cooked, raw IP); no reassembly,
   no endpoints.
-- **Not read:** macOS unified logs (`tracev3`) and ASL,
-  NetFlow / IPFIX, browser caches, `$UsnJrnl`, `$LogFile`, SRUM and other
+- **Not read:** `$UsnJrnl`, `$LogFile`, SRUM and other
   ESE tables (the header only), Suricata `eve.json` (read as JSON lines),
-  legacy `.crash` text reports and hibernation file contents.
+  legacy `.crash` text reports and hibernation file contents. Unified
+  logs, ASL, IPFIX and Chrome and Firefox cache entries are read since
+  0.8.0 (see below).
 - **Fixtures:** EVTX, Prefetch, jump lists, a hive, two shortcuts and the
   minidumps are MIT-licensed samples (see their `SOURCE.md`); `$I`, EVT,
   ESE, crash dump, LiME, hibernation, unified2 and FSEvents files are
@@ -208,7 +211,7 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 - **Asset catalogs:** renditions are counted by type; image sizes, scales
   and idioms per asset are not read. Other BOM stores (package receipts)
   give their variable names only.
-- **Not read:** `.watchface` bundles, Siri and other application plists
+- **Not read:** Siri and other application plists
   beyond their generic schema, `.nib` / `.storyboardc`, `.xcuserstate`,
   `.xcscheme`.
 - **Fixtures:** the alias, bookmark, AppleSingle and Godot binary files are
@@ -264,11 +267,12 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 
 ## Columnar data and models (0.7.0, feature `data`)
 
-- **Not read:** Apache Hudi, Kudu and CarbonData tables, Hadoop
-  SequenceFile and RCFile, MXNet RecordIO, legacy GGML / GGMF / GGJT
-  containers, Core ML packages (`.mlpackage` folders: their
-  `model.mlmodel` is read) and ML Program weights, LanceDB / Chroma
-  stores as such (Chroma is a SQLite database; Lance data files are read).
+- **Not read:** Kudu and CarbonData tables, MXNet RecordIO (TFRecord is
+  read), legacy GGML / GGMF / GGJT containers, Core ML packages
+  (`.mlpackage` folders: their `model.mlmodel` is read) and ML Program
+  weights, LanceDB / Chroma stores as such (Chroma is a SQLite database;
+  Lance data files are read). Hudi tables, Hadoop SequenceFile and RCFile
+  are read since 0.8.0 (see below).
 - **Partly read:** Vortex files report their version only (the layout and
   type FlatBuffers are not decoded); Lance 0.x files their version only;
   R `qs` / `qs2` files their header (the serialised object is not
@@ -296,8 +300,8 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
   data blocks; attribute and header values are read.
 - **HDF5:** objects past the per-file limits, huge fractal-heap objects
   and filtered heaps are not read (counted in a warning); external and
-  virtual dataset sources are not opened; HDF4 / HDF-EOS2 files
-  are not read.
+  virtual dataset sources are not opened. HDF4 files are read by their
+  own extractor since 0.8.0 (see below).
 - **Formats read from their metadata only:** CRAM records (container
   headers, nothing decompressed but the header), GRIB data sections,
   ROOT objects (keys and classes, not trees or histograms), Zarr chunks,
@@ -338,8 +342,8 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 
 ## Geodata (0.7.0, feature `geo`)
 
-- **Not read:** MrSID and ECW rasters (proprietary; no writer to make
-  fixtures with), SRTM `.hgt` tiles (fixed sizes above the fixture
+- **Not read:** ECW rasters (proprietary; no writer to make fixtures
+  with; MrSID is identified, see below), SRTM `.hgt` tiles (fixed sizes above the fixture
   limit), Esri I3S scene layer packages (`.slpk`), ArcGIS Pro projects
   (`.aprx`) and map documents (`.mxd`), ArcInfo export (`.e00`) and
   binary grids (`.adf`), S-101 (ISO 8211 like S-57, not yet told apart),
@@ -366,13 +370,13 @@ reader (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 
 ## 3D and CAD (0.7.0, feature `cad`)
 
-- **Not read:** AutoCAD DWG and Alembic (no free writer in the fixture
-  toolchain), Maya, Cinema 4D, Houdini, Modo, SketchUp, SolidWorks,
-  Inventor, Creo, CATIA, NX, Revit, JT, PRC / U3D, DWF / DWFx,
-  Parasolid and ACIS (proprietary), Substance and MaterialX, PCD / PTS
+- **Not read:** Cinema 4D, Houdini, Modo, SolidWorks, Inventor, Creo,
+  CATIA and NX (proprietary), MaterialX, PCD / PTS
   point clouds, Gaussian splats, MikuMikuDance and Valve models, Altium,
   Eagle and FreeCAD documents. Unreal and Unity assets belong to the games
-  collection.
+  collection. AutoCAD DWG, Alembic, Maya, SketchUp, Revit, JT, PRC / U3D,
+  DWF, Parasolid and ACIS files are read since 0.8.0, mostly their headers
+  (see below).
 - **Geometry:** meshes are counted and bounded, not validated or
   decoded beyond what the counts need; glTF bounds are mesh space (node
   transforms not applied); FBX, X3D and Blender report objects and

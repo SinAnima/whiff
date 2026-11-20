@@ -10,9 +10,7 @@ use std::collections::BTreeMap;
 
 use serde_json::{Map, Value};
 
-use crate::plugin::{
-    Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Source, redact_sensitive, truncate_chars,
-};
+use crate::plugin::{Context, Cost, ExtractError, Extractor, ExtractorMeta, FormatSpec, Magic, Source, truncate_chars};
 
 /// Extractor for ASDF files.
 pub struct Asdf;
@@ -88,7 +86,8 @@ fn tree(cx: &mut Context<'_>, yaml: &str) {
                         if let Some((k, v)) = pair.split_once(':') {
                             let v = v.trim().trim_matches(['\'', '"']);
                             if matches!(k.trim(), "name" | "version" | "author" | "homepage") && !v.is_empty() {
-                                lib.insert(k.trim().into(), Value::String(truncate_chars(&redact_sensitive(v), 200)));
+                                let v = truncate_chars(&cx.redact_sensitive(v), 200);
+                                lib.insert(k.trim().into(), Value::String(v));
                             }
                         }
                     }
@@ -116,7 +115,7 @@ fn tree(cx: &mut Context<'_>, yaml: &str) {
         {
             let v = v.trim().trim_matches(['\'', '"']);
             if matches!(k.trim(), "name" | "version" | "author" | "homepage") && !v.is_empty() {
-                lib.insert(k.trim().into(), Value::String(truncate_chars(&redact_sensitive(v), 200)));
+                lib.insert(k.trim().into(), Value::String(truncate_chars(&cx.redact_sensitive(v), 200)));
             }
         }
         if let Some(name) = &current {

@@ -398,7 +398,7 @@ fn thin(src: &mut dyn Source, cx: &mut Context<'_>) -> Result<(), ExtractError> 
         };
         let mut d = Map::new();
         d.insert("dwarf".into(), true.into());
-        if let Some(unit) = dwarf_summary(src, e, &find) {
+        if let Some(unit) = dwarf_summary(src, e, &find, cx.redactor()) {
             d.extend(unit);
         }
         cx.format_set("debug", Value::Object(d));

@@ -155,7 +155,30 @@ impl Budget {
         self.inner.decompressed_limit.saturating_sub(self.inner.decompressed.load(Ordering::Relaxed))
     }
 
-    /// Fail with [`SourceError::Timeout`] once the deadline has passed.
+    /// Check the deadline: the file's, or the running extractor's when that
+    /// is earlier. Reads and charges call it; call it yourself in a loop that
+    /// does not read.
+    ///
+    /// # Errors
+    ///
+    /// [`SourceError::Timeout`] once the deadline has passed (and `"timeout"`
+    /// is recorded in [`limits_hit`](Self::limits_hit)). Always `Ok` without a
+    /// deadline, and on `wasm32-unknown-unknown`, which has no clock.
+    ///
+    /// ```
+    /// use std::time::Duration;
+    /// use whiff::io::{Budget, SourceError};
+    ///
+    /// assert_eq!(Budget::new(1024, 1024, Some(Duration::from_secs(60))).check_deadline(), Ok(()));
+    /// assert_eq!(Budget::unlimited().check_deadline(), Ok(()));
+    ///
+    /// let passed = Budget::new(1024, 1024, Some(Duration::ZERO));
+    /// # #[cfg(not(all(target_arch = "wasm32", target_os = "unknown")))]
+    /// # {
+    /// assert_eq!(passed.check_deadline(), Err(SourceError::Timeout));
+    /// assert_eq!(passed.limits_hit(), ["timeout"]);
+    /// # }
+    /// ```
     pub fn check_deadline(&self) -> Result<(), SourceError> {
         let deadline = *self.inner.current_deadline.lock().unwrap_or_else(PoisonError::into_inner);
         if let (Some(d), Some(n)) = (deadline, (self.inner.now)())
