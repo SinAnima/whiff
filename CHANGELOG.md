@@ -6,6 +6,8 @@ keep the schema version.
 
 ## Unreleased
 
+## 0.9.0 — 2026-11-20
+
 Documentation and API cleanup from the 0.8.0 review, and a second privacy
 switch. One breaking change in the library: `whiff::engine` is private.
 
