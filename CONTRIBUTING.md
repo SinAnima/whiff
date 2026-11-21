@@ -60,7 +60,7 @@ cargo fmt
 scripts/ci.sh
 ```
 
-`scripts/ci.sh` runs the same checks as CI: fmt, clippy, tests, docs, a coverage gate of at least 80% of lines (needs `cargo install cargo-llvm-cov`), catalogue / risk-vocabulary / dependency-budget / pure-Rust / plugin-boundary checks, a check that the published crate holds no development tooling, and `cargo deny`. Checks whose tools are missing locally (`cargo-hack`, the MSRV toolchain, the wasm target, nightly fuzzing) are skipped with an install hint; CI still runs them.
+`scripts/ci.sh` runs the same checks as CI: fmt, clippy, tests, docs, a coverage gate of at least 80% of lines (needs `cargo install cargo-llvm-cov`), catalogue / risk-vocabulary / dependency-budget / pure-Rust / plugin-boundary checks, a check that the published crate holds no development tooling, and `cargo deny`. Checks whose tools are missing locally (`cargo-semver-checks`, the MSRV toolchain, the wasm target, nightly fuzzing) are skipped with an install hint, and without `cargo-hack` each feature is checked with a plain `cargo check` loop; CI still runs them all. `MIRI=1` and `CAREFUL=1` add Miri and `cargo careful` (the tests against a standard library with debug assertions), which take several minutes.
 
 ## Performance
 

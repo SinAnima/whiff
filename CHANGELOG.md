@@ -6,6 +6,16 @@ keep the schema version.
 
 ## Unreleased
 
+### Added
+
+- `docs/stability.md`: what 1.x promises for the command line (flags, defaults that hide private data, output, exit codes), the report (`whiff/1` only grows; format ids and risk kinds are only added), the library API and Cargo features, and the MSRV policy (raised only in a minor release, to at most the stable Rust two versions behind the newest).
+- CI checks the public API against the latest release with `cargo-semver-checks`, and runs the tests under `cargo careful` (a standard library with debug assertions). `scripts/ci.sh` runs semver-checks when installed, and cargo careful with `CAREFUL=1`.
+
+### Changed
+
+- `scripts/ci.sh` checks each feature with a plain `cargo check` loop when `cargo-hack` is not installed, instead of skipping.
+- README: the library example uses `version = "0.9"`.
+
 ## 0.9.0 — 2026-11-20
 
 Documentation and API cleanup from the 0.8.0 review, and a second privacy

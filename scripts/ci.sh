@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Local checks that mirror .github/workflows/ci.yml
 # (fmt, clippy, test, docs, coverage, repo checks, each-feature, MSRV, wasm,
-# deny/audit, Miri with MIRI=1, fuzz smoke). Optional tools are skipped with
+# deny/audit, semver-checks, cargo careful with CAREFUL=1, Miri with MIRI=1,
+# fuzz smoke). Optional tools are skipped with
 # an install hint; each-feature falls back to a plain cargo check loop.
 set -euo pipefail
 
@@ -159,6 +160,26 @@ if cargo audit --version >/dev/null 2>&1; then
   run cargo audit
 else
   skip "cargo audit" "install with: cargo install cargo-audit"
+fi
+
+# --- public API against crates.io ---------------------------------------------
+if cargo semver-checks --version >/dev/null 2>&1; then
+  CARGO_TARGET_DIR=target/semver run cargo semver-checks check-release --all-features
+else
+  skip "cargo semver-checks" "install with: cargo install cargo-semver-checks --locked"
+fi
+
+# --- cargo careful (opt-in locally: builds std, then runs every test) ------------
+if [ "${CAREFUL:-0}" = 1 ]; then
+  if has_toolchain nightly && cargo careful --version >/dev/null 2>&1; then
+    NIGHTLY_BIN="$(dirname "$(rustup which --toolchain nightly cargo)")"
+    PATH="$NIGHTLY_BIN:$PATH" CARGO_TARGET_DIR=target/careful RUSTFLAGS="" \
+      run "$NIGHTLY_BIN/cargo" careful test --features dev --lib --tests
+  else
+    skip "cargo careful" "install with: rustup component add rust-src --toolchain nightly && cargo install cargo-careful --locked"
+  fi
+else
+  skip "cargo careful" "run with CAREFUL=1 scripts/ci.sh"
 fi
 
 # --- Miri (opt-in locally: about 3 minutes) -------------------------------------

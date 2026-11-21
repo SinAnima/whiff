@@ -152,10 +152,10 @@ let compact = report.llm_view(800); // ~800 tokens
 
 ```toml
 # library only, without the CLI's dependencies
-whiff = { version = "0.8", default-features = false, features = ["common"] }
+whiff = { version = "0.9", default-features = false, features = ["common"] }
 ```
 
-The stable library API is the crate root (`Engine`, `EngineBuilder`, `Options`, `Limits`, `Hashes`, `Privacy`, `Redaction`, `Profile`, `Registry`, the risk vocabulary), `whiff::report` (the report types), `whiff::plugin` (writing and registering extractors, block decoders and analyzers) and `whiff::io` (sources and byte readers). Report and option structs and the enums that can grow are `#[non_exhaustive]`: read their fields, set options through `Engine::builder()` or by changing the fields of `Options::default()` / `Limits::default()`, and match their enums with a wildcard arm.
+The stable library API is the crate root (`Engine`, `EngineBuilder`, `Options`, `Limits`, `Hashes`, `Privacy`, `Redaction`, `Profile`, `Registry`, the risk vocabulary), `whiff::report` (the report types), `whiff::plugin` (writing and registering extractors, block decoders and analyzers) and `whiff::io` (sources and byte readers). Report and option structs and the enums that can grow are `#[non_exhaustive]`: read their fields, set options through `Engine::builder()` or by changing the fields of `Options::default()` / `Limits::default()`, and match their enums with a wildcard arm. What each version number promises for the command line, the report and the library is in [docs/stability.md](https://github.com/SinAnima/whiff/blob/main/docs/stability.md).
 
 ## The report
 
@@ -186,7 +186,7 @@ Untrusted input is bounded: reads, decompression and time are budgeted per file,
 | `games` | no | games: cartridge ROMs, Switch and 3DS packages, chiptunes, WAD / PAK / BSP / VPK, Bethesda, RPG Maker and Ren'Py archives, Godot and Unreal packs, Unity and Unreal assets, GameMaker and Godot projects, Minecraft, Tiled, Aseprite, Steam manifests, interactive fiction, emulator saves (includes `common`) |
 | `full` | no | all collections |
 
-The minimum supported Rust version is 1.89.
+The minimum supported Rust version is 1.89. From 1.0 it is raised only in a minor release, and never past the stable Rust two versions behind the newest ([stability](https://github.com/SinAnima/whiff/blob/main/docs/stability.md#minimum-supported-rust-version)).
 
 ## Contributing
 
