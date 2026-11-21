@@ -119,6 +119,40 @@ jobs:
         env:
           CARGO_TARGET_DIR: target
 
+  # The public API against the latest release on crates.io. The version in
+  # Cargo.toml says what may change: unchanged or a patch bump allows no
+  # breaking change; a breaking change needs the next minor (0.x) or major
+  # (1.x) version. Items marked #[doc(hidden)] are not checked.
+  semver:
+    name: semver (public API against crates.io)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: obi1kenobi/cargo-semver-checks-action@v2
+        with:
+          feature-group: all-features
+
+  # The unit and integration tests against a standard library built with
+  # debug assertions (out-of-bounds unchecked indexing, overflowing layout
+  # sizes, invalid char conversions and other undefined behaviour the
+  # release std does not check).
+  careful:
+    name: cargo careful (tests with std debug assertions)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@nightly
+        with:
+          components: rust-src
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-careful
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo careful setup
+      - run: cargo careful test --features dev --lib --tests
+        env:
+          CARGO_TARGET_DIR: target
+
   fuzz:
     name: fuzz smoke (60 s)
     runs-on: ubuntu-latest
