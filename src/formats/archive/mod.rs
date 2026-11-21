@@ -198,12 +198,14 @@ impl Inventory {
             *self.roots.entry(key).or_default() += 1;
         }
         if let Some(t) = e.modified.as_deref().filter(|t| t.len() >= 19) {
-            // RFC 3339 and civil times sort alike on their first 19 characters.
+            // RFC 3339 and civil times sort alike on their first 19 bytes
+            // (compared as bytes: a malformed time may not be ASCII).
+            let key = &t.as_bytes()[..19];
             let t = t.to_string();
-            if self.oldest.as_ref().is_none_or(|o| t[..19] < o[..19]) {
+            if self.oldest.as_ref().is_none_or(|o| key < &o.as_bytes()[..19]) {
                 self.oldest = Some(t.clone());
             }
-            if self.newest.as_ref().is_none_or(|n| t[..19] > n[..19]) {
+            if self.newest.as_ref().is_none_or(|n| key > &n.as_bytes()[..19]) {
                 self.newest = Some(t);
             }
         }
@@ -439,6 +441,18 @@ mod tests {
         assert_eq!(inv.double_extension.as_deref(), Some("invoice.pdf.exe"));
         assert_eq!(inv.roots.get("docs/"), Some(&5));
         assert_eq!(inv.types.get("txt"), Some(&3));
+    }
+
+    /// Modification times are compared on their first 19 bytes, even when a
+    /// malformed one has a multi-byte character there (found by fuzzing).
+    #[test]
+    fn non_ascii_times() {
+        let mut inv = Inventory::new();
+        for t in ["2024-01-01T00:00:\u{fffd}0", "2023-05-06T07:08:09", "2025-01-01T00:00:00"] {
+            inv.push(Entry { modified: Some(t.into()), ..entry("a.txt", Kind::File, None) });
+        }
+        assert_eq!(inv.oldest.as_deref(), Some("2023-05-06T07:08:09"));
+        assert_eq!(inv.newest.as_deref(), Some("2025-01-01T00:00:00"));
     }
 
     #[test]

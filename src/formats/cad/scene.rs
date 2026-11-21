@@ -1140,7 +1140,9 @@ fn ldt(cx: &mut Context<'_>, text: &str) -> Result<(), ExtractError> {
     let sets = f(25).unwrap_or(0.0).max(0.0) as usize;
     let mut lamps = Vec::new();
     for k in 0..sets.min(20) {
-        let g = |field: usize| l.get(26 + field * sets + k).copied().unwrap_or("");
+        let g = |field: usize| {
+            field.checked_mul(sets).and_then(|i| i.checked_add(26 + k)).and_then(|i| l.get(i)).copied().unwrap_or("")
+        };
         let mut m = Map::new();
         m.insert("count".into(), g(0).into());
         m.insert("type".into(), truncate_chars(g(1), 100).into());
@@ -1330,6 +1332,17 @@ crate::register_extractor!(Scene);
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    /// A lamp-set count of 1e30 must not overflow the line index (found by
+    /// fuzzing).
+    #[test]
+    fn ldt_huge_lamp_sets() {
+        let mut lines = vec!["Harbour Lights"; 25];
+        lines.push("1e30");
+        lines.extend(["1"; 20]);
+        let report = crate::plugin::testing::report_for("lamp.ldt", lines.join("\n").as_bytes());
+        assert_eq!(report.identification.format, "ldt");
+    }
 
     #[test]
     fn fbx_nodes() {

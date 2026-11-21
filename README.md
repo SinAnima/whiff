@@ -2,13 +2,13 @@
 
 **whiff** (verb): to catch the scent of something. Point `whiff` at any file and it returns one JSON document describing it: what it is, where it came from, who owns it, when it was made, what rights apply, its physical properties, and a compact, LLM-ready view of its content. Pure Rust, safe on untrusted input.
 
-> **Status:** 0.9.0 (documentation and API cleanup ahead of 1.0; separate switches for personal data and secrets). Every one of the 1008 formats in the catalogue now has an extractor (1233 format ids with every feature on); anything else is still identified by signature.
+> **Status:** 1.0.0, stable. The command line, the `whiff/1` report and the library API follow semantic versioning ([what 1.x promises](https://github.com/SinAnima/whiff/blob/main/docs/stability.md)). Every one of the 1008 formats in the catalogue now has an extractor (1233 format ids with every feature on); anything else is still identified by signature.
 
 What every report contains:
 
 - **Universal sections for any file:** identification (format, MIME, how it was detected, the wrapper of a partial download or backup copy), system facts (size, times, owner, permissions, extended attributes such as macOS quarantine, "Where from" and Finder tags, Windows `Zone.Identifier`), hashes, entropy and risk signals.
 - **Text analytics for anything readable:** `wc` statistics, language, keywords and their frequency, an excerpt, and (profiles `full` / `llm`) a summary.
-- **Format details** from 286 in-house extractors: documents, e-mail, images with EXIF / XMP / IPTC / ICC reconciled, audio, video and subtitles, archives and packages (entries listed, never extracted to disk), executables and bytecode, certificates and keys (never the key itself), databases, Apple formats, serialisations, fonts, source code, package manifests and lockfiles, and, behind cargo features, forensic artefacts and disk images, columnar data and ML models, scientific and medical files, geodata, 3D and CAD, and games.
+- **Format details** from 279 in-house extractors: documents, e-mail, images with EXIF / XMP / IPTC / ICC reconciled, audio, video and subtitles, archives and packages (entries listed, never extracted to disk), executables and bytecode, certificates and keys (never the key itself), databases, Apple formats, serialisations, fonts, source code, package manifests and lockfiles, and, behind cargo features, forensic artefacts and disk images, columnar data and ML models, scientific and medical files, geodata, 3D and CAD, and games.
 - **Privacy by default:** personal data (user names in paths, e-mail addresses, phone and account numbers) is counted and masked unless you pass `--privacy off`, and secrets (keys, tokens, passwords) are redacted unless you pass `--redaction off`. Both are counted either way.
 
 [`File_FORMATS.md`](https://github.com/SinAnima/whiff/blob/main/File_FORMATS.md) lists every format whiff reads with every feature on, [`docs/metadata-extracted.md`](https://github.com/SinAnima/whiff/blob/main/docs/metadata-extracted.md) the 1008 catalogue formats and what is extracted from each, and [`docs/known-gaps.md`](https://github.com/SinAnima/whiff/blob/main/docs/known-gaps.md) what was deliberately left out. The [CHANGELOG](https://github.com/SinAnima/whiff/blob/main/CHANGELOG.md) has the details of each release.
@@ -152,7 +152,7 @@ let compact = report.llm_view(800); // ~800 tokens
 
 ```toml
 # library only, without the CLI's dependencies
-whiff = { version = "0.9", default-features = false, features = ["common"] }
+whiff = { version = "1", default-features = false, features = ["common"] }
 ```
 
 The stable library API is the crate root (`Engine`, `EngineBuilder`, `Options`, `Limits`, `Hashes`, `Privacy`, `Redaction`, `Profile`, `Registry`, the risk vocabulary), `whiff::report` (the report types), `whiff::plugin` (writing and registering extractors, block decoders and analyzers) and `whiff::io` (sources and byte readers). Report and option structs and the enums that can grow are `#[non_exhaustive]`: read their fields, set options through `Engine::builder()` or by changing the fields of `Options::default()` / `Limits::default()`, and match their enums with a wildcard arm. What each version number promises for the command line, the report and the library is in [docs/stability.md](https://github.com/SinAnima/whiff/blob/main/docs/stability.md).
@@ -186,7 +186,7 @@ Untrusted input is bounded: reads, decompression and time are budgeted per file,
 | `games` | no | games: cartridge ROMs, Switch and 3DS packages, chiptunes, WAD / PAK / BSP / VPK, Bethesda, RPG Maker and Ren'Py archives, Godot and Unreal packs, Unity and Unreal assets, GameMaker and Godot projects, Minecraft, Tiled, Aseprite, Steam manifests, interactive fiction, emulator saves (includes `common`) |
 | `full` | no | all collections |
 
-The minimum supported Rust version is 1.89. From 1.0 it is raised only in a minor release, and never past the stable Rust two versions behind the newest ([stability](https://github.com/SinAnima/whiff/blob/main/docs/stability.md#minimum-supported-rust-version)).
+The minimum supported Rust version is 1.89. It is raised only in a minor release, and never past the stable Rust two versions behind the newest ([stability](https://github.com/SinAnima/whiff/blob/main/docs/stability.md#minimum-supported-rust-version)).
 
 ## Contributing
 

@@ -1,6 +1,6 @@
 # Stability
 
-From 1.0, whiff follows [Semantic Versioning](https://semver.org/). This page says what a
+Since 1.0.0, whiff follows [Semantic Versioning](https://semver.org/). This page says what a
 version number promises, for each way you can depend on whiff: the command line, the JSON
 report, the Rust library and the toolchain.
 
@@ -9,8 +9,8 @@ report, the Rust library and the toolchain.
   also raise the minimum Rust version.
 - A **major release** (1.x → 2.0) is needed to remove or change anything promised below.
 
-Before 1.0, a minor release (0.9 → 0.10) may break things, and the CHANGELOG lists each
-breaking change under **Breaking**.
+Before 1.0, a minor release (0.8 → 0.9) could break things; the CHANGELOG lists those
+changes under **Breaking**.
 
 ## Command line
 
@@ -115,7 +115,7 @@ move formats into `common`. `dev` is for whiff's own tools and is not covered.
 
 The MSRV is **1.89**. It is in `Cargo.toml` (`rust-version`), and CI builds with it.
 
-From 1.0:
+In 1.x:
 
 - The MSRV is raised only in a minor release, never in a patch release.
 - It is raised to at most the stable Rust two minor versions behind the newest. When Rust

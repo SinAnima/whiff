@@ -6,6 +6,10 @@ keep the schema version.
 
 ## Unreleased
 
+## 1.0.0 — 2026-11-21
+
+The first stable release. The command line, the `whiff/1` report and the library API now follow semantic versioning, and [docs/stability.md](https://github.com/SinAnima/whiff/blob/main/docs/stability.md) says what each version number promises. There are no breaking changes since 0.9.0: code and scripts that work with 0.9.0 work with 1.0.0.
+
 ### Added
 
 - `docs/stability.md`: what 1.x promises for the command line (flags, defaults that hide private data, output, exit codes), the report (`whiff/1` only grows; format ids and risk kinds are only added), the library API and Cargo features, and the MSRV policy (raised only in a minor release, to at most the stable Rust two versions behind the newest).
@@ -13,8 +17,19 @@ keep the schema version.
 
 ### Changed
 
+- `docs/schema/whiff-1-baseline.schema.json` is now the 1.0.0 schema. It has the same fields and enum values as the baseline frozen at 0.8.0, with the descriptions as of 0.9.0.
 - `scripts/ci.sh` checks each feature with a plain `cargo check` loop when `cargo-hack` is not installed, instead of skipping.
-- README: the library example uses `version = "0.9"`.
+- README: the library example uses `version = "1"`, and the README and format catalogue count 279 extractors (286 also counted the 7 text analyzers).
+
+### Fixed
+
+Five bugs found by the nightly fuzzer, each now with a regression test. One was a panic; whiff contains a panicking extractor and reports it under `diagnostics`, so it could not crash the program, but that file lost the extractor's details. The other four were integer overflows: they panic in debug builds, and in release builds they wrapped silently and could give a wrong value.
+
+- Archives: a modification time with a multi-byte character in its first 19 bytes.
+- EULUMDAT (`.ldt`): a huge lamp-set count overflowed a line index.
+- Mednafen save states: a huge preview size overflowed the offset of the first section.
+- Nintendo 3DS `.cia`: section sizes near 2^64 overflowed when aligned.
+- SCP-ECG: a lead running to sample `u32::MAX` overflowed its sample count.
 
 ## 0.9.0 — 2026-11-20
 

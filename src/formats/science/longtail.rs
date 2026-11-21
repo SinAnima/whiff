@@ -354,6 +354,11 @@ fn lead_name(id: u8) -> String {
     }
 }
 
+/// Samples in an SCP-ECG lead entry: first and last sample number, inclusive.
+fn lead_samples(l: &[u8]) -> u64 {
+    u64::from(le32(l, 4).saturating_sub(le32(l, 0))) + 1
+}
+
 #[allow(clippy::too_many_lines)] // one section after another
 fn scp(cx: &mut Context<'_>, b: &[u8]) {
     let strict = cx.privacy_strict();
@@ -456,7 +461,7 @@ fn scp(cx: &mut Context<'_>, b: &[u8]) {
         let leads: Vec<String> = (0..n)
             .filter_map(|i| s3.get(2 + i * 9..2 + i * 9 + 9))
             .map(|l| {
-                samples = samples.max(u64::from(le32(l, 4).saturating_sub(le32(l, 0)) + 1));
+                samples = samples.max(lead_samples(l));
                 lead_name(l[8])
             })
             .collect();
@@ -584,6 +589,15 @@ mod tests {
     use super::*;
 
     crate::fixture_tests!("hdf4", "maple_mw", "mathcad", "scp_ecg", "aecg");
+
+    /// A lead from sample 0 to `u32::MAX` has 2^32 samples (found by fuzzing).
+    #[test]
+    fn lead_samples_do_not_overflow() {
+        let mut l = [0u8; 9];
+        l[4..8].copy_from_slice(&u32::MAX.to_le_bytes());
+        assert_eq!(lead_samples(&l), 1 << 32);
+        assert_eq!(lead_samples(&[0, 0, 0, 0, 9, 0, 0, 0, 0]), 10);
+    }
 
     /// Patient, subject and author details appear only with
     /// `--privacy off` (the fixtures' people are fictitious).
