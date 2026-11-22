@@ -3,28 +3,28 @@
 class Whiff < Formula
   desc "Describe any file as one JSON document for people and LLMs"
   homepage "https://github.com/SinAnima/whiff"
-  version "0.8.2"
+  version "1.0.0"
   license "MIT"
 
   on_macos do
     on_arm do
       url "https://github.com/SinAnima/whiff/releases/download/v#{version}/whiff-v#{version}-macos-aarch64.tar.gz"
-      sha256 "67da3fcb2e048f077f1978ababbd8f3900f9dd7702cb175df5647dc5d379999a"
+      sha256 "a3b3a34b041bbd95fe159daf6b387c00b8fbcdb5490add0cf4531c732b268571"
     end
     on_intel do
       url "https://github.com/SinAnima/whiff/releases/download/v#{version}/whiff-v#{version}-macos-x86_64.tar.gz"
-      sha256 "87495c97d662a9f0f930db64e1f1bc4d31d002fae7f04cda4d670e3b87a9067c"
+      sha256 "7ef29d8c6920c158a935783324a866200c7f8ce4eeca8187efb21d94381b11d4"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/SinAnima/whiff/releases/download/v#{version}/whiff-v#{version}-linux-aarch64.tar.gz"
-      sha256 "92fb46f71676d9cdc36b9e9e7d5ac726123c004773b265e1412aab528a986528"
+      sha256 "7bd31d6a321b82f5ee46f95610a60a28f59afa178e3a8cc325ea8b241ed32636"
     end
     on_intel do
       url "https://github.com/SinAnima/whiff/releases/download/v#{version}/whiff-v#{version}-linux-x86_64.tar.gz"
-      sha256 "9829f683c159ac5cbb8239c10b2b60e2af6cdda156a072c8e0bff47b120bac8f"
+      sha256 "7070c034ea5a353207d667624e7096dab748bb88a04fbc793e8e0cad7c1f81b0"
     end
   end
 
