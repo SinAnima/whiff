@@ -65,7 +65,7 @@ These sections are filled for **every** file before format-specific extraction r
 
 ## 3. Parser families
 
-Each format in §5 maps to one **family**. A family is one extractor implementation (or one reusable *block decoder*, marked `Block`) that serves every format in it. The survey estimated ~60 extractors for ~1000 formats; whiff ships 286, most of them in-house parsers.
+Each format in §5 maps to one **family**. A family is one extractor implementation (or one reusable *block decoder*, marked `Block`) that serves every format in it. The survey estimated ~60 extractors for ~1000 formats; whiff ships 279, most of them in-house parsers.
 
 Status: **crate** means a pure-Rust crate does the heavy lifting. **mixed** means a crate parses the container and whiff maps it to the schema. **impl** means no suitable pure-Rust crate exists, so whiff implements the parser.
 

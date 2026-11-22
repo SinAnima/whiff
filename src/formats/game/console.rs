@@ -158,7 +158,7 @@ fn xci(cx: &mut Context<'_>, b: &[u8]) -> Result<(), ExtractError> {
 }
 
 fn align64(n: u64) -> u64 {
-    n.div_ceil(64) * 64
+    n.div_ceil(64).saturating_mul(64)
 }
 
 fn title_kind(id: u64) -> Option<&'static str> {
@@ -207,7 +207,7 @@ fn cia(cx: &mut Context<'_>, src: &mut dyn Source) -> Result<(), ExtractError> {
     let meta = u64::from(r.le_u32()?);
     let content = r.le_u64()?;
     // Sections follow the header, each aligned to 64 bytes.
-    let tmd_at = align64(header) + align64(certs) + align64(ticket);
+    let tmd_at = align64(header).saturating_add(align64(certs)).saturating_add(align64(ticket));
     let meta_at = tmd_at.saturating_add(align64(tmd)).saturating_add(align64(content));
     let mut part = |at: u64, n: u64| -> Result<Vec<u8>, ExtractError> {
         if n == 0 || at >= len {
@@ -311,5 +311,14 @@ crate::register_extractor!(Console);
 
 #[cfg(test)]
 mod tests {
+    use super::*;
+
     crate::fixture_tests!("nsp", "xci", "cia");
+
+    /// Section sizes near `u64::MAX` saturate (found by fuzzing).
+    #[test]
+    fn align64_saturates() {
+        assert_eq!(align64(65), 128);
+        assert_eq!(align64(u64::MAX), u64::MAX);
+    }
 }

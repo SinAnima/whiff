@@ -159,7 +159,7 @@ fn mednafen(cx: &mut Context<'_>, b: &[u8]) -> Result<(), ExtractError> {
     // Sections: a 32-byte name and a 32-bit size.
     let mut sections: BTreeMap<String, u64> = BTreeMap::new();
     let end = (len & 0x7FFF_FFFF) as usize;
-    while let Some(s) = data.get(at..at + 36) {
+    while let Some(s) = data.get(at..at.saturating_add(36)) {
         if at >= end.min(data.len()) || sections.len() >= 200 {
             break;
         }
@@ -234,4 +234,16 @@ crate::register_extractor!(Save);
 #[cfg(test)]
 mod tests {
     crate::fixture_tests!("retroarch_state", "mednafen_state", "battery_save");
+
+    /// A preview of 2^32 × 2^32 pixels puts the first section past the end
+    /// of memory; the section walk must stop, not overflow (found by fuzzing).
+    #[test]
+    fn huge_preview() {
+        let mut b = b"MDFNSVST".to_vec();
+        b.resize(24, 0);
+        b.extend(u32::MAX.to_le_bytes());
+        b.extend(u32::MAX.to_le_bytes());
+        b.resize(128, 0);
+        crate::plugin::testing::report_for("state.mc0", &b);
+    }
 }
