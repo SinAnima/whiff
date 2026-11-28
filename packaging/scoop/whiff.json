@@ -1,12 +1,12 @@
 {
-  "version": "0.8.2",
+  "version": "1.0.0",
   "description": "Describe any file as one JSON document for people and LLMs",
   "homepage": "https://github.com/SinAnima/whiff",
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://github.com/SinAnima/whiff/releases/download/v0.8.2/whiff-v0.8.2-windows-x86_64.zip",
-      "hash": "397a662a1c45de6feb886d01af7f5acb69bf1ad13c3a25951583ecbc5938bb9a"
+      "url": "https://github.com/SinAnima/whiff/releases/download/v1.0.0/whiff-v1.0.0-windows-x86_64.zip",
+      "hash": "cb288a564ca469b50753af74ff9d1998129ffb0f4766935af878fd603d8d2f45"
     }
   },
   "bin": "whiff.exe",
